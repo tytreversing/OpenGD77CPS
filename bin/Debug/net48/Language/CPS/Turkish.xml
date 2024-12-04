@@ -1,0 +1,1244 @@
+<?xml version="1.0" encoding="utf-8"?>
+		<Item Id="Processing" Text="Processing..." />
+<Resource>
+  <Settings>
+    <Item Id="MaxZoneCount" Text="32" />
+  </Settings>
+  <Language Id="Tur" Text="Türkçe" />
+  <AboutForm Text="Hakkında">
+    <Controls>
+      <Control Id="lblVersion" Text="" />
+      <Control Id="lblCompany" Text="Radioddity ve GD-77 Topluluğu" />
+      <Control Id="btnClose" Text="Tamam" />
+      <Control Id="lblTranslationCredit" Text="" />
+    </Controls>
+  </AboutForm>
+  <BootItemForm Text="Açılış Ekranı">
+    <Controls>
+      <Control Id="grpBootScreen" Text="Açılış Ekranı" />
+      <Control Id="lblBootScreen" Text="Ekran Modu" />
+      <Control Id="lblLine2" Text="Satır 2" />
+      <Control Id="lblLine1" Text="Satır 1" />
+      <Control Id="lblBootPwd" Text="Açılış Şifresi" />
+      <Control Id="chkBootPwdEnable" Text="Açılış Parolasını Etkinleştir" />
+      <Control Id="chkBootScreen" Text="Açılış Ekranı" />
+    </Controls>
+    <Commons>
+      <Item Id="BootScreen" Text="Resim,Metin" />
+    </Commons>
+  </BootItemForm>
+  <ButtonForm Text="Düğmeler">
+    <Controls>
+      <Control Id="dgvOneTouch" Text="Mod,Çağrı Türü,Çağrı,Metin Mesajı">
+	<ControlItem Id="cmbMode" Text="Mod" />
+	<ControlItem Id="cmbCallType" Text="Çağrı Türü" />
+	<ControlItem Id="cmbCallList" Text="Çağrı" />
+	<ControlItem Id="cmbMsg" Text="Metin Mesajı" />
+      </Control>
+      <Control Id="lblEmgShortDur" Text="Acil Durum Kısa Basma Süresi [ms]" />
+      <Control Id="lblLongDur" Text="Uzun Basma Süresi [ms]" />
+      <Control Id="lblSK1" Text="SK1" />
+      <Control Id="lblSK2" Text="SK2" />
+      <Control Id="lblLongPress" Text="Uzun Basma" />
+      <Control Id="lblTK" Text="TK" />
+      <Control Id="lblShortPress" Text="Kısa Basma" />
+    </Controls>
+    <Commons>
+      <Item Id="ButtonItem" Text="Hiçbiri,Tüm Alarm Tonları Açık/Kapalı,Acil Durum Açık,Acil Durum Kapalı,Düşük/Yüksek Güç,İzleme,Rahatsız Edici Sil,Tek Dokunuşla Erişim 1,Tek Dokunuşla Erişim 2,Tek Dokunuşla Erişim 3,Tek Dokunuşla Erişim 4,Tek Dokunuşla Erişim 5,Tek Dokunuşla Erişim 6,Tekrarlayıcı/Yakın Konuşma,Tarama Açık/Kapalı,Sıkı/Normal Susturma,Gizlilik Açık/Kapalı,Vox Açık/Kapalı,Bölge Seçimi,Batarya göstergesi,Yalnız İşçi Açık/Kapalı,Kalıcı İzleme,Telefon Çıkışı,Kanal Yukarı,Kanal Aşağı,Kanal Bilgisi," />
+      <Item Id="Mode" Text="Hiçbiri,Dijital,Analog" />
+      <Item Id="CallTypeD" Text="Çağrı,Mesaj" />
+      <Item Id="CallTypeA" Text="DTMF Çağrısı" />
+    </Commons>
+  </ButtonForm>
+  <ChannelForm Text="Kanal">
+    <Controls>
+      <Control Id="btnCopy" Text=">>" />
+      <Control Id="lblSquelch" Text="Susturma" />
+      <Control Id="lblSql" Text="OpenGD77 Susturma Seviyesi" />
+      <Control Id="grpDigit" Text="Dijital" />
+      <Control Id="lblTimingPreference" Text="Zamanlama Lideri Tercihi" />
+      <Control Id="lblRepeaterSlot" Text="Tekrarlayıcı Yuvası" />
+      <Control Id="lblArs" Text="ARS" />
+      <Control Id="lblKeySwitch" Text="Gizlilik" />
+      <Control Id="lblKey" Text="Gizlilik Grubu" />
+      <Control Id="lblTxColor" Text="Renk Kodu" />
+      <Control Id="lblEmgSystem" Text="APRS" />
+      <Control Id="lblContact" Text="Kişi" />
+      <Control Id="chkDualCapacity" Text="Çift Kapasiteli Doğrudan Mod" />
+      <Control Id="chkUdpDataHead" Text="Sıkıştırılmış UDP Veri Başlığı" />
+      <Control Id="chkAllowTxInterupt" Text="Kesintiye İzin Ver" />
+      <Control Id="chkTxInteruptFreq" Text="Tx Kesintisiz Frekanslar" />
+      <Control Id="chkPrivateCall" Text="Özel Çağrı Onaylandı" />
+      <Control Id="chkDataCall" Text="Veri Çağrısı Onaylandı" />
+      <Control Id="chkEmgConfirmed" Text="Acil Durum Alarmı Ack" />
+      <Control Id="chkEnhancedChAccess" Text="Gelişmiş Kanal Erişimi" />
+      <Control Id="lblRxColor" Text="Rx Renk Kodu" />
+      <Control Id="lblRxGroup" Text="TG Listesi" />
+      <Control Id="chkRxOnly" Text="Sadece Rx" />
+      <Control Id="chkAllowTalkaround" Text="Yakın Konuşmaya İzin Ver" />
+      <Control Id="grpAnalog" Text="Analog" />
+      <Control Id="lblChBandwidth" Text="Bant Genişliği [KHz]" />
+      <Control Id="lblVoiceEmphasis" Text="Sesli Vurgu" />
+      <Control Id="lblSte" Text="STE" />
+      <Control Id="lblNonSte" Text="STE değil" />
+      <Control Id="lblRxTone" Text="Rx Tonu [Hz]" />
+      <Control Id="lblRxSignaling" Text="Rx Sinyal Sistemi" />
+      <Control Id="lblUnmuteRule" Text="Ses Açma Kuralı" />
+      <Control Id="lblArtsInterval" Text="ARTS Aralığı [s]" />
+      <Control Id="lblPttidType" Text="PTTID Türü" />
+      <Control Id="lblTxSignaling" Text="Tx Sinyal Sistemi" />
+      <Control Id="lblTxTone" Text="Tx Tonu [Hz]" />
+      <Control Id="chkDataPl" Text="Veri için PL" />
+      <Control Id="chkLoneWoker" Text="Yalnız İşçi" />
+      <Control Id="chkOpenGD77ScanAllSkip" Text="Tarama: Hepsini Atla" />
+      <Control Id="chkVox" Text="Vox" />
+      <Control Id="chkAutoScan" Text="Otomatik Tarama" />
+      <Control Id="chkOpenGD77ScanZoneSkip" Text="Tarama: Bölgeyi Atla" />
+      <Control Id="chkNoBeep" Text="Uyarı Yok" />
+      <Control Id="chkNoEco" Text="Eko Yok" />
+	  <Control Id="chkDMRForceDMO" Text="Force DMO" />
+      <Control Id="lblChName" Text="Ad" />
+      <Control Id="lblChMode" Text="Mod" />
+      <Control Id="lblTot" Text="İletim Süresi - TOT [s]" />
+      <Control Id="lblTotRekey" Text="Yeniden Mandallama Gecikmesi [s]" />
+      <Control Id="lblRssiThreshold" Text="RSSI Eşiği [dBm]" />
+      <Control Id="lblRxRefFreq" Text="Rx Referans Frekansı" />
+      <Control Id="lblTxRefFreq" Text="Tx Referans Frekansı" />
+      <Control Id="lblRxFreq" Text="Rx Frek [MHz]" />
+      <Control Id="lblLibreDMR_Power" Text="Güç Seviyesi" />
+      <Control Id="lblAdmitCriteria" Text="Kabul Kriterleri" />
+      <Control Id="lblTxFreq" Text="Tx Frek [MHz]" />
+      <Control Id="lblScanList" Text="Tarama Listesi" />
+      <Control Id="lblxband" Text="Uyarı: Rx ve Tx bantları farklı. Radyo performansı etkilenebilir" />
+	  <Control Id="grpLocation" Text="Location" />
+      <Control Id="tsrCh" Text="toolStrip1">
+		<ToolStripItem Id="tslblInfo" Text="" />
+		<ToolStripItem Id="tsbtnFirst" Text="İlk" />
+		<ToolStripItem Id="tsbtnPrev" Text="Önceki" />
+		<ToolStripItem Id="tsbtnNext" Text="Sonraki" />
+		<ToolStripItem Id="tsbtnLast" Text="Son" />
+		<ToolStripItem Id="tsbtnAdd" Text="Ekle" />
+		<ToolStripItem Id="tsbtnDel" Text="Sil" />
+      </Control>
+      <Control Id="mnsCh" Text="menüŞeridi1" />
+      <Control Id="lblTS1TaTx" Text="TS1 Talker Alias Tx" />
+      <Control Id="lblTS2TaTx" Text="TS2 Talker Alias Tx" />
+  	  <Control Id="lblOverrideTxDMRId" Text="Override Tx DMR ID" />	  
+    </Controls>
+    <Commons>
+      <Item Id="ChMode" Text="Analog,Dijital" />
+      <Item Id="RefFreq" Text="Düşük,Orta,Yüksek" />
+      <Item Id="LibreDMR_Power" Text="Ana,50mW | 50mW | 100mW,250mW | 250mW | 250mW,500mW | 500mW | 500mW,750mW | 750mW | 750mW,1W | 1W | 1W,2W | 2W | 5W,3W | 3W | 10W,4W | 5W | 25W,5W | 10W | 40W,+W-" />
+      <Item Id="Power" Text="Düşük,Yüksek" />
+      <Item Id="AdmitCriterica" Text="Her Zaman,Kanal Boşta,CTCSS/DCS" />
+      <Item Id="AdmitCritericaD" Text="Her Zaman,Kanal Boşta,Renk Kodu" />
+      <Item Id="Squelch" Text="Sıkı,Normal" />
+      <Item Id="VoiceEmphasis" Text="Hiçbiri,De ve Pre,De,Pre" />
+      <Item Id="Ste" Text="Frekans,120°,180°,240°" />
+      <Item Id="NonSte" Text="Hiçbiri,Frekans" />
+      <Item Id="SignalingSystem" Text="Kapalı,DTMF" />
+      <Item Id="UnmuteRule" Text="Standart Ses Aç Ses Kapa,Ve Ses Aç Ses Kapa,Ve Ses Aç Ya da Ses Kapa" />
+      <Item Id="PttidType" Text="Hiçbiri,Sadece Önce,Sadece Sonra,Önce ve Sonra" />
+      <Item Id="TaTx" Text="Kapalı,APRS,Metin,APRS &amp; Metin" />
+      <Item Id="TimingPreference" Text="Tercih Edilen,Uygun,Uygun Değil" />
+      <Item Id="Ars" Text="Engelle,Sistem Değişikliği" />
+      <Item Id="KeySwitch" Text="Kapalı,Açık" />
+    </Commons>
+  </ChannelForm>
+  <ChannelsForm Text="Kanallar">
+    <Controls>
+      <Control Id="btnImport" Text="Güncelleme/Eklemeyi İçe Aktar" />
+      <Control Id="btnImportClearAll" Text="İçeri Aktar Her Şeyi Temizle!" />
+      <Control Id="btnExport" Text="Seçilen satırları dışa aktar" />
+      <Control Id="btnDeleteSelect" Text="Seçili Satırı Sil" />
+      <Control Id="btnClear" Text="Her şeyi temizle" />
+      <Control Id="btnDelete" Text="Sil" />
+      <Control Id="btnAdd" Text="Ekle" />
+      <Control Id="dgvChannels" Text="Sayı,Ad,Rx Frek,Tx Frek,Kanal Modu,Güç,Rx Tonu,Tx Tonu,Renk Kodu,TG Listesi,Kişi,Tekrarlayıcı Yuvası">
+	<ControlItem Id="" Text="Sayı" />
+	<ControlItem Id="" Text="Ad" />
+	<ControlItem Id="" Text="Rx Frek" />
+	<ControlItem Id="" Text="Tx Frek" />
+	<ControlItem Id="" Text="Kanal Modu" />
+	<ControlItem Id="" Text="Güç" />
+	<ControlItem Id="" Text="Rx Tonu" />
+	<ControlItem Id="" Text="Tx Tonu" />
+	<ControlItem Id="" Text="Renk Kodu" />
+	<ControlItem Id="" Text="TG Listesi" />
+	<ControlItem Id="" Text="Kişi" />
+	<ControlItem Id="" Text="Tekrarlayıcı Slotu" />
+      </Control>
+    </Controls>
+    <Commons>
+      <Item Id="DisplayHeaderText" Text="Sayı,Ad,Kanal Modu,Rx Frek,Tx Frek,Renk Kodu,Tekrarlayıcı Yuvası,Kişi,TG Listesi,Güç,Rx Tonu,Tx Tonu"/>
+      <Item Id="ExportHeaderText" Text="Veri Türü,Ad,Kanal Türü,Rx Frekansı,Tx Frekansı,Renk Kodu,Zaman Dilimi,Kişi,Kişi Türü,Kişi Kimliği,Rx Grubu,Tarama Listesi,Bölge,RX CTCSS,TX CTCSS,Güç,Bant Genişliği,Sadece Rx,Susturma,Tx Kabül,İletim Süresi,Yeniden Mandallama,Tx Sinyali,Rx Sinyali,Özel Grup,APRS,Flags1,Flags2,Flags3,Flags4,Rssi Eşiği,Sesli Vurgu,Tx Sinyal Sistemi,Ses Açma Kuralı,Rx Sinyal Sistemi,Arts Aralığı" />
+    </Commons>
+  </ChannelsForm>
+  <CommPrgForm Text="">
+    <Controls>
+      <Control Id="btnCancel" Text="Vazgeç" />
+    </Controls>
+    <Commons>
+      <Item Id="ButtonItem" Text="Hüçbiri,Tüm Alarm Tonları Açık/Kapalı,Acil Durum Açık,Acil Durum Kapalı,Yüksek/Düşük Güç,İzleme,Rahatsız Edici Sil,Tek Tuşla Erişim 1,Tek Tuşla Erişim 2,Tek Tuşla Erişim 3,Tek Tuşla Erişim 4,Tek Tuşla Erişim 5,Tek Tuşla Erişim 6,Tekrarlayıcı/Yakın Konuşma,Tarama Açık/Kapalı,Sıkı/Normal Susturma,Gizlilik Açık/Kapalı,Vox Açık/Kapalı,Bölge Seçimi,Batarya Göstergesi,Yalnız İşçi Açık/Kapalı,Kalıcı İzleme,Telefon Çıkışı,Kanal Yukarı,Kanal Aşağı,Kanal Bilgisi" />
+      <Item Id="Mode" Text="Hiçbiri,Dijital,Analog" />
+      <Item Id="CallTypeD" Text="Çağrı,Mesaj" />
+      <Item Id="CallTypeA" Text="DTMF Çağrısı" />
+    </Commons>
+  </CommPrgForm>
+  <ContactForm Text="Dijital Kişi">
+    <Controls>
+      <Control Id="chkCallRxTone" Text="Çağrı Alma Tonu" />
+      <Control Id="lblRingStyle" Text="Zil Stili" />
+      <Control Id="lblCallType" Text="Çağrı Türü" />
+      <Control Id="lblName" Text="Ad" />
+      <Control Id="lblCallId" Text="Çağrı Kimliği" />
+      <Control Id="openGD77groupbox" Text="OpenGD77 - Channel TS override" />
+      <Control Id="lblRepeaterSlot" Text="Repeater Slot" />
+      <Control Id="btnLookupIDForCallsign" Text="Lookup Id for Callsign" />
+    </Controls>
+    <Commons>
+      <Item Id="CallType" Text="Grup Çağrısı,Özel Çağrı,Tüm Çağrılar" />
+      <Item Id="CallRxTone" Text="Kapalı,Açık" />
+    </Commons>
+  </ContactForm>
+  <ContactsForm Text="Kişi">
+    <Controls>
+      <Control Id="btnImport" Text="İçe Aktar" />
+      <Control Id="btnExport" Text="Dışa Aktar" />
+      <Control Id="btnDeleteSelect" Text="Seçiliyi Sil" />
+      <Control Id="btnClear" Text="Temizle" />
+      <Control Id="btnDelete" Text="Sil" />
+      <Control Id="btnAdd" Text="Ekle" />
+      <Control Id="btnInternetDownload" Text="İnternetten indir" />
+      <Control Id="dgvContacts" Text="Sayı,Ad,Çağrı Kimliği,Tür,Zil Stili,Çağrı Alma Tonu,Tekrarlayıcı Yuvası Üzerine Yazma,">
+	<ControlItem Id="" Text="Sayı" />
+	<ControlItem Id="" Text="Ad" />
+	<ControlItem Id="" Text="Çağrı Kimliği" />
+	<ControlItem Id="" Text="Tür" />
+	<ControlItem Id="" Text="Zil Stili" />
+	<ControlItem Id="" Text="Çağrı Alma Tonu" />
+	<ControlItem Id="" Text="Tekrarlayıcı Yuvası Üzerine Yazma" />
+      </Control>
+    </Controls>
+    <Commons>
+      <Item Id="HeaderText" Text="Sayı,Ad,Çağrı Kimliği,Tür,,,Tekrarlayıcı Yuvası Üzerine Yazma," />
+    </Commons>
+  </ContactsForm>
+  <DeviceInfoForm Text="Bant Sınırları">
+    <Controls>
+      <Control Id="lblTo1" Text="-" />
+      <Control Id="lblTo2" Text="-" />
+      <Control Id="lblSection1" Text="UHF bant sınırları [MHz]" />
+      <Control Id="lblDspFwVer" Text="DSP Sürümü" />
+      <Control Id="lblFirmwareVer" Text="Ürün Yazılımı Sürümü" />
+      <Control Id="lblHardwareVer" Text="Donanım Sürümü" />
+      <Control Id="lblCpsSwVer" Text="CPS Sürümü" />
+      <Control Id="lblSn" Text="Seri Numarası" />
+      <Control Id="lblSection2" Text="VHF bant sınırları [MHz]" />
+      <Control Id="lblLastPrgTime" Text="Son Programlama Tarihi" />
+      <Control Id="lblModel" Text="Model Adı" />
+    </Controls>
+  </DeviceInfoForm>
+  <DigitalKeyContactForm Text="Numara Tuşu Ataması">
+    <Controls>
+      <Control Id="dgvContact" Text="Menü">
+	<ControlItem Id="cmbContact" Text="Menü" />
+      </Control>
+    </Controls>
+    <Commons>
+      <Item Id="DigitKey" Text="Numara Tuşu " />
+    </Commons>
+  </DigitalKeyContactForm>
+  <DtmfContactForm Text="DTMF Kişisi">
+    <Controls>
+      <Control Id="dgvContact" Text="Ad,Numara">
+	<ControlItem Id="txtName" Text="Ad" />
+	<ControlItem Id="txtCode" Text="Numara" />
+      </Control>
+      <Control Id="btnAdd" Text="Ekle" />
+      <Control Id="btnDel" Text="Sil" />
+    </Controls>
+  </DtmfContactForm>
+  <DtmfForm Text="DTMF Ayarları">
+    <Controls>
+      <Control Id="chkSideTone" Text="DTMF Yan Tonu" />
+      <Control Id="lblUpCode" Text="PTTID Yukarı Kodu" />
+      <Control Id="lblDownCode" Text="PTTID Aşağı Kodu" />
+      <Control Id="lblSelfID" Text="Kişisel ID" />
+      <Control Id="lblRespHoldTime" Text="Cevap Bekletme [s]" />
+      <Control Id="lblKillCode" Text="Sonlandırma Kodu" />
+      <Control Id="lblAutoResetTime" Text="Otomatik Sıfırlama Süresi [s]" />
+      <Control Id="lblDecTime" Text="Kod Çözme Süresi [s]" />
+      <Control Id="lblWakeCode" Text="Uyandırma Kodu" />
+      <Control Id="lblDelimiter" Text="Sınırlayıcı" />
+      <Control Id="lblGrpCallCode" Text="Grup Kodu" />
+      <Control Id="lblDecResp" Text="Yanıtın kodunu çöz" />
+      <Control Id="lblFstDlyTime" Text="İlk Hane Gecikmesi [ms]" />
+      <Control Id="lblKillWakeDec" Text="Sonlandırma/Uyandırma Kodu" />
+      <Control Id="lblFstDur" Text="İlk Hane Süresi [ms]" />
+      <Control Id="lblKillType" Text="Sonlandırma Türü" />
+      <Control Id="lblOtherDur" Text="*# Süresi [ms]" />
+      <Control Id="lblRate" Text="DTMF Oranı" />
+      <Control Id="lblTail" Text="DTMF Kuyruğu [ms]" />
+    </Controls>
+    <Commons>
+      <Item Id="DecodeResp" Text="Hiçbiri,Hatırlatma,Cevap,Hatırlatma ve Cevap" />
+      <Item Id="GroupCode" Text="Hiçbiri,A,B,C,D,*,#" />
+      <Item Id="KillType" Text="Tx Devre Dışı,Tx ve Rx Devre Dışı,Sonlandır" />
+      <Item Id="KillWakeDec" Text="Kapalı,Açık" />
+    </Commons>
+  </DtmfForm>
+  <APRSForm Text="APRS">
+    <Controls>
+      <Control Id="lblAlias" Text="Ad" />
+      <Control Id="lblAlarmType" Text="Alarm Türü" />
+      <Control Id="lblAlarmMode" Text="Mod" />
+      <Control Id="lblRevertCh" Text="Kanalı Geri Çevir" />
+      <Control Id="lblImpoliteRetries" Text="Kaba Yeniden Denemeler" />
+      <Control Id="lblPoliteRetries" Text="Kibar Yeniden Denemeler" />
+      <Control Id="lblCycles" Text="Döngüler" />
+      <Control Id="lblTxCycle" Text="Tx Döngü Zamanı [s]" />
+      <Control Id="lblRxCycle" Text="Rx Döngü Zamanı [s]" />
+    </Controls>
+    <Commons>
+      <Item Id="AlarmType" Text="Devre Dışı,Normal,Sessiz,Sesle Sessiz" />
+      <Item Id="AlarmMode" Text="Acil Durum Alarmı,Çağrıyla Acil Durum Alarmı,Sesle Acil Durum Alarmı" />
+      <Item Id="RevertCh" Text="Hiçbiri,Seçilen" />
+    </Commons>
+  </APRSForm>
+  <EncryptForm Text="Gizlilik">
+    <Controls>
+      <Control Id="dgvKey" Text="Tuş">
+	<ControlItem Id="txtKey" Text="Tuş" />
+      </Control>
+      <Control Id="lblType" Text="Gizlilik Türü" />
+      <Control Id="btnDel" Text="Sil" />
+      <Control Id="lblKeyLen" Text="Tuş Uzunluğu" />
+      <Control Id="btnAdd" Text="Ekle" />
+    </Controls>
+    <Commons>
+      <Item Id="EncryptType" Text="Hiçbiri,Temel" />
+    </Commons>
+  </EncryptForm>
+  <GeneralSetForm Text="DMR ID ve Çağrı İşareti">
+    <Controls>
+	  <Control Id="btnLookupIDForCallsign" Text="Lookup Id for Callsign" />
+      <Control Id="chkTxExitTone" Text="Tx Çıkış Tonu" />
+      <Control Id="grpBeep" Text="Uyarı Tonu" />
+      <Control Id="chkResetTone" Text="Sıfırlama Tonu" />
+      <Control Id="chkUnifamiliarNumber" Text="Bilinmeyen Numara Tonu" />
+      <Control Id="lblCallAlertDur" Text="Çağrı Uyarısı Ton Süresi [s]" />
+      <Control Id="chkSelfTestPassTone" Text="Sınama Geçme Tonu" />
+      <Control Id="chkCrescendoTone" Text="Gelişmiş Ton*" />
+      <Control Id="chkChFreeTone" Text="Kanal Frekansı Gösterge Tonu" />
+      <Control Id="chkDisableAllTone" Text="Tüm Tonlar Devre Dışı" />
+      <Control Id="lblTalkPermitTone" Text="Konuşma İzni Tonu" />
+      <Control Id="lblArtsTone" Text="ARTS Tonu" />
+      <Control Id="grpVoice" Text="Dil" />
+      <Control Id="chkChVoice" Text="Kanal Sesi" />
+      <Control Id="lblVoiceLang" Text="Ses Dili" />
+      <Control Id="grpSaveMode" Text="Batarya Koruma" />
+      <Control Id="chkBatteryRx" Text="Alma" />
+      <Control Id="chkBatteryPreamble" Text="Giriş" />
+      <Control Id="grpLoneWork" Text="Yalnız İşçi" />
+      <Control Id="lblReminderTmr" Text="Hatırlatma Zamanlayıcı [s]" />
+      <Control Id="lblRespTmr" Text="Cevap Zamanlayıcı [min]" />
+      <Control Id="grpTalkAround" Text="Yakın Konuşma" />
+      <Control Id="lblPrivateHang" Text="Özel Çağrı Bekleme Süresi [ms]" />
+      <Control Id="lblGrpHold" Text="Grup Çağrısı Bekleme Süresi [ms]" />
+      <Control Id="chkDisableAllLeds" Text="LEDleri Devre Dışı Bırak" />
+      <Control Id="lblRadioName" Text="Çağrı İşareti" />
+      <Control Id="lblRadioID" Text="Telsiz DMR ID" />
+      <Control Id="lblTxPreambleDur" Text="Tx Giriş Süresi [ms]" />
+      <Control Id="lblProgramPwd" Text="Program Şifresi" />
+      <Control Id="lblRxLowBatt" Text="Rx Düşük Batarya Aralığı [s]" />
+      <Control Id="chkKillState" Text="Sonlandırma Durumu" />
+      <Control Id="chkTestMode" Text="Test Modu" />
+      <Control Id="lblArsInitDly" Text="ARS Başlatma Gecikmesi [min]" />
+      <Control Id="chkDataEnCtrlStation" Text="Veri Özellikli Kontrol İstasyonu" />
+      <Control Id="lblMonitorType" Text="İzleme Türü" />
+      <Control Id="lblVoxSense" Text="Vox Hassasiyeti" />
+      <Control Id="chkPrivateCall" Text="Özel Çağrı" />
+      <Control Id="chkTxInhibit" Text="Tx Hızlı Tuşu Geçersiz Kılmayı Engelle" />
+      <Control Id="lblUpChMode" Text="Yukarı Kanal Modu" />
+      <Control Id="lblDownChMode" Text="Aşağı Kanal Modu" />
+      <Control Id="grpScan" Text="Tarama" />
+      <Control Id="lblScanMode" Text="Tarama Modu" />
+    </Controls>
+    <Commons>
+      <Item Id="MonitorType" Text="Açık Susturma,Sessiz" />
+      <Item Id="TalkPermitTone" Text="Hiçbiri,Dijital,Analog,İkisi de" />
+      <Item Id="ArtsToneName" Text="Devre Dışı,Bir Kere,Her Zaman" />
+      <Item Id="ChannelMode" Text="Kanal,VFO" />
+      <Item Id="ScanMode" Text="Zaman,Taşıyıcı,Arama" />
+    </Commons>
+  </GeneralSetForm>
+  <HelpForm Text="Yardım Penceresi">
+    <Controls />
+  </HelpForm>
+  <MainForm Text="OpenGD77 CPS">
+    <TreeView>
+      <TreeNode Id="Model" Text="GD-77" />
+      <TreeNode Id="BasicInfo" Text="Bant Sınırları" />
+      <TreeNode Id="BootItem" Text="Açılış Ekranı" />
+      <TreeNode Id="Menu" Text="Menü" />
+      <TreeNode Id="NumKeyAssign" Text="Numara Tuşu Atama" />
+      <TreeNode Id="GeneralSetting" Text="DMR ID ve Çağrı İşareti" />
+      <TreeNode Id="Buttons" Text="Düğmeler" />
+      <TreeNode Id="TextMsg" Text="Metin Mesajı" />
+      <TreeNode Id="Pivacy" Text="Gizlilik" />
+      <TreeNode Id="SignalingSys" Text="Sinyal Sistemi" />
+      <TreeNode Id="APRS" Text="APRS" />
+      <TreeNode Id="Contact" Text="Kişiler" />
+      <TreeNode Id="DtmfContact" Text="DTMF" />
+      <TreeNode Id="DigitalContact" Text="Dijital Kişiler" />
+      <TreeNode Id="RxGroupList" Text="Konuşma Grubu Listeleri" />
+      <TreeNode Id="Zone" Text="Bölgeler" />
+      <TreeNode Id="Channel" Text="Kanallar" />
+      <TreeNode Id="Scan" Text="Tarama" />
+      <TreeNode Id="DtmfSignal" Text="DTMF Ayarları" />
+      <TreeNode Id="VFO" Text="VFO" />
+      <TreeNode Id="VFOA" Text="VFO A" />
+      <TreeNode Id="VFOB" Text="VFO B" />
+    </TreeView>
+    <MenuStrip>
+      <MenuItem Id="tsmiFile" Text="&amp;Dosya" />
+      <MenuItem Id="tsmiNew" Text="Yeni" />
+      <MenuItem Id="tsmiSave" Text="Kaydet" />
+      <MenuItem Id="tsmiOpen" Text="Aç" />
+      <MenuItem Id="tsmiExit" Text="Çıkış" />
+      <MenuItem Id="tsmiSetting" Text="Ayarlar" />
+      <MenuItem Id="tsmiDeviceInfo" Text="Bant Sınırları" />
+      <MenuItem Id="tsmiBootItem" Text="Açılış Ekranı" />
+      <MenuItem Id="tsmiMenu" Text="Menü" />
+      <MenuItem Id="tsmiNumKeyContact" Text="Numara Tuşu Atama" />
+      <MenuItem Id="tsmiGerneralSet" Text="DMR ID ve Çağrı İşareti" />
+      <MenuItem Id="tsmiButton" Text="Düğmeler" />
+      <MenuItem Id="tsmiTextMsg" Text="Metin Mesajı" />
+      <MenuItem Id="tsmiEncrypt" Text="Gizlilik" />
+      <MenuItem Id="tsmiSignaling" Text="Sinyal" />
+      <MenuItem Id="tsmiSignalingSystem" Text="Sinyal Sistemi" />
+      <MenuItem Id="tsmiDtmf" Text="DTMF Ayarları" />
+      <MenuItem Id="tsmiEmgSystem" Text="APRS" />
+      <MenuItem Id="tsmiAPRSConfigs" Text="APRS Configuations" />
+      <MenuItem Id="tsmiContact" Text="Kişi" />
+      <MenuItem Id="tsmiDtmfContact" Text="DTMF" />
+      <MenuItem Id="tsmiDmrContacts" Text="Dijital Kişiler" />
+      <MenuItem Id="tsmiContacts" Text="Kişiler" />
+      <MenuItem Id="tsmiGrpRxList" Text="Konuşmacı Grubu Listesi" />
+      <MenuItem Id="tsmiZone" Text="Bölgeler" />
+      <MenuItem Id="tsmiZoneBasic" Text="Bölge Temelleri" />
+      <MenuItem Id="tsmiZoneList" Text="Bölge Listesi" />
+      <MenuItem Id="tsmiChannels" Text="Kanallar" />
+      <MenuItem Id="tsmiVfos" Text="VFOs" />
+      <MenuItem Id="tsmiScan" Text="Tarama" />
+      <MenuItem Id="tsmiScanBasic" Text="Tarama Temeli" />
+      <MenuItem Id="tsmiScanList" Text="Tarama Listesi" />
+      <MenuItem Id="tsmiProgram" Text="Program" />
+      <MenuItem Id="tsmiRead" Text="Oku" />
+      <MenuItem Id="tsmiWrite" Text="Yaz" />
+      <MenuItem Id="tsmiBasic" Text="Temel" />
+      <MenuItem Id="tsmiView" Text="Görünüm" />
+      <MenuItem Id="tsmiTree" Text="Dizin Penceresi" />
+      <MenuItem Id="tsmiHelp" Text="Yardım Penceresi" />
+      <MenuItem Id="tsmiToolBar" Text="Araç Çubuğu" />
+      <MenuItem Id="tsmiStatusBar" Text="Durum Çubuğu" />
+      <MenuItem Id="tsmiWindow" Text="Pencere" />
+      <MenuItem Id="tsmiCascade" Text="Kademeli" />
+      <MenuItem Id="tsmiTileHor" Text="Yatay Döşeme" />
+      <MenuItem Id="tsmiTileVer" Text="Dikey Döşeme" />
+      <MenuItem Id="tsmiCloseAll" Text="Hepsini Kapat" />
+      <MenuItem Id="tsmiAbout" Text="Hakkında" />
+      <MenuItem Id="tsmiLanguage" Text="Dil" />
+      <MenuItem Id="tsmiEnglish" Text="İngilizce" />
+      <MenuItem Id="tsmiChinese" Text="Çince" />
+      <MenuItem Id="tsmiExtras" Text="Ek Programlar" />
+      <MenuItem Id="tsmiContactsDownload" Text="Kişileri İndir" />
+      <MenuItem Id="tsmiDMRID" Text="Çağrı İşareti Veritabanını İndir" />
+      <MenuItem Id="tsmiCalibrationMK22" Text="Kalibrasyon" />
+      <MenuItem Id="tsmiTheme" Text="Tema Editörü" />
+
+      <MenuItem Id="tsmiOpenGD77" Text="OpenGD77 Desteği" />
+      <MenuItem Id="tsmiFirmwareLoader" Text="Ürün Yazılımı Yükleyici" />
+      <MenuItem Id="tsmiRadioType" Text="Telsiz Türü" />
+      <MenuItem Id="tsmiRadioTypeItem_MK22" Text="GD77/GD77S/DM1801/RD5R" />
+      <MenuItem Id="tsmiRadioTypeItem_STM32" Text="MD-9600/RT-90,MD-UV380/RT-3S,DM-1701/RT-84,MD-2017/RT-82" />
+    </MenuStrip>
+    <ContextMenuStrip>
+      <MenuItem Id="tsmiAdd" Text="Ekle" />
+      <MenuItem Id="tsmiClear" Text="Temizle" />
+    </ContextMenuStrip>
+    <ContextMenuStrip>
+      <MenuItem Id="tsmiDel" Text="Sil" />
+      <MenuItem Id="tsmiRename" Text="Adını Değiştir" />
+      <MenuItem Id="tsmiCopy" Text="Kopyala" />
+      <MenuItem Id="tsmiPaste" Text="Yapıştır" />
+      <MenuItem Id="tsmiMoveUp" Text="Yukarı Çek" />
+      <MenuItem Id="tsmiMoveDown" Text="Aşağıya İndir" />
+    </ContextMenuStrip>
+    <ContextMenuStrip>
+      <MenuItem Id="tsmiCollapseAll" Text="Hepsini Daralt" />
+      <MenuItem Id="tsmiExpandAll" Text="Hepsini Genişlet" />
+    </ContextMenuStrip>
+    <ContextMenuStrip>
+      <MenuItem Id="tsmiAddContact" Text="Ekle" />
+      <MenuItem Id="tsmiGroupCall" Text="Grup Çağrısı" />
+      <MenuItem Id="tsmiPrivateCall" Text="Özel Çağrı" />
+      <MenuItem Id="tsmiAllCall" Text="Tüm Çağrılar" />
+    </ContextMenuStrip>
+    <ToolStrip>
+      <ToolItem Id="tsbtnNew" Text="Yeni" />
+      <ToolItem Id="tsbtnOpen" Text="Aç" />
+      <ToolItem Id="tsbtnSave" Text="Kaydet" />
+      <ToolItem Id="tsbtnRead" Text="Oku" />
+      <ToolItem Id="tsbtnWrite" Text="Yaz" />
+      <ToolItem Id="tsbtnAbout" Text="Hakkında" />
+    </ToolStrip>
+  </MainForm>
+  <MenuForm Text="Menü">
+    <Controls>
+      <Control Id="grpCall" Text="Çağrı Kaydı" />
+      <Control Id="chkReceivedCall" Text="Cevaplanmış" />
+      <Control Id="chkDialedCall" Text="Giden Radyo" />
+      <Control Id="chkMissedCall" Text="Kaçırılan" />
+      <Control Id="grpSetting" Text="Temel" />
+      <Control Id="chkDoubleWait" Text="Çift Bekleme" />
+      <Control Id="lblDwSwitch" Text="Çift Bekleme" />
+      <Control Id="lblKeyTone" Text="Tuş Tonu" />
+      <Control Id="lblBacklightTime" Text="Arka Işık [s]" />
+      <Control Id="chkSql" Text="Susturma" />
+      <Control Id="chkBacklight" Text="Arka Işık" />
+      <Control Id="chkKeyboardLock" Text="Tuş Kilidi" />
+      <Control Id="chkVox" Text="Vox" />
+      <Control Id="chkToneHint" Text="Tonlar/Uyarılar" />
+      <Control Id="chkLed" Text="LED Göstergesi" />
+      <Control Id="lblChDispMode" Text="Kanal Görüntüsü" />
+      <Control Id="chkPwdLock" Text="Şifre ve Kilit" />
+      <Control Id="lblMenuLang" Text="Menü Dili" />
+      <Control Id="lblWorkMode" Text="Çalışma Modu" />
+      <Control Id="chkPower" Text="Güç" />
+      <Control Id="chkBootScreen" Text="Açılış Ekranı" />
+      <Control Id="chkEncrypt" Text="Gizlilik" />
+      <Control Id="lblKeyLockTime" Text="Tuş Kilidi Zamanı [s]" />
+      <Control Id="chkTalkAround" Text="Yakın Konuşma" />
+      <Control Id="chkChDisp" Text="Kanal Görünümü" />
+      <Control Id="grpContact" Text="Kişi" />
+      <Control Id="chkOneKeyDial" Text="Tek Tuşla Arama" />
+      <Control Id="chkRadioDetect" Text="Telsiz Kontrol" />
+      <Control Id="chkRadioActive" Text="Telsiz Etkinleştir" />
+      <Control Id="chkContactEdit" Text="Düzenle" />
+      <Control Id="chkRadioKill" Text="Telsiz Devre Dışı" />
+      <Control Id="chkManualDial" Text="Manuel Arama" />
+      <Control Id="chkRemoteMonitor" Text="Uzak İzleme" />
+      <Control Id="chkCallPrompt" Text="Çağrı Uyarısı" />
+      <Control Id="grpScan" Text="Tarama" />
+      <Control Id="chkScanEditList" Text="Düzenleme Listesi" />
+      <Control Id="chkScan" Text="Tarama" />
+      <Control Id="grpBasic" Text="Temel" />
+      <Control Id="lblMenuHangTime" Text="Menü Açık Kalma Süresi [s]" />
+      <Control Id="chkInfo" Text="Bilgi" />
+      <Control Id="chkFm" Text="FM" />
+      <Control Id="chkGps" Text="Gps" />
+      <Control Id="chkP1Key" Text="P1 Tuşu" />
+      <Control Id="lblBrightness" Text="Parlaklık" />
+    </Controls>
+    <Commons>
+      <Item Id="KeyLockTime" Text="Manuel,5,10,15" />
+      <Item Id="BacklightTime" Text="Her Zaman Açık,Her Zaman Kapalı,5,10" />
+      <Item Id="WorkMode" Text="VFO,Hafıza Çağırma,Kanal" />
+      <Item Id="ChDispMode" Text="Sayı,Ad,Frekans" />
+      <Item Id="KeyTone" Text="Kapalı,Açık" />
+      <Item Id="DoubleWait" Text="Kapalı,Çift Çift,Çift Tek" />
+      <Item Id="MenuLang" Text="İngilizce,中文" />
+    </Commons>
+  </MenuForm>
+  <NormalScanForm Text="Scan">
+    <Controls>
+      <Control Id="grpSelected" Text="Üye" />
+      <Control Id="chkTalkback" Text="Yakın Konuşma" />
+      <Control Id="grpUnselected" Text="Uygun" />
+      <Control Id="chkChMark" Text="Kanal İşareti" />
+      <Control Id="lblTxDesignatedCh" Text="Tx Belirlenmiş Kanal" />
+      <Control Id="lblPriorityCh1" Text="Öncelikli Kanal 1" />
+      <Control Id="lblSignalingHold" Text="Sinyal Tutma Süresi [ms]" />
+      <Control Id="lblName" Text="Ad" />
+      <Control Id="lblPLType" Text="PL Türü" />
+      <Control Id="lblPriorityCh2" Text="Öncelikli Kanal 2" />
+      <Control Id="lblPrioritySample" Text="Öncelikli Örnekleme Zamanı [ms]" />
+      <Control Id="btnDown" Text="Aşağı" />
+      <Control Id="btnUp" Text="Yukarı" />
+      <Control Id="btnDel" Text="Sil" />
+      <Control Id="btnAdd" Text="Ekle" />
+    </Controls>
+    <Commons>
+      <Item Id="PriorityCh" Text="Hiçbir,Seçilmiş" />
+      <Item Id="TxDesignatedCh" Text="Son Aktif Kanal,Seçilmiş" />
+      <Item Id="PlType" Text="Öncelikli Olmayan Kanal,Devre Dışı,Öncelikli Kanal,Öncelikli ve Öncelikli Olmayan Kanal" />
+    </Commons>
+  </NormalScanForm>
+  <PasswordForm Text="Şifre">
+    <Controls>
+      <Control Id="btnCancel" Text="Vazgeç" />
+      <Control Id="btnOk" Text="Tamam" />
+      <Control Id="lblPwd" Text="Şifre" />
+    </Controls>
+  </PasswordForm>
+  <PowerPwdForm Text="Şifre">
+    <Controls>
+      <Control Id="btnCancel" Text="Vazgeç" />
+      <Control Id="btnOk" Text="Tamam" />
+      <Control Id="lblPwd" Text="Şifre" />
+    </Controls>
+  </PowerPwdForm>
+  <RxGroupListForm Text="TG Listesi">
+    <Controls>
+      <Control Id="btnDown" Text="Aşağı" />
+      <Control Id="btnUp" Text="Yukarı" />
+      <Control Id="grpSelected" Text="Üye" />
+      <Control Id="btnAdd" Text="Ekle" />
+      <Control Id="grpUnselected" Text="Uygun" />
+      <Control Id="btnDel" Text="Sil" />
+      <Control Id="lblName" Text="Ad" />
+    </Controls>
+  </RxGroupListForm>
+  <SignalingBasicForm Text="Sinyal Temeli">
+    <Controls>
+      <Control Id="chkCallAlert" Text="Arama Uyarısı Kodlaması" />
+      <Control Id="chkRadioDisable" Text="Telsiz Kod Çözmeyi Devre Dışı Bırak" />
+      <Control Id="chkRemoteMonitor" Text="Uzaktan İzleme Kod Çözme" />
+      <Control Id="chkEmgRM" Text="Acil Durum Uzaktan İzleme Kod Çözme" />
+      <Control Id="lblTxSyncWakeTot" Text="Tx Senkranizasyon Uyandırması İletim Süresi [ms]" />
+      <Control Id="chkSelCall" Text="Kendi Kendini Arama Kodlaması" />
+      <Control Id="lblTxWakeMsgLimit" Text="Tx Uyandırma Mesaj Limiti" />
+      <Control Id="lblSelCallToneId" Text="Kendi Kendisi Arama Tonu/ID" />
+      <Control Id="lblRMDuration" Text="Uzaktan İzleme Süresi [s]" />
+      <Control Id="lblSelCallHang" Text="Kendi Kendine Arama Bekletme Süresi [ms]" />
+      <Control Id="lblAutoResetTimer" Text="Otomatik Sıfırlama Zamanlayıcısı [s]" />
+    </Controls>
+  </SignalingBasicForm>
+  <ScanBasicForm Text="Tarama Temelleri">
+    <Controls>
+      <Control Id="lblScanTime" Text="Tarama Zamanı [s]" />
+      <Control Id="lblDigitHang" Text="Dijital Askıda Kalma Süresi [ms]" />
+      <Control Id="lblAnalogHang" Text="Analog Askıda Kalma Süresi [ms]" />
+      <Control Id="lblVoteHang" Text="Tarama değerlendirme duraklatma süresi [s]" />
+      <Control Id="lblFastVoteRssi" Text="Hızlı Değerlendirme RSSI Eşiği [dB]" />
+      <Control Id="lblStartVoteRssi" Text="RSSI Değerlendirme Başlangıcı Eşiği [dB]" />
+      <Control Id="chkPriorityAlert" Text="Öncelik Uyarısı" />
+    </Controls>
+  </ScanBasicForm>
+  <TextMsgForm Text="Metin Mesajı">
+    <Controls>
+      <Control Id="dgvMsg" Text="İçerik">
+	<ControlItem Id="txtMessage" Text="Metin Mesajı" />
+      </Control>
+      <Control Id="btnAdd" Text="Ekle" />
+      <Control Id="btnDel" Text="Sil" />
+    </Controls>
+  </TextMsgForm>
+  <TreeForm Text="Dizin Penceresi">
+    <Controls />
+  </TreeForm>
+  <VfoForm Text="VFO">
+    <Controls>
+      <Control Id="btnCopy" Text=">>" />
+      <Control Id="lblSquelch" Text="Susturma" />
+      <Control Id="lblSql" Text="OpenGD77 Susturma Seviyesi" />
+      <Control Id="grpDigit" Text="Dijital" />
+      <Control Id="lblTimingPreference" Text="Referans zamanlama tercihleri" />
+      <Control Id="lblRepeaterSlot" Text="Tekrarlayıcı Yuvası" />
+      <Control Id="lblArs" Text="ARS" />
+      <Control Id="lblKeySwitch" Text="Gizlilik" />
+      <Control Id="lblKey" Text="Gizlilik Grubu" />
+      <Control Id="lblTxColor" Text="Renk Kodu" />
+      <Control Id="lblEmgSystem" Text="APRS" />
+      <Control Id="lblContact" Text="Kişi" />
+      <Control Id="chkDualCapacity" Text="Çift Kapasiteli Doğrudan Mod" />
+      <Control Id="chkUdpDataHead" Text="Sıkıştırılmış UDP Veri Başlığı" />
+      <Control Id="chkAllowTxInterupt" Text="Kesintiye İzin Ver" />
+      <Control Id="chkTxInteruptFreq" Text="Tx Kesintili Frekanslar" />
+      <Control Id="chkPrivateCall" Text="Özel Çağrı Onaylandı" />
+      <Control Id="chkDataCall" Text="Veri Çağrısı Onaylandı" />
+      <Control Id="chkEmgConfirmed" Text="Acil Durum Alarmı Ack" />
+      <Control Id="chkEnhancedChAccess" Text="Gelişmiş Kanal Erişimi" />
+      <Control Id="lblRxColor" Text="Rx Renk Kodu" />
+      <Control Id="lblRxGroup" Text="TG Listesi" />
+      <Control Id="chkRxOnly" Text="Sadece Rx" />
+      <Control Id="chkAllowTalkaround" Text="Yakın Konuşmaya İzin Ver" />
+      <Control Id="grpAnalog" Text="Analog" />
+      <Control Id="lblChBandwidth" Text="Bant Genişliği [KHz]" />
+      <Control Id="lblVoiceEmphasis" Text="Ses Vurgusu" />
+      <Control Id="lblSte" Text="STE" />
+      <Control Id="lblNonSte" Text="STE değil" />
+      <Control Id="lblRxTone" Text="Rx Tonu [Hz]" />
+      <Control Id="lblRxSignaling" Text="Rx Sinyal Sistemi" />
+      <Control Id="lblUnmuteRule" Text="Ses Açma Kuralı" />
+      <Control Id="lblArtsInterval" Text="ARTS Aralığı [s]" />
+
+      <Control Id="lblPttidType" Text="PTTID Türü" />
+      <Control Id="lblTxSignaling" Text="Tx Sinyal Sistemi" />
+      <Control Id="lblTxTone" Text="Tx Tonu [Hz]" />
+      <Control Id="chkDataPl" Text="Veri için PL" />
+      <Control Id="chkLoneWoker" Text="Yalnız İşçi" />
+      <Control Id="chkOpenGD77ScanAllSkip" Text="Tarama: Hepsini Atla" />
+      <Control Id="chkVox" Text="Vox" />
+      <Control Id="chkAutoScan" Text="Otomatik Tarama" />
+      <Control Id="chkOpenGD77ScanZoneSkip" Text="Tarama: Bölgeyi Atla" />
+      <Control Id="chkNoBeep" Text="Uyarı Yok" />
+      <Control Id="chkNoEco" Text="Eko Yok" />
+	  <Control Id="chkDMRForceDMO" Text="Force DMO" />
+	  <Control Id="chkRoaming" Text="Roaming" />
+	  <Control Id="chkUseLocation" Text="Use location" />
+      <Control Id="lblChName" Text="Ad" />
+      <Control Id="lblChMode" Text="Mod" />
+      <Control Id="lblTot" Text="İletim Süresi - TOT [s]" />
+      <Control Id="lblTotRekey" Text="TOT Yeniden Mandallama Gecikmesi [s]" />
+      <Control Id="lblRssiThreshold" Text="RSSI Eşiği [dBm]" />
+      <Control Id="lblRxRefFreq" Text="Rx Referans Frekansı" />
+      <Control Id="lblTxRefFreq" Text="Tx Referans Frekansı" />
+      <Control Id="lblRxFreq" Text="Rx Frek [MHz]" />
+      <Control Id="lblLibreDMR_Power" Text="Güç Seviyesi" />
+      <Control Id="lblAdmitCriteria" Text="Kabul Kriteri" />
+      <Control Id="lblTxFreq" Text="Tx Frek [MHz]" />
+      <Control Id="lblScanList" Text="Tarama Listesi" />
+      <Control Id="lblOffsetStep" Text="Offset Adımı" />
+      <Control Id="lblOffsetDirection" Text="Offset Yönü" />
+      <Control Id="lblOffsetFreq" Text="Offset Frekansı" />
+			<Control Id="lblTS1TaTx" Text="TS1 Talker Alias Tx" />
+			<Control Id="lblTS2TaTx" Text="TS2 Talker Alias Tx" />
+    </Controls>
+    <Commons>
+      <Item Id="ChMode" Text="Analog,Dijital" />
+      <Item Id="RefFreq" Text="Düşük,Orta,Yüksek" />
+      <Item Id="Power" Text="Düşük,Yüksek" />
+      <Item Id="AdmitCriterica" Text="Her Zaman,Kanal Boşta,CTCSS/DCS" />
+      <Item Id="AdmitCritericaD" Text="Her Zaman,Kanal Boşta,Renk Kodu" />
+      <Item Id="Squelch" Text="Sıkı,Normal" />
+      <Item Id="VoiceEmphasis" Text="Hiçbiri,De ve Pre,De,Pre" />
+      <Item Id="Ste" Text="Frekans,120°,180°,240°" />
+      <Item Id="NonSte" Text="Hiçbiri,Frekans" />
+      <Item Id="SignalingSystem" Text="Kapalı,DTMF" />
+      <Item Id="UnmuteRule" Text="Standart Ses Aç Ses Kapa,Ve Ses Aç Ses Kapa,Ve Ses Aç Ya da Ses Kapa" />
+      <Item Id="PttidType" Text="Hiçbiri,Sadece Önce,Sadece Sonra,Önce ve Sonra" />
+      <Item Id="TaTx" Text="Kapalı,APRS,Metin,APRS &amp; Metin" />
+      <Item Id="TimingPreference" Text="Tercih Edilen,Uygun,Uygun Değil" />
+      <Item Id="Ars" Text="Devre Dışı,Sistem Değişikliği" />
+      <Item Id="KeySwitch" Text="Kapalı,Açık" />
+      <Item Id="" Text="Hiçbiri,+,-" />
+    </Commons>
+  </VfoForm>
+  <ZoneBasicForm Text="Bölgeler">
+    <Controls>
+      <Control Id="grpSub" Text="Aşağı" />
+      <Control Id="lblSubCh" Text="Kanal" />
+      <Control Id="lblSubZone" Text="Bölge" />
+      <Control Id="grpMain" Text="Yukarı" />
+      <Control Id="lblMainCh" Text="Kanal" />
+      <Control Id="lblCurZone" Text="Bölge" />
+      <Control Id="btnUp" Text="Yukarı" />
+      <Control Id="btnDown" Text="Aşağı" />
+    </Controls>
+  </ZoneBasicForm>
+  <ZoneForm Text="Bölge">
+    <Controls>
+      <Control Id="tsrZone" Text="araçŞeridi1">
+	<ToolStripItem Id="tslblInfo" Text="" />
+	<ToolStripItem Id="tsbtnFirst" Text="İlk" />
+	<ToolStripItem Id="tsbtnPrev" Text="Önceki" />
+	<ToolStripItem Id="tsbtnNext" Text="Sonraki" />
+	<ToolStripItem Id="tsbtnLast" Text="Son" />
+	<ToolStripItem Id="tsbtnAdd" Text="Ekle" />
+	<ToolStripItem Id="tsbtnDel" Text="Sil" />
+      </Control>
+      <Control Id="btnDown" Text="Aşağı" />
+      <Control Id="btnUp" Text="Yukarı" />
+      <Control Id="grpSelected" Text="Üye" />
+      <Control Id="btnAdd" Text="Ekle" />
+      <Control Id="grpUnselected" Text="Uygun" />
+      <Control Id="btnDel" Text="Sil" />
+      <Control Id="lblName" Text="Ad" />
+    </Controls>
+  </ZoneForm>
+  <DownloadContactsForm Text="Kişileri İndir">
+    <Controls>
+      <Control Id="lblMessage" Text="Bölgeniz için kimlik önek kodunu girin ve İndir'e basın..." />
+      <Control Id="btnImport" Text="Seçileni içe aktar" />
+      <Control Id="btnSelectAll" Text="Hepsini seç" />
+      <Control Id="btnDownload" Text="URL'den indir" />
+      <Control Id="btnDownloadDMRMARC" Text="DRM MARC'tan indir" />
+      <Control Id="lblIDStart" Text="Bölge Önek Kodu" />
+      <Control Id="lblMessageDownloading" Text="İndiriliyor" />
+      <Control Id="dgvDownloadeContacts" Text="ID,Çağrı İşareti,Ad,Son duyuldu">
+	<ControlItem Id="" Text="ID." />
+	<ControlItem Id="" Text="Çağrı İşareti" />
+	<ControlItem Id="" Text="Ad" />
+	<ControlItem Id="" Text="Son duyuldu" />
+      </Control>
+    </Controls>
+  </DownloadContactsForm>
+  <CalibrationForm Text="Kalibrasyon görüntüleyici">
+    <Controls>
+      <Control Id="calibrationBandControlVHF" Text="VHF" />
+      <Control Id="calibrationBandControlUHF" Text="UHF" />
+      <Control Id="btnWrite" Text="Write to radio" />
+      <Control Id="btnReadFile" Text="Open Calibration file" />
+      <Control Id="btnReadFromRadio" Text="Read calibration from radio" />
+      <Control Id="lblMessage" Text="Please read the calibration data from the radio or open a calibration file" />
+      <Control Id="btnSaveCalibration" Text="Save Calibration file" />
+      <Control Id="tabCtlBands" Text="" >
+	<ControlItem Id="tabVHF" Text="VHF">
+	  <Control Id="calibrationBandControlVHF" Text="" >
+	    <ControlItem Id="calibrationPowerControlHigh" Text="Yüksek güç"/>
+	    <ControlItem Id="calibrationPowerControlLow" Text=""/>
+	    <ControlItem Id="calibrationTXIandQ" Text=""/>
+	    <ControlItem Id=" grpAnalogTxDeviation" Text=""/>
+	    <ControlItem Id="lblDTMF" Text=""/>
+	    <ControlItem Id="lblToneBurst" Text=""/>
+	    <ControlItem Id="lblAnalogTxDeviationWide" Text=""/>
+	    <ControlItem Id="lblAnalogTxDeviationNarrow" Text=""/>
+	    <ControlItem Id="lblOverallGain" Text=""/>
+	    <ControlItem Id="grpSquelch" Text=""/>
+	    <ControlItem Id="lblSquelchOpenNormal" Text=""/>
+	    <ControlItem Id="lblSquelchCloseNormal" Text=""/>
+	    <ControlItem Id="lblSquelchOpenTight" Text=""/>
+	    <ControlItem Id="lblSquelchCloseTight" Text=""/>
+	    <ControlItem Id="lblSquelchWide" Text=""/>
+	    <ControlItem Id="lblSquelchNarrow" Text=""/>
+	    <ControlItem Id="grpDigitalGain" Text=""/>
+	    <ControlItem Id="lblDigitalGainRx" Text=""/>
+	    <ControlItem Id="lblDigitalGainTx" Text=""/>
+	    <ControlItem Id="lblDigitalGainWide" Text=""/>
+	    <ControlItem Id="lblDigitalGainNarrow" Text=""/>
+	    <ControlItem Id="grpAnalogGain" Text=""/>
+	    <ControlItem Id="lblAnalogAudioGainRx" Text=""/>
+	    <ControlItem Id="lblAnalogAudioGainWide" Text=""/>
+	    <ControlItem Id="lblAnalogAudioGainNarrow" Text=""/>
+
+	    <ControlItem Id="grpSMeter" Text=""/>
+	    <ControlItem Id="lblSMeterLowEnd" Text=""/>
+	    <ControlItem Id="lblSMeterHighEnd" Text=""/>
+
+	    <ControlItem Id="lblReferenceOscTuning" Text=""/>
+	    <ControlItem Id="lblReceiveAGCTarget" Text=""/>
+	    <ControlItem Id="lblAnalogMicGain" Text=""/>
+	  </Control>
+	  <ControlItem Id="tabUHF" Text="UHF"/>
+	  <Control Id="calibrationBandControlUHF" Text="" >
+	    <ControlItem Id="calibrationPowerControlHigh" Text="Yüksek güç"/>
+	    <ControlItem Id="calibrationPowerControlLow" Text=""/>
+	    <ControlItem Id="calibrationTXIandQ" Text=""/>
+	    <ControlItem Id=" grpAnalogTxDeviation" Text=""/>
+	    <ControlItem Id="lblDTMF" Text=""/>
+	    <ControlItem Id="lblToneBurst" Text=""/>
+	    <ControlItem Id="lblAnalogTxDeviationWide" Text=""/>
+	    <ControlItem Id="lblAnalogTxDeviationNarrow" Text=""/>
+	    <ControlItem Id="lblOverallGain" Text=""/>
+	    <ControlItem Id="grpSquelch" Text=""/>
+	    <ControlItem Id="lblSquelchOpenNormal" Text=""/>
+	    <ControlItem Id="lblSquelchCloseNormal" Text=""/>
+	    <ControlItem Id="lblSquelchOpenTight" Text=""/>
+	    <ControlItem Id="lblSquelchCloseTight" Text=""/>
+	    <ControlItem Id="lblSquelchWide" Text=""/>
+	    <ControlItem Id="lblSquelchNarrow" Text=""/>
+	    <ControlItem Id="grpDigitalGain" Text=""/>
+	    <ControlItem Id="lblDigitalGainRx" Text=""/>
+	    <ControlItem Id="lblDigitalGainTx" Text=""/>
+	    <ControlItem Id="lblDigitalGainWide" Text=""/>
+	    <ControlItem Id="lblDigitalGainNarrow" Text=""/>
+	    <ControlItem Id="grpAnalogGain" Text=""/>
+	    <ControlItem Id="lblAnalogAudioGainRx" Text=""/>
+	    <ControlItem Id="lblAnalogAudioGainWide" Text=""/>
+	    <ControlItem Id="lblAnalogAudioGainNarrow" Text=""/>
+	    <ControlItem Id="grpSMeter" Text=""/>
+	    <ControlItem Id="lblSMeterLowEnd" Text=""/>
+	    <ControlItem Id="lblSMeterHighEnd" Text=""/>
+	    <ControlItem Id="lblReferenceOscTuning" Text=""/>
+	    <ControlItem Id="lblReceiveAGCTarget" Text=""/>
+	    <ControlItem Id="lblAnalogMicGain" Text=""/>
+	  </Control>
+	</ControlItem>
+      </Control>
+      <Control Id="lblMessageDownloading" Text="İndiriliyor" />
+    </Controls>
+  </CalibrationForm>
+  <DMRIDForm Text="Çağrı İşareti Veritabanını İndir">
+    <Controls>
+      <Control Id="lblMessage" Text="Bölgeniz için kimlik önek kodunu girin ve listeye eklemek için İndir'e basın" />
+      <Control Id="lblRegionId" Text="Bölge" />
+      <Control Id="lblInactivityFilter" Text="HamDigital - Hareketsizlik filtresi (gün)" />
+      <Control Id="btnDownload" Text="Şuradan indir ..." />
+      <Control Id="btnImportCSV" Text="CSV'yi içe aktar" />
+      <Control Id="btnRead" Text="GD-77'den oku" />
+      <Control Id="btnWrite" Text="GD-77'ye yaz" />
+      <Control Id="btnClear" Text="Temizle" />
+      <Control Id="grpColumnFilter" Text="Sütun Filtresi" />
+      <Control Id="lblSeparator" Text="Ayraç" />
+      <Control Id="cmbSeparator" Text="Boşluk,Nokta"/>
+      <Control Id="btnWriteToGD77" Text="Telsize yaz"/>
+      <Control Id="btnCSVImport" Text="Import CSV" />
+      <Control Id="uploadParameters" Text="Write parameters" />
+      <Control Id="grpRecordLength" Text="Data record length" />
+      <Control Id="lblEnhancedLength" Text="Number of characters" />
+      <Control Id="dataGridView1" Text="ID,Callsign,Details,Last heard (days ago)" />
+      <Control Id="lblRadioType" Text="Radio" />
+      <Control Id="chkUseVPMemory" Text="Use Voice Prompt memory" />
+    </Controls>
+  </DMRIDForm>
+  <OpenGD77Form Text="OpenGD77 Desteği">
+    <Controls>
+      <Control Id="btnBackupEEPROM" Text="EEPROM'u yedekle" />
+      <Control Id="btnBackupFlash" Text="Flash'ı yedekle" />
+      <Control Id="btnRestoreEEPROM" Text="EEPROM'u geri yükle" />
+      <Control Id="btnRestoreFlash" Text="Flash'ı geri yükle" />
+      <Control Id="btnReadCodeplug" Text="Kütüğü oku" />
+      <Control Id="btnWriteCodeplug" Text="Kütüğü yaz" />
+      <Control Id="btnBackupCalibration" Text="Kalibrasyonu yedekle" />
+      <Control Id="btnRestoreCalibration" Text="Kalibrasyonu geri yükle" />
+      <Control Id="btnBackupMCUROM" Text="MCU ROM'u yedekle" />
+      <Control Id="btnDownloadScreenGrab" Text="Ekran görüntüsü indir" />
+      <Control Id="btnOpenFile" Text="Açılış görüntüsünü seç" />
+      <Control Id="txtBootTune" Text="38,6,0,2,38,2,0,2,38,6,0,2,38,2,0,2,38,6" />
+      <Control Id="grpFunThings" Text="Eğlenceli şeyler" />
+      <Control Id="btnPlayTune" Text="Melodi çal" />
+      <Control Id="lblBootTune" Text="Açılış melodisi" />
+      <Control Id="btnWriteVoicePrompts" Text="Ses komutlarını yaz" />
+      <Control Id="btnBackupSettings" Text="Ayarları yedekle" />
+      <Control Id="btnRestoreSettings" Text="Ayarları geri yükle" />
+      <Control Id="btnDownloadSatelliteKeps" Text="Uydu bilgilerini yükle" />
+      <Control Id="btnSaveCSVs" Text="CSV'leri kaydet" />
+      <Control Id="btnImportCSVs" Text="CSV'leri içeri aktar" />
+      <Control Id="btnAppendCSVs" Text="CSV'leri ekle" />
+      <Control Id="btnClearVoicePrompts" Text="Clear voice prompts" />
+      <Control Id="btnReadSecureRegisters" Text="Backup Registers" />
+    </Controls>
+    <Commons>
+      <Item Id="Error_connecting_to_the_radio" Text="Telsize bağlanırken hata oluştu" />
+      <Item Id="Comm_port_not_available" Text="İletişim bağlantı noktası mevcut değil" />
+      <Item Id="Writing_EEPROM" Text="EEPROM Yazılıyor" />
+      <Item Id="Error_while_writing" Text="Yazma sırasında hata" />
+      <Item Id="Writing_Flash" Text="Flash yazılıyor" />
+      <Item Id="Codeplug_write_complete" Text="Kütük yazımı tamamlandı" />
+      <Item Id="Reading_MCU_ROM" Text="MCU ROM okunuyor" />
+      <Item Id="Error_while_reading_MCU_ROM" Text="MCU ROM'u okuma sırasında hata" />
+      <Item Id="Downloading_Screengrab" Text="Ekran görüntüsü indiriliyor" />
+      <Item Id="Writing_Voice_prompts" Text="Ses komutları yazılıyor" />
+      <Item Id="Upload_complete" Text="Yükleme tamamlandı" />
+      <Item Id="No_com_port" Text="İletişim noktası yok. Bir iletişim bağlantı noktası seçmek için OpenGD77 penceresini kapatıp yeniden açın." />
+      <Item Id="Warning" Text="Uyarı" />
+      <Item Id="The_file_is_not_the_correct_size." Text="Dosya doğru boyutta değil." />
+      <Item Id="Are_you_sure_you_want_to_restore_the_Calibartion_from_a_previously_saved_file" Text="Kalibrasyonu önceden kaydedilmiş bir dosyadan geri yüklemek istediğinizden emin misiniz?" />
+      <Item Id="Calibration_files" Text="Kalibrasyon dosyaları" />
+      <Item Id="Invalid_Calibration_data" Text="Geçersiz Kalibrasyon verisi" />
+      <Item Id="Are_you_sure_you_want_to_restore_the_Flash_memory_from_a_previously_saved_file" Text="Flash belleği önceden kaydedilmiş bir dosyadan geri yüklemek istediğinizden emin misiniz?" />
+      <Item Id="Flash_backup_files" Text="Flash yedekleme dosyaları" />
+      <Item Id="This_file_is_not_a_full_backup" Text="Bu dosya tam bir yedek değil \n Bu dosyanın içeriğini geri yüklemek istiyor musunuz?" />
+      <Item Id="Please_connect_the_radio,_and_try_again." Text="Lütfen telsizi bağlayın ve tekrar deneyin" />
+      <Item Id="Failed_to_open_comm_port" Text="İletişim bağlantı noktası açılamadı" />
+      <Item Id="Voice_prompt_files" Text="Sesli komutu dosyaları" />
+      <Item Id="read_stopped" Text="Hata. Okuma durduruldu ({0:X8}'de hata)" />
+      <Item Id="write_stopped" Text="Hata. Yazma durduruldu ({0:X8}'de hata)" />
+      <Item Id="AMB_files" Text="AMB dosyaları" />
+      <Item Id="Oops" Text="Upps" />
+      <Item Id="RADIO_DISPLAY_CPS" Text="CPS" />
+      <Item Id="RADIO_DISPLAY_Backup" Text="Yedek" />
+      <Item Id="RADIO_DISPLAY_Calibration" Text="Kalibrasyon" />
+      <Item Id="RADIO_DISPLAY_EEPROM" Text="EEPROM" />
+      <Item Id="RADIO_DISPLAY_Flash" Text="Flash" />
+      <Item Id="RADIO_DISPLAY_Codeplug" Text="Kütük" />
+      <Item Id="RADIO_DISPLAY_MCU_ROM" Text="MCU ROM" />
+      <Item Id="RADIO_DISPLAY_Voice_prompts" Text="Ses Komutu" />
+      <Item Id="RADIO_DISPLAY_Restoring" Text="Geri yükleniyor" />
+      <Item Id="RADIO_DISPLAY_Reading" Text="Okunuyor" />
+      <Item Id="RADIO_DISPLAY_Writing" Text="Yazılıyor" />
+      <Item Id="Reading_EEPROM" Text="EEPROM okunuyor" />
+      <Item Id="Reading_Flash" Text="Flash okunuyor" />
+      <Item Id="Writing_EEPROM" Text="EEPROM yazılıyor" />
+      <Item Id="Writing_Flash" Text="Flash yazılıyor" />
+      <Item Id="Error" Text="Hata" />
+      <Item Id="Warning" Text="Uyarı" />
+      <Item Id="Calibration_data_could_not_be_found._Please_update_your_firmware" Text="Kalibrasyon verileri bulunamadı. Lütfen ürün yazılımınızı güncelleyin" />
+      <Item Id="There_has_been_an_error._Refer_to_the_last_status_message_that_was_displayed" Text="Bir hata oluştu. Görüntülenen son durum mesajına bakın" />
+      <Item Id="EEPROM_files" Text="EEPROM dosyaları" />
+      <Item Id="Flash_files" Text="Flash dosyaları" />
+      <Item Id="Restore_complete" Text="Geri yükleme tamamlandı" />
+      <Item Id="Read_Codeplug_complete" Text="Kütük okuma tamamlandı" />
+      <Item Id="Screengrab_files" Text="Ekran görüntüsü dosyaları" />
+      <Item Id="Error_while_reading_flash" Text="Flash okunurken hata oluştu" />
+      <Item Id="Reading_Calibration" Text="Okuma kalibrasyonu" />
+      <Item Id="Error_while_reading_calibration" Text="Kalibrasyon okunurken hata oluştu" />
+      <Item Id="Error_while_reading_EEPROM" Text="EEPROM okunurken hata oluştu" />
+      <Item Id="Restoring_Flash" Text="Flash geri yükleniyor" />
+      <Item Id="Error_while_restoring" Text="Geri yükleme sırasında hata" />
+      <Item Id="Restoring_Calibration" Text="Kalibrasyon geri yükleniyor" />
+      <Item Id="Error_while_restoring_Calibration" Text="Kalibrasyon geri yüklenirken hata oluştu" />
+      <Item Id="Restoring_EEPROM" Text="EEPROM geri yükleniyor" />
+      <Item Id="Error_while_reading" Text="Okuma sırasında hata" />
+      <Item Id="Codeplug_read_complete" Text="Kütük okuma tamamlandı" />
+      <Item Id="Reading_MCU_ROM" Text="MCU ROM okunuyor" />
+      <Item Id="Error_while_Reading_MCU_ROM" Text="MCU ROM okuma sırasında hata" />
+      <Item Id="Error_while_downloading_Screengrab" Text="Ekran görüntüsü indirilirken hata" />
+      <Item Id="Error_while_write_voice_prompts" Text="Ses komutu yazılırken hata" />
+      <Item Id="Error_while_write_voice_satellite_keps" Text="Uydu bilgileri yazılırken hata" />
+      <Item Id="Are_you_sure_you_want_to_restore_the_EEPROM_from_a_previously_saved_file" Text="EEPROM'u önceden kaydedilmiş bir dosyadan geri yüklemek istediğinizden emin misiniz?" />
+      <Item Id="PNG_image_files" Text="PNG görüntü dosyaları" />
+      <Item Id="MCU_ROM_files" Text="MCU ROM dosyaları" />
+      <Item Id="Voice_prompts_file_is_too_large" Text="Voice prompts file is too large." />
+      <Item Id="Calibration_data_could_not_be_found" Text="Calibration data could not be found. Please update your firmware" />
+      <Item Id="This_feature_is_highly_experimental" Text="This feature is highly experimental. You use it at your own risk! Make Sure you have a full backup of the Flash memory in your radio." />
+      <Item Id="File_contains_invalid_STM32_calibration_header" Text="File contains invalid STM32 calibration header" />
+      <Item Id="File_is_the_wrong_size" Text="File is the wrong size" />
+      <Item Id="File_saved" Text="File saved." />
+    </Commons>
+
+  </OpenGD77Form>
+  <FirmwareLoaderUI_MK22 Text="Ürün Yazılımı Yükleyici">
+    <Controls>
+      <Control Id="btnDetectModel" Text="Telsiz Tipini Algıla" />
+      <Control Id="grpboxProgress" Text="  İlerleme " />
+      <Control Id="btnClose"		Text="&amp;Kapat" />
+      <Control Id="btnDownloadFirmware" Text="&amp;İndir &amp;&amp; Güncelle" />
+      <Control Id="btnLanguage" Text="Select &amp;language file" />
+      <Control Id="btnUploadFirmware" Text="Bir &amp;Dosya seçin &amp;&amp; Güncelleyin" />
+      <Control Id="grpboxModel" Text="Telsiz türünüzü seçin " />
+      <Control Id="btnFWInstructions" Text="Ürün yazılımı yükleme &amp;&amp; Talimatlar" />
+      <Control Id="btnSelectOfficialFW" Text="Resmi ürün yazılımı (bağışçı) dosyasını seçin" />
+    </Controls>
+    <Commons>
+      <Item Id="CantInterrupt" Text="Yükleme işlemini kesemezsiniz" />
+      <Item Id="DownloadCancelled" Text="İndirme iptal edildi" />
+      <Item Id="Timeout" Text="Zamanaşımı" />
+      <Item Id="Error" Text="Hata" />
+      <Item Id="No_file_location_specified" Text="Dosya konumu belirtilmedi" />
+      <Item Id="Error:_Unable_to_detect_your_radio." Text="Hata: Telsiziniz algılanamadı" />
+      <Item Id="Uploading_firmware_to" Text="Ürün yazılımı yükleniyor " />
+      <Item Id="Error_sending_data" Text="Veri gönderme hatası" />
+      <Item Id="Error_sending_checksum" Text="Sağlama toplamı gönderilirken hata oluştu" />
+      <Item Id="Sending_Download_command" Text="İndirme komutu gönderiliyor" />
+      <Item Id="Sending_ACK" Text="ACK gönderiliyor" />
+      <Item Id="Sending_encryption_key" Text="Şifreleme anahtarı gönderiliyor" />
+      <Item Id="Sending_F-PROG_command" Text="F-PROG komutu gönderiliyor" />
+      <Item Id="Sending_radio_modem_number" Text="Telsiz modem numarası gönderiliyor" />
+      <Item Id="Sending_radio_modem_number_2" Text="Telsiz modem numarası 2 gönderiliyor" />
+      <Item Id="Sending_version" Text="Sürüm gönderiliyor" />
+      <Item Id="Sending_erase_command" Text="Silme komutu gönderiliyor" />
+      <Item Id="Send_post_erase_command" Text="Silme sonrası komutu gönderiliyor" />
+      <Item Id="Sending_Program_command" Text="Program komutu gönderiliyor" />
+      <Item Id="Error_sending_command" Text="Komut gönderimi hatası "/>
+      <Item Id="ERROR:_SGL!_header_missing." Text="HATA: SGL! başlığı kayıp" />
+      <Item Id="Stable" Text="Kararlı" />
+      <Item Id="Beta" Text="Beta" />
+      <Item Id="Error._Cant_connect_to_the" Text="Hata. Şuna bağlanılamıyor:" />
+      <Item Id="Error._Missing_SGL!_in_.sgl_file_header" Text="Hata. .sgl dosya başlığında kayıp SGL!" />
+      <Item Id="Error._The_firmware_doesnt_match_the_transceiver_model." Text="Hata. Donanım yazılımı, telsiz modeliyle eşleşmiyor" />
+      <Item Id="Firmware_file_is_unencrypted_binary" Text="Ürün yazılımı dosyası şifrelenmemiş bir ikili dosyadır" />
+      <Item Id="Patching_the_official_firmware" Text="Resmi ürün yazılımı yamalanıyor" />
+      <Item Id="Error._Firmware_file_too_large" Text="Hata. Ürün yazılımı dosyası çok büyük" />
+      <Item Id="Firmware_update_complete" Text="Ürün yazılımı güncellemesi tamamlandı. Lütfen telsizi yeniden başlatın" />
+      <Item Id="While_sending_data_file" Text="Veri dosyası gönderilirken" />
+      <Item Id="Error_while_sending_initial_commands._Is_the_{0}_in_firmware_update_mode?" Text="Başlangıç ​​komutları gönderilirken hata oluştu. {0} ürün yazılımı güncelleme modunda mı?" />
+      <Item Id="Error_read_returned" Text="Okuma hatası döndürüldü " />
+      <Item Id="Firmware_file_confirmed_as_SGL" Text="Ürün yazılımı dosyası SGL olarak onaylandı" />
+      <Item Id="Success" Text="Başarılı" />
+    </Commons>
+  </FirmwareLoaderUI_MK22>
+
+  <FirmwareLoaderUI_STM32 Text="Ürün Yazılımı Yükleyici">
+    <Controls>
+      <Control Id="btnLanguage" Text="Select &amp;language file" />
+      <Control Id="btnProgram" Text="Ürün yazılımı dosyasını aç &amp;&amp; güncelle" />
+      <Control Id="btnSelectDonorFW"	Text="Resmi ürün yazılımı (bağışçı) dosyasını seçin" />
+      <Control Id="grpRadioType" Text="Radio type" />
+    </Controls>
+    <Commons>
+      <Item Id="FmOnly" Text="Sadece FM" />
+      <Item Id="Warning" Text="Uyarı" />
+      <Item Id="Success" Text="Başarılı" />
+      <Item Id="Error" Text="Hata" />
+      <Item Id="SelectOfficialFirmware" Text="Resmi ürün yazılımı dosyasını seçin" />
+      <Item Id="FirmwareFiles" Text="ürün yazılımı dosyaları" />
+      <Item Id="OfficialFWVerified" Text="Resmi ürün yazılımı dosyası doğrulandı ve Açık ürün yazılımı yüklemeleri artık DMR işlevine sahip olacak" />
+      <Item Id="OfficialFWNotCorrect" Text="Seçtiğiniz dosya resmi ürün yazılımı sürümü DEĞİLDİR" />
+      <Item Id="ConnectingToRadio" Text="Telsize bağlanıyor" />
+      <Item Id="ConnectedToRadio" Text="Telsize bağlandı" />
+      <Item Id="RadioNotConnected" Text="Radyo bağlı veya DFU modunda değil" />
+      <Item Id="OnlyOpenMD9600FirmwareFilesSupported" Text="Resmi donör ürün yazılımı sürümü doğru değil" />
+      <Item Id="Writing" Text="Yazılıyor" />
+      <Item Id="UploadComplete" Text="Yükleme tamamlandı" />
+      <Item Id="OperatingSystemNotSupported" Text="İşletim sistemi desteklenmiyor" />
+      <Item Id="USBDataError" Text="USB veri hatası" />
+      <Item Id="UnableEraseMemory" Text="Şuradaki bellek bölümü silinemiyor:" />
+      <Item Id="UnableInitialiseRadio" Text="Telsiz başlatılamıyor:" />
+    </Commons>
+  </FirmwareLoaderUI_STM32>
+
+
+  <FirmwareLoaderReleasesList Text="Dağıtım sürümünü seçin">
+    <Controls>
+      <Control Id="btnDetectModel" Text="Telsiz Türünü Seçin" />
+      <Control Id="releasesGridView" Text="Tarih &amp; Zaman,Sürüm,Tür,Dağıtım Adı,İndirmeler"/>
+      <Control Id="btnDown" Text=" Seç &amp;&amp; Devam Et"/>
+      <Control Id="btnCancel" Text=" Vazgeç"/>
+    </Controls>
+  </FirmwareLoaderReleasesList>
+
+  <CSVEML Text="CSV Aracı">
+    <Commons>
+      <Item Id="CSVs_Created_in" Text="CSV'ler şu adreste oluşturuldu:" />
+      <Item Id="Imported" Text="İçe aktarıldı" />
+      <Item Id="Appended" Text="Eklendi" />
+      <Item Id="ERROR:-_Could_not_open" Text="HATA:- Açılamadı" />
+      <Item Id="May_be_in_use_by_another_program" Text="Başka bir program tarafından kullanılıyor olabilir" />
+      <Item Id="Format_error_in" Text="Biçim Hatası"  />
+      <Item Id="Not_enough_columns_in_line" Text="Satırda yeterli sütun yok" />
+      <Item Id="Line" Text="Satır" />
+      <Item Id="is_not_valid_in" Text="içinde geçerli değil" />
+      <Item Id="and_will_be_skipped" Text="ve atlanacak" />
+      <Item Id="Contacts" Text="Kişi" />
+      <Item Id="TG_Lists" Text="Konuşmacı Grubu Listesi" />
+      <Item Id="Channels" Text="Kanal" />
+      <Item Id="Zones" Text="Bölge" />
+      <Item Id="DTMF_Contacts" Text="DTMF Kişisi" />
+      <Item Id="Codeplug_contains" Text="Kütük kapsıyor:" />
+      <Item Id="Codeplug_now_contains" Text="Kütük şimdi kapsıyor:" />
+      <Item Id="Please_select_a_folder_to_contain_the_.csv_files" Text="Lütfen .csv dosyalarının kaydedileceği bir klasör seçin" />
+      <Item Id="Please_select_a_folder_containing_the_.csv_files" Text="Lütfen .csv dosyalarını içeren bir klasör seçin" />
+      <Item Id="Are_You_Sure_CSV" Text="CSV dosyalarını içe aktarmak istediğinizden emin misiniz? Mevcut tüm veriler değiştirilecektir" />
+    </Commons>
+  </CSVEML>
+
+  <Utils Text="Utils">
+    <Commons>
+      <Item Id="bad_file_format" Text="Bad firmware file format. Language slots" />
+      <Item Id="versions_mismatch" Text="Firmware and language version mismatch" />
+      <Item Id="wrong_language_header" Text="Wrong Language file header" />
+      <Item Id="failed_to_merge_language_file" Text="Failed to merge language file" />
+    </Commons>
+  </Utils>
+
+  <ThemeForm Text="Tema Editörü">
+    <Controls>
+      <Control Id="btnOpen" Text="Tema dosyasını aç" />
+      <Control Id="btnSave" Text="Tema dosyasını kaydet" />
+      <Control Id="btnWrite" Text="Telsize yaz" />
+      <Control Id="btnRead" Text="Telsizden oku" />
+      <Control Id="btnCancel" Text="İptal" />
+      <Control Id="btnOK" Text="Tamam" />
+      <Control Id="grpDaytimeTheme" Text="Daytime" />
+      <Control Id="rbDaytimeDay" Text="Day Theme" />
+      <Control Id="rbDaytimeNight" Text="Night Theme" />
+      <Control Id="gbColours" Text="Renkler"/>
+      <Control Id="lblColour_0" Text="Varsayılan metin"/>
+      <Control Id="lblColour_1" Text="Arkaplan"/>
+      <Control Id="lblColour_2" Text="Dekorasyon"/>
+      <Control Id="lblColour_3" Text="Metin Girişi"/>
+      <Control Id="lblColour_4" Text="Açılış ekranı metni"/>
+      <Control Id="lblColour_5" Text="Açılış ekranı arkaplanı"/>
+      <Control Id="lblColour_6" Text="Metin bildirimi"/>
+      <Control Id="lblColour_7" Text="Uyarı bildirimi"/>
+      <Control Id="lblColour_8" Text="Hata bildirimi"/>
+      <Control Id="lblColour_9" Text="Arkaplan bildirimi"/>
+      <Control Id="lblColour_10" Text="Menü adı"/>
+      <Control Id="lblColour_11" Text="Menü adı arkaplanı"/>
+      <Control Id="lblColour_12" Text="Menü öğesi"/>
+      <Control Id="lblColour_13" Text="Menü vurgulama"/>
+      <Control Id="lblColour_14" Text="Seçenek değeri"/>
+      <Control Id="lblColour_15" Text="Başlık metni"/>
+      <Control Id="lblColour_16" Text="Başlık metni arkaplanı"/>
+      <Control Id="lblColour_17" Text="RSSI çubuğu"/>
+      <Control Id="lblColour_18" Text="RSSI çubuğu S9+"/>
+      <Control Id="lblColour_19" Text="Kanal adı"/>
+      <Control Id="lblColour_20" Text="Kanal / VFO TG"/>
+      <Control Id="lblColour_21" Text="Kişi bilgisi"/>
+      <Control Id="lblColour_22" Text="Bölge adı"/>
+      <Control Id="lblColour_23" Text="VFO RX frekansı"/>
+      <Control Id="lblColour_24" Text="VFO TX frekansı"/>
+      <Control Id="lblColour_25" Text="CSS/SQL değerleri"/>
+      <Control Id="lblColour_26" Text="TX sayacı"/>
+      <Control Id="lblColour_27" Text="Kutup"/>
+      <Control Id="lblColour_28" Text="Uydu noktası"/>
+      <Control Id="lblColour_29" Text="GPS numarası"/>
+      <Control Id="lblColour_30" Text="GPS noktası"/>
+      <Control Id="lblColour_31" Text="Beidou noktası"/>
+    </Controls>
+    <Commons>
+      <Item Id="Theme" Text="Tema" />
+      <Item Id="Theme_files" Text="Tema dosyaları" />
+      <Item Id="colour_not_supported" Text="Telsizin renkli ekranı yok" />
+      <Item Id="Invalid_theme_data" Text="Geçersiz tema verisi" />
+      <Item Id="Theme_write_failed" Text="Tema yazımı başarısız" />
+    </Commons>
+  </ThemeForm>
+  <CommPortSelector Text="Select OpenGD77 com port">
+    <Controls>
+      <Control Id="btnSelect" Text="Select port" />
+      <Control Id="btnCancel" Text="Cancel" />
+      </Controls>
+  </CommPortSelector>
+  <Commons>
+    <Item Id="None" Text="Hiçbiri" />
+    <Item Id="Selected" Text="Seçilen" />
+    <Item Id="RadioIdNotEmpty" Text="Telsiz kimliği boş olamaz!" />
+    <Item Id="RadioIdOutOfRange" Text="Telsiz kimliği sınır dışında!" />
+    <Item Id="Read" Text="Oku" />
+    <Item Id="Write" Text="Yaz" />
+    <Item Id="ReadComplete" Text="Okuma Tamamlandı" />
+    <Item Id="WriteComplete" Text="Yazma Tamamlandı" />
+    <Item Id="NameExist" Text="Ad var" />
+    <Item Id="FirstChNotDelete" Text="Birinci bölgedeki ilk kanal silinemez" />
+    <Item Id="FileFormatError" Text="Dosya biçimi hatası" />
+    <Item Id="OpenSuccessfully" Text="Başarıyla açıldı" />
+    <Item Id="SaveSuccessfully" Text="Başarıyla kaydedildi" />
+    <Item Id="TypeNotMatch" Text="Tür eşleşmiyor" />
+    <Item Id="NotSelectItemNotCopyItem" Text="Öğeyi seçme veya Öğeyi kopyalama" />
+    <Item Id="KeyPressHex" Text="Lütfen girin : " />
+    <Item Id="KeyPressDigit" Text="Lütfen girin: Rakam ve {0}" />
+    <Item Id="KeyPressPrint" Text="Lütfen baskıyı girin" />
+    <Item Id="DeviceNotFound" Text="Cihaz bulunamadı" />
+    <Item Id="ModelNotMatch" Text="Model uyuşmazlığı" />
+    <Item Id="PromptKey1" Text="Çıkmadan önce kütüğü kaydetmek istiyor musunuz?" />
+    <Item Id="PromptKey2" Text="Yeni bir varsayılan kütük yüklemek istiyor musunuz? Mevcut tüm veriler değiştirilecektir." />
+    <Item Id="DataFormatError" Text="Veri biçimi hatası" />
+    <Item Id="FirstNotDelete" Text="İlk satır silinemez" />
+    <Item Id="OpenPortFail" Text="Seri bağlantı noktası açılamadı" />
+    <Item Id="CommError" Text="İletişim hatası" />
+    <Item Id="Add" Text="Ekle: " />
+    <Item Id="ScanSelected" Text="Seçilen çalıştırılamıyor" />
+    <Item Id="codePlugReadConfirm"  Text="GD-77'den kütüğü okumak istediğinizden emin misiniz? Bu mevcut kütüğün üzerine yazılacaktır." />
+    <Item Id="codePlugWriteConfirm"  Text="Bu kütüğü GD-77'ye yazmak istediğinizden emin misiniz? Bu GD-77'deki mevcut kütüğün üzerine yazılacaktır." />
+    <Item Id="pleaseConfirm"  Text="Lütfen onaylayın" />
+    <Item Id="userAgreement"  Text="Bu yazılım hiçbir garanti olmaksızın 'olduğu gibi' sağlanır. Hem bilgisayarınız hem de DMR telsiziniz için risk size ait olacak şekilde kullanırsınız. Bunu Evet düğmesine basarak anlamış ve kabul etmiş olursunuz." />
+    <Item Id="DownloadContactsMessageAdded" Text="Kişilerinizde olmayan {0} yeni kimlik var" />
+    <Item Id="DownloadContactsRegionEmpty" Text="Lütfen 3 haneli Bölge Önek Kodu'nu girin. Örneğin. Türkiye için 286." />
+    <Item Id="DownloadContactsDownloading" Text="İndiriliyor..." />
+    <Item Id="DownloadContactsSelectContactsToImport" Text="Lütfen içe aktarmak istediğiniz kişileri seçin" />
+    <Item Id="DownloadContactsTooMany" Text="Maksimum Dijital Kişi sayısına ulaşıldığından kişilerin tamamı içe aktarılamadı" />
+    <Item Id="Warning" Text="Uyarı" />
+    <Item Id="UnableDownloadFromInternet" Text="Veriler indirilemiyor. Lütfen internet bağlantınızı kontrol edin" />
+    <Item Id="DownloadContactsImportComplete" Text="İçe aktarma tamamlandı" />
+    <Item Id="CodeplugUpgradeNotice" Text="Bu bir V3.0.6 kütüğü gibi görünüyor. V3.1.x'e dönüştürülecek" />
+    <Item Id="CodeplugUpgradeWarningToManyRxGroups" Text="Sürüm 3.1.x yalnızca 76 Rx Grubuna sahip olabilir. Ek Rx Grupları göz ardı edildi" />
+    <Item Id="CodeplugRead" Text="Kütük GD-77'den okunuyor" />
+    <Item Id="CodeplugWrite" Text="Kütük GD-77'ye yazılıyor" />
+    <Item Id="DMRIDRead" Text="GD-77'den DMR ID veri tabanı okunuyor" />
+    <Item Id="DMRIDWrite" Text="DMR ID veritabanı GD-77'ye yazılıyor" />
+    <Item Id="CalibrationRead" Text="GD-77'den kalibrasyon verileri okunuyor" />
+    <Item Id="CalibrationWrite" Text="Kalibrasyon verileri GD-77'ye yazılıyor" />
+    <Item Id="IdAlreadyExists" Text="Kimlik / Zaman Dilimi zaten var!" />
+    <Item Id="IdOutOfRange" Text="Kimlik sınır dışında!" />
+    <Item Id="IdNotEmpty" Text="Kimlik boş olamaz!" />
+    <Item Id="ContactNameDuplicate" Text="Uyarı. Yinelenen kişi adı." />
+    <Item Id="EnableMemoryAccessMode" Text ="GD-77 Bellek Erişimi modunda görünmüyor. Telsizi açarken SK2 (Mavi yan tuş), Yeşil Menü ve * tuşlarını basılı tutun ve tekrar deneyin." />
+    <Item Id="dataRead" Text="GD-77'den veri okunuyor"/>
+    <Item Id="dataWrite" Text="GD-77'ye veri yazılıyor"/>
+    <Item Id="DMRIdContcatsTotal" Text="Toplam kimlik sayısı = {0}. En fazla {1} yüklenebilir" />
+    <Item Id="ErrorParsingData" Text="Veri ayrıştırılırken hata oluştu" />
+    <Item Id="DMRIdTooManyIDs" Text="Bağlı telsiz için çok fazla ID var, liste maksimum kapasiteye indirilecek." />
+    <Item Id="N/A" Text="N/A"/>
+	<Item Id="OfficialFWNotSelected" Text="You must first select the location of the official / donor firmware file" />
+	<Item Id="Error" Text="Error" />
+	<Item Id="FirmwareFilefilter" Text="Firmware files|*.zip|Legacy firmware files|*.bin" />
+	<Item Id="FirmwareSelectorTitle" Text="Select Firmware file" />	
+  </Commons>
+
+
+</Resource>

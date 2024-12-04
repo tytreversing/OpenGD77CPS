@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+  <ItemGroup>
+    <Compile Update="CustomCombo.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="CustomListbox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="CustomNumericUpDown.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="CustomPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="DMR\AboutForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="DMR\APRSConfigsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="DMR\APRSForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="DMR\AttachmentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="DMR\BootItemForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="DMR\ButtonForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="DMR\CalibrationBandControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="DMR\CalibrationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="DMR\CalibrationNUDLabelControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="DMR\CalibrationPowerControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="DMR\ChannelForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="DMR\ChannelsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="DMR\CommPortSelector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="DMR\CommPrgForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="DMR\ContactForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="DMR\ContactsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="DMR\DeviceInfoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="DMR\DigitalKeyContactForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="DMR\DMRIDForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="DMR\DownloadContactsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="DMR\DtmfContactForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="DMR\DtmfForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="DMR\EncryptForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="DMR\FirmwareLoaderReleasesList_GitHub.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="DMR\FirmwareLoaderUI_MK22.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="DMR\FirmwareLoaderUI_STM32.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="DMR\GeneralSetForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="DMR\HelpForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="DMR\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="DMR\MenuForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="DMR\MyDataGridViewTextBoxEditingControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="DMR\NormalScanForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="DMR\OpenGD77Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="DMR\PasswordForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="DMR\PowerPwdForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="DMR\RxGroupListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="DMR\ScanBasicForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="DMR\SGTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="DMR\SignalingBasicForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="DMR\TextMsgForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="DMR\ToolWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="DMR\TreeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="DMR\VfoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="DMR\VoteScanForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="DMR\WaitForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="DMR\WebClientAsync.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="DMR\ZoneBasicForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="DMR\ZoneForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="DoubleClickGroupBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Extras.OpenGD77\ThemeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>

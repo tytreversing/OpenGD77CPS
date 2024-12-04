@@ -5,7 +5,7 @@
     <OutputType>WinExe</OutputType>
     <UseWindowsForms>True</UseWindowsForms>
     <TargetFramework>net48</TargetFramework>
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup>
     <LangVersion>12.0</LangVersion>
@@ -30,5 +30,164 @@
       <HintPath>C:\Program Files (x86)\OpenGD77CPS\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Extensions" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="DMR.aR3nbf8dQp2feLmk31.lSfgApatkdxsVcGcrktoFd.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DMR.aR3nbf8dQp2feLmk31.lSfgApatkdxsVcGcrktoFd.resx</DependentUpon>
+    </Compile>
+    <Compile Update="DMR.aR3nbf8dQp2feLmk31.SplashForm.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DMR.aR3nbf8dQp2feLmk31.SplashForm.resx</DependentUpon>
+    </Compile>
+    <Compile Update="DMR.ChannelForm.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DMR.ChannelForm.resx</DependentUpon>
+    </Compile>
+    <Compile Update="DMR.DMRIDForm.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DMR.DMRIDForm.resx</DependentUpon>
+    </Compile>
+    <Compile Update="DMR.MainForm.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DMR.MainForm.resx</DependentUpon>
+    </Compile>
+    <Compile Update="DMR.Properties.Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DMR.Properties.Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="DMR.RxGroupListForm.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DMR.RxGroupListForm.resx</DependentUpon>
+    </Compile>
+    <Compile Update="DMR.ZoneForm.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DMR.ZoneForm.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Properties.Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Properties.Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="DMR.aR3nbf8dQp2feLmk31.lSfgApatkdxsVcGcrktoFd.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>DMR.aR3nbf8dQp2feLmk31.lSfgApatkdxsVcGcrktoFd.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="DMR.aR3nbf8dQp2feLmk31.SplashForm.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>DMR.aR3nbf8dQp2feLmk31.SplashForm.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="DMR.ChannelForm.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>DMR.ChannelForm.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="DMR.DMRIDForm.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>DMR.DMRIDForm.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="DMR.MainForm.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>DMR.MainForm.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="DMR.Properties.Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>DMR.Properties.Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="DMR.RxGroupListForm.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>DMR.RxGroupListForm.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="DMR.ZoneForm.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>DMR.ZoneForm.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Properties.Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Properties.Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="DefaultOpenGD77.g77">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="DefaultTheme.gtm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="help.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Language\CPS\Chinese.chm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Language\CPS\Chinese.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Language\CPS\Czech.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Language\CPS\English.chm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Language\CPS\English.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Language\CPS\French.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Language\CPS\German.chm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Language\CPS\German.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Language\CPS\Italian.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Language\CPS\Japanese.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Language\CPS\Polski.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Language\CPS\Portuguese.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Language\CPS\Russian.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Language\CPS\Slovenian.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Language\CPS\Spanish.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Language\CPS\SpanishCatalan.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Language\CPS\Swedish.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Language\CPS\Turkish.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Language\Firmware\Russian.gla">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="SourceFirmware\MD9600-CSV%282571V5%29-V26.45.bin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="SourceFirmware\source.bin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 </Project>

@@ -1,7 +1,8 @@
 {
   "version": 3,
   "targets": {
-    ".NETFramework,Version=v4.8": {}
+    ".NETFramework,Version=v4.8": {},
+    ".NETFramework,Version=v4.8/win-x86": {}
   },
   "libraries": {},
   "projectFileDependencyGroups": {
@@ -14,11 +15,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\OpenGD77CPS\\OpenGD77CPS.csproj",
+      "projectUniqueName": "C:\\Users\\maste\\Documents\\GitHub\\OpenGD77CPS\\OpenGD77CPS.csproj",
       "projectName": "OpenGD77CPS",
-      "projectPath": "D:\\OpenGD77CPS\\OpenGD77CPS.csproj",
+      "projectPath": "C:\\Users\\maste\\Documents\\GitHub\\OpenGD77CPS\\OpenGD77CPS.csproj",
       "packagesPath": "C:\\Users\\maste\\.nuget\\packages\\",
-      "outputPath": "D:\\OpenGD77CPS\\obj\\",
+      "outputPath": "C:\\Users\\maste\\Documents\\GitHub\\OpenGD77CPS\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "D:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -58,6 +59,11 @@
       "net48": {
         "targetAlias": "net48",
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101\\RuntimeIdentifierGraph.json"
+      }
+    },
+    "runtimes": {
+      "win-x86": {
+        "#import": []
       }
     }
   }

@@ -32,7 +32,7 @@ public class FirmwareLoaderUI_STM32 : Form
 
 	public static RegistryKey regKeyOfficialFirmware = null;
 
-	public static string officialFirmwareFile = "";
+	public static string officialFirmwareFile = "\\SourceFirmware\\source.bin";
 
 	public string officialFirmwareFilePath = "";
 
@@ -49,10 +49,6 @@ public class FirmwareLoaderUI_STM32 : Form
 	public static Dictionary<string, string> StringsDict = new Dictionary<string, string>();
 
 	private IContainer components;
-
-	private Label lblLanguage;
-
-	private ComboBox cmbLanguage;
 
 	private Button btnProgram;
 
@@ -73,8 +69,12 @@ public class FirmwareLoaderUI_STM32 : Form
 	private RadioButton rbDM1701;
 
 	private RadioButton rbMD380;
-
-	private GroupBox grpRadioType;
+    private LinkLabel findFirmwareLink;
+    private LinkLabel flashInstruction;
+    private Label warning;
+    private Label doNotUse;
+    private PictureBox pictureBox1;
+    private GroupBox grpRadioType;
 
 	public FirmwareLoaderUI_STM32()
 	{
@@ -106,25 +106,7 @@ public class FirmwareLoaderUI_STM32 : Form
 		Settings.ReadCommonsForSectionIntoDictionary(StringsDict, base.Name);
 		object[] array = new object[MainForm.FirmwareLanguageFiles.Length + 1];
 		array[0] = StringsDict["AdditionalLanguageNone"];
-		for (int i = 0; i < MainForm.FirmwareLanguageFiles.Length; i++)
-		{
-			array[i + 1] = MainForm.FirmwareLanguageFiles[i];
-		}
-		cmbLanguage.Items.AddRange(array);
-		string profileStringWithDefault2 = IniFileUtils.getProfileStringWithDefault("Setup", "LastFirmwareLanguage", "");
-		cmbLanguage.SelectedIndex = 0;
-		if (!(profileStringWithDefault2 != ""))
-		{
-			return;
-		}
-		foreach (object item in cmbLanguage.Items)
-		{
-			if ((string)item == profileStringWithDefault2)
-			{
-				cmbLanguage.SelectedItem = item;
-				break;
-			}
-		}
+
 	}
 
 	private void btnProgram_Click(object sender, EventArgs e)
@@ -148,14 +130,9 @@ public class FirmwareLoaderUI_STM32 : Form
 					break;
 				}
 			}
-			if (cmbLanguage.SelectedIndex >= 1)
-			{
-				languageFile = cmbLanguage.SelectedItem.ToString();
-			}
-			else
-			{
-				languageFile = "";
-			}
+			
+		    languageFile = "\\Language\\Firmware\\Russian.gla";
+			
 			IniFileUtils.WriteProfileString("Setup", "LastFirmwareLanguage", languageFile);
 			dlgOpenFile.InitialDirectory = IniFileUtils.getProfileStringWithDefault("Setup", "LastFirmwareLocation" + outputType, null);
 			dlgOpenFile.Filter = Settings.dicCommon["FirmwareFilefilter"];
@@ -167,13 +144,11 @@ public class FirmwareLoaderUI_STM32 : Form
 			IniFileUtils.WriteProfileString("Setup", "LastFirmwareLocation" + outputType, Path.GetDirectoryName(dlgOpenFile.FileName));
 			lblMessage.Text = "";
 			Progress.Value = 0;
-			ComboBox comboBox = cmbLanguage;
 			Button button = btnProgram;
 			Button button2 = btnSelectDonorFW;
 			bool flag2 = (grpRadioType.Enabled = false);
 			bool flag4 = (button2.Enabled = flag2);
 			bool enabled = (button.Enabled = flag4);
-			comboBox.Enabled = enabled;
 			byte[] openFirmwareBuf = null;
 			byte[] userLanguageBuf = null;
 			if (Path.GetExtension(dlgOpenFile.FileName).ToLower() == ".zip")
@@ -216,13 +191,11 @@ public class FirmwareLoaderUI_STM32 : Form
 					{
 						lblMessage.Text = "";
 						MessageBox.Show(string.Format(StringsDict["AdditionalLanguageNotFound"], languageFile + ".gla"));
-						ComboBox comboBox2 = cmbLanguage;
 						Button button3 = btnProgram;
 						Button button4 = btnSelectDonorFW;
 						flag2 = (grpRadioType.Enabled = true);
 						flag4 = (button4.Enabled = flag2);
 						enabled = (button3.Enabled = flag4);
-						comboBox2.Enabled = enabled;
 						return;
 					}
 					languageFile = path;
@@ -237,13 +210,11 @@ public class FirmwareLoaderUI_STM32 : Form
 			lblMessage.Text = "";
 			Progress.Value = 0;
 			MessageBox.Show(ex.Message);
-			ComboBox comboBox3 = cmbLanguage;
 			Button button5 = btnProgram;
 			Button button6 = btnSelectDonorFW;
 			bool flag2 = (grpRadioType.Enabled = true);
 			bool flag4 = (button6.Enabled = flag2);
 			bool enabled = (button5.Enabled = flag4);
-			comboBox3.Enabled = enabled;
 		}
 	}
 
@@ -254,13 +225,11 @@ public class FirmwareLoaderUI_STM32 : Form
 			Invoke(new EventHandler<FirmwareUpdateMessageEventArgs>(UploadCompleted), sender, e);
 			return;
 		}
-		ComboBox comboBox = cmbLanguage;
 		Button button = btnProgram;
 		Button button2 = btnSelectDonorFW;
 		bool flag2 = (grpRadioType.Enabled = true);
 		bool flag4 = (button2.Enabled = flag2);
 		bool enabled = (button.Enabled = flag4);
-		comboBox.Enabled = enabled;
 	}
 
 	private void DisplayMessage(object sender, FirmwareUpdateMessageEventArgs e)
@@ -362,147 +331,233 @@ public class FirmwareLoaderUI_STM32 : Form
 
 	private void InitializeComponent()
 	{
-		this.lblLanguage = new System.Windows.Forms.Label();
-		this.cmbLanguage = new System.Windows.Forms.ComboBox();
-		this.btnProgram = new System.Windows.Forms.Button();
-		this.Progress = new System.Windows.Forms.ProgressBar();
-		this.lblMessage = new System.Windows.Forms.Label();
-		this.dlgOpenFile = new System.Windows.Forms.OpenFileDialog();
-		this.btnSelectDonorFW = new System.Windows.Forms.Button();
-		this.rbMD9600 = new System.Windows.Forms.RadioButton();
-		this.rbMDUV380 = new System.Windows.Forms.RadioButton();
-		this.rbMD2017 = new System.Windows.Forms.RadioButton();
-		this.rbDM1701 = new System.Windows.Forms.RadioButton();
-		this.rbMD380 = new System.Windows.Forms.RadioButton();
-		this.grpRadioType = new System.Windows.Forms.GroupBox();
-		this.grpRadioType.SuspendLayout();
-		base.SuspendLayout();
-		this.lblLanguage.Font = new System.Drawing.Font("Arial", 9f);
-		this.lblLanguage.Location = new System.Drawing.Point(238, 34);
-		this.lblLanguage.Name = "lblLanguage";
-		this.lblLanguage.Size = new System.Drawing.Size(123, 24);
-		this.lblLanguage.TabIndex = 11;
-		this.lblLanguage.Text = "Additional language";
-		this.lblLanguage.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-		this.cmbLanguage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-		this.cmbLanguage.Font = new System.Drawing.Font("Arial", 9f);
-		this.cmbLanguage.Location = new System.Drawing.Point(369, 35);
-		this.cmbLanguage.Name = "cmbLanguage";
-		this.cmbLanguage.Size = new System.Drawing.Size(113, 23);
-		this.cmbLanguage.TabIndex = 6;
-		this.btnProgram.Enabled = false;
-		this.btnProgram.Font = new System.Drawing.Font("Arial", 9f);
-		this.btnProgram.Location = new System.Drawing.Point(241, 75);
-		this.btnProgram.Name = "btnProgram";
-		this.btnProgram.Size = new System.Drawing.Size(240, 26);
-		this.btnProgram.TabIndex = 7;
-		this.btnProgram.Text = "Select OpenMD9600 file && update";
-		this.btnProgram.UseVisualStyleBackColor = true;
-		this.btnProgram.Click += new System.EventHandler(btnProgram_Click);
-		this.Progress.Location = new System.Drawing.Point(11, 173);
-		this.Progress.Name = "Progress";
-		this.Progress.Size = new System.Drawing.Size(474, 13);
-		this.Progress.TabIndex = 9;
-		this.lblMessage.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-		this.lblMessage.Font = new System.Drawing.Font("Arial", 9f);
-		this.lblMessage.Location = new System.Drawing.Point(11, 198);
-		this.lblMessage.Name = "lblMessage";
-		this.lblMessage.Size = new System.Drawing.Size(474, 24);
-		this.lblMessage.TabIndex = 10;
-		this.btnSelectDonorFW.Font = new System.Drawing.Font("Arial", 9f);
-		this.btnSelectDonorFW.Location = new System.Drawing.Point(241, 108);
-		this.btnSelectDonorFW.Name = "btnSelectDonorFW";
-		this.btnSelectDonorFW.Size = new System.Drawing.Size(240, 26);
-		this.btnSelectDonorFW.TabIndex = 8;
-		this.btnSelectDonorFW.Text = "Select official firmware (donor) file";
-		this.btnSelectDonorFW.UseVisualStyleBackColor = true;
-		this.btnSelectDonorFW.Click += new System.EventHandler(btnSelectDonorFW_Click);
-		this.rbMD9600.AccessibleDescription = "MD-9600";
-		this.rbMD9600.AccessibleName = "MD-9600 / RT-90";
-		this.rbMD9600.AutoSize = true;
-		this.rbMD9600.Checked = true;
-		this.rbMD9600.Font = new System.Drawing.Font("Arial", 9f);
-		this.rbMD9600.Location = new System.Drawing.Point(6, 19);
-		this.rbMD9600.Name = "rbMD9600";
-		this.rbMD9600.Size = new System.Drawing.Size(117, 19);
-		this.rbMD9600.TabIndex = 1;
-		this.rbMD9600.TabStop = true;
-		this.rbMD9600.Tag = DMR.FirmwareLoaderUI_STM32.OutputType.OutputType_MD9600;
-		this.rbMD9600.Text = "MD-9600 / RT-90";
-		this.rbMD9600.UseVisualStyleBackColor = true;
-		this.rbMDUV380.AccessibleDescription = "MD-UV380 / RT-3S";
-		this.rbMDUV380.AccessibleName = "MD-UV380 / RT-3S";
-		this.rbMDUV380.AutoSize = true;
-		this.rbMDUV380.Location = new System.Drawing.Point(6, 42);
-		this.rbMDUV380.Name = "rbMDUV380";
-		this.rbMDUV380.Size = new System.Drawing.Size(127, 19);
-		this.rbMDUV380.TabIndex = 2;
-		this.rbMDUV380.Tag = DMR.FirmwareLoaderUI_STM32.OutputType.OutputType_MDUV380;
-		this.rbMDUV380.Text = "MD-UV380 / RT-3S";
-		this.rbMDUV380.UseVisualStyleBackColor = true;
-		this.rbMD2017.AccessibleDescription = "MD-2017 / RT-82";
-		this.rbMD2017.AccessibleName = "MD-2017 / RT-82";
-		this.rbMD2017.AutoSize = true;
-		this.rbMD2017.Location = new System.Drawing.Point(6, 88);
-		this.rbMD2017.Name = "rbMD2017";
-		this.rbMD2017.Size = new System.Drawing.Size(117, 19);
-		this.rbMD2017.TabIndex = 3;
-		this.rbMD2017.Tag = DMR.FirmwareLoaderUI_STM32.OutputType.OutputType_MD2017;
-		this.rbMD2017.Text = "MD-2017 / RT-82";
-		this.rbMD2017.UseVisualStyleBackColor = true;
-		this.rbDM1701.AccessibleDescription = "DM-1701 / DM-1701B / RT-84";
-		this.rbDM1701.AccessibleName = "DM-1701 / DM-1701B / RT-84";
-		this.rbDM1701.AutoSize = true;
-		this.rbDM1701.Location = new System.Drawing.Point(6, 65);
-		this.rbDM1701.Name = "rbDM1701";
-		this.rbDM1701.Size = new System.Drawing.Size(184, 19);
-		this.rbDM1701.TabIndex = 4;
-		this.rbDM1701.Tag = DMR.FirmwareLoaderUI_STM32.OutputType.OutputType_DM1701;
-		this.rbDM1701.Text = "DM-1701 / DM-1701B / RT-84";
-		this.rbDM1701.UseVisualStyleBackColor = true;
-		this.rbMD380.AccessibleDescription = "MD-380 / RT-3";
-		this.rbMD380.AccessibleName = "MD-380 / RT-3";
-		this.rbMD380.AutoSize = true;
-		this.rbMD380.Location = new System.Drawing.Point(6, 111);
-		this.rbMD380.Name = "rbMD380";
-		this.rbMD380.Size = new System.Drawing.Size(103, 19);
-		this.rbMD380.TabIndex = 5;
-		this.rbMD380.Tag = DMR.FirmwareLoaderUI_STM32.OutputType.OutputType_MD380;
-		this.rbMD380.Text = "MD-380 / RT-3";
-		this.rbMD380.UseVisualStyleBackColor = true;
-		this.grpRadioType.AccessibleDescription = "Radio type";
-		this.grpRadioType.AccessibleName = "Radio type";
-		this.grpRadioType.Controls.Add(this.rbMD9600);
-		this.grpRadioType.Controls.Add(this.rbMD380);
-		this.grpRadioType.Controls.Add(this.rbMDUV380);
-		this.grpRadioType.Controls.Add(this.rbMD2017);
-		this.grpRadioType.Controls.Add(this.rbDM1701);
-		this.grpRadioType.Font = new System.Drawing.Font("Arial", 9f);
-		this.grpRadioType.Location = new System.Drawing.Point(12, 15);
-		this.grpRadioType.Name = "grpRadioType";
-		this.grpRadioType.Size = new System.Drawing.Size(200, 136);
-		this.grpRadioType.TabIndex = 0;
-		this.grpRadioType.TabStop = false;
-		this.grpRadioType.Text = "Radio type";
-		base.AutoScaleDimensions = new System.Drawing.SizeF(6f, 13f);
-		base.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-		base.ClientSize = new System.Drawing.Size(493, 232);
-		base.Controls.Add(this.grpRadioType);
-		base.Controls.Add(this.lblMessage);
-		base.Controls.Add(this.Progress);
-		base.Controls.Add(this.btnSelectDonorFW);
-		base.Controls.Add(this.btnProgram);
-		base.Controls.Add(this.lblLanguage);
-		base.Controls.Add(this.cmbLanguage);
-		base.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-		base.MaximizeBox = false;
-		base.MinimizeBox = false;
-		base.Name = "FirmwareLoaderUI_STM32";
-		base.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-		this.Text = "STM32 firmware loader";
-		base.Load += new System.EventHandler(FirmwareLoaderUI_MD9600_Load);
-		this.grpRadioType.ResumeLayout(false);
-		this.grpRadioType.PerformLayout();
-		base.ResumeLayout(false);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FirmwareLoaderUI_STM32));
+            this.btnProgram = new System.Windows.Forms.Button();
+            this.Progress = new System.Windows.Forms.ProgressBar();
+            this.lblMessage = new System.Windows.Forms.Label();
+            this.dlgOpenFile = new System.Windows.Forms.OpenFileDialog();
+            this.btnSelectDonorFW = new System.Windows.Forms.Button();
+            this.rbMD9600 = new System.Windows.Forms.RadioButton();
+            this.rbMDUV380 = new System.Windows.Forms.RadioButton();
+            this.rbMD2017 = new System.Windows.Forms.RadioButton();
+            this.rbDM1701 = new System.Windows.Forms.RadioButton();
+            this.rbMD380 = new System.Windows.Forms.RadioButton();
+            this.grpRadioType = new System.Windows.Forms.GroupBox();
+            this.findFirmwareLink = new System.Windows.Forms.LinkLabel();
+            this.flashInstruction = new System.Windows.Forms.LinkLabel();
+            this.warning = new System.Windows.Forms.Label();
+            this.doNotUse = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.grpRadioType.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // btnProgram
+            // 
+            this.btnProgram.Enabled = false;
+            this.btnProgram.Font = new System.Drawing.Font("Arial", 9F);
+            this.btnProgram.Location = new System.Drawing.Point(145, 274);
+            this.btnProgram.Name = "btnProgram";
+            this.btnProgram.Size = new System.Drawing.Size(263, 26);
+            this.btnProgram.TabIndex = 7;
+            this.btnProgram.Text = "Select OpenMD9600 file && update";
+            this.btnProgram.UseVisualStyleBackColor = true;
+            this.btnProgram.Click += new System.EventHandler(this.btnProgram_Click);
+            // 
+            // Progress
+            // 
+            this.Progress.Location = new System.Drawing.Point(12, 306);
+            this.Progress.Name = "Progress";
+            this.Progress.Size = new System.Drawing.Size(523, 13);
+            this.Progress.TabIndex = 9;
+            // 
+            // lblMessage
+            // 
+            this.lblMessage.Font = new System.Drawing.Font("Arial", 9F);
+            this.lblMessage.Location = new System.Drawing.Point(13, 330);
+            this.lblMessage.Name = "lblMessage";
+            this.lblMessage.Size = new System.Drawing.Size(522, 24);
+            this.lblMessage.TabIndex = 10;
+            // 
+            // btnSelectDonorFW
+            // 
+            this.btnSelectDonorFW.Font = new System.Drawing.Font("Arial", 9F);
+            this.btnSelectDonorFW.Location = new System.Drawing.Point(256, 325);
+            this.btnSelectDonorFW.Name = "btnSelectDonorFW";
+            this.btnSelectDonorFW.Size = new System.Drawing.Size(240, 26);
+            this.btnSelectDonorFW.TabIndex = 8;
+            this.btnSelectDonorFW.Text = "Select official firmware (donor) file";
+            this.btnSelectDonorFW.UseVisualStyleBackColor = true;
+            this.btnSelectDonorFW.Visible = false;
+            this.btnSelectDonorFW.Click += new System.EventHandler(this.btnSelectDonorFW_Click);
+            // 
+            // rbMD9600
+            // 
+            this.rbMD9600.AccessibleDescription = "MD-9600";
+            this.rbMD9600.AccessibleName = "MD-9600 / RT-90";
+            this.rbMD9600.AutoSize = true;
+            this.rbMD9600.Checked = true;
+            this.rbMD9600.Font = new System.Drawing.Font("Arial", 9F);
+            this.rbMD9600.Location = new System.Drawing.Point(6, 19);
+            this.rbMD9600.Name = "rbMD9600";
+            this.rbMD9600.Size = new System.Drawing.Size(117, 19);
+            this.rbMD9600.TabIndex = 1;
+            this.rbMD9600.TabStop = true;
+            this.rbMD9600.Tag = DMR.FirmwareLoaderUI_STM32.OutputType.OutputType_MD9600;
+            this.rbMD9600.Text = "MD-9600 / RT-90";
+            this.rbMD9600.UseVisualStyleBackColor = true;
+            // 
+            // rbMDUV380
+            // 
+            this.rbMDUV380.AccessibleDescription = "MD-UV380 / RT-3S";
+            this.rbMDUV380.AccessibleName = "MD-UV380 / RT-3S";
+            this.rbMDUV380.AutoSize = true;
+            this.rbMDUV380.Location = new System.Drawing.Point(6, 42);
+            this.rbMDUV380.Name = "rbMDUV380";
+            this.rbMDUV380.Size = new System.Drawing.Size(127, 19);
+            this.rbMDUV380.TabIndex = 2;
+            this.rbMDUV380.Tag = DMR.FirmwareLoaderUI_STM32.OutputType.OutputType_MDUV380;
+            this.rbMDUV380.Text = "MD-UV380 / RT-3S";
+            this.rbMDUV380.UseVisualStyleBackColor = true;
+            // 
+            // rbMD2017
+            // 
+            this.rbMD2017.AccessibleDescription = "MD-2017 / RT-82";
+            this.rbMD2017.AccessibleName = "MD-2017 / RT-82";
+            this.rbMD2017.AutoSize = true;
+            this.rbMD2017.Location = new System.Drawing.Point(6, 88);
+            this.rbMD2017.Name = "rbMD2017";
+            this.rbMD2017.Size = new System.Drawing.Size(117, 19);
+            this.rbMD2017.TabIndex = 3;
+            this.rbMD2017.Tag = DMR.FirmwareLoaderUI_STM32.OutputType.OutputType_MD2017;
+            this.rbMD2017.Text = "MD-2017 / RT-82";
+            this.rbMD2017.UseVisualStyleBackColor = true;
+            // 
+            // rbDM1701
+            // 
+            this.rbDM1701.AccessibleDescription = "DM-1701 / DM-1701B / RT-84";
+            this.rbDM1701.AccessibleName = "DM-1701 / DM-1701B / RT-84";
+            this.rbDM1701.AutoSize = true;
+            this.rbDM1701.Location = new System.Drawing.Point(6, 65);
+            this.rbDM1701.Name = "rbDM1701";
+            this.rbDM1701.Size = new System.Drawing.Size(184, 19);
+            this.rbDM1701.TabIndex = 4;
+            this.rbDM1701.Tag = DMR.FirmwareLoaderUI_STM32.OutputType.OutputType_DM1701;
+            this.rbDM1701.Text = "DM-1701 / DM-1701B / RT-84";
+            this.rbDM1701.UseVisualStyleBackColor = true;
+            // 
+            // rbMD380
+            // 
+            this.rbMD380.AccessibleDescription = "MD-380 / RT-3";
+            this.rbMD380.AccessibleName = "MD-380 / RT-3";
+            this.rbMD380.AutoSize = true;
+            this.rbMD380.Location = new System.Drawing.Point(6, 111);
+            this.rbMD380.Name = "rbMD380";
+            this.rbMD380.Size = new System.Drawing.Size(103, 19);
+            this.rbMD380.TabIndex = 5;
+            this.rbMD380.Tag = DMR.FirmwareLoaderUI_STM32.OutputType.OutputType_MD380;
+            this.rbMD380.Text = "MD-380 / RT-3";
+            this.rbMD380.UseVisualStyleBackColor = true;
+            // 
+            // grpRadioType
+            // 
+            this.grpRadioType.AccessibleDescription = "Radio type";
+            this.grpRadioType.AccessibleName = "Radio type";
+            this.grpRadioType.Controls.Add(this.rbMD9600);
+            this.grpRadioType.Controls.Add(this.rbMD380);
+            this.grpRadioType.Controls.Add(this.rbMDUV380);
+            this.grpRadioType.Controls.Add(this.rbMD2017);
+            this.grpRadioType.Controls.Add(this.rbDM1701);
+            this.grpRadioType.Font = new System.Drawing.Font("Arial", 9F);
+            this.grpRadioType.Location = new System.Drawing.Point(12, 15);
+            this.grpRadioType.Name = "grpRadioType";
+            this.grpRadioType.Size = new System.Drawing.Size(200, 136);
+            this.grpRadioType.TabIndex = 0;
+            this.grpRadioType.TabStop = false;
+            this.grpRadioType.Text = "Radio Type";
+            // 
+            // findFirmwareLink
+            // 
+            this.findFirmwareLink.AutoSize = true;
+            this.findFirmwareLink.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.findFirmwareLink.Location = new System.Drawing.Point(236, 22);
+            this.findFirmwareLink.Name = "findFirmwareLink";
+            this.findFirmwareLink.Size = new System.Drawing.Size(299, 16);
+            this.findFirmwareLink.TabIndex = 11;
+            this.findFirmwareLink.TabStop = true;
+            this.findFirmwareLink.Text = "Найти актуальную прошивку OpenGD77 RUS";
+            // 
+            // flashInstruction
+            // 
+            this.flashInstruction.AutoSize = true;
+            this.flashInstruction.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.flashInstruction.Location = new System.Drawing.Point(236, 40);
+            this.flashInstruction.Name = "flashInstruction";
+            this.flashInstruction.Size = new System.Drawing.Size(214, 16);
+            this.flashInstruction.TabIndex = 12;
+            this.flashInstruction.TabStop = true;
+            this.flashInstruction.Text = "Инструкция по прошивке рации";
+            // 
+            // warning
+            // 
+            this.warning.AutoSize = true;
+            this.warning.Location = new System.Drawing.Point(264, 70);
+            this.warning.Name = "warning";
+            this.warning.Size = new System.Drawing.Size(249, 39);
+            this.warning.TabIndex = 13;
+            this.warning.Text = "При прошивке будут автоматически загружены\r\nанглийский и русский языки. После про" +
+    "шивки\r\nвыберите русский язык в настройках рации.";
+            this.warning.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // doNotUse
+            // 
+            this.doNotUse.AutoSize = true;
+            this.doNotUse.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.doNotUse.ForeColor = System.Drawing.Color.Red;
+            this.doNotUse.Location = new System.Drawing.Point(277, 126);
+            this.doNotUse.Name = "doNotUse";
+            this.doNotUse.Size = new System.Drawing.Size(219, 100);
+            this.doNotUse.TabIndex = 14;
+            this.doNotUse.Text = "НЕ ИСПОЛЬЗУЙТЕ\r\nСТАНДАРТНЫЕ\r\nПРОШИВКИ\r\nOPENGD77!";
+            this.doNotUse.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(71, 157);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(111, 103);
+            this.pictureBox1.TabIndex = 15;
+            this.pictureBox1.TabStop = false;
+            // 
+            // FirmwareLoaderUI_STM32
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Window;
+            this.ClientSize = new System.Drawing.Size(549, 363);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.doNotUse);
+            this.Controls.Add(this.warning);
+            this.Controls.Add(this.flashInstruction);
+            this.Controls.Add(this.findFirmwareLink);
+            this.Controls.Add(this.grpRadioType);
+            this.Controls.Add(this.lblMessage);
+            this.Controls.Add(this.Progress);
+            this.Controls.Add(this.btnSelectDonorFW);
+            this.Controls.Add(this.btnProgram);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "FirmwareLoaderUI_STM32";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "FirmwareLoaderUI_STM32";
+            this.Load += new System.EventHandler(this.FirmwareLoaderUI_MD9600_Load);
+            this.grpRadioType.ResumeLayout(false);
+            this.grpRadioType.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
 	}
 }

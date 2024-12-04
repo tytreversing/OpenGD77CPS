@@ -21,7 +21,7 @@ public class TreeForm : ToolWindow
 		this.Font = new System.Drawing.Font("Arial", 10f, System.Drawing.FontStyle.Regular);
 		base.Name = "TreeForm";
 		base.Padding = new System.Windows.Forms.Padding(0, 2, 0, 2);
-		base.ShowHint = WeifenLuo.WinFormsUI.Docking.DockState.DockLeftAutoHide;
+		base.ShowHint = WeifenLuo.WinFormsUI.Docking.DockState.DockLeft;
 		base.TabText = "TreeView";
 		this.Text = "TreeView";
 		base.ResumeLayout(false);

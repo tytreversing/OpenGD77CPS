@@ -296,7 +296,7 @@ public class MainForm : Form
 	private void InitializeComponent()
 	{
 		string profileStringWithDefault = IniFileUtils.getProfileStringWithDefault("Setup", "RadioType", "MK22");
-		if (!(profileStringWithDefault == "MD9600"))
+/*		if (!(profileStringWithDefault == "MD9600"))
 		{
 			if (!(profileStringWithDefault == "MK22"))
 			{
@@ -306,7 +306,7 @@ public class MainForm : Form
 		else
 		{
 			DMR.MainForm.RadioType = DMR.MainForm.RadioTypeEnum.RadioTypeSTM32;
-		}
+		}*/
 		this.components = new System.ComponentModel.Container();
 		System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DMR.MainForm));
 		WeifenLuo.WinFormsUI.Docking.DockPanelSkin dockPanelSkin = new WeifenLuo.WinFormsUI.Docking.DockPanelSkin();
@@ -1065,7 +1065,7 @@ public class MainForm : Form
 		Settings.dicCommon.Add("DMRIdTooManyIDs", "Too many ID's for the connected radio, the list will be truncated to the maximum capacity.");
 		Settings.dicCommon.Add("OfficialFWNotSelected", "You must first select the location of the official / donor firmware file");
 		Settings.dicCommon.Add("Error", "Error");
-		Settings.dicCommon.Add("FirmwareFilefilter", "Firmware files|*.zip|Legacy firmware files|*.bin");
+		Settings.dicCommon.Add("FirmwareFilefilter", "Файлы прошивки|*.bin");
 		Settings.dicCommon.Add("FirmwareSelectorTitle", "Select Firmware file");
 		Settings.dicCommon.Add("Processing", "Processing...");
 		string text = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "DockPanel.config");

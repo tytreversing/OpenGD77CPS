@@ -932,20 +932,20 @@
 			<Control Id="btnSaveNMEA" Text="Save NMEA log" />
 		</Controls>
 		<Commons>
-			<Item Id="Error_connecting_to_the_radio" Text="Error connecting to the radio" />
-			<Item Id="Comm_port_not_available" Text="Comm port not available" />
-			<Item Id="Writing_EEPROM" Text="Writing EEPROM" />
-			<Item Id="Error_while_writing" Text="Error while writing" />
-			<Item Id="Writing_Flash" Text="Writing Flash" />
-			<Item Id="Codeplug_write_complete" Text="Codeplug write complete" />
-			<Item Id="Reading_MCU_ROM" Text="Reading MCU ROM" />
-			<Item Id="Error_while_reading_MCU_ROM" Text="Error while reading MCU ROM" />
-			<Item Id="Downloading_Screengrab" Text="Downloading Screengrab" />
-			<Item Id="Writing_Voice_prompts" Text="Writing voice prompts" />
+			<Item Id="Error_connecting_to_the_radio" Text="Ошибка соединения с рацией" />
+			<Item Id="Comm_port_not_available" Text="COM-порт недоступен" />
+			<Item Id="Writing_EEPROM" Text="Запись EEPROM" />
+			<Item Id="Error_while_writing" Text="Ошибка записи" />
+			<Item Id="Writing_Flash" Text="Запись флеш-памяти" />
+			<Item Id="Codeplug_write_complete" Text="Запись кодплага завершена" />
+			<Item Id="Reading_MCU_ROM" Text="Чтение MCU ROM" />
+			<Item Id="Error_while_reading_MCU_ROM" Text="Ошибка при чтении MCU ROM" />
+			<Item Id="Downloading_Screengrab" Text="Загружаем скриншот" />
+			<Item Id="Writing_Voice_prompts" Text="Запись голосовых оповещений" />
 			<Item Id="Upload_complete" Text="Запись завершена" />
-			<Item Id="No_com_port" Text="No com port. Close and reopen the OpenGD77 window to select a com port." />
-			<Item Id="Warning" Text="Warning" />
-			<Item Id="The_file_is_not_the_correct_size." Text="The file is not the correct size." />
+			<Item Id="No_com_port" Text="Не найден COM-порт. Проверьте соединение." />
+			<Item Id="Warning" Text="Внимание" />
+			<Item Id="The_file_is_not_the_correct_size." Text="Некорректный размер файла!" />
 			<Item Id="Are_you_sure_you_want_to_restore_the_Calibartion_from_a_previously_saved_file" Text="Are you sure you want to restore the Calibration from a previously saved file?" />
 			<Item Id="Calibration_files" Text="Calibration files" />
 			<Item Id="Invalid_Calibration_data" Text="Invalid Calibration data" />
@@ -960,23 +960,23 @@
 			<Item Id="AMB_files" Text="AMB files" />
 			<Item Id="Oops" Text="Oops" />
 			<Item Id="RADIO_DISPLAY_CPS" Text="CPS" />
-			<Item Id="RADIO_DISPLAY_Backup" Text="Backup" />
-			<Item Id="RADIO_DISPLAY_Calibration" Text="Calibration" />
+			<Item Id="RADIO_DISPLAY_Backup" Text="Бэкап" />
+			<Item Id="RADIO_DISPLAY_Calibration" Text="Калибровки" />
 			<Item Id="RADIO_DISPLAY_EEPROM" Text="EEPROM" />
-			<Item Id="RADIO_DISPLAY_Flash" Text="Flash" />
-			<Item Id="RADIO_DISPLAY_Codeplug" Text="Codeplug" />
+			<Item Id="RADIO_DISPLAY_Flash" Text="Флеш" />
+			<Item Id="RADIO_DISPLAY_Codeplug" Text="Кодплаг" />
 			<Item Id="RADIO_DISPLAY_MCU_ROM" Text="MCU ROM" />
-			<Item Id="RADIO_DISPLAY_Voice_prompts" Text="Voice prompts" />
-			<Item Id="RADIO_DISPLAY_Restoring" Text="Restoring" />
+			<Item Id="RADIO_DISPLAY_Voice_prompts" Text="Голосовые" />
+			<Item Id="RADIO_DISPLAY_Restoring" Text="Восстановление" />
 			<Item Id="RADIO_DISPLAY_Reading" Text="Чтение" />
 			<Item Id="RADIO_DISPLAY_Writing" Text="Запись" />
-			<Item Id="Reading_EEPROM" Text="Reading EEPROM" />
-			<Item Id="Reading_Flash" Text="Reading Flash" />
-			<Item Id="Reading_NMEA" Text="Reading NMEA" />
+			<Item Id="Reading_EEPROM" Text="Чтение EEPROM" />
+			<Item Id="Reading_Flash" Text="Чтение флеша" />
+			<Item Id="Reading_NMEA" Text="Чтение NMEA" />
 			<Item Id="Writing_EEPROM" Text="Запись EEPROM" />
-			<Item Id="Writing_Flash" Text="Запись флеш-памяти" />
-			<Item Id="Error" Text="Error" />
-			<Item Id="Warning" Text="Warning" />
+			<Item Id="Writing_Flash" Text="Запись флеша" />
+			<Item Id="Error" Text="Ошибка" />
+			<Item Id="Warning" Text="Внимание" />
 			<Item Id="Calibration_data_could_not_be_found._Please_update_your_firmware" Text="Calibration data could not be found. Please update your firmware" />
 			<Item Id="There_has_been_an_error._Refer_to_the_last_status_message_that_was_displayed" Text="There has been an error. Refer to the last status message that was displayed" />
 			<Item Id="EEPROM_files" Text="EEPROM files" />
@@ -1025,13 +1025,13 @@
 		</Controls>
 		<Commons>
 			<Item Id="AdditionalLanguageNone" Text="None"/>
-			<Item Id="AdditionalLanguageNotFound" Text="Error. Additional langugae file {0} not found"/>			
-			<Item Id="CantInterrupt" Text="You can't interrupt the upload process" />
-			<Item Id="DownloadCancelled" Text="Download has been canceled." />
-			<Item Id="Timeout" Text="Timeout" />
-			<Item Id="Error" Text="Error" />
+			<Item Id="AdditionalLanguageNotFound" Text="Ошибка! Файл {0} не найден!"/>			
+			<Item Id="CantInterrupt" Text="Нельзя прерывать процесс!" />
+			<Item Id="DownloadCancelled" Text="Загрузка отменена." />
+			<Item Id="Timeout" Text="Таймаут" />
+			<Item Id="Error" Text="Ошибка" />
 			<Item Id="No_file_location_specified" Text="No file location specified" />
-			<Item Id="Error:_Unable_to_detect_your_radio." Text="Error: Unable to detect your radio." />
+			<Item Id="Error:_Unable_to_detect_your_radio." Text="Ошибка: рация не найдена." />
 			<Item Id="Uploading_firmware_to" Text="Uploading firmware to " />
 			<Item Id="Error_sending_data" Text="Error sending data" />
 			<Item Id="Error_sending_checksum" Text="Error sending checksum" />
@@ -1082,6 +1082,9 @@
       <Item Id="Description" Text="При прошивке будут автоматически загружены английский и русский языки. После прошивки выберите русский язык в настройках рации." />
       <Item Id="DoNotUse" Text="НЕ ИСПОЛЬЗУЙТЕ ОРИГИНАЛЬНЫЕ ПРОШИВКИ OPENGD77!" />
 			<Item Id="SelectOfficialFirmware" Text="Select the official firmware file" />
+      <Item Id="DownloadRussian" Text="Скачать русский языковой файл" />
+      <Item Id="WillBeReplaced" Text="Существующий файл будет перезаписан!" />
+      <Item Id="FileUpdated" Text="Загружен актуальный файл локализации" />
 			<Item Id="FirmwareFiles" Text="firmware files" />
 			<Item Id="OfficialFWVerified" Text="The official firmware file has been verified, and Open firmware uploads will now have DMR functionality" />
 			<Item Id="OfficialFWNotCorrect" Text="The file you selected was NOT the official firmware version" />
@@ -1194,10 +1197,10 @@
 			<Item Id="Theme_write_failed" Text="Theme write failed" />
 		</Commons>
 	</ThemeForm>
-	<CommPortSelector Text="Select OpenGD77 com port">
+	<CommPortSelector Text="Выберите COM-порт">
 		<Controls>
-			<Control Id="btnSelect" Text="Select port" />
-			<Control Id="btnCancel" Text="Cancel" />
+			<Control Id="btnSelect" Text="Выбрать" />
+			<Control Id="btnCancel" Text="Отмена" />
 		</Controls>
 	</CommPortSelector>
 	<Commons>
@@ -1221,7 +1224,7 @@
 		<Item Id="KeyPressPrint" Text="Please input print" />
 		<Item Id="DeviceNotFound" Text="Device not found" />
 		<Item Id="ModelNotMatch" Text="Model mismatch" />
-		<Item Id="PromptKey1" Text="Do you want to save the codeplug before exiting?" />
+		<Item Id="PromptKey1" Text="Сохранить кодплаг перед выходом?" />
 		<Item Id="PromptKey2" Text="Do you want to load a new default codeplug? All current data will be replaced." />
 		<Item Id="DataFormatError" Text="Data format error" />
 		<Item Id="FirstNotDelete" Text="The first row cannot be deleted" />

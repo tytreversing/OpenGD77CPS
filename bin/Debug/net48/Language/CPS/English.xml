@@ -1083,6 +1083,9 @@
 			<Item Id="Error" Text="Error" />
       <Item Id="FindFirmware" Text="Find latest OpenGD77 RUS firmware" />
       <Item Id="FlashFirmware" Text="Firmware flashing manual" />
+      <Item Id="DownloadRussian" Text="Download Russian localisation" />
+      <Item Id="WillBeReplaced" Text="Existing file will be replaced!" />
+      <Item Id="FileUpdated" Text="Russian localisation is up to date" />
       <Item Id="Description" Text="Radio will be automatically flashed with English and Russian localisations." />
       <Item Id="DoNotUse" Text="DO NOT USE ORIGINAL OPENGD77 FIRMWARE!" />
 			<Item Id="SelectOfficialFirmware" Text="Select the official firmware file" />

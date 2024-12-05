@@ -1,10 +1,12 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
+using System.Net;
 using System.Security.Cryptography;
 using System.Windows.Forms;
 using Microsoft.Win32;
@@ -71,7 +73,7 @@ public class FirmwareLoaderUI_STM32 : Form
     private LinkLabel flashInstruction;
     private Label warning;
     private Label doNotUse;
-    private PictureBox pictureBox1;
+    private Button downloadRussian;
     private GroupBox grpRadioType;
 
 	public FirmwareLoaderUI_STM32()
@@ -107,8 +109,9 @@ public class FirmwareLoaderUI_STM32 : Form
 		flashInstruction.Text = StringsDict["FlashFirmware"];
 		warning.Text = StringsDict["Description"];
 		doNotUse.Text = StringsDict["DoNotUse"];
+        downloadRussian.Text = StringsDict["DownloadRussian"];
 
-	}
+    }
 
 	private void btnProgram_Click(object sender, EventArgs e)
 	{
@@ -323,7 +326,6 @@ public class FirmwareLoaderUI_STM32 : Form
 
 	private void InitializeComponent()
 	{
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FirmwareLoaderUI_STM32));
             this.btnProgram = new System.Windows.Forms.Button();
             this.Progress = new System.Windows.Forms.ProgressBar();
             this.lblMessage = new System.Windows.Forms.Label();
@@ -339,15 +341,14 @@ public class FirmwareLoaderUI_STM32 : Form
             this.flashInstruction = new System.Windows.Forms.LinkLabel();
             this.warning = new System.Windows.Forms.Label();
             this.doNotUse = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.downloadRussian = new System.Windows.Forms.Button();
             this.grpRadioType.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnProgram
             // 
             this.btnProgram.Font = new System.Drawing.Font("Arial", 9F);
-            this.btnProgram.Location = new System.Drawing.Point(145, 274);
+            this.btnProgram.Location = new System.Drawing.Point(140, 259);
             this.btnProgram.Name = "btnProgram";
             this.btnProgram.Size = new System.Drawing.Size(263, 26);
             this.btnProgram.TabIndex = 7;
@@ -480,6 +481,7 @@ public class FirmwareLoaderUI_STM32 : Form
             this.findFirmwareLink.TabIndex = 11;
             this.findFirmwareLink.TabStop = true;
             this.findFirmwareLink.Text = "Õ‡ÈÚË ‡ÍÚÛ‡Î¸ÌÛ˛ ÔÓ¯Ë‚ÍÛ OpenGD77 RUS";
+            this.findFirmwareLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.findFirmwareLink_LinkClicked);
             // 
             // flashInstruction
             // 
@@ -491,6 +493,7 @@ public class FirmwareLoaderUI_STM32 : Form
             this.flashInstruction.TabIndex = 12;
             this.flashInstruction.TabStop = true;
             this.flashInstruction.Text = "»ÌÒÚÛÍˆËˇ ÔÓ ÔÓ¯Ë‚ÍÂ ‡ˆËË";
+            this.flashInstruction.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.flashInstruction_LinkClicked);
             // 
             // warning
             // 
@@ -512,14 +515,17 @@ public class FirmwareLoaderUI_STM32 : Form
             this.doNotUse.Text = "Õ≈ »—œŒÀ‹«”…“≈\r\n—“¿Õƒ¿–“Õ€≈\r\nœ–Œÿ»¬ »\r\nOPENGD77!";
             this.doNotUse.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // pictureBox1
+            // downloadRussian
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(71, 157);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(111, 103);
-            this.pictureBox1.TabIndex = 15;
-            this.pictureBox1.TabStop = false;
+            this.downloadRussian.AutoSize = true;
+            this.downloadRussian.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.downloadRussian.Location = new System.Drawing.Point(12, 160);
+            this.downloadRussian.Name = "downloadRussian";
+            this.downloadRussian.Size = new System.Drawing.Size(200, 66);
+            this.downloadRussian.TabIndex = 15;
+            this.downloadRussian.Text = "button1";
+            this.downloadRussian.UseVisualStyleBackColor = true;
+            this.downloadRussian.Click += new System.EventHandler(this.downloadRussian_Click);
             // 
             // FirmwareLoaderUI_STM32
             // 
@@ -527,7 +533,7 @@ public class FirmwareLoaderUI_STM32 : Form
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(549, 363);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.downloadRussian);
             this.Controls.Add(this.doNotUse);
             this.Controls.Add(this.warning);
             this.Controls.Add(this.flashInstruction);
@@ -546,9 +552,65 @@ public class FirmwareLoaderUI_STM32 : Form
             this.Load += new System.EventHandler(this.FirmwareLoaderUI_MD9600_Load);
             this.grpRadioType.ResumeLayout(false);
             this.grpRadioType.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
 	}
+
+    private void flashInstruction_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+    {
+        try
+        {
+            System.Diagnostics.Process.Start("https://opengd77rus.ru/%d0%b8%d0%bd%d1%81%d1%82%d1%80%d1%83%d0%ba%d1%86%d0%b8%d0%b8/");
+        }
+        catch (System.ComponentModel.Win32Exception noBrowser)
+        {
+            if (noBrowser.ErrorCode == -2147467259)
+                MessageBox.Show(noBrowser.Message);
+        }
+        catch (System.Exception other)
+        {
+            MessageBox.Show(other.Message);
+        }
+    }
+
+    private void findFirmwareLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+    {
+        try
+        {
+            System.Diagnostics.Process.Start("https://opengd77rus.ru/%d0%bf%d1%80%d0%be%d1%88%d0%b8%d0%b2%d0%ba%d0%b0/");
+        }
+        catch (System.ComponentModel.Win32Exception noBrowser)
+        {
+            if (noBrowser.ErrorCode == -2147467259)
+                MessageBox.Show(noBrowser.Message);
+        }
+        catch (System.Exception other)
+        {
+            MessageBox.Show(other.Message);
+        }
+    }
+
+    private void downloadRussian_Click(object sender, EventArgs e)
+    {
+        string remoteUri = "https://opengd77rus.ru/data/";
+        string fileName = "Russian.gla", fullURI = null;
+        lblMessage.Text = "";
+        DialogResult dialogResult = MessageBox.Show(StringsDict["WillBeReplaced"], StringsDict["DownloadRussian"], MessageBoxButtons.YesNo);
+        if (dialogResult == DialogResult.Yes)
+        {
+            WebClient glaDownloader = new WebClient();
+            fullURI = remoteUri + fileName;
+            try
+            {
+                glaDownloader.DownloadFile(fullURI, "Language\\Firmware\\" + fileName);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, StringsDict["Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            lblMessage.Text = StringsDict["FileUpdated"];
+        }
+        
+    }
 }

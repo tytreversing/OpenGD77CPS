@@ -942,7 +942,7 @@
 			<Item Id="Error_while_reading_MCU_ROM" Text="Error while reading MCU ROM" />
 			<Item Id="Downloading_Screengrab" Text="Downloading Screengrab" />
 			<Item Id="Writing_Voice_prompts" Text="Writing voice prompts" />
-			<Item Id="Upload_complete" Text="Upload complete" />
+			<Item Id="Upload_complete" Text="Запись завершена" />
 			<Item Id="No_com_port" Text="No com port. Close and reopen the OpenGD77 window to select a com port." />
 			<Item Id="Warning" Text="Warning" />
 			<Item Id="The_file_is_not_the_correct_size." Text="The file is not the correct size." />
@@ -968,13 +968,13 @@
 			<Item Id="RADIO_DISPLAY_MCU_ROM" Text="MCU ROM" />
 			<Item Id="RADIO_DISPLAY_Voice_prompts" Text="Voice prompts" />
 			<Item Id="RADIO_DISPLAY_Restoring" Text="Restoring" />
-			<Item Id="RADIO_DISPLAY_Reading" Text="Reading" />
-			<Item Id="RADIO_DISPLAY_Writing" Text="Writing" />
+			<Item Id="RADIO_DISPLAY_Reading" Text="Чтение" />
+			<Item Id="RADIO_DISPLAY_Writing" Text="Запись" />
 			<Item Id="Reading_EEPROM" Text="Reading EEPROM" />
 			<Item Id="Reading_Flash" Text="Reading Flash" />
 			<Item Id="Reading_NMEA" Text="Reading NMEA" />
-			<Item Id="Writing_EEPROM" Text="Writing EEPROM" />
-			<Item Id="Writing_Flash" Text="Writing Flash" />
+			<Item Id="Writing_EEPROM" Text="Запись EEPROM" />
+			<Item Id="Writing_Flash" Text="Запись флеш-памяти" />
 			<Item Id="Error" Text="Error" />
 			<Item Id="Warning" Text="Warning" />
 			<Item Id="Calibration_data_could_not_be_found._Please_update_your_firmware" Text="Calibration data could not be found. Please update your firmware" />
@@ -1072,7 +1072,7 @@
 		</Controls>
 		<Commons>
 			<Item Id="AdditionalLanguageNone" Text="None"/>
-			<Item Id="AdditionalLanguageNotFound" Text="Error. Additional langugae file {0} not found"/>	
+			<Item Id="AdditionalLanguageNotFound" Text="Ошибка! Не найден файл локализации!"/>	
 			<Item Id="FmOnly" Text="FM only" />
 			<Item Id="Warning" Text="Warning" />
 			<Item Id="Success" Text="Success" />
@@ -1081,16 +1081,16 @@
 			<Item Id="FirmwareFiles" Text="firmware files" />
 			<Item Id="OfficialFWVerified" Text="The official firmware file has been verified, and Open firmware uploads will now have DMR functionality" />
 			<Item Id="OfficialFWNotCorrect" Text="The file you selected was NOT the official firmware version" />
-			<Item Id="ConnectingToRadio" Text="Connecting to radio" />
-			<Item Id="ConnectedToRadio" Text="Connected to radio" />
-			<Item Id="RadioNotConnected" Text="Radio not connected, or not in DFU mode." />
-			<Item Id="OnlyOpenMD9600FirmwareFilesSupported" Text="Official donor firmware version is not correct" />
-			<Item Id="Writing" Text="Writing" />
-			<Item Id="UploadComplete" Text="Upload complete" />
-			<Item Id="OperatingSystemNotSupported" Text="Operating system not supported" />
-			<Item Id="USBDataError" Text="USB Data Error" />
-			<Item Id="UnableEraseMemory" Text="Unable to erase memory section at" />
-			<Item Id="UnableInitialiseRadio" Text="Unable to initialise the radio:" />
+			<Item Id="ConnectingToRadio" Text="Соединение с рацией..." />
+			<Item Id="ConnectedToRadio" Text="Связь установлена" />
+			<Item Id="RadioNotConnected" Text="Рация не подключена или находится не в режиме DFU." />
+			<Item Id="OnlyOpenMD9600FirmwareFilesSupported" Text="Ошибка донорского файла" />
+			<Item Id="Writing" Text="Запись" />
+			<Item Id="UploadComplete" Text="Прошивка OpenGD77 RUS загружена в рацию" />
+			<Item Id="OperatingSystemNotSupported" Text="Операционная система не поддерживается" />
+			<Item Id="USBDataError" Text="Ошибка при соединении USB" />
+			<Item Id="UnableEraseMemory" Text="Ошибка стирания памяти по адресу" />
+			<Item Id="UnableInitialiseRadio" Text="Ошибка инициализации рации:" />
 		</Commons>
 	</FirmwareLoaderUI_STM32>
 	<FirmwareLoaderReleasesList Text="Select release version">
@@ -1226,8 +1226,8 @@
 		<Item Id="ScanSelected" Text="Unable to operate selected" />
 		<Item Id="codePlugReadConfirm"  Text="Are you sure you want to read the codeplug from the GD-77?.This will overwrite the current codeplug." />
 		<Item Id="codePlugWriteConfirm"  Text="Are you sure you want to write this codeplug to the GD-77?.This will overwrite codeplug currently in the GD-77" />
-		<Item Id="pleaseConfirm"  Text="Please confirm" />
-		<Item Id="userAgreement"  Text="This software is supplied 'as is' with no warranties. You use it at your own risk to both your PC and to your DMR Radio. By pressing the  Yes   button you agree and understand." />
+		<Item Id="pleaseConfirm"  Text="Соглашение" />
+		<Item Id="userAgreement"  Text="Это программное обеспечение предоставляется как есть, без гарантий работоспособности. Оно предназначено только для работы с модифицированными прошивками OpenGD77 RUS. Разработчик не несет ответственности за действия пользователя. Нажимая ДА, Вы соглашаетесь с условиями предоставления программного обеспечения." />
 		<Item Id="DownloadContactsMessageAdded" Text="There are {0} new IDs which are not already in your contacts" />
 		<Item Id="DownloadContactsRegionEmpty" Text="Please enter the 3 digit Region prefix code. e.g. 505 for Australia." />
 		<Item Id="DownloadContactsDownloading" Text="Downloading..." />

@@ -32,15 +32,13 @@ public class FirmwareLoaderUI_STM32 : Form
 
 	public static RegistryKey regKeyOfficialFirmware = null;
 
-	public static string officialFirmwareFile = "\\SourceFirmware\\source.bin";
+	public static string officialFirmwareFile = Environment.CurrentDirectory + "\\SourceFirmware\\source.bin";
 
 	public string officialFirmwareFilePath = "";
 
 	public static string languageFile = "";
 
 	public string windowTitle;
-
-	private const string DONOR_FIRMWARE_PATH_KEY_NAME = "SourceFirmware-D2645";
 
 	private bool donorFirmwareLoaded;
 
@@ -90,8 +88,7 @@ public class FirmwareLoaderUI_STM32 : Form
 		fwUpdate = new STM_DFU_FwUpdate();
 		fwUpdate.DisplayMessage += DisplayMessage;
 		fwUpdate.UploadCompleted += UploadCompleted;
-		regKeyOfficialFirmware = Registry.CurrentUser.CreateSubKey("SOFTWARE\\MD9600FirmwareLoader");
-		officialFirmwareFilePath = ((regKeyOfficialFirmware != null && regKeyOfficialFirmware.GetValueNames().Contains("SourceFirmware-D2645")) ? regKeyOfficialFirmware.GetValue("SourceFirmware-D2645").ToString() : "");
+		officialFirmwareFilePath = Environment.CurrentDirectory + "\\SourceFirmware\\source.bin"; //путь к исходнику фиксированный
 		string profileStringWithDefault = IniFileUtils.getProfileStringWithDefault("Setup", "LastSTM32FirmwareRadio", null);
 		if (profileStringWithDefault != "")
 		{
@@ -131,7 +128,7 @@ public class FirmwareLoaderUI_STM32 : Form
 				}
 			}
 			
-		    languageFile = "\\Language\\Firmware\\Russian.gla";
+		    languageFile = Environment.CurrentDirectory + "\\Language\\Firmware\\Russian";
 			
 			IniFileUtils.WriteProfileString("Setup", "LastFirmwareLanguage", languageFile);
 			dlgOpenFile.InitialDirectory = IniFileUtils.getProfileStringWithDefault("Setup", "LastFirmwareLocation" + outputType, null);
@@ -286,23 +283,14 @@ public class FirmwareLoaderUI_STM32 : Form
 
 	private bool ValidateOfficialFirmware(string filename)
 	{
+		lblMessage.Text = filename;
 		if (filename.Length > 0 && File.Exists(filename) && GetSHA256Checksum(filename).SequenceEqual(FW_D2645_SHA256_Checksum))
 		{
-			if (regKeyOfficialFirmware != null)
-			{
-				regKeyOfficialFirmware.SetValue("SourceFirmware-D2645", filename);
-			}
 			officialFirmwareFile = filename;
 			donorFirmwareLoaded = true;
 			btnProgram.Enabled = true;
 			return true;
 		}
-		if (regKeyOfficialFirmware != null)
-		{
-			regKeyOfficialFirmware.SetValue("SourceFirmware-D2645", "");
-		}
-		officialFirmwareFile = "";
-		btnProgram.Enabled = false;
 		return false;
 	}
 
@@ -354,7 +342,6 @@ public class FirmwareLoaderUI_STM32 : Form
             // 
             // btnProgram
             // 
-            this.btnProgram.Enabled = false;
             this.btnProgram.Font = new System.Drawing.Font("Arial", 9F);
             this.btnProgram.Location = new System.Drawing.Point(145, 274);
             this.btnProgram.Name = "btnProgram";

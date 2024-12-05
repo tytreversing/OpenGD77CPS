@@ -1165,7 +1165,7 @@ public class MainForm : Form
 			"Catalan", "Croatian", "Czech", "Danish", "Dutch", "Finnish", "French", "German", "Hungarian", "Italian",
 			"Polish", "PortuguesBrazil", "Portuguese", "Romanian", "Slovenian", "Spanish", "Swedish", "Turkish"
 		};
-		string profileStringWithDefault2 = IniFileUtils.getProfileStringWithDefault("Setup", "Language", "English.xml");
+		string profileStringWithDefault2 = IniFileUtils.getProfileStringWithDefault("Setup", "Language", "Russian.xml");
 		foreach (ToolStripMenuItem dropDownItem in tsmiLanguage.DropDownItems)
 		{
 			if (Path.GetFileName(dropDownItem.Tag.ToString()) == profileStringWithDefault2)

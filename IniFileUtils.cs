@@ -106,7 +106,7 @@ internal class IniFileUtils
 
 	static IniFileUtils()
 	{
-		keyName = "HKEY_CURRENT_USER\\Software\\RadioddityCommunity\\OpenGD77CPS";
+		keyName = "HKEY_CURRENT_USER\\Software\\OpenGD77CPS_RUS";
 		iniPath = null;
 		if (File.Exists(Application.StartupPath + Path.DirectorySeparatorChar + "Setup.ini"))
 		{

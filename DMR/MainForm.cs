@@ -296,7 +296,7 @@ public class MainForm : Form
 	private void InitializeComponent()
 	{
 		string profileStringWithDefault = IniFileUtils.getProfileStringWithDefault("Setup", "RadioType", "MK22");
-/*		if (!(profileStringWithDefault == "MD9600"))
+		if (!(profileStringWithDefault == "MD9600"))
 		{
 			if (!(profileStringWithDefault == "MK22"))
 			{
@@ -306,7 +306,7 @@ public class MainForm : Form
 		else
 		{
 			DMR.MainForm.RadioType = DMR.MainForm.RadioTypeEnum.RadioTypeSTM32;
-		}*/
+		}
 		this.components = new System.ComponentModel.Container();
 		System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DMR.MainForm));
 		WeifenLuo.WinFormsUI.Docking.DockPanelSkin dockPanelSkin = new WeifenLuo.WinFormsUI.Docking.DockPanelSkin();
@@ -1203,8 +1203,7 @@ public class MainForm : Form
 
 	private string getMainTitleStub()
 	{
-		_ = AssemblyName.GetAssemblyName(Assembly.GetExecutingAssembly().Location).Version;
-		return PRODUCT_NAME + " (Version: " + PRODUCT_VERSION + ")";
+		return "OpenGD77 RUS  [" + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version + "]";
 	}
 
 	private void MainForm_MdiChildActivate(object sender, EventArgs e)

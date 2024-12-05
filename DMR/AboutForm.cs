@@ -22,7 +22,7 @@ public class AboutForm : Form
 	private void AboutForm_Load(object sender, EventArgs e)
 	{
 		Settings.UpdateComponentTextsFromLanguageXmlData(this);
-        lblVersion.Text = "OpenGD77 CPS - русская версия\r\n\r\nПредназначена для работы ТОЛЬКО\r\nс модифицированной прошивкой OpenGD77 RUS\r\n\r\n(с) Aufwiegler, 2024";
+        lblVersion.Text = "OpenGD77 CPS - русская версия\r\n\r\nПредназначена для работы ТОЛЬКО\r\nс модифицированной прошивкой OpenGD77 RUS\r\n\r\n" + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version + "\r\n\r\n" + "(с) Aufwiegler, 2024";
 
     }
 
@@ -49,7 +49,7 @@ public class AboutForm : Form
             // 
             this.lblVersion.Location = new System.Drawing.Point(31, 20);
             this.lblVersion.Name = "lblVersion";
-            this.lblVersion.Size = new System.Drawing.Size(351, 125);
+            this.lblVersion.Size = new System.Drawing.Size(351, 201);
             this.lblVersion.TabIndex = 0;
             this.lblVersion.Text = "1.0.0";
             this.lblVersion.TextAlign = System.Drawing.ContentAlignment.TopCenter;

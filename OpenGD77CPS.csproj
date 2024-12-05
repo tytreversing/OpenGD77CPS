@@ -14,6 +14,8 @@
   <PropertyGroup>
     <ApplicationIcon>app.ico</ApplicationIcon>
     <RootNamespace />
+    <IncrementVersionOnBuild>1.yyyy.Mdd.Hmm</IncrementVersionOnBuild>
+    <Version>1.2024.1205.1125</Version>
   </PropertyGroup>
   <ItemGroup />
   <ItemGroup>

@@ -1081,6 +1081,10 @@
 			<Item Id="Warning" Text="Warning" />
 			<Item Id="Success" Text="Success" />
 			<Item Id="Error" Text="Error" />
+      <Item Id="FindFirmware" Text="Find latest OpenGD77 RUS firmware" />
+      <Item Id="FlashFirmware" Text="Firmware flashing manual" />
+      <Item Id="Description" Text="Radio will be automatically flashed with English and Russian localisations." />
+      <Item Id="DoNotUse" Text="DO NOT USE ORIGINAL OPENGD77 FIRMWARE!" />
 			<Item Id="SelectOfficialFirmware" Text="Select the official firmware file" />
 			<Item Id="FirmwareFiles" Text="firmware files" />
 			<Item Id="OfficialFWVerified" Text="The official firmware file has been verified, and Open firmware uploads will now have DMR functionality" />
@@ -1090,6 +1094,7 @@
 			<Item Id="RadioNotConnected" Text="Radio not connected, or not in DFU mode." />
 			<Item Id="OnlyOpenMD9600FirmwareFilesSupported" Text="Official donor firmware version is not correct" />
 			<Item Id="Writing" Text="Writing" />
+      <Item Id="Erasing" Text="Erasing" />
 			<Item Id="UploadComplete" Text="Upload complete" />
 			<Item Id="OperatingSystemNotSupported" Text="Operating system not supported" />
 			<Item Id="USBDataError" Text="USB Data Error" />

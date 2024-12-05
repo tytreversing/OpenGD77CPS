@@ -103,6 +103,10 @@ public class FirmwareLoaderUI_STM32 : Form
 		Settings.ReadCommonsForSectionIntoDictionary(StringsDict, base.Name);
 		object[] array = new object[MainForm.FirmwareLanguageFiles.Length + 1];
 		array[0] = StringsDict["AdditionalLanguageNone"];
+		findFirmwareLink.Text = StringsDict["FindFirmware"];
+		flashInstruction.Text = StringsDict["FlashFirmware"];
+		warning.Text = StringsDict["Description"];
+		doNotUse.Text = StringsDict["DoNotUse"];
 
 	}
 
@@ -283,7 +287,7 @@ public class FirmwareLoaderUI_STM32 : Form
 
 	private bool ValidateOfficialFirmware(string filename)
 	{
-		lblMessage.Text = filename;
+		lblMessage.Text = "";
 		if (filename.Length > 0 && File.Exists(filename) && GetSHA256Checksum(filename).SequenceEqual(FW_D2645_SHA256_Checksum))
 		{
 			officialFirmwareFile = filename;
@@ -465,6 +469,9 @@ public class FirmwareLoaderUI_STM32 : Form
             // 
             // findFirmwareLink
             // 
+            this.findFirmwareLink.AccessibleDescription = "FindFirmware";
+            this.findFirmwareLink.AccessibleName = "FindFirmware";
+            this.findFirmwareLink.AccessibleRole = System.Windows.Forms.AccessibleRole.Text;
             this.findFirmwareLink.AutoSize = true;
             this.findFirmwareLink.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.findFirmwareLink.Location = new System.Drawing.Point(236, 22);
@@ -487,18 +494,15 @@ public class FirmwareLoaderUI_STM32 : Form
             // 
             // warning
             // 
-            this.warning.AutoSize = true;
             this.warning.Location = new System.Drawing.Point(264, 70);
             this.warning.Name = "warning";
             this.warning.Size = new System.Drawing.Size(249, 39);
             this.warning.TabIndex = 13;
-            this.warning.Text = "При прошивке будут автоматически загружены\r\nанглийский и русский языки. После про" +
-    "шивки\r\nвыберите русский язык в настройках рации.";
             this.warning.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // doNotUse
             // 
-            this.doNotUse.AutoSize = true;
+            this.doNotUse.AutoEllipsis = true;
             this.doNotUse.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.doNotUse.ForeColor = System.Drawing.Color.Red;
             this.doNotUse.Location = new System.Drawing.Point(277, 126);

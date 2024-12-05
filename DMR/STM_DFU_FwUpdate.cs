@@ -609,7 +609,7 @@ internal class STM_DFU_FwUpdate
 			SetAddressPointer(hDevice, address);
 			for (uint num4 = 0u; num4 <= num / 1024; num4++)
 			{
-				this.DisplayMessage(this, new FirmwareUpdateMessageEventArgs(20 + 80 * num4 * 1024 / num, "Writing " + 100 * num4 * 1024 / num + "%", isError: false));
+				this.DisplayMessage(this, new FirmwareUpdateMessageEventArgs(20 + 80 * num4 * 1024 / num, FirmwareLoaderUI_STM32.StringsDict["Writing"] + " " + 100 * num4 * 1024 / num + "%", isError: false));
 				byte[] array5 = openFirmwareData.Skip((int)(1024 * num4)).Take(1024).ToArray();
 				if (array5.Length < 1024)
 				{
@@ -696,7 +696,7 @@ internal class STM_DFU_FwUpdate
 		{
 			if (num2 > array[i] && startAddress < array[i + 1])
 			{
-				this.DisplayMessage(this, new FirmwareUpdateMessageEventArgs(4 + num++ * 2, $"Erasing 0x{startAddress:X} - 0x{num2:X}", isError: false));
+				this.DisplayMessage(this, new FirmwareUpdateMessageEventArgs(4 + num++ * 2, FirmwareLoaderUI_STM32.StringsDict["Erasing"] + $" 0x{startAddress:X} - 0x{num2:X}", isError: false));
 				if (EraseSector(hDevice, array[i]) != 0)
 				{
 					throw new Exception(FirmwareLoaderUI_STM32.StringsDict["UnableEraseMemory"] + " " + array[i].ToString("X2"));

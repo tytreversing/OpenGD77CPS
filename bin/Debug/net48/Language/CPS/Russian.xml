@@ -49,87 +49,87 @@
 			<Item Id="CallTypeA" Text="DTMF Call" />
 		</Commons>
 	</ButtonForm>
-	<ChannelForm Text="Channel">
+	<ChannelForm Text="Канал">
 		<Controls>
 			<Control Id="btnCopy" Text=">>" />
-			<Control Id="lblSquelch" Text="Squelch" />
-			<Control Id="lblSql" Text="OpenGD77 Squelch Level" />
-			<Control Id="grpDigit" Text="Digital" />
+			<Control Id="lblSquelch" Text="Шумоподавитель" />
+			<Control Id="lblSql" Text="Шумоподавитель" />
+			<Control Id="grpDigit" Text="Цифровая связь" />
 			<Control Id="lblTimingPreference" Text="Timing Leader Preference" />
-			<Control Id="lblRepeaterSlot" Text="Repeater Slot" />
+			<Control Id="lblRepeaterSlot" Text="Таймслот" />
 			<Control Id="lblArs" Text="ARS" />
 			<Control Id="lblKeySwitch" Text="Privacy" />
 			<Control Id="lblKey" Text="Privacy Group" />
-			<Control Id="lblTxColor" Text="Color Code" />
+			<Control Id="lblTxColor" Text="Колоркод" />
 			<Control Id="lblEmgSystem" Text="APRS" />
-			<Control Id="lblContact" Text="Contact" />
+			<Control Id="lblContact" Text="Контакт" />
 			<Control Id="chkDualCapacity" Text="Dual Capacity Direct Mode" />
 			<Control Id="chkUdpDataHead" Text="Compressed UDP Data Header" />
-			<Control Id="chkAllowTxInterupt" Text="Allow Interruption" />
+			<Control Id="chkAllowTxInterupt" Text="Разрешить прерываниеn" />
 			<Control Id="chkTxInteruptFreq" Text="Tx Interruptible Frequencies" />
-			<Control Id="chkPrivateCall" Text="Private Call Confirmed" />
+			<Control Id="chkPrivateCall" Text="Подтверждение приватного вызова" />
 			<Control Id="chkDataCall" Text="Data Call Confirmed" />
 			<Control Id="chkEmgConfirmed" Text="Emergency Alarm Ack" />
 			<Control Id="chkEnhancedChAccess" Text="Enhanced Channel Access" />
-			<Control Id="lblRxColor" Text="Rx Color Code" />
-			<Control Id="lblRxGroup" Text="TG List" />
-			<Control Id="chkRxOnly" Text="Rx Only" />
-			<Control Id="chkAllowTalkaround" Text="Allow Talkaround" />
-			<Control Id="grpAnalog" Text="Analog" />
-			<Control Id="lblChBandwidth" Text="Bandwidth [KHz]" />
+			<Control Id="lblRxColor" Text="Колоркод на прием" />
+			<Control Id="lblRxGroup" Text="Список групп" />
+			<Control Id="chkRxOnly" Text="Только прием" />
+			<Control Id="chkAllowTalkaround" Text="Отключение разноса" />
+			<Control Id="grpAnalog" Text="Аналоговая связь" />
+			<Control Id="lblChBandwidth" Text="Полоса, кГц" />
 			<Control Id="lblVoiceEmphasis" Text="Voice Emphasis" />
 			<Control Id="lblSte" Text="STE" />
 			<Control Id="lblNonSte" Text="Non STE" />
-			<Control Id="lblRxTone" Text="Rx Tone [Hz]" />
+			<Control Id="lblRxTone" Text="Субтон на прием" />
 			<Control Id="lblRxSignaling" Text="Rx Signaling System" />
 			<Control Id="lblUnmuteRule" Text="Unmute Rule" />
 			<Control Id="lblArtsInterval" Text="ARTS Interval [s]" />
 			<Control Id="lblPttidType" Text="PTTID Type" />
 			<Control Id="lblTxSignaling" Text="Tx Signaling System" />
-			<Control Id="lblTxTone" Text="Tx Tone [Hz]" />
+			<Control Id="lblTxTone" Text="Субтон на передачу" />
 			<Control Id="chkDataPl" Text="PL for Data" />
 			<Control Id="chkLoneWoker" Text="Lone Work" />
-			<Control Id="chkOpenGD77ScanAllSkip" Text="Scan: All skip" />
-			<Control Id="chkVox" Text="Vox" />
+			<Control Id="chkOpenGD77ScanAllSkip" Text="Сканирование: пропуск всех" />
+			<Control Id="chkVox" Text="VOX" />
 			<Control Id="chkAutoScan" Text="Auto Scan" />
-			<Control Id="chkOpenGD77ScanZoneSkip" Text="Scan: Zone skip" />
-			<Control Id="chkNoBeep" Text="No Beep" />
-			<Control Id="chkNoEco" Text="No Eco" />
-			<Control Id="chkDMRForceDMO" Text="Force DMO" />
-			<Control Id="chkUseLocation" Text="Use Location" />
-			<Control Id="lblChName" Text="Name" />
-			<Control Id="lblChMode" Text="Mode" />
-			<Control Id="lblTot" Text="TOT [s]" />
-			<Control Id="lblTotRekey" Text="TOT Rekey Delay [s]" />
+			<Control Id="chkOpenGD77ScanZoneSkip" Text="Сканирование: пропуск зоны" />
+			<Control Id="chkNoBeep" Text="Без звуков" />
+			<Control Id="chkNoEco" Text="Без экономайзера" />
+			<Control Id="chkDMRForceDMO" Text="Прямая связь" />
+			<Control Id="chkUseLocation" Text="Местоположение" />
+			<Control Id="lblChName" Text="Имя" />
+			<Control Id="lblChMode" Text="Режим" />
+			<Control Id="lblTot" Text="Ограничение передачи" />
+			<Control Id="lblTotRekey" Text="Возобновление" />
 			<Control Id="lblRssiThreshold" Text="RSSI Threshold [dBm]" />
 			<Control Id="lblRxRefFreq" Text="Rx Reference Frequency" />
 			<Control Id="lblTxRefFreq" Text="Tx Reference Frequency" />
-			<Control Id="lblRxFreq" Text="Rx Freq [MHz]" />
-			<Control Id="lblLibreDMR_Power" Text="Power Level" />
+			<Control Id="lblRxFreq" Text="Прием" />
+			<Control Id="lblLibreDMR_Power" Text="Мощность" />
 			<Control Id="lblAdmitCriteria" Text="Admit Criteria" />
-			<Control Id="lblTxFreq" Text="Tx Freq [MHz]" />
-			<Control Id="lblLatitude" Text="Latitude" />
-			<Control Id="lblLongitude" Text="Longitude" />
+			<Control Id="lblTxFreq" Text="Передача" />
+			<Control Id="lblLatitude" Text="Широта" />
+			<Control Id="lblLongitude" Text="Долгота" />
 			<Control Id="tsrCh" Text="toolStrip1">
 				<ToolStripItem Id="tslblInfo" Text="" />
-				<ToolStripItem Id="tsbtnFirst" Text="First" />
-				<ToolStripItem Id="tsbtnPrev" Text="Previous" />
-				<ToolStripItem Id="tsbtnNext" Text="Next" />
-				<ToolStripItem Id="tsbtnLast" Text="Last" />
-				<ToolStripItem Id="tsbtnAdd" Text="Add" />
-				<ToolStripItem Id="tsbtnDel" Text="Delete" />
+				<ToolStripItem Id="tsbtnFirst" Text="Первый" />
+				<ToolStripItem Id="tsbtnPrev" Text="Предыдущий" />
+				<ToolStripItem Id="tsbtnNext" Text="Следующий" />
+				<ToolStripItem Id="tsbtnLast" Text="Последний" />
+				<ToolStripItem Id="tsbtnAdd" Text="Добавить" />
+				<ToolStripItem Id="tsbtnDel" Text="Удалить" />
 			</Control>
 			<Control Id="mnsCh" Text="menuStrip1" />
-			<Control Id="lblTS1TaTx" Text="TS1 Talker Alias Tx" />
-			<Control Id="lblTS2TaTx" Text="TS2 Talker Alias Tx" />
+			<Control Id="lblTS1TaTx" Text="Алиас в таймслоте 1" />
+			<Control Id="lblTS2TaTx" Text="Алиас в таймслоте 2" />
 		</Controls>
 		<Commons>
-			<Item Id="ChMode" Text="Analog,Digital" />
+			<Item Id="ChMode" Text="Аналог,Цифра" />
 			<Item Id="RefFreq" Text="Low,Middle,High" />
-			<Item Id="LibreDMR_Power" Text="Master,50mW | 50mW | 100mW,250mW | 250mW | 250mW,500mW | 500mW | 500mW,750mW | 750mW | 750mW,1W | 1W | 1W,2W | 2W | 5W,3W | 3W | 10W,4W | 5W | 25W,5W | 10W | 40W,+W-" />
-			<Item Id="Power" Text="Low,High" />
-			<Item Id="AdmitCriterica" Text="Always,Channel Free,CTCSS/DCS" />
-			<Item Id="AdmitCritericaD" Text="Always,Channel Free,Color Code" />
+			<Item Id="LibreDMR_Power" Text="Обшая,50mW | 50mW | 100mW,250mW | 250mW | 250mW,500mW | 500mW | 500mW,750mW | 750mW | 750mW,1W | 1W | 1W,2W | 2W | 5W,3W | 3W | 10W,4W | 5W | 25W,5W | 10W | 40W,+W-" />
+			<Item Id="Power" Text="Низкая,Высокая" />
+			<Item Id="AdmitCriterica" Text="Всегда,Канал свободен,CTCSS/DCS" />
+			<Item Id="AdmitCritericaD" Text="Всегда,Канал свободен,Color Code" />
 			<Item Id="Squelch" Text="Tight,Normal" />
 			<Item Id="VoiceEmphasis" Text="None,De and Pre,De,Pre" />
 			<Item Id="Ste" Text="Frequency,120°,180°,240°" />
@@ -174,7 +174,7 @@
 	</ChannelsForm>
 	<CommPrgForm Text="">
 		<Controls>
-			<Control Id="btnCancel" Text="Cancel" />
+			<Control Id="btnCancel" Text="Отмена" />
 		</Controls>
 		<Commons>
 			<Item Id="ButtonItem" Text="None,All Alert Tone On/Off,Emergency On,Emergency Off,High/Low Power,Monitor,Nuisance Delete,One Touch Access 1,One Touch Access 2,One Touch Access 3,One Touch Access 4,One Touch Access 5,One Touch Access 6,Repeater/Talkaround,Scan On/Off,Tight/Normal Squelch,Privacy On/Off,Vox On/Off,Zone Select,Battery Indicator,Lone Work On/Off,Permanent Monitor,Phone Exit,Channel Up,Channel Down,Channel Infomation" />
@@ -420,94 +420,94 @@
 			<TreeNode Id="VFOB" Text="VFO B" />
 		</TreeView>
 		<MenuStrip>
-			<MenuItem Id="tsmiFile" Text="&amp;File" />
-			<MenuItem Id="tsmiNew" Text="New" />
-			<MenuItem Id="tsmiSave" Text="Save" />
-			<MenuItem Id="tsmiOpen" Text="Open" />
-			<MenuItem Id="tsmiExit" Text="Exit" />
-			<MenuItem Id="tsmiSetting" Text="Setting" />
-			<MenuItem Id="tsmiDeviceInfo" Text="Band limits" />
-			<MenuItem Id="tsmiBootItem" Text="Boot screen" />
-			<MenuItem Id="tsmiMenu" Text="Menu" />
-			<MenuItem Id="tsmiNumKeyContact" Text="Number Key Assign" />
-			<MenuItem Id="tsmiGerneralSet" Text="DMR ID and callsign" />
-			<MenuItem Id="tsmiButton" Text="Buttons" />
-			<MenuItem Id="tsmiTextMsg" Text="Text Message" />
-			<MenuItem Id="tsmiEncrypt" Text="Privacy" />
-			<MenuItem Id="tsmiSignaling" Text="Signaling" />
-			<MenuItem Id="tsmiSignalingSystem" Text="Signaling System" />
-			<MenuItem Id="tsmiDtmf" Text="DTMF Settings" />
+			<MenuItem Id="tsmiFile" Text="&amp;Файл" />
+			<MenuItem Id="tsmiNew" Text="Новый" />
+			<MenuItem Id="tsmiSave" Text="Сохранить" />
+			<MenuItem Id="tsmiOpen" Text="Открыть" />
+			<MenuItem Id="tsmiExit" Text="Выход" />
+			<MenuItem Id="tsmiSetting" Text="Настройки" />
+			<MenuItem Id="tsmiDeviceInfo" Text="Ограничения частот" />
+			<MenuItem Id="tsmiBootItem" Text="Загрузочный экран" />
+			<MenuItem Id="tsmiMenu" Text="Меню" />
+			<MenuItem Id="tsmiNumKeyContact" Text="Назначение цифровых кнопок" />
+			<MenuItem Id="tsmiGerneralSet" Text="DMR ID и позывной" />
+			<MenuItem Id="tsmiButton" Text="Кнопки" />
+			<MenuItem Id="tsmiTextMsg" Text="Текстовое сообщение" />
+			<MenuItem Id="tsmiEncrypt" Text="Приватность" />
+			<MenuItem Id="tsmiSignaling" Text="Сигналинг" />
+			<MenuItem Id="tsmiSignalingSystem" Text="Система сигналинга" />
+			<MenuItem Id="tsmiDtmf" Text="Настройки DTMF" />
 			<MenuItem Id="tsmiEmgSystem" Text="APRS" />
-			<MenuItem Id="tsmiAPRSConfigs" Text="APRS Configuations" />
-			<MenuItem Id="tsmiContact" Text="Contact" />
+			<MenuItem Id="tsmiAPRSConfigs" Text="Настройки APRS" />
+			<MenuItem Id="tsmiContact" Text="Контакт" />
 			<MenuItem Id="tsmiDtmfContact" Text="DTMF" />
-			<MenuItem Id="tsmiDmrContacts" Text="Digital Contacts" />
-			<MenuItem Id="tsmiContacts" Text="Contacts" />
-			<MenuItem Id="tsmiGrpRxList" Text="TG Lists" />
-			<MenuItem Id="tsmiZone" Text="Zone" />
-			<MenuItem Id="tsmiZoneList" Text="Zone List" />
-			<MenuItem Id="tsmiZoneBasic" Text="Zone Basic" />
-			<MenuItem Id="tsmiChannels" Text="Channels" />
-			<MenuItem Id="tsmiVfos" Text="VFOs" />
-			<MenuItem Id="tsmiScan" Text="Scan" />
-			<MenuItem Id="tsmiScanBasic" Text="Scan Basic" />
-			<MenuItem Id="tsmiScanList" Text="Latitude" />
-			<MenuItem Id="tsmiProgram" Text="Program" />
-			<MenuItem Id="tsmiRead" Text="Read" />
-			<MenuItem Id="tsmiWrite" Text="Write" />
-			<MenuItem Id="tsmiBasic" Text="Basic" />
-			<MenuItem Id="tsmiView" Text="View" />
-			<MenuItem Id="tsmiTree" Text="TreeView" />
-			<MenuItem Id="tsmiHelp" Text="HelpView" />
-			<MenuItem Id="tsmiToolBar" Text="Toolbar" />
-			<MenuItem Id="tsmiStatusBar" Text="Status Bar" />
-			<MenuItem Id="tsmiWindow" Text="Window" />
-			<MenuItem Id="tsmiCascade" Text="Cascade" />
-			<MenuItem Id="tsmiTileHor" Text="Tile Horzontal" />
-			<MenuItem Id="tsmiTileVer" Text="Tile Vertical" />
-			<MenuItem Id="tsmiCloseAll" Text="Close All" />
-			<MenuItem Id="tsmiAbout" Text="About" />
-			<MenuItem Id="tsmiLanguage" Text="Language" />
+			<MenuItem Id="tsmiDmrContacts" Text="Цифровые контакты" />
+			<MenuItem Id="tsmiContacts" Text="Контакты" />
+			<MenuItem Id="tsmiGrpRxList" Text="Списки групп" />
+			<MenuItem Id="tsmiZone" Text="Зоны" />
+			<MenuItem Id="tsmiZoneList" Text="Редактирование зон" />
+			<MenuItem Id="tsmiZoneBasic" Text="Список зон" />
+			<MenuItem Id="tsmiChannels" Text="Каналы" />
+			<MenuItem Id="tsmiVfos" Text="VFO" />
+			<MenuItem Id="tsmiScan" Text="Сканирование" />
+			<MenuItem Id="tsmiScanBasic" Text="Основное" />
+			<MenuItem Id="tsmiScanList" Text="Широта" />
+			<MenuItem Id="tsmiProgram" Text="Программирование" />
+			<MenuItem Id="tsmiRead" Text="Читать из рации" />
+			<MenuItem Id="tsmiWrite" Text="Записать в рацию" />
+			<MenuItem Id="tsmiBasic" Text="Основное" />
+			<MenuItem Id="tsmiView" Text="Вид" />
+			<MenuItem Id="tsmiTree" Text="Дерево" />
+			<MenuItem Id="tsmiHelp" Text="Подсказка" />
+			<MenuItem Id="tsmiToolBar" Text="Панель инструментов" />
+			<MenuItem Id="tsmiStatusBar" Text="Статус-бар" />
+			<MenuItem Id="tsmiWindow" Text="Окна" />
+			<MenuItem Id="tsmiCascade" Text="Каскадом" />
+			<MenuItem Id="tsmiTileHor" Text="По горизонтали" />
+			<MenuItem Id="tsmiTileVer" Text="По вертикали" />
+			<MenuItem Id="tsmiCloseAll" Text="Закрыть все" />
+			<MenuItem Id="tsmiAbout" Text="О программе" />
+			<MenuItem Id="tsmiLanguage" Text="Язык" />
 			<MenuItem Id="tsmiEnglish" Text="English" />
 			<MenuItem Id="tsmiChinese" Text="Chinese" />
-			<MenuItem Id="tsmiExtras" Text="Extras" />
-			<MenuItem Id="tsmiContactsDownload" Text="Download contacts" />
-			<MenuItem Id="tsmiDMRID" Text="Download callsign database" />
-			<MenuItem Id="tsmiCalibrationMK22" Text="Calibration" />
-			<MenuItem Id="tsmiTheme" Text="Theme editor" />
+			<MenuItem Id="tsmiExtras" Text="Инструменты" />
+			<MenuItem Id="tsmiContactsDownload" Text="Загрузить контакты" />
+			<MenuItem Id="tsmiDMRID" Text="Загрузить базу позывных" />
+			<MenuItem Id="tsmiCalibrationMK22" Text="Калибровка" />
+			<MenuItem Id="tsmiTheme" Text="Редактор тем" />
 
-			<MenuItem Id="tsmiOpenGD77" Text="OpenGD77 support" />
+			<MenuItem Id="tsmiOpenGD77" Text="Технический центр" />
 			<MenuItem Id="tsmiFirmwareLoader" Text="Загрузчик прошивки" />
-			<MenuItem Id="tsmiRadioType" Text="Radio type" />
-			<MenuItem Id="tsmiExportCSV" Text="Export CSV" />
-			<MenuItem Id="tsmiImportCSV" Text="Import CSV" />
-			<MenuItem Id="tsmiAppendCSV" Text="Append CSV" />
-			<MenuItem Id="tsmiUpdateLocationCSV" Text="Update location from CSV" />
+			<MenuItem Id="tsmiRadioType" Text="Тип рации" />
+			<MenuItem Id="tsmiExportCSV" Text="Экспорт в CSV" />
+			<MenuItem Id="tsmiImportCSV" Text="Импорт из CSV" />
+			<MenuItem Id="tsmiAppendCSV" Text="Добавить из CSV" />
+			<MenuItem Id="tsmiUpdateLocationCSV" Text="Обновить локации из CSV" />
 			<MenuItem Id="tsmiRadioTypeItem_MK22" Text="GD77/GD77S/DM1801/RD5R" />
-			<MenuItem Id="tsmiRadioTypeItem_STM32" Text="MD-9600/RT-90,MD-UV380/RT-3S,DM-1701/RT-84,MD-2017/RT-82" />
+			<MenuItem Id="tsmiRadioTypeItem_STM32" Text="MD-9600/RT-90, MD-UV380/MD-UV390/RT-3S, DM-1701/RT-84, MD-2017/RT-82" />
 
 		</MenuStrip>
 		<ContextMenuStrip>
-			<MenuItem Id="tsmiAdd" Text="Add" />
-			<MenuItem Id="tsmiClear" Text="Clear" />
+			<MenuItem Id="tsmiAdd" Text="Добавить" />
+			<MenuItem Id="tsmiClear" Text="Очистить" />
 		</ContextMenuStrip>
 		<ContextMenuStrip>
-			<MenuItem Id="tsmiDel" Text="Delete" />
-			<MenuItem Id="tsmiRename" Text="Rename" />
-			<MenuItem Id="tsmiCopy" Text="Copy" />
-			<MenuItem Id="tsmiPaste" Text="Paste" />
-			<MenuItem Id="tsmiMoveUp" Text="Move up" />
-			<MenuItem Id="tsmiMoveDown" Text="Move down" />
+			<MenuItem Id="tsmiDel" Text="Удалить" />
+			<MenuItem Id="tsmiRename" Text="Переименовать" />
+			<MenuItem Id="tsmiCopy" Text="Копировать" />
+			<MenuItem Id="tsmiPaste" Text="Вставить" />
+			<MenuItem Id="tsmiMoveUp" Text="Вверх" />
+			<MenuItem Id="tsmiMoveDown" Text="Вниз" />
 		</ContextMenuStrip>
 		<ContextMenuStrip>
-			<MenuItem Id="tsmiCollapseAll" Text="Collapse All" />
-			<MenuItem Id="tsmiExpandAll" Text="Expand All" />
+			<MenuItem Id="tsmiCollapseAll" Text="Свернуть все" />
+			<MenuItem Id="tsmiExpandAll" Text="Развернуть все" />
 		</ContextMenuStrip>
 		<ContextMenuStrip>
-			<MenuItem Id="tsmiAddContact" Text="Add" />
-			<MenuItem Id="tsmiGroupCall" Text="Group Call" />
-			<MenuItem Id="tsmiPrivateCall" Text="Private Call" />
-			<MenuItem Id="tsmiAllCall" Text="All Call" />
+			<MenuItem Id="tsmiAddContact" Text="Добавить" />
+			<MenuItem Id="tsmiGroupCall" Text="Групповой вызов" />
+			<MenuItem Id="tsmiPrivateCall" Text="Частный вызов" />
+			<MenuItem Id="tsmiAllCall" Text="Вызов всем" />
 		</ContextMenuStrip>
 		<ToolStrip>
 			<ToolItem Id="tsbtnNew" Text="New" />
@@ -1073,10 +1073,14 @@
 		<Commons>
 			<Item Id="AdditionalLanguageNone" Text="None"/>
 			<Item Id="AdditionalLanguageNotFound" Text="Ошибка! Не найден файл локализации!"/>	
-			<Item Id="FmOnly" Text="FM only" />
-			<Item Id="Warning" Text="Warning" />
-			<Item Id="Success" Text="Success" />
-			<Item Id="Error" Text="Error" />
+			<Item Id="FmOnly" Text="Только аналоговый режим" />
+			<Item Id="Warning" Text="Внимание" />
+			<Item Id="Success" Text="Успешно" />
+			<Item Id="Error" Text="Ошибка" />
+      <Item Id="FindFirmware" Text="Найти актуальную прошивку OpenGD77 RUS" />
+      <Item Id="FlashFirmware" Text="Инструкция по прошивке рации" />
+      <Item Id="Description" Text="При прошивке будут автоматически загружены английский и русский языки. После прошивки выберите русский язык в настройках рации." />
+      <Item Id="DoNotUse" Text="НЕ ИСПОЛЬЗУЙТЕ ОРИГИНАЛЬНЫЕ ПРОШИВКИ OPENGD77!" />
 			<Item Id="SelectOfficialFirmware" Text="Select the official firmware file" />
 			<Item Id="FirmwareFiles" Text="firmware files" />
 			<Item Id="OfficialFWVerified" Text="The official firmware file has been verified, and Open firmware uploads will now have DMR functionality" />
@@ -1086,6 +1090,7 @@
 			<Item Id="RadioNotConnected" Text="Рация не подключена или находится не в режиме DFU." />
 			<Item Id="OnlyOpenMD9600FirmwareFilesSupported" Text="Ошибка донорского файла" />
 			<Item Id="Writing" Text="Запись" />
+      <Item Id="Erasing" Text="Стирание" />
 			<Item Id="UploadComplete" Text="Прошивка OpenGD77 RUS загружена в рацию" />
 			<Item Id="OperatingSystemNotSupported" Text="Операционная система не поддерживается" />
 			<Item Id="USBDataError" Text="Ошибка при соединении USB" />

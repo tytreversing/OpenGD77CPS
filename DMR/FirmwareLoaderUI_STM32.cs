@@ -347,13 +347,14 @@ public class FirmwareLoaderUI_STM32 : Form
             // 
             // btnProgram
             // 
+            this.btnProgram.BackColor = System.Drawing.Color.White;
             this.btnProgram.Font = new System.Drawing.Font("Arial", 9F);
             this.btnProgram.Location = new System.Drawing.Point(140, 259);
             this.btnProgram.Name = "btnProgram";
             this.btnProgram.Size = new System.Drawing.Size(263, 26);
             this.btnProgram.TabIndex = 7;
             this.btnProgram.Text = "Select OpenMD9600 file && update";
-            this.btnProgram.UseVisualStyleBackColor = true;
+            this.btnProgram.UseVisualStyleBackColor = false;
             this.btnProgram.Click += new System.EventHandler(this.btnProgram_Click);
             // 
             // Progress
@@ -518,13 +519,14 @@ public class FirmwareLoaderUI_STM32 : Form
             // downloadRussian
             // 
             this.downloadRussian.AutoSize = true;
+            this.downloadRussian.BackColor = System.Drawing.Color.White;
             this.downloadRussian.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.downloadRussian.Location = new System.Drawing.Point(12, 160);
             this.downloadRussian.Name = "downloadRussian";
             this.downloadRussian.Size = new System.Drawing.Size(200, 66);
             this.downloadRussian.TabIndex = 15;
             this.downloadRussian.Text = "button1";
-            this.downloadRussian.UseVisualStyleBackColor = true;
+            this.downloadRussian.UseVisualStyleBackColor = false;
             this.downloadRussian.Click += new System.EventHandler(this.downloadRussian_Click);
             // 
             // FirmwareLoaderUI_STM32

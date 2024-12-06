@@ -119,7 +119,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Update="DefaultOpenGD77.g77">
+    <None Update="app.ico">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="DefaultOpenGD77.ogd">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="DefaultTheme.gtm">

@@ -396,26 +396,26 @@
 	</HelpForm>
 	<MainForm Text="OpenGD77 CPS">
 		<TreeView>
-			<TreeNode Id="Model" Text="GD-77" />
-			<TreeNode Id="BasicInfo" Text="Band limits" />
-			<TreeNode Id="BootItem" Text="Boot screen" />
-			<TreeNode Id="Menu" Text="Menu" />
-			<TreeNode Id="NumKeyAssign" Text="Number Key Assign" />
-			<TreeNode Id="GeneralSetting" Text="DMR ID and callsign" />
-			<TreeNode Id="Buttons" Text="Buttons" />
-			<TreeNode Id="TextMsg" Text="Text Message" />
-			<TreeNode Id="Pivacy" Text="Privacy" />
-			<TreeNode Id="SignalingSys" Text="Signaling System" />
+			<TreeNode Id="Model" Text="OpenGD77 RUS" />
+			<TreeNode Id="BasicInfo" Text="Ограничения диапазонов" />
+			<TreeNode Id="BootItem" Text="Экран загрузки" />
+			<TreeNode Id="Menu" Text="Менюu" />
+			<TreeNode Id="NumKeyAssign" Text="Цифровые кнопки" />
+			<TreeNode Id="GeneralSetting" Text="DMR ID и позывной" />
+			<TreeNode Id="Buttons" Text="Кнопки" />
+			<TreeNode Id="TextMsg" Text="Текстовые сообщения" />
+			<TreeNode Id="Pivacy" Text="Шифрование" />
+			<TreeNode Id="SignalingSys" Text="Система сигналинга" />
 			<TreeNode Id="APRS" Text="APRS" />
-			<TreeNode Id="Contact" Text="Contacts" />
+			<TreeNode Id="Contact" Text="Контакты" />
 			<TreeNode Id="DtmfContact" Text="DTMF" />
-			<TreeNode Id="DigitalContact" Text="Digital Contacts" />
-			<TreeNode Id="RxGroupList" Text="TG Lists" />
-			<TreeNode Id="Zone" Text="Zones" />
-			<TreeNode Id="Channel" Text="Channels" />
-			<TreeNode Id="Scan" Text="Scan" />
-			<TreeNode Id="DtmfSignal" Text="DTMF Settings" />
-			<TreeNode Id="VFO" Text="VFO" />
+			<TreeNode Id="DigitalContact" Text="Цифровые контакты" />
+			<TreeNode Id="RxGroupList" Text="Списки групп" />
+			<TreeNode Id="Zone" Text="Зоны" />
+			<TreeNode Id="Channel" Text="Каналы" />
+			<TreeNode Id="Scan" Text="Сканирование" />
+			<TreeNode Id="DtmfSignal" Text="Настройки DTMF" />
+			<TreeNode Id="VFO" Text="Частотный режим" />
 			<TreeNode Id="VFOA" Text="VFO A" />
 			<TreeNode Id="VFOB" Text="VFO B" />
 		</TreeView>
@@ -424,6 +424,7 @@
 			<MenuItem Id="tsmiNew" Text="Новый" />
 			<MenuItem Id="tsmiSave" Text="Сохранить" />
 			<MenuItem Id="tsmiOpen" Text="Открыть" />
+      <MenuItem Id="tsmiImportG77" Text="Импорт из OpenGD77" />
 			<MenuItem Id="tsmiExit" Text="Выход" />
 			<MenuItem Id="tsmiSetting" Text="Настройки" />
 			<MenuItem Id="tsmiDeviceInfo" Text="Ограничения частот" />
@@ -659,7 +660,7 @@
 			<Control Id="btnDel" Text="Delete" />
 		</Controls>
 	</TextMsgForm>
-	<TreeForm Text="TreeView">
+	<TreeForm Text="Вкладки">
 		<Controls />
 	</TreeForm>
 	<VfoForm Text="Vfo">
@@ -1225,7 +1226,7 @@
 		<Item Id="DeviceNotFound" Text="Device not found" />
 		<Item Id="ModelNotMatch" Text="Model mismatch" />
 		<Item Id="PromptKey1" Text="Сохранить кодплаг перед выходом?" />
-		<Item Id="PromptKey2" Text="Do you want to load a new default codeplug? All current data will be replaced." />
+		<Item Id="PromptKey2" Text="Загрузить шаблон кодплага? Все данные будут заменены." />
 		<Item Id="DataFormatError" Text="Data format error" />
 		<Item Id="FirstNotDelete" Text="The first row cannot be deleted" />
 		<Item Id="OpenPortFail" Text="Failed to open serial port" />

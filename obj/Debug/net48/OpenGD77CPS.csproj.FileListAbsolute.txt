@@ -19,7 +19,7 @@ D:\OpenGD77CPS\bin\Debug\net48\WeifenLuo.WinFormsUI.Docking.dll
 D:\OpenGD77CPS\obj\Debug\net48\OpenGD77.A2AEC6AF.Up2Date
 D:\OpenGD77CPS\obj\Debug\net48\OpenGD77CPS.exe
 D:\OpenGD77CPS\obj\Debug\net48\OpenGD77CPS.pdb
-C:\Users\maste\Documents\GitHub\OpenGD77CPS\bin\Debug\net48\DefaultOpenGD77.g77
+C:\Users\maste\Documents\GitHub\OpenGD77CPS\bin\Debug\net48\DefaultOpenGD77.ogd
 C:\Users\maste\Documents\GitHub\OpenGD77CPS\bin\Debug\net48\DefaultTheme.gtm
 C:\Users\maste\Documents\GitHub\OpenGD77CPS\bin\Debug\net48\Language\CPS\English.chm
 C:\Users\maste\Documents\GitHub\OpenGD77CPS\bin\Debug\net48\Language\CPS\English.xml

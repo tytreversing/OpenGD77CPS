@@ -400,7 +400,7 @@
 	</HelpForm>
 	<MainForm Text="OpenGD77 CPS">
 		<TreeView>
-			<TreeNode Id="Model" Text="GD-77" />
+			<TreeNode Id="Model" Text="OpenGD77 RUS" />
 			<TreeNode Id="BasicInfo" Text="Band limits" />
 			<TreeNode Id="BootItem" Text="Boot screen" />
 			<TreeNode Id="Menu" Text="Menu" />
@@ -428,6 +428,7 @@
 			<MenuItem Id="tsmiNew" Text="New" />
 			<MenuItem Id="tsmiSave" Text="Save" />
 			<MenuItem Id="tsmiOpen" Text="Open" />
+      <MenuItem Id="tsmiImportG77" Text="Import from OpenGD77" />
 			<MenuItem Id="tsmiExit" Text="Exit" />
 			<MenuItem Id="tsmiSetting" Text="Setting" />
 			<MenuItem Id="tsmiDeviceInfo" Text="Band limits" />

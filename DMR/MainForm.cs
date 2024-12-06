@@ -44,7 +44,7 @@ public class MainForm : Form
 
 	public static string Language_Name;
 
-	private const string DEFAULT_DATA_FILE_NAME = "DefaultOpenGD77.g77";
+	private const string DEFAULT_DATA_FILE_NAME = "DefaultOpenGD77.ogd";
 
 	public const int LIBREDMR_CODEPLUG_VERSION = 1;
 
@@ -132,7 +132,9 @@ public class MainForm : Form
 
 	private ToolStripMenuItem tsmiOpen;
 
-	private ToolStripMenuItem tsmiExportCSV;
+    private ToolStripMenuItem tsmiImport;
+
+    private ToolStripMenuItem tsmiExportCSV;
 
 	private ToolStripMenuItem tsmiImportCSV;
 
@@ -279,8 +281,9 @@ public class MainForm : Form
 	private string _lastCodeplugFileName = string.Empty;
 
 	public static string[] StartupArgs;
-
-	public static bool EnableHiddenFeatures;
+    private ToolStripMenuItem tsmiImportG77;
+    private ToolStripSeparator toolStripSeparator5;
+    public static bool EnableHiddenFeatures;
 
 	public static string CurFileName { get; set; }
 
@@ -295,680 +298,976 @@ public class MainForm : Form
 
 	private void InitializeComponent()
 	{
-		string profileStringWithDefault = IniFileUtils.getProfileStringWithDefault("Setup", "RadioType", "MK22");
-		if (!(profileStringWithDefault == "MD9600"))
-		{
-			if (!(profileStringWithDefault == "MK22"))
-			{
-			}
-			DMR.MainForm.RadioType = DMR.MainForm.RadioTypeEnum.RadioTypeMK22;
-		}
-		else
-		{
-			DMR.MainForm.RadioType = DMR.MainForm.RadioTypeEnum.RadioTypeSTM32;
-		}
-		this.components = new System.ComponentModel.Container();
-		System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DMR.MainForm));
-		WeifenLuo.WinFormsUI.Docking.DockPanelSkin dockPanelSkin = new WeifenLuo.WinFormsUI.Docking.DockPanelSkin();
-		WeifenLuo.WinFormsUI.Docking.AutoHideStripSkin autoHideStripSkin = new WeifenLuo.WinFormsUI.Docking.AutoHideStripSkin();
-		WeifenLuo.WinFormsUI.Docking.DockPanelGradient dockPanelGradient = new WeifenLuo.WinFormsUI.Docking.DockPanelGradient();
-		WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient = new WeifenLuo.WinFormsUI.Docking.TabGradient();
-		WeifenLuo.WinFormsUI.Docking.DockPaneStripSkin dockPaneStripSkin = new WeifenLuo.WinFormsUI.Docking.DockPaneStripSkin();
-		WeifenLuo.WinFormsUI.Docking.DockPaneStripGradient dockPaneStripGradient = new WeifenLuo.WinFormsUI.Docking.DockPaneStripGradient();
-		WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient2 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
-		WeifenLuo.WinFormsUI.Docking.DockPanelGradient dockPanelGradient2 = new WeifenLuo.WinFormsUI.Docking.DockPanelGradient();
-		WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient3 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
-		WeifenLuo.WinFormsUI.Docking.DockPaneStripToolWindowGradient dockPaneStripToolWindowGradient = new WeifenLuo.WinFormsUI.Docking.DockPaneStripToolWindowGradient();
-		WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient4 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
-		WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient5 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
-		WeifenLuo.WinFormsUI.Docking.DockPanelGradient dockPanelGradient3 = new WeifenLuo.WinFormsUI.Docking.DockPanelGradient();
-		WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient6 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
-		WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient7 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
-		this.imgMain = new System.Windows.Forms.ImageList(this.components);
-		this.mnsMain = new System.Windows.Forms.MenuStrip();
-		this.tsmiFile = new System.Windows.Forms.ToolStripMenuItem();
-		this.tsmiImportExport = new System.Windows.Forms.ToolStripMenuItem();
-		this.tsmiNew = new System.Windows.Forms.ToolStripMenuItem();
-		this.tsmiSave = new System.Windows.Forms.ToolStripMenuItem();
-		this.tsmiOpen = new System.Windows.Forms.ToolStripMenuItem();
-		this.tsmiExportCSV = new System.Windows.Forms.ToolStripMenuItem();
-		this.tsmiImportCSV = new System.Windows.Forms.ToolStripMenuItem();
-		this.tsmiAppendCSV = new System.Windows.Forms.ToolStripMenuItem();
-		this.tsmiUpdateLocationCSV = new System.Windows.Forms.ToolStripMenuItem();
-		this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-		this.tsmiExit = new System.Windows.Forms.ToolStripMenuItem();
-		this.tsmiSetting = new System.Windows.Forms.ToolStripMenuItem();
-		this.tsmiDeviceInfo = new System.Windows.Forms.ToolStripMenuItem();
-		this.tsmiBootItem = new System.Windows.Forms.ToolStripMenuItem();
-		this.tsmiMenu = new System.Windows.Forms.ToolStripMenuItem();
-		this.tsmiNumKeyContact = new System.Windows.Forms.ToolStripMenuItem();
-		this.tsmiGerneralSet = new System.Windows.Forms.ToolStripMenuItem();
-		this.tsmiButton = new System.Windows.Forms.ToolStripMenuItem();
-		this.tsmiTextMsg = new System.Windows.Forms.ToolStripMenuItem();
-		this.tsmiEncrypt = new System.Windows.Forms.ToolStripMenuItem();
-		this.tsmiDtmf = new System.Windows.Forms.ToolStripMenuItem();
-		this.tsmiEmgSystem = new System.Windows.Forms.ToolStripMenuItem();
-		this.tsmiContact = new System.Windows.Forms.ToolStripMenuItem();
-		this.tsmiAPRSConfigs = new System.Windows.Forms.ToolStripMenuItem();
-		this.tsmiDtmfContact = new System.Windows.Forms.ToolStripMenuItem();
-		this.tsmiDmrContacts = new System.Windows.Forms.ToolStripMenuItem();
-		this.tsmiGrpRxList = new System.Windows.Forms.ToolStripMenuItem();
-		this.tsmiZone = new System.Windows.Forms.ToolStripMenuItem();
-		this.tsmiZoneBasic = new System.Windows.Forms.ToolStripMenuItem();
-		this.tsmiZoneList = new System.Windows.Forms.ToolStripMenuItem();
-		this.tsmiChannels = new System.Windows.Forms.ToolStripMenuItem();
-		this.tsmiVfos = new System.Windows.Forms.ToolStripMenuItem();
-		this.tsmiVfoA = new System.Windows.Forms.ToolStripMenuItem();
-		this.tsmiVfoB = new System.Windows.Forms.ToolStripMenuItem();
-		this.tsmiProgram = new System.Windows.Forms.ToolStripMenuItem();
-		this.tsmiRead = new System.Windows.Forms.ToolStripMenuItem();
-		this.tsmiWrite = new System.Windows.Forms.ToolStripMenuItem();
-		this.tsmiBasic = new System.Windows.Forms.ToolStripMenuItem();
-		this.tsmiView = new System.Windows.Forms.ToolStripMenuItem();
-		this.tsmiTree = new System.Windows.Forms.ToolStripMenuItem();
-		this.tsmiHelp = new System.Windows.Forms.ToolStripMenuItem();
-		this.tsmiToolBar = new System.Windows.Forms.ToolStripMenuItem();
-		this.tsmiStatusBar = new System.Windows.Forms.ToolStripMenuItem();
-		this.tsmiLanguage = new System.Windows.Forms.ToolStripMenuItem();
-		this.tsmiExtras = new System.Windows.Forms.ToolStripMenuItem();
-		this.tsmiContactsDownload = new System.Windows.Forms.ToolStripMenuItem();
-		this.tsmiDMRID = new System.Windows.Forms.ToolStripMenuItem();
-		this.tsmiCalibrationMK22 = new System.Windows.Forms.ToolStripMenuItem();
-		this.tsmiOpenGD77 = new System.Windows.Forms.ToolStripMenuItem();
-		this.tsmiFirmwareLoader = new System.Windows.Forms.ToolStripMenuItem();
-		this.tsmiRadioType = new System.Windows.Forms.ToolStripMenuItem();
-		this.tsmiRadioTypeItem_MK22 = new System.Windows.Forms.ToolStripMenuItem();
-		this.tsmiRadioTypeItem_STM32 = new System.Windows.Forms.ToolStripMenuItem();
-		this.tsmiTheme = new System.Windows.Forms.ToolStripMenuItem();
-		this.tsmiWindow = new System.Windows.Forms.ToolStripMenuItem();
-		this.tsmiCascade = new System.Windows.Forms.ToolStripMenuItem();
-		this.tsmiTileHor = new System.Windows.Forms.ToolStripMenuItem();
-		this.tsmiTileVer = new System.Windows.Forms.ToolStripMenuItem();
-		this.tsmiCloseAll = new System.Windows.Forms.ToolStripMenuItem();
-		this.tsmiAbout = new System.Windows.Forms.ToolStripMenuItem();
-		this.cmsGroup = new System.Windows.Forms.ContextMenuStrip(this.components);
-		this.tsmiAdd = new System.Windows.Forms.ToolStripMenuItem();
-		this.tsmiClear = new System.Windows.Forms.ToolStripMenuItem();
-		this.cmsSub = new System.Windows.Forms.ContextMenuStrip(this.components);
-		this.tsmiDel = new System.Windows.Forms.ToolStripMenuItem();
-		this.tsmiRename = new System.Windows.Forms.ToolStripMenuItem();
-		this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-		this.tsmiCopy = new System.Windows.Forms.ToolStripMenuItem();
-		this.tsmiMoveUp = new System.Windows.Forms.ToolStripMenuItem();
-		this.tsmiMoveDown = new System.Windows.Forms.ToolStripMenuItem();
-		this.tsmiPaste = new System.Windows.Forms.ToolStripMenuItem();
-		this.cmsGroupContact = new System.Windows.Forms.ContextMenuStrip(this.components);
-		this.tsmiAddContact = new System.Windows.Forms.ToolStripMenuItem();
-		this.tsmiGroupCall = new System.Windows.Forms.ToolStripMenuItem();
-		this.tsmiPrivateCall = new System.Windows.Forms.ToolStripMenuItem();
-		this.tsmiAllCall = new System.Windows.Forms.ToolStripMenuItem();
-		this.ofdMain = new System.Windows.Forms.OpenFileDialog();
-		this.sfdMain = new System.Windows.Forms.SaveFileDialog();
-		this.cmsTree = new System.Windows.Forms.ContextMenuStrip(this.components);
-		this.tsmiCollapseAll = new System.Windows.Forms.ToolStripMenuItem();
-		this.tsmiExpandAll = new System.Windows.Forms.ToolStripMenuItem();
-		this.dockPanel = new WeifenLuo.WinFormsUI.Docking.DockPanel();
-		this.pnlTvw = new System.Windows.Forms.Panel();
-		this.tvwMain = new System.Windows.Forms.TreeView();
-		this.ssrMain = new System.Windows.Forms.StatusStrip();
-		this.slblComapny = new System.Windows.Forms.ToolStripStatusLabel();
-		this.tsrMain = new System.Windows.Forms.ToolStrip();
-		this.tsbtnNew = new System.Windows.Forms.ToolStripButton();
-		this.tsbtnOpen = new System.Windows.Forms.ToolStripButton();
-		this.tsbtnSave = new System.Windows.Forms.ToolStripButton();
-		this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-		this.tsbtnRead = new System.Windows.Forms.ToolStripButton();
-		this.tsbtnWrite = new System.Windows.Forms.ToolStripButton();
-		this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-		this.tsbtnAbout = new System.Windows.Forms.ToolStripButton();
-		this.mnsMain.SuspendLayout();
-		this.cmsGroup.SuspendLayout();
-		this.cmsSub.SuspendLayout();
-		this.cmsGroupContact.SuspendLayout();
-		this.cmsTree.SuspendLayout();
-		this.pnlTvw.SuspendLayout();
-		this.ssrMain.SuspendLayout();
-		this.tsrMain.SuspendLayout();
-		base.SuspendLayout();
-		this.imgMain.ImageStream = (System.Windows.Forms.ImageListStreamer)resources.GetObject("imgMain.ImageStream");
-		this.imgMain.TransparentColor = System.Drawing.Color.Transparent;
-		this.imgMain.Images.SetKeyName(0, "46.png");
-		this.imgMain.Images.SetKeyName(1, "47.png");
-		this.imgMain.Images.SetKeyName(2, "21.png");
-		this.mnsMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[9] { this.tsmiFile, this.tsmiSetting, this.tsmiProgram, this.tsmiView, this.tsmiRadioType, this.tsmiExtras, this.tsmiLanguage, this.tsmiWindow, this.tsmiAbout });
-		this.mnsMain.Location = new System.Drawing.Point(234, 0);
-		this.mnsMain.MdiWindowListItem = this.tsmiWindow;
-		this.mnsMain.Name = "mnsMain";
-		this.mnsMain.Padding = new System.Windows.Forms.Padding(7, 3, 0, 3);
-		this.mnsMain.Size = new System.Drawing.Size(900, 27);
-		this.mnsMain.TabIndex = 4;
-		this.tsmiFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[7] { this.tsmiNew, this.tsmiSave, this.tsmiOpen, this.toolStripSeparator1, this.tsmiImportExport, this.toolStripSeparator1, this.tsmiExit });
-		this.tsmiFile.Name = "tsmiFile";
-		this.tsmiFile.Size = new System.Drawing.Size(39, 21);
-		this.tsmiFile.Text = "File";
-		this.tsmiNew.Name = "tsmiNew";
-		this.tsmiNew.Size = new System.Drawing.Size(108, 22);
-		this.tsmiNew.Text = "New";
-		this.tsmiNew.Click += new System.EventHandler(tsbtnNew_Click);
-		this.tsmiNew.ShortcutKeys = System.Windows.Forms.Keys.N | System.Windows.Forms.Keys.Control;
-		this.tsmiSave.Name = "tsmiSave";
-		this.tsmiSave.Size = new System.Drawing.Size(108, 22);
-		this.tsmiSave.Text = "Save";
-		this.tsmiSave.Click += new System.EventHandler(tsbtnSave_Click);
-		this.tsmiSave.ShortcutKeys = System.Windows.Forms.Keys.S | System.Windows.Forms.Keys.Control;
-		this.tsmiOpen.Name = "tsmiOpen";
-		this.tsmiOpen.Size = new System.Drawing.Size(108, 22);
-		this.tsmiOpen.Text = "Open";
-		this.tsmiOpen.Click += new System.EventHandler(tsbtnOpen_Click);
-		this.tsmiOpen.ShortcutKeys = System.Windows.Forms.Keys.O | System.Windows.Forms.Keys.Control;
-		this.tsmiExportCSV.Name = "tsmiExportCSV";
-		this.tsmiExportCSV.Size = new System.Drawing.Size(108, 22);
-		this.tsmiExportCSV.Text = "Export to CSV";
-		this.tsmiExportCSV.ShortcutKeys = System.Windows.Forms.Keys.E | System.Windows.Forms.Keys.Control;
-		this.tsmiExportCSV.Click += new System.EventHandler(tsbtnExportCSV_Click);
-		this.tsmiImportCSV.Name = "tsmiImportCSV";
-		this.tsmiImportCSV.Size = new System.Drawing.Size(108, 22);
-		this.tsmiImportCSV.Text = "Import from CSV";
-		this.tsmiImportCSV.ShortcutKeys = System.Windows.Forms.Keys.I | System.Windows.Forms.Keys.Control;
-		this.tsmiImportCSV.Click += new System.EventHandler(tsbtnImportCSV_Click);
-		this.tsmiAppendCSV.Name = "tsmiAppendCSV";
-		this.tsmiAppendCSV.Size = new System.Drawing.Size(108, 22);
-		this.tsmiAppendCSV.Text = "Append from CSV";
-		this.tsmiAppendCSV.ShortcutKeys = System.Windows.Forms.Keys.A | System.Windows.Forms.Keys.Control;
-		this.tsmiAppendCSV.Click += new System.EventHandler(tsbtnAppendCSV_Click);
-		this.tsmiUpdateLocationCSV.Name = "tsmiUpdateLocationCSV";
-		this.tsmiUpdateLocationCSV.Size = new System.Drawing.Size(108, 22);
-		this.tsmiUpdateLocationCSV.Text = "Update location from CSV";
-		this.tsmiUpdateLocationCSV.ShortcutKeys = System.Windows.Forms.Keys.L | System.Windows.Forms.Keys.Control;
-		this.tsmiUpdateLocationCSV.Click += new System.EventHandler(tsbtnUpdateLocationCSV_Click);
-		this.tsmiImportExport.Text = "CSV";
-		this.tsmiImportExport.Name = "tsmiImportExport";
-		this.tsmiImportExport.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[4] { this.tsmiExportCSV, this.tsmiImportCSV, this.tsmiAppendCSV, this.tsmiUpdateLocationCSV });
-		this.toolStripSeparator1.Name = "toolStripSeparator1";
-		this.toolStripSeparator1.Size = new System.Drawing.Size(105, 6);
-		this.tsmiExit.Name = "tsmiExit";
-		this.tsmiExit.Size = new System.Drawing.Size(108, 22);
-		this.tsmiExit.Text = "Exit";
-		this.tsmiExit.Click += new System.EventHandler(tsmiExit_Click);
-		if (DMR.MainForm.EnableHiddenFeatures)
-		{
-			this.tsmiSetting.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[11]
-			{
-				this.tsmiBootItem, this.tsmiGerneralSet, this.tsmiDeviceInfo, this.tsmiTextMsg, this.tsmiDtmf, this.tsmiAPRSConfigs, this.tsmiContact, this.tsmiGrpRxList, this.tsmiZone, this.tsmiChannels,
-				this.tsmiVfos
-			});
-		}
-		else
-		{
-			this.tsmiSetting.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[10] { this.tsmiBootItem, this.tsmiGerneralSet, this.tsmiDeviceInfo, this.tsmiDtmf, this.tsmiAPRSConfigs, this.tsmiContact, this.tsmiGrpRxList, this.tsmiZone, this.tsmiChannels, this.tsmiVfos });
-		}
-		this.tsmiSetting.Name = "tsmiSetting";
-		this.tsmiSetting.Size = new System.Drawing.Size(60, 21);
-		this.tsmiSetting.Text = "Setting";
-		this.tsmiSetting.DropDownOpening += new System.EventHandler(tsmiSetting_DropDownOpening);
-		this.tsmiDeviceInfo.Name = "tsmiDeviceInfo";
-		this.tsmiDeviceInfo.Size = new System.Drawing.Size(191, 22);
-		this.tsmiDeviceInfo.Text = "Basic Information";
-		this.tsmiDeviceInfo.Click += new System.EventHandler(tsmiDeviceInfo_Click);
-		this.tsmiBootItem.Name = "tsmiBootItem";
-		this.tsmiBootItem.Size = new System.Drawing.Size(191, 22);
-		this.tsmiBootItem.Text = "Boot screen";
-		this.tsmiBootItem.Click += new System.EventHandler(tsmiBootItem_Click);
-		this.tsmiMenu.Name = "tsmiMenu";
-		this.tsmiMenu.Size = new System.Drawing.Size(191, 22);
-		this.tsmiMenu.Text = "Menu";
-		this.tsmiMenu.Click += new System.EventHandler(tsmiMenu_Click);
-		this.tsmiNumKeyContact.Name = "tsmiNumKeyContact";
-		this.tsmiNumKeyContact.Size = new System.Drawing.Size(191, 22);
-		this.tsmiNumKeyContact.Text = "Number Key Assign";
-		this.tsmiNumKeyContact.Click += new System.EventHandler(tsmiNumKeyContact_Click);
-		this.tsmiGerneralSet.Name = "tsmiGerneralSet";
-		this.tsmiGerneralSet.Size = new System.Drawing.Size(191, 22);
-		this.tsmiGerneralSet.Text = "General Setting";
-		this.tsmiGerneralSet.Click += new System.EventHandler(tsmiGerneralSet_Click);
-		this.tsmiButton.Name = "tsmiButton";
-		this.tsmiButton.Size = new System.Drawing.Size(191, 22);
-		this.tsmiButton.Text = "Buttons";
-		this.tsmiButton.Click += new System.EventHandler(tsmiButton_Click);
-		this.tsmiTextMsg.Name = "tsmiTextMsg";
-		this.tsmiTextMsg.Size = new System.Drawing.Size(191, 22);
-		this.tsmiTextMsg.Text = "Text Message";
-		this.tsmiTextMsg.Click += new System.EventHandler(tsmiTextMsg_Click);
-		this.tsmiEncrypt.Name = "tsmiEncrypt";
-		this.tsmiEncrypt.Size = new System.Drawing.Size(191, 22);
-		this.tsmiEncrypt.Text = "Privacy";
-		this.tsmiEncrypt.Click += new System.EventHandler(tsmiEncrypt_Click);
-		this.tsmiDtmf.Name = "tsmiDtmf";
-		this.tsmiDtmf.Size = new System.Drawing.Size(185, 22);
-		this.tsmiDtmf.Text = "DTMF Settings";
-		this.tsmiDtmf.Click += new System.EventHandler(tsmiDtmf_Click);
-		this.tsmiEmgSystem.Name = "tsmiEmgSystem";
-		this.tsmiEmgSystem.Size = new System.Drawing.Size(185, 22);
-		this.tsmiEmgSystem.Text = "APRS";
-		this.tsmiEmgSystem.Click += new System.EventHandler(tsmiEmgSystem_Click);
-		this.tsmiAPRSConfigs.Name = "tsmiAPRSConfigs";
-		this.tsmiAPRSConfigs.Size = new System.Drawing.Size(191, 22);
-		this.tsmiAPRSConfigs.Text = "APRS Configuations";
-		this.tsmiAPRSConfigs.Click += new System.EventHandler(tsmiAPRS_Configs_Click);
-		this.tsmiContact.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[2] { this.tsmiDtmfContact, this.tsmiDmrContacts });
-		this.tsmiContact.Name = "tsmiContact";
-		this.tsmiContact.Size = new System.Drawing.Size(191, 22);
-		this.tsmiContact.Text = "Contacts";
-		this.tsmiDtmfContact.Name = "tsmiDtmfContact";
-		this.tsmiDtmfContact.Size = new System.Drawing.Size(161, 22);
-		this.tsmiDtmfContact.Text = "DTMF";
-		this.tsmiDtmfContact.Click += new System.EventHandler(tsmiDtmfContact_Click);
-		this.tsmiDmrContacts.Name = "tsmiDmrContacts";
-		this.tsmiDmrContacts.Size = new System.Drawing.Size(161, 22);
-		this.tsmiDmrContacts.Text = "Digital Contacts";
-		this.tsmiDmrContacts.Click += new System.EventHandler(tsmiDmrContacts_Click);
-		this.tsmiGrpRxList.Name = "tsmiGrpRxList";
-		this.tsmiGrpRxList.Size = new System.Drawing.Size(191, 22);
-		this.tsmiGrpRxList.Text = "Rx Group List";
-		this.tsmiGrpRxList.Click += new System.EventHandler(tsmiGrpRxList_Click);
-		this.tsmiZone.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[2] { this.tsmiZoneBasic, this.tsmiZoneList });
-		this.tsmiZone.Name = "tsmiZone";
-		this.tsmiZone.Size = new System.Drawing.Size(191, 22);
-		this.tsmiZone.Text = "Zone";
-		this.tsmiZone.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[2] { this.tsmiZoneBasic, this.tsmiZoneList });
-		this.tsmiZoneBasic.Name = "tsmiZoneBasic";
-		this.tsmiZoneBasic.Size = new System.Drawing.Size(124, 22);
-		this.tsmiZoneBasic.Text = "Zone Basic";
-		this.tsmiZoneBasic.Click += new System.EventHandler(tsmiZoneBasic_Click);
-		this.tsmiZoneList.Name = "tsmiZoneList";
-		this.tsmiZoneList.Size = new System.Drawing.Size(124, 22);
-		this.tsmiZoneList.Text = "ZoneList";
-		this.tsmiZoneList.Click += new System.EventHandler(tsmiZoneList_Click);
-		this.tsmiChannels.Name = "tsmiChannels";
-		this.tsmiChannels.Size = new System.Drawing.Size(191, 22);
-		this.tsmiChannels.Text = "Channels";
-		this.tsmiChannels.Click += new System.EventHandler(tsmiChannels_Click);
-		this.tsmiVfos.Name = "tsmiVfos";
-		this.tsmiVfos.Size = new System.Drawing.Size(191, 22);
-		this.tsmiVfos.Text = "VFOs";
-		this.tsmiVfoA.Name = "tsmiVfoA";
-		this.tsmiVfoA.Size = new System.Drawing.Size(191, 22);
-		this.tsmiVfoA.Text = "VFO A";
-		this.tsmiVfoA.Click += new System.EventHandler(tsmiVfoA_Click);
-		this.tsmiVfoB.Name = "tsmiVfoB";
-		this.tsmiVfoB.Size = new System.Drawing.Size(191, 22);
-		this.tsmiVfoB.Text = "VFO B";
-		this.tsmiVfoB.Click += new System.EventHandler(tsmiVfoB_Click);
-		this.tsmiVfos.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[2] { this.tsmiVfoA, this.tsmiVfoB });
-		this.tsmiProgram.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[2] { this.tsmiRead, this.tsmiWrite });
-		this.tsmiProgram.Name = "tsmiProgram";
-		this.tsmiProgram.Size = new System.Drawing.Size(71, 21);
-		this.tsmiProgram.Text = "Program";
-		this.tsmiRead.Name = "tsmiRead";
-		this.tsmiRead.ShortcutKeys = System.Windows.Forms.Keys.R | System.Windows.Forms.Keys.Control;
-		this.tsmiRead.Size = new System.Drawing.Size(156, 22);
-		this.tsmiRead.Text = "Read";
-		this.tsmiRead.Click += new System.EventHandler(tsbtnRead_Click);
-		this.tsmiWrite.Name = "tsmiWrite";
-		this.tsmiWrite.ShortcutKeys = System.Windows.Forms.Keys.W | System.Windows.Forms.Keys.Control;
-		this.tsmiWrite.Size = new System.Drawing.Size(156, 22);
-		this.tsmiWrite.Text = "Write";
-		this.tsmiWrite.Click += new System.EventHandler(tsbtnWrite_Click);
-		this.tsmiView.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[4] { this.tsmiTree, this.tsmiHelp, this.tsmiToolBar, this.tsmiStatusBar });
-		this.tsmiView.Name = "tsmiView";
-		this.tsmiView.Size = new System.Drawing.Size(47, 21);
-		this.tsmiView.Text = "View";
-		this.tsmiTree.Checked = true;
-		this.tsmiTree.Name = "tsmiTree";
-		this.tsmiTree.Size = new System.Drawing.Size(135, 22);
-		this.tsmiTree.Text = "TreeView";
-		this.tsmiTree.Click += new System.EventHandler(tsmiTree_Click);
-		this.tsmiHelp.Name = "tsmiHelp";
-		this.tsmiHelp.Size = new System.Drawing.Size(135, 22);
-		this.tsmiHelp.Text = "HelpView";
-		this.tsmiHelp.Click += new System.EventHandler(tsmiHelp_Click);
-		this.tsmiToolBar.Checked = true;
-		this.tsmiToolBar.CheckState = System.Windows.Forms.CheckState.Checked;
-		this.tsmiToolBar.Name = "tsmiToolBar";
-		this.tsmiToolBar.Size = new System.Drawing.Size(135, 22);
-		this.tsmiToolBar.Text = "Toolbar";
-		this.tsmiToolBar.Click += new System.EventHandler(tsmiToolBar_Click);
-		this.tsmiStatusBar.Checked = true;
-		this.tsmiStatusBar.CheckState = System.Windows.Forms.CheckState.Checked;
-		this.tsmiStatusBar.Name = "tsmiStatusBar";
-		this.tsmiStatusBar.Size = new System.Drawing.Size(135, 22);
-		this.tsmiStatusBar.Text = "Status Bar";
-		this.tsmiStatusBar.Click += new System.EventHandler(tsmiStatusBar_Click);
-		this.tsmiLanguage.Name = "tsmiLanguage";
-		this.tsmiLanguage.Size = new System.Drawing.Size(77, 21);
-		this.tsmiLanguage.Text = "Language";
-		this.tsmiExtras.Name = "tsmiExtras";
-		this.tsmiExtras.Size = new System.Drawing.Size(77, 21);
-		this.tsmiExtras.Text = "Extras";
-		this.tsmiExtras.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[5] { this.tsmiDMRID, this.tsmiOpenGD77, this.tsmiFirmwareLoader, this.tsmiCalibrationMK22, this.tsmiTheme });
-		this.tsmiRadioType.Name = "tsmiRadioType";
-		this.tsmiRadioType.Size = new System.Drawing.Size(77, 21);
-		this.tsmiRadioType.Text = "Radio Type";
-		this.tsmiRadioType.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[2] { this.tsmiRadioTypeItem_MK22, this.tsmiRadioTypeItem_STM32 });
-		this.tsmiContactsDownload.Name = "tsmiContactsDownload";
-		this.tsmiContactsDownload.Size = new System.Drawing.Size(156, 22);
-		this.tsmiContactsDownload.Text = "Download contacts";
-		this.tsmiContactsDownload.Click += new System.EventHandler(tsbtnContactsDownload_Click);
-		this.tsmiDMRID.Name = "tsmiDMRID";
-		this.tsmiDMRID.Size = new System.Drawing.Size(156, 22);
-		this.tsmiDMRID.Text = "DMR ID";
-		this.tsmiDMRID.Enabled = true;
-		this.tsmiDMRID.Click += new System.EventHandler(tsbtnDMRID_Click);
-		this.tsmiCalibrationMK22.Name = "tsmiCalibrationMK22";
-		this.tsmiCalibrationMK22.Size = new System.Drawing.Size(156, 22);
-		this.tsmiCalibrationMK22.Text = "Calibration editor";
-		this.tsmiCalibrationMK22.Enabled = true;
-		this.tsmiCalibrationMK22.Click += new System.EventHandler(tsbtnCalibration_Click);
-		this.tsmiOpenGD77.Name = "tsmiOpenGD77";
-		this.tsmiOpenGD77.Size = new System.Drawing.Size(156, 22);
-		this.tsmiOpenGD77.Text = "OpenGD77 support";
-		this.tsmiOpenGD77.Enabled = true;
-		this.tsmiOpenGD77.Click += new System.EventHandler(tsmiOpenGD77_Click);
-		this.tsmiFirmwareLoader.Name = "tsmiFirmwareLoader";
-		this.tsmiFirmwareLoader.Size = new System.Drawing.Size(156, 22);
-		this.tsmiFirmwareLoader.Text = "Firmware loader";
-		this.tsmiFirmwareLoader.Enabled = true;
-		this.tsmiFirmwareLoader.Click += new System.EventHandler(tsmiFirmwareLoader_Click);
-		this.tsmiRadioTypeItem_MK22.Name = "tsmiRadioTypeItem_MK22";
-		this.tsmiRadioTypeItem_MK22.Size = new System.Drawing.Size(156, 22);
-		this.tsmiRadioTypeItem_MK22.Text = "GD77/GD77S/DM1801/RD5R";
-		this.tsmiRadioTypeItem_MK22.Enabled = true;
-		this.tsmiRadioTypeItem_MK22.Tag = DMR.MainForm.RadioTypeEnum.RadioTypeMK22;
-		this.tsmiRadioTypeItem_MK22.Checked = DMR.MainForm.RadioType == DMR.MainForm.RadioTypeEnum.RadioTypeMK22;
-		this.tsmiRadioTypeItem_MK22.Click += new System.EventHandler(tsmiRadioTypeClickHandler);
-		this.tsmiRadioTypeItem_STM32.Name = "tsmiRadioTypeItem_STM32";
-		this.tsmiRadioTypeItem_STM32.Size = new System.Drawing.Size(156, 22);
-		this.tsmiRadioTypeItem_STM32.Text = "MD-9600/RT-90,MD-UV380/RT-3S";
-		this.tsmiRadioTypeItem_STM32.Enabled = true;
-		this.tsmiRadioTypeItem_STM32.Tag = DMR.MainForm.RadioTypeEnum.RadioTypeSTM32;
-		this.tsmiRadioTypeItem_STM32.Checked = DMR.MainForm.RadioType == DMR.MainForm.RadioTypeEnum.RadioTypeSTM32;
-		this.tsmiRadioTypeItem_STM32.Click += new System.EventHandler(tsmiRadioTypeClickHandler);
-		this.tsmiTheme.Name = "tsmiTheme";
-		this.tsmiTheme.Size = new System.Drawing.Size(156, 22);
-		this.tsmiTheme.Text = "Theme editor";
-		this.tsmiTheme.Enabled = DMR.MainForm.RadioType != DMR.MainForm.RadioTypeEnum.RadioTypeMK22;
-		this.tsmiTheme.Click += new System.EventHandler(tsbtnTheme_Click);
-		this.tsmiWindow.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[4] { this.tsmiCascade, this.tsmiTileHor, this.tsmiTileVer, this.tsmiCloseAll });
-		this.tsmiWindow.Name = "tsmiWindow";
-		this.tsmiWindow.Size = new System.Drawing.Size(67, 21);
-		this.tsmiWindow.Text = "Window";
-		this.tsmiCascade.Name = "tsmiCascade";
-		this.tsmiCascade.Size = new System.Drawing.Size(157, 22);
-		this.tsmiCascade.Text = "Cascade";
-		this.tsmiCascade.Click += new System.EventHandler(tsmiCascade_Click);
-		this.tsmiTileHor.Name = "tsmiTileHor";
-		this.tsmiTileHor.Size = new System.Drawing.Size(157, 22);
-		this.tsmiTileHor.Text = "Tile Horzontal";
-		this.tsmiTileHor.Click += new System.EventHandler(tsmiTileHor_Click);
-		this.tsmiTileVer.Name = "tsmiTileVer";
-		this.tsmiTileVer.Size = new System.Drawing.Size(157, 22);
-		this.tsmiTileVer.Text = "Tile Vertical";
-		this.tsmiTileVer.Click += new System.EventHandler(tsmiTileVer_Click);
-		this.tsmiCloseAll.Name = "tsmiCloseAll";
-		this.tsmiCloseAll.Size = new System.Drawing.Size(157, 22);
-		this.tsmiCloseAll.Text = "Close All";
-		this.tsmiCloseAll.Click += new System.EventHandler(tsmiCloseAll_Click);
-		this.tsmiAbout.Name = "tsmiAbout";
-		this.tsmiAbout.Size = new System.Drawing.Size(55, 21);
-		this.tsmiAbout.Text = "About";
-		this.tsmiAbout.Click += new System.EventHandler(tsbtnAbout_Click);
-		this.cmsGroup.Items.AddRange(new System.Windows.Forms.ToolStripItem[2] { this.tsmiAdd, this.tsmiClear });
-		this.cmsGroup.Name = "cmsGroup";
-		this.cmsGroup.Size = new System.Drawing.Size(139, 48);
-		this.cmsGroup.Opening += new System.ComponentModel.CancelEventHandler(cmsGroup_Opening);
-		this.tsmiAdd.Name = "tsmiAdd";
-		this.tsmiAdd.ShortcutKeyDisplayString = "Enter";
-		this.tsmiAdd.ShortcutKeys = System.Windows.Forms.Keys.Return | System.Windows.Forms.Keys.Control;
-		this.tsmiAdd.Size = new System.Drawing.Size(138, 22);
-		this.tsmiAdd.Text = "Add";
-		this.tsmiAdd.Click += new System.EventHandler(tsmiAdd_Click);
-		this.tsmiClear.Name = "tsmiClear";
-		this.tsmiClear.Size = new System.Drawing.Size(138, 22);
-		this.tsmiClear.Text = "Clear";
-		this.tsmiClear.Click += new System.EventHandler(tsmiClear_Click);
-		this.cmsSub.Items.AddRange(new System.Windows.Forms.ToolStripItem[8] { this.tsmiDel, this.tsmiRename, this.toolStripSeparator4, this.tsmiCopy, this.tsmiPaste, this.toolStripSeparator4, this.tsmiMoveUp, this.tsmiMoveDown });
-		this.cmsSub.Name = "cmsSub";
-		this.cmsSub.Size = new System.Drawing.Size(159, 98);
-		this.cmsSub.Opening += new System.ComponentModel.CancelEventHandler(cmsSub_Opening);
-		this.tsmiDel.Name = "tsmiDel";
-		this.tsmiDel.ShortcutKeyDisplayString = "";
-		this.tsmiDel.ShortcutKeys = System.Windows.Forms.Keys.Delete;
-		this.tsmiDel.Size = new System.Drawing.Size(158, 22);
-		this.tsmiDel.Text = "Delete";
-		this.tsmiDel.Click += new System.EventHandler(tsmiDel_Click);
-		this.tsmiRename.Name = "tsmiRename";
-		this.tsmiRename.ShortcutKeys = System.Windows.Forms.Keys.F2;
-		this.tsmiRename.Size = new System.Drawing.Size(158, 22);
-		this.tsmiRename.Text = "Rename";
-		this.tsmiRename.Click += new System.EventHandler(tsmiRename_Click);
-		this.toolStripSeparator4.Name = "toolStripSeparator4";
-		this.toolStripSeparator4.Size = new System.Drawing.Size(155, 6);
-		this.tsmiCopy.Name = "tsmiCopy";
-		this.tsmiCopy.ShortcutKeys = System.Windows.Forms.Keys.C | System.Windows.Forms.Keys.Control;
-		this.tsmiCopy.Size = new System.Drawing.Size(158, 22);
-		this.tsmiCopy.Text = "Copy";
-		this.tsmiCopy.Click += new System.EventHandler(tsmiCopy_Click);
-		this.tsmiPaste.Name = "tsmiPaste";
-		this.tsmiPaste.ShortcutKeys = System.Windows.Forms.Keys.V | System.Windows.Forms.Keys.Control;
-		this.tsmiPaste.Size = new System.Drawing.Size(158, 22);
-		this.tsmiPaste.Text = "Paste";
-		this.tsmiPaste.Click += new System.EventHandler(tsmiPaste_Click);
-		this.tsmiMoveUp.Name = "tsmiMoveUp";
-		this.tsmiMoveUp.ShortcutKeys = System.Windows.Forms.Keys.U | System.Windows.Forms.Keys.Control;
-		this.tsmiMoveUp.Size = new System.Drawing.Size(158, 22);
-		this.tsmiMoveUp.Text = "Move up";
-		this.tsmiMoveUp.Click += new System.EventHandler(tsmiMoveUp_Click);
-		this.tsmiMoveDown.Name = "tsmiMoveDown";
-		this.tsmiMoveDown.ShortcutKeys = System.Windows.Forms.Keys.D | System.Windows.Forms.Keys.Control;
-		this.tsmiMoveDown.Size = new System.Drawing.Size(158, 22);
-		this.tsmiMoveDown.Text = "Move down";
-		this.tsmiMoveDown.Click += new System.EventHandler(tsmiMoveDown_Click);
-		this.cmsGroupContact.Items.AddRange(new System.Windows.Forms.ToolStripItem[1] { this.tsmiAddContact });
-		this.cmsGroupContact.Name = "cmsGroup";
-		this.cmsGroupContact.Size = new System.Drawing.Size(101, 26);
-		this.cmsGroupContact.Opening += new System.ComponentModel.CancelEventHandler(cmsGroupContact_Opening);
-		this.tsmiAddContact.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[3] { this.tsmiGroupCall, this.tsmiPrivateCall, this.tsmiAllCall });
-		this.tsmiAddContact.Name = "tsmiAddContact";
-		this.tsmiAddContact.Size = new System.Drawing.Size(100, 22);
-		this.tsmiAddContact.Text = "Add";
-		this.tsmiGroupCall.Name = "tsmiGroupCall";
-		this.tsmiGroupCall.ShortcutKeyDisplayString = "Enter";
-		this.tsmiGroupCall.ShortcutKeys = System.Windows.Forms.Keys.Return | System.Windows.Forms.Keys.Control;
-		this.tsmiGroupCall.Size = new System.Drawing.Size(231, 22);
-		this.tsmiGroupCall.Text = "Group Call";
-		this.tsmiGroupCall.Click += new System.EventHandler(tsmiGroupCall_Click);
-		this.tsmiPrivateCall.Name = "tsmiPrivateCall";
-		this.tsmiPrivateCall.ShortcutKeyDisplayString = "Ctrl+Alt+Enter";
-		this.tsmiPrivateCall.ShortcutKeys = System.Windows.Forms.Keys.Return | System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt;
-		this.tsmiPrivateCall.Size = new System.Drawing.Size(231, 22);
-		this.tsmiPrivateCall.Text = "Private Call";
-		this.tsmiPrivateCall.Click += new System.EventHandler(tsmiPrivateCall_Click);
-		this.tsmiAllCall.Name = "tsmiAllCall";
-		this.tsmiAllCall.Size = new System.Drawing.Size(231, 22);
-		this.tsmiAllCall.Text = "All Call";
-		this.tsmiAllCall.Click += new System.EventHandler(tsmiAllCall_Click);
-		this.ofdMain.Filter = "OpenGD77 (*.g77)|*.g77|GD-77 (*.dat,*.g77)|*.dat;*.g77";
-		this.sfdMain.Filter = "OpenGD77 (*.g77)|*.g77|GD-77 (*.dat,*.g77)|*.dat;*.g77";
-		this.cmsTree.Items.AddRange(new System.Windows.Forms.ToolStripItem[2] { this.tsmiCollapseAll, this.tsmiExpandAll });
-		this.cmsTree.Name = "cmsTree";
-		this.cmsTree.Size = new System.Drawing.Size(145, 48);
-		this.tsmiCollapseAll.Name = "tsmiCollapseAll";
-		this.tsmiCollapseAll.Size = new System.Drawing.Size(144, 22);
-		this.tsmiCollapseAll.Text = "Collapse All";
-		this.tsmiCollapseAll.Click += new System.EventHandler(tsmiCollapseAll_Click);
-		this.tsmiExpandAll.Name = "tsmiExpandAll";
-		this.tsmiExpandAll.Size = new System.Drawing.Size(144, 22);
-		this.tsmiExpandAll.Text = "Expand All";
-		this.tsmiExpandAll.Click += new System.EventHandler(tsmiExpandAll_Click);
-		this.dockPanel.AllowEndUserDocking = false;
-		this.dockPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-		this.dockPanel.DocumentStyle = WeifenLuo.WinFormsUI.Docking.DocumentStyle.SystemMdi;
-		this.dockPanel.Location = new System.Drawing.Point(234, 52);
-		this.dockPanel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-		this.dockPanel.Name = "dockPanel";
-		this.dockPanel.Size = new System.Drawing.Size(865, 635);
-		dockPanelGradient.EndColor = System.Drawing.SystemColors.ControlLight;
-		dockPanelGradient.StartColor = System.Drawing.SystemColors.ControlLight;
-		autoHideStripSkin.DockStripGradient = dockPanelGradient;
-		tabGradient.EndColor = System.Drawing.SystemColors.Control;
-		tabGradient.StartColor = System.Drawing.SystemColors.Control;
-		tabGradient.TextColor = System.Drawing.SystemColors.ControlDarkDark;
-		autoHideStripSkin.TabGradient = tabGradient;
-		autoHideStripSkin.TextFont = new System.Drawing.Font("Microsoft Yahei", 9f);
-		dockPanelSkin.AutoHideStripSkin = autoHideStripSkin;
-		tabGradient2.EndColor = System.Drawing.SystemColors.ControlLightLight;
-		tabGradient2.StartColor = System.Drawing.SystemColors.ControlLightLight;
-		tabGradient2.TextColor = System.Drawing.SystemColors.ControlText;
-		dockPaneStripGradient.ActiveTabGradient = tabGradient2;
-		dockPanelGradient2.EndColor = System.Drawing.SystemColors.Control;
-		dockPanelGradient2.StartColor = System.Drawing.SystemColors.Control;
-		dockPaneStripGradient.DockStripGradient = dockPanelGradient2;
-		tabGradient3.EndColor = System.Drawing.SystemColors.ControlLight;
-		tabGradient3.StartColor = System.Drawing.SystemColors.ControlLight;
-		tabGradient3.TextColor = System.Drawing.SystemColors.ControlText;
-		dockPaneStripGradient.InactiveTabGradient = tabGradient3;
-		dockPaneStripSkin.DocumentGradient = dockPaneStripGradient;
-		dockPaneStripSkin.TextFont = new System.Drawing.Font("Microsoft Yahei", 9f);
-		tabGradient4.EndColor = System.Drawing.SystemColors.ActiveCaption;
-		tabGradient4.LinearGradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
-		tabGradient4.StartColor = System.Drawing.SystemColors.GradientActiveCaption;
-		tabGradient4.TextColor = System.Drawing.SystemColors.ActiveCaptionText;
-		dockPaneStripToolWindowGradient.ActiveCaptionGradient = tabGradient4;
-		tabGradient5.EndColor = System.Drawing.SystemColors.Control;
-		tabGradient5.StartColor = System.Drawing.SystemColors.Control;
-		tabGradient5.TextColor = System.Drawing.SystemColors.ControlText;
-		dockPaneStripToolWindowGradient.ActiveTabGradient = tabGradient5;
-		dockPanelGradient3.EndColor = System.Drawing.SystemColors.ControlLight;
-		dockPanelGradient3.StartColor = System.Drawing.SystemColors.ControlLight;
-		dockPaneStripToolWindowGradient.DockStripGradient = dockPanelGradient3;
-		tabGradient6.EndColor = System.Drawing.SystemColors.InactiveCaption;
-		tabGradient6.LinearGradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
-		tabGradient6.StartColor = System.Drawing.SystemColors.GradientInactiveCaption;
-		tabGradient6.TextColor = System.Drawing.SystemColors.InactiveCaptionText;
-		dockPaneStripToolWindowGradient.InactiveCaptionGradient = tabGradient6;
-		tabGradient7.EndColor = System.Drawing.Color.Transparent;
-		tabGradient7.StartColor = System.Drawing.Color.Transparent;
-		tabGradient7.TextColor = System.Drawing.SystemColors.ControlDarkDark;
-		dockPaneStripToolWindowGradient.InactiveTabGradient = tabGradient7;
-		dockPaneStripSkin.ToolWindowGradient = dockPaneStripToolWindowGradient;
-		dockPanelSkin.DockPaneStripSkin = dockPaneStripSkin;
-		this.dockPanel.TabIndex = 6;
-		this.pnlTvw.Controls.Add(this.tvwMain);
-		this.pnlTvw.Dock = System.Windows.Forms.DockStyle.Left;
-		this.pnlTvw.Location = new System.Drawing.Point(0, 0);
-		this.pnlTvw.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-		this.pnlTvw.Name = "pnlTvw";
-		this.pnlTvw.Size = new System.Drawing.Size(234, 709);
-		this.pnlTvw.TabIndex = 9;
-		this.tvwMain.Dock = System.Windows.Forms.DockStyle.Fill;
-		this.tvwMain.ImageIndex = 0;
-		this.tvwMain.ImageList = this.imgMain;
-		this.tvwMain.Location = new System.Drawing.Point(0, 0);
-		this.tvwMain.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-		this.tvwMain.Name = "tvwMain";
-		this.tvwMain.SelectedImageIndex = 0;
-		this.tvwMain.Size = new System.Drawing.Size(234, 709);
-		this.tvwMain.TabIndex = 0;
-		this.tvwMain.TabStop = false;
-		this.tvwMain.AfterLabelEdit += new System.Windows.Forms.NodeLabelEditEventHandler(tvwMain_AfterLabelEdit);
-		this.tvwMain.DoubleClick += new System.EventHandler(tvwMain_DoubleClick);
-		this.tvwMain.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(tvwMain_NodeMouseClick);
-		this.tvwMain.BeforeLabelEdit += new System.Windows.Forms.NodeLabelEditEventHandler(tvwMain_BeforeLabelEdit);
-		this.tvwMain.KeyDown += new System.Windows.Forms.KeyEventHandler(tvwMain_KeyDown);
-		this.ssrMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[1] { this.slblComapny });
-		this.ssrMain.Location = new System.Drawing.Point(234, 687);
-		this.ssrMain.Name = "ssrMain";
-		this.ssrMain.Padding = new System.Windows.Forms.Padding(1, 0, 17, 0);
-		this.ssrMain.Size = new System.Drawing.Size(865, 22);
-		this.ssrMain.TabIndex = 12;
-		this.ssrMain.Text = "statusStrip1";
-		this.slblComapny.Name = "slblComapny";
-		this.slblComapny.Size = new System.Drawing.Size(63, 17);
-		this.slblComapny.Text = "Prompt：";
-		this.tsrMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[8] { this.tsbtnNew, this.tsbtnOpen, this.tsbtnSave, this.toolStripSeparator2, this.tsbtnRead, this.tsbtnWrite, this.toolStripSeparator3, this.tsbtnAbout });
-		this.tsrMain.Location = new System.Drawing.Point(234, 27);
-		this.tsrMain.Name = "tsrMain";
-		this.tsrMain.Size = new System.Drawing.Size(865, 25);
-		this.tsrMain.TabIndex = 13;
-		this.tsrMain.Text = "toolStrip1";
-		this.tsbtnNew.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-		this.tsbtnNew.Image = (System.Drawing.Image)resources.GetObject("tsbtnNew.Image");
-		this.tsbtnNew.ImageTransparentColor = System.Drawing.Color.Magenta;
-		this.tsbtnNew.Name = "tsbtnNew";
-		this.tsbtnNew.Size = new System.Drawing.Size(23, 22);
-		this.tsbtnNew.Text = "New";
-		this.tsbtnNew.Click += new System.EventHandler(tsbtnNew_Click);
-		this.tsbtnOpen.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-		this.tsbtnOpen.Image = (System.Drawing.Image)resources.GetObject("tsbtnOpen.Image");
-		this.tsbtnOpen.ImageTransparentColor = System.Drawing.Color.Magenta;
-		this.tsbtnOpen.Name = "tsbtnOpen";
-		this.tsbtnOpen.Size = new System.Drawing.Size(23, 22);
-		this.tsbtnOpen.Text = "Open";
-		this.tsbtnOpen.Click += new System.EventHandler(tsbtnOpen_Click);
-		this.tsbtnSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-		this.tsbtnSave.Image = (System.Drawing.Image)resources.GetObject("tsbtnSave.Image");
-		this.tsbtnSave.ImageTransparentColor = System.Drawing.Color.Magenta;
-		this.tsbtnSave.Name = "tsbtnSave";
-		this.tsbtnSave.Size = new System.Drawing.Size(23, 22);
-		this.tsbtnSave.Text = "Save";
-		this.tsbtnSave.ToolTipText = "Save";
-		this.tsbtnSave.Click += new System.EventHandler(tsbtnSave_Click);
-		this.toolStripSeparator2.Name = "toolStripSeparator2";
-		this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
-		this.tsbtnRead.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-		this.tsbtnRead.Image = (System.Drawing.Image)resources.GetObject("tsbtnRead.Image");
-		this.tsbtnRead.ImageTransparentColor = System.Drawing.Color.Magenta;
-		this.tsbtnRead.Name = "tsbtnRead";
-		this.tsbtnRead.Size = new System.Drawing.Size(23, 22);
-		this.tsbtnRead.Text = "Read";
-		this.tsbtnRead.Click += new System.EventHandler(tsbtnRead_Click);
-		this.tsbtnWrite.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-		this.tsbtnWrite.Image = (System.Drawing.Image)resources.GetObject("tsbtnWrite.Image");
-		this.tsbtnWrite.ImageTransparentColor = System.Drawing.Color.Magenta;
-		this.tsbtnWrite.Name = "tsbtnWrite";
-		this.tsbtnWrite.Size = new System.Drawing.Size(23, 22);
-		this.tsbtnWrite.Text = "Write";
-		this.tsbtnWrite.Click += new System.EventHandler(tsbtnWrite_Click);
-		this.toolStripSeparator3.Name = "toolStripSeparator3";
-		this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
-		this.tsbtnAbout.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-		this.tsbtnAbout.Image = (System.Drawing.Image)resources.GetObject("tsbtnAbout.Image");
-		this.tsbtnAbout.ImageTransparentColor = System.Drawing.Color.Magenta;
-		this.tsbtnAbout.Name = "tsbtnAbout";
-		this.tsbtnAbout.Size = new System.Drawing.Size(23, 22);
-		this.tsbtnAbout.Text = "About";
-		this.tsbtnAbout.Click += new System.EventHandler(tsbtnAbout_Click);
-		base.AutoScaleDimensions = new System.Drawing.SizeF(7f, 16f);
-		base.ClientSize = new System.Drawing.Size(1099, 709);
-		base.Controls.Add(this.dockPanel);
-		base.Controls.Add(this.tsrMain);
-		base.Controls.Add(this.ssrMain);
-		base.Controls.Add(this.mnsMain);
-		base.Controls.Add(this.pnlTvw);
-		this.DoubleBuffered = true;
-		base.IsMdiContainer = true;
-		base.KeyPreview = true;
-		base.MainMenuStrip = this.mnsMain;
-		base.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-		base.Name = "MainForm";
-		this.Text = DMR.MainForm.PRODUCT_NAME;
-		base.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-		base.Load += new System.EventHandler(MainForm_Load);
-		base.MdiChildActivate += new System.EventHandler(MainForm_MdiChildActivate);
-		base.KeyDown += new System.Windows.Forms.KeyEventHandler(MainForm_KeyDown);
-		this.mnsMain.ResumeLayout(false);
-		this.mnsMain.PerformLayout();
-		this.cmsGroup.ResumeLayout(false);
-		this.cmsSub.ResumeLayout(false);
-		this.cmsGroupContact.ResumeLayout(false);
-		this.cmsTree.ResumeLayout(false);
-		this.pnlTvw.ResumeLayout(false);
-		this.ssrMain.ResumeLayout(false);
-		this.ssrMain.PerformLayout();
-		this.tsrMain.ResumeLayout(false);
-		this.tsrMain.PerformLayout();
-		base.ResumeLayout(false);
-		base.PerformLayout();
+            this.components = new System.ComponentModel.Container();
+            this.imgMain = new System.Windows.Forms.ImageList(this.components);
+            this.mnsMain = new System.Windows.Forms.MenuStrip();
+            this.tsmiFile = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiNew = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiSave = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiOpen = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiImportExport = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiExportCSV = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiImportCSV = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiAppendCSV = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiUpdateLocationCSV = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiImportG77 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmiExit = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiSetting = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiProgram = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiRead = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWrite = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiView = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiTree = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiHelp = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiToolBar = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiStatusBar = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiRadioType = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiRadioTypeItem_MK22 = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiRadioTypeItem_STM32 = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiExtras = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiDMRID = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiOpenGD77 = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiFirmwareLoader = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiCalibrationMK22 = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiTheme = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiLanguage = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWindow = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiCascade = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiTileHor = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiTileVer = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiCloseAll = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiAbout = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiImport = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiDeviceInfo = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiBootItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiNumKeyContact = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiGerneralSet = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiButton = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiTextMsg = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiEncrypt = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiDtmf = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiEmgSystem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiContact = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiDtmfContact = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiDmrContacts = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiAPRSConfigs = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiGrpRxList = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiZone = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiZoneBasic = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiZoneList = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiChannels = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiVfos = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiVfoA = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiVfoB = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiBasic = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiContactsDownload = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsGroup = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tsmiAdd = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiClear = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsSub = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tsmiDel = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiRename = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiCopy = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiPaste = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmiMoveUp = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiMoveDown = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsGroupContact = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tsmiAddContact = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiGroupCall = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiPrivateCall = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiAllCall = new System.Windows.Forms.ToolStripMenuItem();
+            this.ofdMain = new System.Windows.Forms.OpenFileDialog();
+            this.sfdMain = new System.Windows.Forms.SaveFileDialog();
+            this.cmsTree = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tsmiCollapseAll = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiExpandAll = new System.Windows.Forms.ToolStripMenuItem();
+            this.dockPanel = new WeifenLuo.WinFormsUI.Docking.DockPanel();
+            this.pnlTvw = new System.Windows.Forms.Panel();
+            this.tvwMain = new System.Windows.Forms.TreeView();
+            this.ssrMain = new System.Windows.Forms.StatusStrip();
+            this.slblComapny = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tsrMain = new System.Windows.Forms.ToolStrip();
+            this.tsbtnNew = new System.Windows.Forms.ToolStripButton();
+            this.tsbtnOpen = new System.Windows.Forms.ToolStripButton();
+            this.tsbtnSave = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsbtnRead = new System.Windows.Forms.ToolStripButton();
+            this.tsbtnWrite = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsbtnAbout = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnsMain.SuspendLayout();
+            this.cmsGroup.SuspendLayout();
+            this.cmsSub.SuspendLayout();
+            this.cmsGroupContact.SuspendLayout();
+            this.cmsTree.SuspendLayout();
+            this.pnlTvw.SuspendLayout();
+            this.ssrMain.SuspendLayout();
+            this.tsrMain.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // imgMain
+            // 
+            this.imgMain.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.imgMain.ImageSize = new System.Drawing.Size(16, 16);
+            this.imgMain.TransparentColor = System.Drawing.Color.Transparent;
+            // 
+            // mnsMain
+            // 
+            this.mnsMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiFile,
+            this.tsmiSetting,
+            this.tsmiProgram,
+            this.tsmiView,
+            this.tsmiRadioType,
+            this.tsmiExtras,
+            this.tsmiLanguage,
+            this.tsmiWindow,
+            this.tsmiAbout});
+            this.mnsMain.Location = new System.Drawing.Point(234, 0);
+            this.mnsMain.MdiWindowListItem = this.tsmiWindow;
+            this.mnsMain.Name = "mnsMain";
+            this.mnsMain.Padding = new System.Windows.Forms.Padding(7, 3, 0, 3);
+            this.mnsMain.Size = new System.Drawing.Size(865, 29);
+            this.mnsMain.TabIndex = 4;
+            // 
+            // tsmiFile
+            // 
+            this.tsmiFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiNew,
+            this.tsmiSave,
+            this.tsmiOpen,
+            this.tsmiImportG77,
+            this.toolStripSeparator5,
+            this.tsmiImportExport,
+            this.toolStripSeparator1,
+            this.tsmiExit});
+            this.tsmiFile.Name = "tsmiFile";
+            this.tsmiFile.Size = new System.Drawing.Size(41, 23);
+            this.tsmiFile.Text = "File";
+            // 
+            // tsmiNew
+            // 
+            this.tsmiNew.Name = "tsmiNew";
+            this.tsmiNew.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
+            this.tsmiNew.Size = new System.Drawing.Size(281, 24);
+            this.tsmiNew.Text = "New";
+            this.tsmiNew.Click += new System.EventHandler(this.tsbtnNew_Click);
+            // 
+            // tsmiSave
+            // 
+            this.tsmiSave.Name = "tsmiSave";
+            this.tsmiSave.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.tsmiSave.Size = new System.Drawing.Size(281, 24);
+            this.tsmiSave.Text = "Save";
+            this.tsmiSave.Click += new System.EventHandler(this.tsbtnSave_Click);
+            // 
+            // tsmiOpen
+            // 
+            this.tsmiOpen.Name = "tsmiOpen";
+            this.tsmiOpen.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
+            this.tsmiOpen.Size = new System.Drawing.Size(281, 24);
+            this.tsmiOpen.Text = "Open";
+            this.tsmiOpen.Click += new System.EventHandler(this.tsbtnOpen_Click);
+            // 
+            // tsmiImportExport
+            // 
+            this.tsmiImportExport.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiExportCSV,
+            this.tsmiImportCSV,
+            this.tsmiAppendCSV,
+            this.tsmiUpdateLocationCSV});
+            this.tsmiImportExport.Name = "tsmiImportExport";
+            this.tsmiImportExport.Size = new System.Drawing.Size(281, 24);
+            this.tsmiImportExport.Text = "CSV";
+            // 
+            // tsmiExportCSV
+            // 
+            this.tsmiExportCSV.Name = "tsmiExportCSV";
+            this.tsmiExportCSV.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
+            this.tsmiExportCSV.Size = new System.Drawing.Size(294, 24);
+            this.tsmiExportCSV.Text = "Export to CSV";
+            this.tsmiExportCSV.Click += new System.EventHandler(this.tsbtnExportCSV_Click);
+            // 
+            // tsmiImportCSV
+            // 
+            this.tsmiImportCSV.Name = "tsmiImportCSV";
+            this.tsmiImportCSV.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.I)));
+            this.tsmiImportCSV.Size = new System.Drawing.Size(294, 24);
+            this.tsmiImportCSV.Text = "Import from CSV";
+            this.tsmiImportCSV.Click += new System.EventHandler(this.tsbtnImportCSV_Click);
+            // 
+            // tsmiAppendCSV
+            // 
+            this.tsmiAppendCSV.Name = "tsmiAppendCSV";
+            this.tsmiAppendCSV.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
+            this.tsmiAppendCSV.Size = new System.Drawing.Size(294, 24);
+            this.tsmiAppendCSV.Text = "Append from CSV";
+            this.tsmiAppendCSV.Click += new System.EventHandler(this.tsbtnAppendCSV_Click);
+            // 
+            // tsmiUpdateLocationCSV
+            // 
+            this.tsmiUpdateLocationCSV.Name = "tsmiUpdateLocationCSV";
+            this.tsmiUpdateLocationCSV.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L)));
+            this.tsmiUpdateLocationCSV.Size = new System.Drawing.Size(294, 24);
+            this.tsmiUpdateLocationCSV.Text = "Update location from CSV";
+            this.tsmiUpdateLocationCSV.Click += new System.EventHandler(this.tsbtnUpdateLocationCSV_Click);
+            // 
+            // tsmiImportG77
+            // 
+            this.tsmiImportG77.Name = "tsmiImportG77";
+            this.tsmiImportG77.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.I)));
+            this.tsmiImportG77.Size = new System.Drawing.Size(281, 24);
+            this.tsmiImportG77.Text = "Import from OpenGD77";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(278, 6);
+            // 
+            // tsmiExit
+            // 
+            this.tsmiExit.Name = "tsmiExit";
+            this.tsmiExit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
+            this.tsmiExit.Size = new System.Drawing.Size(281, 24);
+            this.tsmiExit.Text = "Exit";
+            this.tsmiExit.Click += new System.EventHandler(this.tsmiExit_Click);
+            // 
+            // tsmiSetting
+            // 
+            this.tsmiSetting.Name = "tsmiSetting";
+            this.tsmiSetting.Size = new System.Drawing.Size(64, 23);
+            this.tsmiSetting.Text = "Setting";
+            this.tsmiSetting.DropDownOpening += new System.EventHandler(this.tsmiSetting_DropDownOpening);
+            // 
+            // tsmiProgram
+            // 
+            this.tsmiProgram.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiRead,
+            this.tsmiWrite});
+            this.tsmiProgram.Name = "tsmiProgram";
+            this.tsmiProgram.Size = new System.Drawing.Size(74, 23);
+            this.tsmiProgram.Text = "Program";
+            // 
+            // tsmiRead
+            // 
+            this.tsmiRead.Name = "tsmiRead";
+            this.tsmiRead.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
+            this.tsmiRead.Size = new System.Drawing.Size(174, 24);
+            this.tsmiRead.Text = "Read";
+            this.tsmiRead.Click += new System.EventHandler(this.tsbtnRead_Click);
+            // 
+            // tsmiWrite
+            // 
+            this.tsmiWrite.Name = "tsmiWrite";
+            this.tsmiWrite.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.W)));
+            this.tsmiWrite.Size = new System.Drawing.Size(174, 24);
+            this.tsmiWrite.Text = "Write";
+            this.tsmiWrite.Click += new System.EventHandler(this.tsbtnWrite_Click);
+            // 
+            // tsmiView
+            // 
+            this.tsmiView.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiTree,
+            this.tsmiHelp,
+            this.tsmiToolBar,
+            this.tsmiStatusBar});
+            this.tsmiView.Name = "tsmiView";
+            this.tsmiView.Size = new System.Drawing.Size(50, 23);
+            this.tsmiView.Text = "View";
+            // 
+            // tsmiTree
+            // 
+            this.tsmiTree.Checked = true;
+            this.tsmiTree.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.tsmiTree.Name = "tsmiTree";
+            this.tsmiTree.Size = new System.Drawing.Size(140, 24);
+            this.tsmiTree.Text = "TreeView";
+            this.tsmiTree.Click += new System.EventHandler(this.tsmiTree_Click);
+            // 
+            // tsmiHelp
+            // 
+            this.tsmiHelp.Name = "tsmiHelp";
+            this.tsmiHelp.Size = new System.Drawing.Size(140, 24);
+            this.tsmiHelp.Text = "HelpView";
+            this.tsmiHelp.Click += new System.EventHandler(this.tsmiHelp_Click);
+            // 
+            // tsmiToolBar
+            // 
+            this.tsmiToolBar.Checked = true;
+            this.tsmiToolBar.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.tsmiToolBar.Name = "tsmiToolBar";
+            this.tsmiToolBar.Size = new System.Drawing.Size(140, 24);
+            this.tsmiToolBar.Text = "Toolbar";
+            this.tsmiToolBar.Click += new System.EventHandler(this.tsmiToolBar_Click);
+            // 
+            // tsmiStatusBar
+            // 
+            this.tsmiStatusBar.Checked = true;
+            this.tsmiStatusBar.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.tsmiStatusBar.Name = "tsmiStatusBar";
+            this.tsmiStatusBar.Size = new System.Drawing.Size(140, 24);
+            this.tsmiStatusBar.Text = "Status Bar";
+            this.tsmiStatusBar.Click += new System.EventHandler(this.tsmiStatusBar_Click);
+            // 
+            // tsmiRadioType
+            // 
+            this.tsmiRadioType.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiRadioTypeItem_MK22,
+            this.tsmiRadioTypeItem_STM32});
+            this.tsmiRadioType.Name = "tsmiRadioType";
+            this.tsmiRadioType.Size = new System.Drawing.Size(87, 23);
+            this.tsmiRadioType.Text = "Radio Type";
+            // 
+            // tsmiRadioTypeItem_MK22
+            // 
+            this.tsmiRadioTypeItem_MK22.Name = "tsmiRadioTypeItem_MK22";
+            this.tsmiRadioTypeItem_MK22.Size = new System.Drawing.Size(295, 24);
+            this.tsmiRadioTypeItem_MK22.Tag = DMR.MainForm.RadioTypeEnum.RadioTypeMK22;
+            this.tsmiRadioTypeItem_MK22.Text = "GD77/GD77S/DM1801/RD5R";
+            this.tsmiRadioTypeItem_MK22.Click += new System.EventHandler(this.tsmiRadioTypeClickHandler);
+            // 
+            // tsmiRadioTypeItem_STM32
+            // 
+            this.tsmiRadioTypeItem_STM32.Name = "tsmiRadioTypeItem_STM32";
+            this.tsmiRadioTypeItem_STM32.Size = new System.Drawing.Size(295, 24);
+            this.tsmiRadioTypeItem_STM32.Tag = DMR.MainForm.RadioTypeEnum.RadioTypeSTM32;
+            this.tsmiRadioTypeItem_STM32.Text = "MD-9600/RT-90,MD-UV380/RT-3S";
+            this.tsmiRadioTypeItem_STM32.Click += new System.EventHandler(this.tsmiRadioTypeClickHandler);
+            // 
+            // tsmiExtras
+            // 
+            this.tsmiExtras.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiDMRID,
+            this.tsmiOpenGD77,
+            this.tsmiFirmwareLoader,
+            this.tsmiCalibrationMK22,
+            this.tsmiTheme});
+            this.tsmiExtras.Name = "tsmiExtras";
+            this.tsmiExtras.Size = new System.Drawing.Size(57, 23);
+            this.tsmiExtras.Text = "Extras";
+            // 
+            // tsmiDMRID
+            // 
+            this.tsmiDMRID.Name = "tsmiDMRID";
+            this.tsmiDMRID.Size = new System.Drawing.Size(200, 24);
+            this.tsmiDMRID.Text = "DMR ID";
+            this.tsmiDMRID.Click += new System.EventHandler(this.tsbtnDMRID_Click);
+            // 
+            // tsmiOpenGD77
+            // 
+            this.tsmiOpenGD77.Name = "tsmiOpenGD77";
+            this.tsmiOpenGD77.Size = new System.Drawing.Size(200, 24);
+            this.tsmiOpenGD77.Text = "OpenGD77 support";
+            this.tsmiOpenGD77.Click += new System.EventHandler(this.tsmiOpenGD77_Click);
+            // 
+            // tsmiFirmwareLoader
+            // 
+            this.tsmiFirmwareLoader.Name = "tsmiFirmwareLoader";
+            this.tsmiFirmwareLoader.Size = new System.Drawing.Size(200, 24);
+            this.tsmiFirmwareLoader.Text = "Firmware loader";
+            this.tsmiFirmwareLoader.Click += new System.EventHandler(this.tsmiFirmwareLoader_Click);
+            // 
+            // tsmiCalibrationMK22
+            // 
+            this.tsmiCalibrationMK22.Name = "tsmiCalibrationMK22";
+            this.tsmiCalibrationMK22.Size = new System.Drawing.Size(200, 24);
+            this.tsmiCalibrationMK22.Text = "Calibration editor";
+            this.tsmiCalibrationMK22.Click += new System.EventHandler(this.tsbtnCalibration_Click);
+            // 
+            // tsmiTheme
+            // 
+            this.tsmiTheme.Name = "tsmiTheme";
+            this.tsmiTheme.Size = new System.Drawing.Size(200, 24);
+            this.tsmiTheme.Text = "Theme editor";
+            this.tsmiTheme.Click += new System.EventHandler(this.tsbtnTheme_Click);
+            // 
+            // tsmiLanguage
+            // 
+            this.tsmiLanguage.Name = "tsmiLanguage";
+            this.tsmiLanguage.Size = new System.Drawing.Size(81, 23);
+            this.tsmiLanguage.Text = "Language";
+            // 
+            // tsmiWindow
+            // 
+            this.tsmiWindow.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiCascade,
+            this.tsmiTileHor,
+            this.tsmiTileVer,
+            this.tsmiCloseAll});
+            this.tsmiWindow.Name = "tsmiWindow";
+            this.tsmiWindow.Size = new System.Drawing.Size(71, 23);
+            this.tsmiWindow.Text = "Window";
+            // 
+            // tsmiCascade
+            // 
+            this.tsmiCascade.Name = "tsmiCascade";
+            this.tsmiCascade.Size = new System.Drawing.Size(162, 24);
+            this.tsmiCascade.Text = "Cascade";
+            this.tsmiCascade.Click += new System.EventHandler(this.tsmiCascade_Click);
+            // 
+            // tsmiTileHor
+            // 
+            this.tsmiTileHor.Name = "tsmiTileHor";
+            this.tsmiTileHor.Size = new System.Drawing.Size(162, 24);
+            this.tsmiTileHor.Text = "Tile Horzontal";
+            this.tsmiTileHor.Click += new System.EventHandler(this.tsmiTileHor_Click);
+            // 
+            // tsmiTileVer
+            // 
+            this.tsmiTileVer.Name = "tsmiTileVer";
+            this.tsmiTileVer.Size = new System.Drawing.Size(162, 24);
+            this.tsmiTileVer.Text = "Tile Vertical";
+            this.tsmiTileVer.Click += new System.EventHandler(this.tsmiTileVer_Click);
+            // 
+            // tsmiCloseAll
+            // 
+            this.tsmiCloseAll.Name = "tsmiCloseAll";
+            this.tsmiCloseAll.Size = new System.Drawing.Size(162, 24);
+            this.tsmiCloseAll.Text = "Close All";
+            this.tsmiCloseAll.Click += new System.EventHandler(this.tsmiCloseAll_Click);
+            // 
+            // tsmiAbout
+            // 
+            this.tsmiAbout.Name = "tsmiAbout";
+            this.tsmiAbout.Size = new System.Drawing.Size(59, 23);
+            this.tsmiAbout.Text = "About";
+            this.tsmiAbout.Click += new System.EventHandler(this.tsbtnAbout_Click);
+            // 
+            // tsmiImport
+            // 
+            this.tsmiImport.Name = "tsmiImport";
+            this.tsmiImport.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.I)));
+            this.tsmiImport.Size = new System.Drawing.Size(108, 22);
+            this.tsmiImport.Text = "Import from OpenGD77";
+            this.tsmiImport.Click += new System.EventHandler(this.tsbtnOpen_Click);
+            // 
+            // tsmiDeviceInfo
+            // 
+            this.tsmiDeviceInfo.Name = "tsmiDeviceInfo";
+            this.tsmiDeviceInfo.Size = new System.Drawing.Size(191, 22);
+            this.tsmiDeviceInfo.Text = "Basic Information";
+            this.tsmiDeviceInfo.Click += new System.EventHandler(this.tsmiDeviceInfo_Click);
+            // 
+            // tsmiBootItem
+            // 
+            this.tsmiBootItem.Name = "tsmiBootItem";
+            this.tsmiBootItem.Size = new System.Drawing.Size(191, 22);
+            this.tsmiBootItem.Text = "Boot screen";
+            this.tsmiBootItem.Click += new System.EventHandler(this.tsmiBootItem_Click);
+            // 
+            // tsmiMenu
+            // 
+            this.tsmiMenu.Name = "tsmiMenu";
+            this.tsmiMenu.Size = new System.Drawing.Size(191, 22);
+            this.tsmiMenu.Text = "Menu";
+            this.tsmiMenu.Click += new System.EventHandler(this.tsmiMenu_Click);
+            // 
+            // tsmiNumKeyContact
+            // 
+            this.tsmiNumKeyContact.Name = "tsmiNumKeyContact";
+            this.tsmiNumKeyContact.Size = new System.Drawing.Size(191, 22);
+            this.tsmiNumKeyContact.Text = "Number Key Assign";
+            this.tsmiNumKeyContact.Click += new System.EventHandler(this.tsmiNumKeyContact_Click);
+            // 
+            // tsmiGerneralSet
+            // 
+            this.tsmiGerneralSet.Name = "tsmiGerneralSet";
+            this.tsmiGerneralSet.Size = new System.Drawing.Size(191, 22);
+            this.tsmiGerneralSet.Text = "General Setting";
+            this.tsmiGerneralSet.Click += new System.EventHandler(this.tsmiGerneralSet_Click);
+            // 
+            // tsmiButton
+            // 
+            this.tsmiButton.Name = "tsmiButton";
+            this.tsmiButton.Size = new System.Drawing.Size(191, 22);
+            this.tsmiButton.Text = "Buttons";
+            this.tsmiButton.Click += new System.EventHandler(this.tsmiButton_Click);
+            // 
+            // tsmiTextMsg
+            // 
+            this.tsmiTextMsg.Name = "tsmiTextMsg";
+            this.tsmiTextMsg.Size = new System.Drawing.Size(191, 22);
+            this.tsmiTextMsg.Text = "Text Message";
+            this.tsmiTextMsg.Click += new System.EventHandler(this.tsmiTextMsg_Click);
+            // 
+            // tsmiEncrypt
+            // 
+            this.tsmiEncrypt.Name = "tsmiEncrypt";
+            this.tsmiEncrypt.Size = new System.Drawing.Size(191, 22);
+            this.tsmiEncrypt.Text = "Privacy";
+            this.tsmiEncrypt.Click += new System.EventHandler(this.tsmiEncrypt_Click);
+            // 
+            // tsmiDtmf
+            // 
+            this.tsmiDtmf.Name = "tsmiDtmf";
+            this.tsmiDtmf.Size = new System.Drawing.Size(185, 22);
+            this.tsmiDtmf.Text = "DTMF Settings";
+            this.tsmiDtmf.Click += new System.EventHandler(this.tsmiDtmf_Click);
+            // 
+            // tsmiEmgSystem
+            // 
+            this.tsmiEmgSystem.Name = "tsmiEmgSystem";
+            this.tsmiEmgSystem.Size = new System.Drawing.Size(185, 22);
+            this.tsmiEmgSystem.Text = "APRS";
+            this.tsmiEmgSystem.Click += new System.EventHandler(this.tsmiEmgSystem_Click);
+            // 
+            // tsmiContact
+            // 
+            this.tsmiContact.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiDtmfContact,
+            this.tsmiDmrContacts});
+            this.tsmiContact.Name = "tsmiContact";
+            this.tsmiContact.Size = new System.Drawing.Size(191, 22);
+            this.tsmiContact.Text = "Contacts";
+            // 
+            // tsmiDtmfContact
+            // 
+            this.tsmiDtmfContact.Name = "tsmiDtmfContact";
+            this.tsmiDtmfContact.Size = new System.Drawing.Size(175, 24);
+            this.tsmiDtmfContact.Text = "DTMF";
+            this.tsmiDtmfContact.Click += new System.EventHandler(this.tsmiDtmfContact_Click);
+            // 
+            // tsmiDmrContacts
+            // 
+            this.tsmiDmrContacts.Name = "tsmiDmrContacts";
+            this.tsmiDmrContacts.Size = new System.Drawing.Size(175, 24);
+            this.tsmiDmrContacts.Text = "Digital Contacts";
+            this.tsmiDmrContacts.Click += new System.EventHandler(this.tsmiDmrContacts_Click);
+            // 
+            // tsmiAPRSConfigs
+            // 
+            this.tsmiAPRSConfigs.Name = "tsmiAPRSConfigs";
+            this.tsmiAPRSConfigs.Size = new System.Drawing.Size(191, 22);
+            this.tsmiAPRSConfigs.Text = "APRS Configuations";
+            this.tsmiAPRSConfigs.Click += new System.EventHandler(this.tsmiAPRS_Configs_Click);
+            // 
+            // tsmiGrpRxList
+            // 
+            this.tsmiGrpRxList.Name = "tsmiGrpRxList";
+            this.tsmiGrpRxList.Size = new System.Drawing.Size(191, 22);
+            this.tsmiGrpRxList.Text = "Rx Group List";
+            this.tsmiGrpRxList.Click += new System.EventHandler(this.tsmiGrpRxList_Click);
+            // 
+            // tsmiZone
+            // 
+            this.tsmiZone.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiZoneBasic,
+            this.tsmiZoneList});
+            this.tsmiZone.Name = "tsmiZone";
+            this.tsmiZone.Size = new System.Drawing.Size(191, 22);
+            this.tsmiZone.Text = "Zone";
+            // 
+            // tsmiZoneBasic
+            // 
+            this.tsmiZoneBasic.Name = "tsmiZoneBasic";
+            this.tsmiZoneBasic.Size = new System.Drawing.Size(143, 24);
+            this.tsmiZoneBasic.Text = "Zone Basic";
+            this.tsmiZoneBasic.Click += new System.EventHandler(this.tsmiZoneBasic_Click);
+            // 
+            // tsmiZoneList
+            // 
+            this.tsmiZoneList.Name = "tsmiZoneList";
+            this.tsmiZoneList.Size = new System.Drawing.Size(143, 24);
+            this.tsmiZoneList.Text = "ZoneList";
+            this.tsmiZoneList.Click += new System.EventHandler(this.tsmiZoneList_Click);
+            // 
+            // tsmiChannels
+            // 
+            this.tsmiChannels.Name = "tsmiChannels";
+            this.tsmiChannels.Size = new System.Drawing.Size(191, 22);
+            this.tsmiChannels.Text = "Channels";
+            this.tsmiChannels.Click += new System.EventHandler(this.tsmiChannels_Click);
+            // 
+            // tsmiVfos
+            // 
+            this.tsmiVfos.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiVfoA,
+            this.tsmiVfoB});
+            this.tsmiVfos.Name = "tsmiVfos";
+            this.tsmiVfos.Size = new System.Drawing.Size(191, 22);
+            this.tsmiVfos.Text = "VFOs";
+            // 
+            // tsmiVfoA
+            // 
+            this.tsmiVfoA.Name = "tsmiVfoA";
+            this.tsmiVfoA.Size = new System.Drawing.Size(118, 24);
+            this.tsmiVfoA.Text = "VFO A";
+            this.tsmiVfoA.Click += new System.EventHandler(this.tsmiVfoA_Click);
+            // 
+            // tsmiVfoB
+            // 
+            this.tsmiVfoB.Name = "tsmiVfoB";
+            this.tsmiVfoB.Size = new System.Drawing.Size(118, 24);
+            this.tsmiVfoB.Text = "VFO B";
+            this.tsmiVfoB.Click += new System.EventHandler(this.tsmiVfoB_Click);
+            // 
+            // tsmiBasic
+            // 
+            this.tsmiBasic.Name = "tsmiBasic";
+            this.tsmiBasic.Size = new System.Drawing.Size(32, 19);
+            // 
+            // tsmiContactsDownload
+            // 
+            this.tsmiContactsDownload.Name = "tsmiContactsDownload";
+            this.tsmiContactsDownload.Size = new System.Drawing.Size(156, 22);
+            this.tsmiContactsDownload.Text = "Download contacts";
+            this.tsmiContactsDownload.Click += new System.EventHandler(this.tsbtnContactsDownload_Click);
+            // 
+            // cmsGroup
+            // 
+            this.cmsGroup.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiAdd,
+            this.tsmiClear});
+            this.cmsGroup.Name = "cmsGroup";
+            this.cmsGroup.Size = new System.Drawing.Size(145, 52);
+            this.cmsGroup.Opening += new System.ComponentModel.CancelEventHandler(this.cmsGroup_Opening);
+            // 
+            // tsmiAdd
+            // 
+            this.tsmiAdd.Name = "tsmiAdd";
+            this.tsmiAdd.ShortcutKeyDisplayString = "Enter";
+            this.tsmiAdd.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Return)));
+            this.tsmiAdd.Size = new System.Drawing.Size(144, 24);
+            this.tsmiAdd.Text = "Add";
+            this.tsmiAdd.Click += new System.EventHandler(this.tsmiAdd_Click);
+            // 
+            // tsmiClear
+            // 
+            this.tsmiClear.Name = "tsmiClear";
+            this.tsmiClear.Size = new System.Drawing.Size(144, 24);
+            this.tsmiClear.Text = "Clear";
+            this.tsmiClear.Click += new System.EventHandler(this.tsmiClear_Click);
+            // 
+            // cmsSub
+            // 
+            this.cmsSub.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiDel,
+            this.tsmiRename,
+            this.tsmiCopy,
+            this.tsmiPaste,
+            this.toolStripSeparator4,
+            this.tsmiMoveUp,
+            this.tsmiMoveDown});
+            this.cmsSub.Name = "cmsSub";
+            this.cmsSub.Size = new System.Drawing.Size(212, 154);
+            this.cmsSub.Opening += new System.ComponentModel.CancelEventHandler(this.cmsSub_Opening);
+            // 
+            // tsmiDel
+            // 
+            this.tsmiDel.Name = "tsmiDel";
+            this.tsmiDel.ShortcutKeyDisplayString = "";
+            this.tsmiDel.ShortcutKeys = System.Windows.Forms.Keys.Delete;
+            this.tsmiDel.Size = new System.Drawing.Size(211, 24);
+            this.tsmiDel.Text = "Delete";
+            this.tsmiDel.Click += new System.EventHandler(this.tsmiDel_Click);
+            // 
+            // tsmiRename
+            // 
+            this.tsmiRename.Name = "tsmiRename";
+            this.tsmiRename.ShortcutKeys = System.Windows.Forms.Keys.F2;
+            this.tsmiRename.Size = new System.Drawing.Size(211, 24);
+            this.tsmiRename.Text = "Rename";
+            this.tsmiRename.Click += new System.EventHandler(this.tsmiRename_Click);
+            // 
+            // tsmiCopy
+            // 
+            this.tsmiCopy.Name = "tsmiCopy";
+            this.tsmiCopy.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
+            this.tsmiCopy.Size = new System.Drawing.Size(211, 24);
+            this.tsmiCopy.Text = "Copy";
+            this.tsmiCopy.Click += new System.EventHandler(this.tsmiCopy_Click);
+            // 
+            // tsmiPaste
+            // 
+            this.tsmiPaste.Name = "tsmiPaste";
+            this.tsmiPaste.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
+            this.tsmiPaste.Size = new System.Drawing.Size(211, 24);
+            this.tsmiPaste.Text = "Paste";
+            this.tsmiPaste.Click += new System.EventHandler(this.tsmiPaste_Click);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(208, 6);
+            // 
+            // tsmiMoveUp
+            // 
+            this.tsmiMoveUp.Name = "tsmiMoveUp";
+            this.tsmiMoveUp.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.U)));
+            this.tsmiMoveUp.Size = new System.Drawing.Size(211, 24);
+            this.tsmiMoveUp.Text = "Move up";
+            this.tsmiMoveUp.Click += new System.EventHandler(this.tsmiMoveUp_Click);
+            // 
+            // tsmiMoveDown
+            // 
+            this.tsmiMoveDown.Name = "tsmiMoveDown";
+            this.tsmiMoveDown.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
+            this.tsmiMoveDown.Size = new System.Drawing.Size(211, 24);
+            this.tsmiMoveDown.Text = "Move down";
+            this.tsmiMoveDown.Click += new System.EventHandler(this.tsmiMoveDown_Click);
+            // 
+            // cmsGroupContact
+            // 
+            this.cmsGroupContact.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiAddContact});
+            this.cmsGroupContact.Name = "cmsGroup";
+            this.cmsGroupContact.Size = new System.Drawing.Size(104, 28);
+            this.cmsGroupContact.Opening += new System.ComponentModel.CancelEventHandler(this.cmsGroupContact_Opening);
+            // 
+            // tsmiAddContact
+            // 
+            this.tsmiAddContact.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiGroupCall,
+            this.tsmiPrivateCall,
+            this.tsmiAllCall});
+            this.tsmiAddContact.Name = "tsmiAddContact";
+            this.tsmiAddContact.Size = new System.Drawing.Size(103, 24);
+            this.tsmiAddContact.Text = "Add";
+            // 
+            // tsmiGroupCall
+            // 
+            this.tsmiGroupCall.Name = "tsmiGroupCall";
+            this.tsmiGroupCall.ShortcutKeyDisplayString = "Enter";
+            this.tsmiGroupCall.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Return)));
+            this.tsmiGroupCall.Size = new System.Drawing.Size(246, 24);
+            this.tsmiGroupCall.Text = "Group Call";
+            this.tsmiGroupCall.Click += new System.EventHandler(this.tsmiGroupCall_Click);
+            // 
+            // tsmiPrivateCall
+            // 
+            this.tsmiPrivateCall.Name = "tsmiPrivateCall";
+            this.tsmiPrivateCall.ShortcutKeyDisplayString = "Ctrl+Alt+Enter";
+            this.tsmiPrivateCall.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
+            | System.Windows.Forms.Keys.Return)));
+            this.tsmiPrivateCall.Size = new System.Drawing.Size(246, 24);
+            this.tsmiPrivateCall.Text = "Private Call";
+            this.tsmiPrivateCall.Click += new System.EventHandler(this.tsmiPrivateCall_Click);
+            // 
+            // tsmiAllCall
+            // 
+            this.tsmiAllCall.Name = "tsmiAllCall";
+            this.tsmiAllCall.Size = new System.Drawing.Size(246, 24);
+            this.tsmiAllCall.Text = "All Call";
+            this.tsmiAllCall.Click += new System.EventHandler(this.tsmiAllCall_Click);
+            // 
+            // ofdMain
+            // 
+            this.ofdMain.Filter = "OpenGD77 RUS (*.ogd)|*.ogd|OpenGD77 (*.g77)|*.g77|GD-77 (*.dat,*.g77)|*.dat;*.g77" +
+    "";
+            // 
+            // sfdMain
+            // 
+            this.sfdMain.Filter = "OpenGD77 RUS (*.ogd)|*.ogd|OpenGD77 (*.g77)|*.g77|GD-77 (*.dat,*.g77)|*.dat;*.g77" +
+    "";
+            // 
+            // cmsTree
+            // 
+            this.cmsTree.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiCollapseAll,
+            this.tsmiExpandAll});
+            this.cmsTree.Name = "cmsTree";
+            this.cmsTree.Size = new System.Drawing.Size(149, 52);
+            // 
+            // tsmiCollapseAll
+            // 
+            this.tsmiCollapseAll.Name = "tsmiCollapseAll";
+            this.tsmiCollapseAll.Size = new System.Drawing.Size(148, 24);
+            this.tsmiCollapseAll.Text = "Collapse All";
+            this.tsmiCollapseAll.Click += new System.EventHandler(this.tsmiCollapseAll_Click);
+            // 
+            // tsmiExpandAll
+            // 
+            this.tsmiExpandAll.Name = "tsmiExpandAll";
+            this.tsmiExpandAll.Size = new System.Drawing.Size(148, 24);
+            this.tsmiExpandAll.Text = "Expand All";
+            this.tsmiExpandAll.Click += new System.EventHandler(this.tsmiExpandAll_Click);
+            // 
+            // dockPanel
+            // 
+            this.dockPanel.AllowEndUserDocking = false;
+            this.dockPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dockPanel.DocumentStyle = WeifenLuo.WinFormsUI.Docking.DocumentStyle.SystemMdi;
+            this.dockPanel.Location = new System.Drawing.Point(234, 56);
+            this.dockPanel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.dockPanel.Name = "dockPanel";
+            this.dockPanel.Size = new System.Drawing.Size(865, 629);
+            this.dockPanel.TabIndex = 6;
+            // 
+            // pnlTvw
+            // 
+            this.pnlTvw.Controls.Add(this.tvwMain);
+            this.pnlTvw.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pnlTvw.Location = new System.Drawing.Point(0, 0);
+            this.pnlTvw.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pnlTvw.Name = "pnlTvw";
+            this.pnlTvw.Size = new System.Drawing.Size(234, 709);
+            this.pnlTvw.TabIndex = 9;
+            // 
+            // tvwMain
+            // 
+            this.tvwMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tvwMain.ImageIndex = 0;
+            this.tvwMain.ImageList = this.imgMain;
+            this.tvwMain.Location = new System.Drawing.Point(0, 0);
+            this.tvwMain.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tvwMain.Name = "tvwMain";
+            this.tvwMain.SelectedImageIndex = 0;
+            this.tvwMain.Size = new System.Drawing.Size(234, 709);
+            this.tvwMain.TabIndex = 0;
+            this.tvwMain.TabStop = false;
+            this.tvwMain.BeforeLabelEdit += new System.Windows.Forms.NodeLabelEditEventHandler(this.tvwMain_BeforeLabelEdit);
+            this.tvwMain.AfterLabelEdit += new System.Windows.Forms.NodeLabelEditEventHandler(this.tvwMain_AfterLabelEdit);
+            this.tvwMain.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.tvwMain_NodeMouseClick);
+            this.tvwMain.DoubleClick += new System.EventHandler(this.tvwMain_DoubleClick);
+            this.tvwMain.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tvwMain_KeyDown);
+            // 
+            // ssrMain
+            // 
+            this.ssrMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.slblComapny});
+            this.ssrMain.Location = new System.Drawing.Point(234, 685);
+            this.ssrMain.Name = "ssrMain";
+            this.ssrMain.Padding = new System.Windows.Forms.Padding(1, 0, 17, 0);
+            this.ssrMain.Size = new System.Drawing.Size(865, 24);
+            this.ssrMain.TabIndex = 12;
+            this.ssrMain.Text = "statusStrip1";
+            // 
+            // slblComapny
+            // 
+            this.slblComapny.Name = "slblComapny";
+            this.slblComapny.Size = new System.Drawing.Size(62, 19);
+            this.slblComapny.Text = "Prompt：";
+            // 
+            // tsrMain
+            // 
+            this.tsrMain.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.tsrMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsbtnNew,
+            this.tsbtnOpen,
+            this.tsbtnSave,
+            this.toolStripSeparator2,
+            this.tsbtnRead,
+            this.tsbtnWrite,
+            this.toolStripSeparator3,
+            this.tsbtnAbout});
+            this.tsrMain.Location = new System.Drawing.Point(234, 29);
+            this.tsrMain.Name = "tsrMain";
+            this.tsrMain.Size = new System.Drawing.Size(865, 27);
+            this.tsrMain.TabIndex = 13;
+            this.tsrMain.Text = "toolStrip1";
+            // 
+            // tsbtnNew
+            // 
+            this.tsbtnNew.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbtnNew.Image = global::DMR_MainForm.tsbtnNew_Image;
+            this.tsbtnNew.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbtnNew.Name = "tsbtnNew";
+            this.tsbtnNew.Size = new System.Drawing.Size(24, 24);
+            this.tsbtnNew.Text = "New";
+            this.tsbtnNew.Click += new System.EventHandler(this.tsbtnNew_Click);
+            // 
+            // tsbtnOpen
+            // 
+            this.tsbtnOpen.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbtnOpen.Image = global::DMR_MainForm.tsbtnOpen_Image;
+            this.tsbtnOpen.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbtnOpen.Name = "tsbtnOpen";
+            this.tsbtnOpen.Size = new System.Drawing.Size(24, 24);
+            this.tsbtnOpen.Text = "Open";
+            this.tsbtnOpen.Click += new System.EventHandler(this.tsbtnOpen_Click);
+            // 
+            // tsbtnSave
+            // 
+            this.tsbtnSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbtnSave.Image = global::DMR_MainForm.tsbtnSave_Image;
+            this.tsbtnSave.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbtnSave.Name = "tsbtnSave";
+            this.tsbtnSave.Size = new System.Drawing.Size(24, 24);
+            this.tsbtnSave.Text = "Save";
+            this.tsbtnSave.ToolTipText = "Save";
+            this.tsbtnSave.Click += new System.EventHandler(this.tsbtnSave_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 27);
+            // 
+            // tsbtnRead
+            // 
+            this.tsbtnRead.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbtnRead.Image = global::DMR_MainForm.tsbtnRead_Image;
+            this.tsbtnRead.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbtnRead.Name = "tsbtnRead";
+            this.tsbtnRead.Size = new System.Drawing.Size(24, 24);
+            this.tsbtnRead.Text = "Read";
+            this.tsbtnRead.Click += new System.EventHandler(this.tsbtnRead_Click);
+            // 
+            // tsbtnWrite
+            // 
+            this.tsbtnWrite.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbtnWrite.Image = global::DMR_MainForm.tsbtnWrite_Image;
+            this.tsbtnWrite.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbtnWrite.Name = "tsbtnWrite";
+            this.tsbtnWrite.Size = new System.Drawing.Size(24, 24);
+            this.tsbtnWrite.Text = "Write";
+            this.tsbtnWrite.Click += new System.EventHandler(this.tsbtnWrite_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 27);
+            // 
+            // tsbtnAbout
+            // 
+            this.tsbtnAbout.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbtnAbout.Image = global::DMR_MainForm.tsbtnAbout_Image;
+            this.tsbtnAbout.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbtnAbout.Name = "tsbtnAbout";
+            this.tsbtnAbout.Size = new System.Drawing.Size(24, 24);
+            this.tsbtnAbout.Text = "About";
+            this.tsbtnAbout.Click += new System.EventHandler(this.tsbtnAbout_Click);
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(278, 6);
+            // 
+            // MainForm
+            // 
+            this.ClientSize = new System.Drawing.Size(1099, 709);
+            this.Controls.Add(this.dockPanel);
+            this.Controls.Add(this.tsrMain);
+            this.Controls.Add(this.ssrMain);
+            this.Controls.Add(this.mnsMain);
+            this.Controls.Add(this.pnlTvw);
+            this.DoubleBuffered = true;
+            this.IsMdiContainer = true;
+            this.KeyPreview = true;
+            this.MainMenuStrip = this.mnsMain;
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Name = "MainForm";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.MainForm_Load);
+            this.MdiChildActivate += new System.EventHandler(this.MainForm_MdiChildActivate);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyDown);
+            this.mnsMain.ResumeLayout(false);
+            this.mnsMain.PerformLayout();
+            this.cmsGroup.ResumeLayout(false);
+            this.cmsSub.ResumeLayout(false);
+            this.cmsGroupContact.ResumeLayout(false);
+            this.cmsTree.ResumeLayout(false);
+            this.pnlTvw.ResumeLayout(false);
+            this.ssrMain.ResumeLayout(false);
+            this.ssrMain.PerformLayout();
+            this.tsrMain.ResumeLayout(false);
+            this.tsrMain.PerformLayout();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
 	}
 
 	private IDockContent method_0(string string_0)
@@ -1011,7 +1310,33 @@ public class MainForm : Form
 
 	private void MainForm_Load(object sender, EventArgs e)
 	{
-		Settings.dicCommon.Add("None", Settings.SZ_NONE);
+        string _profileStringWithDefault = IniFileUtils.getProfileStringWithDefault("Setup", "RadioType", "MK22");
+        if (!(_profileStringWithDefault == "MD9600"))
+        {
+            if (!(_profileStringWithDefault == "MK22"))
+            {
+            }
+            RadioType = RadioTypeEnum.RadioTypeMK22;
+        }
+        else
+        {
+            RadioType = RadioTypeEnum.RadioTypeSTM32;
+        }
+		this.tsmiRadioTypeItem_MK22.Checked = (RadioType == RadioTypeEnum.RadioTypeMK22);
+		this.tsmiRadioTypeItem_STM32.Checked = (RadioType == RadioTypeEnum.RadioTypeSTM32);
+        if (EnableHiddenFeatures)
+        {
+            this.tsmiSetting.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[11]
+            {
+                this.tsmiBootItem, this.tsmiGerneralSet, this.tsmiDeviceInfo, this.tsmiTextMsg, this.tsmiDtmf, this.tsmiAPRSConfigs, this.tsmiContact, this.tsmiGrpRxList, this.tsmiZone, this.tsmiChannels,
+                this.tsmiVfos
+            });
+        }
+        else
+        {
+            this.tsmiSetting.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[10] { this.tsmiBootItem, this.tsmiGerneralSet, this.tsmiDeviceInfo, this.tsmiDtmf, this.tsmiAPRSConfigs, this.tsmiContact, this.tsmiGrpRxList, this.tsmiZone, this.tsmiChannels, this.tsmiVfos });
+        }
+        Settings.dicCommon.Add("None", Settings.SZ_NONE);
 		Settings.dicCommon.Add("Selected", Settings.SZ_SELECTED);
 		Settings.dicCommon.Add("Read", Settings.SZ_READ);
 		Settings.dicCommon.Add("Write", Settings.SZ_WRITE);
@@ -1090,7 +1415,11 @@ public class MainForm : Form
 			{
 				switch (Path.GetExtension(StartupArgs[0]))
 				{
-				case ".g77":
+                case ".ogd":
+                    openCodeplugFile(StartupArgs[0]);
+                    _lastCodeplugFileName = StartupArgs[0];
+                    break;
+                case ".g77":
 					openCodeplugFile(StartupArgs[0]);
 					_lastCodeplugFileName = StartupArgs[0];
 					break;
@@ -2482,7 +2811,7 @@ public class MainForm : Form
 
 	private void loadDefaultOrInitialFile(string overRideWithFile = null)
 	{
-		string text = Application.StartupPath + Path.DirectorySeparatorChar + "DefaultOpenGD77.g77";
+		string text = Application.StartupPath + Path.DirectorySeparatorChar + "DefaultOpenGD77.ogd";
 		if (overRideWithFile != null)
 		{
 			text = overRideWithFile;
@@ -2523,13 +2852,13 @@ public class MainForm : Form
 		{
 			if (string.IsNullOrEmpty(CurFileName))
 			{
-				sfdMain.FileName = GeneralSetForm.data.Callsign + "_" + DateTime.Now.ToString("MMdd_HHmmss") + ".g77";
+				sfdMain.FileName = GeneralSetForm.data.Callsign + "_" + DateTime.Now.ToString("MMdd_HHmmss") + ".ogd";
 				sfdMain.InitialDirectory = initialDirectory;
 			}
 			else
 			{
 				sfdMain.InitialDirectory = Path.GetDirectoryName(CurFileName);
-				sfdMain.FileName = Path.GetFileNameWithoutExtension(CurFileName) + ".g77";
+				sfdMain.FileName = Path.GetFileNameWithoutExtension(CurFileName) + ".ogd";
 			}
 			method_3();
 			if (sfdMain.ShowDialog() == DialogResult.OK && !string.IsNullOrEmpty(sfdMain.FileName))

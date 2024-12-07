@@ -283,6 +283,10 @@ public class MainForm : Form
 	public static string[] StartupArgs;
     private ToolStripMenuItem tsmiImportG77;
     private ToolStripSeparator toolStripSeparator5;
+    private OpenFileDialog importFileDialog;
+    private ToolStripMenuItem tsmiSort;
+    private ToolStripMenuItem tsmiSortContacts;
+    private ToolStripMenuItem tsmiSortZones;
     public static bool EnableHiddenFeatures;
 
 	public static string CurFileName { get; set; }
@@ -399,6 +403,10 @@ public class MainForm : Form
             this.tsbtnWrite = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbtnAbout = new System.Windows.Forms.ToolStripButton();
+            this.importFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.tsmiSort = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiSortContacts = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiSortZones = new System.Windows.Forms.ToolStripMenuItem();
             this.mnsMain.SuspendLayout();
             this.cmsGroup.SuspendLayout();
             this.cmsSub.SuspendLayout();
@@ -419,6 +427,7 @@ public class MainForm : Form
             // 
             this.mnsMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiFile,
+            this.tsmiSort,
             this.tsmiSetting,
             this.tsmiProgram,
             this.tsmiView,
@@ -479,6 +488,7 @@ public class MainForm : Form
             this.tsmiImportG77.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.I)));
             this.tsmiImportG77.Size = new System.Drawing.Size(281, 24);
             this.tsmiImportG77.Text = "Import from OpenGD77";
+            this.tsmiImportG77.Click += new System.EventHandler(this.tsmiImportG77_Click);
             // 
             // toolStripSeparator5
             // 
@@ -561,7 +571,7 @@ public class MainForm : Form
             // 
             this.tsmiRead.Name = "tsmiRead";
             this.tsmiRead.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
-            this.tsmiRead.Size = new System.Drawing.Size(174, 24);
+            this.tsmiRead.Size = new System.Drawing.Size(180, 24);
             this.tsmiRead.Text = "Read";
             this.tsmiRead.Click += new System.EventHandler(this.tsbtnRead_Click);
             // 
@@ -569,7 +579,7 @@ public class MainForm : Form
             // 
             this.tsmiWrite.Name = "tsmiWrite";
             this.tsmiWrite.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.W)));
-            this.tsmiWrite.Size = new System.Drawing.Size(174, 24);
+            this.tsmiWrite.Size = new System.Drawing.Size(180, 24);
             this.tsmiWrite.Text = "Write";
             this.tsmiWrite.Click += new System.EventHandler(this.tsbtnWrite_Click);
             // 
@@ -1235,6 +1245,38 @@ public class MainForm : Form
             this.tsbtnAbout.Size = new System.Drawing.Size(24, 24);
             this.tsbtnAbout.Text = "About";
             this.tsbtnAbout.Click += new System.EventHandler(this.tsbtnAbout_Click);
+            // 
+            // importFileDialog
+            // 
+            this.importFileDialog.DefaultExt = "g77";
+            this.importFileDialog.Filter = "Кодплаги OpenGD77 (*.g77)|*.g77|Все файлы (*.*)|*.*";
+            // 
+            // tsmiSort
+            // 
+            this.tsmiSort.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiSortContacts,
+            this.tsmiSortZones});
+            this.tsmiSort.Name = "tsmiSort";
+            this.tsmiSort.Size = new System.Drawing.Size(46, 23);
+            this.tsmiSort.Text = "Sort";
+            // 
+            // tsmiSortContacts
+            // 
+            this.tsmiSortContacts.Name = "tsmiSortContacts";
+            this.tsmiSortContacts.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.C)));
+            this.tsmiSortContacts.Size = new System.Drawing.Size(312, 24);
+            this.tsmiSortContacts.Text = "Contacts by alphabet";
+            this.tsmiSortContacts.Click += new System.EventHandler(this.dummyClick);
+            // 
+            // tsmiSortZones
+            // 
+            this.tsmiSortZones.Name = "tsmiSortZones";
+            this.tsmiSortZones.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.Z)));
+            this.tsmiSortZones.Size = new System.Drawing.Size(312, 24);
+            this.tsmiSortZones.Text = "Zones by alphabet";
+            this.tsmiSortZones.Click += new System.EventHandler(this.dummyClick);
             // 
             // MainForm
             // 
@@ -4197,4 +4239,40 @@ public class MainForm : Form
 		dicHelp = new Dictionary<string, string>();
 		dicTree = new Dictionary<string, string>();
 	}
+
+    private void tsmiImportG77_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            string profileStringWithDefault = IniFileUtils.getProfileStringWithDefault("Setup", "LastFilePath", "");
+            try
+            {
+                if (profileStringWithDefault == null || "" == profileStringWithDefault)
+                {
+                    importFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+                }
+                else
+                {
+                    importFileDialog.InitialDirectory = Path.GetDirectoryName(profileStringWithDefault);
+                }
+            }
+            catch (Exception)
+            {
+                importFileDialog.InitialDirectory = "";
+            }
+            if (importFileDialog.ShowDialog() == DialogResult.OK && !string.IsNullOrEmpty(importFileDialog.FileName))
+            {
+                openCodeplugFile(importFileDialog.FileName);
+            }
+        }
+        catch (Exception ex2)
+        {
+            MessageBox.Show(ex2.Message);
+        }
+    }
+
+    private void dummyClick(object sender, EventArgs e)
+    {
+		MessageBox.Show("На данный момент функция неактивна!");
+    }
 }

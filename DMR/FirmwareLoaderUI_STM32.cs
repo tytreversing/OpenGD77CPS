@@ -90,7 +90,7 @@ public class FirmwareLoaderUI_STM32 : Form
 		fwUpdate = new STM_DFU_FwUpdate();
 		fwUpdate.DisplayMessage += DisplayMessage;
 		fwUpdate.UploadCompleted += UploadCompleted;
-		officialFirmwareFilePath = Environment.CurrentDirectory + "\\SourceFirmware\\source.bin"; //путь к исходнику фиксированный
+		officialFirmwareFilePath = Application.StartupPath + "\\SourceFirmware\\source.bin"; //путь к исходнику фиксированный
 		string profileStringWithDefault = IniFileUtils.getProfileStringWithDefault("Setup", "LastSTM32FirmwareRadio", null);
 		if (profileStringWithDefault != "")
 		{
@@ -119,11 +119,6 @@ public class FirmwareLoaderUI_STM32 : Form
 		{
 			lblMessage.Text = "";
 			Progress.Value = 0;
-			if (!donorFirmwareLoaded)
-			{
-				MessageBox.Show(Settings.dicCommon["OfficialFWNotSelected"], Settings.dicCommon["Error"], MessageBoxButtons.OK);
-				return;
-			}
 			OutputType outputType = OutputType.OutputType_MD9600;
 			foreach (RadioButton control in grpRadioType.Controls)
 			{
@@ -135,7 +130,7 @@ public class FirmwareLoaderUI_STM32 : Form
 				}
 			}
 			
-		    languageFile = Environment.CurrentDirectory + "\\Language\\Firmware\\Russian";
+		    languageFile = Application.StartupPath + "\\Language\\Firmware\\Russian";
 			
 			IniFileUtils.WriteProfileString("Setup", "LastFirmwareLanguage", languageFile);
 			dlgOpenFile.InitialDirectory = IniFileUtils.getProfileStringWithDefault("Setup", "LastFirmwareLocation" + outputType, null);

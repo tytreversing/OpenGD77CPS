@@ -426,6 +426,9 @@
 			<MenuItem Id="tsmiOpen" Text="Открыть" />
       <MenuItem Id="tsmiImportG77" Text="Импорт из OpenGD77" />
 			<MenuItem Id="tsmiExit" Text="Выход" />
+      <MenuItem Id="tsmiSort" Text="Упорядочить" />
+      <MenuItem Id="tsmiSortContacts" Text="Контакты по алфавиту" />
+      <MenuItem Id="tsmiSortZones" Text="Зоны по алфавиту" />
 			<MenuItem Id="tsmiSetting" Text="Настройки" />
 			<MenuItem Id="tsmiDeviceInfo" Text="Ограничения частот" />
 			<MenuItem Id="tsmiBootItem" Text="Загрузочный экран" />

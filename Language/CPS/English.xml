@@ -430,6 +430,9 @@
 			<MenuItem Id="tsmiOpen" Text="Open" />
       <MenuItem Id="tsmiImportG77" Text="Import from OpenGD77" />
 			<MenuItem Id="tsmiExit" Text="Exit" />
+      <MenuItem Id="tsmiSort" Text="Set order" />
+      <MenuItem Id="tsmiSortContacts" Text="Contacts by alphabet" />
+      <MenuItem Id="tsmiSortZones" Text="Zones by alphabet" />
 			<MenuItem Id="tsmiSetting" Text="Setting" />
 			<MenuItem Id="tsmiDeviceInfo" Text="Band limits" />
 			<MenuItem Id="tsmiBootItem" Text="Boot screen" />

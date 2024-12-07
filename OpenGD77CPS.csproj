@@ -18,6 +18,9 @@
     <Version>1.2024.1205.1125</Version>
   </PropertyGroup>
   <ItemGroup>
+    <EmbeddedResource Remove="DMR\MainForm.resx" />
+  </ItemGroup>
+  <ItemGroup>
     <Reference Include="System.Xml" />
     <Reference Include="WeifenLuo.WinFormsUI.Docking">
       <HintPath>C:\Program Files (x86)\OpenGD77CPS\WeifenLuo.WinFormsUI.Docking.dll</HintPath>

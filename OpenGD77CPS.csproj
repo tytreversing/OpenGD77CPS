@@ -17,7 +17,6 @@
     <IncrementVersionOnBuild>1.yyyy.Mdd.Hmm</IncrementVersionOnBuild>
     <Version>1.2024.1205.1125</Version>
   </PropertyGroup>
-  <ItemGroup />
   <ItemGroup>
     <Reference Include="System.Xml" />
     <Reference Include="WeifenLuo.WinFormsUI.Docking">
@@ -186,7 +185,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Language\Firmware\Russian.gla">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="SourceFirmware\MD9600-CSV%282571V5%29-V26.45.bin">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

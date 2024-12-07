@@ -756,7 +756,6 @@ internal class CodeplugComms
 					OnFirmwareUpdateProgress(this, new FirmwareUpdateProgressEventArgs(0f, Settings.SZ_MODEL_NOT_MATCH, Failed: true, Closed: true));
 				}
 				return;
-				continue;
 				end_IL_0092:
 				break;
 			}

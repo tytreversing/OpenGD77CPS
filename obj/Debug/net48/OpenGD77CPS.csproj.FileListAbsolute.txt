@@ -55,3 +55,4 @@ C:\Users\maste\Documents\GitHub\OpenGD77CPS\obj\Debug\net48\OpenGD77CPS.sourceli
 C:\Users\maste\Documents\GitHub\OpenGD77CPS\obj\Debug\net48\OpenGD77.A2AEC6AF.Up2Date
 C:\Users\maste\Documents\GitHub\OpenGD77CPS\obj\Debug\net48\OpenGD77CPS.exe
 C:\Users\maste\Documents\GitHub\OpenGD77CPS\obj\Debug\net48\OpenGD77CPS.pdb
+C:\Users\maste\Documents\GitHub\OpenGD77CPS\obj\Debug\net48\DMR.GeneralSetForm.resources

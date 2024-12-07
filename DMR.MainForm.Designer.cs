@@ -61,6 +61,16 @@ internal class DMR_MainForm {
     }
     
     /// <summary>
+    ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+    /// </summary>
+    internal static System.Drawing.Bitmap _70edc149804f8940f1227b62dd7ebbde {
+        get {
+            object obj = ResourceManager.GetObject("70edc149804f8940f1227b62dd7ebbde", resourceCulture);
+            return ((System.Drawing.Bitmap)(obj));
+        }
+    }
+    
+    /// <summary>
     ///   Поиск локализованного ресурса типа System.Windows.Forms.ImageListStreamer.
     /// </summary>
     internal static System.Windows.Forms.ImageListStreamer imgMain_ImageStream {

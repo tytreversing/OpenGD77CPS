@@ -361,7 +361,7 @@ public class FirmwareLoaderUI_STM32 : Form
             // 
             this.Progress.Location = new System.Drawing.Point(12, 306);
             this.Progress.Name = "Progress";
-            this.Progress.Size = new System.Drawing.Size(523, 13);
+            this.Progress.Size = new System.Drawing.Size(523, 21);
             this.Progress.TabIndex = 9;
             // 
             // lblMessage

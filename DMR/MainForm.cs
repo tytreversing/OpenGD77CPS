@@ -305,12 +305,13 @@ public class MainForm : Form
             this.tsmiNew = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiSave = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiOpen = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiImportG77 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmiImportExport = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiExportCSV = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiImportCSV = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiAppendCSV = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiUpdateLocationCSV = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiImportG77 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmiExit = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiSetting = new System.Windows.Forms.ToolStripMenuItem();
@@ -398,7 +399,6 @@ public class MainForm : Form
             this.tsbtnWrite = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbtnAbout = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.mnsMain.SuspendLayout();
             this.cmsGroup.SuspendLayout();
             this.cmsSub.SuspendLayout();
@@ -473,6 +473,18 @@ public class MainForm : Form
             this.tsmiOpen.Text = "Open";
             this.tsmiOpen.Click += new System.EventHandler(this.tsbtnOpen_Click);
             // 
+            // tsmiImportG77
+            // 
+            this.tsmiImportG77.Name = "tsmiImportG77";
+            this.tsmiImportG77.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.I)));
+            this.tsmiImportG77.Size = new System.Drawing.Size(281, 24);
+            this.tsmiImportG77.Text = "Import from OpenGD77";
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(278, 6);
+            // 
             // tsmiImportExport
             // 
             this.tsmiImportExport.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -515,13 +527,6 @@ public class MainForm : Form
             this.tsmiUpdateLocationCSV.Size = new System.Drawing.Size(294, 24);
             this.tsmiUpdateLocationCSV.Text = "Update location from CSV";
             this.tsmiUpdateLocationCSV.Click += new System.EventHandler(this.tsbtnUpdateLocationCSV_Click);
-            // 
-            // tsmiImportG77
-            // 
-            this.tsmiImportG77.Name = "tsmiImportG77";
-            this.tsmiImportG77.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.I)));
-            this.tsmiImportG77.Size = new System.Drawing.Size(281, 24);
-            this.tsmiImportG77.Text = "Import from OpenGD77";
             // 
             // toolStripSeparator1
             // 
@@ -1231,13 +1236,9 @@ public class MainForm : Form
             this.tsbtnAbout.Text = "About";
             this.tsbtnAbout.Click += new System.EventHandler(this.tsbtnAbout_Click);
             // 
-            // toolStripSeparator5
-            // 
-            this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(278, 6);
-            // 
             // MainForm
             // 
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1099, 709);
             this.Controls.Add(this.dockPanel);
             this.Controls.Add(this.tsrMain);

@@ -23,7 +23,7 @@ namespace DMR;
 
 public class MainForm : Form
 {
-    public const string swVersion = "R2024.10.31.01";
+    public const string swVersion = "1.1.0";
     public enum RadioTypeEnum
 	{
 		RadioTypeMK22,
@@ -287,9 +287,6 @@ public class MainForm : Form
     private ToolStripMenuItem tsmiImportG77;
     private ToolStripSeparator toolStripSeparator5;
     private OpenFileDialog importFileDialog;
-    private ToolStripMenuItem tsmiSort;
-    private ToolStripMenuItem tsmiSortContacts;
-    private ToolStripMenuItem tsmiSortZones;
     public static bool EnableHiddenFeatures;
 
 	public static string CurFileName { get; set; }
@@ -321,9 +318,6 @@ public class MainForm : Form
             this.tsmiUpdateLocationCSV = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmiExit = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiSort = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiSortContacts = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiSortZones = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiSetting = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiProgram = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiRead = new System.Windows.Forms.ToolStripMenuItem();
@@ -430,7 +424,6 @@ public class MainForm : Form
             // 
             this.mnsMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiFile,
-            this.tsmiSort,
             this.tsmiSetting,
             this.tsmiProgram,
             this.tsmiView,
@@ -554,33 +547,6 @@ public class MainForm : Form
             this.tsmiExit.Text = "Exit";
             this.tsmiExit.Click += new System.EventHandler(this.tsmiExit_Click);
             // 
-            // tsmiSort
-            // 
-            this.tsmiSort.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiSortContacts,
-            this.tsmiSortZones});
-            this.tsmiSort.Name = "tsmiSort";
-            this.tsmiSort.Size = new System.Drawing.Size(46, 23);
-            this.tsmiSort.Text = "Sort";
-            // 
-            // tsmiSortContacts
-            // 
-            this.tsmiSortContacts.Name = "tsmiSortContacts";
-            this.tsmiSortContacts.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
-            | System.Windows.Forms.Keys.C)));
-            this.tsmiSortContacts.Size = new System.Drawing.Size(312, 24);
-            this.tsmiSortContacts.Text = "Contacts by alphabet";
-            this.tsmiSortContacts.Click += new System.EventHandler(this.dummyClick);
-            // 
-            // tsmiSortZones
-            // 
-            this.tsmiSortZones.Name = "tsmiSortZones";
-            this.tsmiSortZones.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
-            | System.Windows.Forms.Keys.Z)));
-            this.tsmiSortZones.Size = new System.Drawing.Size(312, 24);
-            this.tsmiSortZones.Text = "Zones by alphabet";
-            this.tsmiSortZones.Click += new System.EventHandler(this.dummyClick);
-            // 
             // tsmiSetting
             // 
             this.tsmiSetting.Name = "tsmiSetting";
@@ -601,7 +567,7 @@ public class MainForm : Form
             // 
             this.tsmiRead.Name = "tsmiRead";
             this.tsmiRead.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
-            this.tsmiRead.Size = new System.Drawing.Size(174, 24);
+            this.tsmiRead.Size = new System.Drawing.Size(180, 24);
             this.tsmiRead.Text = "Read";
             this.tsmiRead.Click += new System.EventHandler(this.tsbtnRead_Click);
             // 
@@ -609,7 +575,7 @@ public class MainForm : Form
             // 
             this.tsmiWrite.Name = "tsmiWrite";
             this.tsmiWrite.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.W)));
-            this.tsmiWrite.Size = new System.Drawing.Size(174, 24);
+            this.tsmiWrite.Size = new System.Drawing.Size(180, 24);
             this.tsmiWrite.Text = "Write";
             this.tsmiWrite.Click += new System.EventHandler(this.tsbtnWrite_Click);
             // 
@@ -629,14 +595,14 @@ public class MainForm : Form
             this.tsmiTree.Checked = true;
             this.tsmiTree.CheckState = System.Windows.Forms.CheckState.Checked;
             this.tsmiTree.Name = "tsmiTree";
-            this.tsmiTree.Size = new System.Drawing.Size(140, 24);
+            this.tsmiTree.Size = new System.Drawing.Size(180, 24);
             this.tsmiTree.Text = "TreeView";
             this.tsmiTree.Click += new System.EventHandler(this.tsmiTree_Click);
             // 
             // tsmiHelp
             // 
             this.tsmiHelp.Name = "tsmiHelp";
-            this.tsmiHelp.Size = new System.Drawing.Size(140, 24);
+            this.tsmiHelp.Size = new System.Drawing.Size(180, 24);
             this.tsmiHelp.Text = "HelpView";
             this.tsmiHelp.Click += new System.EventHandler(this.tsmiHelp_Click);
             // 
@@ -645,7 +611,7 @@ public class MainForm : Form
             this.tsmiToolBar.Checked = true;
             this.tsmiToolBar.CheckState = System.Windows.Forms.CheckState.Checked;
             this.tsmiToolBar.Name = "tsmiToolBar";
-            this.tsmiToolBar.Size = new System.Drawing.Size(140, 24);
+            this.tsmiToolBar.Size = new System.Drawing.Size(180, 24);
             this.tsmiToolBar.Text = "Toolbar";
             this.tsmiToolBar.Click += new System.EventHandler(this.tsmiToolBar_Click);
             // 
@@ -654,7 +620,7 @@ public class MainForm : Form
             this.tsmiStatusBar.Checked = true;
             this.tsmiStatusBar.CheckState = System.Windows.Forms.CheckState.Checked;
             this.tsmiStatusBar.Name = "tsmiStatusBar";
-            this.tsmiStatusBar.Size = new System.Drawing.Size(140, 24);
+            this.tsmiStatusBar.Size = new System.Drawing.Size(180, 24);
             this.tsmiStatusBar.Text = "Status Bar";
             this.tsmiStatusBar.Click += new System.EventHandler(this.tsmiStatusBar_Click);
             // 
@@ -752,28 +718,28 @@ public class MainForm : Form
             // tsmiCascade
             // 
             this.tsmiCascade.Name = "tsmiCascade";
-            this.tsmiCascade.Size = new System.Drawing.Size(162, 24);
+            this.tsmiCascade.Size = new System.Drawing.Size(180, 24);
             this.tsmiCascade.Text = "Cascade";
             this.tsmiCascade.Click += new System.EventHandler(this.tsmiCascade_Click);
             // 
             // tsmiTileHor
             // 
             this.tsmiTileHor.Name = "tsmiTileHor";
-            this.tsmiTileHor.Size = new System.Drawing.Size(162, 24);
+            this.tsmiTileHor.Size = new System.Drawing.Size(180, 24);
             this.tsmiTileHor.Text = "Tile Horzontal";
             this.tsmiTileHor.Click += new System.EventHandler(this.tsmiTileHor_Click);
             // 
             // tsmiTileVer
             // 
             this.tsmiTileVer.Name = "tsmiTileVer";
-            this.tsmiTileVer.Size = new System.Drawing.Size(162, 24);
+            this.tsmiTileVer.Size = new System.Drawing.Size(180, 24);
             this.tsmiTileVer.Text = "Tile Vertical";
             this.tsmiTileVer.Click += new System.EventHandler(this.tsmiTileVer_Click);
             // 
             // tsmiCloseAll
             // 
             this.tsmiCloseAll.Name = "tsmiCloseAll";
-            this.tsmiCloseAll.Size = new System.Drawing.Size(162, 24);
+            this.tsmiCloseAll.Size = new System.Drawing.Size(180, 24);
             this.tsmiCloseAll.Text = "Close All";
             this.tsmiCloseAll.Click += new System.EventHandler(this.tsmiCloseAll_Click);
             // 
@@ -4238,7 +4204,7 @@ public class MainForm : Form
 	{
 		CommsBuffer = null;
 		PRODUCT_NAME = ((AssemblyProductAttribute)Attribute.GetCustomAttribute(Assembly.GetExecutingAssembly(), typeof(AssemblyProductAttribute), inherit: false)).Product;
-		PRODUCT_VERSION = swVersion;
+        PRODUCT_VERSION = swVersion;
 		RadioType = RadioTypeEnum.RadioTypeMK22;
 		PreActiveMdiChild = null;
 		dicHelp = new Dictionary<string, string>();

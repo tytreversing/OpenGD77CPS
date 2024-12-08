@@ -3576,12 +3576,13 @@ public class ChannelForm : DockContent, IDisp
             // 
             this.btnCopy.AccessibleDescription = "Copy Rx frequency to Tx frequency";
             this.btnCopy.AccessibleName = "Copy Rx frequency to Tx frequency";
+            this.btnCopy.BackColor = System.Drawing.SystemColors.Control;
             this.btnCopy.Location = new System.Drawing.Point(490, 25);
             this.btnCopy.Name = "btnCopy";
             this.btnCopy.Size = new System.Drawing.Size(33, 23);
             this.btnCopy.TabIndex = 3;
             this.btnCopy.Text = ">>";
-            this.btnCopy.UseVisualStyleBackColor = true;
+            this.btnCopy.UseVisualStyleBackColor = false;
             this.btnCopy.Click += new System.EventHandler(this.btnCopy_Click);
             // 
             // txtName
@@ -3635,6 +3636,7 @@ public class ChannelForm : DockContent, IDisp
             // 
             this.cmbRepeaterSlot.AccessibleDescription = "Timeslot";
             this.cmbRepeaterSlot.AccessibleName = "Timeslot";
+            this.cmbRepeaterSlot.BackColor = System.Drawing.Color.White;
             this.cmbRepeaterSlot.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbRepeaterSlot.FormattingEnabled = true;
             this.cmbRepeaterSlot.Location = new System.Drawing.Point(519, 107);
@@ -3656,6 +3658,7 @@ public class ChannelForm : DockContent, IDisp
             // 
             this.cmbRxGroup.AccessibleDescription = "Talkgroup list";
             this.cmbRxGroup.AccessibleName = "Talkgroup list";
+            this.cmbRxGroup.BackColor = System.Drawing.Color.White;
             this.cmbRxGroup.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbRxGroup.FormattingEnabled = true;
             this.cmbRxGroup.Location = new System.Drawing.Point(519, 21);
@@ -3677,6 +3680,7 @@ public class ChannelForm : DockContent, IDisp
             // 
             this.cmbTS2TaTx.AccessibleDescription = "TS2 Talker alias transmit";
             this.cmbTS2TaTx.AccessibleName = "TS2 Talker Alias Transmit";
+            this.cmbTS2TaTx.BackColor = System.Drawing.Color.White;
             this.cmbTS2TaTx.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTS2TaTx.FormattingEnabled = true;
             this.cmbTS2TaTx.Location = new System.Drawing.Point(519, 167);
@@ -3688,6 +3692,7 @@ public class ChannelForm : DockContent, IDisp
             // 
             this.cmbTS1TaTx.AccessibleDescription = "TS1 Talker alias transmit";
             this.cmbTS1TaTx.AccessibleName = "TS1 Talker alias Transmit";
+            this.cmbTS1TaTx.BackColor = System.Drawing.Color.White;
             this.cmbTS1TaTx.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTS1TaTx.FormattingEnabled = true;
             this.cmbTS1TaTx.Location = new System.Drawing.Point(519, 137);
@@ -3699,6 +3704,7 @@ public class ChannelForm : DockContent, IDisp
             // 
             this.cmbContact.AccessibleDescription = "Contact name";
             this.cmbContact.AccessibleName = "Contact name";
+            this.cmbContact.BackColor = System.Drawing.Color.White;
             this.cmbContact.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbContact.FormattingEnabled = true;
             this.cmbContact.Location = new System.Drawing.Point(519, 79);
@@ -3794,6 +3800,7 @@ public class ChannelForm : DockContent, IDisp
             // 
             this.cmbLibreDMR_Power.AccessibleDescription = "Power level";
             this.cmbLibreDMR_Power.AccessibleName = "Power level";
+            this.cmbLibreDMR_Power.BackColor = System.Drawing.Color.White;
             this.cmbLibreDMR_Power.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbLibreDMR_Power.FormattingEnabled = true;
             this.cmbLibreDMR_Power.Location = new System.Drawing.Point(368, 57);
@@ -3824,6 +3831,7 @@ public class ChannelForm : DockContent, IDisp
             // 
             this.cmbSql.AccessibleDescription = "Channel squelch level";
             this.cmbSql.AccessibleName = "Channel squelch level";
+            this.cmbSql.BackColor = System.Drawing.Color.White;
             this.cmbSql.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSql.FormattingEnabled = true;
             this.cmbSql.Location = new System.Drawing.Point(282, 122);
@@ -3844,6 +3852,7 @@ public class ChannelForm : DockContent, IDisp
             // 
             this.cmbChBandwidth.AccessibleDescription = "Bandwidth";
             this.cmbChBandwidth.AccessibleName = "Bandwidth";
+            this.cmbChBandwidth.BackColor = System.Drawing.Color.White;
             this.cmbChBandwidth.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbChBandwidth.FormattingEnabled = true;
             this.cmbChBandwidth.Location = new System.Drawing.Point(280, 24);
@@ -3864,6 +3873,7 @@ public class ChannelForm : DockContent, IDisp
             // 
             this.cmbRxTone.AccessibleDescription = "Rx CTCSS / DCS";
             this.cmbRxTone.AccessibleName = "Rx CTCSS / DCS";
+            this.cmbRxTone.BackColor = System.Drawing.Color.White;
             this.cmbRxTone.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbRxTone.FormattingEnabled = true;
             this.cmbRxTone.Location = new System.Drawing.Point(300, 91);
@@ -3886,6 +3896,7 @@ public class ChannelForm : DockContent, IDisp
             // 
             // cmbAPRS_System
             // 
+            this.cmbAPRS_System.BackColor = System.Drawing.Color.White;
             this.cmbAPRS_System.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbAPRS_System.FormattingEnabled = true;
             this.cmbAPRS_System.Location = new System.Drawing.Point(282, 158);
@@ -3907,6 +3918,7 @@ public class ChannelForm : DockContent, IDisp
             // 
             this.cmbTxTone.AccessibleDescription = "Tx CTXCSS / DCS";
             this.cmbTxTone.AccessibleName = "Tx CTXCSS / DCS";
+            this.cmbTxTone.BackColor = System.Drawing.Color.White;
             this.cmbTxTone.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTxTone.FormattingEnabled = true;
             this.cmbTxTone.Location = new System.Drawing.Point(300, 57);
@@ -3989,6 +4001,7 @@ public class ChannelForm : DockContent, IDisp
             // 
             this.cmbChMode.AccessibleDescription = "Mode Analogue or digital";
             this.cmbChMode.AccessibleName = "Mode";
+            this.cmbChMode.BackColor = System.Drawing.Color.White;
             this.cmbChMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbChMode.FormattingEnabled = true;
             this.cmbChMode.Location = new System.Drawing.Point(81, 26);
@@ -4091,6 +4104,7 @@ public class ChannelForm : DockContent, IDisp
             // 
             // ChannelForm
             // 
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1104, 419);
             this.Controls.Add(this.pnlChannel);
             this.Controls.Add(this.tsrCh);

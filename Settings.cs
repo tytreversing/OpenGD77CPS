@@ -481,13 +481,13 @@ internal class Settings
 
 	public static void ValidateNumberRangeWithDefault(ref byte byte_0, byte byte_1, byte byte_2, byte byte_3)
 	{
-		if (!smethod_12(byte_0, byte_1, byte_2))
+		if (!checkInRange(byte_0, byte_1, byte_2))
 		{
 			byte_0 = byte_3;
 		}
 	}
 
-	public static bool smethod_12(byte byte_0, byte byte_1, byte byte_2)
+	public static bool checkInRange(byte byte_0, byte byte_1, byte byte_2)
 	{
 		if (byte_0 >= byte_1 && byte_0 <= byte_2)
 		{
@@ -496,7 +496,7 @@ internal class Settings
 		return false;
 	}
 
-	public static bool smethod_13(int int_0, int int_1, int int_2)
+	public static bool checkIntInRange(int int_0, int int_1, int int_2)
 	{
 		if (int_0 >= int_1 && int_0 <= int_2)
 		{
@@ -684,7 +684,7 @@ internal class Settings
 
 	public static byte[] smethod_23(string string_0)
 	{
-		return smethod_24(string_0, "gb2312");
+		return smethod_24(string_0, "windows-1251");
 	}
 
 	public static byte[] smethod_24(string string_0, string string_1)
@@ -697,19 +697,23 @@ internal class Settings
 		return encoding.GetBytes(string_0);
 	}
 
-	public static string smethod_25(byte[] byte_0)
+	public static string smethod_25(byte[] buffer)
 	{
-		return smethod_26(byte_0, "gb2312");
+		return bufferToString(buffer, "windows-1251");
 	}
 
-	public static string smethod_26(byte[] byte_0, string string_0)
+	public static string bufferToString(byte[] byte_0, string codepage)
 	{
-		Encoding encoding = Encoding.GetEncoding(string_0);
+		Encoding encoding = Encoding.GetEncoding(codepage);
 		if (encoding == null)
 		{
 			encoding = Encoding.Default;
 		}
 		int num = Array.IndexOf(byte_0, byte.MaxValue);
+		for (int c =0; c < 16; c++)
+		{
+
+		}
 		if (num == -1)
 		{
 			num = Array.IndexOf(byte_0, (byte)0);

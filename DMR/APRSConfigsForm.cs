@@ -46,90 +46,129 @@ public class APRSConfigsForm : DockContent, IDisp, ISingleRow
 
 	private void InitializeComponent()
 	{
-		this.pnlContact = new System.Windows.Forms.Panel();
-		this.btnClear = new System.Windows.Forms.Button();
-		this.btnDelete = new System.Windows.Forms.Button();
-		this.btnAdd = new System.Windows.Forms.Button();
-		this.dgvAPRSConfigs = new System.Windows.Forms.DataGridView();
-		this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-		this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-		this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-		this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-		this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-		this.pnlContact.SuspendLayout();
-		((System.ComponentModel.ISupportInitialize)this.dgvAPRSConfigs).BeginInit();
-		base.SuspendLayout();
-		this.pnlContact.AutoScroll = true;
-		this.pnlContact.AutoSize = true;
-		this.pnlContact.Controls.Add(this.btnClear);
-		this.pnlContact.Controls.Add(this.btnDelete);
-		this.pnlContact.Controls.Add(this.btnAdd);
-		this.pnlContact.Controls.Add(this.dgvAPRSConfigs);
-		this.pnlContact.Dock = System.Windows.Forms.DockStyle.Fill;
-		this.pnlContact.Location = new System.Drawing.Point(0, 0);
-		this.pnlContact.Name = "pnlContact";
-		this.pnlContact.Size = new System.Drawing.Size(965, 381);
-		this.pnlContact.TabIndex = 0;
-		this.btnClear.Location = new System.Drawing.Point(184, 12);
-		this.btnClear.Name = "btnClear";
-		this.btnClear.Size = new System.Drawing.Size(75, 23);
-		this.btnClear.TabIndex = 3;
-		this.btnClear.Text = "Clear";
-		this.btnClear.UseVisualStyleBackColor = true;
-		this.btnClear.Click += new System.EventHandler(btnClear_Click);
-		this.btnDelete.Location = new System.Drawing.Point(103, 12);
-		this.btnDelete.Name = "btnDelete";
-		this.btnDelete.Size = new System.Drawing.Size(75, 23);
-		this.btnDelete.TabIndex = 2;
-		this.btnDelete.Text = "Delete";
-		this.btnDelete.UseVisualStyleBackColor = true;
-		this.btnDelete.Click += new System.EventHandler(btnDelete_Click);
-		this.btnAdd.Location = new System.Drawing.Point(22, 12);
-		this.btnAdd.Name = "btnAdd";
-		this.btnAdd.Size = new System.Drawing.Size(75, 23);
-		this.btnAdd.TabIndex = 1;
-		this.btnAdd.Text = "Add";
-		this.btnAdd.UseVisualStyleBackColor = true;
-		this.btnAdd.Click += new System.EventHandler(btnAdd_Click);
-		this.dgvAPRSConfigs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-		this.dgvAPRSConfigs.Location = new System.Drawing.Point(22, 41);
-		this.dgvAPRSConfigs.Name = "dgvAPRSConfigs";
-		this.dgvAPRSConfigs.ReadOnly = true;
-		this.dgvAPRSConfigs.RowHeadersWidth = 50;
-		this.dgvAPRSConfigs.RowTemplate.Height = 23;
-		this.dgvAPRSConfigs.Size = new System.Drawing.Size(913, 328);
-		this.dgvAPRSConfigs.TabIndex = 9;
-		this.dgvAPRSConfigs.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(dgvAPRS_Configs_RowHeaderMouseDoubleClick);
-		this.dgvAPRSConfigs.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(dgvAPRS_Configs_RowPostPaint);
-		this.dgvAPRSConfigs.SelectionChanged += new System.EventHandler(dgvAPRS_Configs_SelectionChanged);
-		this.dgvAPRSConfigs.KeyPress += new System.Windows.Forms.KeyPressEventHandler(dgvAPRS_Configs_KeyPress);
-		this.dataGridViewTextBoxColumn1.HeaderText = "Column1";
-		this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-		this.dataGridViewTextBoxColumn1.ReadOnly = true;
-		this.dataGridViewTextBoxColumn2.HeaderText = "Column2";
-		this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-		this.dataGridViewTextBoxColumn2.ReadOnly = true;
-		this.dataGridViewTextBoxColumn3.HeaderText = "Column3";
-		this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-		this.dataGridViewTextBoxColumn3.ReadOnly = true;
-		this.dataGridViewTextBoxColumn4.HeaderText = "Column4";
-		this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-		this.dataGridViewTextBoxColumn4.ReadOnly = true;
-		this.dataGridViewTextBoxColumn5.HeaderText = "Column5";
-		this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-		this.dataGridViewTextBoxColumn5.ReadOnly = true;
-		base.ClientSize = new System.Drawing.Size(965, 381);
-		base.Controls.Add(this.pnlContact);
-		this.Font = new System.Drawing.Font("Arial", 10f);
-		base.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-		base.MaximizeBox = false;
-		base.MinimizeBox = false;
-		base.Name = "APRSConfigsForm";
-		this.Text = "Contacts";
-		this.pnlContact.ResumeLayout(false);
-		((System.ComponentModel.ISupportInitialize)this.dgvAPRSConfigs).EndInit();
-		base.ResumeLayout(false);
-		base.PerformLayout();
+            this.pnlContact = new System.Windows.Forms.Panel();
+            this.btnClear = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.dgvAPRSConfigs = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pnlContact.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAPRSConfigs)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // pnlContact
+            // 
+            this.pnlContact.AutoScroll = true;
+            this.pnlContact.AutoSize = true;
+            this.pnlContact.Controls.Add(this.btnClear);
+            this.pnlContact.Controls.Add(this.btnDelete);
+            this.pnlContact.Controls.Add(this.btnAdd);
+            this.pnlContact.Controls.Add(this.dgvAPRSConfigs);
+            this.pnlContact.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlContact.Location = new System.Drawing.Point(0, 0);
+            this.pnlContact.Name = "pnlContact";
+            this.pnlContact.Size = new System.Drawing.Size(965, 381);
+            this.pnlContact.TabIndex = 0;
+            // 
+            // btnClear
+            // 
+            this.btnClear.BackColor = System.Drawing.SystemColors.Control;
+            this.btnClear.Location = new System.Drawing.Point(292, 12);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(129, 23);
+            this.btnClear.TabIndex = 3;
+            this.btnClear.Text = "Clear";
+            this.btnClear.UseVisualStyleBackColor = false;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.BackColor = System.Drawing.SystemColors.Control;
+            this.btnDelete.Location = new System.Drawing.Point(157, 12);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(129, 23);
+            this.btnDelete.TabIndex = 2;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.BackColor = System.Drawing.SystemColors.Control;
+            this.btnAdd.Location = new System.Drawing.Point(22, 12);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(129, 23);
+            this.btnAdd.TabIndex = 1;
+            this.btnAdd.Text = "Add";
+            this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // dgvAPRSConfigs
+            // 
+            this.dgvAPRSConfigs.BackgroundColor = System.Drawing.Color.White;
+            this.dgvAPRSConfigs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAPRSConfigs.Location = new System.Drawing.Point(22, 41);
+            this.dgvAPRSConfigs.Name = "dgvAPRSConfigs";
+            this.dgvAPRSConfigs.ReadOnly = true;
+            this.dgvAPRSConfigs.RowHeadersWidth = 50;
+            this.dgvAPRSConfigs.RowTemplate.Height = 23;
+            this.dgvAPRSConfigs.Size = new System.Drawing.Size(913, 328);
+            this.dgvAPRSConfigs.TabIndex = 9;
+            this.dgvAPRSConfigs.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvAPRS_Configs_RowHeaderMouseDoubleClick);
+            this.dgvAPRSConfigs.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvAPRS_Configs_RowPostPaint);
+            this.dgvAPRSConfigs.SelectionChanged += new System.EventHandler(this.dgvAPRS_Configs_SelectionChanged);
+            this.dgvAPRSConfigs.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dgvAPRS_Configs_KeyPress);
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Column1";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "Column2";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.HeaderText = "Column3";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.HeaderText = "Column4";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.HeaderText = "Column5";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            // 
+            // APRSConfigsForm
+            // 
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(965, 381);
+            this.Controls.Add(this.pnlContact);
+            this.Font = new System.Drawing.Font("Arial", 10F);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "APRSConfigsForm";
+            this.Text = "Contacts";
+            this.pnlContact.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAPRSConfigs)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
 	}
 
 	public void SaveData()

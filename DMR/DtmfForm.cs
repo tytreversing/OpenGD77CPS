@@ -997,405 +997,636 @@ public class DtmfForm : DockContent, IDisp
 
 	private void InitializeComponent()
 	{
-		this.pnlDtmf = new CustomPanel();
-		this.lblUpCode = new System.Windows.Forms.Label();
-		this.cmbKillType = new CustomCombo();
-		this.lblDownCode = new System.Windows.Forms.Label();
-		this.cmbKillWakeDec = new CustomCombo();
-		this.label_0 = new System.Windows.Forms.Label();
-		this.cmbGrpCallCode = new CustomCombo();
-		this.lblRespHoldTime = new System.Windows.Forms.Label();
-		this.cmbDelimiter = new CustomCombo();
-		this.lblKillCode = new System.Windows.Forms.Label();
-		this.cmbDecResp = new CustomCombo();
-		this.lblAutoResetTime = new System.Windows.Forms.Label();
-		this.nudOtherDur = new CustomNumericUpDown();
-		this.nudTailDur = new CustomNumericUpDown();
-		this.nudRate = new CustomNumericUpDown();
-		this.lblDecTime = new System.Windows.Forms.Label();
-		this.nudFstDur = new CustomNumericUpDown();
-		this.lblWakeCode = new System.Windows.Forms.Label();
-		this.nudFstDlyTime = new CustomNumericUpDown();
-		this.lblDelimiter = new System.Windows.Forms.Label();
-		this.nudDecTime = new CustomNumericUpDown();
-		this.lblGrpCallCode = new System.Windows.Forms.Label();
-		this.nudAutoResetTimer = new CustomNumericUpDown();
-		this.lblDecResp = new System.Windows.Forms.Label();
-		this.nudRespHoldTime = new CustomNumericUpDown();
-		this.lblFstDlyTime = new System.Windows.Forms.Label();
-		this.txtDownCode = new DMR.SGTextBox();
-		this.lblKillWakeDec = new System.Windows.Forms.Label();
-		this.txtWakeCode = new DMR.SGTextBox();
-		this.lblFstDur = new System.Windows.Forms.Label();
-		this.txtKillCode = new DMR.SGTextBox();
-		this.lblKillType = new System.Windows.Forms.Label();
-		this.sgtextBox_0 = new DMR.SGTextBox();
-		this.lblOtherDur = new System.Windows.Forms.Label();
-		this.txtUpCode = new DMR.SGTextBox();
-		this.lblTail = new System.Windows.Forms.Label();
-		this.lblRate = new System.Windows.Forms.Label();
-		this.pnlDtmf.SuspendLayout();
-		((System.ComponentModel.ISupportInitialize)this.nudOtherDur).BeginInit();
-		((System.ComponentModel.ISupportInitialize)this.nudTailDur).BeginInit();
-		((System.ComponentModel.ISupportInitialize)this.nudRate).BeginInit();
-		((System.ComponentModel.ISupportInitialize)this.nudFstDur).BeginInit();
-		((System.ComponentModel.ISupportInitialize)this.nudFstDlyTime).BeginInit();
-		((System.ComponentModel.ISupportInitialize)this.nudDecTime).BeginInit();
-		((System.ComponentModel.ISupportInitialize)this.nudAutoResetTimer).BeginInit();
-		((System.ComponentModel.ISupportInitialize)this.nudRespHoldTime).BeginInit();
-		base.SuspendLayout();
-		this.pnlDtmf.AutoScroll = true;
-		this.pnlDtmf.AutoSize = true;
-		this.pnlDtmf.Controls.Add(this.lblUpCode);
-		this.pnlDtmf.Controls.Add(this.cmbKillType);
-		this.pnlDtmf.Controls.Add(this.lblDownCode);
-		this.pnlDtmf.Controls.Add(this.cmbKillWakeDec);
-		this.pnlDtmf.Controls.Add(this.label_0);
-		this.pnlDtmf.Controls.Add(this.cmbGrpCallCode);
-		this.pnlDtmf.Controls.Add(this.lblRespHoldTime);
-		this.pnlDtmf.Controls.Add(this.cmbDelimiter);
-		this.pnlDtmf.Controls.Add(this.lblKillCode);
-		this.pnlDtmf.Controls.Add(this.cmbDecResp);
-		this.pnlDtmf.Controls.Add(this.lblAutoResetTime);
-		this.pnlDtmf.Controls.Add(this.nudOtherDur);
-		this.pnlDtmf.Controls.Add(this.nudTailDur);
-		this.pnlDtmf.Controls.Add(this.nudRate);
-		this.pnlDtmf.Controls.Add(this.lblDecTime);
-		this.pnlDtmf.Controls.Add(this.nudFstDur);
-		this.pnlDtmf.Controls.Add(this.lblWakeCode);
-		this.pnlDtmf.Controls.Add(this.nudFstDlyTime);
-		this.pnlDtmf.Controls.Add(this.lblDelimiter);
-		this.pnlDtmf.Controls.Add(this.nudDecTime);
-		this.pnlDtmf.Controls.Add(this.lblGrpCallCode);
-		this.pnlDtmf.Controls.Add(this.nudAutoResetTimer);
-		this.pnlDtmf.Controls.Add(this.lblDecResp);
-		this.pnlDtmf.Controls.Add(this.nudRespHoldTime);
-		this.pnlDtmf.Controls.Add(this.lblFstDlyTime);
-		this.pnlDtmf.Controls.Add(this.txtDownCode);
-		this.pnlDtmf.Controls.Add(this.lblKillWakeDec);
-		this.pnlDtmf.Controls.Add(this.txtWakeCode);
-		this.pnlDtmf.Controls.Add(this.lblFstDur);
-		this.pnlDtmf.Controls.Add(this.txtKillCode);
-		this.pnlDtmf.Controls.Add(this.lblKillType);
-		this.pnlDtmf.Controls.Add(this.sgtextBox_0);
-		this.pnlDtmf.Controls.Add(this.lblOtherDur);
-		this.pnlDtmf.Controls.Add(this.txtUpCode);
-		this.pnlDtmf.Controls.Add(this.lblTail);
-		this.pnlDtmf.Controls.Add(this.lblRate);
-		this.pnlDtmf.Dock = System.Windows.Forms.DockStyle.Fill;
-		this.pnlDtmf.Location = new System.Drawing.Point(0, 0);
-		this.pnlDtmf.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-		this.pnlDtmf.Name = "pnlDtmf";
-		this.pnlDtmf.Size = new System.Drawing.Size(383, 247);
-		this.pnlDtmf.TabIndex = 0;
-		this.lblUpCode.Location = new System.Drawing.Point(381, 52);
-		this.lblUpCode.Name = "lblUpCode";
-		this.lblUpCode.Size = new System.Drawing.Size(156, 24);
-		this.lblUpCode.TabIndex = 21;
-		this.lblUpCode.Text = "PTTID Up Code";
-		this.lblUpCode.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-		this.lblUpCode.Visible = false;
-		this.cmbKillType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-		this.cmbKillType.FormattingEnabled = true;
-		this.cmbKillType.Items.AddRange(new object[3] { "发射禁止", "收发禁止", "遥毙" });
-		this.cmbKillType.Location = new System.Drawing.Point(547, 454);
-		this.cmbKillType.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-		this.cmbKillType.Name = "cmbKillType";
-		this.cmbKillType.Size = new System.Drawing.Size(139, 24);
-		this.cmbKillType.TabIndex = 17;
-		this.cmbKillType.Visible = false;
-		this.lblDownCode.Location = new System.Drawing.Point(381, 93);
-		this.lblDownCode.Name = "lblDownCode";
-		this.lblDownCode.Size = new System.Drawing.Size(156, 24);
-		this.lblDownCode.TabIndex = 23;
-		this.lblDownCode.Text = "PTTID Down Code";
-		this.lblDownCode.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-		this.lblDownCode.Visible = false;
-		this.cmbKillWakeDec.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-		this.cmbKillWakeDec.FormattingEnabled = true;
-		this.cmbKillWakeDec.Items.AddRange(new object[2] { "关", "开" });
-		this.cmbKillWakeDec.Location = new System.Drawing.Point(547, 413);
-		this.cmbKillWakeDec.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-		this.cmbKillWakeDec.Name = "cmbKillWakeDec";
-		this.cmbKillWakeDec.Size = new System.Drawing.Size(139, 24);
-		this.cmbKillWakeDec.TabIndex = 15;
-		this.cmbKillWakeDec.Visible = false;
-		this.label_0.Location = new System.Drawing.Point(402, 134);
-		this.label_0.Name = "label_0";
-		this.label_0.Size = new System.Drawing.Size(131, 24);
-		this.label_0.TabIndex = 0;
-		this.label_0.Text = "Self ID";
-		this.label_0.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-		this.label_0.Visible = false;
-		this.cmbGrpCallCode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-		this.cmbGrpCallCode.FormattingEnabled = true;
-		this.cmbGrpCallCode.Items.AddRange(new object[7] { "None", "A", "B", "C", "D", "*", "#" });
-		this.cmbGrpCallCode.Location = new System.Drawing.Point(547, 294);
-		this.cmbGrpCallCode.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-		this.cmbGrpCallCode.Name = "cmbGrpCallCode";
-		this.cmbGrpCallCode.Size = new System.Drawing.Size(139, 24);
-		this.cmbGrpCallCode.TabIndex = 9;
-		this.cmbGrpCallCode.Visible = false;
-		this.lblRespHoldTime.Location = new System.Drawing.Point(24, 342);
-		this.lblRespHoldTime.Name = "lblRespHoldTime";
-		this.lblRespHoldTime.Size = new System.Drawing.Size(156, 24);
-		this.lblRespHoldTime.TabIndex = 33;
-		this.lblRespHoldTime.Text = "Response Hold [s]";
-		this.lblRespHoldTime.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-		this.lblRespHoldTime.Visible = false;
-		this.cmbDelimiter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-		this.cmbDelimiter.FormattingEnabled = true;
-		this.cmbDelimiter.Items.AddRange(new object[6] { "A", "B", "C", "D", "*", "#" });
-		this.cmbDelimiter.Location = new System.Drawing.Point(547, 253);
-		this.cmbDelimiter.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-		this.cmbDelimiter.Name = "cmbDelimiter";
-		this.cmbDelimiter.Size = new System.Drawing.Size(139, 24);
-		this.cmbDelimiter.TabIndex = 7;
-		this.cmbDelimiter.Visible = false;
-		this.lblKillCode.Location = new System.Drawing.Point(402, 173);
-		this.lblKillCode.Name = "lblKillCode";
-		this.lblKillCode.Size = new System.Drawing.Size(131, 24);
-		this.lblKillCode.TabIndex = 2;
-		this.lblKillCode.Text = "Kill Code";
-		this.lblKillCode.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-		this.lblKillCode.Visible = false;
-		this.cmbDecResp.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-		this.cmbDecResp.FormattingEnabled = true;
-		this.cmbDecResp.Items.AddRange(new object[4] { "None", "提醒", "回复", "提醒并回复" });
-		this.cmbDecResp.Location = new System.Drawing.Point(547, 333);
-		this.cmbDecResp.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-		this.cmbDecResp.Name = "cmbDecResp";
-		this.cmbDecResp.Size = new System.Drawing.Size(139, 24);
-		this.cmbDecResp.TabIndex = 11;
-		this.cmbDecResp.Visible = false;
-		this.lblAutoResetTime.Location = new System.Drawing.Point(402, 374);
-		this.lblAutoResetTime.Name = "lblAutoResetTime";
-		this.lblAutoResetTime.Size = new System.Drawing.Size(131, 24);
-		this.lblAutoResetTime.TabIndex = 12;
-		this.lblAutoResetTime.Text = "Auto Reset Time [s]";
-		this.lblAutoResetTime.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-		this.lblAutoResetTime.Visible = false;
-		this.nudOtherDur.Increment = new decimal(new int[4] { 100, 0, 0, 0 });
-		this.nudOtherDur.Location = new System.Drawing.Point(190, 99);
-		this.nudOtherDur.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-		this.nudOtherDur.Maximum = new decimal(new int[4] { 1000, 0, 0, 0 });
-		this.nudOtherDur.Name = "nudOtherDur";
-		this.nudOtherDur.Size = new System.Drawing.Size(140, 23);
-		this.nudOtherDur.TabIndex = 30;
-		this.nudTailDur.Increment = new decimal(new int[4] { 100, 0, 0, 0 });
-		this.nudTailDur.Location = new System.Drawing.Point(190, 140);
-		this.nudTailDur.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-		this.nudTailDur.Maximum = new decimal(new int[4] { 1000, 0, 0, 0 });
-		this.nudTailDur.Name = "nudTailDur";
-		this.nudTailDur.Size = new System.Drawing.Size(140, 23);
-		this.nudTailDur.TabIndex = 31;
-		this.nudRate.Location = new System.Drawing.Point(190, 182);
-		this.nudRate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-		this.nudRate.Maximum = new decimal(new int[4] { 10, 0, 0, 0 });
-		this.nudRate.Name = "nudRate";
-		this.nudRate.Size = new System.Drawing.Size(140, 23);
-		this.nudRate.TabIndex = 32;
-		this.lblDecTime.Location = new System.Drawing.Point(402, 492);
-		this.lblDecTime.Name = "lblDecTime";
-		this.lblDecTime.Size = new System.Drawing.Size(131, 24);
-		this.lblDecTime.TabIndex = 18;
-		this.lblDecTime.Text = "Decode Time [s]";
-		this.lblDecTime.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-		this.lblDecTime.Visible = false;
-		this.nudFstDur.Increment = new decimal(new int[4] { 100, 0, 0, 0 });
-		this.nudFstDur.Location = new System.Drawing.Point(190, 60);
-		this.nudFstDur.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-		this.nudFstDur.Maximum = new decimal(new int[4] { 1000, 0, 0, 0 });
-		this.nudFstDur.Name = "nudFstDur";
-		this.nudFstDur.Size = new System.Drawing.Size(140, 23);
-		this.nudFstDur.TabIndex = 28;
-		this.lblWakeCode.Location = new System.Drawing.Point(402, 214);
-		this.lblWakeCode.Name = "lblWakeCode";
-		this.lblWakeCode.Size = new System.Drawing.Size(131, 24);
-		this.lblWakeCode.TabIndex = 4;
-		this.lblWakeCode.Text = "Wake Code";
-		this.lblWakeCode.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-		this.lblWakeCode.Visible = false;
-		this.nudFstDlyTime.Increment = new decimal(new int[4] { 100, 0, 0, 0 });
-		this.nudFstDlyTime.Location = new System.Drawing.Point(190, 19);
-		this.nudFstDlyTime.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-		this.nudFstDlyTime.Maximum = new decimal(new int[4] { 1000, 0, 0, 0 });
-		this.nudFstDlyTime.Minimum = new decimal(new int[4] { 100, 0, 0, 0 });
-		this.nudFstDlyTime.Name = "nudFstDlyTime";
-		this.nudFstDlyTime.Size = new System.Drawing.Size(140, 23);
-		this.nudFstDlyTime.TabIndex = 26;
-		this.nudFstDlyTime.Value = new decimal(new int[4] { 100, 0, 0, 0 });
-		this.lblDelimiter.Location = new System.Drawing.Point(402, 253);
-		this.lblDelimiter.Name = "lblDelimiter";
-		this.lblDelimiter.Size = new System.Drawing.Size(131, 24);
-		this.lblDelimiter.TabIndex = 6;
-		this.lblDelimiter.Text = "Delimiter";
-		this.lblDelimiter.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-		this.lblDelimiter.Visible = false;
-		this.nudDecTime.DecimalPlaces = 1;
-		this.nudDecTime.Increment = new decimal(new int[4] { 1, 0, 0, 65536 });
-		this.nudDecTime.Location = new System.Drawing.Point(547, 492);
-		this.nudDecTime.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-		this.nudDecTime.Maximum = new decimal(new int[4] { 50, 0, 0, 65536 });
-		this.nudDecTime.Minimum = new decimal(new int[4] { 5, 0, 0, 65536 });
-		this.nudDecTime.Name = "nudDecTime";
-		this.nudDecTime.Size = new System.Drawing.Size(140, 23);
-		this.nudDecTime.TabIndex = 19;
-		this.nudDecTime.Value = new decimal(new int[4] { 5, 0, 0, 65536 });
-		this.nudDecTime.Visible = false;
-		this.lblGrpCallCode.Location = new System.Drawing.Point(402, 294);
-		this.lblGrpCallCode.Name = "lblGrpCallCode";
-		this.lblGrpCallCode.Size = new System.Drawing.Size(131, 24);
-		this.lblGrpCallCode.TabIndex = 8;
-		this.lblGrpCallCode.Text = "Group Code";
-		this.lblGrpCallCode.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-		this.lblGrpCallCode.Visible = false;
-		this.nudAutoResetTimer.Location = new System.Drawing.Point(547, 374);
-		this.nudAutoResetTimer.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-		this.nudAutoResetTimer.Maximum = new decimal(new int[4] { 60, 0, 0, 0 });
-		this.nudAutoResetTimer.Minimum = new decimal(new int[4] { 5, 0, 0, 0 });
-		this.nudAutoResetTimer.Name = "nudAutoResetTimer";
-		this.nudAutoResetTimer.Size = new System.Drawing.Size(140, 23);
-		this.nudAutoResetTimer.TabIndex = 13;
-		this.nudAutoResetTimer.Value = new decimal(new int[4] { 5, 0, 0, 0 });
-		this.nudAutoResetTimer.Visible = false;
-		this.lblDecResp.Location = new System.Drawing.Point(402, 333);
-		this.lblDecResp.Name = "lblDecResp";
-		this.lblDecResp.Size = new System.Drawing.Size(131, 24);
-		this.lblDecResp.TabIndex = 10;
-		this.lblDecResp.Text = "Decode Response";
-		this.lblDecResp.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-		this.lblDecResp.Visible = false;
-		this.nudRespHoldTime.DecimalPlaces = 1;
-		this.nudRespHoldTime.Increment = new decimal(new int[4] { 1, 0, 0, 65536 });
-		this.nudRespHoldTime.Location = new System.Drawing.Point(190, 342);
-		this.nudRespHoldTime.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-		this.nudRespHoldTime.Maximum = new decimal(new int[4] { 100, 0, 0, 65536 });
-		this.nudRespHoldTime.Minimum = new decimal(new int[4] { 5, 0, 0, 65536 });
-		this.nudRespHoldTime.Name = "nudRespHoldTime";
-		this.nudRespHoldTime.Size = new System.Drawing.Size(140, 23);
-		this.nudRespHoldTime.TabIndex = 34;
-		this.nudRespHoldTime.Value = new decimal(new int[4] { 5, 0, 0, 65536 });
-		this.nudRespHoldTime.Visible = false;
-		this.lblFstDlyTime.Location = new System.Drawing.Point(24, 19);
-		this.lblFstDlyTime.Name = "lblFstDlyTime";
-		this.lblFstDlyTime.Size = new System.Drawing.Size(156, 24);
-		this.lblFstDlyTime.TabIndex = 25;
-		this.lblFstDlyTime.Text = "First Digit Delay [ms]";
-		this.lblFstDlyTime.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-		this.txtDownCode.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-		this.txtDownCode.InputString = null;
-		this.txtDownCode.Location = new System.Drawing.Point(547, 93);
-		this.txtDownCode.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-		this.txtDownCode.MaxByteLength = 0;
-		this.txtDownCode.MaxLength = 30;
-		this.txtDownCode.Name = "txtDownCode";
-		this.txtDownCode.Size = new System.Drawing.Size(139, 23);
-		this.txtDownCode.TabIndex = 24;
-		this.txtDownCode.Visible = false;
-		this.lblKillWakeDec.Location = new System.Drawing.Point(402, 413);
-		this.lblKillWakeDec.Name = "lblKillWakeDec";
-		this.lblKillWakeDec.Size = new System.Drawing.Size(131, 24);
-		this.lblKillWakeDec.TabIndex = 14;
-		this.lblKillWakeDec.Text = "Kill/Wake Code";
-		this.lblKillWakeDec.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-		this.lblKillWakeDec.Visible = false;
-		this.txtWakeCode.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-		this.txtWakeCode.InputString = null;
-		this.txtWakeCode.Location = new System.Drawing.Point(547, 214);
-		this.txtWakeCode.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-		this.txtWakeCode.MaxByteLength = 0;
-		this.txtWakeCode.MaxLength = 16;
-		this.txtWakeCode.Name = "txtWakeCode";
-		this.txtWakeCode.Size = new System.Drawing.Size(139, 23);
-		this.txtWakeCode.TabIndex = 5;
-		this.txtWakeCode.Visible = false;
-		this.txtWakeCode.Validating += new System.ComponentModel.CancelEventHandler(txtWakeCode_Validating);
-		this.lblFstDur.Location = new System.Drawing.Point(24, 60);
-		this.lblFstDur.Name = "lblFstDur";
-		this.lblFstDur.Size = new System.Drawing.Size(156, 24);
-		this.lblFstDur.TabIndex = 27;
-		this.lblFstDur.Text = "First Digit Duration [ms]";
-		this.lblFstDur.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-		this.txtKillCode.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-		this.txtKillCode.InputString = null;
-		this.txtKillCode.Location = new System.Drawing.Point(547, 173);
-		this.txtKillCode.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-		this.txtKillCode.MaxByteLength = 0;
-		this.txtKillCode.MaxLength = 16;
-		this.txtKillCode.Name = "txtKillCode";
-		this.txtKillCode.Size = new System.Drawing.Size(139, 23);
-		this.txtKillCode.TabIndex = 3;
-		this.txtKillCode.Visible = false;
-		this.txtKillCode.Validating += new System.ComponentModel.CancelEventHandler(txtKillCode_Validating);
-		this.lblKillType.Location = new System.Drawing.Point(402, 454);
-		this.lblKillType.Name = "lblKillType";
-		this.lblKillType.Size = new System.Drawing.Size(131, 24);
-		this.lblKillType.TabIndex = 16;
-		this.lblKillType.Text = "Kill Type";
-		this.lblKillType.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-		this.lblKillType.Visible = false;
-		this.sgtextBox_0.InputString = null;
-		this.sgtextBox_0.Location = new System.Drawing.Point(547, 134);
-		this.sgtextBox_0.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-		this.sgtextBox_0.MaxByteLength = 0;
-		this.sgtextBox_0.MaxLength = 8;
-		this.sgtextBox_0.Name = "sgtextBox_0";
-		this.sgtextBox_0.Size = new System.Drawing.Size(139, 23);
-		this.sgtextBox_0.TabIndex = 1;
-		this.sgtextBox_0.Visible = false;
-		this.sgtextBox_0.Validating += new System.ComponentModel.CancelEventHandler(sgtextBox_0_Validating);
-		this.lblOtherDur.Location = new System.Drawing.Point(24, 99);
-		this.lblOtherDur.Name = "lblOtherDur";
-		this.lblOtherDur.Size = new System.Drawing.Size(156, 24);
-		this.lblOtherDur.TabIndex = 29;
-		this.lblOtherDur.Text = "*# Duration [ms]";
-		this.lblOtherDur.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-		this.txtUpCode.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-		this.txtUpCode.InputString = null;
-		this.txtUpCode.Location = new System.Drawing.Point(547, 52);
-		this.txtUpCode.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-		this.txtUpCode.MaxByteLength = 0;
-		this.txtUpCode.MaxLength = 30;
-		this.txtUpCode.Name = "txtUpCode";
-		this.txtUpCode.Size = new System.Drawing.Size(139, 23);
-		this.txtUpCode.TabIndex = 22;
-		this.txtUpCode.Visible = false;
-		this.lblTail.Location = new System.Drawing.Point(24, 140);
-		this.lblTail.Name = "lblTail";
-		this.lblTail.Size = new System.Drawing.Size(156, 24);
-		this.lblTail.TabIndex = 31;
-		this.lblTail.Text = "DTMF Tail [ms]";
-		this.lblTail.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-		this.lblRate.Location = new System.Drawing.Point(24, 181);
-		this.lblRate.Name = "lblRate";
-		this.lblRate.Size = new System.Drawing.Size(156, 24);
-		this.lblRate.TabIndex = 31;
-		this.lblRate.Text = "DTMF Rate";
-		this.lblRate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-		base.ClientSize = new System.Drawing.Size(383, 247);
-		base.Controls.Add(this.pnlDtmf);
-		this.Font = new System.Drawing.Font("Arial", 10f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-		base.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-		base.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-		base.MaximizeBox = false;
-		base.MinimizeBox = false;
-		base.Name = "DtmfForm";
-		this.Text = "DTMF";
-		base.FormClosing += new System.Windows.Forms.FormClosingEventHandler(DtmfForm_FormClosing);
-		base.Load += new System.EventHandler(DtmfForm_Load);
-		this.pnlDtmf.ResumeLayout(false);
-		this.pnlDtmf.PerformLayout();
-		((System.ComponentModel.ISupportInitialize)this.nudOtherDur).EndInit();
-		((System.ComponentModel.ISupportInitialize)this.nudTailDur).EndInit();
-		((System.ComponentModel.ISupportInitialize)this.nudRate).EndInit();
-		((System.ComponentModel.ISupportInitialize)this.nudFstDur).EndInit();
-		((System.ComponentModel.ISupportInitialize)this.nudFstDlyTime).EndInit();
-		((System.ComponentModel.ISupportInitialize)this.nudDecTime).EndInit();
-		((System.ComponentModel.ISupportInitialize)this.nudAutoResetTimer).EndInit();
-		((System.ComponentModel.ISupportInitialize)this.nudRespHoldTime).EndInit();
-		base.ResumeLayout(false);
-		base.PerformLayout();
+            this.pnlDtmf = new CustomPanel();
+            this.lblUpCode = new System.Windows.Forms.Label();
+            this.cmbKillType = new CustomCombo();
+            this.lblDownCode = new System.Windows.Forms.Label();
+            this.cmbKillWakeDec = new CustomCombo();
+            this.label_0 = new System.Windows.Forms.Label();
+            this.cmbGrpCallCode = new CustomCombo();
+            this.lblRespHoldTime = new System.Windows.Forms.Label();
+            this.cmbDelimiter = new CustomCombo();
+            this.lblKillCode = new System.Windows.Forms.Label();
+            this.cmbDecResp = new CustomCombo();
+            this.lblAutoResetTime = new System.Windows.Forms.Label();
+            this.nudOtherDur = new CustomNumericUpDown();
+            this.nudTailDur = new CustomNumericUpDown();
+            this.nudRate = new CustomNumericUpDown();
+            this.lblDecTime = new System.Windows.Forms.Label();
+            this.nudFstDur = new CustomNumericUpDown();
+            this.lblWakeCode = new System.Windows.Forms.Label();
+            this.nudFstDlyTime = new CustomNumericUpDown();
+            this.lblDelimiter = new System.Windows.Forms.Label();
+            this.nudDecTime = new CustomNumericUpDown();
+            this.lblGrpCallCode = new System.Windows.Forms.Label();
+            this.nudAutoResetTimer = new CustomNumericUpDown();
+            this.lblDecResp = new System.Windows.Forms.Label();
+            this.nudRespHoldTime = new CustomNumericUpDown();
+            this.lblFstDlyTime = new System.Windows.Forms.Label();
+            this.txtDownCode = new DMR.SGTextBox();
+            this.lblKillWakeDec = new System.Windows.Forms.Label();
+            this.txtWakeCode = new DMR.SGTextBox();
+            this.lblFstDur = new System.Windows.Forms.Label();
+            this.txtKillCode = new DMR.SGTextBox();
+            this.lblKillType = new System.Windows.Forms.Label();
+            this.sgtextBox_0 = new DMR.SGTextBox();
+            this.lblOtherDur = new System.Windows.Forms.Label();
+            this.txtUpCode = new DMR.SGTextBox();
+            this.lblTail = new System.Windows.Forms.Label();
+            this.lblRate = new System.Windows.Forms.Label();
+            this.pnlDtmf.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudOtherDur)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudTailDur)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudRate)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudFstDur)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudFstDlyTime)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudDecTime)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudAutoResetTimer)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudRespHoldTime)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // pnlDtmf
+            // 
+            this.pnlDtmf.AutoScroll = true;
+            this.pnlDtmf.AutoSize = true;
+            this.pnlDtmf.Controls.Add(this.lblUpCode);
+            this.pnlDtmf.Controls.Add(this.cmbKillType);
+            this.pnlDtmf.Controls.Add(this.lblDownCode);
+            this.pnlDtmf.Controls.Add(this.cmbKillWakeDec);
+            this.pnlDtmf.Controls.Add(this.label_0);
+            this.pnlDtmf.Controls.Add(this.cmbGrpCallCode);
+            this.pnlDtmf.Controls.Add(this.lblRespHoldTime);
+            this.pnlDtmf.Controls.Add(this.cmbDelimiter);
+            this.pnlDtmf.Controls.Add(this.lblKillCode);
+            this.pnlDtmf.Controls.Add(this.cmbDecResp);
+            this.pnlDtmf.Controls.Add(this.lblAutoResetTime);
+            this.pnlDtmf.Controls.Add(this.nudOtherDur);
+            this.pnlDtmf.Controls.Add(this.nudTailDur);
+            this.pnlDtmf.Controls.Add(this.nudRate);
+            this.pnlDtmf.Controls.Add(this.lblDecTime);
+            this.pnlDtmf.Controls.Add(this.nudFstDur);
+            this.pnlDtmf.Controls.Add(this.lblWakeCode);
+            this.pnlDtmf.Controls.Add(this.nudFstDlyTime);
+            this.pnlDtmf.Controls.Add(this.lblDelimiter);
+            this.pnlDtmf.Controls.Add(this.nudDecTime);
+            this.pnlDtmf.Controls.Add(this.lblGrpCallCode);
+            this.pnlDtmf.Controls.Add(this.nudAutoResetTimer);
+            this.pnlDtmf.Controls.Add(this.lblDecResp);
+            this.pnlDtmf.Controls.Add(this.nudRespHoldTime);
+            this.pnlDtmf.Controls.Add(this.lblFstDlyTime);
+            this.pnlDtmf.Controls.Add(this.txtDownCode);
+            this.pnlDtmf.Controls.Add(this.lblKillWakeDec);
+            this.pnlDtmf.Controls.Add(this.txtWakeCode);
+            this.pnlDtmf.Controls.Add(this.lblFstDur);
+            this.pnlDtmf.Controls.Add(this.txtKillCode);
+            this.pnlDtmf.Controls.Add(this.lblKillType);
+            this.pnlDtmf.Controls.Add(this.sgtextBox_0);
+            this.pnlDtmf.Controls.Add(this.lblOtherDur);
+            this.pnlDtmf.Controls.Add(this.txtUpCode);
+            this.pnlDtmf.Controls.Add(this.lblTail);
+            this.pnlDtmf.Controls.Add(this.lblRate);
+            this.pnlDtmf.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlDtmf.Location = new System.Drawing.Point(0, 0);
+            this.pnlDtmf.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pnlDtmf.Name = "pnlDtmf";
+            this.pnlDtmf.Size = new System.Drawing.Size(433, 247);
+            this.pnlDtmf.TabIndex = 0;
+            // 
+            // lblUpCode
+            // 
+            this.lblUpCode.Location = new System.Drawing.Point(381, 52);
+            this.lblUpCode.Name = "lblUpCode";
+            this.lblUpCode.Size = new System.Drawing.Size(156, 24);
+            this.lblUpCode.TabIndex = 21;
+            this.lblUpCode.Text = "PTTID Up Code";
+            this.lblUpCode.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblUpCode.Visible = false;
+            // 
+            // cmbKillType
+            // 
+            this.cmbKillType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbKillType.FormattingEnabled = true;
+            this.cmbKillType.Items.AddRange(new object[] {
+            "发射禁止",
+            "收发禁止",
+            "遥毙"});
+            this.cmbKillType.Location = new System.Drawing.Point(547, 454);
+            this.cmbKillType.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cmbKillType.Name = "cmbKillType";
+            this.cmbKillType.Size = new System.Drawing.Size(139, 24);
+            this.cmbKillType.TabIndex = 17;
+            this.cmbKillType.Visible = false;
+            // 
+            // lblDownCode
+            // 
+            this.lblDownCode.Location = new System.Drawing.Point(381, 93);
+            this.lblDownCode.Name = "lblDownCode";
+            this.lblDownCode.Size = new System.Drawing.Size(156, 24);
+            this.lblDownCode.TabIndex = 23;
+            this.lblDownCode.Text = "PTTID Down Code";
+            this.lblDownCode.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblDownCode.Visible = false;
+            // 
+            // cmbKillWakeDec
+            // 
+            this.cmbKillWakeDec.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbKillWakeDec.FormattingEnabled = true;
+            this.cmbKillWakeDec.Items.AddRange(new object[] {
+            "关",
+            "开"});
+            this.cmbKillWakeDec.Location = new System.Drawing.Point(547, 413);
+            this.cmbKillWakeDec.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cmbKillWakeDec.Name = "cmbKillWakeDec";
+            this.cmbKillWakeDec.Size = new System.Drawing.Size(139, 24);
+            this.cmbKillWakeDec.TabIndex = 15;
+            this.cmbKillWakeDec.Visible = false;
+            // 
+            // label_0
+            // 
+            this.label_0.Location = new System.Drawing.Point(402, 134);
+            this.label_0.Name = "label_0";
+            this.label_0.Size = new System.Drawing.Size(131, 24);
+            this.label_0.TabIndex = 0;
+            this.label_0.Text = "Self ID";
+            this.label_0.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_0.Visible = false;
+            // 
+            // cmbGrpCallCode
+            // 
+            this.cmbGrpCallCode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbGrpCallCode.FormattingEnabled = true;
+            this.cmbGrpCallCode.Items.AddRange(new object[] {
+            "None",
+            "A",
+            "B",
+            "C",
+            "D",
+            "*",
+            "#"});
+            this.cmbGrpCallCode.Location = new System.Drawing.Point(547, 294);
+            this.cmbGrpCallCode.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cmbGrpCallCode.Name = "cmbGrpCallCode";
+            this.cmbGrpCallCode.Size = new System.Drawing.Size(139, 24);
+            this.cmbGrpCallCode.TabIndex = 9;
+            this.cmbGrpCallCode.Visible = false;
+            // 
+            // lblRespHoldTime
+            // 
+            this.lblRespHoldTime.Location = new System.Drawing.Point(24, 342);
+            this.lblRespHoldTime.Name = "lblRespHoldTime";
+            this.lblRespHoldTime.Size = new System.Drawing.Size(156, 24);
+            this.lblRespHoldTime.TabIndex = 33;
+            this.lblRespHoldTime.Text = "Response Hold [s]";
+            this.lblRespHoldTime.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblRespHoldTime.Visible = false;
+            // 
+            // cmbDelimiter
+            // 
+            this.cmbDelimiter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbDelimiter.FormattingEnabled = true;
+            this.cmbDelimiter.Items.AddRange(new object[] {
+            "A",
+            "B",
+            "C",
+            "D",
+            "*",
+            "#"});
+            this.cmbDelimiter.Location = new System.Drawing.Point(547, 253);
+            this.cmbDelimiter.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cmbDelimiter.Name = "cmbDelimiter";
+            this.cmbDelimiter.Size = new System.Drawing.Size(139, 24);
+            this.cmbDelimiter.TabIndex = 7;
+            this.cmbDelimiter.Visible = false;
+            // 
+            // lblKillCode
+            // 
+            this.lblKillCode.Location = new System.Drawing.Point(402, 173);
+            this.lblKillCode.Name = "lblKillCode";
+            this.lblKillCode.Size = new System.Drawing.Size(131, 24);
+            this.lblKillCode.TabIndex = 2;
+            this.lblKillCode.Text = "Kill Code";
+            this.lblKillCode.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblKillCode.Visible = false;
+            // 
+            // cmbDecResp
+            // 
+            this.cmbDecResp.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbDecResp.FormattingEnabled = true;
+            this.cmbDecResp.Items.AddRange(new object[] {
+            "None",
+            "提醒",
+            "回复",
+            "提醒并回复"});
+            this.cmbDecResp.Location = new System.Drawing.Point(547, 333);
+            this.cmbDecResp.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cmbDecResp.Name = "cmbDecResp";
+            this.cmbDecResp.Size = new System.Drawing.Size(139, 24);
+            this.cmbDecResp.TabIndex = 11;
+            this.cmbDecResp.Visible = false;
+            // 
+            // lblAutoResetTime
+            // 
+            this.lblAutoResetTime.Location = new System.Drawing.Point(402, 374);
+            this.lblAutoResetTime.Name = "lblAutoResetTime";
+            this.lblAutoResetTime.Size = new System.Drawing.Size(131, 24);
+            this.lblAutoResetTime.TabIndex = 12;
+            this.lblAutoResetTime.Text = "Auto Reset Time [s]";
+            this.lblAutoResetTime.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblAutoResetTime.Visible = false;
+            // 
+            // nudOtherDur
+            // 
+            this.nudOtherDur.Increment = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.nudOtherDur.Location = new System.Drawing.Point(255, 99);
+            this.nudOtherDur.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.nudOtherDur.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.nudOtherDur.Name = "nudOtherDur";
+            this.nudOtherDur.Size = new System.Drawing.Size(140, 23);
+            this.nudOtherDur.TabIndex = 30;
+            // 
+            // nudTailDur
+            // 
+            this.nudTailDur.Increment = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.nudTailDur.Location = new System.Drawing.Point(255, 140);
+            this.nudTailDur.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.nudTailDur.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.nudTailDur.Name = "nudTailDur";
+            this.nudTailDur.Size = new System.Drawing.Size(140, 23);
+            this.nudTailDur.TabIndex = 31;
+            // 
+            // nudRate
+            // 
+            this.nudRate.Location = new System.Drawing.Point(255, 181);
+            this.nudRate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.nudRate.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.nudRate.Name = "nudRate";
+            this.nudRate.Size = new System.Drawing.Size(140, 23);
+            this.nudRate.TabIndex = 32;
+            // 
+            // lblDecTime
+            // 
+            this.lblDecTime.Location = new System.Drawing.Point(402, 492);
+            this.lblDecTime.Name = "lblDecTime";
+            this.lblDecTime.Size = new System.Drawing.Size(131, 24);
+            this.lblDecTime.TabIndex = 18;
+            this.lblDecTime.Text = "Decode Time [s]";
+            this.lblDecTime.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblDecTime.Visible = false;
+            // 
+            // nudFstDur
+            // 
+            this.nudFstDur.Increment = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.nudFstDur.Location = new System.Drawing.Point(255, 60);
+            this.nudFstDur.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.nudFstDur.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.nudFstDur.Name = "nudFstDur";
+            this.nudFstDur.Size = new System.Drawing.Size(140, 23);
+            this.nudFstDur.TabIndex = 28;
+            // 
+            // lblWakeCode
+            // 
+            this.lblWakeCode.Location = new System.Drawing.Point(402, 214);
+            this.lblWakeCode.Name = "lblWakeCode";
+            this.lblWakeCode.Size = new System.Drawing.Size(131, 24);
+            this.lblWakeCode.TabIndex = 4;
+            this.lblWakeCode.Text = "Wake Code";
+            this.lblWakeCode.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblWakeCode.Visible = false;
+            // 
+            // nudFstDlyTime
+            // 
+            this.nudFstDlyTime.Increment = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.nudFstDlyTime.Location = new System.Drawing.Point(255, 19);
+            this.nudFstDlyTime.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.nudFstDlyTime.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.nudFstDlyTime.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.nudFstDlyTime.Name = "nudFstDlyTime";
+            this.nudFstDlyTime.Size = new System.Drawing.Size(140, 23);
+            this.nudFstDlyTime.TabIndex = 26;
+            this.nudFstDlyTime.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            // 
+            // lblDelimiter
+            // 
+            this.lblDelimiter.Location = new System.Drawing.Point(402, 253);
+            this.lblDelimiter.Name = "lblDelimiter";
+            this.lblDelimiter.Size = new System.Drawing.Size(131, 24);
+            this.lblDelimiter.TabIndex = 6;
+            this.lblDelimiter.Text = "Delimiter";
+            this.lblDelimiter.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblDelimiter.Visible = false;
+            // 
+            // nudDecTime
+            // 
+            this.nudDecTime.DecimalPlaces = 1;
+            this.nudDecTime.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.nudDecTime.Location = new System.Drawing.Point(547, 492);
+            this.nudDecTime.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.nudDecTime.Maximum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            65536});
+            this.nudDecTime.Minimum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            65536});
+            this.nudDecTime.Name = "nudDecTime";
+            this.nudDecTime.Size = new System.Drawing.Size(140, 23);
+            this.nudDecTime.TabIndex = 19;
+            this.nudDecTime.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            65536});
+            this.nudDecTime.Visible = false;
+            // 
+            // lblGrpCallCode
+            // 
+            this.lblGrpCallCode.Location = new System.Drawing.Point(402, 294);
+            this.lblGrpCallCode.Name = "lblGrpCallCode";
+            this.lblGrpCallCode.Size = new System.Drawing.Size(131, 24);
+            this.lblGrpCallCode.TabIndex = 8;
+            this.lblGrpCallCode.Text = "Group Code";
+            this.lblGrpCallCode.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblGrpCallCode.Visible = false;
+            // 
+            // nudAutoResetTimer
+            // 
+            this.nudAutoResetTimer.Location = new System.Drawing.Point(547, 374);
+            this.nudAutoResetTimer.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.nudAutoResetTimer.Maximum = new decimal(new int[] {
+            60,
+            0,
+            0,
+            0});
+            this.nudAutoResetTimer.Minimum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.nudAutoResetTimer.Name = "nudAutoResetTimer";
+            this.nudAutoResetTimer.Size = new System.Drawing.Size(140, 23);
+            this.nudAutoResetTimer.TabIndex = 13;
+            this.nudAutoResetTimer.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.nudAutoResetTimer.Visible = false;
+            // 
+            // lblDecResp
+            // 
+            this.lblDecResp.Location = new System.Drawing.Point(402, 333);
+            this.lblDecResp.Name = "lblDecResp";
+            this.lblDecResp.Size = new System.Drawing.Size(131, 24);
+            this.lblDecResp.TabIndex = 10;
+            this.lblDecResp.Text = "Decode Response";
+            this.lblDecResp.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblDecResp.Visible = false;
+            // 
+            // nudRespHoldTime
+            // 
+            this.nudRespHoldTime.DecimalPlaces = 1;
+            this.nudRespHoldTime.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.nudRespHoldTime.Location = new System.Drawing.Point(190, 342);
+            this.nudRespHoldTime.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.nudRespHoldTime.Maximum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            65536});
+            this.nudRespHoldTime.Minimum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            65536});
+            this.nudRespHoldTime.Name = "nudRespHoldTime";
+            this.nudRespHoldTime.Size = new System.Drawing.Size(140, 23);
+            this.nudRespHoldTime.TabIndex = 34;
+            this.nudRespHoldTime.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            65536});
+            this.nudRespHoldTime.Visible = false;
+            // 
+            // lblFstDlyTime
+            // 
+            this.lblFstDlyTime.Location = new System.Drawing.Point(24, 19);
+            this.lblFstDlyTime.Name = "lblFstDlyTime";
+            this.lblFstDlyTime.Size = new System.Drawing.Size(225, 24);
+            this.lblFstDlyTime.TabIndex = 25;
+            this.lblFstDlyTime.Text = "First Digit Delay [ms]";
+            this.lblFstDlyTime.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // txtDownCode
+            // 
+            this.txtDownCode.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtDownCode.InputString = null;
+            this.txtDownCode.Location = new System.Drawing.Point(547, 93);
+            this.txtDownCode.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtDownCode.MaxByteLength = 0;
+            this.txtDownCode.MaxLength = 30;
+            this.txtDownCode.Name = "txtDownCode";
+            this.txtDownCode.OnlyAllowInputStringAndCapitaliseCharacters = false;
+            this.txtDownCode.Size = new System.Drawing.Size(139, 23);
+            this.txtDownCode.TabIndex = 24;
+            this.txtDownCode.Visible = false;
+            // 
+            // lblKillWakeDec
+            // 
+            this.lblKillWakeDec.Location = new System.Drawing.Point(402, 413);
+            this.lblKillWakeDec.Name = "lblKillWakeDec";
+            this.lblKillWakeDec.Size = new System.Drawing.Size(131, 24);
+            this.lblKillWakeDec.TabIndex = 14;
+            this.lblKillWakeDec.Text = "Kill/Wake Code";
+            this.lblKillWakeDec.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblKillWakeDec.Visible = false;
+            // 
+            // txtWakeCode
+            // 
+            this.txtWakeCode.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtWakeCode.InputString = null;
+            this.txtWakeCode.Location = new System.Drawing.Point(547, 214);
+            this.txtWakeCode.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtWakeCode.MaxByteLength = 0;
+            this.txtWakeCode.MaxLength = 16;
+            this.txtWakeCode.Name = "txtWakeCode";
+            this.txtWakeCode.OnlyAllowInputStringAndCapitaliseCharacters = false;
+            this.txtWakeCode.Size = new System.Drawing.Size(139, 23);
+            this.txtWakeCode.TabIndex = 5;
+            this.txtWakeCode.Visible = false;
+            this.txtWakeCode.Validating += new System.ComponentModel.CancelEventHandler(this.txtWakeCode_Validating);
+            // 
+            // lblFstDur
+            // 
+            this.lblFstDur.Location = new System.Drawing.Point(24, 60);
+            this.lblFstDur.Name = "lblFstDur";
+            this.lblFstDur.Size = new System.Drawing.Size(225, 24);
+            this.lblFstDur.TabIndex = 27;
+            this.lblFstDur.Text = "First Digit Duration [ms]";
+            this.lblFstDur.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // txtKillCode
+            // 
+            this.txtKillCode.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtKillCode.InputString = null;
+            this.txtKillCode.Location = new System.Drawing.Point(547, 173);
+            this.txtKillCode.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtKillCode.MaxByteLength = 0;
+            this.txtKillCode.MaxLength = 16;
+            this.txtKillCode.Name = "txtKillCode";
+            this.txtKillCode.OnlyAllowInputStringAndCapitaliseCharacters = false;
+            this.txtKillCode.Size = new System.Drawing.Size(139, 23);
+            this.txtKillCode.TabIndex = 3;
+            this.txtKillCode.Visible = false;
+            this.txtKillCode.Validating += new System.ComponentModel.CancelEventHandler(this.txtKillCode_Validating);
+            // 
+            // lblKillType
+            // 
+            this.lblKillType.Location = new System.Drawing.Point(402, 454);
+            this.lblKillType.Name = "lblKillType";
+            this.lblKillType.Size = new System.Drawing.Size(131, 24);
+            this.lblKillType.TabIndex = 16;
+            this.lblKillType.Text = "Kill Type";
+            this.lblKillType.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblKillType.Visible = false;
+            // 
+            // sgtextBox_0
+            // 
+            this.sgtextBox_0.InputString = null;
+            this.sgtextBox_0.Location = new System.Drawing.Point(547, 134);
+            this.sgtextBox_0.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.sgtextBox_0.MaxByteLength = 0;
+            this.sgtextBox_0.MaxLength = 8;
+            this.sgtextBox_0.Name = "sgtextBox_0";
+            this.sgtextBox_0.OnlyAllowInputStringAndCapitaliseCharacters = false;
+            this.sgtextBox_0.Size = new System.Drawing.Size(139, 23);
+            this.sgtextBox_0.TabIndex = 1;
+            this.sgtextBox_0.Visible = false;
+            this.sgtextBox_0.Validating += new System.ComponentModel.CancelEventHandler(this.sgtextBox_0_Validating);
+            // 
+            // lblOtherDur
+            // 
+            this.lblOtherDur.Location = new System.Drawing.Point(24, 99);
+            this.lblOtherDur.Name = "lblOtherDur";
+            this.lblOtherDur.Size = new System.Drawing.Size(225, 24);
+            this.lblOtherDur.TabIndex = 29;
+            this.lblOtherDur.Text = "*# Duration [ms]";
+            this.lblOtherDur.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // txtUpCode
+            // 
+            this.txtUpCode.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtUpCode.InputString = null;
+            this.txtUpCode.Location = new System.Drawing.Point(547, 52);
+            this.txtUpCode.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtUpCode.MaxByteLength = 0;
+            this.txtUpCode.MaxLength = 30;
+            this.txtUpCode.Name = "txtUpCode";
+            this.txtUpCode.OnlyAllowInputStringAndCapitaliseCharacters = false;
+            this.txtUpCode.Size = new System.Drawing.Size(139, 23);
+            this.txtUpCode.TabIndex = 22;
+            this.txtUpCode.Visible = false;
+            // 
+            // lblTail
+            // 
+            this.lblTail.Location = new System.Drawing.Point(93, 140);
+            this.lblTail.Name = "lblTail";
+            this.lblTail.Size = new System.Drawing.Size(156, 24);
+            this.lblTail.TabIndex = 31;
+            this.lblTail.Text = "DTMF Tail [ms]";
+            this.lblTail.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lblRate
+            // 
+            this.lblRate.Location = new System.Drawing.Point(93, 181);
+            this.lblRate.Name = "lblRate";
+            this.lblRate.Size = new System.Drawing.Size(156, 24);
+            this.lblRate.TabIndex = 31;
+            this.lblRate.Text = "DTMF Rate";
+            this.lblRate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // DtmfForm
+            // 
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(433, 247);
+            this.Controls.Add(this.pnlDtmf);
+            this.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "DtmfForm";
+            this.Text = "DTMF";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DtmfForm_FormClosing);
+            this.Load += new System.EventHandler(this.DtmfForm_Load);
+            this.pnlDtmf.ResumeLayout(false);
+            this.pnlDtmf.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudOtherDur)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudTailDur)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudRate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudFstDur)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudFstDlyTime)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudDecTime)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudAutoResetTimer)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudRespHoldTime)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
 	}
 
 	static DtmfForm()

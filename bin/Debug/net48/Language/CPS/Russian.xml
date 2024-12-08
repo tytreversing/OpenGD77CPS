@@ -143,15 +143,15 @@
 			<Item Id="KeySwitch" Text="Off,On" />
 		</Commons>
 	</ChannelForm>
-	<ChannelsForm Text="Channels">
+	<ChannelsForm Text="Каналы">
 		<Controls>
 			<Control Id="btnImport" Text="Import Update/Append" />
 			<Control Id="btnImportClearAll" Text="Import Clear All!"/>
-			<Control Id="btnExport" Text="Export selected rows" />
-			<Control Id="btnDeleteSelect" Text="Delete selected rows" />
-			<Control Id="btnClear" Text="Clear all" />
-			<Control Id="btnDelete" Text="Delete" />
-			<Control Id="btnAdd" Text="Add" />
+			<Control Id="btnExport" Text="Экспортировать выбранное" />
+			<Control Id="btnDeleteSelect" Text="Удалить выбранное" />
+			<Control Id="btnClear" Text="Очистить" />
+			<Control Id="btnDelete" Text="Удалить" />
+			<Control Id="btnAdd" Text="Добавить" />
 			<Control Id="dgvChannels" Text="Number,Name,Rx Freq,Tx Freq,Ch Mode,Power,Rx Tone,Tx Tone,Color Code,TG List,Contact,Repeater Slot">
 				<ControlItem Id="" Text="Number" />
 				<ControlItem Id="" Text="Name" />
@@ -168,7 +168,7 @@
 			</Control>
 		</Controls>
 		<Commons>
-			<Item Id="DisplayHeaderText" Text="Number,Name,Ch Mode,Rx Freq,Tx Freq,Color Code,Repeater Slot,Contact,TG List,Power,Rx Tone,Tx Tone"/>
+			<Item Id="DisplayHeaderText" Text="Номер,Имя,Режим,Прием,Передача,Колоркод,Таймслот,Контакт,Список,Мощность,Субтон Rx,Субтон Tx"/>
 			<Item Id="ExportHeaderText" Text="Data type,Name,Channel Type,Rx Frequency,Tx Frequency,Color Code,Timeslot,Contact,Contact Type,Contact Id,Rx Group,Scanlist,Zone,RX CTCSS,TX CTCSS,Power,Bandwidth,Rx Only,Squelch,Tx Admit,TOT,TOT Rekey,Tx Signaling,Rx Signaling,Privacy Group,APRS,Flags1,Flags2,Flags3,Flags4,RssiThreshold,VoiceEmphasis,TxSignaling,UnmuteRule,RxSignaling,ArtsInterval" />
 		</Commons>
 	</ChannelsForm>
@@ -248,17 +248,17 @@
 			<Item Id="DigitKey" Text="Number Key " />
 		</Commons>
 	</DigitalKeyContactForm>
-	<DtmfContactForm Text="DTMF Contact">
+	<DtmfContactForm Text="Контакт DTMF">
 		<Controls>
 			<Control Id="dgvContact" Text="Name,Number">
 				<ControlItem Id="txtName" Text="Name" />
 				<ControlItem Id="txtCode" Text="Number" />
 			</Control>
-			<Control Id="btnAdd" Text="Add" />
-			<Control Id="btnDel" Text="Delete" />
+			<Control Id="btnAdd" Text="Добавить" />
+			<Control Id="btnDel" Text="Удалить" />
 		</Controls>
 	</DtmfContactForm>
-	<DtmfForm Text="DTMF Settings">
+	<DtmfForm Text="Настройки DTMF">
 		<Controls>
 			<Control Id="chkSideTone" Text="DTMF Side Tone" />
 			<Control Id="lblUpCode" Text="PTTID Up Code" />
@@ -272,13 +272,13 @@
 			<Control Id="lblDelimiter" Text="Delimiter" />
 			<Control Id="lblGrpCallCode" Text="Group Code" />
 			<Control Id="lblDecResp" Text="Decode Response" />
-			<Control Id="lblFstDlyTime" Text="First Digit Delay [ms]" />
+			<Control Id="lblFstDlyTime" Text="Задержка цифры (мс)" />
 			<Control Id="lblKillWakeDec" Text="Kill/Wake Code" />
-			<Control Id="lblFstDur" Text="First Digit Duration [ms]" />
+			<Control Id="lblFstDur" Text="Длительность цифры (мс)" />
 			<Control Id="lblKillType" Text="Kill Type" />
-			<Control Id="lblOtherDur" Text="*# Duration [ms]" />
-			<Control Id="lblRate" Text="DTMF Rate" />
-			<Control Id="lblTail" Text="DTMF Tail [ms]" />
+			<Control Id="lblOtherDur" Text="Длительность *# (мс)" />
+			<Control Id="lblRate" Text="Скорость" />
+			<Control Id="lblTail" Text="Завершение (мс)" />
 		</Controls>
 		<Commons>
 			<Item Id="DecodeResp" Text="None,Reminder,Reply,Reminder and Reply" />
@@ -289,28 +289,28 @@
 	</DtmfForm>
 	<APRSForm Text="APRS">
 		<Controls>
-			<Control Id="lblName" Text="Name" />
+			<Control Id="lblName" Text="Имя" />
 			<Control Id="lblSenderSSID" Text="Tx SSID" />
-			<Control Id="lblLatitude" Text="Latitude" />
-			<Control Id="lblLongitude" Text="Longitude" />
+			<Control Id="lblLatitude" Text="Широта" />
+			<Control Id="lblLongitude" Text="Долгота" />
 			<Control Id="lblVia1" Text="Via1" />
 			<Control Id="lblVia2" Text="Via2" />
-			<Control Id="lblIcon" Text="Icon" />
-			<Control Id="lblComment" Text="Comment" />
-			<Control Id="lblPositionMasking" Text="Position masking" />
-			<Control Id="grpFixedPosition" Text="Fixed position" />
-			<Control Id="chkUsePosition" Text="Use position" />
-			<Control Id="lblBaudRate" Text="Baud rate" />
+			<Control Id="lblIcon" Text="Иконка" />
+			<Control Id="lblComment" Text="Комментарий" />
+			<Control Id="lblPositionMasking" Text="Точность позиции" />
+			<Control Id="grpFixedPosition" Text="Фиксированная позиция" />
+			<Control Id="chkUsePosition" Text="Использовать позицию" />
+			<Control Id="lblBaudRate" Text="Скорость передачи" />
 		</Controls>
 		<Commons>
 		</Commons>
 	</APRSForm>
-	<APRSConfigsForm Text="APRS Configurations">
+	<APRSConfigsForm Text="Настройки APRS">
 		<Controls>
-			<Control Id="btnDeleteSelect" Text="Delete Selected" />
-			<Control Id="btnClear" Text="Clear" />
-			<Control Id="btnDelete" Text="Delete" />
-			<Control Id="btnAdd" Text="Add" />
+			<Control Id="btnDeleteSelect" Text="Удалить выбранное" />
+			<Control Id="btnClear" Text="Очистить" />
+			<Control Id="btnDelete" Text="Удалить" />
+			<Control Id="btnAdd" Text="Добавить" />
 			<Control Id="dgvAPRSConfigs" Text="Name,SSID,Via1,Via1 SSID,Via2,Via2 SSID">
 				<ControlItem Id="" Text="Name" />
 				<ControlItem Id="" Text="SSID" />
@@ -321,7 +321,7 @@
 			</Control>
 		</Controls>
 		<Commons>
-			<Item Id="HeaderText" Text="Name,SSID,Via1,Via1 SSID,Via2,Via2 SSID" />
+			<Item Id="HeaderText" Text="Имя,SSID,Via1,Via1 SSID,Via2,Via2 SSID" />
 		</Commons>
 	</APRSConfigsForm>
 

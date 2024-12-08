@@ -151,7 +151,7 @@ public class ButtonForm : DockContent, IDisp
 
 		public void ShortKeyIsValid(ref byte shortKey, ref byte longKey, byte defShortKey)
 		{
-			if (Settings.smethod_12(shortKey, MIN_KEY, MAX_KEY))
+			if (Settings.checkInRange(shortKey, MIN_KEY, MAX_KEY))
 			{
 				if (shortKey == 21)
 				{
@@ -174,7 +174,7 @@ public class ButtonForm : DockContent, IDisp
 
 		public void LongKeyIsValid(ref byte longKey, ref byte shortKey, byte defLongKey)
 		{
-			if (Settings.smethod_12(longKey, MIN_KEY, MAX_KEY))
+			if (Settings.checkInRange(longKey, MIN_KEY, MAX_KEY))
 			{
 				if (longKey == 2)
 				{

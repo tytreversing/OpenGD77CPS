@@ -23,11 +23,11 @@ public class DtmfContactForm : DockContent, IDisp
 		{
 			get
 			{
-				return Settings.smethod_25(name);
+				return Settings.bufferToString(name);
 			}
 			set
 			{
-				byte[] array = Settings.smethod_23(value);
+				byte[] array = Settings.stringToBuffer(value);
 				name.Fill(byte.MaxValue);
 				Array.Copy(array, 0, name, 0, Math.Min(array.Length, name.Length));
 			}

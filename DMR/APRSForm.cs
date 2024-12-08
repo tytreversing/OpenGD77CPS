@@ -57,11 +57,11 @@ public class APRSForm : DockContent, IDisp
 		{
 			get
 			{
-				return Settings.smethod_25(name);
+				return Settings.bufferToString(name);
 			}
 			set
 			{
-				byte[] array = Settings.smethod_23(value);
+				byte[] array = Settings.stringToBuffer(value);
 				name.Fill(byte.MaxValue);
 				Array.Copy(array, 0, name, 0, Math.Min(array.Length, name.Length));
 			}
@@ -186,11 +186,11 @@ public class APRSForm : DockContent, IDisp
 		{
 			get
 			{
-				return Settings.smethod_25(comment);
+				return Settings.bufferToString(comment);
 			}
 			set
 			{
-				byte[] array = Settings.smethod_23(value);
+				byte[] array = Settings.stringToBuffer(value);
 				comment.Fill((byte)0);
 				Array.Copy(array, 0, comment, 0, Math.Min(array.Length, comment.Length));
 			}
@@ -200,11 +200,11 @@ public class APRSForm : DockContent, IDisp
 		{
 			get
 			{
-				return Settings.smethod_25(via1);
+				return Settings.bufferToString(via1);
 			}
 			set
 			{
-				byte[] array = Settings.smethod_23(value);
+				byte[] array = Settings.stringToBuffer(value);
 				via1.Fill((byte)0);
 				Array.Copy(array, 0, via1, 0, Math.Min(array.Length, via1.Length));
 			}
@@ -214,11 +214,11 @@ public class APRSForm : DockContent, IDisp
 		{
 			get
 			{
-				return Settings.smethod_25(via2);
+				return Settings.bufferToString(via2);
 			}
 			set
 			{
-				byte[] array = Settings.smethod_23(value);
+				byte[] array = Settings.stringToBuffer(value);
 				via2.Fill((byte)0);
 				Array.Copy(array, 0, via2, 0, Math.Min(array.Length, via2.Length));
 			}

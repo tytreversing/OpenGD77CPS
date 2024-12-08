@@ -1001,7 +1001,7 @@
 			<Item Id="Error_while_restoring_Calibration" Text="Error while restoring Calibration" />
 			<Item Id="Restoring_EEPROM" Text="Restoring EEPROM" />
 			<Item Id="Error_while_reading" Text="Error while reading" />
-			<Item Id="Codeplug_read_complete" Text="Codeplug read complete" />
+			<Item Id="Codeplug_read_complete" Text="Кодплаг загружен из рации" />
 			<Item Id="Reading_MCU_ROM" Text="Reading MCU ROM" />
 			<Item Id="Error_while_Reading_MCU_ROM" Text="Error while Reading MCU ROM" />
 			<Item Id="Error_while_downloading_Screengrab" Text="Error while downloading Screengrab" />
@@ -1222,8 +1222,8 @@
 		<Item Id="NameExist" Text="Name exists" />
 		<Item Id="FirstChNotDelete" Text="The first channel in the first zone cannot be deleted" />
 		<Item Id="FileFormatError" Text="File format error" />
-		<Item Id="OpenSuccessfully" Text="Open successfully" />
-		<Item Id="SaveSuccessfully" Text="Save successfully" />
+		<Item Id="OpenSuccessfully" Text="Кодплаг открыт из файла" />
+		<Item Id="SaveSuccessfully" Text="Кодплаг сохранен в файле" />
 		<Item Id="TypeNotMatch" Text="Type does not match" />
 		<Item Id="NotSelectItemNotCopyItem" Text="Not select item or Not copy item" />
 		<Item Id="KeyPressHex" Text="Please input : " />

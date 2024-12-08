@@ -682,47 +682,49 @@ internal class Settings
 		return -1;
 	}
 
-	public static byte[] smethod_23(string string_0)
-	{
-		return smethod_24(string_0, "windows-1251");
-	}
 
-	public static byte[] smethod_24(string string_0, string string_1)
-	{
-		Encoding encoding = Encoding.GetEncoding(string_1);
+
+	public static byte[] stringToBuffer(string name)
+	{		
+		Encoding encoding = Encoding.GetEncoding("windows-1251");
 		if (encoding == null)
 		{
 			encoding = Encoding.Default;
 		}
-		return encoding.GetBytes(string_0);
+		byte[] buffer = encoding.GetBytes(name);
+        for (int c = 0; c < buffer.Length; c++)
+        {
+			if (buffer[c] == 0xff)
+				buffer[c] = 0x7f;
+        }
+        return buffer;
 	}
 
-	public static string smethod_25(byte[] buffer)
-	{
-		return bufferToString(buffer, "windows-1251");
-	}
 
-	public static string bufferToString(byte[] byte_0, string codepage)
+    public static string bufferToString(byte[] codeplugData)
 	{
-		Encoding encoding = Encoding.GetEncoding(codepage);
-		if (encoding == null)
+		Encoding encoding = Encoding.GetEncoding("windows-1251");
+        for (int c = 0; c < codeplugData.Length; c++)
+        {
+            if (codeplugData[c] == 0x7f) // превращение подменного символа в корректное "я"
+                 codeplugData[c] = byte.MaxValue;
+        }
+        if (encoding == null)
 		{
 			encoding = Encoding.Default;
 		}
-		int num = Array.IndexOf(byte_0, byte.MaxValue);
-		for (int c =0; c < 16; c++)
-		{
-
-		}
+		int num = Array.IndexOf(codeplugData, byte.MaxValue);
 		if (num == -1)
 		{
-			num = Array.IndexOf(byte_0, (byte)0);
+			num = Array.IndexOf(codeplugData, (byte)0);
 			if (num == -1)
 			{
-				num = byte_0.Length;
+				num = codeplugData.Length;
 			}
 		}
-		return encoding.GetString(byte_0, 0, num);
+
+
+        return encoding.GetString(codeplugData, 0, num);
 	}
 
 	public static int convertDecimalFreqTo10HzStepValue(double double_0, double double_1)

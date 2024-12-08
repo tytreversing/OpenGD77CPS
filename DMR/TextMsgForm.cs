@@ -105,7 +105,7 @@ public class TextMsgForm : DockContent, IDisp
 			}
 			byte[] array = new byte[this[index] - 1];
 			Array.Copy(text, num + index * 144, array, 0, array.Length);
-			return Settings.smethod_25(array);
+			return Settings.bufferToString(array);
 		}
 
 		public void SetText(int index, string msg)
@@ -114,7 +114,7 @@ public class TextMsgForm : DockContent, IDisp
 			{
 				RemoveAt(index);
 				this[index] = msg.Length + 1;
-				byte[] array = Settings.smethod_23(msg);
+				byte[] array = Settings.stringToBuffer(msg);
 				this[index] = array.Length + 1;
 				Array.Copy(array, 0, text, index * 144, Math.Min(array.Length, 144));
 			}

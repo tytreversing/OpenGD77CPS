@@ -128,11 +128,11 @@ public class BootItemForm : DockContent, IDisp
 		{
 			get
 			{
-				return Settings.smethod_25(bootLine1);
+				return Settings.bufferToString(bootLine1);
 			}
 			set
 			{
-				byte[] array = Settings.smethod_23(value);
+				byte[] array = Settings.stringToBuffer(value);
 				bootLine1.Fill(byte.MaxValue);
 				Array.Copy(array, 0, bootLine1, 0, Math.Min(array.Length, bootLine1.Length));
 			}
@@ -142,11 +142,11 @@ public class BootItemForm : DockContent, IDisp
 		{
 			get
 			{
-				return Settings.smethod_25(bootLine2);
+				return Settings.bufferToString(bootLine2);
 			}
 			set
 			{
-				byte[] array = Settings.smethod_23(value);
+				byte[] array = Settings.stringToBuffer(value);
 				bootLine2.Fill(byte.MaxValue);
 				Array.Copy(array, 0, bootLine2, 0, Math.Min(array.Length, bootLine2.Length));
 			}

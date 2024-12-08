@@ -23,7 +23,7 @@ namespace DMR;
 
 public class MainForm : Form
 {
-    public const string swVersion = "1.1.0";
+    public const string swVersion = "1.1.64";
     public enum RadioTypeEnum
 	{
 		RadioTypeMK22,

@@ -704,11 +704,6 @@ internal class Settings
     public static string bufferToString(byte[] codeplugData)
 	{
 		Encoding encoding = Encoding.GetEncoding("windows-1251");
-        for (int c = 0; c < codeplugData.Length; c++)
-        {
-            if (codeplugData[c] == 0x7f) // превращение подменного символа в корректное "я"
-                 codeplugData[c] = byte.MaxValue;
-        }
         if (encoding == null)
 		{
 			encoding = Encoding.Default;
@@ -722,9 +717,15 @@ internal class Settings
 				num = codeplugData.Length;
 			}
 		}
+        byte[] buffer = new byte[num];
+        for (int c = 0; c < num; c++)
+        {
+            buffer[c] = codeplugData[c];
+            if (buffer[c] == 0x7f) // превращение подменного символа в корректное "я"
+                buffer[c] = byte.MaxValue;
+        }
 
-
-        return encoding.GetString(codeplugData, 0, num);
+        return encoding.GetString(buffer, 0, num);
 	}
 
 	public static int convertDecimalFreqTo10HzStepValue(double double_0, double double_1)

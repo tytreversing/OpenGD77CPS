@@ -683,7 +683,8 @@ public class OpenGD77Form : Form
 
 	public static bool sendCommand(SerialPort port, int commandNumber, int x_or_command_option_number = 0, int y = 0, int iSize = 0, int alignment = 0, int isInverted = 0, string message = "")
 	{
-		int num = 100;
+		Encoding transcoder = Encoding.GetEncoding("windows-1251");
+        int num = 100;
 		byte[] array = new byte[1032];
 		int num2 = 2;
 		array[0] = 67;
@@ -696,7 +697,7 @@ public class OpenGD77Form : Form
 			array[5] = (byte)alignment;
 			array[6] = (byte)isInverted;
 			num2 += 5 + Math.Min(message.Length, 16);
-			Buffer.BlockCopy(Encoding.ASCII.GetBytes(message), 0, array, 7, num2 - 7);
+			Buffer.BlockCopy(transcoder.GetBytes(message), 0, array, 7, num2 - 7);
 			break;
 		case 6:
 			array[2] = (byte)x_or_command_option_number;

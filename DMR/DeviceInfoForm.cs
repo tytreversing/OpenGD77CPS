@@ -320,235 +320,323 @@ public class DeviceInfoForm : DockContent, IDisp
 
 	private void InitializeComponent()
 	{
-		this.pnlDeviceInfo = new CustomPanel();
-		this.lblTo1 = new System.Windows.Forms.Label();
-		this.lblTo2 = new System.Windows.Forms.Label();
-		this.lblSection1 = new System.Windows.Forms.Label();
-		this.label_1 = new System.Windows.Forms.Label();
-		this.txtModel = new DMR.SGTextBox();
-		this.lblFirmwareVer = new System.Windows.Forms.Label();
-		this.txtLastPrgTime = new System.Windows.Forms.TextBox();
-		this.lblHardwareVer = new System.Windows.Forms.Label();
-		this.txtMaxFreq2 = new DMR.SGTextBox();
-		this.txtMaxFreq = new DMR.SGTextBox();
-		this.label_0 = new System.Windows.Forms.Label();
-		this.txtMinFreq2 = new DMR.SGTextBox();
-		this.txtMinFreq = new DMR.SGTextBox();
-		this.lblSn = new System.Windows.Forms.Label();
-		this.txtSn = new DMR.SGTextBox();
-		this.sgtextBox_0 = new DMR.SGTextBox();
-		this.lblSection2 = new System.Windows.Forms.Label();
-		this.txtHardwareVer = new DMR.SGTextBox();
-		this.lblLastPrgTime = new System.Windows.Forms.Label();
-		this.txtFirmwareVer = new DMR.SGTextBox();
-		this.lblModel = new System.Windows.Forms.Label();
-		this.sgtextBox_1 = new DMR.SGTextBox();
-		this.pnlDeviceInfo.SuspendLayout();
-		base.SuspendLayout();
-		this.pnlDeviceInfo.AutoScroll = true;
-		this.pnlDeviceInfo.AutoSize = true;
-		this.pnlDeviceInfo.Controls.Add(this.lblTo1);
-		this.pnlDeviceInfo.Controls.Add(this.lblTo2);
-		this.pnlDeviceInfo.Controls.Add(this.lblSection1);
-		this.pnlDeviceInfo.Controls.Add(this.label_1);
-		this.pnlDeviceInfo.Controls.Add(this.txtModel);
-		this.pnlDeviceInfo.Controls.Add(this.lblFirmwareVer);
-		this.pnlDeviceInfo.Controls.Add(this.txtLastPrgTime);
-		this.pnlDeviceInfo.Controls.Add(this.lblHardwareVer);
-		this.pnlDeviceInfo.Controls.Add(this.txtMaxFreq2);
-		this.pnlDeviceInfo.Controls.Add(this.txtMaxFreq);
-		this.pnlDeviceInfo.Controls.Add(this.label_0);
-		this.pnlDeviceInfo.Controls.Add(this.txtMinFreq2);
-		this.pnlDeviceInfo.Controls.Add(this.txtMinFreq);
-		this.pnlDeviceInfo.Controls.Add(this.lblSn);
-		this.pnlDeviceInfo.Controls.Add(this.txtSn);
-		this.pnlDeviceInfo.Controls.Add(this.sgtextBox_0);
-		this.pnlDeviceInfo.Controls.Add(this.lblSection2);
-		this.pnlDeviceInfo.Controls.Add(this.txtHardwareVer);
-		this.pnlDeviceInfo.Controls.Add(this.lblLastPrgTime);
-		this.pnlDeviceInfo.Controls.Add(this.txtFirmwareVer);
-		this.pnlDeviceInfo.Controls.Add(this.lblModel);
-		this.pnlDeviceInfo.Controls.Add(this.sgtextBox_1);
-		this.pnlDeviceInfo.Dock = System.Windows.Forms.DockStyle.Fill;
-		this.pnlDeviceInfo.Location = new System.Drawing.Point(0, 0);
-		this.pnlDeviceInfo.Name = "pnlDeviceInfo";
-		this.pnlDeviceInfo.Size = new System.Drawing.Size(397, 95);
-		this.pnlDeviceInfo.TabIndex = 0;
-		this.lblTo1.AutoSize = true;
-		this.lblTo1.Location = new System.Drawing.Point(289, 50);
-		this.lblTo1.Name = "lblTo1";
-		this.lblTo1.Size = new System.Drawing.Size(13, 16);
-		this.lblTo1.TabIndex = 2;
-		this.lblTo1.Text = "-";
-		this.lblTo2.AutoSize = true;
-		this.lblTo2.Location = new System.Drawing.Point(288, 14);
-		this.lblTo2.Name = "lblTo2";
-		this.lblTo2.Size = new System.Drawing.Size(13, 16);
-		this.lblTo2.TabIndex = 6;
-		this.lblTo2.Text = "-";
-		this.lblSection1.Location = new System.Drawing.Point(12, 47);
-		this.lblSection1.Name = "lblSection1";
-		this.lblSection1.Size = new System.Drawing.Size(205, 23);
-		this.lblSection1.TabIndex = 0;
-		this.lblSection1.Text = "Frequency Range 1 [MHz]";
-		this.lblSection1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-		this.label_1.Location = new System.Drawing.Point(28, 309);
-		this.label_1.Name = "label_1";
-		this.label_1.Size = new System.Drawing.Size(172, 23);
-		this.label_1.TabIndex = 20;
-		this.label_1.Text = "DSP Version";
-		this.label_1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-		this.label_1.Visible = false;
-		this.txtModel.InputString = null;
-		this.txtModel.Location = new System.Drawing.Point(210, 135);
-		this.txtModel.MaxByteLength = 0;
-		this.txtModel.Name = "txtModel";
-		this.txtModel.ReadOnly = true;
-		this.txtModel.Size = new System.Drawing.Size(139, 23);
-		this.txtModel.TabIndex = 11;
-		this.txtModel.Visible = false;
-		this.lblFirmwareVer.Location = new System.Drawing.Point(28, 274);
-		this.lblFirmwareVer.Name = "lblFirmwareVer";
-		this.lblFirmwareVer.Size = new System.Drawing.Size(172, 23);
-		this.lblFirmwareVer.TabIndex = 18;
-		this.lblFirmwareVer.Text = "Firmware Version";
-		this.lblFirmwareVer.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-		this.lblFirmwareVer.Visible = false;
-		this.txtLastPrgTime.Location = new System.Drawing.Point(210, 101);
-		this.txtLastPrgTime.Name = "txtLastPrgTime";
-		this.txtLastPrgTime.ReadOnly = true;
-		this.txtLastPrgTime.Size = new System.Drawing.Size(139, 23);
-		this.txtLastPrgTime.TabIndex = 9;
-		this.txtLastPrgTime.Visible = false;
-		this.lblHardwareVer.Location = new System.Drawing.Point(28, 239);
-		this.lblHardwareVer.Name = "lblHardwareVer";
-		this.lblHardwareVer.Size = new System.Drawing.Size(172, 23);
-		this.lblHardwareVer.TabIndex = 16;
-		this.lblHardwareVer.Text = "Hardware Version";
-		this.lblHardwareVer.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-		this.lblHardwareVer.Visible = false;
-		this.txtMaxFreq2.InputString = null;
-		this.txtMaxFreq2.Location = new System.Drawing.Point(306, 9);
-		this.txtMaxFreq2.MaxByteLength = 0;
-		this.txtMaxFreq2.Name = "txtMaxFreq2";
-		this.txtMaxFreq2.ReadOnly = true;
-		this.txtMaxFreq2.Size = new System.Drawing.Size(61, 23);
-		this.txtMaxFreq2.TabIndex = 7;
-		this.txtMaxFreq2.Validating += new System.ComponentModel.CancelEventHandler(txtMaxFreq2_Validating);
-		this.txtMaxFreq.InputString = null;
-		this.txtMaxFreq.Location = new System.Drawing.Point(306, 47);
-		this.txtMaxFreq.MaxByteLength = 0;
-		this.txtMaxFreq.Name = "txtMaxFreq";
-		this.txtMaxFreq.ReadOnly = true;
-		this.txtMaxFreq.Size = new System.Drawing.Size(61, 23);
-		this.txtMaxFreq.TabIndex = 3;
-		this.txtMaxFreq.Validating += new System.ComponentModel.CancelEventHandler(txtMaxFreq_Validating);
-		this.label_0.Location = new System.Drawing.Point(28, 205);
-		this.label_0.Name = "label_0";
-		this.label_0.Size = new System.Drawing.Size(172, 23);
-		this.label_0.TabIndex = 14;
-		this.label_0.Text = "CPS Version";
-		this.label_0.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-		this.label_0.Visible = false;
-		this.txtMinFreq2.InputString = null;
-		this.txtMinFreq2.Location = new System.Drawing.Point(223, 9);
-		this.txtMinFreq2.MaxByteLength = 0;
-		this.txtMinFreq2.Name = "txtMinFreq2";
-		this.txtMinFreq2.ReadOnly = true;
-		this.txtMinFreq2.Size = new System.Drawing.Size(61, 23);
-		this.txtMinFreq2.TabIndex = 5;
-		this.txtMinFreq2.Validating += new System.ComponentModel.CancelEventHandler(txtMinFreq2_Validating);
-		this.txtMinFreq.InputString = null;
-		this.txtMinFreq.Location = new System.Drawing.Point(223, 47);
-		this.txtMinFreq.MaxByteLength = 0;
-		this.txtMinFreq.Name = "txtMinFreq";
-		this.txtMinFreq.ReadOnly = true;
-		this.txtMinFreq.Size = new System.Drawing.Size(61, 23);
-		this.txtMinFreq.TabIndex = 1;
-		this.txtMinFreq.Validating += new System.ComponentModel.CancelEventHandler(txtMinFreq_Validating);
-		this.lblSn.Location = new System.Drawing.Point(28, 170);
-		this.lblSn.Name = "lblSn";
-		this.lblSn.Size = new System.Drawing.Size(172, 23);
-		this.lblSn.TabIndex = 12;
-		this.lblSn.Text = "Serial Number";
-		this.lblSn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-		this.lblSn.Visible = false;
-		this.txtSn.InputString = null;
-		this.txtSn.Location = new System.Drawing.Point(210, 170);
-		this.txtSn.MaxByteLength = 0;
-		this.txtSn.Name = "txtSn";
-		this.txtSn.ReadOnly = true;
-		this.txtSn.Size = new System.Drawing.Size(139, 23);
-		this.txtSn.TabIndex = 13;
-		this.txtSn.Visible = false;
-		this.sgtextBox_0.InputString = null;
-		this.sgtextBox_0.Location = new System.Drawing.Point(210, 205);
-		this.sgtextBox_0.MaxByteLength = 0;
-		this.sgtextBox_0.Name = "sgtextBox_0";
-		this.sgtextBox_0.ReadOnly = true;
-		this.sgtextBox_0.Size = new System.Drawing.Size(139, 23);
-		this.sgtextBox_0.TabIndex = 15;
-		this.sgtextBox_0.Visible = false;
-		this.lblSection2.Location = new System.Drawing.Point(12, 9);
-		this.lblSection2.Name = "lblSection2";
-		this.lblSection2.Size = new System.Drawing.Size(205, 23);
-		this.lblSection2.TabIndex = 4;
-		this.lblSection2.Text = "Frequency Range 2 [MHz]";
-		this.lblSection2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-		this.txtHardwareVer.InputString = null;
-		this.txtHardwareVer.Location = new System.Drawing.Point(210, 239);
-		this.txtHardwareVer.MaxByteLength = 0;
-		this.txtHardwareVer.Name = "txtHardwareVer";
-		this.txtHardwareVer.ReadOnly = true;
-		this.txtHardwareVer.Size = new System.Drawing.Size(139, 23);
-		this.txtHardwareVer.TabIndex = 17;
-		this.txtHardwareVer.Visible = false;
-		this.lblLastPrgTime.Location = new System.Drawing.Point(28, 101);
-		this.lblLastPrgTime.Name = "lblLastPrgTime";
-		this.lblLastPrgTime.Size = new System.Drawing.Size(172, 23);
-		this.lblLastPrgTime.TabIndex = 8;
-		this.lblLastPrgTime.Text = "Last Programed Date";
-		this.lblLastPrgTime.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-		this.lblLastPrgTime.Visible = false;
-		this.txtFirmwareVer.InputString = null;
-		this.txtFirmwareVer.Location = new System.Drawing.Point(210, 274);
-		this.txtFirmwareVer.MaxByteLength = 0;
-		this.txtFirmwareVer.Name = "txtFirmwareVer";
-		this.txtFirmwareVer.ReadOnly = true;
-		this.txtFirmwareVer.Size = new System.Drawing.Size(139, 23);
-		this.txtFirmwareVer.TabIndex = 19;
-		this.txtFirmwareVer.Visible = false;
-		this.lblModel.Location = new System.Drawing.Point(28, 135);
-		this.lblModel.Name = "lblModel";
-		this.lblModel.Size = new System.Drawing.Size(172, 23);
-		this.lblModel.TabIndex = 10;
-		this.lblModel.Text = "Model Name";
-		this.lblModel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-		this.lblModel.Visible = false;
-		this.sgtextBox_1.InputString = null;
-		this.sgtextBox_1.Location = new System.Drawing.Point(210, 309);
-		this.sgtextBox_1.MaxByteLength = 0;
-		this.sgtextBox_1.Name = "sgtextBox_1";
-		this.sgtextBox_1.ReadOnly = true;
-		this.sgtextBox_1.Size = new System.Drawing.Size(139, 23);
-		this.sgtextBox_1.TabIndex = 21;
-		this.sgtextBox_1.Visible = false;
-		base.ClientSize = new System.Drawing.Size(397, 95);
-		base.Controls.Add(this.pnlDeviceInfo);
-		this.Font = new System.Drawing.Font("Arial", 10f);
-		base.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-		base.KeyPreview = true;
-		base.MaximizeBox = false;
-		base.MinimizeBox = false;
-		base.Name = "DeviceInfoForm";
-		this.Text = "Basic Information";
-		base.FormClosing += new System.Windows.Forms.FormClosingEventHandler(DeviceInfoForm_FormClosing);
-		base.Load += new System.EventHandler(DeviceInfoForm_Load);
-		base.KeyDown += new System.Windows.Forms.KeyEventHandler(DeviceInfoForm_KeyDown);
-		this.pnlDeviceInfo.ResumeLayout(false);
-		this.pnlDeviceInfo.PerformLayout();
-		base.ResumeLayout(false);
-		base.PerformLayout();
+            this.pnlDeviceInfo = new CustomPanel();
+            this.lblTo1 = new System.Windows.Forms.Label();
+            this.lblTo2 = new System.Windows.Forms.Label();
+            this.lblSection1 = new System.Windows.Forms.Label();
+            this.label_1 = new System.Windows.Forms.Label();
+            this.txtModel = new DMR.SGTextBox();
+            this.lblFirmwareVer = new System.Windows.Forms.Label();
+            this.txtLastPrgTime = new System.Windows.Forms.TextBox();
+            this.lblHardwareVer = new System.Windows.Forms.Label();
+            this.txtMaxFreq2 = new DMR.SGTextBox();
+            this.txtMaxFreq = new DMR.SGTextBox();
+            this.label_0 = new System.Windows.Forms.Label();
+            this.txtMinFreq2 = new DMR.SGTextBox();
+            this.txtMinFreq = new DMR.SGTextBox();
+            this.lblSn = new System.Windows.Forms.Label();
+            this.txtSn = new DMR.SGTextBox();
+            this.sgtextBox_0 = new DMR.SGTextBox();
+            this.lblSection2 = new System.Windows.Forms.Label();
+            this.txtHardwareVer = new DMR.SGTextBox();
+            this.lblLastPrgTime = new System.Windows.Forms.Label();
+            this.txtFirmwareVer = new DMR.SGTextBox();
+            this.lblModel = new System.Windows.Forms.Label();
+            this.sgtextBox_1 = new DMR.SGTextBox();
+            this.pnlDeviceInfo.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // pnlDeviceInfo
+            // 
+            this.pnlDeviceInfo.AutoScroll = true;
+            this.pnlDeviceInfo.AutoSize = true;
+            this.pnlDeviceInfo.Controls.Add(this.lblTo1);
+            this.pnlDeviceInfo.Controls.Add(this.lblTo2);
+            this.pnlDeviceInfo.Controls.Add(this.lblSection1);
+            this.pnlDeviceInfo.Controls.Add(this.label_1);
+            this.pnlDeviceInfo.Controls.Add(this.txtModel);
+            this.pnlDeviceInfo.Controls.Add(this.lblFirmwareVer);
+            this.pnlDeviceInfo.Controls.Add(this.txtLastPrgTime);
+            this.pnlDeviceInfo.Controls.Add(this.lblHardwareVer);
+            this.pnlDeviceInfo.Controls.Add(this.txtMaxFreq2);
+            this.pnlDeviceInfo.Controls.Add(this.txtMaxFreq);
+            this.pnlDeviceInfo.Controls.Add(this.label_0);
+            this.pnlDeviceInfo.Controls.Add(this.txtMinFreq2);
+            this.pnlDeviceInfo.Controls.Add(this.txtMinFreq);
+            this.pnlDeviceInfo.Controls.Add(this.lblSn);
+            this.pnlDeviceInfo.Controls.Add(this.txtSn);
+            this.pnlDeviceInfo.Controls.Add(this.sgtextBox_0);
+            this.pnlDeviceInfo.Controls.Add(this.lblSection2);
+            this.pnlDeviceInfo.Controls.Add(this.txtHardwareVer);
+            this.pnlDeviceInfo.Controls.Add(this.lblLastPrgTime);
+            this.pnlDeviceInfo.Controls.Add(this.txtFirmwareVer);
+            this.pnlDeviceInfo.Controls.Add(this.lblModel);
+            this.pnlDeviceInfo.Controls.Add(this.sgtextBox_1);
+            this.pnlDeviceInfo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlDeviceInfo.Location = new System.Drawing.Point(0, 0);
+            this.pnlDeviceInfo.Name = "pnlDeviceInfo";
+            this.pnlDeviceInfo.Size = new System.Drawing.Size(397, 95);
+            this.pnlDeviceInfo.TabIndex = 0;
+            // 
+            // lblTo1
+            // 
+            this.lblTo1.AutoSize = true;
+            this.lblTo1.Location = new System.Drawing.Point(289, 50);
+            this.lblTo1.Name = "lblTo1";
+            this.lblTo1.Size = new System.Drawing.Size(12, 16);
+            this.lblTo1.TabIndex = 2;
+            this.lblTo1.Text = "-";
+            // 
+            // lblTo2
+            // 
+            this.lblTo2.AutoSize = true;
+            this.lblTo2.Location = new System.Drawing.Point(288, 14);
+            this.lblTo2.Name = "lblTo2";
+            this.lblTo2.Size = new System.Drawing.Size(12, 16);
+            this.lblTo2.TabIndex = 6;
+            this.lblTo2.Text = "-";
+            // 
+            // lblSection1
+            // 
+            this.lblSection1.Location = new System.Drawing.Point(12, 47);
+            this.lblSection1.Name = "lblSection1";
+            this.lblSection1.Size = new System.Drawing.Size(205, 23);
+            this.lblSection1.TabIndex = 0;
+            this.lblSection1.Text = "Frequency Range 1 [MHz]";
+            this.lblSection1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label_1
+            // 
+            this.label_1.Location = new System.Drawing.Point(28, 309);
+            this.label_1.Name = "label_1";
+            this.label_1.Size = new System.Drawing.Size(172, 23);
+            this.label_1.TabIndex = 20;
+            this.label_1.Text = "DSP Version";
+            this.label_1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_1.Visible = false;
+            // 
+            // txtModel
+            // 
+            this.txtModel.InputString = null;
+            this.txtModel.Location = new System.Drawing.Point(210, 135);
+            this.txtModel.MaxByteLength = 0;
+            this.txtModel.Name = "txtModel";
+            this.txtModel.OnlyAllowInputStringAndCapitaliseCharacters = false;
+            this.txtModel.ReadOnly = true;
+            this.txtModel.Size = new System.Drawing.Size(139, 23);
+            this.txtModel.TabIndex = 11;
+            this.txtModel.Visible = false;
+            // 
+            // lblFirmwareVer
+            // 
+            this.lblFirmwareVer.Location = new System.Drawing.Point(28, 274);
+            this.lblFirmwareVer.Name = "lblFirmwareVer";
+            this.lblFirmwareVer.Size = new System.Drawing.Size(172, 23);
+            this.lblFirmwareVer.TabIndex = 18;
+            this.lblFirmwareVer.Text = "Firmware Version";
+            this.lblFirmwareVer.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblFirmwareVer.Visible = false;
+            // 
+            // txtLastPrgTime
+            // 
+            this.txtLastPrgTime.Location = new System.Drawing.Point(210, 101);
+            this.txtLastPrgTime.Name = "txtLastPrgTime";
+            this.txtLastPrgTime.ReadOnly = true;
+            this.txtLastPrgTime.Size = new System.Drawing.Size(139, 23);
+            this.txtLastPrgTime.TabIndex = 9;
+            this.txtLastPrgTime.Visible = false;
+            // 
+            // lblHardwareVer
+            // 
+            this.lblHardwareVer.Location = new System.Drawing.Point(28, 239);
+            this.lblHardwareVer.Name = "lblHardwareVer";
+            this.lblHardwareVer.Size = new System.Drawing.Size(172, 23);
+            this.lblHardwareVer.TabIndex = 16;
+            this.lblHardwareVer.Text = "Hardware Version";
+            this.lblHardwareVer.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblHardwareVer.Visible = false;
+            // 
+            // txtMaxFreq2
+            // 
+            this.txtMaxFreq2.BackColor = System.Drawing.Color.White;
+            this.txtMaxFreq2.InputString = null;
+            this.txtMaxFreq2.Location = new System.Drawing.Point(306, 9);
+            this.txtMaxFreq2.MaxByteLength = 0;
+            this.txtMaxFreq2.Name = "txtMaxFreq2";
+            this.txtMaxFreq2.OnlyAllowInputStringAndCapitaliseCharacters = false;
+            this.txtMaxFreq2.ReadOnly = true;
+            this.txtMaxFreq2.Size = new System.Drawing.Size(61, 23);
+            this.txtMaxFreq2.TabIndex = 7;
+            this.txtMaxFreq2.Validating += new System.ComponentModel.CancelEventHandler(this.txtMaxFreq2_Validating);
+            // 
+            // txtMaxFreq
+            // 
+            this.txtMaxFreq.BackColor = System.Drawing.Color.White;
+            this.txtMaxFreq.InputString = null;
+            this.txtMaxFreq.Location = new System.Drawing.Point(306, 47);
+            this.txtMaxFreq.MaxByteLength = 0;
+            this.txtMaxFreq.Name = "txtMaxFreq";
+            this.txtMaxFreq.OnlyAllowInputStringAndCapitaliseCharacters = false;
+            this.txtMaxFreq.ReadOnly = true;
+            this.txtMaxFreq.Size = new System.Drawing.Size(61, 23);
+            this.txtMaxFreq.TabIndex = 3;
+            this.txtMaxFreq.Validating += new System.ComponentModel.CancelEventHandler(this.txtMaxFreq_Validating);
+            // 
+            // label_0
+            // 
+            this.label_0.Location = new System.Drawing.Point(28, 205);
+            this.label_0.Name = "label_0";
+            this.label_0.Size = new System.Drawing.Size(172, 23);
+            this.label_0.TabIndex = 14;
+            this.label_0.Text = "CPS Version";
+            this.label_0.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_0.Visible = false;
+            // 
+            // txtMinFreq2
+            // 
+            this.txtMinFreq2.BackColor = System.Drawing.Color.White;
+            this.txtMinFreq2.InputString = null;
+            this.txtMinFreq2.Location = new System.Drawing.Point(223, 9);
+            this.txtMinFreq2.MaxByteLength = 0;
+            this.txtMinFreq2.Name = "txtMinFreq2";
+            this.txtMinFreq2.OnlyAllowInputStringAndCapitaliseCharacters = false;
+            this.txtMinFreq2.ReadOnly = true;
+            this.txtMinFreq2.Size = new System.Drawing.Size(61, 23);
+            this.txtMinFreq2.TabIndex = 5;
+            this.txtMinFreq2.Validating += new System.ComponentModel.CancelEventHandler(this.txtMinFreq2_Validating);
+            // 
+            // txtMinFreq
+            // 
+            this.txtMinFreq.BackColor = System.Drawing.Color.White;
+            this.txtMinFreq.InputString = null;
+            this.txtMinFreq.Location = new System.Drawing.Point(223, 47);
+            this.txtMinFreq.MaxByteLength = 0;
+            this.txtMinFreq.Name = "txtMinFreq";
+            this.txtMinFreq.OnlyAllowInputStringAndCapitaliseCharacters = false;
+            this.txtMinFreq.ReadOnly = true;
+            this.txtMinFreq.Size = new System.Drawing.Size(61, 23);
+            this.txtMinFreq.TabIndex = 1;
+            this.txtMinFreq.Validating += new System.ComponentModel.CancelEventHandler(this.txtMinFreq_Validating);
+            // 
+            // lblSn
+            // 
+            this.lblSn.Location = new System.Drawing.Point(28, 170);
+            this.lblSn.Name = "lblSn";
+            this.lblSn.Size = new System.Drawing.Size(172, 23);
+            this.lblSn.TabIndex = 12;
+            this.lblSn.Text = "Serial Number";
+            this.lblSn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblSn.Visible = false;
+            // 
+            // txtSn
+            // 
+            this.txtSn.InputString = null;
+            this.txtSn.Location = new System.Drawing.Point(210, 170);
+            this.txtSn.MaxByteLength = 0;
+            this.txtSn.Name = "txtSn";
+            this.txtSn.OnlyAllowInputStringAndCapitaliseCharacters = false;
+            this.txtSn.ReadOnly = true;
+            this.txtSn.Size = new System.Drawing.Size(139, 23);
+            this.txtSn.TabIndex = 13;
+            this.txtSn.Visible = false;
+            // 
+            // sgtextBox_0
+            // 
+            this.sgtextBox_0.InputString = null;
+            this.sgtextBox_0.Location = new System.Drawing.Point(210, 205);
+            this.sgtextBox_0.MaxByteLength = 0;
+            this.sgtextBox_0.Name = "sgtextBox_0";
+            this.sgtextBox_0.OnlyAllowInputStringAndCapitaliseCharacters = false;
+            this.sgtextBox_0.ReadOnly = true;
+            this.sgtextBox_0.Size = new System.Drawing.Size(139, 23);
+            this.sgtextBox_0.TabIndex = 15;
+            this.sgtextBox_0.Visible = false;
+            // 
+            // lblSection2
+            // 
+            this.lblSection2.Location = new System.Drawing.Point(12, 9);
+            this.lblSection2.Name = "lblSection2";
+            this.lblSection2.Size = new System.Drawing.Size(205, 23);
+            this.lblSection2.TabIndex = 4;
+            this.lblSection2.Text = "Frequency Range 2 [MHz]";
+            this.lblSection2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // txtHardwareVer
+            // 
+            this.txtHardwareVer.InputString = null;
+            this.txtHardwareVer.Location = new System.Drawing.Point(210, 239);
+            this.txtHardwareVer.MaxByteLength = 0;
+            this.txtHardwareVer.Name = "txtHardwareVer";
+            this.txtHardwareVer.OnlyAllowInputStringAndCapitaliseCharacters = false;
+            this.txtHardwareVer.ReadOnly = true;
+            this.txtHardwareVer.Size = new System.Drawing.Size(139, 23);
+            this.txtHardwareVer.TabIndex = 17;
+            this.txtHardwareVer.Visible = false;
+            // 
+            // lblLastPrgTime
+            // 
+            this.lblLastPrgTime.Location = new System.Drawing.Point(28, 101);
+            this.lblLastPrgTime.Name = "lblLastPrgTime";
+            this.lblLastPrgTime.Size = new System.Drawing.Size(172, 23);
+            this.lblLastPrgTime.TabIndex = 8;
+            this.lblLastPrgTime.Text = "Last Programed Date";
+            this.lblLastPrgTime.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblLastPrgTime.Visible = false;
+            // 
+            // txtFirmwareVer
+            // 
+            this.txtFirmwareVer.InputString = null;
+            this.txtFirmwareVer.Location = new System.Drawing.Point(210, 274);
+            this.txtFirmwareVer.MaxByteLength = 0;
+            this.txtFirmwareVer.Name = "txtFirmwareVer";
+            this.txtFirmwareVer.OnlyAllowInputStringAndCapitaliseCharacters = false;
+            this.txtFirmwareVer.ReadOnly = true;
+            this.txtFirmwareVer.Size = new System.Drawing.Size(139, 23);
+            this.txtFirmwareVer.TabIndex = 19;
+            this.txtFirmwareVer.Visible = false;
+            // 
+            // lblModel
+            // 
+            this.lblModel.Location = new System.Drawing.Point(28, 135);
+            this.lblModel.Name = "lblModel";
+            this.lblModel.Size = new System.Drawing.Size(172, 23);
+            this.lblModel.TabIndex = 10;
+            this.lblModel.Text = "Model Name";
+            this.lblModel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblModel.Visible = false;
+            // 
+            // sgtextBox_1
+            // 
+            this.sgtextBox_1.InputString = null;
+            this.sgtextBox_1.Location = new System.Drawing.Point(210, 309);
+            this.sgtextBox_1.MaxByteLength = 0;
+            this.sgtextBox_1.Name = "sgtextBox_1";
+            this.sgtextBox_1.OnlyAllowInputStringAndCapitaliseCharacters = false;
+            this.sgtextBox_1.ReadOnly = true;
+            this.sgtextBox_1.Size = new System.Drawing.Size(139, 23);
+            this.sgtextBox_1.TabIndex = 21;
+            this.sgtextBox_1.Visible = false;
+            // 
+            // DeviceInfoForm
+            // 
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(397, 95);
+            this.Controls.Add(this.pnlDeviceInfo);
+            this.Font = new System.Drawing.Font("Arial", 10F);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.KeyPreview = true;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "DeviceInfoForm";
+            this.Text = "Basic Information";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DeviceInfoForm_FormClosing);
+            this.Load += new System.EventHandler(this.DeviceInfoForm_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DeviceInfoForm_KeyDown);
+            this.pnlDeviceInfo.ResumeLayout(false);
+            this.pnlDeviceInfo.PerformLayout();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
 	}
 
 	public void SaveData()

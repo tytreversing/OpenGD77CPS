@@ -2928,7 +2928,7 @@ public class OpenGD77Form : Form
 			}
 			return true;
 		}
-		Console.WriteLine($"read stopped (error at {0:X8})");
+		//Console.WriteLine($"read stopped (error at {0:X8})");
 		return false;
 	}
 
@@ -3121,309 +3121,415 @@ public class OpenGD77Form : Form
 
 	private void InitializeComponent()
 	{
-		this.btnBackupEEPROM = new System.Windows.Forms.Button();
-		this.progressBar1 = new System.Windows.Forms.ProgressBar();
-		this.btnBackupFlash = new System.Windows.Forms.Button();
-		this.btnRestoreEEPROM = new System.Windows.Forms.Button();
-		this.btnRestoreFlash = new System.Windows.Forms.Button();
-		this.btnReadCodeplug = new System.Windows.Forms.Button();
-		this.btnWriteCodeplug = new System.Windows.Forms.Button();
-		this.txtMessage = new System.Windows.Forms.Label();
-		this.btnBackupCalibration = new System.Windows.Forms.Button();
-		this.btnRestoreCalibration = new System.Windows.Forms.Button();
-		this.btnBackupMCUROM = new System.Windows.Forms.Button();
-		this.btnDownloadScreenGrab = new System.Windows.Forms.Button();
-		this.btnOpenFile = new System.Windows.Forms.Button();
-		this.pictureBox1 = new System.Windows.Forms.PictureBox();
-		this.txtBootTune = new System.Windows.Forms.TextBox();
-		this.grpFunThings = new System.Windows.Forms.GroupBox();
-		this.btnPlayTune = new System.Windows.Forms.Button();
-		this.lblBootTune = new System.Windows.Forms.Label();
-		this.btnCompressAudio = new System.Windows.Forms.Button();
-		this.btnWriteVoicePrompts = new System.Windows.Forms.Button();
-		this.btnClearVoicePrompts = new System.Windows.Forms.Button();
-		this.btnDownloadSatelliteKeps = new System.Windows.Forms.Button();
-		this.txtKepsServer = new System.Windows.Forms.TextBox();
-		this.btnBackupSettings = new System.Windows.Forms.Button();
-		this.btnRestoreSettings = new System.Windows.Forms.Button();
-		this.btnSaveNMEA = new System.Windows.Forms.Button();
-		this.btnReadSecureRegisters = new System.Windows.Forms.Button();
-		((System.ComponentModel.ISupportInitialize)this.pictureBox1).BeginInit();
-		this.grpFunThings.SuspendLayout();
-		base.SuspendLayout();
-		this.btnBackupEEPROM.Font = new System.Drawing.Font("Arial", 9f);
-		this.btnBackupEEPROM.Location = new System.Drawing.Point(19, 14);
-		this.btnBackupEEPROM.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-		this.btnBackupEEPROM.Name = "btnBackupEEPROM";
-		this.btnBackupEEPROM.Size = new System.Drawing.Size(153, 27);
-		this.btnBackupEEPROM.TabIndex = 0;
-		this.btnBackupEEPROM.Text = "Backup EEPROM";
-		this.btnBackupEEPROM.UseVisualStyleBackColor = true;
-		this.btnBackupEEPROM.Click += new System.EventHandler(btnBackupEEPROM_Click);
-		this.progressBar1.Location = new System.Drawing.Point(22, 452);
-		this.progressBar1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-		this.progressBar1.Name = "progressBar1";
-		this.progressBar1.Size = new System.Drawing.Size(718, 13);
-		this.progressBar1.TabIndex = 44;
-		this.btnBackupFlash.Font = new System.Drawing.Font("Arial", 9f);
-		this.btnBackupFlash.Location = new System.Drawing.Point(19, 93);
-		this.btnBackupFlash.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-		this.btnBackupFlash.Name = "btnBackupFlash";
-		this.btnBackupFlash.Size = new System.Drawing.Size(153, 27);
-		this.btnBackupFlash.TabIndex = 2;
-		this.btnBackupFlash.Text = "Backup Flash";
-		this.btnBackupFlash.UseVisualStyleBackColor = true;
-		this.btnBackupFlash.Click += new System.EventHandler(btnBackupFlash_Click);
-		this.btnRestoreEEPROM.Font = new System.Drawing.Font("Arial", 9f);
-		this.btnRestoreEEPROM.Location = new System.Drawing.Point(19, 47);
-		this.btnRestoreEEPROM.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-		this.btnRestoreEEPROM.Name = "btnRestoreEEPROM";
-		this.btnRestoreEEPROM.Size = new System.Drawing.Size(153, 27);
-		this.btnRestoreEEPROM.TabIndex = 1;
-		this.btnRestoreEEPROM.Text = "Restore EEPROM";
-		this.btnRestoreEEPROM.UseVisualStyleBackColor = true;
-		this.btnRestoreEEPROM.Click += new System.EventHandler(btnRestoreEEPROM_Click);
-		this.btnRestoreFlash.Font = new System.Drawing.Font("Arial", 9f);
-		this.btnRestoreFlash.Location = new System.Drawing.Point(19, 126);
-		this.btnRestoreFlash.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-		this.btnRestoreFlash.Name = "btnRestoreFlash";
-		this.btnRestoreFlash.Size = new System.Drawing.Size(153, 27);
-		this.btnRestoreFlash.TabIndex = 3;
-		this.btnRestoreFlash.Text = "Restore Flash";
-		this.btnRestoreFlash.UseVisualStyleBackColor = true;
-		this.btnRestoreFlash.Click += new System.EventHandler(btnRestoreFlash_Click);
-		this.btnReadCodeplug.Font = new System.Drawing.Font("Arial", 9f);
-		this.btnReadCodeplug.Location = new System.Drawing.Point(587, 14);
-		this.btnReadCodeplug.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-		this.btnReadCodeplug.Name = "btnReadCodeplug";
-		this.btnReadCodeplug.Size = new System.Drawing.Size(153, 27);
-		this.btnReadCodeplug.TabIndex = 12;
-		this.btnReadCodeplug.Text = "Read codeplug";
-		this.btnReadCodeplug.UseVisualStyleBackColor = true;
-		this.btnReadCodeplug.Click += new System.EventHandler(btnReadCodeplug_Click);
-		this.btnWriteCodeplug.Font = new System.Drawing.Font("Arial", 9f);
-		this.btnWriteCodeplug.Location = new System.Drawing.Point(587, 47);
-		this.btnWriteCodeplug.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-		this.btnWriteCodeplug.Name = "btnWriteCodeplug";
-		this.btnWriteCodeplug.Size = new System.Drawing.Size(153, 27);
-		this.btnWriteCodeplug.TabIndex = 13;
-		this.btnWriteCodeplug.Text = "Write codeplug";
-		this.btnWriteCodeplug.UseVisualStyleBackColor = true;
-		this.btnWriteCodeplug.Click += new System.EventHandler(btnWriteCodeplug_Click);
-		this.txtMessage.Location = new System.Drawing.Point(19, 468);
-		this.txtMessage.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-		this.txtMessage.Name = "txtMessage";
-		this.txtMessage.Size = new System.Drawing.Size(556, 29);
-		this.txtMessage.TabIndex = 43;
-		this.txtMessage.Text = ".";
-		this.btnBackupCalibration.Font = new System.Drawing.Font("Arial", 9f);
-		this.btnBackupCalibration.Location = new System.Drawing.Point(19, 198);
-		this.btnBackupCalibration.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-		this.btnBackupCalibration.Name = "btnBackupCalibration";
-		this.btnBackupCalibration.Size = new System.Drawing.Size(153, 27);
-		this.btnBackupCalibration.TabIndex = 4;
-		this.btnBackupCalibration.Text = "Backup Calibration";
-		this.btnBackupCalibration.UseVisualStyleBackColor = true;
-		this.btnBackupCalibration.Click += new System.EventHandler(btnBackupCalibration_Click);
-		this.btnRestoreCalibration.Font = new System.Drawing.Font("Arial", 9f);
-		this.btnRestoreCalibration.Location = new System.Drawing.Point(19, 231);
-		this.btnRestoreCalibration.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-		this.btnRestoreCalibration.Name = "btnRestoreCalibration";
-		this.btnRestoreCalibration.Size = new System.Drawing.Size(153, 27);
-		this.btnRestoreCalibration.TabIndex = 5;
-		this.btnRestoreCalibration.Text = "Restore Calibration";
-		this.btnRestoreCalibration.UseVisualStyleBackColor = true;
-		this.btnRestoreCalibration.Click += new System.EventHandler(btnRestoreCalibration_Click);
-		this.btnBackupMCUROM.Font = new System.Drawing.Font("Arial", 9f);
-		this.btnBackupMCUROM.Location = new System.Drawing.Point(201, 14);
-		this.btnBackupMCUROM.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-		this.btnBackupMCUROM.Name = "btnBackupMCUROM";
-		this.btnBackupMCUROM.Size = new System.Drawing.Size(153, 27);
-		this.btnBackupMCUROM.TabIndex = 6;
-		this.btnBackupMCUROM.Text = "Backup MCU ROM";
-		this.btnBackupMCUROM.UseVisualStyleBackColor = true;
-		this.btnBackupMCUROM.Click += new System.EventHandler(btnBackupMCUROM_Click);
-		this.btnDownloadScreenGrab.Font = new System.Drawing.Font("Arial", 9f);
-		this.btnDownloadScreenGrab.Location = new System.Drawing.Point(201, 47);
-		this.btnDownloadScreenGrab.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-		this.btnDownloadScreenGrab.Name = "btnDownloadScreenGrab";
-		this.btnDownloadScreenGrab.Size = new System.Drawing.Size(153, 27);
-		this.btnDownloadScreenGrab.TabIndex = 7;
-		this.btnDownloadScreenGrab.Text = "Download screengrab";
-		this.btnDownloadScreenGrab.UseVisualStyleBackColor = true;
-		this.btnDownloadScreenGrab.Click += new System.EventHandler(btnDownloadScreenGrab_Click);
-		this.btnOpenFile.Font = new System.Drawing.Font("Arial", 9f);
-		this.btnOpenFile.Location = new System.Drawing.Point(7, 29);
-		this.btnOpenFile.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-		this.btnOpenFile.Name = "btnOpenFile";
-		this.btnOpenFile.Size = new System.Drawing.Size(153, 27);
-		this.btnOpenFile.TabIndex = 17;
-		this.btnOpenFile.Text = "Select boot image";
-		this.btnOpenFile.UseVisualStyleBackColor = true;
-		this.btnOpenFile.Click += new System.EventHandler(btnOpenFile_Click);
-		this.pictureBox1.Location = new System.Drawing.Point(7, 62);
-		this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-		this.pictureBox1.Name = "pictureBox1";
-		this.pictureBox1.Size = new System.Drawing.Size(149, 74);
-		this.pictureBox1.TabIndex = 7;
-		this.pictureBox1.TabStop = false;
-		this.txtBootTune.Font = new System.Drawing.Font("Arial", 9f);
-		this.txtBootTune.Location = new System.Drawing.Point(178, 49);
-		this.txtBootTune.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-		this.txtBootTune.Multiline = true;
-		this.txtBootTune.Name = "txtBootTune";
-		this.txtBootTune.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-		this.txtBootTune.Size = new System.Drawing.Size(415, 85);
-		this.txtBootTune.TabIndex = 18;
-		this.txtBootTune.Text = "38,6,0,2,38,2,0,2,38,6,0,2,38,2,0,2,38,6";
-		this.grpFunThings.Controls.Add(this.btnPlayTune);
-		this.grpFunThings.Controls.Add(this.lblBootTune);
-		this.grpFunThings.Controls.Add(this.txtBootTune);
-		this.grpFunThings.Controls.Add(this.pictureBox1);
-		this.grpFunThings.Controls.Add(this.btnOpenFile);
-		this.grpFunThings.Location = new System.Drawing.Point(22, 273);
-		this.grpFunThings.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-		this.grpFunThings.Name = "grpFunThings";
-		this.grpFunThings.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
-		this.grpFunThings.Size = new System.Drawing.Size(718, 158);
-		this.grpFunThings.TabIndex = 19;
-		this.grpFunThings.TabStop = false;
-		this.grpFunThings.Text = "Fun things";
-		this.btnPlayTune.Font = new System.Drawing.Font("Arial", 9f);
-		this.btnPlayTune.Location = new System.Drawing.Point(615, 109);
-		this.btnPlayTune.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-		this.btnPlayTune.Name = "btnPlayTune";
-		this.btnPlayTune.Size = new System.Drawing.Size(88, 27);
-		this.btnPlayTune.TabIndex = 20;
-		this.btnPlayTune.Text = "Play tune";
-		this.btnPlayTune.UseVisualStyleBackColor = true;
-		this.btnPlayTune.Click += new System.EventHandler(btnPlayTune_Click);
-		this.lblBootTune.AutoSize = true;
-		this.lblBootTune.Location = new System.Drawing.Point(178, 24);
-		this.lblBootTune.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-		this.lblBootTune.Name = "lblBootTune";
-		this.lblBootTune.Size = new System.Drawing.Size(59, 15);
-		this.lblBootTune.TabIndex = 9;
-		this.lblBootTune.Text = "Boot tune";
-		this.btnCompressAudio.Font = new System.Drawing.Font("Arial", 9f);
-		this.btnCompressAudio.Location = new System.Drawing.Point(201, 231);
-		this.btnCompressAudio.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-		this.btnCompressAudio.Name = "btnCompressAudio";
-		this.btnCompressAudio.Size = new System.Drawing.Size(153, 27);
-		this.btnCompressAudio.TabIndex = 5;
-		this.btnCompressAudio.Text = "Compress audio";
-		this.btnCompressAudio.UseVisualStyleBackColor = true;
-		this.btnCompressAudio.Visible = false;
-		this.btnCompressAudio.Click += new System.EventHandler(btnCompressAudio_Click);
-		this.btnWriteVoicePrompts.Font = new System.Drawing.Font("Arial", 9f);
-		this.btnWriteVoicePrompts.Location = new System.Drawing.Point(201, 80);
-		this.btnWriteVoicePrompts.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-		this.btnWriteVoicePrompts.Name = "btnWriteVoicePrompts";
-		this.btnWriteVoicePrompts.Size = new System.Drawing.Size(153, 27);
-		this.btnWriteVoicePrompts.TabIndex = 8;
-		this.btnWriteVoicePrompts.Text = "Write voice prompts";
-		this.btnWriteVoicePrompts.UseVisualStyleBackColor = true;
-		this.btnWriteVoicePrompts.Click += new System.EventHandler(btnWriteVoicePrompts_Click);
-		this.btnClearVoicePrompts.Font = new System.Drawing.Font("Arial", 9f);
-		this.btnClearVoicePrompts.Location = new System.Drawing.Point(201, 115);
-		this.btnClearVoicePrompts.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-		this.btnClearVoicePrompts.Name = "btnClearVoicePrompts";
-		this.btnClearVoicePrompts.Size = new System.Drawing.Size(153, 27);
-		this.btnClearVoicePrompts.TabIndex = 9;
-		this.btnClearVoicePrompts.Text = "Clear voice prompts";
-		this.btnClearVoicePrompts.UseVisualStyleBackColor = true;
-		this.btnClearVoicePrompts.Click += new System.EventHandler(btnClearVoicePrompts_Click);
-		this.btnDownloadSatelliteKeps.Font = new System.Drawing.Font("Arial", 9f);
-		this.btnDownloadSatelliteKeps.Location = new System.Drawing.Point(576, 198);
-		this.btnDownloadSatelliteKeps.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-		this.btnDownloadSatelliteKeps.Name = "btnDownloadSatelliteKeps";
-		this.btnDownloadSatelliteKeps.Size = new System.Drawing.Size(164, 27);
-		this.btnDownloadSatelliteKeps.TabIndex = 15;
-		this.btnDownloadSatelliteKeps.Text = "Install satellite Keps";
-		this.btnDownloadSatelliteKeps.UseVisualStyleBackColor = true;
-		this.btnDownloadSatelliteKeps.Click += new System.EventHandler(btnDownloadSatelliteKeps_Click);
-		this.txtKepsServer.Font = new System.Drawing.Font("Arial", 9f);
-		this.txtKepsServer.Location = new System.Drawing.Point(201, 198);
-		this.txtKepsServer.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-		this.txtKepsServer.Name = "txtKepsServer";
-		this.txtKepsServer.Size = new System.Drawing.Size(368, 21);
-		this.txtKepsServer.TabIndex = 14;
-		this.btnBackupSettings.Font = new System.Drawing.Font("Arial", 9f);
-		this.btnBackupSettings.Location = new System.Drawing.Point(394, 14);
-		this.btnBackupSettings.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-		this.btnBackupSettings.Name = "btnBackupSettings";
-		this.btnBackupSettings.Size = new System.Drawing.Size(153, 27);
-		this.btnBackupSettings.TabIndex = 11;
-		this.btnBackupSettings.Text = "Backup Settings";
-		this.btnBackupSettings.UseVisualStyleBackColor = true;
-		this.btnBackupSettings.Click += new System.EventHandler(btnBackupSettings_Click);
-		this.btnRestoreSettings.Font = new System.Drawing.Font("Arial", 9f);
-		this.btnRestoreSettings.Location = new System.Drawing.Point(394, 47);
-		this.btnRestoreSettings.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-		this.btnRestoreSettings.Name = "btnRestoreSettings";
-		this.btnRestoreSettings.Size = new System.Drawing.Size(153, 27);
-		this.btnRestoreSettings.TabIndex = 12;
-		this.btnRestoreSettings.Text = "Restore Settings";
-		this.btnRestoreSettings.UseVisualStyleBackColor = true;
-		this.btnRestoreSettings.Click += new System.EventHandler(btnRestoreSettings_Click);
-		this.btnSaveNMEA.Font = new System.Drawing.Font("Arial", 9f);
-		this.btnSaveNMEA.Location = new System.Drawing.Point(201, 161);
-		this.btnSaveNMEA.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-		this.btnSaveNMEA.Name = "btnSaveNMEA";
-		this.btnSaveNMEA.Size = new System.Drawing.Size(153, 27);
-		this.btnSaveNMEA.TabIndex = 10;
-		this.btnSaveNMEA.Text = "Save NMEA Log";
-		this.btnSaveNMEA.UseVisualStyleBackColor = true;
-		this.btnSaveNMEA.Click += new System.EventHandler(btnSaveNMEA_Click);
-		this.btnReadSecureRegisters.Font = new System.Drawing.Font("Arial", 9f);
-		this.btnReadSecureRegisters.Location = new System.Drawing.Point(19, 161);
-		this.btnReadSecureRegisters.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-		this.btnReadSecureRegisters.Name = "btnReadSecureRegisters";
-		this.btnReadSecureRegisters.Size = new System.Drawing.Size(153, 27);
-		this.btnReadSecureRegisters.TabIndex = 4;
-		this.btnReadSecureRegisters.Text = "Backup Registers";
-		this.btnReadSecureRegisters.UseVisualStyleBackColor = true;
-		this.btnReadSecureRegisters.Visible = false;
-		this.btnReadSecureRegisters.Click += new System.EventHandler(btnReadSecureRegisters_Click);
-		base.AutoScaleDimensions = new System.Drawing.SizeF(7f, 15f);
-		base.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-		base.ClientSize = new System.Drawing.Size(754, 527);
-		base.Controls.Add(this.txtKepsServer);
-		base.Controls.Add(this.grpFunThings);
-		base.Controls.Add(this.txtMessage);
-		base.Controls.Add(this.btnRestoreCalibration);
-		base.Controls.Add(this.btnDownloadSatelliteKeps);
-		base.Controls.Add(this.btnWriteVoicePrompts);
-		base.Controls.Add(this.btnClearVoicePrompts);
-		base.Controls.Add(this.btnCompressAudio);
-		base.Controls.Add(this.btnDownloadScreenGrab);
-		base.Controls.Add(this.btnBackupMCUROM);
-		base.Controls.Add(this.btnBackupCalibration);
-		base.Controls.Add(this.btnRestoreSettings);
-		base.Controls.Add(this.btnRestoreFlash);
-		base.Controls.Add(this.btnBackupSettings);
-		base.Controls.Add(this.btnSaveNMEA);
-		base.Controls.Add(this.btnBackupFlash);
-		base.Controls.Add(this.progressBar1);
-		base.Controls.Add(this.btnRestoreEEPROM);
-		base.Controls.Add(this.btnWriteCodeplug);
-		base.Controls.Add(this.btnReadCodeplug);
-		base.Controls.Add(this.btnBackupEEPROM);
-		base.Controls.Add(this.btnReadSecureRegisters);
-		this.Font = new System.Drawing.Font("Arial", 9f);
-		base.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-		base.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-		base.MaximizeBox = false;
-		base.MinimizeBox = false;
-		base.Name = "OpenGD77Form";
-		this.Text = "OpenGD77 Support";
-		base.FormClosing += new System.Windows.Forms.FormClosingEventHandler(OpenGD77Form_FormClosing);
-		base.FormClosed += new System.Windows.Forms.FormClosedEventHandler(OpenGD77Form_FormClosed);
-		base.Load += new System.EventHandler(OpenGD77Form_Load);
-		((System.ComponentModel.ISupportInitialize)this.pictureBox1).EndInit();
-		this.grpFunThings.ResumeLayout(false);
-		this.grpFunThings.PerformLayout();
-		base.ResumeLayout(false);
-		base.PerformLayout();
+            this.btnBackupEEPROM = new System.Windows.Forms.Button();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.btnBackupFlash = new System.Windows.Forms.Button();
+            this.btnRestoreEEPROM = new System.Windows.Forms.Button();
+            this.btnRestoreFlash = new System.Windows.Forms.Button();
+            this.btnReadCodeplug = new System.Windows.Forms.Button();
+            this.btnWriteCodeplug = new System.Windows.Forms.Button();
+            this.txtMessage = new System.Windows.Forms.Label();
+            this.btnBackupCalibration = new System.Windows.Forms.Button();
+            this.btnRestoreCalibration = new System.Windows.Forms.Button();
+            this.btnBackupMCUROM = new System.Windows.Forms.Button();
+            this.btnDownloadScreenGrab = new System.Windows.Forms.Button();
+            this.btnOpenFile = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.txtBootTune = new System.Windows.Forms.TextBox();
+            this.grpFunThings = new System.Windows.Forms.GroupBox();
+            this.btnPlayTune = new System.Windows.Forms.Button();
+            this.lblBootTune = new System.Windows.Forms.Label();
+            this.btnCompressAudio = new System.Windows.Forms.Button();
+            this.btnWriteVoicePrompts = new System.Windows.Forms.Button();
+            this.btnClearVoicePrompts = new System.Windows.Forms.Button();
+            this.btnDownloadSatelliteKeps = new System.Windows.Forms.Button();
+            this.txtKepsServer = new System.Windows.Forms.TextBox();
+            this.btnBackupSettings = new System.Windows.Forms.Button();
+            this.btnRestoreSettings = new System.Windows.Forms.Button();
+            this.btnSaveNMEA = new System.Windows.Forms.Button();
+            this.btnReadSecureRegisters = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.grpFunThings.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // btnBackupEEPROM
+            // 
+            this.btnBackupEEPROM.BackColor = System.Drawing.SystemColors.Control;
+            this.btnBackupEEPROM.Font = new System.Drawing.Font("Arial", 9F);
+            this.btnBackupEEPROM.Location = new System.Drawing.Point(19, 14);
+            this.btnBackupEEPROM.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnBackupEEPROM.Name = "btnBackupEEPROM";
+            this.btnBackupEEPROM.Size = new System.Drawing.Size(216, 27);
+            this.btnBackupEEPROM.TabIndex = 0;
+            this.btnBackupEEPROM.Text = "Backup EEPROM";
+            this.btnBackupEEPROM.UseVisualStyleBackColor = false;
+            this.btnBackupEEPROM.Click += new System.EventHandler(this.btnBackupEEPROM_Click);
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(22, 452);
+            this.progressBar1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(718, 13);
+            this.progressBar1.TabIndex = 44;
+            // 
+            // btnBackupFlash
+            // 
+            this.btnBackupFlash.BackColor = System.Drawing.SystemColors.Control;
+            this.btnBackupFlash.Font = new System.Drawing.Font("Arial", 9F);
+            this.btnBackupFlash.Location = new System.Drawing.Point(19, 93);
+            this.btnBackupFlash.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnBackupFlash.Name = "btnBackupFlash";
+            this.btnBackupFlash.Size = new System.Drawing.Size(216, 27);
+            this.btnBackupFlash.TabIndex = 2;
+            this.btnBackupFlash.Text = "Backup Flash";
+            this.btnBackupFlash.UseVisualStyleBackColor = false;
+            this.btnBackupFlash.Click += new System.EventHandler(this.btnBackupFlash_Click);
+            // 
+            // btnRestoreEEPROM
+            // 
+            this.btnRestoreEEPROM.BackColor = System.Drawing.SystemColors.Control;
+            this.btnRestoreEEPROM.Font = new System.Drawing.Font("Arial", 9F);
+            this.btnRestoreEEPROM.Location = new System.Drawing.Point(19, 47);
+            this.btnRestoreEEPROM.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnRestoreEEPROM.Name = "btnRestoreEEPROM";
+            this.btnRestoreEEPROM.Size = new System.Drawing.Size(216, 27);
+            this.btnRestoreEEPROM.TabIndex = 1;
+            this.btnRestoreEEPROM.Text = "Restore EEPROM";
+            this.btnRestoreEEPROM.UseVisualStyleBackColor = false;
+            this.btnRestoreEEPROM.Click += new System.EventHandler(this.btnRestoreEEPROM_Click);
+            // 
+            // btnRestoreFlash
+            // 
+            this.btnRestoreFlash.BackColor = System.Drawing.SystemColors.Control;
+            this.btnRestoreFlash.Font = new System.Drawing.Font("Arial", 9F);
+            this.btnRestoreFlash.Location = new System.Drawing.Point(19, 126);
+            this.btnRestoreFlash.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnRestoreFlash.Name = "btnRestoreFlash";
+            this.btnRestoreFlash.Size = new System.Drawing.Size(216, 27);
+            this.btnRestoreFlash.TabIndex = 3;
+            this.btnRestoreFlash.Text = "Restore Flash";
+            this.btnRestoreFlash.UseVisualStyleBackColor = false;
+            this.btnRestoreFlash.Click += new System.EventHandler(this.btnRestoreFlash_Click);
+            // 
+            // btnReadCodeplug
+            // 
+            this.btnReadCodeplug.BackColor = System.Drawing.SystemColors.Control;
+            this.btnReadCodeplug.Font = new System.Drawing.Font("Arial", 9F);
+            this.btnReadCodeplug.Location = new System.Drawing.Point(525, 14);
+            this.btnReadCodeplug.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnReadCodeplug.Name = "btnReadCodeplug";
+            this.btnReadCodeplug.Size = new System.Drawing.Size(216, 27);
+            this.btnReadCodeplug.TabIndex = 12;
+            this.btnReadCodeplug.Text = "Read codeplug";
+            this.btnReadCodeplug.UseVisualStyleBackColor = false;
+            this.btnReadCodeplug.Click += new System.EventHandler(this.btnReadCodeplug_Click);
+            // 
+            // btnWriteCodeplug
+            // 
+            this.btnWriteCodeplug.BackColor = System.Drawing.SystemColors.Control;
+            this.btnWriteCodeplug.Font = new System.Drawing.Font("Arial", 9F);
+            this.btnWriteCodeplug.Location = new System.Drawing.Point(525, 47);
+            this.btnWriteCodeplug.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnWriteCodeplug.Name = "btnWriteCodeplug";
+            this.btnWriteCodeplug.Size = new System.Drawing.Size(216, 27);
+            this.btnWriteCodeplug.TabIndex = 13;
+            this.btnWriteCodeplug.Text = "Write codeplug";
+            this.btnWriteCodeplug.UseVisualStyleBackColor = false;
+            this.btnWriteCodeplug.Click += new System.EventHandler(this.btnWriteCodeplug_Click);
+            // 
+            // txtMessage
+            // 
+            this.txtMessage.Location = new System.Drawing.Point(19, 468);
+            this.txtMessage.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.txtMessage.Name = "txtMessage";
+            this.txtMessage.Size = new System.Drawing.Size(556, 29);
+            this.txtMessage.TabIndex = 43;
+            this.txtMessage.Text = ".";
+            // 
+            // btnBackupCalibration
+            // 
+            this.btnBackupCalibration.BackColor = System.Drawing.SystemColors.Control;
+            this.btnBackupCalibration.Font = new System.Drawing.Font("Arial", 9F);
+            this.btnBackupCalibration.Location = new System.Drawing.Point(19, 198);
+            this.btnBackupCalibration.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnBackupCalibration.Name = "btnBackupCalibration";
+            this.btnBackupCalibration.Size = new System.Drawing.Size(216, 27);
+            this.btnBackupCalibration.TabIndex = 4;
+            this.btnBackupCalibration.Text = "Backup Calibration";
+            this.btnBackupCalibration.UseVisualStyleBackColor = false;
+            this.btnBackupCalibration.Click += new System.EventHandler(this.btnBackupCalibration_Click);
+            // 
+            // btnRestoreCalibration
+            // 
+            this.btnRestoreCalibration.BackColor = System.Drawing.SystemColors.Control;
+            this.btnRestoreCalibration.Font = new System.Drawing.Font("Arial", 9F);
+            this.btnRestoreCalibration.Location = new System.Drawing.Point(19, 231);
+            this.btnRestoreCalibration.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnRestoreCalibration.Name = "btnRestoreCalibration";
+            this.btnRestoreCalibration.Size = new System.Drawing.Size(216, 27);
+            this.btnRestoreCalibration.TabIndex = 5;
+            this.btnRestoreCalibration.Text = "Restore Calibration";
+            this.btnRestoreCalibration.UseVisualStyleBackColor = false;
+            this.btnRestoreCalibration.Click += new System.EventHandler(this.btnRestoreCalibration_Click);
+            // 
+            // btnBackupMCUROM
+            // 
+            this.btnBackupMCUROM.BackColor = System.Drawing.SystemColors.Control;
+            this.btnBackupMCUROM.Font = new System.Drawing.Font("Arial", 9F);
+            this.btnBackupMCUROM.Location = new System.Drawing.Point(278, 14);
+            this.btnBackupMCUROM.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnBackupMCUROM.Name = "btnBackupMCUROM";
+            this.btnBackupMCUROM.Size = new System.Drawing.Size(216, 27);
+            this.btnBackupMCUROM.TabIndex = 6;
+            this.btnBackupMCUROM.Text = "Backup MCU ROM";
+            this.btnBackupMCUROM.UseVisualStyleBackColor = false;
+            this.btnBackupMCUROM.Click += new System.EventHandler(this.btnBackupMCUROM_Click);
+            // 
+            // btnDownloadScreenGrab
+            // 
+            this.btnDownloadScreenGrab.BackColor = System.Drawing.SystemColors.Control;
+            this.btnDownloadScreenGrab.Font = new System.Drawing.Font("Arial", 9F);
+            this.btnDownloadScreenGrab.Location = new System.Drawing.Point(278, 47);
+            this.btnDownloadScreenGrab.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnDownloadScreenGrab.Name = "btnDownloadScreenGrab";
+            this.btnDownloadScreenGrab.Size = new System.Drawing.Size(216, 27);
+            this.btnDownloadScreenGrab.TabIndex = 7;
+            this.btnDownloadScreenGrab.Text = "Download screengrab";
+            this.btnDownloadScreenGrab.UseVisualStyleBackColor = false;
+            this.btnDownloadScreenGrab.Click += new System.EventHandler(this.btnDownloadScreenGrab_Click);
+            // 
+            // btnOpenFile
+            // 
+            this.btnOpenFile.BackColor = System.Drawing.SystemColors.Control;
+            this.btnOpenFile.Font = new System.Drawing.Font("Arial", 9F);
+            this.btnOpenFile.Location = new System.Drawing.Point(7, 29);
+            this.btnOpenFile.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnOpenFile.Name = "btnOpenFile";
+            this.btnOpenFile.Size = new System.Drawing.Size(153, 27);
+            this.btnOpenFile.TabIndex = 17;
+            this.btnOpenFile.Text = "Select boot image";
+            this.btnOpenFile.UseVisualStyleBackColor = false;
+            this.btnOpenFile.Click += new System.EventHandler(this.btnOpenFile_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(7, 62);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(149, 74);
+            this.pictureBox1.TabIndex = 7;
+            this.pictureBox1.TabStop = false;
+            // 
+            // txtBootTune
+            // 
+            this.txtBootTune.Font = new System.Drawing.Font("Arial", 9F);
+            this.txtBootTune.Location = new System.Drawing.Point(178, 49);
+            this.txtBootTune.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtBootTune.Multiline = true;
+            this.txtBootTune.Name = "txtBootTune";
+            this.txtBootTune.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtBootTune.Size = new System.Drawing.Size(415, 85);
+            this.txtBootTune.TabIndex = 18;
+            this.txtBootTune.Text = "38,6,0,2,38,2,0,2,38,6,0,2,38,2,0,2,38,6";
+            // 
+            // grpFunThings
+            // 
+            this.grpFunThings.Controls.Add(this.btnPlayTune);
+            this.grpFunThings.Controls.Add(this.lblBootTune);
+            this.grpFunThings.Controls.Add(this.txtBootTune);
+            this.grpFunThings.Controls.Add(this.pictureBox1);
+            this.grpFunThings.Controls.Add(this.btnOpenFile);
+            this.grpFunThings.Location = new System.Drawing.Point(22, 273);
+            this.grpFunThings.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.grpFunThings.Name = "grpFunThings";
+            this.grpFunThings.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.grpFunThings.Size = new System.Drawing.Size(718, 158);
+            this.grpFunThings.TabIndex = 19;
+            this.grpFunThings.TabStop = false;
+            this.grpFunThings.Text = "Fun things";
+            // 
+            // btnPlayTune
+            // 
+            this.btnPlayTune.BackColor = System.Drawing.SystemColors.Control;
+            this.btnPlayTune.Font = new System.Drawing.Font("Arial", 9F);
+            this.btnPlayTune.Location = new System.Drawing.Point(615, 109);
+            this.btnPlayTune.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnPlayTune.Name = "btnPlayTune";
+            this.btnPlayTune.Size = new System.Drawing.Size(88, 27);
+            this.btnPlayTune.TabIndex = 20;
+            this.btnPlayTune.Text = "Play tune";
+            this.btnPlayTune.UseVisualStyleBackColor = false;
+            this.btnPlayTune.Click += new System.EventHandler(this.btnPlayTune_Click);
+            // 
+            // lblBootTune
+            // 
+            this.lblBootTune.AutoSize = true;
+            this.lblBootTune.Location = new System.Drawing.Point(178, 24);
+            this.lblBootTune.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblBootTune.Name = "lblBootTune";
+            this.lblBootTune.Size = new System.Drawing.Size(59, 15);
+            this.lblBootTune.TabIndex = 9;
+            this.lblBootTune.Text = "Boot tune";
+            // 
+            // btnCompressAudio
+            // 
+            this.btnCompressAudio.BackColor = System.Drawing.SystemColors.Control;
+            this.btnCompressAudio.Font = new System.Drawing.Font("Arial", 9F);
+            this.btnCompressAudio.Location = new System.Drawing.Point(278, 231);
+            this.btnCompressAudio.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnCompressAudio.Name = "btnCompressAudio";
+            this.btnCompressAudio.Size = new System.Drawing.Size(216, 27);
+            this.btnCompressAudio.TabIndex = 5;
+            this.btnCompressAudio.Text = "Compress audio";
+            this.btnCompressAudio.UseVisualStyleBackColor = false;
+            this.btnCompressAudio.Visible = false;
+            this.btnCompressAudio.Click += new System.EventHandler(this.btnCompressAudio_Click);
+            // 
+            // btnWriteVoicePrompts
+            // 
+            this.btnWriteVoicePrompts.BackColor = System.Drawing.SystemColors.Control;
+            this.btnWriteVoicePrompts.Font = new System.Drawing.Font("Arial", 9F);
+            this.btnWriteVoicePrompts.Location = new System.Drawing.Point(278, 82);
+            this.btnWriteVoicePrompts.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnWriteVoicePrompts.Name = "btnWriteVoicePrompts";
+            this.btnWriteVoicePrompts.Size = new System.Drawing.Size(216, 27);
+            this.btnWriteVoicePrompts.TabIndex = 8;
+            this.btnWriteVoicePrompts.Text = "Write voice prompts";
+            this.btnWriteVoicePrompts.UseVisualStyleBackColor = false;
+            this.btnWriteVoicePrompts.Click += new System.EventHandler(this.btnWriteVoicePrompts_Click);
+            // 
+            // btnClearVoicePrompts
+            // 
+            this.btnClearVoicePrompts.BackColor = System.Drawing.SystemColors.Control;
+            this.btnClearVoicePrompts.Font = new System.Drawing.Font("Arial", 9F);
+            this.btnClearVoicePrompts.Location = new System.Drawing.Point(278, 115);
+            this.btnClearVoicePrompts.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnClearVoicePrompts.Name = "btnClearVoicePrompts";
+            this.btnClearVoicePrompts.Size = new System.Drawing.Size(216, 27);
+            this.btnClearVoicePrompts.TabIndex = 9;
+            this.btnClearVoicePrompts.Text = "Clear voice prompts";
+            this.btnClearVoicePrompts.UseVisualStyleBackColor = false;
+            this.btnClearVoicePrompts.Click += new System.EventHandler(this.btnClearVoicePrompts_Click);
+            // 
+            // btnDownloadSatelliteKeps
+            // 
+            this.btnDownloadSatelliteKeps.BackColor = System.Drawing.SystemColors.Control;
+            this.btnDownloadSatelliteKeps.Font = new System.Drawing.Font("Arial", 9F);
+            this.btnDownloadSatelliteKeps.Location = new System.Drawing.Point(525, 198);
+            this.btnDownloadSatelliteKeps.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnDownloadSatelliteKeps.Name = "btnDownloadSatelliteKeps";
+            this.btnDownloadSatelliteKeps.Size = new System.Drawing.Size(215, 27);
+            this.btnDownloadSatelliteKeps.TabIndex = 15;
+            this.btnDownloadSatelliteKeps.Text = "Install satellite Keps";
+            this.btnDownloadSatelliteKeps.UseVisualStyleBackColor = false;
+            this.btnDownloadSatelliteKeps.Click += new System.EventHandler(this.btnDownloadSatelliteKeps_Click);
+            // 
+            // txtKepsServer
+            // 
+            this.txtKepsServer.Font = new System.Drawing.Font("Arial", 9F);
+            this.txtKepsServer.Location = new System.Drawing.Point(278, 201);
+            this.txtKepsServer.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtKepsServer.Name = "txtKepsServer";
+            this.txtKepsServer.Size = new System.Drawing.Size(216, 21);
+            this.txtKepsServer.TabIndex = 14;
+            // 
+            // btnBackupSettings
+            // 
+            this.btnBackupSettings.BackColor = System.Drawing.SystemColors.Control;
+            this.btnBackupSettings.Font = new System.Drawing.Font("Arial", 9F);
+            this.btnBackupSettings.Location = new System.Drawing.Point(525, 82);
+            this.btnBackupSettings.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnBackupSettings.Name = "btnBackupSettings";
+            this.btnBackupSettings.Size = new System.Drawing.Size(216, 27);
+            this.btnBackupSettings.TabIndex = 11;
+            this.btnBackupSettings.Text = "Backup Settings";
+            this.btnBackupSettings.UseVisualStyleBackColor = false;
+            this.btnBackupSettings.Click += new System.EventHandler(this.btnBackupSettings_Click);
+            // 
+            // btnRestoreSettings
+            // 
+            this.btnRestoreSettings.BackColor = System.Drawing.SystemColors.Control;
+            this.btnRestoreSettings.Font = new System.Drawing.Font("Arial", 9F);
+            this.btnRestoreSettings.Location = new System.Drawing.Point(525, 115);
+            this.btnRestoreSettings.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnRestoreSettings.Name = "btnRestoreSettings";
+            this.btnRestoreSettings.Size = new System.Drawing.Size(216, 27);
+            this.btnRestoreSettings.TabIndex = 12;
+            this.btnRestoreSettings.Text = "Restore Settings";
+            this.btnRestoreSettings.UseVisualStyleBackColor = false;
+            this.btnRestoreSettings.Click += new System.EventHandler(this.btnRestoreSettings_Click);
+            // 
+            // btnSaveNMEA
+            // 
+            this.btnSaveNMEA.BackColor = System.Drawing.SystemColors.Control;
+            this.btnSaveNMEA.Font = new System.Drawing.Font("Arial", 9F);
+            this.btnSaveNMEA.Location = new System.Drawing.Point(278, 161);
+            this.btnSaveNMEA.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnSaveNMEA.Name = "btnSaveNMEA";
+            this.btnSaveNMEA.Size = new System.Drawing.Size(216, 27);
+            this.btnSaveNMEA.TabIndex = 10;
+            this.btnSaveNMEA.Text = "Save NMEA Log";
+            this.btnSaveNMEA.UseVisualStyleBackColor = false;
+            this.btnSaveNMEA.Click += new System.EventHandler(this.btnSaveNMEA_Click);
+            // 
+            // btnReadSecureRegisters
+            // 
+            this.btnReadSecureRegisters.BackColor = System.Drawing.SystemColors.Control;
+            this.btnReadSecureRegisters.Font = new System.Drawing.Font("Arial", 9F);
+            this.btnReadSecureRegisters.Location = new System.Drawing.Point(19, 161);
+            this.btnReadSecureRegisters.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnReadSecureRegisters.Name = "btnReadSecureRegisters";
+            this.btnReadSecureRegisters.Size = new System.Drawing.Size(216, 27);
+            this.btnReadSecureRegisters.TabIndex = 4;
+            this.btnReadSecureRegisters.Text = "Backup Registers";
+            this.btnReadSecureRegisters.UseVisualStyleBackColor = false;
+            this.btnReadSecureRegisters.Visible = true;
+            this.btnReadSecureRegisters.Click += new System.EventHandler(this.btnReadSecureRegisters_Click);
+            // 
+            // OpenGD77Form
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(759, 527);
+            this.Controls.Add(this.txtKepsServer);
+            this.Controls.Add(this.grpFunThings);
+            this.Controls.Add(this.txtMessage);
+            this.Controls.Add(this.btnRestoreCalibration);
+            this.Controls.Add(this.btnDownloadSatelliteKeps);
+            this.Controls.Add(this.btnWriteVoicePrompts);
+            this.Controls.Add(this.btnClearVoicePrompts);
+            this.Controls.Add(this.btnCompressAudio);
+            this.Controls.Add(this.btnDownloadScreenGrab);
+            this.Controls.Add(this.btnBackupMCUROM);
+            this.Controls.Add(this.btnBackupCalibration);
+            this.Controls.Add(this.btnRestoreSettings);
+            this.Controls.Add(this.btnRestoreFlash);
+            this.Controls.Add(this.btnBackupSettings);
+            this.Controls.Add(this.btnSaveNMEA);
+            this.Controls.Add(this.btnBackupFlash);
+            this.Controls.Add(this.progressBar1);
+            this.Controls.Add(this.btnRestoreEEPROM);
+            this.Controls.Add(this.btnWriteCodeplug);
+            this.Controls.Add(this.btnReadCodeplug);
+            this.Controls.Add(this.btnBackupEEPROM);
+            this.Controls.Add(this.btnReadSecureRegisters);
+            this.Font = new System.Drawing.Font("Arial", 9F);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "OpenGD77Form";
+            this.Text = "OpenGD77 Support";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.OpenGD77Form_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.OpenGD77Form_FormClosed);
+            this.Load += new System.EventHandler(this.OpenGD77Form_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.grpFunThings.ResumeLayout(false);
+            this.grpFunThings.PerformLayout();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
 	}
 }

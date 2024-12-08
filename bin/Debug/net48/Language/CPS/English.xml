@@ -352,6 +352,7 @@
 			<Control Id="lblCallAlertDur" Text="Call Alert Tone Duration [s]" />
 			<Control Id="chkSelfTestPassTone" Text="Self Test Pass Tone" />
 			<Control Id="chkCrescendoTone" Text="Enhanced Tone*" />
+      <Control Id="btnLookupIDForCallsign" Text="Lookup ID for callsign" />
 			<Control Id="chkChFreeTone" Text="Channel Freq Indication Tone" />
 			<Control Id="chkDisableAllTone" Text="Disable All Tone" />
 			<Control Id="lblTalkPermitTone" Text="Talk Permit Tone" />

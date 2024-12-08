@@ -56,3 +56,15 @@ C:\Users\maste\Documents\GitHub\OpenGD77CPS\bin\Debug\net48\OpenGD77RUS CPS.exe
 C:\Users\maste\Documents\GitHub\OpenGD77CPS\bin\Debug\net48\OpenGD77RUS CPS.pdb
 C:\Users\maste\Documents\GitHub\OpenGD77CPS\obj\Debug\net48\OpenGD77RUS CPS.exe
 C:\Users\maste\Documents\GitHub\OpenGD77CPS\obj\Debug\net48\OpenGD77RUS CPS.pdb
+C:\Users\maste\Documents\GitHub\OpenGD77CPS\bin\Debug\net48\Driver\DFU\sttube.cat
+C:\Users\maste\Documents\GitHub\OpenGD77CPS\bin\Debug\net48\Driver\DFU\sttube.inf
+C:\Users\maste\Documents\GitHub\OpenGD77CPS\bin\Debug\net48\Driver\DFU\x64\STTub30.sys
+C:\Users\maste\Documents\GitHub\OpenGD77CPS\bin\Debug\net48\Driver\install_driver.bat
+C:\Users\maste\Documents\GitHub\OpenGD77CPS\bin\Debug\net48\Driver\wdi-simple.exe
+C:\Users\maste\Documents\GitHub\OpenGD77CPS\obj\Debug\net48\DMR.BootItemForm.resources
+C:\Users\maste\Documents\GitHub\OpenGD77CPS\obj\Debug\net48\DMR.CommPortSelector.resources
+C:\Users\maste\Documents\GitHub\OpenGD77CPS\obj\Debug\net48\DMR.DeviceInfoForm.resources
+C:\Users\maste\Documents\GitHub\OpenGD77CPS\obj\Debug\net48\DMR.OpenGD77Form.resources
+C:\Users\maste\Documents\GitHub\OpenGD77CPS\obj\Debug\net48\DMR.VfoForm.resources
+C:\Users\maste\Documents\GitHub\OpenGD77CPS\obj\Debug\net48\DMR.ContactForm.resources
+C:\Users\maste\Documents\GitHub\OpenGD77CPS\obj\Debug\net48\DMR.ContactsForm.resources

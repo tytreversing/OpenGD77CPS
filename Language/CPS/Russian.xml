@@ -183,30 +183,31 @@
 			<Item Id="CallTypeA" Text="DTMF Call" />
 		</Commons>
 	</CommPrgForm>
-	<ContactForm Text="Digital Contact">
+	<ContactForm Text="Контакт DMR">
 		<Controls>
 			<Control Id="chkCallRxTone" Text="Call Receive Tone" />
 			<Control Id="lblRingStyle" Text="Ring Style" />
-			<Control Id="lblCallType" Text="Call Type" />
-			<Control Id="lblName" Text="Name" />
-			<Control Id="lblCallId" Text="Call ID" />
-			<Control Id="openGD77groupbox" Text="OpenGD77 - Channel TS override" />
-			<Control Id="lblRepeaterSlot" Text="Repeater Slot" />
-			<Control Id="btnLookupIDForCallsign" Text="Lookup Id for Callsign" />
+			<Control Id="lblCallType" Text="Тип" />
+			<Control Id="lblName" Text="Имя" />
+			<Control Id="lblCallId" Text="ID" />
+			<Control Id="openGD77groupbox" Text="Установка таймслота для контакта" />
+			<Control Id="lblRepeaterSlot" Text="Таймслот" />
+			<Control Id="btnLookupIDForCallsign" Text="Поиск позывного по ID" />
 		</Controls>
 		<Commons>
-			<Item Id="CallType" Text="Group Call,Private Call,All Call" />
+			<Item Id="CallType" Text="Группа,Частный,Всем" />
 			<Item Id="CallRxTone" Text="Off,On" />
 		</Commons>
 	</ContactForm>
-	<ContactsForm Text="Contact">
+	<ContactsForm Text="Контакты">
 		<Controls>
 			<Control Id="btnImport" Text="Import" />
 			<Control Id="btnExport" Text="Export" />
-			<Control Id="btnDeleteSelect" Text="Delete Selected" />
-			<Control Id="btnClear" Text="Clear" />
-			<Control Id="btnDelete" Text="Delete" />
-			<Control Id="btnAdd" Text="Add" />
+			<Control Id="btnDeleteSelect" Text="Удалить выбранное" />
+			<Control Id="btnClear" Text="Очистить" />
+			<Control Id="btnDelete" Text="Удалить" />
+			<Control Id="btnAdd" Text="Добавить" />
+      <Control Id="btnSortContacts" Text="Упорядочить" />
 			<Control Id="btnInternetDownload" Text="Internet download" />
 			<Control Id="dgvContacts" Text="Number,Name,Call ID,Type,Ring Style,Call Receive Tone,Repeater Slot override,">
 				<ControlItem Id="" Text="Number" />
@@ -219,20 +220,20 @@
 			</Control>
 		</Controls>
 		<Commons>
-			<Item Id="HeaderText" Text="Number,Name,Call ID,Type,Ring Style,Call Receive Tone,Repeater Slot override," />
+			<Item Id="HeaderText" Text="Номер,Имяe,ID,Тип,Ring Style,Call Receive Tone,Таймслот," />
 		</Commons>
 	</ContactsForm>
-	<DeviceInfoForm Text="Band limits">
+	<DeviceInfoForm Text="Ограничения частот">
 		<Controls>
 			<Control Id="lblTo1" Text="-" />
 			<Control Id="lblTo2" Text="-" />
-			<Control Id="lblSection1" Text="UHF band limits [MHz]" />
+			<Control Id="lblSection1" Text="Диапазон 2 метра (МГц)" />
 			<Control Id="lblDspFwVer" Text="DSP Version" />
 			<Control Id="lblFirmwareVer" Text="Firmware Version" />
 			<Control Id="lblHardwareVer" Text="Hardware Version" />
 			<Control Id="lblCpsSwVer" Text="CPS Version" />
 			<Control Id="lblSn" Text="Serial Number" />
-			<Control Id="lblSection2" Text="VHF band limits [MHz]" />
+			<Control Id="lblSection2" Text="Диапазон 70 см (МГц)" />
 			<Control Id="lblLastPrgTime" Text="Last Programed Date" />
 			<Control Id="lblModel" Text="Model Name" />
 		</Controls>
@@ -339,7 +340,7 @@
 			<Item Id="EncryptType" Text="None,Basic" />
 		</Commons>
 	</EncryptForm>
-	<GeneralSetForm Text="DMR ID and callsign">
+	<GeneralSetForm Text="DMR ID и позывной">
 		<Controls>
 			<Control Id="chkTxExitTone" Text="Tx Exit Tone" />
 			<Control Id="grpBeep" Text="Alert Tone" />
@@ -351,6 +352,7 @@
 			<Control Id="chkChFreeTone" Text="Channel Freq Indication Tone" />
 			<Control Id="chkDisableAllTone" Text="Disable All Tone" />
 			<Control Id="lblTalkPermitTone" Text="Talk Permit Tone" />
+      <Control Id="btnLookupIDForCallsign" Text="Поиск позывного по DMR ID" />
 			<Control Id="lblArtsTone" Text="ARTS Tone" />
 			<Control Id="grpVoice" Text="Language" />
 			<Control Id="chkChVoice" Text="Channel Voice" />
@@ -365,7 +367,7 @@
 			<Control Id="lblPrivateHang" Text="Private Call Hang Time [ms]" />
 			<Control Id="lblGrpHold" Text="Group Call Hang Time [ms]" />
 			<Control Id="chkDisableAllLeds" Text="Disable All LED" />
-			<Control Id="lblRadioName" Text="Callsign" />
+			<Control Id="lblRadioName" Text="Имя (позывной):" />
 			<Control Id="lblRadioID" Text="Radio DMR ID" />
 			<Control Id="lblTxPreambleDur" Text="Tx Preamble Duration [ms]" />
 			<Control Id="lblProgramPwd" Text="Program Password" />
@@ -514,12 +516,12 @@
 			<MenuItem Id="tsmiAllCall" Text="Вызов всем" />
 		</ContextMenuStrip>
 		<ToolStrip>
-			<ToolItem Id="tsbtnNew" Text="New" />
-			<ToolItem Id="tsbtnOpen" Text="Open" />
-			<ToolItem Id="tsbtnSave" Text="Save" />
-			<ToolItem Id="tsbtnRead" Text="Read" />
-			<ToolItem Id="tsbtnWrite" Text="Write" />
-			<ToolItem Id="tsbtnAbout" Text="About" />
+			<ToolItem Id="tsbtnNew" Text="Новый кодплаг" />
+			<ToolItem Id="tsbtnOpen" Text="Открыть кодплаг" />
+			<ToolItem Id="tsbtnSave" Text="Сохранить кодплаг" />
+			<ToolItem Id="tsbtnRead" Text="Читать из рации" />
+			<ToolItem Id="tsbtnWrite" Text="Записать в рацию" />
+			<ToolItem Id="tsbtnAbout" Text="О программе" />
 		</ToolStrip>
 	</MainForm>
 	<MenuForm Text="Menu">
@@ -907,33 +909,34 @@
 			<Control Id="chkUseVPMemory" Text="Use Voice Prompt memory" />
 		</Controls>
 	</DMRIDForm>
-	<OpenGD77Form Text="OpenGD77 Support">
+	<OpenGD77Form Text="Технический центр">
 		<Controls>
-			<Control Id="btnBackupEEPROM" Text="Backup EEPROM" />
-			<Control Id="btnBackupFlash" Text="Backup Flash" />
-			<Control Id="btnRestoreEEPROM" Text="Restore EEPROM" />
-			<Control Id="btnRestoreFlash" Text="Restore Flash" />
-			<Control Id="btnReadCodeplug" Text="Read codeplug" />
-			<Control Id="btnWriteCodeplug" Text="Write codeplug" />
-			<Control Id="btnBackupCalibration" Text="Backup Calibration" />
-			<Control Id="btnRestoreCalibration" Text="Restore Calibration" />
-			<Control Id="btnBackupMCUROM" Text="Backup MCU ROM" />
-			<Control Id="btnDownloadScreenGrab" Text="Download screengrab" />
-			<Control Id="btnOpenFile" Text="Select boot image" />
+			<Control Id="btnBackupEEPROM" Text="Сохранить EEPROM" />
+			<Control Id="btnBackupFlash" Text="Сохранить флеш-память" />
+			<Control Id="btnRestoreEEPROM" Text="Восстановить EEPROM" />
+			<Control Id="btnRestoreFlash" Text="Восстановить флеш-память" />
+			<Control Id="btnReadCodeplug" Text="Считать кодплаг" />
+			<Control Id="btnWriteCodeplug" Text="Записать кодплаг" />
+			<Control Id="btnBackupCalibration" Text="Бэкап калибровок" />
+			<Control Id="btnRestoreCalibration" Text="Восстановление калибровок" />
+			<Control Id="btnBackupMCUROM" Text="Бэкап MCU ROM" />
+			<Control Id="btnDownloadScreenGrab" Text="Скриншот рации" />
+			<Control Id="btnOpenFile" Text="Заставка" />
 			<Control Id="txtBootTune" Text="38,6,0,2,38,2,0,2,38,6,0,2,38,2,0,2,38,6" />
-			<Control Id="grpFunThings" Text="Fun things" />
-			<Control Id="btnPlayTune" Text="Play tune" />
-			<Control Id="lblBootTune" Text="Boot melody" />
-			<Control Id="btnWriteVoicePrompts" Text="Write voice prompts" />
-			<Control Id="btnBackupSettings" Text="Backup settings" />
-			<Control Id="btnRestoreSettings" Text="Restore settings" />
-			<Control Id="btnDownloadSatelliteKeps" Text="Install satellite keps" />
+			<Control Id="grpFunThings" Text="Кастомизация" />
+			<Control Id="btnPlayTune" Text="Проиграть" />
+			<Control Id="lblBootTune" Text="Мелодия при загрузке" />
+			<Control Id="btnWriteVoicePrompts" Text="Записать голосовые оповещения" />
+			<Control Id="btnBackupSettings" Text="Сохранить настройки" />
+			<Control Id="btnRestoreSettings" Text="Восстановить настройки" />
+			<Control Id="btnDownloadSatelliteKeps" Text="Загрузить данные спутников" />
 			<Control Id="btnSaveCSVs" Text="Save CSVs" />
 			<Control Id="btnImportCSVs" Text="Import CSVs" />
 			<Control Id="btnAppendCSVs" Text="Append CSVs" />
-			<Control Id="btnClearVoicePrompts" Text="Clear voice prompts" />
-			<Control Id="btnReadSecureRegisters" Text="Backup Registers" />
-			<Control Id="btnSaveNMEA" Text="Save NMEA log" />
+			<Control Id="btnClearVoicePrompts" Text="Очистить голосовые оповещения" />
+			<Control Id="btnReadSecureRegisters" Text="Сохранить регистры" />
+			<Control Id="btnSaveNMEA" Text="Сохранить лог NMEA" />
+      <Control Id="btnCompressAudio" Text="Сжать аудио" />
 		</Controls>
 		<Commons>
 			<Item Id="Error_connecting_to_the_radio" Text="Ошибка соединения с рацией" />
@@ -986,9 +989,9 @@
 			<Item Id="EEPROM_files" Text="EEPROM files" />
 			<Item Id="Flash_files" Text="Flash files" />
 			<Item Id="Restore_complete" Text="Restore complete" />
-			<Item Id="Read_Codeplug_complete" Text="Read Codeplug complete" />
+			<Item Id="Read_Codeplug_complete" Text="Кодплаг считан!" />
 			<Item Id="Screengrab_files" Text="Screengrab files" />
-			<Item Id="Error_while_reading_flash" Text="Error while reading Flash" />
+			<Item Id="Error_while_reading_flash" Text="Ошибка при чтении флеш-памяти!" />
 			<Item Id="Reading_Calibration" Text="Reading Calibration" />
 			<Item Id="Error_while_reading_calibration" Text="Error while reading calibration" />
 			<Item Id="Error_while_reading_EEPROM" Text="Error while reading EEPROM" />

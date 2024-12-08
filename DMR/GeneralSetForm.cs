@@ -1207,17 +1207,18 @@ public class GeneralSetForm : DockContent, IDisp
             this.pnlFill.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlFill.Location = new System.Drawing.Point(0, 0);
             this.pnlFill.Name = "pnlFill";
-            this.pnlFill.Size = new System.Drawing.Size(1015, 621);
+            this.pnlFill.Size = new System.Drawing.Size(309, 120);
             this.pnlFill.TabIndex = 0;
             // 
             // btnLookupIDForCallsign
             // 
-            this.btnLookupIDForCallsign.Location = new System.Drawing.Point(122, 41);
+            this.btnLookupIDForCallsign.BackColor = System.Drawing.SystemColors.Control;
+            this.btnLookupIDForCallsign.Location = new System.Drawing.Point(16, 41);
             this.btnLookupIDForCallsign.Name = "btnLookupIDForCallsign";
-            this.btnLookupIDForCallsign.Size = new System.Drawing.Size(158, 23);
+            this.btnLookupIDForCallsign.Size = new System.Drawing.Size(264, 23);
             this.btnLookupIDForCallsign.TabIndex = 37;
             this.btnLookupIDForCallsign.Text = "Lookup Id for Callsign";
-            this.btnLookupIDForCallsign.UseVisualStyleBackColor = true;
+            this.btnLookupIDForCallsign.UseVisualStyleBackColor = false;
             this.btnLookupIDForCallsign.Click += new System.EventHandler(this.btnLookupIDForCallsign_Click);
             // 
             // lblDownChMode
@@ -1990,7 +1991,8 @@ public class GeneralSetForm : DockContent, IDisp
             // 
             // GeneralSetForm
             // 
-            this.ClientSize = new System.Drawing.Size(1015, 621);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(309, 120);
             this.Controls.Add(this.pnlFill);
             this.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;

@@ -56,13 +56,14 @@ public class AboutForm : Form
             // 
             // btnClose
             // 
+            this.btnClose.BackColor = System.Drawing.SystemColors.Control;
             this.btnClose.Location = new System.Drawing.Point(175, 360);
             this.btnClose.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(64, 27);
             this.btnClose.TabIndex = 1;
             this.btnClose.Text = "OK";
-            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // lblTranslationCredit

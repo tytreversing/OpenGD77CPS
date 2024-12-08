@@ -342,7 +342,7 @@ public class FirmwareLoaderUI_STM32 : Form
             // 
             // btnProgram
             // 
-            this.btnProgram.BackColor = System.Drawing.Color.White;
+            this.btnProgram.BackColor = System.Drawing.SystemColors.Control;
             this.btnProgram.Font = new System.Drawing.Font("Arial", 9F);
             this.btnProgram.Location = new System.Drawing.Point(140, 259);
             this.btnProgram.Name = "btnProgram";
@@ -514,7 +514,7 @@ public class FirmwareLoaderUI_STM32 : Form
             // downloadRussian
             // 
             this.downloadRussian.AutoSize = true;
-            this.downloadRussian.BackColor = System.Drawing.Color.White;
+            this.downloadRussian.BackColor = System.Drawing.SystemColors.Control;
             this.downloadRussian.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.downloadRussian.Location = new System.Drawing.Point(12, 160);
             this.downloadRussian.Name = "downloadRussian";

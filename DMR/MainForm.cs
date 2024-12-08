@@ -17,11 +17,14 @@ using DMR.Properties;
 using Extras.OpenGD77;
 using WeifenLuo.WinFormsUI.Docking;
 
+
+
 namespace DMR;
 
 public class MainForm : Form
 {
-	public enum RadioTypeEnum
+    public const string swVersion = "R2024.10.31.01";
+    public enum RadioTypeEnum
 	{
 		RadioTypeMK22,
 		RadioTypeSTM32
@@ -318,6 +321,9 @@ public class MainForm : Form
             this.tsmiUpdateLocationCSV = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmiExit = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiSort = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiSortContacts = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiSortZones = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiSetting = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiProgram = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiRead = new System.Windows.Forms.ToolStripMenuItem();
@@ -404,9 +410,6 @@ public class MainForm : Form
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbtnAbout = new System.Windows.Forms.ToolStripButton();
             this.importFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.tsmiSort = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiSortContacts = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiSortZones = new System.Windows.Forms.ToolStripMenuItem();
             this.mnsMain.SuspendLayout();
             this.cmsGroup.SuspendLayout();
             this.cmsSub.SuspendLayout();
@@ -551,6 +554,33 @@ public class MainForm : Form
             this.tsmiExit.Text = "Exit";
             this.tsmiExit.Click += new System.EventHandler(this.tsmiExit_Click);
             // 
+            // tsmiSort
+            // 
+            this.tsmiSort.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiSortContacts,
+            this.tsmiSortZones});
+            this.tsmiSort.Name = "tsmiSort";
+            this.tsmiSort.Size = new System.Drawing.Size(46, 23);
+            this.tsmiSort.Text = "Sort";
+            // 
+            // tsmiSortContacts
+            // 
+            this.tsmiSortContacts.Name = "tsmiSortContacts";
+            this.tsmiSortContacts.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.C)));
+            this.tsmiSortContacts.Size = new System.Drawing.Size(312, 24);
+            this.tsmiSortContacts.Text = "Contacts by alphabet";
+            this.tsmiSortContacts.Click += new System.EventHandler(this.dummyClick);
+            // 
+            // tsmiSortZones
+            // 
+            this.tsmiSortZones.Name = "tsmiSortZones";
+            this.tsmiSortZones.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.Z)));
+            this.tsmiSortZones.Size = new System.Drawing.Size(312, 24);
+            this.tsmiSortZones.Text = "Zones by alphabet";
+            this.tsmiSortZones.Click += new System.EventHandler(this.dummyClick);
+            // 
             // tsmiSetting
             // 
             this.tsmiSetting.Name = "tsmiSetting";
@@ -571,7 +601,7 @@ public class MainForm : Form
             // 
             this.tsmiRead.Name = "tsmiRead";
             this.tsmiRead.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
-            this.tsmiRead.Size = new System.Drawing.Size(180, 24);
+            this.tsmiRead.Size = new System.Drawing.Size(174, 24);
             this.tsmiRead.Text = "Read";
             this.tsmiRead.Click += new System.EventHandler(this.tsbtnRead_Click);
             // 
@@ -579,7 +609,7 @@ public class MainForm : Form
             // 
             this.tsmiWrite.Name = "tsmiWrite";
             this.tsmiWrite.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.W)));
-            this.tsmiWrite.Size = new System.Drawing.Size(180, 24);
+            this.tsmiWrite.Size = new System.Drawing.Size(174, 24);
             this.tsmiWrite.Text = "Write";
             this.tsmiWrite.Click += new System.EventHandler(this.tsbtnWrite_Click);
             // 
@@ -668,35 +698,37 @@ public class MainForm : Form
             // tsmiDMRID
             // 
             this.tsmiDMRID.Name = "tsmiDMRID";
-            this.tsmiDMRID.Size = new System.Drawing.Size(200, 24);
+            this.tsmiDMRID.Size = new System.Drawing.Size(257, 24);
             this.tsmiDMRID.Text = "DMR ID";
             this.tsmiDMRID.Click += new System.EventHandler(this.tsbtnDMRID_Click);
             // 
             // tsmiOpenGD77
             // 
             this.tsmiOpenGD77.Name = "tsmiOpenGD77";
-            this.tsmiOpenGD77.Size = new System.Drawing.Size(200, 24);
+            this.tsmiOpenGD77.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.T)));
+            this.tsmiOpenGD77.Size = new System.Drawing.Size(257, 24);
             this.tsmiOpenGD77.Text = "OpenGD77 support";
             this.tsmiOpenGD77.Click += new System.EventHandler(this.tsmiOpenGD77_Click);
             // 
             // tsmiFirmwareLoader
             // 
             this.tsmiFirmwareLoader.Name = "tsmiFirmwareLoader";
-            this.tsmiFirmwareLoader.Size = new System.Drawing.Size(200, 24);
+            this.tsmiFirmwareLoader.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L)));
+            this.tsmiFirmwareLoader.Size = new System.Drawing.Size(257, 24);
             this.tsmiFirmwareLoader.Text = "Firmware loader";
             this.tsmiFirmwareLoader.Click += new System.EventHandler(this.tsmiFirmwareLoader_Click);
             // 
             // tsmiCalibrationMK22
             // 
             this.tsmiCalibrationMK22.Name = "tsmiCalibrationMK22";
-            this.tsmiCalibrationMK22.Size = new System.Drawing.Size(200, 24);
+            this.tsmiCalibrationMK22.Size = new System.Drawing.Size(257, 24);
             this.tsmiCalibrationMK22.Text = "Calibration editor";
             this.tsmiCalibrationMK22.Click += new System.EventHandler(this.tsbtnCalibration_Click);
             // 
             // tsmiTheme
             // 
             this.tsmiTheme.Name = "tsmiTheme";
-            this.tsmiTheme.Size = new System.Drawing.Size(200, 24);
+            this.tsmiTheme.Size = new System.Drawing.Size(257, 24);
             this.tsmiTheme.Text = "Theme editor";
             this.tsmiTheme.Click += new System.EventHandler(this.tsbtnTheme_Click);
             // 
@@ -1250,33 +1282,6 @@ public class MainForm : Form
             // 
             this.importFileDialog.DefaultExt = "g77";
             this.importFileDialog.Filter = "Кодплаги OpenGD77 (*.g77)|*.g77|Все файлы (*.*)|*.*";
-            // 
-            // tsmiSort
-            // 
-            this.tsmiSort.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiSortContacts,
-            this.tsmiSortZones});
-            this.tsmiSort.Name = "tsmiSort";
-            this.tsmiSort.Size = new System.Drawing.Size(46, 23);
-            this.tsmiSort.Text = "Sort";
-            // 
-            // tsmiSortContacts
-            // 
-            this.tsmiSortContacts.Name = "tsmiSortContacts";
-            this.tsmiSortContacts.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
-            | System.Windows.Forms.Keys.C)));
-            this.tsmiSortContacts.Size = new System.Drawing.Size(312, 24);
-            this.tsmiSortContacts.Text = "Contacts by alphabet";
-            this.tsmiSortContacts.Click += new System.EventHandler(this.dummyClick);
-            // 
-            // tsmiSortZones
-            // 
-            this.tsmiSortZones.Name = "tsmiSortZones";
-            this.tsmiSortZones.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
-            | System.Windows.Forms.Keys.Z)));
-            this.tsmiSortZones.Size = new System.Drawing.Size(312, 24);
-            this.tsmiSortZones.Text = "Zones by alphabet";
-            this.tsmiSortZones.Click += new System.EventHandler(this.dummyClick);
             // 
             // MainForm
             // 
@@ -4233,7 +4238,7 @@ public class MainForm : Form
 	{
 		CommsBuffer = null;
 		PRODUCT_NAME = ((AssemblyProductAttribute)Attribute.GetCustomAttribute(Assembly.GetExecutingAssembly(), typeof(AssemblyProductAttribute), inherit: false)).Product;
-		PRODUCT_VERSION = "R2024.10.31.01";
+		PRODUCT_VERSION = swVersion;
 		RadioType = RadioTypeEnum.RadioTypeMK22;
 		PreActiveMdiChild = null;
 		dicHelp = new Dictionary<string, string>();

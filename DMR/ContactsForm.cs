@@ -597,8 +597,8 @@ public class ContactsForm : DockContent, IDisp, ISingleRow
 			dgvContacts.Columns.Add(dataGridViewTextBoxColumn);
 		}
 		Settings.smethod_40(cmbAddType, ContactForm.SZ_CALL_TYPE, new int[2] { 0, 1 });
-		Settings.smethod_37(cmbType, ContactForm.SZ_CALL_TYPE);
-		Settings.smethod_37(cmbCallRxTone, ContactForm.SZ_CALL_RX_TONE);
+		Settings.fillComboBox(cmbType, ContactForm.SZ_CALL_TYPE);
+		Settings.fillComboBox(cmbCallRxTone, ContactForm.SZ_CALL_RX_TONE);
 		Settings.smethod_43(cmbRingStyle, 0, 10, 0, Settings.SZ_NONE);
 		Settings.smethod_43(cmbRepeaterSlot, 0, 4, 0, Settings.SZ_NONE);
 		txtName.MaxLength = 16;

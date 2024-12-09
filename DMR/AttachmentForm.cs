@@ -650,7 +650,7 @@ public class AttachmentForm : DockContent, IDisp
 	{
 		if (MenuForm.data.Fm)
 		{
-			Settings.smethod_37(cmbP1Key, SZ_PK1_KEY);
+			Settings.fillComboBox(cmbP1Key, SZ_PK1_KEY);
 		}
 		else
 		{

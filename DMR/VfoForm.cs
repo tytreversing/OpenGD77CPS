@@ -3451,37 +3451,37 @@ public class VfoForm : DockContent, IDisp
 
 	private void method_1()
 	{
-		Settings.smethod_37(cmbChMode, SZ_CH_MODE);
+		Settings.fillComboBox(cmbChMode, SZ_CH_MODE);
 		txtName.MaxByteLength = 15;
 		txtName.KeyPress += Settings.smethod_54;
 		txtRxFreq.MaxLength = 9;
 		txtRxFreq.KeyPress += Settings.smethod_55;
 		txtTxFreq.MaxLength = 9;
 		txtTxFreq.KeyPress += Settings.smethod_55;
-		Settings.smethod_37(cmbTxRefFreq, SZ_REF_FREQ);
-		Settings.smethod_37(cmbLibreDMR_Power, SZ_LIBREDMR_POWER);
-		Settings.smethod_37(cmbPower, SZ_POWER);
+		Settings.fillComboBox(cmbTxRefFreq, SZ_REF_FREQ);
+		Settings.fillComboBox(cmbLibreDMR_Power, SZ_LIBREDMR_POWER);
+		Settings.fillComboBox(cmbPower, SZ_POWER);
 		Settings.smethod_36(nudTot, new Class13(0, 33, 1, 15m, 3));
 		nudTot.method_4(0m);
 		nudTot.method_6("∞");
 		Settings.smethod_36(nudRssiThreshold, new Class13(80, 124, 1, -1m, 4));
-		Settings.smethod_37(cmbChBandwidth, SZ_BANDWIDTH);
-		Settings.smethod_37(cmbSquelch, SZ_SQUELCH);
-		Settings.smethod_37(cmbSql, SZ_SQUELCH_LEVEL);
-		Settings.smethod_37(cmbVoiceEmphasis, SZ_VOICE_EMPHASIS);
-		Settings.smethod_37(cmbSte, SZ_STE);
-		Settings.smethod_37(cmbNonSte, SZ_NON_STE);
-		Settings.smethod_37(cmbTxSignaling, SZ_SIGNALING_SYSTEM);
-		Settings.smethod_37(cmbPttidType, SZ_PTTID_TYPE);
+		Settings.fillComboBox(cmbChBandwidth, SZ_BANDWIDTH);
+		Settings.fillComboBox(cmbSquelch, SZ_SQUELCH);
+		Settings.fillComboBox(cmbSql, SZ_SQUELCH_LEVEL);
+		Settings.fillComboBox(cmbVoiceEmphasis, SZ_VOICE_EMPHASIS);
+		Settings.fillComboBox(cmbSte, SZ_STE);
+		Settings.fillComboBox(cmbNonSte, SZ_NON_STE);
+		Settings.fillComboBox(cmbTxSignaling, SZ_SIGNALING_SYSTEM);
+		Settings.fillComboBox(cmbPttidType, SZ_PTTID_TYPE);
 		Settings.smethod_39(cmbTS1TaTx, ChannelForm.SZ_TA_TX);
 		Settings.smethod_39(cmbTS2TaTx, ChannelForm.SZ_TA_TX);
-		Settings.smethod_37(cmbTimingPreference, SZ_TIMING_PREFERENCE);
-		Settings.smethod_37(cmbRepeaterSlot, SZ_REPEATER_SOLT);
-		Settings.smethod_37(cmbArs, SZ_ARS);
-		Settings.smethod_37(cmbKeySwitch, SZ_KEY_SWITCH);
+		Settings.fillComboBox(cmbTimingPreference, SZ_TIMING_PREFERENCE);
+		Settings.fillComboBox(cmbRepeaterSlot, SZ_REPEATER_SOLT);
+		Settings.fillComboBox(cmbArs, SZ_ARS);
+		Settings.fillComboBox(cmbKeySwitch, SZ_KEY_SWITCH);
 		Settings.smethod_36(nudTxColor, new Class13(0, 15, 1, 1m, 2));
-		Settings.smethod_37(cmbOffsetDirection, SZ_OFFSET_DIRECTION);
-		Settings.smethod_37(cmbOffsetStep, SZ_OFFSET_STEP);
+		Settings.fillComboBox(cmbOffsetDirection, SZ_OFFSET_DIRECTION);
+		Settings.fillComboBox(cmbOffsetStep, SZ_OFFSET_STEP);
 		Settings.smethod_36(nudOffsetFreq, new Class13(1, 38400, 1, 0.01m, 6));
 		txtRadioId.MaxLength = 8;
 		txtRadioId.InputString = "0123456789\b";
@@ -3880,11 +3880,11 @@ public class VfoForm : DockContent, IDisp
 	{
 		if (new Regex("D[0-7]{3}[N|I]$").IsMatch(string_0))
 		{
-			Settings.smethod_37(cmbSte, new string[1] { SZ_STE[0] });
+			Settings.fillComboBox(cmbSte, new string[1] { SZ_STE[0] });
 		}
 		else
 		{
-			Settings.smethod_37(cmbSte, SZ_STE);
+			Settings.fillComboBox(cmbSte, SZ_STE);
 		}
 	}
 
@@ -3903,13 +3903,13 @@ public class VfoForm : DockContent, IDisp
 		cmbNonSte.Enabled = false;
 		if (regex.IsMatch(text))
 		{
-			Settings.smethod_37(cmbSte, new string[1] { SZ_STE[0] });
+			Settings.fillComboBox(cmbSte, new string[1] { SZ_STE[0] });
 			cmbSte.SelectedIndex = 0;
 		}
 		else if (double.TryParse(text, out result))
 		{
 			string text2 = cmbSte.Text;
-			Settings.smethod_37(cmbSte, SZ_STE);
+            Settings.fillComboBox(cmbSte, SZ_STE);
 			if (cmbSte.FindString(text2) < 0)
 			{
 				cmbSte.SelectedIndex = 0;

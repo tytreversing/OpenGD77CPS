@@ -431,7 +431,7 @@ public class BootItemForm : DockContent, IDisp
 	{
 		txtBootPwd.MaxLength = 6;
 		txtBootPwd.InputString = "0123456789\b";
-		Settings.smethod_37(cmbBootScreen, SZ_BOOT_SCREEN);
+		Settings.fillComboBox(cmbBootScreen, SZ_BOOT_SCREEN);
 		txtLine1.MaxByteLength = 16;
 		txtLine2.MaxByteLength = 16;
 	}

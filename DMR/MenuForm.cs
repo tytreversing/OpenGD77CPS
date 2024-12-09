@@ -1099,13 +1099,13 @@ public class MenuForm : DockContent, IDisp
 	{
 		Settings.smethod_41(cmbMenuHangTime, 1, 30);
 		cmbMenuHangTime.Items.Insert(0, "∞");
-		Settings.smethod_37(cmbKeyLockTime, SZ_KEY_LOCK_TIME);
-		Settings.smethod_37(cmbBacklightTime, SZ_BACKLIGHT_TIME);
-		Settings.smethod_37(cmbWorkMode, SZ_WORK_MODE);
-		Settings.smethod_37(cmbChDispMode, SZ_CH_DISP_MODE);
-		Settings.smethod_37(cmbMenuLang, SZ_MENU_LANG);
-		Settings.smethod_37(cmbKeyTone, SZ_KEY_TONE);
-		Settings.smethod_37(cmbDwSwitch, SZ_DOUBLE_WAIT);
+		Settings.fillComboBox(cmbKeyLockTime, SZ_KEY_LOCK_TIME);
+		Settings.fillComboBox(cmbBacklightTime, SZ_BACKLIGHT_TIME);
+		Settings.fillComboBox(cmbWorkMode, SZ_WORK_MODE);
+		Settings.fillComboBox(cmbChDispMode, SZ_CH_DISP_MODE);
+		Settings.fillComboBox(cmbMenuLang, SZ_MENU_LANG);
+		Settings.fillComboBox(cmbKeyTone, SZ_KEY_TONE);
+		Settings.fillComboBox(cmbDwSwitch, SZ_DOUBLE_WAIT);
 		grpBasic.method_1(bool_0: true);
 		grpCall.method_1(bool_0: true);
 		grpContact.method_1(bool_0: true);

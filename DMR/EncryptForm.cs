@@ -376,7 +376,7 @@ public class EncryptForm : DockContent, IDisp
 		obj.MaxInputLength = 8;
 		obj.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 		obj.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-		Settings.smethod_37(cmbType, SZ_ENCRYPT_TYPE);
+		Settings.fillComboBox(cmbType, SZ_ENCRYPT_TYPE);
 	}
 
 	public static void RefreshCommonLang()

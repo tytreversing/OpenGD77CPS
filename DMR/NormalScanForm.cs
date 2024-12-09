@@ -1002,7 +1002,7 @@ public class NormalScanForm : DockContent, IDisp
 	{
 		txtName.MaxByteLength = 15;
 		txtName.KeyPress += Settings.smethod_54;
-		Settings.smethod_37(cmbPlType, SZ_PL_TYPE);
+		Settings.fillComboBox(cmbPlType, SZ_PL_TYPE);
 		Settings.smethod_36(nudSignalingHold, new Class13(2, 255, 1, 25m, 4));
 		Settings.smethod_36(nudPrioritySample, new Class13(3, 31, 1, 250m, 4));
 	}

@@ -90,10 +90,10 @@
 			<Control Id="lblTxTone" Text="Субтон на передачу" />
 			<Control Id="chkDataPl" Text="PL for Data" />
 			<Control Id="chkLoneWoker" Text="Lone Work" />
-			<Control Id="chkOpenGD77ScanAllSkip" Text="Сканирование: пропуск всех" />
+			<Control Id="chkOpenGD77ScanAllSkip" Text="Пропускать при сканировании всех каналов" />
 			<Control Id="chkVox" Text="VOX" />
 			<Control Id="chkAutoScan" Text="Auto Scan" />
-			<Control Id="chkOpenGD77ScanZoneSkip" Text="Сканирование: пропуск зоны" />
+			<Control Id="chkOpenGD77ScanZoneSkip" Text="Пропускать при сканировании зоны" />
 			<Control Id="chkNoBeep" Text="Без звуков" />
 			<Control Id="chkNoEco" Text="Без экономайзера" />
 			<Control Id="chkDMRForceDMO" Text="Прямая связь" />

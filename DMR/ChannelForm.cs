@@ -2631,22 +2631,22 @@ public class ChannelForm : DockContent, IDisp
 
     private void method_0()
     {
-        Settings.smethod_37(cmbChMode, SZ_CH_MODE);
+        Settings.fillComboBox(cmbChMode, SZ_CH_MODE);
         txtName.MaxByteLength = 16;
         txtName.KeyPress += Settings.smethod_54;
         txtRxFreq.MaxLength = 9;
         txtRxFreq.KeyPress += Settings.smethod_55;
         txtTxFreq.MaxLength = 9;
         txtTxFreq.KeyPress += Settings.smethod_55;
-        Settings.smethod_37(cmbLibreDMR_Power, SZ_LIBREDMR_POWER);
+        Settings.fillComboBox(cmbLibreDMR_Power, SZ_LIBREDMR_POWER);
         Settings.smethod_36(nudTot, new Class13(0, 33, 1, 15m, 3));
         nudTot.method_4(0m);
         nudTot.method_6("∞");
-        Settings.smethod_37(cmbChBandwidth, SZ_BANDWIDTH);
-        Settings.smethod_37(cmbSql, SZ_SQUELCH_LEVEL);
+        Settings.fillComboBox(cmbChBandwidth, SZ_BANDWIDTH);
+        Settings.fillComboBox(cmbSql, SZ_SQUELCH_LEVEL);
         Settings.smethod_39(cmbTS1TaTx, SZ_TA_TX);
         Settings.smethod_39(cmbTS2TaTx, SZ_TA_TX);
-        Settings.smethod_37(cmbRepeaterSlot, SZ_REPEATER_SLOT);
+        Settings.fillComboBox(cmbRepeaterSlot, SZ_REPEATER_SLOT);
         Settings.smethod_36(nudTxColor, new Class13(0, 15, 1, 1m, 2));
         txtRadioId.MaxLength = 8;
         txtRadioId.InputString = "0123456789\b";
@@ -3250,6 +3250,7 @@ public class ChannelForm : DockContent, IDisp
             this.btnCopy = new System.Windows.Forms.Button();
             this.txtName = new DMR.SGTextBox();
             this.grpDigit = new DoubleClickGroupBox();
+            this.txtRadioId = new DMR.SGTextBox();
             this.nudTxColor = new CustomNumericUpDown();
             this.cmbRepeaterSlot = new System.Windows.Forms.ComboBox();
             this.lblRepeaterSlot = new System.Windows.Forms.Label();
@@ -3264,7 +3265,6 @@ public class ChannelForm : DockContent, IDisp
             this.lblTS1TaTx = new System.Windows.Forms.Label();
             this.lblRxGroup = new System.Windows.Forms.Label();
             this.lblOverrideTxDMRId = new System.Windows.Forms.Label();
-            this.txtRadioId = new DMR.SGTextBox();
             this.chkRxOnly = new System.Windows.Forms.CheckBox();
             this.cmbLibreDMR_Power = new System.Windows.Forms.ComboBox();
             this.grpAnalog = new DoubleClickGroupBox();
@@ -3317,7 +3317,7 @@ public class ChannelForm : DockContent, IDisp
             this.tsbtnDel});
             this.tsrCh.Location = new System.Drawing.Point(0, 0);
             this.tsrCh.Name = "tsrCh";
-            this.tsrCh.Size = new System.Drawing.Size(1104, 25);
+            this.tsrCh.Size = new System.Drawing.Size(1188, 25);
             this.tsrCh.TabIndex = 31;
             this.tsrCh.Text = "toolStrip1";
             // 
@@ -3484,7 +3484,7 @@ public class ChannelForm : DockContent, IDisp
             this.pnlChannel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlChannel.Location = new System.Drawing.Point(0, 25);
             this.pnlChannel.Name = "pnlChannel";
-            this.pnlChannel.Size = new System.Drawing.Size(1104, 394);
+            this.pnlChannel.Size = new System.Drawing.Size(1188, 394);
             this.pnlChannel.TabIndex = 0;
             this.pnlChannel.TabStop = true;
             // 
@@ -3617,10 +3617,24 @@ public class ChannelForm : DockContent, IDisp
             this.grpDigit.Controls.Add(this.lblOverrideTxDMRId);
             this.grpDigit.Location = new System.Drawing.Point(441, 171);
             this.grpDigit.Name = "grpDigit";
-            this.grpDigit.Size = new System.Drawing.Size(653, 210);
+            this.grpDigit.Size = new System.Drawing.Size(735, 210);
             this.grpDigit.TabIndex = 30;
             this.grpDigit.TabStop = false;
             this.grpDigit.Text = "Digital";
+            // 
+            // txtRadioId
+            // 
+            this.txtRadioId.AccessibleDescription = "DMR ID";
+            this.txtRadioId.AccessibleName = "DMR ID";
+            this.txtRadioId.InputString = null;
+            this.txtRadioId.Location = new System.Drawing.Point(245, 21);
+            this.txtRadioId.MaxByteLength = 0;
+            this.txtRadioId.Name = "txtRadioId";
+            this.txtRadioId.OnlyAllowInputStringAndCapitaliseCharacters = false;
+            this.txtRadioId.Size = new System.Drawing.Size(120, 23);
+            this.txtRadioId.TabIndex = 50;
+            this.txtRadioId.Leave += new System.EventHandler(this.txtRadioId_Leave);
+            this.txtRadioId.Validating += new System.ComponentModel.CancelEventHandler(this.txtRadioId_Validating);
             // 
             // nudTxColor
             // 
@@ -3770,20 +3784,6 @@ public class ChannelForm : DockContent, IDisp
             this.lblOverrideTxDMRId.Text = "Override DMR Tx ID";
             this.lblOverrideTxDMRId.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // txtRadioId
-            // 
-            this.txtRadioId.AccessibleDescription = "DMR ID";
-            this.txtRadioId.AccessibleName = "DMR ID";
-            this.txtRadioId.InputString = null;
-            this.txtRadioId.Location = new System.Drawing.Point(245, 21);
-            this.txtRadioId.MaxByteLength = 0;
-            this.txtRadioId.Name = "txtRadioId";
-            this.txtRadioId.OnlyAllowInputStringAndCapitaliseCharacters = false;
-            this.txtRadioId.Size = new System.Drawing.Size(120, 23);
-            this.txtRadioId.TabIndex = 50;
-            this.txtRadioId.Leave += new System.EventHandler(this.txtRadioId_Leave);
-            this.txtRadioId.Validating += new System.ComponentModel.CancelEventHandler(this.txtRadioId_Validating);
-            // 
             // chkRxOnly
             // 
             this.chkRxOnly.AccessibleDescription = "Rx only";
@@ -3855,9 +3855,9 @@ public class ChannelForm : DockContent, IDisp
             this.cmbChBandwidth.BackColor = System.Drawing.Color.White;
             this.cmbChBandwidth.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbChBandwidth.FormattingEnabled = true;
-            this.cmbChBandwidth.Location = new System.Drawing.Point(280, 24);
+            this.cmbChBandwidth.Location = new System.Drawing.Point(282, 24);
             this.cmbChBandwidth.Name = "cmbChBandwidth";
-            this.cmbChBandwidth.Size = new System.Drawing.Size(119, 24);
+            this.cmbChBandwidth.Size = new System.Drawing.Size(117, 24);
             this.cmbChBandwidth.TabIndex = 40;
             // 
             // lblChBandwidth
@@ -3876,10 +3876,10 @@ public class ChannelForm : DockContent, IDisp
             this.cmbRxTone.BackColor = System.Drawing.Color.White;
             this.cmbRxTone.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbRxTone.FormattingEnabled = true;
-            this.cmbRxTone.Location = new System.Drawing.Point(300, 91);
+            this.cmbRxTone.Location = new System.Drawing.Point(282, 91);
             this.cmbRxTone.MaxLength = 5;
             this.cmbRxTone.Name = "cmbRxTone";
-            this.cmbRxTone.Size = new System.Drawing.Size(99, 24);
+            this.cmbRxTone.Size = new System.Drawing.Size(117, 24);
             this.cmbRxTone.TabIndex = 22;
             this.cmbRxTone.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbRxTone_KeyDown);
             this.cmbRxTone.Validating += new System.ComponentModel.CancelEventHandler(this.cmbRxTone_Validating);
@@ -3887,7 +3887,7 @@ public class ChannelForm : DockContent, IDisp
             // lblRxTone
             // 
             this.lblRxTone.AutoSize = true;
-            this.lblRxTone.Location = new System.Drawing.Point(154, 91);
+            this.lblRxTone.Location = new System.Drawing.Point(137, 94);
             this.lblRxTone.Name = "lblRxTone";
             this.lblRxTone.Size = new System.Drawing.Size(134, 16);
             this.lblRxTone.TabIndex = 21;
@@ -3921,10 +3921,10 @@ public class ChannelForm : DockContent, IDisp
             this.cmbTxTone.BackColor = System.Drawing.Color.White;
             this.cmbTxTone.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTxTone.FormattingEnabled = true;
-            this.cmbTxTone.Location = new System.Drawing.Point(300, 57);
+            this.cmbTxTone.Location = new System.Drawing.Point(282, 57);
             this.cmbTxTone.MaxLength = 5;
             this.cmbTxTone.Name = "cmbTxTone";
-            this.cmbTxTone.Size = new System.Drawing.Size(99, 24);
+            this.cmbTxTone.Size = new System.Drawing.Size(117, 24);
             this.cmbTxTone.TabIndex = 41;
             this.cmbTxTone.SelectedIndexChanged += new System.EventHandler(this.cmbTxTone_SelectedIndexChanged);
             this.cmbTxTone.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbTxTone_KeyDown);
@@ -3933,7 +3933,7 @@ public class ChannelForm : DockContent, IDisp
             // lblTxTone
             // 
             this.lblTxTone.AutoSize = true;
-            this.lblTxTone.Location = new System.Drawing.Point(154, 57);
+            this.lblTxTone.Location = new System.Drawing.Point(137, 60);
             this.lblTxTone.Name = "lblTxTone";
             this.lblTxTone.Size = new System.Drawing.Size(133, 16);
             this.lblTxTone.TabIndex = 25;
@@ -3944,9 +3944,10 @@ public class ChannelForm : DockContent, IDisp
             // 
             this.chkOpenGD77ScanAllSkip.AccessibleDescription = "Scan. All skip";
             this.chkOpenGD77ScanAllSkip.AccessibleName = "Scan. All skip";
+            this.chkOpenGD77ScanAllSkip.AutoSize = true;
             this.chkOpenGD77ScanAllSkip.Location = new System.Drawing.Point(796, 25);
             this.chkOpenGD77ScanAllSkip.Name = "chkOpenGD77ScanAllSkip";
-            this.chkOpenGD77ScanAllSkip.Size = new System.Drawing.Size(236, 20);
+            this.chkOpenGD77ScanAllSkip.Size = new System.Drawing.Size(109, 20);
             this.chkOpenGD77ScanAllSkip.TabIndex = 31;
             this.chkOpenGD77ScanAllSkip.Text = "Scan: All skip";
             this.chkOpenGD77ScanAllSkip.UseVisualStyleBackColor = true;
@@ -3966,9 +3967,10 @@ public class ChannelForm : DockContent, IDisp
             // 
             this.chkOpenGD77ScanZoneSkip.AccessibleDescription = "Scan. Zone skip";
             this.chkOpenGD77ScanZoneSkip.AccessibleName = "Scan. Zone skip";
+            this.chkOpenGD77ScanZoneSkip.AutoSize = true;
             this.chkOpenGD77ScanZoneSkip.Location = new System.Drawing.Point(796, 6);
             this.chkOpenGD77ScanZoneSkip.Name = "chkOpenGD77ScanZoneSkip";
-            this.chkOpenGD77ScanZoneSkip.Size = new System.Drawing.Size(236, 20);
+            this.chkOpenGD77ScanZoneSkip.Size = new System.Drawing.Size(127, 20);
             this.chkOpenGD77ScanZoneSkip.TabIndex = 30;
             this.chkOpenGD77ScanZoneSkip.Text = "Scan: Zone skip";
             this.chkOpenGD77ScanZoneSkip.UseVisualStyleBackColor = true;
@@ -4105,7 +4107,7 @@ public class ChannelForm : DockContent, IDisp
             // ChannelForm
             // 
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1104, 419);
+            this.ClientSize = new System.Drawing.Size(1188, 419);
             this.Controls.Add(this.pnlChannel);
             this.Controls.Add(this.tsrCh);
             this.Controls.Add(this.mnsCh);

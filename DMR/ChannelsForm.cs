@@ -196,9 +196,9 @@ public class ChannelsForm : DockContent, IDisp, ISingleRow
 			dataGridViewTextBoxColumn.Width = array[num++];
 			dgvChannels.Columns.Add(dataGridViewTextBoxColumn);
 		}
-		Settings.smethod_37(cmbAddChMode, ChannelForm.SZ_CH_MODE);
-		Settings.smethod_37(cmbChMode, ChannelForm.SZ_CH_MODE);
-		Settings.smethod_37(cmbPower, ChannelForm.SZ_POWER);
+		Settings.fillComboBox(cmbAddChMode, ChannelForm.SZ_CH_MODE);
+		Settings.fillComboBox(cmbChMode, ChannelForm.SZ_CH_MODE);
+		Settings.fillComboBox(cmbPower, ChannelForm.SZ_POWER);
 		txtName.MaxLength = 16;
 		txtRxFreq.MaxLength = 9;
 		txtTxFreq.MaxLength = 9;

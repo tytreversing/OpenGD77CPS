@@ -891,13 +891,13 @@ internal class Settings
 		class12_0.method_0(class13_0.method_8());
 	}
 
-	public static void smethod_37(ComboBox comboBox_0, string[] string_0)
+	public static void fillComboBox(ComboBox target, string[] data)
 	{
 		int num = 0;
-		comboBox_0.Items.Clear();
-		for (num = 0; num < string_0.Length; num++)
+		target.Items.Clear();
+		for (num = 0; num < data.Length; num++)
 		{
-			comboBox_0.Items.Add(string_0[num]);
+			target.Items.Add(data[num]);
 		}
 	}
 

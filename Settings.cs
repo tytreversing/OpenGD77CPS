@@ -695,7 +695,7 @@ internal class Settings
         for (int c = 0; c < buffer.Length; c++)
         {
 			if (buffer[c] == 0xff)
-				buffer[c] = 0x7f;
+				buffer[c] = 0x7f; // замена "я" на подменный символ
         }
         return buffer;
 	}

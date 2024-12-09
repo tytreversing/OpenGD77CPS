@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Runtime.InteropServices;
+using System.Text;
 using System.Windows.Forms;
 using Microsoft.VisualBasic.FileIO;
 
@@ -1359,20 +1360,25 @@ internal class CSVEML
 
 	private static bool SaveChannelsCSV()
 	{
-		string path = CSVName + "Channels.csv";
+		Encoding encodingIn = Encoding.GetEncoding("windows-1251");
+        Encoding encodingOut = Encoding.GetEncoding("utf-8");
+        string path = CSVName + "Channels.csv";
 		string text = "Channel Number" + writeSeparator + "Channel Name" + writeSeparator + "Channel Type" + writeSeparator + "Rx Frequency" + writeSeparator + "Tx Frequency" + writeSeparator + "Bandwidth (kHz)" + writeSeparator + "Colour Code" + writeSeparator + "Timeslot" + writeSeparator + "Contact" + writeSeparator + "TG List" + writeSeparator + "DMR ID" + writeSeparator + "TS1_TA_Tx" + writeSeparator + "TS2_TA_Tx ID" + writeSeparator + "RX Tone" + writeSeparator + "TX Tone" + writeSeparator + "Squelch" + writeSeparator + "Power" + writeSeparator + "Rx Only" + writeSeparator + "Zone Skip" + writeSeparator + "All Skip" + writeSeparator + "TOT" + writeSeparator + "VOX" + writeSeparator + "No Beep" + writeSeparator + "No Eco" + writeSeparator + "APRS" + writeSeparator + "Latitude" + writeSeparator + "Longitude" + writeSeparator + "Use Location" + Environment.NewLine;
 		ChannelCount = 0;
 		for (int i = 0; i < 1024; i++)
 		{
-			if (ChannelForm.data.DataIsValid(i) && ChannelName[i] != ChannelForm.data[i].Name)
+/*			if (ChannelForm.data.DataIsValid(i) && ChannelName[i] != ChannelForm.data[i].Name)
 			{
-				MessageBox.Show("Name missmatch");
-			}
+                MessageBox.Show(StringsDict["mismatch"] + ChannelForm.data[i].Name);
+			}*/
 			if (ChannelForm.data.DataIsValid(i))
 			{
 				ChannelCount++;
-				text = text + (i + 1) + writeSeparator;
-				text = text + NumberFormatting(ChannelForm.data[i].Name) + writeSeparator;
+                byte[] sourceBuffer = encodingIn.GetBytes(ChannelForm.data[i].Name);
+                byte[] destBuffer = Encoding.Convert(encodingIn, encodingOut, sourceBuffer);
+				string temp = encodingOut.GetString(destBuffer);
+                text = text + (i + 1) + writeSeparator;
+				text = text + NumberFormatting(/*ChannelForm.data[i].Name*/temp) + writeSeparator;
 				text = ((ChannelByte[i, 8] != 1) ? (text + "Analogue") : (text + "Digital"));
 				text += writeSeparator;
 				text = text + DecodeFrequency(ChannelByte[i, 0], ChannelByte[i, 1], ChannelByte[i, 2], ChannelByte[i, 3]) + writeSeparator;

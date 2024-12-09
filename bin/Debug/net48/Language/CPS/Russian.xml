@@ -76,6 +76,7 @@
 			<Control Id="chkRxOnly" Text="Только прием" />
 			<Control Id="chkAllowTalkaround" Text="Отключение разноса" />
 			<Control Id="grpAnalog" Text="Аналоговая связь" />
+      <Control Id="grpLocation" Text="Геопозиционирование" />
 			<Control Id="lblChBandwidth" Text="Полоса, кГц" />
       <Control Id="lblOverrideTxDMRId" Text="Переопределить DMR ID" />
       <Control Id="lblVoiceEmphasis" Text="Voice Emphasis" />
@@ -97,10 +98,10 @@
 			<Control Id="chkNoBeep" Text="Без звуков" />
 			<Control Id="chkNoEco" Text="Без экономайзера" />
 			<Control Id="chkDMRForceDMO" Text="Прямая связь" />
-			<Control Id="chkUseLocation" Text="Местоположение" />
+			<Control Id="chkUseLocation" Text="Использовать заданное местоположение" />
 			<Control Id="lblChName" Text="Имя" />
 			<Control Id="lblChMode" Text="Режим" />
-			<Control Id="lblTot" Text="Ограничение передачи" />
+			<Control Id="lblTot" Text="Ограничение передачи, с" />
 			<Control Id="lblTotRekey" Text="Возобновление" />
 			<Control Id="lblRssiThreshold" Text="RSSI Threshold [dBm]" />
 			<Control Id="lblRxRefFreq" Text="Rx Reference Frequency" />
@@ -127,7 +128,7 @@
 		<Commons>
 			<Item Id="ChMode" Text="Аналог,Цифра" />
 			<Item Id="RefFreq" Text="Low,Middle,High" />
-			<Item Id="LibreDMR_Power" Text="Обшая,50mW | 50mW | 100mW,250mW | 250mW | 250mW,500mW | 500mW | 500mW,750mW | 750mW | 750mW,1W | 1W | 1W,2W | 2W | 5W,3W | 3W | 10W,4W | 5W | 25W,5W | 10W | 40W,+W-" />
+			<Item Id="LibreDMR_Power" Text="Общая,50mW | 50mW | 100mW,250mW | 250mW | 250mW,500mW | 500mW | 500mW,750mW | 750mW | 750mW,1W | 1W | 1W,2W | 2W | 5W,3W | 3W | 10W,4W | 5W | 25W,5W | 10W | 40W,+W-" />
 			<Item Id="Power" Text="Низкая,Высокая" />
 			<Item Id="AdmitCriterica" Text="Всегда,Канал свободен,CTCSS/DCS" />
 			<Item Id="AdmitCritericaD" Text="Всегда,Канал свободен,Колоркод" />
@@ -747,7 +748,7 @@
 			<Item Id="SignalingSystem" Text="Off,DTMF" />
 			<Item Id="UnmuteRule" Text="Std Unmute Mute,And Unmute Mute,And Unmute Or Mute" />
 			<Item Id="PttidType" Text="None,Only Front,Only Post,Front and Post" />
-			<Item Id="TaTx" Text="Off,APRS,Text,APRS &amp; Text" />
+			<Item Id="TaTx" Text="Выкл.,APRS,Текст,APRS и текст" />
 			<Item Id="TimingPreference" Text="Preferred,Eligible,Ineligible" />
 			<Item Id="Ars" Text="Disable,System Change" />
 			<Item Id="KeySwitch" Text="Off,On" />
@@ -1130,6 +1131,7 @@
 			<Item Id="Line" Text="Line" />
 			<Item Id="is_not_valid_in" Text="is not valid in" />
 			<Item Id="and_will_be_skipped" Text="and will be skipped" />
+      <Item Id="mismatch" Text="Несовпадение имен!" />
 			<Item Id="Contacts" Text="Contacts" />
 			<Item Id="TG_Lists" Text="TG Lists" />
 			<Item Id="Channels" Text="Channels" />
@@ -1272,7 +1274,7 @@
 		<Item Id="DMRIdTooManyIDs" Text="Too many IDs for the connected radio, the list will be truncated to the maximum capacity." />
 		<Item Id="N/A" Text="N/A"/>
 		<Item Id="OfficialFWNotSelected" Text="You must first select the location of the official / donor firmware file" />
-		<Item Id="Error" Text="Error" />
+		<Item Id="Error" Text="Ошибка" />
 		<Item Id="FirmwareFilefilter" Text="Файлы прошивки|*.bin" />
 		<Item Id="FirmwareSelectorTitle" Text="Выберите файл прошивки" />
 	</Commons>

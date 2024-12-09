@@ -18,6 +18,17 @@
     <Version>1.2024.1205.1125</Version>
   </PropertyGroup>
   <ItemGroup>
+    <EmbeddedResource Remove="DMR.DMRIDForm.resx" />
+    <EmbeddedResource Remove="DMR\ChannelForm.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DMR.DMRIDForm.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>DMR.DMRIDForm.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DMR\ChannelForm.resx" />
+  </ItemGroup>
+  <ItemGroup>
     <Reference Include="System.Xml" />
     <Reference Include="WeifenLuo.WinFormsUI.Docking">
       <HintPath>C:\Program Files (x86)\OpenGD77CPS\WeifenLuo.WinFormsUI.Docking.dll</HintPath>
@@ -43,20 +54,10 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>DMR.aR3nbf8dQp2feLmk31.SplashForm.resx</DependentUpon>
     </Compile>
-    <Compile Update="DMR.ChannelForm.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>DMR.ChannelForm.resx</DependentUpon>
-    </Compile>
     <Compile Update="DMR.DMRIDForm.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>DMR.DMRIDForm.resx</DependentUpon>
-    </Compile>
-    <Compile Update="DMR.MainForm.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>DMR.MainForm.resx</DependentUpon>
     </Compile>
     <Compile Update="DMR.Properties.Resources.Designer.cs">
       <DesignTime>True</DesignTime>
@@ -66,12 +67,12 @@
     <Compile Update="DMR.RxGroupListForm.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>DMR.RxGroupListForm.resx</DependentUpon>
+      <DependentUpon>~DMR.RxGroupListForm.resx</DependentUpon>
     </Compile>
     <Compile Update="DMR.ZoneForm.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>DMR.ZoneForm.resx</DependentUpon>
+      <DependentUpon>~DMR.ZoneForm.resx</DependentUpon>
     </Compile>
     <Compile Update="Properties.Resources.Designer.cs">
       <DesignTime>True</DesignTime>
@@ -91,10 +92,6 @@
     <EmbeddedResource Update="DMR.ChannelForm.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>DMR.ChannelForm.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Update="DMR.DMRIDForm.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>DMR.DMRIDForm.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="DMR.MainForm.resx">
       <Generator>ResXFileCodeGenerator</Generator>

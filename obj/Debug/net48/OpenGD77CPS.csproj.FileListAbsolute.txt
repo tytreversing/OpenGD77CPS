@@ -70,5 +70,7 @@ C:\Users\maste\Documents\GitHub\OpenGD77CPS\obj\Debug\net48\DMR.ContactForm.reso
 C:\Users\maste\Documents\GitHub\OpenGD77CPS\obj\Debug\net48\DMR.ContactsForm.resources
 C:\Users\maste\Documents\GitHub\OpenGD77CPS\bin\Debug\net48\Driver\pnputil.exe
 C:\Users\maste\Documents\GitHub\OpenGD77CPS\obj\Debug\net48\DMR.APRSConfigsForm.resources
-C:\Users\maste\Documents\GitHub\OpenGD77CPS\obj\Debug\net48\DMR.ChannelsForm.resources
 C:\Users\maste\Documents\GitHub\OpenGD77CPS\obj\Debug\net48\DMR.DtmfForm.resources
+C:\Users\maste\Documents\GitHub\OpenGD77CPS\obj\Debug\net48\DMR.CalibrationForm.resources
+C:\Users\maste\Documents\GitHub\OpenGD77CPS\obj\Debug\net48\DMR.ZoneBasicForm.resources
+C:\Users\maste\Documents\GitHub\OpenGD77CPS\obj\Debug\net48\Extras.OpenGD77.ThemeForm.resources

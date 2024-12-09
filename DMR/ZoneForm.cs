@@ -825,240 +825,355 @@ public class ZoneForm : DockContent, IDisp
 
 	private void InitializeComponent()
 	{
-		this.pnlZone = new CustomPanel();
-		this.tsrZone = new System.Windows.Forms.ToolStrip();
-		this.tslblInfo = new System.Windows.Forms.ToolStripLabel();
-		this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-		this.tsbtnFirst = new System.Windows.Forms.ToolStripButton();
-		this.tsbtnPrev = new System.Windows.Forms.ToolStripButton();
-		this.tsbtnNext = new System.Windows.Forms.ToolStripButton();
-		this.tsbtnLast = new System.Windows.Forms.ToolStripButton();
-		this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-		this.tsbtnAdd = new System.Windows.Forms.ToolStripButton();
-		this.tsbtnDel = new System.Windows.Forms.ToolStripButton();
-		this.mnsZone = new System.Windows.Forms.MenuStrip();
-		this.tsmiCh = new System.Windows.Forms.ToolStripMenuItem();
-		this.tsmiFirst = new System.Windows.Forms.ToolStripMenuItem();
-		this.tsmiPrev = new System.Windows.Forms.ToolStripMenuItem();
-		this.tsmiNext = new System.Windows.Forms.ToolStripMenuItem();
-		this.tsmiLast = new System.Windows.Forms.ToolStripMenuItem();
-		this.tsmiAdd = new System.Windows.Forms.ToolStripMenuItem();
-		this.tsmiDel = new System.Windows.Forms.ToolStripMenuItem();
-		this.btnDown = new System.Windows.Forms.Button();
-		this.btnUp = new System.Windows.Forms.Button();
-		this.txtName = new DMR.SGTextBox();
-		this.grpSelected = new System.Windows.Forms.GroupBox();
-		this.lstSelected = new System.Windows.Forms.ListBox();
-		this.btnAdd = new System.Windows.Forms.Button();
-		this.grpUnselected = new System.Windows.Forms.GroupBox();
-		this.lstUnselected = new System.Windows.Forms.ListBox();
-		this.btnDel = new System.Windows.Forms.Button();
-		this.lblName = new System.Windows.Forms.Label();
-		this.pnlZone.SuspendLayout();
-		this.tsrZone.SuspendLayout();
-		this.mnsZone.SuspendLayout();
-		this.grpSelected.SuspendLayout();
-		this.grpUnselected.SuspendLayout();
-		base.SuspendLayout();
-		this.pnlZone.AutoScroll = true;
-		this.pnlZone.AutoSize = true;
-		this.pnlZone.Controls.Add(this.tsrZone);
-		this.pnlZone.Controls.Add(this.mnsZone);
-		this.pnlZone.Controls.Add(this.btnDown);
-		this.pnlZone.Controls.Add(this.btnUp);
-		this.pnlZone.Controls.Add(this.txtName);
-		this.pnlZone.Controls.Add(this.grpSelected);
-		this.pnlZone.Controls.Add(this.btnAdd);
-		this.pnlZone.Controls.Add(this.grpUnselected);
-		this.pnlZone.Controls.Add(this.btnDel);
-		this.pnlZone.Controls.Add(this.lblName);
-		this.pnlZone.Dock = System.Windows.Forms.DockStyle.Fill;
-		this.pnlZone.Location = new System.Drawing.Point(0, 0);
-		this.pnlZone.Name = "pnlZone";
-		this.pnlZone.Size = new System.Drawing.Size(794, 560);
-		this.pnlZone.TabIndex = 8;
-		this.tsrZone.Items.AddRange(new System.Windows.Forms.ToolStripItem[9] { this.tslblInfo, this.toolStripSeparator2, this.tsbtnFirst, this.tsbtnPrev, this.tsbtnNext, this.tsbtnLast, this.toolStripSeparator1, this.tsbtnAdd, this.tsbtnDel });
-		this.tsrZone.Location = new System.Drawing.Point(0, 0);
-		this.tsrZone.Name = "tsrZone";
-		this.tsrZone.Size = new System.Drawing.Size(794, 25);
-		this.tsrZone.TabIndex = 33;
-		this.tsrZone.Text = "toolStrip1";
-		this.tslblInfo.AutoSize = false;
-		this.tslblInfo.Name = "tslblInfo";
-		this.tslblInfo.Size = new System.Drawing.Size(100, 52);
-		this.tslblInfo.Text = " 0 / 0";
-		this.toolStripSeparator2.Name = "toolStripSeparator2";
-		this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
-		this.tsbtnFirst.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-		this.tsbtnFirst.ImageTransparentColor = System.Drawing.Color.Magenta;
-		this.tsbtnFirst.Name = "tsbtnFirst";
-		this.tsbtnFirst.Size = new System.Drawing.Size(23, 22);
-		this.tsbtnFirst.Text = "First";
-		this.tsbtnFirst.Click += new System.EventHandler(tsmiFirst_Click);
-		this.tsbtnPrev.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-		this.tsbtnPrev.ImageTransparentColor = System.Drawing.Color.Magenta;
-		this.tsbtnPrev.Name = "tsbtnPrev";
-		this.tsbtnPrev.Size = new System.Drawing.Size(23, 22);
-		this.tsbtnPrev.Text = "Previous";
-		this.tsbtnPrev.Click += new System.EventHandler(tsmiPrev_Click);
-		this.tsbtnNext.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-		this.tsbtnNext.ImageTransparentColor = System.Drawing.Color.Magenta;
-		this.tsbtnNext.Name = "tsbtnNext";
-		this.tsbtnNext.Size = new System.Drawing.Size(23, 22);
-		this.tsbtnNext.Text = "Next";
-		this.tsbtnNext.Click += new System.EventHandler(tsmiNext_Click);
-		this.tsbtnLast.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-		this.tsbtnLast.ImageTransparentColor = System.Drawing.Color.Magenta;
-		this.tsbtnLast.Name = "tsbtnLast";
-		this.tsbtnLast.Size = new System.Drawing.Size(23, 22);
-		this.tsbtnLast.Text = "Last";
-		this.tsbtnLast.Click += new System.EventHandler(tsmiLast_Click);
-		this.toolStripSeparator1.Name = "toolStripSeparator1";
-		this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
-		this.tsbtnAdd.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-		this.tsbtnAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
-		this.tsbtnAdd.Name = "tsbtnAdd";
-		this.tsbtnAdd.Size = new System.Drawing.Size(23, 22);
-		this.tsbtnAdd.Text = "Add..";
-		this.tsbtnAdd.Click += new System.EventHandler(tsmiAdd_Click);
-		this.tsbtnDel.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-		this.tsbtnDel.ImageTransparentColor = System.Drawing.Color.Magenta;
-		this.tsbtnDel.Name = "tsbtnDel";
-		this.tsbtnDel.Size = new System.Drawing.Size(23, 22);
-		this.tsbtnDel.Text = "Delete";
-		this.tsbtnDel.Click += new System.EventHandler(tsmiDel_Click);
-		this.mnsZone.AllowMerge = false;
-		this.mnsZone.Items.AddRange(new System.Windows.Forms.ToolStripItem[1] { this.tsmiCh });
-		this.mnsZone.Location = new System.Drawing.Point(0, 0);
-		this.mnsZone.Name = "mnsZone";
-		this.mnsZone.Size = new System.Drawing.Size(794, 25);
-		this.mnsZone.TabIndex = 34;
-		this.mnsZone.Text = "menuStrip1";
-		this.mnsZone.Visible = false;
-		this.tsmiCh.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[6] { this.tsmiFirst, this.tsmiPrev, this.tsmiNext, this.tsmiLast, this.tsmiAdd, this.tsmiDel });
-		this.tsmiCh.Name = "tsmiCh";
-		this.tsmiCh.Size = new System.Drawing.Size(79, 21);
-		this.tsmiCh.Text = "Operation";
-		this.tsmiFirst.Name = "tsmiFirst";
-		this.tsmiFirst.Size = new System.Drawing.Size(159, 22);
-		this.tsmiFirst.Text = "Fist";
-		this.tsmiFirst.Click += new System.EventHandler(tsmiFirst_Click);
-		this.tsmiPrev.Name = "tsmiPrev";
-		this.tsmiPrev.Size = new System.Drawing.Size(159, 22);
-		this.tsmiPrev.Text = "Previous";
-		this.tsmiPrev.Click += new System.EventHandler(tsmiPrev_Click);
-		this.tsmiNext.Name = "tsmiNext";
-		this.tsmiNext.Size = new System.Drawing.Size(159, 22);
-		this.tsmiNext.Text = "Next";
-		this.tsmiNext.Click += new System.EventHandler(tsmiNext_Click);
-		this.tsmiNext.ShortcutKeys = System.Windows.Forms.Keys.N | System.Windows.Forms.Keys.Control;
-		this.tsmiLast.Name = "tsmiLast";
-		this.tsmiLast.Size = new System.Drawing.Size(159, 22);
-		this.tsmiLast.Text = "Last";
-		this.tsmiLast.Click += new System.EventHandler(tsmiLast_Click);
-		this.tsmiAdd.Name = "tsmiAdd";
-		this.tsmiAdd.Size = new System.Drawing.Size(159, 22);
-		this.tsmiAdd.Text = "Add";
-		this.tsmiAdd.Click += new System.EventHandler(tsmiAdd_Click);
-		this.tsmiDel.Name = "tsmiDel";
-		this.tsmiDel.Size = new System.Drawing.Size(159, 22);
-		this.tsmiDel.Text = "Delete";
-		this.tsmiDel.Click += new System.EventHandler(tsmiDel_Click);
-		this.btnDown.Location = new System.Drawing.Point(676, 310);
-		this.btnDown.Name = "btnDown";
-		this.btnDown.Size = new System.Drawing.Size(75, 23);
-		this.btnDown.TabIndex = 11;
-		this.btnDown.Text = "Down";
-		this.btnDown.UseVisualStyleBackColor = true;
-		this.btnDown.Click += new System.EventHandler(btnDown_Click);
-		this.btnUp.Location = new System.Drawing.Point(676, 258);
-		this.btnUp.Name = "btnUp";
-		this.btnUp.Size = new System.Drawing.Size(75, 23);
-		this.btnUp.TabIndex = 10;
-		this.btnUp.Text = "Up";
-		this.btnUp.UseVisualStyleBackColor = true;
-		this.btnUp.Click += new System.EventHandler(btnUp_Click);
-		this.txtName.InputString = null;
-		this.txtName.Location = new System.Drawing.Point(316, 62);
-		this.txtName.MaxByteLength = 0;
-		this.txtName.Name = "txtName";
-		this.txtName.Size = new System.Drawing.Size(150, 23);
-		this.txtName.TabIndex = 1;
-		this.txtName.Leave += new System.EventHandler(txtName_Leave);
-		this.grpSelected.Controls.Add(this.lstSelected);
-		this.grpSelected.Location = new System.Drawing.Point(419, 110);
-		this.grpSelected.Name = "grpSelected";
-		this.grpSelected.Size = new System.Drawing.Size(215, 388);
-		this.grpSelected.TabIndex = 7;
-		this.grpSelected.TabStop = false;
-		this.grpSelected.Text = "Member";
-		this.lstSelected.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
-		this.lstSelected.FormattingEnabled = true;
-		this.lstSelected.ItemHeight = 16;
-		this.lstSelected.Location = new System.Drawing.Point(27, 37);
-		this.lstSelected.Name = "lstSelected";
-		this.lstSelected.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-		this.lstSelected.Size = new System.Drawing.Size(160, 324);
-		this.lstSelected.TabIndex = 5;
-		this.lstSelected.SelectedIndexChanged += new System.EventHandler(lstSelected_SelectedIndexChanged);
-		this.lstSelected.DoubleClick += new System.EventHandler(lstSelected_DoubleClick);
-		this.btnAdd.Location = new System.Drawing.Point(327, 258);
-		this.btnAdd.Name = "btnAdd";
-		this.btnAdd.Size = new System.Drawing.Size(75, 23);
-		this.btnAdd.TabIndex = 3;
-		this.btnAdd.Text = "Add";
-		this.btnAdd.UseVisualStyleBackColor = true;
-		this.btnAdd.Click += new System.EventHandler(btnAdd_Click);
-		this.grpUnselected.Controls.Add(this.lstUnselected);
-		this.grpUnselected.Location = new System.Drawing.Point(86, 110);
-		this.grpUnselected.Name = "grpUnselected";
-		this.grpUnselected.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
-		this.grpUnselected.Size = new System.Drawing.Size(215, 388);
-		this.grpUnselected.TabIndex = 6;
-		this.grpUnselected.TabStop = false;
-		this.grpUnselected.Text = "Available";
-		this.lstUnselected.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
-		this.lstUnselected.FormattingEnabled = true;
-		this.lstUnselected.ItemHeight = 16;
-		this.lstUnselected.Location = new System.Drawing.Point(32, 37);
-		this.lstUnselected.Name = "lstUnselected";
-		this.lstUnselected.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-		this.lstUnselected.Size = new System.Drawing.Size(160, 324);
-		this.lstUnselected.TabIndex = 2;
-		this.btnDel.Location = new System.Drawing.Point(327, 310);
-		this.btnDel.Name = "btnDel";
-		this.btnDel.Size = new System.Drawing.Size(75, 23);
-		this.btnDel.TabIndex = 4;
-		this.btnDel.Text = "Delete";
-		this.btnDel.UseVisualStyleBackColor = true;
-		this.btnDel.Click += new System.EventHandler(btnDel_Click);
-		this.lblName.Location = new System.Drawing.Point(216, 63);
-		this.lblName.Name = "lblName";
-		this.lblName.Size = new System.Drawing.Size(90, 23);
-		this.lblName.TabIndex = 0;
-		this.lblName.Text = "Name";
-		this.lblName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-		base.AutoScaleDimensions = new System.Drawing.SizeF(7f, 16f);
-		base.ClientSize = new System.Drawing.Size(794, 560);
-		base.Controls.Add(this.pnlZone);
-		this.Font = new System.Drawing.Font("Arial", 10f, System.Drawing.FontStyle.Regular);
-		base.MaximizeBox = false;
-		base.MinimizeBox = false;
-		base.Name = "ZoneForm";
-		this.Text = "Zone";
-		base.Load += new System.EventHandler(ZoneForm_Load);
-		base.FormClosing += new System.Windows.Forms.FormClosingEventHandler(ZoneForm_FormClosing);
-		base.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-		this.pnlZone.ResumeLayout(false);
-		this.pnlZone.PerformLayout();
-		this.tsrZone.ResumeLayout(false);
-		this.tsrZone.PerformLayout();
-		this.mnsZone.ResumeLayout(false);
-		this.mnsZone.PerformLayout();
-		this.grpSelected.ResumeLayout(false);
-		this.grpUnselected.ResumeLayout(false);
-		base.ResumeLayout(false);
-		base.PerformLayout();
+            this.pnlZone = new CustomPanel();
+            this.tsrZone = new System.Windows.Forms.ToolStrip();
+            this.tslblInfo = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsbtnFirst = new System.Windows.Forms.ToolStripButton();
+            this.tsbtnPrev = new System.Windows.Forms.ToolStripButton();
+            this.tsbtnNext = new System.Windows.Forms.ToolStripButton();
+            this.tsbtnLast = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsbtnAdd = new System.Windows.Forms.ToolStripButton();
+            this.tsbtnDel = new System.Windows.Forms.ToolStripButton();
+            this.mnsZone = new System.Windows.Forms.MenuStrip();
+            this.tsmiCh = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiFirst = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiPrev = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiNext = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiLast = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiAdd = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiDel = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnDown = new System.Windows.Forms.Button();
+            this.btnUp = new System.Windows.Forms.Button();
+            this.txtName = new DMR.SGTextBox();
+            this.grpSelected = new System.Windows.Forms.GroupBox();
+            this.lstSelected = new System.Windows.Forms.ListBox();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.grpUnselected = new System.Windows.Forms.GroupBox();
+            this.lstUnselected = new System.Windows.Forms.ListBox();
+            this.btnDel = new System.Windows.Forms.Button();
+            this.lblName = new System.Windows.Forms.Label();
+            this.pnlZone.SuspendLayout();
+            this.tsrZone.SuspendLayout();
+            this.mnsZone.SuspendLayout();
+            this.grpSelected.SuspendLayout();
+            this.grpUnselected.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // pnlZone
+            // 
+            this.pnlZone.AutoScroll = true;
+            this.pnlZone.AutoSize = true;
+            this.pnlZone.Controls.Add(this.tsrZone);
+            this.pnlZone.Controls.Add(this.mnsZone);
+            this.pnlZone.Controls.Add(this.btnDown);
+            this.pnlZone.Controls.Add(this.btnUp);
+            this.pnlZone.Controls.Add(this.txtName);
+            this.pnlZone.Controls.Add(this.grpSelected);
+            this.pnlZone.Controls.Add(this.btnAdd);
+            this.pnlZone.Controls.Add(this.grpUnselected);
+            this.pnlZone.Controls.Add(this.btnDel);
+            this.pnlZone.Controls.Add(this.lblName);
+            this.pnlZone.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlZone.Location = new System.Drawing.Point(0, 0);
+            this.pnlZone.Name = "pnlZone";
+            this.pnlZone.Size = new System.Drawing.Size(794, 560);
+            this.pnlZone.TabIndex = 8;
+            // 
+            // tsrZone
+            // 
+            this.tsrZone.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tslblInfo,
+            this.toolStripSeparator2,
+            this.tsbtnFirst,
+            this.tsbtnPrev,
+            this.tsbtnNext,
+            this.tsbtnLast,
+            this.toolStripSeparator1,
+            this.tsbtnAdd,
+            this.tsbtnDel});
+            this.tsrZone.Location = new System.Drawing.Point(0, 0);
+            this.tsrZone.Name = "tsrZone";
+            this.tsrZone.Size = new System.Drawing.Size(794, 55);
+            this.tsrZone.TabIndex = 33;
+            this.tsrZone.Text = "toolStrip1";
+            // 
+            // tslblInfo
+            // 
+            this.tslblInfo.AutoSize = false;
+            this.tslblInfo.Name = "tslblInfo";
+            this.tslblInfo.Size = new System.Drawing.Size(100, 52);
+            this.tslblInfo.Text = " 0 / 0";
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 55);
+            // 
+            // tsbtnFirst
+            // 
+            this.tsbtnFirst.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbtnFirst.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbtnFirst.Name = "tsbtnFirst";
+            this.tsbtnFirst.Size = new System.Drawing.Size(23, 52);
+            this.tsbtnFirst.Text = "First";
+            this.tsbtnFirst.Click += new System.EventHandler(this.tsmiFirst_Click);
+            // 
+            // tsbtnPrev
+            // 
+            this.tsbtnPrev.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbtnPrev.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbtnPrev.Name = "tsbtnPrev";
+            this.tsbtnPrev.Size = new System.Drawing.Size(23, 52);
+            this.tsbtnPrev.Text = "Previous";
+            this.tsbtnPrev.Click += new System.EventHandler(this.tsmiPrev_Click);
+            // 
+            // tsbtnNext
+            // 
+            this.tsbtnNext.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbtnNext.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbtnNext.Name = "tsbtnNext";
+            this.tsbtnNext.Size = new System.Drawing.Size(23, 52);
+            this.tsbtnNext.Text = "Next";
+            this.tsbtnNext.Click += new System.EventHandler(this.tsmiNext_Click);
+            // 
+            // tsbtnLast
+            // 
+            this.tsbtnLast.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbtnLast.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbtnLast.Name = "tsbtnLast";
+            this.tsbtnLast.Size = new System.Drawing.Size(23, 52);
+            this.tsbtnLast.Text = "Last";
+            this.tsbtnLast.Click += new System.EventHandler(this.tsmiLast_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 55);
+            // 
+            // tsbtnAdd
+            // 
+            this.tsbtnAdd.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbtnAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbtnAdd.Name = "tsbtnAdd";
+            this.tsbtnAdd.Size = new System.Drawing.Size(23, 52);
+            this.tsbtnAdd.Text = "Add..";
+            this.tsbtnAdd.Click += new System.EventHandler(this.tsmiAdd_Click);
+            // 
+            // tsbtnDel
+            // 
+            this.tsbtnDel.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbtnDel.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbtnDel.Name = "tsbtnDel";
+            this.tsbtnDel.Size = new System.Drawing.Size(23, 52);
+            this.tsbtnDel.Text = "Delete";
+            this.tsbtnDel.Click += new System.EventHandler(this.tsmiDel_Click);
+            // 
+            // mnsZone
+            // 
+            this.mnsZone.AllowMerge = false;
+            this.mnsZone.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiCh});
+            this.mnsZone.Location = new System.Drawing.Point(0, 0);
+            this.mnsZone.Name = "mnsZone";
+            this.mnsZone.Size = new System.Drawing.Size(794, 25);
+            this.mnsZone.TabIndex = 34;
+            this.mnsZone.Text = "menuStrip1";
+            this.mnsZone.Visible = false;
+            // 
+            // tsmiCh
+            // 
+            this.tsmiCh.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiFirst,
+            this.tsmiPrev,
+            this.tsmiNext,
+            this.tsmiLast,
+            this.tsmiAdd,
+            this.tsmiDel});
+            this.tsmiCh.Name = "tsmiCh";
+            this.tsmiCh.Size = new System.Drawing.Size(83, 21);
+            this.tsmiCh.Text = "Operation";
+            // 
+            // tsmiFirst
+            // 
+            this.tsmiFirst.Name = "tsmiFirst";
+            this.tsmiFirst.Size = new System.Drawing.Size(166, 24);
+            this.tsmiFirst.Text = "Fist";
+            this.tsmiFirst.Click += new System.EventHandler(this.tsmiFirst_Click);
+            // 
+            // tsmiPrev
+            // 
+            this.tsmiPrev.Name = "tsmiPrev";
+            this.tsmiPrev.Size = new System.Drawing.Size(166, 24);
+            this.tsmiPrev.Text = "Previous";
+            this.tsmiPrev.Click += new System.EventHandler(this.tsmiPrev_Click);
+            // 
+            // tsmiNext
+            // 
+            this.tsmiNext.Name = "tsmiNext";
+            this.tsmiNext.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
+            this.tsmiNext.Size = new System.Drawing.Size(166, 24);
+            this.tsmiNext.Text = "Next";
+            this.tsmiNext.Click += new System.EventHandler(this.tsmiNext_Click);
+            // 
+            // tsmiLast
+            // 
+            this.tsmiLast.Name = "tsmiLast";
+            this.tsmiLast.Size = new System.Drawing.Size(166, 24);
+            this.tsmiLast.Text = "Last";
+            this.tsmiLast.Click += new System.EventHandler(this.tsmiLast_Click);
+            // 
+            // tsmiAdd
+            // 
+            this.tsmiAdd.Name = "tsmiAdd";
+            this.tsmiAdd.Size = new System.Drawing.Size(166, 24);
+            this.tsmiAdd.Text = "Add";
+            this.tsmiAdd.Click += new System.EventHandler(this.tsmiAdd_Click);
+            // 
+            // tsmiDel
+            // 
+            this.tsmiDel.Name = "tsmiDel";
+            this.tsmiDel.Size = new System.Drawing.Size(166, 24);
+            this.tsmiDel.Text = "Delete";
+            this.tsmiDel.Click += new System.EventHandler(this.tsmiDel_Click);
+            // 
+            // btnDown
+            // 
+            this.btnDown.BackColor = System.Drawing.SystemColors.Control;
+            this.btnDown.Location = new System.Drawing.Point(676, 310);
+            this.btnDown.Name = "btnDown";
+            this.btnDown.Size = new System.Drawing.Size(75, 23);
+            this.btnDown.TabIndex = 11;
+            this.btnDown.Text = "Down";
+            this.btnDown.UseVisualStyleBackColor = false;
+            this.btnDown.Click += new System.EventHandler(this.btnDown_Click);
+            // 
+            // btnUp
+            // 
+            this.btnUp.BackColor = System.Drawing.SystemColors.Control;
+            this.btnUp.Location = new System.Drawing.Point(676, 258);
+            this.btnUp.Name = "btnUp";
+            this.btnUp.Size = new System.Drawing.Size(75, 23);
+            this.btnUp.TabIndex = 10;
+            this.btnUp.Text = "Up";
+            this.btnUp.UseVisualStyleBackColor = false;
+            this.btnUp.Click += new System.EventHandler(this.btnUp_Click);
+            // 
+            // txtName
+            // 
+            this.txtName.InputString = null;
+            this.txtName.Location = new System.Drawing.Point(316, 62);
+            this.txtName.MaxByteLength = 0;
+            this.txtName.Name = "txtName";
+            this.txtName.OnlyAllowInputStringAndCapitaliseCharacters = false;
+            this.txtName.Size = new System.Drawing.Size(150, 23);
+            this.txtName.TabIndex = 1;
+            this.txtName.Leave += new System.EventHandler(this.txtName_Leave);
+            // 
+            // grpSelected
+            // 
+            this.grpSelected.Controls.Add(this.lstSelected);
+            this.grpSelected.Location = new System.Drawing.Point(419, 110);
+            this.grpSelected.Name = "grpSelected";
+            this.grpSelected.Size = new System.Drawing.Size(215, 388);
+            this.grpSelected.TabIndex = 7;
+            this.grpSelected.TabStop = false;
+            this.grpSelected.Text = "Member";
+            // 
+            // lstSelected
+            // 
+            this.lstSelected.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.lstSelected.FormattingEnabled = true;
+            this.lstSelected.ItemHeight = 16;
+            this.lstSelected.Location = new System.Drawing.Point(27, 37);
+            this.lstSelected.Name = "lstSelected";
+            this.lstSelected.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.lstSelected.Size = new System.Drawing.Size(160, 324);
+            this.lstSelected.TabIndex = 5;
+            this.lstSelected.SelectedIndexChanged += new System.EventHandler(this.lstSelected_SelectedIndexChanged);
+            this.lstSelected.DoubleClick += new System.EventHandler(this.lstSelected_DoubleClick);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.BackColor = System.Drawing.SystemColors.Control;
+            this.btnAdd.Location = new System.Drawing.Point(316, 258);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(90, 23);
+            this.btnAdd.TabIndex = 3;
+            this.btnAdd.Text = "Add";
+            this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // grpUnselected
+            // 
+            this.grpUnselected.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.grpUnselected.Controls.Add(this.lstUnselected);
+            this.grpUnselected.Location = new System.Drawing.Point(86, 110);
+            this.grpUnselected.Name = "grpUnselected";
+            this.grpUnselected.Size = new System.Drawing.Size(215, 388);
+            this.grpUnselected.TabIndex = 6;
+            this.grpUnselected.TabStop = false;
+            this.grpUnselected.Text = "Available";
+            // 
+            // lstUnselected
+            // 
+            this.lstUnselected.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.lstUnselected.FormattingEnabled = true;
+            this.lstUnselected.ItemHeight = 16;
+            this.lstUnselected.Location = new System.Drawing.Point(32, 37);
+            this.lstUnselected.Name = "lstUnselected";
+            this.lstUnselected.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.lstUnselected.Size = new System.Drawing.Size(160, 324);
+            this.lstUnselected.TabIndex = 2;
+            // 
+            // btnDel
+            // 
+            this.btnDel.BackColor = System.Drawing.SystemColors.Control;
+            this.btnDel.Location = new System.Drawing.Point(316, 310);
+            this.btnDel.Name = "btnDel";
+            this.btnDel.Size = new System.Drawing.Size(90, 23);
+            this.btnDel.TabIndex = 4;
+            this.btnDel.Text = "Delete";
+            this.btnDel.UseVisualStyleBackColor = false;
+            this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
+            // 
+            // lblName
+            // 
+            this.lblName.Location = new System.Drawing.Point(216, 63);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(90, 23);
+            this.lblName.TabIndex = 0;
+            this.lblName.Text = "Name";
+            this.lblName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // ZoneForm
+            // 
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(794, 560);
+            this.Controls.Add(this.pnlZone);
+            this.Font = new System.Drawing.Font("Arial", 10F);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "ZoneForm";
+            this.Text = "Zone";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ZoneForm_FormClosing);
+            this.Load += new System.EventHandler(this.ZoneForm_Load);
+            this.pnlZone.ResumeLayout(false);
+            this.pnlZone.PerformLayout();
+            this.tsrZone.ResumeLayout(false);
+            this.tsrZone.PerformLayout();
+            this.mnsZone.ResumeLayout(false);
+            this.mnsZone.PerformLayout();
+            this.grpSelected.ResumeLayout(false);
+            this.grpUnselected.ResumeLayout(false);
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
 	}
 
 	public void SaveData()

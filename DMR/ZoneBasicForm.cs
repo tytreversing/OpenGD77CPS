@@ -216,149 +216,199 @@ public class ZoneBasicForm : DockContent, IDisp
 
 	private void InitializeComponent()
 	{
-		this.pnlZoneBasic = new CustomPanel();
-		this.btnDown = new System.Windows.Forms.Button();
-		this.btnUp = new System.Windows.Forms.Button();
-		this.lstZones = new System.Windows.Forms.ListBox();
-		this.grpSub = new System.Windows.Forms.GroupBox();
-		this.cmbSubCh = new CustomCombo();
-		this.lblSubCh = new System.Windows.Forms.Label();
-		this.cmbSubZone = new CustomCombo();
-		this.lblSubZone = new System.Windows.Forms.Label();
-		this.grpMain = new System.Windows.Forms.GroupBox();
-		this.cmbMainCh = new CustomCombo();
-		this.lblMainCh = new System.Windows.Forms.Label();
-		this.cmbMainZone = new CustomCombo();
-		this.lblCurZone = new System.Windows.Forms.Label();
-		this.pnlZoneBasic.SuspendLayout();
-		this.grpSub.SuspendLayout();
-		this.grpMain.SuspendLayout();
-		base.SuspendLayout();
-		this.pnlZoneBasic.AutoScroll = true;
-		this.pnlZoneBasic.AutoSize = true;
-		this.pnlZoneBasic.Controls.Add(this.btnDown);
-		this.pnlZoneBasic.Controls.Add(this.btnUp);
-		this.pnlZoneBasic.Controls.Add(this.lstZones);
-		this.pnlZoneBasic.Controls.Add(this.grpSub);
-		this.pnlZoneBasic.Dock = System.Windows.Forms.DockStyle.Fill;
-		this.pnlZoneBasic.Location = new System.Drawing.Point(0, 0);
-		this.pnlZoneBasic.Name = "pnlZoneBasic";
-		this.pnlZoneBasic.Size = new System.Drawing.Size(341, 458);
-		this.pnlZoneBasic.TabIndex = 0;
-		this.btnDown.AccessibleDescription = "Down";
-		this.btnDown.AccessibleName = "Down";
-		this.btnDown.Location = new System.Drawing.Point(211, 70);
-		this.btnDown.Name = "btnDown";
-		this.btnDown.Size = new System.Drawing.Size(75, 23);
-		this.btnDown.TabIndex = 14;
-		this.btnDown.Text = "Down";
-		this.btnDown.UseVisualStyleBackColor = true;
-		this.btnDown.Click += new System.EventHandler(btnDown_Click);
-		this.btnUp.AccessibleDescription = "Up";
-		this.btnUp.AccessibleName = "Up";
-		this.btnUp.Location = new System.Drawing.Point(211, 30);
-		this.btnUp.Name = "btnUp";
-		this.btnUp.Size = new System.Drawing.Size(75, 23);
-		this.btnUp.TabIndex = 13;
-		this.btnUp.Text = "Up";
-		this.btnUp.UseVisualStyleBackColor = true;
-		this.btnUp.Click += new System.EventHandler(btnUp_Click);
-		this.lstZones.AccessibleDescription = "Zones";
-		this.lstZones.AccessibleName = "Zones";
-		this.lstZones.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
-		this.lstZones.FormattingEnabled = true;
-		this.lstZones.ItemHeight = 16;
-		this.lstZones.Location = new System.Drawing.Point(28, 12);
-		this.lstZones.Name = "lstZones";
-		this.lstZones.Size = new System.Drawing.Size(160, 388);
-		this.lstZones.TabIndex = 12;
-		this.grpSub.Controls.Add(this.cmbSubCh);
-		this.grpSub.Controls.Add(this.lblSubCh);
-		this.grpSub.Controls.Add(this.cmbSubZone);
-		this.grpSub.Controls.Add(this.lblSubZone);
-		this.grpSub.Controls.Add(this.grpMain);
-		this.grpSub.Location = new System.Drawing.Point(194, 271);
-		this.grpSub.Name = "grpSub";
-		this.grpSub.Size = new System.Drawing.Size(142, 129);
-		this.grpSub.TabIndex = 7;
-		this.grpSub.TabStop = false;
-		this.grpSub.Text = "Down";
-		this.grpSub.Visible = false;
-		this.cmbSubCh.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-		this.cmbSubCh.FormattingEnabled = true;
-		this.cmbSubCh.Location = new System.Drawing.Point(6, 72);
-		this.cmbSubCh.Name = "cmbSubCh";
-		this.cmbSubCh.Size = new System.Drawing.Size(120, 24);
-		this.cmbSubCh.TabIndex = 5;
-		this.lblSubCh.Location = new System.Drawing.Point(14, 72);
-		this.lblSubCh.Name = "lblSubCh";
-		this.lblSubCh.Size = new System.Drawing.Size(70, 24);
-		this.lblSubCh.TabIndex = 4;
-		this.lblSubCh.Text = "Channel";
-		this.lblSubCh.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-		this.cmbSubZone.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-		this.cmbSubZone.FormattingEnabled = true;
-		this.cmbSubZone.Location = new System.Drawing.Point(6, 37);
-		this.cmbSubZone.Name = "cmbSubZone";
-		this.cmbSubZone.Size = new System.Drawing.Size(120, 24);
-		this.cmbSubZone.TabIndex = 1;
-		this.cmbSubZone.DropDown += new System.EventHandler(cmbSubZone_DropDown);
-		this.cmbSubZone.SelectedIndexChanged += new System.EventHandler(cmbSubZone_SelectedIndexChanged);
-		this.lblSubZone.Location = new System.Drawing.Point(14, 37);
-		this.lblSubZone.Name = "lblSubZone";
-		this.lblSubZone.Size = new System.Drawing.Size(70, 24);
-		this.lblSubZone.TabIndex = 0;
-		this.lblSubZone.Text = "Zone";
-		this.lblSubZone.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-		this.grpMain.Controls.Add(this.cmbMainCh);
-		this.grpMain.Controls.Add(this.lblMainCh);
-		this.grpMain.Controls.Add(this.cmbMainZone);
-		this.grpMain.Controls.Add(this.lblCurZone);
-		this.grpMain.Location = new System.Drawing.Point(0, 0);
-		this.grpMain.Name = "grpMain";
-		this.grpMain.Size = new System.Drawing.Size(92, 129);
-		this.grpMain.TabIndex = 6;
-		this.grpMain.TabStop = false;
-		this.grpMain.Text = "Up";
-		this.grpMain.Visible = false;
-		this.cmbMainCh.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-		this.cmbMainCh.FormattingEnabled = true;
-		this.cmbMainCh.Location = new System.Drawing.Point(17, 71);
-		this.cmbMainCh.Name = "cmbMainCh";
-		this.cmbMainCh.Size = new System.Drawing.Size(120, 24);
-		this.cmbMainCh.TabIndex = 3;
-		this.lblMainCh.Location = new System.Drawing.Point(22, 70);
-		this.lblMainCh.Name = "lblMainCh";
-		this.lblMainCh.Size = new System.Drawing.Size(70, 24);
-		this.lblMainCh.TabIndex = 2;
-		this.lblMainCh.Text = "Channel";
-		this.lblMainCh.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-		this.cmbMainZone.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-		this.cmbMainZone.FormattingEnabled = true;
-		this.cmbMainZone.Location = new System.Drawing.Point(17, 37);
-		this.cmbMainZone.Name = "cmbMainZone";
-		this.cmbMainZone.Size = new System.Drawing.Size(120, 24);
-		this.cmbMainZone.TabIndex = 1;
-		this.cmbMainZone.DropDown += new System.EventHandler(cmbMainZone_DropDown);
-		this.cmbMainZone.SelectedIndexChanged += new System.EventHandler(cmbMainZone_SelectedIndexChanged);
-		this.lblCurZone.Location = new System.Drawing.Point(22, 37);
-		this.lblCurZone.Name = "lblCurZone";
-		this.lblCurZone.Size = new System.Drawing.Size(70, 24);
-		this.lblCurZone.TabIndex = 0;
-		this.lblCurZone.Text = "Zone";
-		this.lblCurZone.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-		base.ClientSize = new System.Drawing.Size(341, 458);
-		base.Controls.Add(this.pnlZoneBasic);
-		this.Font = new System.Drawing.Font("Arial", 10f);
-		base.Name = "ZoneBasicForm";
-		this.Text = "Zone";
-		base.FormClosing += new System.Windows.Forms.FormClosingEventHandler(ZoneBasicForm_FormClosing);
-		base.Load += new System.EventHandler(ZoneBasicForm_Load);
-		this.pnlZoneBasic.ResumeLayout(false);
-		this.grpSub.ResumeLayout(false);
-		this.grpMain.ResumeLayout(false);
-		base.ResumeLayout(false);
-		base.PerformLayout();
+            this.pnlZoneBasic = new CustomPanel();
+            this.btnDown = new System.Windows.Forms.Button();
+            this.btnUp = new System.Windows.Forms.Button();
+            this.lstZones = new System.Windows.Forms.ListBox();
+            this.grpSub = new System.Windows.Forms.GroupBox();
+            this.cmbSubCh = new CustomCombo();
+            this.lblSubCh = new System.Windows.Forms.Label();
+            this.cmbSubZone = new CustomCombo();
+            this.lblSubZone = new System.Windows.Forms.Label();
+            this.grpMain = new System.Windows.Forms.GroupBox();
+            this.cmbMainCh = new CustomCombo();
+            this.lblMainCh = new System.Windows.Forms.Label();
+            this.cmbMainZone = new CustomCombo();
+            this.lblCurZone = new System.Windows.Forms.Label();
+            this.pnlZoneBasic.SuspendLayout();
+            this.grpSub.SuspendLayout();
+            this.grpMain.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // pnlZoneBasic
+            // 
+            this.pnlZoneBasic.AutoScroll = true;
+            this.pnlZoneBasic.AutoSize = true;
+            this.pnlZoneBasic.Controls.Add(this.btnDown);
+            this.pnlZoneBasic.Controls.Add(this.btnUp);
+            this.pnlZoneBasic.Controls.Add(this.lstZones);
+            this.pnlZoneBasic.Controls.Add(this.grpSub);
+            this.pnlZoneBasic.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlZoneBasic.Location = new System.Drawing.Point(0, 0);
+            this.pnlZoneBasic.Name = "pnlZoneBasic";
+            this.pnlZoneBasic.Size = new System.Drawing.Size(341, 458);
+            this.pnlZoneBasic.TabIndex = 0;
+            // 
+            // btnDown
+            // 
+            this.btnDown.AccessibleDescription = "Down";
+            this.btnDown.AccessibleName = "Down";
+            this.btnDown.BackColor = System.Drawing.SystemColors.Control;
+            this.btnDown.Location = new System.Drawing.Point(211, 70);
+            this.btnDown.Name = "btnDown";
+            this.btnDown.Size = new System.Drawing.Size(75, 23);
+            this.btnDown.TabIndex = 14;
+            this.btnDown.Text = "Down";
+            this.btnDown.UseVisualStyleBackColor = false;
+            this.btnDown.Click += new System.EventHandler(this.btnDown_Click);
+            // 
+            // btnUp
+            // 
+            this.btnUp.AccessibleDescription = "Up";
+            this.btnUp.AccessibleName = "Up";
+            this.btnUp.BackColor = System.Drawing.SystemColors.Control;
+            this.btnUp.Location = new System.Drawing.Point(211, 30);
+            this.btnUp.Name = "btnUp";
+            this.btnUp.Size = new System.Drawing.Size(75, 23);
+            this.btnUp.TabIndex = 13;
+            this.btnUp.Text = "Up";
+            this.btnUp.UseVisualStyleBackColor = false;
+            this.btnUp.Click += new System.EventHandler(this.btnUp_Click);
+            // 
+            // lstZones
+            // 
+            this.lstZones.AccessibleDescription = "Zones";
+            this.lstZones.AccessibleName = "Zones";
+            this.lstZones.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.lstZones.FormattingEnabled = true;
+            this.lstZones.ItemHeight = 16;
+            this.lstZones.Location = new System.Drawing.Point(28, 12);
+            this.lstZones.Name = "lstZones";
+            this.lstZones.Size = new System.Drawing.Size(160, 388);
+            this.lstZones.TabIndex = 12;
+            // 
+            // grpSub
+            // 
+            this.grpSub.Controls.Add(this.cmbSubCh);
+            this.grpSub.Controls.Add(this.lblSubCh);
+            this.grpSub.Controls.Add(this.cmbSubZone);
+            this.grpSub.Controls.Add(this.lblSubZone);
+            this.grpSub.Controls.Add(this.grpMain);
+            this.grpSub.Location = new System.Drawing.Point(194, 271);
+            this.grpSub.Name = "grpSub";
+            this.grpSub.Size = new System.Drawing.Size(142, 129);
+            this.grpSub.TabIndex = 7;
+            this.grpSub.TabStop = false;
+            this.grpSub.Text = "Down";
+            this.grpSub.Visible = false;
+            // 
+            // cmbSubCh
+            // 
+            this.cmbSubCh.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbSubCh.FormattingEnabled = true;
+            this.cmbSubCh.Location = new System.Drawing.Point(6, 72);
+            this.cmbSubCh.Name = "cmbSubCh";
+            this.cmbSubCh.Size = new System.Drawing.Size(120, 24);
+            this.cmbSubCh.TabIndex = 5;
+            // 
+            // lblSubCh
+            // 
+            this.lblSubCh.Location = new System.Drawing.Point(14, 72);
+            this.lblSubCh.Name = "lblSubCh";
+            this.lblSubCh.Size = new System.Drawing.Size(70, 24);
+            this.lblSubCh.TabIndex = 4;
+            this.lblSubCh.Text = "Channel";
+            this.lblSubCh.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // cmbSubZone
+            // 
+            this.cmbSubZone.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbSubZone.FormattingEnabled = true;
+            this.cmbSubZone.Location = new System.Drawing.Point(6, 37);
+            this.cmbSubZone.Name = "cmbSubZone";
+            this.cmbSubZone.Size = new System.Drawing.Size(120, 24);
+            this.cmbSubZone.TabIndex = 1;
+            this.cmbSubZone.DropDown += new System.EventHandler(this.cmbSubZone_DropDown);
+            this.cmbSubZone.SelectedIndexChanged += new System.EventHandler(this.cmbSubZone_SelectedIndexChanged);
+            // 
+            // lblSubZone
+            // 
+            this.lblSubZone.Location = new System.Drawing.Point(14, 37);
+            this.lblSubZone.Name = "lblSubZone";
+            this.lblSubZone.Size = new System.Drawing.Size(70, 24);
+            this.lblSubZone.TabIndex = 0;
+            this.lblSubZone.Text = "Zone";
+            this.lblSubZone.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // grpMain
+            // 
+            this.grpMain.Controls.Add(this.cmbMainCh);
+            this.grpMain.Controls.Add(this.lblMainCh);
+            this.grpMain.Controls.Add(this.cmbMainZone);
+            this.grpMain.Controls.Add(this.lblCurZone);
+            this.grpMain.Location = new System.Drawing.Point(0, 0);
+            this.grpMain.Name = "grpMain";
+            this.grpMain.Size = new System.Drawing.Size(92, 129);
+            this.grpMain.TabIndex = 6;
+            this.grpMain.TabStop = false;
+            this.grpMain.Text = "Up";
+            this.grpMain.Visible = false;
+            // 
+            // cmbMainCh
+            // 
+            this.cmbMainCh.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbMainCh.FormattingEnabled = true;
+            this.cmbMainCh.Location = new System.Drawing.Point(17, 71);
+            this.cmbMainCh.Name = "cmbMainCh";
+            this.cmbMainCh.Size = new System.Drawing.Size(120, 24);
+            this.cmbMainCh.TabIndex = 3;
+            // 
+            // lblMainCh
+            // 
+            this.lblMainCh.Location = new System.Drawing.Point(22, 70);
+            this.lblMainCh.Name = "lblMainCh";
+            this.lblMainCh.Size = new System.Drawing.Size(70, 24);
+            this.lblMainCh.TabIndex = 2;
+            this.lblMainCh.Text = "Channel";
+            this.lblMainCh.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // cmbMainZone
+            // 
+            this.cmbMainZone.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbMainZone.FormattingEnabled = true;
+            this.cmbMainZone.Location = new System.Drawing.Point(17, 37);
+            this.cmbMainZone.Name = "cmbMainZone";
+            this.cmbMainZone.Size = new System.Drawing.Size(120, 24);
+            this.cmbMainZone.TabIndex = 1;
+            this.cmbMainZone.DropDown += new System.EventHandler(this.cmbMainZone_DropDown);
+            this.cmbMainZone.SelectedIndexChanged += new System.EventHandler(this.cmbMainZone_SelectedIndexChanged);
+            // 
+            // lblCurZone
+            // 
+            this.lblCurZone.Location = new System.Drawing.Point(22, 37);
+            this.lblCurZone.Name = "lblCurZone";
+            this.lblCurZone.Size = new System.Drawing.Size(70, 24);
+            this.lblCurZone.TabIndex = 0;
+            this.lblCurZone.Text = "Zone";
+            this.lblCurZone.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // ZoneBasicForm
+            // 
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(341, 458);
+            this.Controls.Add(this.pnlZoneBasic);
+            this.Font = new System.Drawing.Font("Arial", 10F);
+            this.Name = "ZoneBasicForm";
+            this.Text = "Zone";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ZoneBasicForm_FormClosing);
+            this.Load += new System.EventHandler(this.ZoneBasicForm_Load);
+            this.pnlZoneBasic.ResumeLayout(false);
+            this.grpSub.ResumeLayout(false);
+            this.grpMain.ResumeLayout(false);
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
 	}
 
 	private void btnUp_Click(object sender, EventArgs e)

@@ -3600,6 +3600,7 @@ public class ChannelForm : DockContent, IDisp
             // 
             // grpDigit
             // 
+            this.grpDigit.Controls.Add(this.txtRadioId);
             this.grpDigit.Controls.Add(this.nudTxColor);
             this.grpDigit.Controls.Add(this.cmbRepeaterSlot);
             this.grpDigit.Controls.Add(this.lblRepeaterSlot);
@@ -3614,7 +3615,6 @@ public class ChannelForm : DockContent, IDisp
             this.grpDigit.Controls.Add(this.lblTS1TaTx);
             this.grpDigit.Controls.Add(this.lblRxGroup);
             this.grpDigit.Controls.Add(this.lblOverrideTxDMRId);
-            this.grpDigit.Controls.Add(this.txtRadioId);
             this.grpDigit.Location = new System.Drawing.Point(441, 171);
             this.grpDigit.Name = "grpDigit";
             this.grpDigit.Size = new System.Drawing.Size(653, 210);
@@ -3765,7 +3765,7 @@ public class ChannelForm : DockContent, IDisp
             // 
             this.lblOverrideTxDMRId.Location = new System.Drawing.Point(13, 22);
             this.lblOverrideTxDMRId.Name = "lblOverrideTxDMRId";
-            this.lblOverrideTxDMRId.Size = new System.Drawing.Size(170, 24);
+            this.lblOverrideTxDMRId.Size = new System.Drawing.Size(226, 24);
             this.lblOverrideTxDMRId.TabIndex = 29;
             this.lblOverrideTxDMRId.Text = "Override DMR Tx ID";
             this.lblOverrideTxDMRId.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -3775,7 +3775,7 @@ public class ChannelForm : DockContent, IDisp
             this.txtRadioId.AccessibleDescription = "DMR ID";
             this.txtRadioId.AccessibleName = "DMR ID";
             this.txtRadioId.InputString = null;
-            this.txtRadioId.Location = new System.Drawing.Point(189, 21);
+            this.txtRadioId.Location = new System.Drawing.Point(245, 21);
             this.txtRadioId.MaxByteLength = 0;
             this.txtRadioId.Name = "txtRadioId";
             this.txtRadioId.OnlyAllowInputStringAndCapitaliseCharacters = false;

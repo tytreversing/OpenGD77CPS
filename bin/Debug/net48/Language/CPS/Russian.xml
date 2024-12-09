@@ -77,7 +77,8 @@
 			<Control Id="chkAllowTalkaround" Text="Отключение разноса" />
 			<Control Id="grpAnalog" Text="Аналоговая связь" />
 			<Control Id="lblChBandwidth" Text="Полоса, кГц" />
-			<Control Id="lblVoiceEmphasis" Text="Voice Emphasis" />
+      <Control Id="lblOverrideTxDMRId" Text="Переопределить DMR ID" />
+      <Control Id="lblVoiceEmphasis" Text="Voice Emphasis" />
 			<Control Id="lblSte" Text="STE" />
 			<Control Id="lblNonSte" Text="Non STE" />
 			<Control Id="lblRxTone" Text="Субтон на прием" />
@@ -129,7 +130,7 @@
 			<Item Id="LibreDMR_Power" Text="Обшая,50mW | 50mW | 100mW,250mW | 250mW | 250mW,500mW | 500mW | 500mW,750mW | 750mW | 750mW,1W | 1W | 1W,2W | 2W | 5W,3W | 3W | 10W,4W | 5W | 25W,5W | 10W | 40W,+W-" />
 			<Item Id="Power" Text="Низкая,Высокая" />
 			<Item Id="AdmitCriterica" Text="Всегда,Канал свободен,CTCSS/DCS" />
-			<Item Id="AdmitCritericaD" Text="Всегда,Канал свободен,Color Code" />
+			<Item Id="AdmitCritericaD" Text="Всегда,Канал свободен,Колоркод" />
 			<Item Id="Squelch" Text="Tight,Normal" />
 			<Item Id="VoiceEmphasis" Text="None,De and Pre,De,Pre" />
 			<Item Id="Ste" Text="Frequency,120°,180°,240°" />
@@ -137,10 +138,10 @@
 			<Item Id="SignalingSystem" Text="Off,DTMF" />
 			<Item Id="UnmuteRule" Text="Std Unmute Mute,And Unmute Mute,And Unmute Or Mute" />
 			<Item Id="PttidType" Text="None,Only Front,Only Post,Front and Post" />
-			<Item Id="TaTx" Text="Off,APRS,Text,APRS &amp; Text" />
+			<Item Id="TaTx" Text="Выкл,APRS,Текст,APRS и текст" />
 			<Item Id="TimingPreference" Text="Preferred,Eligible,Ineligible" />
 			<Item Id="Ars" Text="Disable,System Change" />
-			<Item Id="KeySwitch" Text="Off,On" />
+			<Item Id="KeySwitch" Text="Выкл.,Вкл." />
 		</Commons>
 	</ChannelForm>
 	<ChannelsForm Text="Каналы">
@@ -178,7 +179,7 @@
 		</Controls>
 		<Commons>
 			<Item Id="ButtonItem" Text="None,All Alert Tone On/Off,Emergency On,Emergency Off,High/Low Power,Monitor,Nuisance Delete,One Touch Access 1,One Touch Access 2,One Touch Access 3,One Touch Access 4,One Touch Access 5,One Touch Access 6,Repeater/Talkaround,Scan On/Off,Tight/Normal Squelch,Privacy On/Off,Vox On/Off,Zone Select,Battery Indicator,Lone Work On/Off,Permanent Monitor,Phone Exit,Channel Up,Channel Down,Channel Infomation" />
-			<Item Id="Mode" Text="None,Digital,Analog" />
+			<Item Id="Mode" Text="Нет,Цифра,Аналог" />
 			<Item Id="CallTypeD" Text="Call,Message" />
 			<Item Id="CallTypeA" Text="DTMF Call" />
 		</Commons>
@@ -220,7 +221,7 @@
 			</Control>
 		</Controls>
 		<Commons>
-			<Item Id="HeaderText" Text="Номер,Имяe,ID,Тип,Ring Style,Call Receive Tone,Таймслот," />
+			<Item Id="HeaderText" Text="Номер,Имя,ID,Тип,Ring Style,Call Receive Tone,Таймслот," />
 		</Commons>
 	</ContactsForm>
 	<DeviceInfoForm Text="Ограничения частот">
@@ -714,7 +715,7 @@
 			<Control Id="chkOpenGD77ScanZoneSkip" Text="Scan: Zone skip" />
 			<Control Id="chkNoBeep" Text="No Beep" />
 			<Control Id="chkNoEco" Text="No Eco" />
-			<Control Id="chkDMRForceDMO" Text="Force DMO" />
+			<Control Id="chkDMRForceDMO" Text="Принудительно DMO" />
 			<Control Id="lblChName" Text="Name" />
 			<Control Id="lblChMode" Text="Mode" />
 			<Control Id="lblTot" Text="TOT [s]" />
@@ -753,36 +754,36 @@
 			<Item Id="" Text="None,+,-" />
 		</Commons>
 	</VfoForm>
-	<ZoneBasicForm Text="Zones">
+	<ZoneBasicForm Text="Список зон">
 		<Controls>
-			<Control Id="grpSub" Text="Down" />
+			<Control Id="grpSub" Text="Вниз" />
 			<Control Id="lblSubCh" Text="Channel" />
 			<Control Id="lblSubZone" Text="Zone" />
-			<Control Id="grpMain" Text="Up" />
-			<Control Id="lblMainCh" Text="Channel" />
-			<Control Id="lblCurZone" Text="Zone" />
-			<Control Id="btnUp" Text="Up" />
-			<Control Id="btnDown" Text="Down" />
+			<Control Id="grpMain" Text="Вверх" />
+			<Control Id="lblMainCh" Text="Канал" />
+			<Control Id="lblCurZone" Text="Зона" />
+			<Control Id="btnUp" Text="Вверх" />
+			<Control Id="btnDown" Text="Вниз" />
 		</Controls>
 	</ZoneBasicForm>
-	<ZoneForm Text="Zone">
+	<ZoneForm Text="Зоны">
 		<Controls>
 			<Control Id="tsrZone" Text="toolStrip1">
 				<ToolStripItem Id="tslblInfo" Text="" />
-				<ToolStripItem Id="tsbtnFirst" Text="First" />
-				<ToolStripItem Id="tsbtnPrev" Text="Previou" />
-				<ToolStripItem Id="tsbtnNext" Text="Next" />
-				<ToolStripItem Id="tsbtnLast" Text="Last" />
-				<ToolStripItem Id="tsbtnAdd" Text="Add" />
-				<ToolStripItem Id="tsbtnDel" Text="Delete" />
+				<ToolStripItem Id="tsbtnFirst" Text="Первая" />
+				<ToolStripItem Id="tsbtnPrev" Text="Предыдущая" />
+				<ToolStripItem Id="tsbtnNext" Text="Следующая" />
+				<ToolStripItem Id="tsbtnLast" Text="Последняя" />
+				<ToolStripItem Id="tsbtnAdd" Text="Добавить" />
+				<ToolStripItem Id="tsbtnDel" Text="Удалить" />
 			</Control>
-			<Control Id="btnDown" Text="Down" />
-			<Control Id="btnUp" Text="Up" />
-			<Control Id="grpSelected" Text="Member" />
-			<Control Id="btnAdd" Text="Add" />
-			<Control Id="grpUnselected" Text="Available" />
-			<Control Id="btnDel" Text="Delete" />
-			<Control Id="lblName" Text="Name" />
+			<Control Id="btnDown" Text="Вниз" />
+			<Control Id="btnUp" Text="Вверх" />
+			<Control Id="grpSelected" Text="Включено" />
+			<Control Id="btnAdd" Text="Добавить" />
+			<Control Id="grpUnselected" Text="Доступно" />
+			<Control Id="btnDel" Text="Удалить" />
+			<Control Id="lblName" Text="Имя" />
 		</Controls>
 	</ZoneForm>
 	<DownloadContactsForm Text="Download contacts">
@@ -802,7 +803,7 @@
 			</Control>
 		</Controls>
 	</DownloadContactsForm>
-	<CalibrationForm Text="Calibration viewer">
+	<CalibrationForm Text="Работа с калибровками">
 		<Controls>
 			<Control Id="calibrationBandControlVHF" Text="VHF" />
 			<Control Id="calibrationBandControlUHF" Text="UHF" />
@@ -971,7 +972,7 @@
 			<Item Id="RADIO_DISPLAY_Calibration" Text="Калибровки" />
 			<Item Id="RADIO_DISPLAY_EEPROM" Text="EEPROM" />
 			<Item Id="RADIO_DISPLAY_Flash" Text="Флеш" />
-			<Item Id="RADIO_DISPLAY_Codeplug" Text="Кодплага" />
+			<Item Id="RADIO_DISPLAY_Codeplug" Text="кодплага" />
 			<Item Id="RADIO_DISPLAY_MCU_ROM" Text="MCU ROM" />
 			<Item Id="RADIO_DISPLAY_Voice_prompts" Text="Голосовые" />
 			<Item Id="RADIO_DISPLAY_Restoring" Text="Восстановление" />
@@ -984,8 +985,8 @@
 			<Item Id="Writing_Flash" Text="Запись флеша" />
 			<Item Id="Error" Text="Ошибка" />
 			<Item Id="Warning" Text="Внимание" />
-			<Item Id="Calibration_data_could_not_be_found._Please_update_your_firmware" Text="Calibration data could not be found. Please update your firmware" />
-			<Item Id="There_has_been_an_error._Refer_to_the_last_status_message_that_was_displayed" Text="There has been an error. Refer to the last status message that was displayed" />
+			<Item Id="Calibration_data_could_not_be_found._Please_update_your_firmware" Text="Не найдены данные калибровок. Обновите прошивку!" />
+			<Item Id="There_has_been_an_error._Refer_to_the_last_status_message_that_was_displayed" Text="Произошла ошибка!" />
 			<Item Id="EEPROM_files" Text="EEPROM files" />
 			<Item Id="Flash_files" Text="Flash files" />
 			<Item Id="Restore_complete" Text="Restore complete" />
@@ -1012,10 +1013,10 @@
 			<Item Id="MCU_ROM_files" Text="MCU ROM files" />
 			<Item Id="Voice_prompts_file_is_too_large" Text="Voice prompts file is too large." />
 			<Item Id="Calibration_data_could_not_be_found" Text="Calibration data could not be found. Please update your firmware" />
-			<Item Id="This_feature_is_highly_experimental" Text="This feature is highly experimental. You use it at your own risk! Make Sure you have a full backup of the Flash memory in your radio." />
-			<Item Id="File_contains_invalid_STM32_calibration_header" Text="File contains invalid STM32 calibration header" />
-			<Item Id="File_is_the_wrong_size" Text="File is the wrong size" />
-			<Item Id="File_saved" Text="File saved." />
+			<Item Id="This_feature_is_highly_experimental" Text="Работа с калибровками выполняется на собственный страх и риск. Убедитесь, что сделали полный бэкап.." />
+			<Item Id="File_contains_invalid_STM32_calibration_header" Text="Файл содержит неправильный заголовок!" />
+			<Item Id="File_is_the_wrong_size" Text="Неверный размер файла!" />
+			<Item Id="File_saved" Text="Файл сохранен" />
 		</Commons>
 	</OpenGD77Form>
 	<FirmwareLoaderUI_MK22 Text="Загрузчик прошивки">
@@ -1031,7 +1032,7 @@
 			<Control Id="lblLanguage" Text="Additional language" />
 		</Controls>
 		<Commons>
-			<Item Id="AdditionalLanguageNone" Text="None"/>
+			<Item Id="AdditionalLanguageNone" Text="Нет"/>
 			<Item Id="AdditionalLanguageNotFound" Text="Ошибка! Файл {0} не найден!"/>			
 			<Item Id="CantInterrupt" Text="Нельзя прерывать процесс!" />
 			<Item Id="DownloadCancelled" Text="Загрузка отменена." />
@@ -1078,7 +1079,7 @@
 			<Control Id="grpRadioType" Text="Модель рации" />
 		</Controls>
 		<Commons>
-			<Item Id="AdditionalLanguageNone" Text="None"/>
+			<Item Id="AdditionalLanguageNone" Text="Нет"/>
 			<Item Id="AdditionalLanguageNotFound" Text="Ошибка! Не найден файл локализации!"/>	
 			<Item Id="FmOnly" Text="Только аналоговый режим" />
 			<Item Id="Warning" Text="Внимание" />
@@ -1151,57 +1152,57 @@
 		</Commons>
 	</Utils>
 
-	<ThemeForm Text="Theme editor">
+	<ThemeForm Text="Редактор тем">
 		<Controls>
-			<Control Id="btnOpen" Text="Open theme file" />
-			<Control Id="btnSave" Text="Save theme file" />
-			<Control Id="btnWrite" Text="Write to radio" />
-			<Control Id="btnRead" Text="Read from radio" />
-			<Control Id="btnCancel" Text="Cancel" />
+			<Control Id="btnOpen" Text="Открыть файл" />
+			<Control Id="btnSave" Text="Сохранить файл" />
+			<Control Id="btnWrite" Text="Записать в рацию" />
+			<Control Id="btnRead" Text="Читать из рации" />
+			<Control Id="btnCancel" Text="Отмена" />
 			<Control Id="btnOK" Text="OK" />
-			<Control Id="grpDaytimeTheme" Text="Daytime" />
-			<Control Id="rbDaytimeDay" Text="Day Theme" />
-			<Control Id="rbDaytimeNight" Text="Night Theme" />
-			<Control Id="gbColours" Text="Colours"/>
-			<Control Id="lblColour_0" Text="Text Default"/>
-			<Control Id="lblColour_1" Text="Background"/>
-			<Control Id="lblColour_2" Text="Decoration"/>
-			<Control Id="lblColour_3" Text="Text input"/>
-			<Control Id="lblColour_4" Text="Boot screen text"/>
-			<Control Id="lblColour_5" Text="Boot screen background"/>
-			<Control Id="lblColour_6" Text="Text notification"/>
-			<Control Id="lblColour_7" Text="Warning notification"/>
-			<Control Id="lblColour_8" Text="Error notification"/>
-			<Control Id="lblColour_9" Text="Backgrouund notification"/>
-			<Control Id="lblColour_10" Text="Menu name"/>
-			<Control Id="lblColour_11" Text="Menu name background"/>
-			<Control Id="lblColour_12" Text="Menu item"/>
-			<Control Id="lblColour_13" Text="Menu highlight"/>
-			<Control Id="lblColour_14" Text="Option value"/>
-			<Control Id="lblColour_15" Text="Header text"/>
-			<Control Id="lblColour_16" Text="Header text background"/>
-			<Control Id="lblColour_17" Text="RSSI bar"/>
-			<Control Id="lblColour_18" Text="RSSI bar S9+"/>
-			<Control Id="lblColour_19" Text="Channel name"/>
-			<Control Id="lblColour_20" Text="Channel / VFO TG"/>
-			<Control Id="lblColour_21" Text="Contact info"/>
-			<Control Id="lblColour_22" Text="Zone name"/>
-			<Control Id="lblColour_23" Text="VFO RX frequency"/>
-			<Control Id="lblColour_24" Text="VFO TX frequency"/>
-			<Control Id="lblColour_25" Text="CSS/SQL values"/>
-			<Control Id="lblColour_26" Text="TX counter"/>
-			<Control Id="lblColour_27" Text="Polar"/>
-			<Control Id="lblColour_28" Text="Satellite spot"/>
-			<Control Id="lblColour_29" Text="GPS number"/>
-			<Control Id="lblColour_30" Text="GPS spot"/>
-			<Control Id="lblColour_31" Text="Beidou spot"/>
+			<Control Id="grpDaytimeTheme" Text="Тип темы" />
+			<Control Id="rbDaytimeDay" Text="Дневная" />
+			<Control Id="rbDaytimeNight" Text="Ночная" />
+			<Control Id="gbColours" Text="Цвета"/>
+			<Control Id="lblColour_0" Text="Текст по умолчанию"/>
+			<Control Id="lblColour_1" Text="Фон"/>
+			<Control Id="lblColour_2" Text="Декоративные элементы"/>
+			<Control Id="lblColour_3" Text="Ввод текста"/>
+			<Control Id="lblColour_4" Text="Текст при загрузке"/>
+			<Control Id="lblColour_5" Text="Фон при загрузке"/>
+			<Control Id="lblColour_6" Text="Текст уведомления"/>
+			<Control Id="lblColour_7" Text="ВНИМАНИЕ"/>
+			<Control Id="lblColour_8" Text="ОШИБКА"/>
+			<Control Id="lblColour_9" Text="Фон уведомления"/>
+			<Control Id="lblColour_10" Text="Название меню"/>
+			<Control Id="lblColour_11" Text="Фон названия меню"/>
+			<Control Id="lblColour_12" Text="Строка меню"/>
+			<Control Id="lblColour_13" Text="Выделение меню"/>
+			<Control Id="lblColour_14" Text="Значение параметра"/>
+			<Control Id="lblColour_15" Text="Текст заголовка"/>
+			<Control Id="lblColour_16" Text="Фон заголовка"/>
+			<Control Id="lblColour_17" Text="Полоска RSSI"/>
+			<Control Id="lblColour_18" Text="Полоска RSSI S9+"/>
+			<Control Id="lblColour_19" Text="Название канала"/>
+			<Control Id="lblColour_20" Text="Разговорная группа"/>
+			<Control Id="lblColour_21" Text="Информация о контакте"/>
+			<Control Id="lblColour_22" Text="Название зоны"/>
+			<Control Id="lblColour_23" Text="Частота приема в VFO"/>
+			<Control Id="lblColour_24" Text="Частота передачи в VFO"/>
+			<Control Id="lblColour_25" Text="Субтон и шумоподавитель"/>
+			<Control Id="lblColour_26" Text="Таймер передачи"/>
+			<Control Id="lblColour_27" Text="Диаграмма"/>
+			<Control Id="lblColour_28" Text="Точка положения спутника"/>
+			<Control Id="lblColour_29" Text="Число спутников GPS"/>
+			<Control Id="lblColour_30" Text="Спутник GPS"/>
+			<Control Id="lblColour_31" Text="Спутник Beidou"/>
 		</Controls>
 		<Commons>
-			<Item Id="Theme" Text="Theme" />
-			<Item Id="Theme_files" Text="Theme files" />
-			<Item Id="colour_not_supported" Text="The radio does not have a colour screen" />
-			<Item Id="Invalid_theme_data" Text="Invalid Theme data" />
-			<Item Id="Theme_write_failed" Text="Theme write failed" />
+			<Item Id="Theme" Text="Темы" />
+			<Item Id="Theme_files" Text="Файлы тем" />
+			<Item Id="colour_not_supported" Text="Рация не оснащена цветным экраном!" />
+			<Item Id="Invalid_theme_data" Text="Неверные данные!" />
+			<Item Id="Theme_write_failed" Text="Ошибка записи!" />
 		</Commons>
 	</ThemeForm>
 	<CommPortSelector Text="Выберите COM-порт">
@@ -1211,7 +1212,7 @@
 		</Controls>
 	</CommPortSelector>
 	<Commons>
-		<Item Id="None" Text="None" />
+		<Item Id="None" Text="Нет" />
 		<Item Id="Selected" Text="Selected" />
 		<Item Id="RadioIdNotEmpty" Text="Radio ID can not be empty!" />
 		<Item Id="RadioIdOutOfRange" Text="Radio ID out of range!" />
@@ -1249,7 +1250,7 @@
 		<Item Id="DownloadContactsSelectContactsToImport" Text="Please select the contacts you would like to import" />
 		<Item Id="DownloadContactsTooMany" Text="Not all contacts could be imported because the maximum number of Digital Contacts has been reached" />
 		<Item Id="Warning" Text="Warning" />
-		<Item Id="UnableDownloadFromInternet" Text="Unable to download data. Please check your Internet connection" />
+		<Item Id="UnableDownloadFromInternet" Text="Невозможно загрузить данные. Возможно, нет доступа к удаленному ресурсу." />
 		<Item Id="DownloadContactsImportComplete" Text="Import complete" />
 		<Item Id="CodeplugUpgradeNotice" Text="This appears to be a V3.0.6 Codeplug. It will be converted to V3.1.x" />
 		<Item Id="CodeplugUpgradeWarningToManyRxGroups" Text="Version 3.1.x can only have 76 Rx Groups. Additional Rx Groups have been ignored" />

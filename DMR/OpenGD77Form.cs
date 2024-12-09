@@ -986,7 +986,7 @@ public class OpenGD77Form : Form
 				num3 = dataObj.startDataAddressInTheRadio + dataObj.transferLength - num2;
 				continue;
 			}
-			Console.WriteLine(string.Format(StringsDict["write_stopped"], num2));
+			//Console.WriteLine(string.Format(StringsDict["write_stopped"], num2));
 			return false;
 		}
 		return true;

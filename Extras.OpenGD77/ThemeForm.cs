@@ -68,7 +68,7 @@ public class ThemeForm : Form
 	public ThemeForm()
 	{
 		InitializeComponent();
-		base.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
+        base.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
 		colourDlg.FullOpen = true;
 		themeData = new byte[THEME_SIZE];
 		SetupColoursAndLabels();
@@ -765,134 +765,181 @@ public class ThemeForm : Form
 
 	private void InitializeComponent()
 	{
-		int num = System.Convert.ToInt32(IniFileUtils.getProfileStringWithDefault("ThemeEditor", "LastDaytimeDaySelected", "1"));
-		this.btnOpen = new System.Windows.Forms.Button();
-		this.btnSave = new System.Windows.Forms.Button();
-		this.btnWrite = new System.Windows.Forms.Button();
-		this.btnRead = new System.Windows.Forms.Button();
-		this.txtMessage = new System.Windows.Forms.Label();
-		this.progressBar1 = new System.Windows.Forms.ProgressBar();
-		this.gbColours = new System.Windows.Forms.GroupBox();
-		this.btnOK = new System.Windows.Forms.Button();
-		this.rbDaytimeDay = new System.Windows.Forms.RadioButton();
-		this.rbDaytimeNight = new System.Windows.Forms.RadioButton();
-		this.grpDaytimeTheme = new System.Windows.Forms.GroupBox();
-		this.grpDaytimeTheme.SuspendLayout();
-		base.SuspendLayout();
-		this.btnOpen.Location = new System.Drawing.Point(12, 12);
-		this.btnOpen.Name = "btnOpen";
-		this.btnOpen.Size = new System.Drawing.Size(113, 23);
-		this.btnOpen.TabIndex = 1;
-		this.btnOpen.Text = "Open theme file";
-		this.btnOpen.UseVisualStyleBackColor = true;
-		this.btnOpen.Click += new System.EventHandler(btnOpen_Click);
-		this.btnOpen.Font = new System.Drawing.Font("Arial", 9f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-		this.btnSave.Location = new System.Drawing.Point(131, 12);
-		this.btnSave.Name = "btnSave";
-		this.btnSave.Size = new System.Drawing.Size(125, 23);
-		this.btnSave.TabIndex = 2;
-		this.btnSave.Text = "Save theme file";
-		this.btnSave.UseVisualStyleBackColor = true;
-		this.btnSave.Click += new System.EventHandler(btnSave_Click);
-		this.btnSave.Font = new System.Drawing.Font("Arial", 9f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-		this.rbDaytimeDay.AccessibleDescription = "DayTheme";
-		this.rbDaytimeDay.AccessibleName = "Day Theme";
-		this.rbDaytimeDay.AutoSize = true;
-		this.rbDaytimeDay.Checked = num == 1;
-		this.rbDaytimeDay.Location = new System.Drawing.Point(10, 19);
-		this.rbDaytimeDay.Name = "rbDaytimeDay";
-		this.rbDaytimeDay.Size = new System.Drawing.Size(100, 17);
-		this.rbDaytimeDay.TabIndex = 4;
-		this.rbDaytimeDay.TabStop = true;
-		this.rbDaytimeDay.Tag = DMR.OpenGD77Form.CustomDataType.THEME_DAY_TYPE;
-		this.rbDaytimeDay.Text = "Day Theme";
-		this.rbDaytimeDay.UseVisualStyleBackColor = true;
-		this.rbDaytimeDay.CheckedChanged += new System.EventHandler(Daytime_CheckedChanged);
-		this.rbDaytimeDay.Font = new System.Drawing.Font("Arial", 9f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-		this.rbDaytimeNight.AccessibleDescription = "DayTheme";
-		this.rbDaytimeNight.AccessibleName = "Night Theme";
-		this.rbDaytimeNight.AutoSize = true;
-		this.rbDaytimeNight.Checked = num != 1;
-		this.rbDaytimeNight.Location = new System.Drawing.Point(120, 19);
-		this.rbDaytimeNight.Name = "rbDaytimeNight";
-		this.rbDaytimeNight.Size = new System.Drawing.Size(100, 17);
-		this.rbDaytimeNight.TabIndex = 5;
-		this.rbDaytimeNight.TabStop = true;
-		this.rbDaytimeNight.Tag = DMR.OpenGD77Form.CustomDataType.THEME_NIGHT_TYPE;
-		this.rbDaytimeNight.Text = "Night Theme";
-		this.rbDaytimeNight.UseVisualStyleBackColor = true;
-		this.rbDaytimeNight.CheckedChanged += new System.EventHandler(Daytime_CheckedChanged);
-		this.rbDaytimeDay.Font = new System.Drawing.Font("Arial", 9f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-		this.btnRead.Location = new System.Drawing.Point(522, 12);
-		this.btnRead.Name = "btnRead";
-		this.btnRead.Size = new System.Drawing.Size(125, 23);
-		this.btnRead.TabIndex = 6;
-		this.btnRead.Text = "Read from radio";
-		this.btnRead.UseVisualStyleBackColor = true;
-		this.btnRead.Click += new System.EventHandler(btnReadTheme_Click);
-		this.btnRead.Font = new System.Drawing.Font("Arial", 9f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-		this.btnWrite.Location = new System.Drawing.Point(653, 12);
-		this.btnWrite.Name = "btnWrite";
-		this.btnWrite.Size = new System.Drawing.Size(113, 23);
-		this.btnWrite.TabIndex = 7;
-		this.btnWrite.Text = "Write to radio";
-		this.btnWrite.UseVisualStyleBackColor = true;
-		this.btnWrite.Click += new System.EventHandler(btnWriteTheme_Click);
-		this.btnWrite.Font = new System.Drawing.Font("Arial", 9f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-		this.txtMessage.Location = new System.Drawing.Point(12, 54);
-		this.txtMessage.Name = "txtMessage";
-		this.txtMessage.Size = new System.Drawing.Size(754, 18);
-		this.txtMessage.TabIndex = 8;
-		this.txtMessage.Font = new System.Drawing.Font("Arial", 9f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-		this.progressBar1.Location = new System.Drawing.Point(15, 75);
-		this.progressBar1.Name = "progressBar1";
-		this.progressBar1.Size = new System.Drawing.Size(751, 12);
-		this.progressBar1.TabIndex = 9;
-		this.gbColours.Location = new System.Drawing.Point(15, 95);
-		this.gbColours.Name = "gbColours";
-		this.gbColours.Size = new System.Drawing.Size(751, 420);
-		this.gbColours.TabIndex = 10;
-		this.gbColours.TabStop = false;
-		this.gbColours.Text = "Colours";
-		this.gbColours.Font = new System.Drawing.Font("Arial", 9f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-		this.btnOK.Location = new System.Drawing.Point(694, 525);
-		this.btnOK.Name = "btnOK";
-		this.btnOK.Size = new System.Drawing.Size(72, 23);
-		this.btnOK.TabIndex = 12;
-		this.btnOK.Text = "OK";
-		this.btnOK.UseVisualStyleBackColor = true;
-		this.btnOK.Click += new System.EventHandler(btnOK_Click);
-		this.btnOK.Font = new System.Drawing.Font("Arial", 9f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-		this.grpDaytimeTheme.AccessibleDescription = "Daytime";
-		this.grpDaytimeTheme.AccessibleName = "Daytime";
-		this.grpDaytimeTheme.Controls.Add(this.rbDaytimeDay);
-		this.grpDaytimeTheme.Controls.Add(this.rbDaytimeNight);
-		this.grpDaytimeTheme.Location = new System.Drawing.Point(276, 4);
-		this.grpDaytimeTheme.Name = "grpDaytimeTheme";
-		this.grpDaytimeTheme.Size = new System.Drawing.Size(226, 45);
-		this.grpDaytimeTheme.TabIndex = 3;
-		this.grpDaytimeTheme.TabStop = true;
-		this.grpDaytimeTheme.Text = "Daytime";
-		this.grpDaytimeTheme.Font = new System.Drawing.Font("Arial", 9f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-		base.AutoScaleDimensions = new System.Drawing.SizeF(6f, 13f);
-		base.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-		base.ClientSize = new System.Drawing.Size(778, 560);
-		base.Controls.Add(this.gbColours);
-		base.Controls.Add(this.progressBar1);
-		base.Controls.Add(this.txtMessage);
-		base.Controls.Add(this.btnRead);
-		base.Controls.Add(this.btnWrite);
-		base.Controls.Add(this.btnOK);
-		base.Controls.Add(this.btnSave);
-		base.Controls.Add(this.btnOpen);
-		base.Controls.Add(this.grpDaytimeTheme);
-		base.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-		base.MaximizeBox = false;
-		base.MinimizeBox = false;
-		base.Name = "ThemeForm";
-		this.Text = "Theme editor";
-		this.grpDaytimeTheme.ResumeLayout(false);
-		this.grpDaytimeTheme.PerformLayout();
-		base.ResumeLayout(false);
+            this.btnOpen = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.btnWrite = new System.Windows.Forms.Button();
+            this.btnRead = new System.Windows.Forms.Button();
+            this.txtMessage = new System.Windows.Forms.Label();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.gbColours = new System.Windows.Forms.GroupBox();
+            this.btnOK = new System.Windows.Forms.Button();
+            this.rbDaytimeDay = new System.Windows.Forms.RadioButton();
+            this.rbDaytimeNight = new System.Windows.Forms.RadioButton();
+            this.grpDaytimeTheme = new System.Windows.Forms.GroupBox();
+            this.grpDaytimeTheme.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // btnOpen
+            // 
+            this.btnOpen.BackColor = System.Drawing.SystemColors.Control;
+            this.btnOpen.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOpen.Location = new System.Drawing.Point(12, 12);
+            this.btnOpen.Name = "btnOpen";
+            this.btnOpen.Size = new System.Drawing.Size(180, 23);
+            this.btnOpen.TabIndex = 1;
+            this.btnOpen.Text = "Open theme file";
+            this.btnOpen.UseVisualStyleBackColor = false;
+            this.btnOpen.Click += new System.EventHandler(this.btnOpen_Click);
+            // 
+            // btnSave
+            // 
+            this.btnSave.BackColor = System.Drawing.SystemColors.Control;
+            this.btnSave.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.Location = new System.Drawing.Point(198, 12);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(201, 23);
+            this.btnSave.TabIndex = 2;
+            this.btnSave.Text = "Save theme file";
+            this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // btnWrite
+            // 
+            this.btnWrite.BackColor = System.Drawing.SystemColors.Control;
+            this.btnWrite.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnWrite.Location = new System.Drawing.Point(198, 46);
+            this.btnWrite.Name = "btnWrite";
+            this.btnWrite.Size = new System.Drawing.Size(201, 23);
+            this.btnWrite.TabIndex = 7;
+            this.btnWrite.Text = "Write to radio";
+            this.btnWrite.UseVisualStyleBackColor = false;
+            this.btnWrite.Click += new System.EventHandler(this.btnWriteTheme_Click);
+            // 
+            // btnRead
+            // 
+            this.btnRead.BackColor = System.Drawing.SystemColors.Control;
+            this.btnRead.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRead.Location = new System.Drawing.Point(12, 46);
+            this.btnRead.Name = "btnRead";
+            this.btnRead.Size = new System.Drawing.Size(180, 23);
+            this.btnRead.TabIndex = 6;
+            this.btnRead.Text = "Read from radio";
+            this.btnRead.UseVisualStyleBackColor = false;
+            this.btnRead.Click += new System.EventHandler(this.btnReadTheme_Click);
+            // 
+            // txtMessage
+            // 
+            this.txtMessage.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMessage.Location = new System.Drawing.Point(12, 529);
+            this.txtMessage.Name = "txtMessage";
+            this.txtMessage.Size = new System.Drawing.Size(754, 18);
+            this.txtMessage.TabIndex = 8;
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(15, 75);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(751, 12);
+            this.progressBar1.TabIndex = 9;
+            // 
+            // gbColours
+            // 
+            this.gbColours.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbColours.Location = new System.Drawing.Point(15, 95);
+            this.gbColours.Name = "gbColours";
+            this.gbColours.Size = new System.Drawing.Size(751, 420);
+            this.gbColours.TabIndex = 10;
+            this.gbColours.TabStop = false;
+            this.gbColours.Text = "Colours";
+            // 
+            // btnOK
+            // 
+            this.btnOK.BackColor = System.Drawing.SystemColors.Control;
+            this.btnOK.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOK.Location = new System.Drawing.Point(694, 525);
+            this.btnOK.Name = "btnOK";
+            this.btnOK.Size = new System.Drawing.Size(72, 23);
+            this.btnOK.TabIndex = 12;
+            this.btnOK.Text = "OK";
+            this.btnOK.UseVisualStyleBackColor = false;
+            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
+            // 
+            // rbDaytimeDay
+            // 
+            this.rbDaytimeDay.AccessibleDescription = "DayTheme";
+            this.rbDaytimeDay.AccessibleName = "Day Theme";
+            this.rbDaytimeDay.AutoSize = true;
+            this.rbDaytimeDay.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbDaytimeDay.Location = new System.Drawing.Point(10, 19);
+            this.rbDaytimeDay.Name = "rbDaytimeDay";
+            this.rbDaytimeDay.Size = new System.Drawing.Size(88, 19);
+            this.rbDaytimeDay.TabIndex = 4;
+            this.rbDaytimeDay.TabStop = true;
+            this.rbDaytimeDay.Tag = DMR.OpenGD77Form.CustomDataType.THEME_DAY_TYPE;
+            this.rbDaytimeDay.Text = "Day Theme";
+            this.rbDaytimeDay.UseVisualStyleBackColor = true;
+            this.rbDaytimeDay.CheckedChanged += new System.EventHandler(this.Daytime_CheckedChanged);
+            // 
+            // rbDaytimeNight
+            // 
+            this.rbDaytimeNight.AccessibleDescription = "DayTheme";
+            this.rbDaytimeNight.AccessibleName = "Night Theme";
+            this.rbDaytimeNight.AutoSize = true;
+            this.rbDaytimeNight.Location = new System.Drawing.Point(120, 19);
+            this.rbDaytimeNight.Name = "rbDaytimeNight";
+            this.rbDaytimeNight.Size = new System.Drawing.Size(96, 19);
+            this.rbDaytimeNight.TabIndex = 5;
+            this.rbDaytimeNight.TabStop = true;
+            this.rbDaytimeNight.Tag = DMR.OpenGD77Form.CustomDataType.THEME_NIGHT_TYPE;
+            this.rbDaytimeNight.Text = "Night Theme";
+            this.rbDaytimeNight.UseVisualStyleBackColor = true;
+            this.rbDaytimeNight.CheckedChanged += new System.EventHandler(this.Daytime_CheckedChanged);
+            // 
+            // grpDaytimeTheme
+            // 
+            this.grpDaytimeTheme.AccessibleDescription = "Daytime";
+            this.grpDaytimeTheme.AccessibleName = "Daytime";
+            this.grpDaytimeTheme.Controls.Add(this.rbDaytimeDay);
+            this.grpDaytimeTheme.Controls.Add(this.rbDaytimeNight);
+            this.grpDaytimeTheme.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpDaytimeTheme.Location = new System.Drawing.Point(540, 12);
+            this.grpDaytimeTheme.Name = "grpDaytimeTheme";
+            this.grpDaytimeTheme.Size = new System.Drawing.Size(226, 45);
+            this.grpDaytimeTheme.TabIndex = 3;
+            this.grpDaytimeTheme.TabStop = false;
+            this.grpDaytimeTheme.Text = "Daytime";
+            // 
+            // ThemeForm
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(778, 560);
+            this.Controls.Add(this.btnOK);
+            this.Controls.Add(this.gbColours);
+            this.Controls.Add(this.progressBar1);
+            this.Controls.Add(this.txtMessage);
+            this.Controls.Add(this.btnRead);
+            this.Controls.Add(this.btnWrite);
+            this.Controls.Add(this.btnSave);
+            this.Controls.Add(this.btnOpen);
+            this.Controls.Add(this.grpDaytimeTheme);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "ThemeForm";
+            this.Text = "Theme editor";
+            this.Load += new System.EventHandler(this.ThemeForm_Load);
+            this.grpDaytimeTheme.ResumeLayout(false);
+            this.grpDaytimeTheme.PerformLayout();
+            this.ResumeLayout(false);
+
 	}
+
+    private void ThemeForm_Load(object sender, EventArgs e)
+    {
+        int num = System.Convert.ToInt32(IniFileUtils.getProfileStringWithDefault("ThemeEditor", "LastDaytimeDaySelected", "1"));
+        rbDaytimeDay.Checked = num == 1;
+        rbDaytimeNight.Checked = num != 1;
+    }
 }

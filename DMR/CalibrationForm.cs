@@ -560,6 +560,14 @@ public class CalibrationForm : Form
 
 	private void onFormShown(object sender, EventArgs e)
 	{
+		if (MainForm.RadioType == MainForm.RadioTypeEnum.RadioTypeSTM32)
+		{
+			this.Height = 80;
+		}
+		else
+		{
+			this.Height = 700;
+		}
 		MessageBox.Show(StringsDict["This_feature_is_highly_experimental"], StringsDict["Warning"]);
 	}
 
@@ -660,114 +668,152 @@ public class CalibrationForm : Form
 
 	private void InitializeComponent()
 	{
-		this.tabCtlBands = new System.Windows.Forms.TabControl();
-		this.tabVHF = new System.Windows.Forms.TabPage();
-		this.calibrationBandControlVHF = new DMR.CalibrationBandControl();
-		this.tabUHF = new System.Windows.Forms.TabPage();
-		this.calibrationBandControlUHF = new DMR.CalibrationBandControl();
-		this.btnWrite = new System.Windows.Forms.Button();
-		this.btnReadFile = new System.Windows.Forms.Button();
-		this.btnReadFromRadio = new System.Windows.Forms.Button();
-		this.lblMessage = new System.Windows.Forms.Label();
-		this.btnSaveCalibration = new System.Windows.Forms.Button();
-		this.tabCtlBands.SuspendLayout();
-		this.tabVHF.SuspendLayout();
-		this.tabUHF.SuspendLayout();
-		base.SuspendLayout();
-		this.tabCtlBands.Controls.Add(this.tabVHF);
-		this.tabCtlBands.Controls.Add(this.tabUHF);
-		this.tabCtlBands.Location = new System.Drawing.Point(12, 85);
-		this.tabCtlBands.Name = "tabCtlBands";
-		this.tabCtlBands.SelectedIndex = 0;
-		this.tabCtlBands.Size = new System.Drawing.Size(921, 524);
-		this.tabCtlBands.TabIndex = 0;
-		this.tabCtlBands.Visible = false;
-		this.tabVHF.Controls.Add(this.calibrationBandControlVHF);
-		this.tabVHF.Location = new System.Drawing.Point(4, 22);
-		this.tabVHF.Name = "tabVHF";
-		this.tabVHF.Padding = new System.Windows.Forms.Padding(3);
-		this.tabVHF.Size = new System.Drawing.Size(913, 498);
-		this.tabVHF.TabIndex = 0;
-		this.tabVHF.Text = "VHF";
-		this.tabVHF.UseVisualStyleBackColor = true;
-		this.calibrationBandControlVHF.Font = new System.Drawing.Font("Arial", 8f);
-		this.calibrationBandControlVHF.Location = new System.Drawing.Point(5, 5);
-		this.calibrationBandControlVHF.Name = "calibrationBandControlVHF";
-		this.calibrationBandControlVHF.Size = new System.Drawing.Size(880, 487);
-		this.calibrationBandControlVHF.TabIndex = 0;
-		this.calibrationBandControlVHF.Type = "VHF";
-		this.tabUHF.Controls.Add(this.calibrationBandControlUHF);
-		this.tabUHF.Location = new System.Drawing.Point(4, 22);
-		this.tabUHF.Name = "tabUHF";
-		this.tabUHF.Padding = new System.Windows.Forms.Padding(3);
-		this.tabUHF.Size = new System.Drawing.Size(913, 498);
-		this.tabUHF.TabIndex = 1;
-		this.tabUHF.Text = "UHF";
-		this.tabUHF.UseVisualStyleBackColor = true;
-		this.calibrationBandControlUHF.Location = new System.Drawing.Point(5, 5);
-		this.calibrationBandControlUHF.Name = "calibrationBandControlUHF";
-		this.calibrationBandControlUHF.Size = new System.Drawing.Size(882, 487);
-		this.calibrationBandControlUHF.TabIndex = 0;
-		this.calibrationBandControlUHF.Type = "UHF";
-		this.btnWrite.Font = new System.Drawing.Font("Arial", 8f);
-		this.btnWrite.Location = new System.Drawing.Point(172, 12);
-		this.btnWrite.Name = "btnWrite";
-		this.btnWrite.Size = new System.Drawing.Size(102, 23);
-		this.btnWrite.TabIndex = 1;
-		this.btnWrite.Text = "Write to radio";
-		this.btnWrite.UseVisualStyleBackColor = true;
-		this.btnWrite.Visible = false;
-		this.btnWrite.Click += new System.EventHandler(btnWrite_Click);
-		this.btnReadFile.Font = new System.Drawing.Font("Arial", 8f);
-		this.btnReadFile.Location = new System.Drawing.Point(815, 12);
-		this.btnReadFile.Name = "btnReadFile";
-		this.btnReadFile.Size = new System.Drawing.Size(123, 23);
-		this.btnReadFile.TabIndex = 1;
-		this.btnReadFile.Text = "Open Calibration file";
-		this.btnReadFile.UseVisualStyleBackColor = true;
-		this.btnReadFile.Click += new System.EventHandler(btnReadFile_Click);
-		this.btnReadFromRadio.Font = new System.Drawing.Font("Arial", 8f);
-		this.btnReadFromRadio.Location = new System.Drawing.Point(12, 12);
-		this.btnReadFromRadio.Name = "btnReadFromRadio";
-		this.btnReadFromRadio.Size = new System.Drawing.Size(154, 23);
-		this.btnReadFromRadio.TabIndex = 1;
-		this.btnReadFromRadio.Text = "Read calibration from radio";
-		this.btnReadFromRadio.UseVisualStyleBackColor = true;
-		this.btnReadFromRadio.Click += new System.EventHandler(btnReadFromRadio_Click);
-		this.lblMessage.Font = new System.Drawing.Font("Arial", 8f, System.Drawing.FontStyle.Bold);
-		this.lblMessage.Location = new System.Drawing.Point(301, 12);
-		this.lblMessage.Name = "lblMessage";
-		this.lblMessage.Size = new System.Drawing.Size(415, 35);
-		this.lblMessage.TabIndex = 2;
-		this.lblMessage.Text = "Please read the calibration data from the radio or open a calibration file";
-		this.btnSaveCalibration.Font = new System.Drawing.Font("Arial", 8f);
-		this.btnSaveCalibration.Location = new System.Drawing.Point(815, 41);
-		this.btnSaveCalibration.Name = "btnSaveCalibration";
-		this.btnSaveCalibration.Size = new System.Drawing.Size(123, 23);
-		this.btnSaveCalibration.TabIndex = 1;
-		this.btnSaveCalibration.Text = "Save Calibration file";
-		this.btnSaveCalibration.UseVisualStyleBackColor = true;
-		this.btnSaveCalibration.Visible = false;
-		this.btnSaveCalibration.Click += new System.EventHandler(btnSaveCalibration_Click);
-		base.AutoScaleDimensions = new System.Drawing.SizeF(6f, 13f);
-		base.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-		base.ClientSize = new System.Drawing.Size(945, 661);
-		base.Controls.Add(this.lblMessage);
-		base.Controls.Add(this.btnReadFromRadio);
-		base.Controls.Add(this.btnSaveCalibration);
-		base.Controls.Add(this.btnReadFile);
-		base.Controls.Add(this.btnWrite);
-		base.Controls.Add(this.tabCtlBands);
-		base.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-		base.MaximizeBox = false;
-		base.MinimizeBox = false;
-		base.Name = "CalibrationForm";
-		this.Text = "Calibration";
-		base.Load += new System.EventHandler(onFormLoad);
-		base.Shown += new System.EventHandler(onFormShown);
-		this.tabCtlBands.ResumeLayout(false);
-		this.tabVHF.ResumeLayout(false);
-		this.tabUHF.ResumeLayout(false);
-		base.ResumeLayout(false);
+            this.tabCtlBands = new System.Windows.Forms.TabControl();
+            this.tabVHF = new System.Windows.Forms.TabPage();
+            this.tabUHF = new System.Windows.Forms.TabPage();
+            this.btnWrite = new System.Windows.Forms.Button();
+            this.btnReadFile = new System.Windows.Forms.Button();
+            this.btnReadFromRadio = new System.Windows.Forms.Button();
+            this.lblMessage = new System.Windows.Forms.Label();
+            this.btnSaveCalibration = new System.Windows.Forms.Button();
+            this.calibrationBandControlVHF = new DMR.CalibrationBandControl();
+            this.calibrationBandControlUHF = new DMR.CalibrationBandControl();
+            this.tabCtlBands.SuspendLayout();
+            this.tabVHF.SuspendLayout();
+            this.tabUHF.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // tabCtlBands
+            // 
+            this.tabCtlBands.Controls.Add(this.tabVHF);
+            this.tabCtlBands.Controls.Add(this.tabUHF);
+            this.tabCtlBands.Location = new System.Drawing.Point(12, 85);
+            this.tabCtlBands.Name = "tabCtlBands";
+            this.tabCtlBands.SelectedIndex = 0;
+            this.tabCtlBands.Size = new System.Drawing.Size(921, 524);
+            this.tabCtlBands.TabIndex = 0;
+            // 
+            // tabVHF
+            // 
+            this.tabVHF.Controls.Add(this.calibrationBandControlVHF);
+            this.tabVHF.Location = new System.Drawing.Point(4, 22);
+            this.tabVHF.Name = "tabVHF";
+            this.tabVHF.Padding = new System.Windows.Forms.Padding(3);
+            this.tabVHF.Size = new System.Drawing.Size(913, 498);
+            this.tabVHF.TabIndex = 0;
+            this.tabVHF.Text = "VHF";
+            this.tabVHF.UseVisualStyleBackColor = true;
+            // 
+            // tabUHF
+            // 
+            this.tabUHF.Controls.Add(this.calibrationBandControlUHF);
+            this.tabUHF.Location = new System.Drawing.Point(4, 22);
+            this.tabUHF.Name = "tabUHF";
+            this.tabUHF.Padding = new System.Windows.Forms.Padding(3);
+            this.tabUHF.Size = new System.Drawing.Size(913, 498);
+            this.tabUHF.TabIndex = 1;
+            this.tabUHF.Text = "UHF";
+            this.tabUHF.UseVisualStyleBackColor = true;
+            // 
+            // btnWrite
+            // 
+            this.btnWrite.BackColor = System.Drawing.SystemColors.Control;
+            this.btnWrite.Font = new System.Drawing.Font("Arial", 8F);
+            this.btnWrite.Location = new System.Drawing.Point(172, 12);
+            this.btnWrite.Name = "btnWrite";
+            this.btnWrite.Size = new System.Drawing.Size(102, 23);
+            this.btnWrite.TabIndex = 1;
+            this.btnWrite.Text = "Write to radio";
+            this.btnWrite.UseVisualStyleBackColor = false;
+            this.btnWrite.Visible = false;
+            this.btnWrite.Click += new System.EventHandler(this.btnWrite_Click);
+            // 
+            // btnReadFile
+            // 
+            this.btnReadFile.BackColor = System.Drawing.SystemColors.Control;
+            this.btnReadFile.Font = new System.Drawing.Font("Arial", 8F);
+            this.btnReadFile.Location = new System.Drawing.Point(815, 12);
+            this.btnReadFile.Name = "btnReadFile";
+            this.btnReadFile.Size = new System.Drawing.Size(123, 23);
+            this.btnReadFile.TabIndex = 1;
+            this.btnReadFile.Text = "Open Calibration file";
+            this.btnReadFile.UseVisualStyleBackColor = false;
+            this.btnReadFile.Click += new System.EventHandler(this.btnReadFile_Click);
+            // 
+            // btnReadFromRadio
+            // 
+            this.btnReadFromRadio.BackColor = System.Drawing.SystemColors.Control;
+            this.btnReadFromRadio.Font = new System.Drawing.Font("Arial", 8F);
+            this.btnReadFromRadio.Location = new System.Drawing.Point(12, 12);
+            this.btnReadFromRadio.Name = "btnReadFromRadio";
+            this.btnReadFromRadio.Size = new System.Drawing.Size(154, 23);
+            this.btnReadFromRadio.TabIndex = 1;
+            this.btnReadFromRadio.Text = "Read calibration from radio";
+            this.btnReadFromRadio.UseVisualStyleBackColor = false;
+            this.btnReadFromRadio.Click += new System.EventHandler(this.btnReadFromRadio_Click);
+            // 
+            // lblMessage
+            // 
+            this.lblMessage.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
+            this.lblMessage.Location = new System.Drawing.Point(301, 12);
+            this.lblMessage.Name = "lblMessage";
+            this.lblMessage.Size = new System.Drawing.Size(415, 35);
+            this.lblMessage.TabIndex = 2;
+            this.lblMessage.Text = "Please read the calibration data from the radio or open a calibration file";
+            // 
+            // btnSaveCalibration
+            // 
+            this.btnSaveCalibration.BackColor = System.Drawing.SystemColors.Control;
+            this.btnSaveCalibration.Font = new System.Drawing.Font("Arial", 8F);
+            this.btnSaveCalibration.Location = new System.Drawing.Point(815, 41);
+            this.btnSaveCalibration.Name = "btnSaveCalibration";
+            this.btnSaveCalibration.Size = new System.Drawing.Size(123, 23);
+            this.btnSaveCalibration.TabIndex = 1;
+            this.btnSaveCalibration.Text = "Save Calibration file";
+            this.btnSaveCalibration.UseVisualStyleBackColor = false;
+            this.btnSaveCalibration.Visible = false;
+            this.btnSaveCalibration.Click += new System.EventHandler(this.btnSaveCalibration_Click);
+            // 
+            // calibrationBandControlVHF
+            // 
+            this.calibrationBandControlVHF.Font = new System.Drawing.Font("Arial", 8F);
+            this.calibrationBandControlVHF.Location = new System.Drawing.Point(5, 5);
+            this.calibrationBandControlVHF.Name = "calibrationBandControlVHF";
+            this.calibrationBandControlVHF.Size = new System.Drawing.Size(880, 487);
+            this.calibrationBandControlVHF.TabIndex = 0;
+            this.calibrationBandControlVHF.Type = "VHF";
+            // 
+            // calibrationBandControlUHF
+            // 
+            this.calibrationBandControlUHF.Location = new System.Drawing.Point(5, 5);
+            this.calibrationBandControlUHF.Name = "calibrationBandControlUHF";
+            this.calibrationBandControlUHF.Size = new System.Drawing.Size(882, 487);
+            this.calibrationBandControlUHF.TabIndex = 0;
+            this.calibrationBandControlUHF.Type = "UHF";
+            // 
+            // CalibrationForm
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(945, 661);
+            this.Controls.Add(this.lblMessage);
+            this.Controls.Add(this.btnReadFromRadio);
+            this.Controls.Add(this.btnSaveCalibration);
+            this.Controls.Add(this.btnReadFile);
+            this.Controls.Add(this.btnWrite);
+            this.Controls.Add(this.tabCtlBands);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "CalibrationForm";
+            this.Text = "Calibration";
+            this.Load += new System.EventHandler(this.onFormLoad);
+            this.Shown += new System.EventHandler(this.onFormShown);
+            this.tabCtlBands.ResumeLayout(false);
+            this.tabVHF.ResumeLayout(false);
+            this.tabUHF.ResumeLayout(false);
+            this.ResumeLayout(false);
+
 	}
 }

@@ -1072,15 +1072,15 @@ internal class Settings
 		}
 	}
 
-	public static bool smethod_50(TreeNode treeNode_0, string string_0)
+	public static bool nodeNameExistsOrEmpty(TreeNode targetNode, string inputString)
 	{
-		if (string.IsNullOrEmpty(string_0))
+		if (string.IsNullOrEmpty(inputString))
 		{
 			return true;
 		}
-		foreach (TreeNode node in treeNode_0.Parent.Nodes)
+		foreach (TreeNode node in targetNode.Parent.Nodes)
 		{
-			if (node != treeNode_0 && node.Text.Trim() == string_0.Trim())
+			if (node != targetNode && node.Text == inputString)
 			{
 				return true;
 			}

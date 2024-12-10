@@ -1226,7 +1226,7 @@ public class APRSForm : DockContent, IDisp
 		txtName.Text = txtName.Text.Trim();
 		if (Node.Text != txtName.Text)
 		{
-			if (Settings.smethod_50(Node, txtName.Text))
+			if (Settings.nodeNameExistsOrEmpty(Node, txtName.Text))
 			{
 				txtName.Text = Node.Text;
 			}

@@ -73,3 +73,4 @@ C:\Users\maste\Documents\GitHub\OpenGD77CPS\obj\Debug\net48\DMR.ChannelForm.reso
 C:\Users\maste\Documents\GitHub\OpenGD77CPS\obj\Debug\net48\DMR.RxGroupListForm.resources
 C:\Users\maste\Documents\GitHub\OpenGD77CPS\obj\Debug\net48\DMR.ZoneForm.resources
 C:\Users\maste\Documents\GitHub\OpenGD77CPS\obj\Debug\net48\DMR.MainForm.resources
+C:\Users\maste\Documents\GitHub\OpenGD77CPS\obj\Debug\net48\DMR.DMRIDForm.resources

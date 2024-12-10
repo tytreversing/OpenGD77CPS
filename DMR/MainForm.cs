@@ -2212,7 +2212,7 @@ public class MainForm : Form
 			{
 				return;
 			}
-			if (Settings.smethod_50(e.Node, e.Label))
+			if (Settings.nodeNameExistsOrEmpty(e.Node, e.Label))
 			{
 				MessageBox.Show("Name exists");
 				e.CancelEdit = true;

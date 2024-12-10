@@ -621,15 +621,24 @@
 			<Control Id="lblPwd" Text="Password" />
 		</Controls>
 	</PowerPwdForm>
-	<RxGroupListForm Text="TG List">
+	<RxGroupListForm Text="Списки групп">
 		<Controls>
-			<Control Id="btnDown" Text="Down" />
-			<Control Id="btnUp" Text="Up" />
-			<Control Id="grpSelected" Text="Member" />
-			<Control Id="btnAdd" Text="Add" />
-			<Control Id="grpUnselected" Text="Available" />
-			<Control Id="btnDel" Text="Delete" />
-			<Control Id="lblName" Text="Name" />
+			<Control Id="btnDown" Text="Вниз" />
+			<Control Id="btnUp" Text="Вверх" />
+			<Control Id="grpSelected" Text="Включены" />
+			<Control Id="btnAdd" Text="Добавить" />
+			<Control Id="grpUnselected" Text="Доступны" />
+			<Control Id="btnDel" Text="Удалить" />
+			<Control Id="lblName" Text="Название" />
+      <Control Id="tsrGrpList" Text="">
+        <ToolStripItem Id="tslblInfo" Text="" />
+        <ToolStripItem Id="tsbtnFirst" Text="Первый" />
+        <ToolStripItem Id="tsbtnPrev" Text="Предыдущий" />
+        <ToolStripItem Id="tsbtnNext" Text="Следующий" />
+        <ToolStripItem Id="tsbtnLast" Text="Последний" />
+        <ToolStripItem Id="tsbtnAdd" Text="Добавить" />
+        <ToolStripItem Id="tsbtnDel" Text="Удалить" />
+      </Control>
 		</Controls>
 	</RxGroupListForm>
 	<SignalingBasicForm Text="Signaling Basic">
@@ -845,7 +854,6 @@
 						<ControlItem Id="grpSMeter" Text=""/>
 						<ControlItem Id="lblSMeterLowEnd" Text=""/>
 						<ControlItem Id="lblSMeterHighEnd" Text=""/>
-
 						<ControlItem Id="lblReferenceOscTuning" Text=""/>
 						<ControlItem Id="lblReceiveAGCTarget" Text=""/>
 						<ControlItem Id="lblAnalogMicGain" Text=""/>
@@ -979,6 +987,8 @@
 			<Item Id="RADIO_DISPLAY_Restoring" Text="Восстановление" />
 			<Item Id="RADIO_DISPLAY_Reading" Text="Чтение" />
 			<Item Id="RADIO_DISPLAY_Writing" Text="Запись" />
+      <Item Id="Theme" Text="темы" />
+      <Item Id="Colour_Conversion_Error" Text="Ошибка преобразования цвета!" />
 			<Item Id="Reading_EEPROM" Text="Чтение EEPROM" />
 			<Item Id="Reading_Flash" Text="Чтение флеша" />
 			<Item Id="Reading_NMEA" Text="Чтение NMEA" />
@@ -989,12 +999,12 @@
 			<Item Id="Calibration_data_could_not_be_found._Please_update_your_firmware" Text="Не найдены данные калибровок. Обновите прошивку!" />
 			<Item Id="There_has_been_an_error._Refer_to_the_last_status_message_that_was_displayed" Text="Произошла ошибка!" />
 			<Item Id="EEPROM_files" Text="Файлы EEPROM" />
-			<Item Id="Flash_files" Text="Flash files" />
+			<Item Id="Flash_files" Text="Файлы флеш-памяти" />
 			<Item Id="Restore_complete" Text="Восстановление завершено!" />
 			<Item Id="Read_Codeplug_complete" Text="Кодплаг считан!" />
 			<Item Id="Screengrab_files" Text="Скриншоты" />
 			<Item Id="Error_while_reading_flash" Text="Ошибка при чтении флеш-памяти!" />
-			<Item Id="Reading_Calibration" Text="Reading Calibration" />
+			<Item Id="Reading_Calibration" Text="Чтение калибровок" />
 			<Item Id="Error_while_reading_calibration" Text="Error while reading calibration" />
 			<Item Id="Error_while_reading_EEPROM" Text="Error while reading EEPROM" />
 			<Item Id="Restoring_Flash" Text="Restoring Flash" />

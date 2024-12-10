@@ -2670,7 +2670,7 @@ public class ChannelForm : DockContent, IDisp
         txtName.Text = txtName.Text.Trim();
         if (Node.Text != txtName.Text)
         {
-            if (Settings.smethod_50(Node, txtName.Text))
+            if (Settings.nodeNameExistsOrEmpty(Node, txtName.Text))
             {
                 MessageBox.Show(Settings.dicCommon[Settings.SZ_NAME_EXIST_NAME]);
                 txtName.Text = Node.Text;

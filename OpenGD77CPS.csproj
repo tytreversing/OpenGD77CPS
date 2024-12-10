@@ -22,6 +22,7 @@
     <EmbeddedResource Remove="DMR.DMRIDForm.resx" />
     <EmbeddedResource Remove="DMR\ChannelForm.resx" />
     <EmbeddedResource Remove="DMR\MainForm.resx" />
+    <EmbeddedResource Remove="DMR\RxGroupListForm.resx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="DMR.DMRIDForm.resx">
@@ -30,6 +31,7 @@
     </None>
     <None Include="DMR\ChannelForm.resx" />
     <None Include="DMR\MainForm.resx" />
+    <None Include="DMR\RxGroupListForm.resx" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Xml" />

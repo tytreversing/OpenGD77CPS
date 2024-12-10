@@ -1517,10 +1517,10 @@ public class ZoneForm : DockContent, IDisp
 
 	private void txtName_Leave(object sender, EventArgs e)
 	{
-		txtName.Text = txtName.Text.Trim();
+		//txtName.Text = txtName.Text.Trim();
 		if (Node.Text != txtName.Text)
 		{
-			if (Settings.smethod_50(Node, txtName.Text))
+			if (Settings.nodeNameExistsOrEmpty(Node, txtName.Text))
 			{
 				txtName.Text = Node.Text;
 			}

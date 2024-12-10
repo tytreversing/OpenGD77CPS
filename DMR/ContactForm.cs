@@ -1107,7 +1107,7 @@ public class ContactForm : DockContent, IDisp
 
 	public void SaveData()
 	{
-		if (Settings.smethod_50(Node, txtCallsign.Text))
+		if (Settings.nodeNameExistsOrEmpty(Node, txtCallsign.Text))
 		{
 			return;
 		}
@@ -1292,7 +1292,7 @@ public class ContactForm : DockContent, IDisp
 		txtCallsign.Text = txtCallsign.Text.Trim();
 		if (Node.Text != txtCallsign.Text)
 		{
-			if (Settings.smethod_50(Node, txtCallsign.Text))
+			if (Settings.nodeNameExistsOrEmpty(Node, txtCallsign.Text))
 			{
 				MessageBox.Show(Settings.dicCommon["ContactNameDuplicate"]);
 				return;

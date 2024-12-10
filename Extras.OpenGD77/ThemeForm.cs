@@ -417,7 +417,7 @@ public class ThemeForm : Form
 				OpenGD77Form.sendCommand(commPort, 1);
 				OpenGD77Form.sendCommand(commPort, 2, 0, 0, 3, 1, 0, OpenGD77StringsDict["RADIO_DISPLAY_CPS"]);
 				OpenGD77Form.sendCommand(commPort, 2, 0, 16, 3, 1, 0, OpenGD77StringsDict["RADIO_DISPLAY_Reading"]);
-				OpenGD77Form.sendCommand(commPort, 2, 0, 32, 3, 1, 0, ThemeStringsDict["Theme"]);
+				OpenGD77Form.sendCommand(commPort, 2, 0, 32, 3, 1, 0, OpenGD77StringsDict["Theme"]);
 				OpenGD77Form.sendCommand(commPort, 3);
 				OpenGD77Form.sendCommand(commPort, 6, 3);
 				openGD77CommsTransferData.mode = OpenGD77CommsTransferData.CommsDataMode.DataModeReadFlash;
@@ -451,7 +451,7 @@ public class ThemeForm : Form
 				OpenGD77Form.sendCommand(commPort, 1);
 				OpenGD77Form.sendCommand(commPort, 2, 0, 0, 3, 1, 0, OpenGD77StringsDict["RADIO_DISPLAY_CPS"]);
 				OpenGD77Form.sendCommand(commPort, 2, 0, 16, 3, 1, 0, OpenGD77StringsDict["RADIO_DISPLAY_Writing"]);
-				OpenGD77Form.sendCommand(commPort, 2, 0, 32, 3, 1, 0, "Theme");
+				OpenGD77Form.sendCommand(commPort, 2, 0, 32, 3, 1, 0, OpenGD77StringsDict["Theme"]);
 				OpenGD77Form.sendCommand(commPort, 3);
 				OpenGD77Form.sendCommand(commPort, 6, 4);
 				openGD77CommsTransferData.mode = OpenGD77CommsTransferData.CommsDataMode.DataModeWriteFlash;
@@ -464,7 +464,7 @@ public class ThemeForm : Form
 					{
 						if (!OpenGD77Form.convertThemeColours565(ref openGD77CommsTransferData.dataBuff, OpenGD77Form.CUSTOM_DATA_HEADER_SIZE, checkForCustomDataHeader: false))
 						{
-							MessageBox.Show("Colour convertion failure");
+							MessageBox.Show(OpenGD77StringsDict["Colour_Conversion_Error"]);
 						}
 					}
 				}

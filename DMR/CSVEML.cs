@@ -813,7 +813,7 @@ internal class CSVEML
 					text2 = "AllCall";
 				}
 				string text3 = (((ContactTS[i] & 1) != 0) ? "Disabled" : (((ContactTS[i] & 2) == 0) ? "1" : "2"));
-				text = text + NumberFormatting(ContactName[i]) + writeSeparator + ContactID[i] + writeSeparator + text2 + writeSeparator + text3 + Environment.NewLine;
+				text = text + NumberFormatting((ContactName[i])) + writeSeparator + ContactID[i] + writeSeparator + text2 + writeSeparator + text3 + Environment.NewLine;
 			}
 		}
 		try
@@ -1358,10 +1358,11 @@ internal class CSVEML
 		return true;
 	}
 
+
+
 	private static bool SaveChannelsCSV()
 	{
-		Encoding encodingIn = Encoding.GetEncoding("windows-1251");
-        Encoding encodingOut = Encoding.GetEncoding("utf-8");
+		
         string path = CSVName + "Channels.csv";
 		string text = "Channel Number" + writeSeparator + "Channel Name" + writeSeparator + "Channel Type" + writeSeparator + "Rx Frequency" + writeSeparator + "Tx Frequency" + writeSeparator + "Bandwidth (kHz)" + writeSeparator + "Colour Code" + writeSeparator + "Timeslot" + writeSeparator + "Contact" + writeSeparator + "TG List" + writeSeparator + "DMR ID" + writeSeparator + "TS1_TA_Tx" + writeSeparator + "TS2_TA_Tx ID" + writeSeparator + "RX Tone" + writeSeparator + "TX Tone" + writeSeparator + "Squelch" + writeSeparator + "Power" + writeSeparator + "Rx Only" + writeSeparator + "Zone Skip" + writeSeparator + "All Skip" + writeSeparator + "TOT" + writeSeparator + "VOX" + writeSeparator + "No Beep" + writeSeparator + "No Eco" + writeSeparator + "APRS" + writeSeparator + "Latitude" + writeSeparator + "Longitude" + writeSeparator + "Use Location" + Environment.NewLine;
 		ChannelCount = 0;
@@ -1374,11 +1375,9 @@ internal class CSVEML
 			if (ChannelForm.data.DataIsValid(i))
 			{
 				ChannelCount++;
-                byte[] sourceBuffer = encodingIn.GetBytes(ChannelForm.data[i].Name);
-                byte[] destBuffer = Encoding.Convert(encodingIn, encodingOut, sourceBuffer);
-				string temp = encodingOut.GetString(destBuffer);
+                
                 text = text + (i + 1) + writeSeparator;
-				text = text + NumberFormatting(/*ChannelForm.data[i].Name*/temp) + writeSeparator;
+				text = text + NumberFormatting(convert1251toUTF8(ChannelForm.data[i].Name)) + writeSeparator;
 				text = ((ChannelByte[i, 8] != 1) ? (text + "Analogue") : (text + "Digital"));
 				text += writeSeparator;
 				text = text + DecodeFrequency(ChannelByte[i, 0], ChannelByte[i, 1], ChannelByte[i, 2], ChannelByte[i, 3]) + writeSeparator;
@@ -1494,6 +1493,7 @@ internal class CSVEML
 					for (int j = 0; j < 40; j++)
 					{
 						ChannelByte[i, j] = 0;
+
 					}
 				}
 			}
@@ -1966,6 +1966,26 @@ internal class CSVEML
 
 	private static void Filestats(string header, string comment)
 	{
-		MessageBox.Show(header + Environment.NewLine + Environment.NewLine + comment + Environment.NewLine + Environment.NewLine + ContactCount + " " + StringsDict["Contacts"] + Environment.NewLine + TGListCount + " " + StringsDict["TG_Lists"] + Environment.NewLine + ChannelCount + " " + StringsDict["Channels"] + Environment.NewLine + Zonecount + " " + StringsDict["Zones"] + Environment.NewLine + DTMFCount + " " + StringsDict["DTMF_Contacts"] + Environment.NewLine + APRSCount + " APRS" + Environment.NewLine);
+		MessageBox.Show(header + Environment.NewLine + Environment.NewLine + comment + Environment.NewLine + Environment.NewLine + StringsDict["Contacts"] + ": " + ContactCount + Environment.NewLine + StringsDict["TG_Lists"] + ": " + TGListCount + Environment.NewLine + StringsDict["Channels"] + ": " + ChannelCount + Environment.NewLine + StringsDict["Zones"] + ": " + Zonecount + Environment.NewLine + StringsDict["DTMF_Contacts"] + ": " + DTMFCount + Environment.NewLine + "APRS" + ": " + APRSCount  + Environment.NewLine);
 	}
+
+    private static string convert1251toUTF8(string input)
+    {
+        Encoding encodingIn = Encoding.GetEncoding(1251);
+		Encoding encodingOut = Encoding.Unicode;
+        byte[] sourceBuffer = encodingIn.GetBytes(input);
+        byte[] destBuffer = Encoding.Convert(encodingIn, encodingOut, sourceBuffer);
+        string temp = encodingOut.GetString(destBuffer);
+        return temp;
+    }
+
+    private static string convertUTF8to1251(string input)
+    {
+        Encoding encodingIn = Encoding.GetEncoding("utf-8");
+        Encoding encodingOut = Encoding.GetEncoding("windows-1251");
+        byte[] sourceBuffer = encodingIn.GetBytes(input);
+        byte[] destBuffer = Encoding.Convert(encodingIn, encodingOut, sourceBuffer);
+        string temp = encodingOut.GetString(destBuffer);
+        return temp;
+    }
 }

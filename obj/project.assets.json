@@ -1,7 +1,8 @@
 {
   "version": 3,
   "targets": {
-    ".NETFramework,Version=v4.8": {}
+    ".NETFramework,Version=v4.8": {},
+    ".NETFramework,Version=v4.8/win-x86": {}
   },
   "libraries": {},
   "projectFileDependencyGroups": {
@@ -58,6 +59,11 @@
       "net48": {
         "targetAlias": "net48",
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101\\RuntimeIdentifierGraph.json"
+      }
+    },
+    "runtimes": {
+      "win-x86": {
+        "#import": []
       }
     }
   }

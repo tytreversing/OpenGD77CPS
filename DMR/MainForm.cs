@@ -505,32 +505,36 @@ public class MainForm : Form
             // tsmiExportCSV
             // 
             this.tsmiExportCSV.Name = "tsmiExportCSV";
-            this.tsmiExportCSV.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
-            this.tsmiExportCSV.Size = new System.Drawing.Size(294, 24);
+            this.tsmiExportCSV.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.E)));
+            this.tsmiExportCSV.Size = new System.Drawing.Size(339, 24);
             this.tsmiExportCSV.Text = "Export to CSV";
             this.tsmiExportCSV.Click += new System.EventHandler(this.tsbtnExportCSV_Click);
             // 
             // tsmiImportCSV
             // 
             this.tsmiImportCSV.Name = "tsmiImportCSV";
-            this.tsmiImportCSV.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.I)));
-            this.tsmiImportCSV.Size = new System.Drawing.Size(294, 24);
+            this.tsmiImportCSV.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.I)));
+            this.tsmiImportCSV.Size = new System.Drawing.Size(339, 24);
             this.tsmiImportCSV.Text = "Import from CSV";
             this.tsmiImportCSV.Click += new System.EventHandler(this.tsbtnImportCSV_Click);
             // 
             // tsmiAppendCSV
             // 
             this.tsmiAppendCSV.Name = "tsmiAppendCSV";
-            this.tsmiAppendCSV.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
-            this.tsmiAppendCSV.Size = new System.Drawing.Size(294, 24);
+            this.tsmiAppendCSV.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.A)));
+            this.tsmiAppendCSV.Size = new System.Drawing.Size(339, 24);
             this.tsmiAppendCSV.Text = "Append from CSV";
             this.tsmiAppendCSV.Click += new System.EventHandler(this.tsbtnAppendCSV_Click);
             // 
             // tsmiUpdateLocationCSV
             // 
             this.tsmiUpdateLocationCSV.Name = "tsmiUpdateLocationCSV";
-            this.tsmiUpdateLocationCSV.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L)));
-            this.tsmiUpdateLocationCSV.Size = new System.Drawing.Size(294, 24);
+            this.tsmiUpdateLocationCSV.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.L)));
+            this.tsmiUpdateLocationCSV.Size = new System.Drawing.Size(339, 24);
             this.tsmiUpdateLocationCSV.Text = "Update location from CSV";
             this.tsmiUpdateLocationCSV.Click += new System.EventHandler(this.tsbtnUpdateLocationCSV_Click);
             // 
@@ -567,7 +571,7 @@ public class MainForm : Form
             // 
             this.tsmiRead.Name = "tsmiRead";
             this.tsmiRead.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
-            this.tsmiRead.Size = new System.Drawing.Size(180, 24);
+            this.tsmiRead.Size = new System.Drawing.Size(174, 24);
             this.tsmiRead.Text = "Read";
             this.tsmiRead.Click += new System.EventHandler(this.tsbtnRead_Click);
             // 
@@ -575,7 +579,7 @@ public class MainForm : Form
             // 
             this.tsmiWrite.Name = "tsmiWrite";
             this.tsmiWrite.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.W)));
-            this.tsmiWrite.Size = new System.Drawing.Size(180, 24);
+            this.tsmiWrite.Size = new System.Drawing.Size(174, 24);
             this.tsmiWrite.Text = "Write";
             this.tsmiWrite.Click += new System.EventHandler(this.tsbtnWrite_Click);
             // 
@@ -595,14 +599,14 @@ public class MainForm : Form
             this.tsmiTree.Checked = true;
             this.tsmiTree.CheckState = System.Windows.Forms.CheckState.Checked;
             this.tsmiTree.Name = "tsmiTree";
-            this.tsmiTree.Size = new System.Drawing.Size(180, 24);
+            this.tsmiTree.Size = new System.Drawing.Size(140, 24);
             this.tsmiTree.Text = "TreeView";
             this.tsmiTree.Click += new System.EventHandler(this.tsmiTree_Click);
             // 
             // tsmiHelp
             // 
             this.tsmiHelp.Name = "tsmiHelp";
-            this.tsmiHelp.Size = new System.Drawing.Size(180, 24);
+            this.tsmiHelp.Size = new System.Drawing.Size(140, 24);
             this.tsmiHelp.Text = "HelpView";
             this.tsmiHelp.Click += new System.EventHandler(this.tsmiHelp_Click);
             // 
@@ -611,7 +615,7 @@ public class MainForm : Form
             this.tsmiToolBar.Checked = true;
             this.tsmiToolBar.CheckState = System.Windows.Forms.CheckState.Checked;
             this.tsmiToolBar.Name = "tsmiToolBar";
-            this.tsmiToolBar.Size = new System.Drawing.Size(180, 24);
+            this.tsmiToolBar.Size = new System.Drawing.Size(140, 24);
             this.tsmiToolBar.Text = "Toolbar";
             this.tsmiToolBar.Click += new System.EventHandler(this.tsmiToolBar_Click);
             // 
@@ -620,7 +624,7 @@ public class MainForm : Form
             this.tsmiStatusBar.Checked = true;
             this.tsmiStatusBar.CheckState = System.Windows.Forms.CheckState.Checked;
             this.tsmiStatusBar.Name = "tsmiStatusBar";
-            this.tsmiStatusBar.Size = new System.Drawing.Size(180, 24);
+            this.tsmiStatusBar.Size = new System.Drawing.Size(140, 24);
             this.tsmiStatusBar.Text = "Status Bar";
             this.tsmiStatusBar.Click += new System.EventHandler(this.tsmiStatusBar_Click);
             // 
@@ -664,6 +668,7 @@ public class MainForm : Form
             // tsmiDMRID
             // 
             this.tsmiDMRID.Name = "tsmiDMRID";
+            this.tsmiDMRID.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
             this.tsmiDMRID.Size = new System.Drawing.Size(257, 24);
             this.tsmiDMRID.Text = "DMR ID";
             this.tsmiDMRID.Click += new System.EventHandler(this.tsbtnDMRID_Click);

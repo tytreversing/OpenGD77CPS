@@ -5,7 +5,8 @@
     <OutputType>WinExe</OutputType>
     <UseWindowsForms>True</UseWindowsForms>
     <TargetFramework>net48</TargetFramework>
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
+    <Platforms>AnyCPU;x86</Platforms>
   </PropertyGroup>
   <PropertyGroup>
     <LangVersion>12.0</LangVersion>
@@ -20,6 +21,7 @@
   <ItemGroup>
     <EmbeddedResource Remove="DMR.DMRIDForm.resx" />
     <EmbeddedResource Remove="DMR\ChannelForm.resx" />
+    <EmbeddedResource Remove="DMR\MainForm.resx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="DMR.DMRIDForm.resx">
@@ -27,6 +29,7 @@
       <LastGenOutput>DMR.DMRIDForm.Designer.cs</LastGenOutput>
     </None>
     <None Include="DMR\ChannelForm.resx" />
+    <None Include="DMR\MainForm.resx" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Xml" />

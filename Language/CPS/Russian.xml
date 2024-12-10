@@ -787,20 +787,20 @@
 			<Control Id="lblName" Text="Имя" />
 		</Controls>
 	</ZoneForm>
-	<DownloadContactsForm Text="Download contacts">
+	<DownloadContactsForm Text="Загрузка контактов">
 		<Controls>
-			<Control Id="lblMessage" Text="Enter the ID prefix code for your region and press Download..." />
-			<Control Id="btnImport" Text="Import selected" />
-			<Control Id="btnSelectAll" Text="Select all" />
-			<Control Id="btnDownload" Text="Download from URL" />
-			<Control Id="btnDownloadDMRMARC" Text="Download from DRM MARC" />
-			<Control Id="lblIDStart" Text="Region Prefix code" />
-			<Control Id="lblMessageDownloading" Text="Downloading" />
-			<Control Id="dgvDownloadeContacts" Text="ID,Callsign,Name,Last heard">
-				<ControlItem Id="" Text="ID." />
-				<ControlItem Id="" Text="Callsign" />
-				<ControlItem Id="" Text="Name" />
-				<ControlItem Id="" Text="Last heard" />
+			<Control Id="lblMessage" Text="Введите префикс региона и нажмите кнопку загрузки" />
+			<Control Id="btnImport" Text="Импортировать выбранное" />
+			<Control Id="btnSelectAll" Text="Вбрать все" />
+			<Control Id="btnDownload" Text="Загрузить по URL" />
+			<Control Id="btnDownloadDMRMARC" Text="Загрузить из DRM MARC" />
+			<Control Id="lblIDStart" Text="Префикс региона" />
+			<Control Id="lblMessageDownloading" Text="Загрузка" />
+			<Control Id="dgvDownloadeContacts" Text="ID,Позывной,Имя,Последняя связь">
+				<ControlItem Id="" Text="ID" />
+				<ControlItem Id="" Text="Позывной" />
+				<ControlItem Id="" Text="Имя" />
+				<ControlItem Id="" Text="Последняя связь" />
 			</Control>
 		</Controls>
 	</DownloadContactsForm>
@@ -888,27 +888,27 @@
 			</Control>
 		</Controls>
 	</CalibrationForm>
-	<DMRIDForm Text="Download callsign database">
+	<DMRIDForm Text="Загрузка базы позывных">
 		<Controls>
-			<Control Id="lblMessage" Text="Enter ID prefix code for your region and press Download, to append to the list" />
-			<Control Id="lblRegionId" Text="Region" />
-			<Control Id="lblInactivityFilter" Text="HamDigital - Inactivity filter (days)" />
-			<Control Id="btnDownload" Text="Download from ..." />
-			<Control Id="btnImportCSV" Text="Import CSV" />
-			<Control Id="btnRead" Text="Read from GD-77" />
-			<Control Id="btnWrite" Text="Write to GD-77" />
-			<Control Id="btnClear" Text="Clear" />
-			<Control Id="grpColumnFilter" Text="Column filter" />
-			<Control Id="lblSeparator" Text="Separator" />
+			<Control Id="lblMessage" Text="Введите префикс региона и нажмите кнопку загрузки" />
+			<Control Id="lblRegionId" Text="Регион" />
+			<Control Id="lblInactivityFilter" Text="HamDigital - фильтр неактивности (дни)" />
+			<Control Id="btnDownload" Text="Загрузить из" />
+			<Control Id="btnImportCSV" Text="Импорт из CSV" />
+			<Control Id="btnRead" Text="Считать из рации" />
+			<Control Id="btnWrite" Text="Записать в рацию" />
+			<Control Id="btnClear" Text="Очистить" />
+			<Control Id="grpColumnFilter" Text="Фильтр колонок" />
+			<Control Id="lblSeparator" Text="Разделитель" />
 			<Control Id="cmbSeparator" Text="Space,Dot"/>
-			<Control Id="btnWriteToGD77" Text="Write to radio"/>
-			<Control Id="btnCSVImport" Text="Import CSV" />
-			<Control Id="uploadParameters" Text="Write parameters" />
-			<Control Id="grpRecordLength" Text="Data record length" />
-			<Control Id="lblEnhancedLength" Text="Number of characters" />
-			<Control Id="dataGridView1" Text="ID,Callsign,Details,Last heard (days ago)" />
-			<Control Id="lblRadioType" Text="Radio" />
-			<Control Id="chkUseVPMemory" Text="Use Voice Prompt memory" />
+			<Control Id="btnWriteToGD77" Text="Записать в рацию"/>
+			<Control Id="btnCSVImport" Text="Импорт из CSV" />
+			<Control Id="uploadParameters" Text="Параметры записи" />
+			<Control Id="grpRecordLength" Text="Размер данных" />
+			<Control Id="lblEnhancedLength" Text="Число символов" />
+			<Control Id="dataGridView1" Text="ID,Позывной,Детали,Последняя связь (дней назад)" />
+			<Control Id="lblRadioType" Text="Рация" />
+			<Control Id="chkUseVPMemory" Text="Использовать память голосовых оповещений" />
 		</Controls>
 	</DMRIDForm>
 	<OpenGD77Form Text="Технический центр">
@@ -962,8 +962,8 @@
 			<Item Id="Flash_backup_files" Text="Flash backup files" />
 			<Item Id="This_file_is_not_a_full_backup" Text="This file is not a full backup \n Do you want restore the contents of this file?" />
 			<Item Id="Please_connect_the_radio,_and_try_again." Text="Please connect the radio, and try again" />
-			<Item Id="Failed_to_open_comm_port" Text="Failed to open comm port" />
-			<Item Id="Voice_prompt_files" Text="Voice prompt files" />
+			<Item Id="Failed_to_open_comm_port" Text="Ошибка открытия порта!" />
+			<Item Id="Voice_prompt_files" Text="Голосовые файлы" />
 			<Item Id="read_stopped" Text="Error. Read stopped (error at {0:X8})" />
 			<Item Id="write_stopped" Text="Error. Write stopped (error at {0:X8})" />
 			<Item Id="AMB_files" Text="AMB files" />
@@ -988,11 +988,11 @@
 			<Item Id="Warning" Text="Внимание" />
 			<Item Id="Calibration_data_could_not_be_found._Please_update_your_firmware" Text="Не найдены данные калибровок. Обновите прошивку!" />
 			<Item Id="There_has_been_an_error._Refer_to_the_last_status_message_that_was_displayed" Text="Произошла ошибка!" />
-			<Item Id="EEPROM_files" Text="EEPROM files" />
+			<Item Id="EEPROM_files" Text="Файлы EEPROM" />
 			<Item Id="Flash_files" Text="Flash files" />
-			<Item Id="Restore_complete" Text="Restore complete" />
+			<Item Id="Restore_complete" Text="Восстановление завершено!" />
 			<Item Id="Read_Codeplug_complete" Text="Кодплаг считан!" />
-			<Item Id="Screengrab_files" Text="Screengrab files" />
+			<Item Id="Screengrab_files" Text="Скриншоты" />
 			<Item Id="Error_while_reading_flash" Text="Ошибка при чтении флеш-памяти!" />
 			<Item Id="Reading_Calibration" Text="Reading Calibration" />
 			<Item Id="Error_while_reading_calibration" Text="Error while reading calibration" />
@@ -1010,8 +1010,8 @@
 			<Item Id="Error_while_write_voice_prompts" Text="Error while writing voice prompts" />
 			<Item Id="Error_while_write_voice_satellite_keps" Text="Error while writing satellite keps" />
 			<Item Id="Are_you_sure_you_want_to_restore_the_EEPROM_from_a_previously_saved_file" Text="Are you sure you want to restore the EEPROM from a previously saved file?" />
-			<Item Id="PNG_image_files" Text="PNG image files" />
-			<Item Id="MCU_ROM_files" Text="MCU ROM files" />
+			<Item Id="PNG_image_files" Text="Файлы PNG" />
+			<Item Id="MCU_ROM_files" Text="Файлы MCU ROM" />
 			<Item Id="Voice_prompts_file_is_too_large" Text="Voice prompts file is too large." />
 			<Item Id="Calibration_data_could_not_be_found" Text="Calibration data could not be found. Please update your firmware" />
 			<Item Id="This_feature_is_highly_experimental" Text="Работа с калибровками выполняется на собственный страх и риск. Убедитесь, что сделали полный бэкап.." />
@@ -1121,9 +1121,9 @@
 
 	<CSVEML Text="CSV Utility">
 		<Commons>
-			<Item Id="CSVs_Created_in" Text="CSVs Created in" />
-			<Item Id="Imported" Text="Imported" />
-			<Item Id="Appended" Text="Appended" />
+			<Item Id="CSVs_Created_in" Text="Файлы созданы в:" />
+			<Item Id="Imported" Text="импортирована" />
+			<Item Id="Appended" Text="добавлена" />
 			<Item Id="ERROR:-_Could_not_open" Text="ERROR:- Could not open" />
 			<Item Id="May_be_in_use_by_another_program" Text="May be in use by another program" />
 			<Item Id="Format_error_in" Text="Format error in"  />
@@ -1132,16 +1132,16 @@
 			<Item Id="is_not_valid_in" Text="is not valid in" />
 			<Item Id="and_will_be_skipped" Text="and will be skipped" />
       <Item Id="mismatch" Text="Несовпадение имен!" />
-			<Item Id="Contacts" Text="Contacts" />
-			<Item Id="TG_Lists" Text="TG Lists" />
-			<Item Id="Channels" Text="Channels" />
-			<Item Id="Zones" Text="Zones" />
-			<Item Id="DTMF_Contacts" Text="DTMF Contacts" />
-			<Item Id="Codeplug_contains" Text="Codeplug contains" />
-			<Item Id="Codeplug_now_contains" Text="Codeplug now contains" />
-			<Item Id="Please_select_a_folder_to_contain_the_.csv_files" Text="Please select a folder to contain the .csv files" />
-			<Item Id="Please_select_a_folder_containing_the_.csv_files" Text="Please select a folder containing the .csv files" />
-			<Item Id="Are_You_Sure_CSV" Text="Are You sure that you want to import the CSV files? All current data will be replaced." />
+			<Item Id="Contacts" Text="Контактов" />
+			<Item Id="TG_Lists" Text="Списков групп" />
+			<Item Id="Channels" Text="Каналов" />
+			<Item Id="Zones" Text="Зон" />
+			<Item Id="DTMF_Contacts" Text="Контактов DTMF" />
+			<Item Id="Codeplug_contains" Text="Кодплаг содержит" />
+			<Item Id="Codeplug_now_contains" Text="Теперь кодплаг содержит" />
+			<Item Id="Please_select_a_folder_to_contain_the_.csv_files" Text="Выберите папку для сохранения файлов" />
+			<Item Id="Please_select_a_folder_containing_the_.csv_files" Text="Выберите папку с файлами" />
+			<Item Id="Are_You_Sure_CSV" Text="Импортировать файлы? Существующие данные будут заменены!" />
 		</Commons>
 	</CSVEML>
 

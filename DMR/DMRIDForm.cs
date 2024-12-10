@@ -88,9 +88,7 @@ public class DMRIDForm : Form
 
 	private Button btnDownload;
 
-	private GroupBox groupBox1;
-
-	private Button button1;
+	private Button btnImportCSV;
 
 	private ComboBox cmbRadioType;
 
@@ -292,7 +290,7 @@ public class DMRIDForm : Form
 	private void enableUI(bool state)
 	{
 		btnDownload.Enabled = state;
-		button1.Enabled = state;
+		btnImportCSV.Enabled = state;
 		cmbStringLen.Enabled = state;
 		txtRegionId.Enabled = state;
 		chkUseVPMemory.Enabled = state;
@@ -1091,301 +1089,425 @@ public class DMRIDForm : Form
 
 	private void InitializeComponent()
 	{
-		System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DMR.DMRIDForm));
-		this.btnWriteToGD77 = new System.Windows.Forms.Button();
-		this.txtRegionId = new System.Windows.Forms.TextBox();
-		this.btnClear = new System.Windows.Forms.Button();
-		this.lblMessage = new System.Windows.Forms.Label();
-		this.dataGridView1 = new System.Windows.Forms.DataGridView();
-		this.txtAgeMaxDays = new System.Windows.Forms.TextBox();
-		this.lblRegionId = new System.Windows.Forms.Label();
-		this.lblInactivityFilter = new System.Windows.Forms.Label();
-		this.cmbStringLen = new System.Windows.Forms.ComboBox();
-		this.lblEnhancedLength = new System.Windows.Forms.Label();
-		this.progressBar1 = new System.Windows.Forms.ProgressBar();
-		this.btnDownload = new System.Windows.Forms.Button();
-		this.groupBox1 = new System.Windows.Forms.GroupBox();
-		this.button1 = new System.Windows.Forms.Button();
-		this.cmbRadioType = new System.Windows.Forms.ComboBox();
-		this.lblRadioType = new System.Windows.Forms.Label();
-		this.chkUseVPMemory = new System.Windows.Forms.CheckBox();
-		this.cmbDownloadLocation = new System.Windows.Forms.ComboBox();
-		this.txtDownloadURL = new System.Windows.Forms.TextBox();
-		this.uploadParameters = new System.Windows.Forms.GroupBox();
-		this.grpColumnFilter = new System.Windows.Forms.GroupBox();
-		this.cmbSeparator = new System.Windows.Forms.ComboBox();
-		this.lblSeparator = new System.Windows.Forms.Label();
-		this.chkCol_5 = new System.Windows.Forms.CheckBox();
-		this.chkCol_4 = new System.Windows.Forms.CheckBox();
-		this.chkCol_3 = new System.Windows.Forms.CheckBox();
-		this.chkCol_2 = new System.Windows.Forms.CheckBox();
-		this.chkCol_1 = new System.Windows.Forms.CheckBox();
-		((System.ComponentModel.ISupportInitialize)this.dataGridView1).BeginInit();
-		this.groupBox1.SuspendLayout();
-		this.uploadParameters.SuspendLayout();
-		this.grpColumnFilter.SuspendLayout();
-		base.SuspendLayout();
-		this.btnWriteToGD77.Location = new System.Drawing.Point(570, 541);
-		this.btnWriteToGD77.Name = "btnWriteToGD77";
-		this.btnWriteToGD77.Size = new System.Drawing.Size(123, 28);
-		this.btnWriteToGD77.TabIndex = 29;
-		this.btnWriteToGD77.Text = "Write to GD-77";
-		this.btnWriteToGD77.UseVisualStyleBackColor = true;
-		this.btnWriteToGD77.Click += new System.EventHandler(btnWriteToGD77_Click);
-		this.btnWriteToGD77.Font = new System.Drawing.Font("Arial", 9f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-		this.txtRegionId.Location = new System.Drawing.Point(106, 73);
-		this.txtRegionId.Name = "txtRegionId";
-		this.txtRegionId.Size = new System.Drawing.Size(300, 20);
-		this.txtRegionId.TabIndex = 3;
-		this.txtRegionId.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-		this.txtRegionId.Font = new System.Drawing.Font("Arial", 9f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-		this.btnClear.Location = new System.Drawing.Point(12, 541);
-		this.btnClear.Name = "btnClear";
-		this.btnClear.Size = new System.Drawing.Size(71, 28);
-		this.btnClear.TabIndex = 28;
-		this.btnClear.Text = "Clear list";
-		this.btnClear.UseVisualStyleBackColor = true;
-		this.btnClear.Click += new System.EventHandler(btnClear_Click);
-		this.btnClear.Font = new System.Drawing.Font("Arial", 9f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-		this.lblMessage.Location = new System.Drawing.Point(12, 9);
-		this.lblMessage.Name = "lblMessage";
-		this.lblMessage.Size = new System.Drawing.Size(405, 23);
-		this.lblMessage.TabIndex = 0;
-		this.lblMessage.Text = "lblMessage";
-		this.lblMessage.Font = new System.Drawing.Font("Arial", 9f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-		this.dataGridView1.AllowUserToResizeColumns = false;
-		this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-		this.dataGridView1.Location = new System.Drawing.Point(12, 228);
-		this.dataGridView1.Name = "dataGridView1";
-		this.dataGridView1.Size = new System.Drawing.Size(680, 174);
-		this.dataGridView1.TabIndex = 20;
-		this.dataGridView1.SortCompare += new System.Windows.Forms.DataGridViewSortCompareEventHandler(dataGridView1_SortCompare);
-		this.dataGridView1.Font = new System.Drawing.Font("Arial", 9f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-		this.txtAgeMaxDays.Location = new System.Drawing.Point(650, 69);
-		this.txtAgeMaxDays.Name = "txtAgeMaxDays";
-		this.txtAgeMaxDays.Size = new System.Drawing.Size(42, 20);
-		this.txtAgeMaxDays.TabIndex = 5;
-		this.txtAgeMaxDays.Text = "365";
-		this.txtAgeMaxDays.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-		this.txtAgeMaxDays.Font = new System.Drawing.Font("Arial", 9f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-		this.lblRegionId.Location = new System.Drawing.Point(12, 72);
-		this.lblRegionId.Name = "lblRegionId";
-		this.lblRegionId.Size = new System.Drawing.Size(88, 20);
-		this.lblRegionId.TabIndex = 2;
-		this.lblRegionId.Text = "Region";
-		this.lblRegionId.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-		this.lblRegionId.Font = new System.Drawing.Font("Arial", 9f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-		this.lblInactivityFilter.Location = new System.Drawing.Point(459, 72);
-		this.lblInactivityFilter.Name = "lblInactivityFilter";
-		this.lblInactivityFilter.Size = new System.Drawing.Size(185, 19);
-		this.lblInactivityFilter.TabIndex = 4;
-		this.lblInactivityFilter.Text = "HamDigital - Inactivity filter (days)";
-		this.lblInactivityFilter.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-		this.lblInactivityFilter.Font = new System.Drawing.Font("Arial", 9f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-		this.cmbStringLen.FormattingEnabled = true;
-		this.cmbStringLen.Items.AddRange(new object[45]
-		{
-			"6", "7", "8", "9", "10", "11", "12", "13", "14", "15",
-			"16", "17", "18", "19", "20", "21", "22", "23", "24", "25",
-			"26", "27", "28", "29", "30", "31", "32", "33", "34", "35",
-			"36", "37", "38", "39", "40", "41", "42", "43", "44", "45",
-			"46", "47", "48", "49", "50"
-		});
-		this.cmbStringLen.Location = new System.Drawing.Point(15, 19);
-		this.cmbStringLen.Name = "cmbStringLen";
-		this.cmbStringLen.Size = new System.Drawing.Size(56, 21);
-		this.cmbStringLen.TabIndex = 24;
-		this.cmbStringLen.Font = new System.Drawing.Font("Arial", 9f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-		this.cmbStringLen.SelectedIndexChanged += new System.EventHandler(cmbStringLen_SelectedIndexChanged);
-		this.lblEnhancedLength.AutoSize = true;
-		this.lblEnhancedLength.Location = new System.Drawing.Point(85, 27);
-		this.lblEnhancedLength.Name = "lblEnhancedLength";
-		this.lblEnhancedLength.Size = new System.Drawing.Size(109, 13);
-		this.lblEnhancedLength.TabIndex = 23;
-		this.lblEnhancedLength.Text = "Number of characters";
-		this.lblEnhancedLength.Font = new System.Drawing.Font("Arial", 9f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-		this.progressBar1.Location = new System.Drawing.Point(15, 35);
-		this.progressBar1.Name = "progressBar1";
-		this.progressBar1.Size = new System.Drawing.Size(677, 17);
-		this.progressBar1.TabIndex = 1;
-		this.btnDownload.Location = new System.Drawing.Point(15, 109);
-		this.btnDownload.Name = "btnDownload";
-		this.btnDownload.Size = new System.Drawing.Size(153, 23);
-		this.btnDownload.TabIndex = 6;
-		this.btnDownload.Text = "Download from ...";
-		this.btnDownload.UseVisualStyleBackColor = true;
-		this.btnDownload.Click += new System.EventHandler(btnDownloadFrom_Click);
-		this.btnDownload.Font = new System.Drawing.Font("Arial", 9f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-		this.groupBox1.Controls.Add(this.cmbStringLen);
-		this.groupBox1.Controls.Add(this.lblEnhancedLength);
-		this.groupBox1.Location = new System.Drawing.Point(6, 28);
-		this.groupBox1.Name = "grpRecordLength";
-		this.groupBox1.Size = new System.Drawing.Size(230, 56);
-		this.groupBox1.TabIndex = 22;
-		this.groupBox1.TabStop = false;
-		this.groupBox1.Text = "Data record length";
-		this.groupBox1.Font = new System.Drawing.Font("Arial", 9f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-		this.button1.Location = new System.Drawing.Point(539, 109);
-		this.button1.Name = "btnCSVImport";
-		this.button1.Size = new System.Drawing.Size(153, 23);
-		this.button1.TabIndex = 8;
-		this.button1.Text = "Import CSV";
-		this.button1.UseVisualStyleBackColor = true;
-		this.button1.Click += new System.EventHandler(btnImportCSV_Click);
-		this.button1.Font = new System.Drawing.Font("Arial", 9f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-		this.cmbRadioType.FormattingEnabled = true;
-		this.cmbRadioType.Items.AddRange(new object[6] { "GD-77 / GD-77S / MD-760", "DM-1801", "RD-5R", "MD-9600 / MD-UV3x0 / DM-1701", "Custom 8Mb", "Custom 16Mb" });
-		this.cmbRadioType.Location = new System.Drawing.Point(500, 55);
-		this.cmbRadioType.Name = "cmbRadioType";
-		this.cmbRadioType.Size = new System.Drawing.Size(158, 21);
-		this.cmbRadioType.TabIndex = 27;
-		this.cmbRadioType.SelectedIndexChanged += new System.EventHandler(cmbRadioType_SelectedIndexChanged);
-		this.cmbRadioType.Font = new System.Drawing.Font("Arial", 9f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-		this.lblRadioType.Location = new System.Drawing.Point(445, 58);
-		this.lblRadioType.Name = "lblRadioType";
-		this.lblRadioType.Size = new System.Drawing.Size(49, 19);
-		this.lblRadioType.TabIndex = 26;
-		this.lblRadioType.Text = "Radio";
-		this.lblRadioType.TextAlign = System.Drawing.ContentAlignment.TopRight;
-		this.lblRadioType.Font = new System.Drawing.Font("Arial", 9f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-		this.chkUseVPMemory.AutoSize = true;
-		this.chkUseVPMemory.Location = new System.Drawing.Point(508, 19);
-		this.chkUseVPMemory.Name = "chkUseVPMemory";
-		this.chkUseVPMemory.Size = new System.Drawing.Size(150, 17);
-		this.chkUseVPMemory.TabIndex = 25;
-		this.chkUseVPMemory.Text = "Use Voice Prompt memory";
-		this.chkUseVPMemory.UseVisualStyleBackColor = true;
-		this.chkUseVPMemory.CheckedChanged += new System.EventHandler(chkUseVPMemory_CheckedChanged);
-		this.chkUseVPMemory.Font = new System.Drawing.Font("Arial", 9f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-		this.cmbDownloadLocation.FormattingEnabled = true;
-		this.cmbDownloadLocation.Items.AddRange(new object[3] { "RadioId.net", "HamDigital", "URL" });
-		this.cmbDownloadLocation.Location = new System.Drawing.Point(174, 111);
-		this.cmbDownloadLocation.Name = "cmbDownloadLocation";
-		this.cmbDownloadLocation.Size = new System.Drawing.Size(121, 21);
-		this.cmbDownloadLocation.TabIndex = 7;
-		this.cmbDownloadLocation.SelectedIndexChanged += new System.EventHandler(cmbDownloadLocation_SelectedIndexChanged);
-		this.cmbDownloadLocation.Font = new System.Drawing.Font("Arial", 9f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-		this.txtDownloadURL.Location = new System.Drawing.Point(18, 141);
-		this.txtDownloadURL.Name = "txtDownloadURL";
-		this.txtDownloadURL.Size = new System.Drawing.Size(674, 20);
-		this.txtDownloadURL.TabIndex = 9;
-		this.txtDownloadURL.Font = new System.Drawing.Font("Arial", 9f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-		this.uploadParameters.Controls.Add(this.groupBox1);
-		this.uploadParameters.Controls.Add(this.chkUseVPMemory);
-		this.uploadParameters.Controls.Add(this.cmbRadioType);
-		this.uploadParameters.Controls.Add(this.lblRadioType);
-		this.uploadParameters.Location = new System.Drawing.Point(12, 424);
-		this.uploadParameters.Name = "uploadParameters";
-		this.uploadParameters.Size = new System.Drawing.Size(680, 100);
-		this.uploadParameters.TabIndex = 21;
-		this.uploadParameters.TabStop = false;
-		this.uploadParameters.Text = "Write parameters";
-		this.uploadParameters.Font = new System.Drawing.Font("Arial", 9f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-		this.grpColumnFilter.Controls.Add(this.cmbSeparator);
-		this.grpColumnFilter.Controls.Add(this.lblSeparator);
-		this.grpColumnFilter.Controls.Add(this.chkCol_5);
-		this.grpColumnFilter.Controls.Add(this.chkCol_4);
-		this.grpColumnFilter.Controls.Add(this.chkCol_3);
-		this.grpColumnFilter.Controls.Add(this.chkCol_2);
-		this.grpColumnFilter.Controls.Add(this.chkCol_1);
-		this.grpColumnFilter.Location = new System.Drawing.Point(18, 168);
-		this.grpColumnFilter.Name = "grpColumnFilter";
-		this.grpColumnFilter.Size = new System.Drawing.Size(674, 54);
-		this.grpColumnFilter.TabIndex = 10;
-		this.grpColumnFilter.TabStop = false;
-		this.grpColumnFilter.Text = "Data columns";
-		this.grpColumnFilter.Font = new System.Drawing.Font("Arial", 9f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-		this.cmbSeparator.FormattingEnabled = true;
-		this.cmbSeparator.ItemHeight = 13;
-		this.cmbSeparator.Items.AddRange(new object[2] { "SPACE", "DOT" });
-		this.cmbSeparator.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-		this.cmbSeparator.Location = new System.Drawing.Point(603, 18);
-		this.cmbSeparator.Name = "cmbSeparator";
-		this.cmbSeparator.Size = new System.Drawing.Size(65, 21);
-		this.cmbSeparator.TabIndex = 17;
-		this.cmbSeparator.SelectedIndexChanged += new System.EventHandler(cmbSeparator_SelectedIndexChanged);
-		this.cmbSeparator.Font = new System.Drawing.Font("Arial", 9f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-		this.lblSeparator.Location = new System.Drawing.Point(511, 20);
-		this.lblSeparator.Name = "lblSeparator";
-		this.lblSeparator.Size = new System.Drawing.Size(86, 19);
-		this.lblSeparator.TabIndex = 16;
-		this.lblSeparator.Text = "Separator";
-		this.lblSeparator.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-		this.lblSeparator.Font = new System.Drawing.Font("Arial", 9f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-		this.chkCol_5.AutoSize = true;
-		this.chkCol_5.Location = new System.Drawing.Point(407, 19);
-		this.chkCol_5.Name = "chkCol_5";
-		this.chkCol_5.Size = new System.Drawing.Size(32, 17);
-		this.chkCol_5.TabIndex = 15;
-		this.chkCol_5.Text = "5";
-		this.chkCol_5.UseVisualStyleBackColor = true;
-		this.chkCol_5.Font = new System.Drawing.Font("Arial", 9f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-		this.chkCol_4.AutoSize = true;
-		this.chkCol_4.Location = new System.Drawing.Point(307, 19);
-		this.chkCol_4.Name = "chkCol_4";
-		this.chkCol_4.Size = new System.Drawing.Size(32, 17);
-		this.chkCol_4.TabIndex = 14;
-		this.chkCol_4.Text = "4";
-		this.chkCol_4.UseVisualStyleBackColor = true;
-		this.chkCol_4.Font = new System.Drawing.Font("Arial", 9f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-		this.chkCol_3.AutoSize = true;
-		this.chkCol_3.Location = new System.Drawing.Point(203, 19);
-		this.chkCol_3.Name = "chkCol_3";
-		this.chkCol_3.Size = new System.Drawing.Size(32, 17);
-		this.chkCol_3.TabIndex = 13;
-		this.chkCol_3.Text = "3";
-		this.chkCol_3.UseVisualStyleBackColor = true;
-		this.chkCol_3.Font = new System.Drawing.Font("Arial", 9f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-		this.chkCol_2.AutoSize = true;
-		this.chkCol_2.Location = new System.Drawing.Point(113, 19);
-		this.chkCol_2.Name = "chkCol_2";
-		this.chkCol_2.Size = new System.Drawing.Size(32, 17);
-		this.chkCol_2.TabIndex = 12;
-		this.chkCol_2.Text = "2";
-		this.chkCol_2.UseVisualStyleBackColor = true;
-		this.chkCol_2.Font = new System.Drawing.Font("Arial", 9f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-		this.chkCol_1.AutoSize = true;
-		this.chkCol_1.Location = new System.Drawing.Point(15, 20);
-		this.chkCol_1.Name = "chkCol_1";
-		this.chkCol_1.Size = new System.Drawing.Size(32, 17);
-		this.chkCol_1.TabIndex = 11;
-		this.chkCol_1.Text = "1";
-		this.chkCol_1.UseVisualStyleBackColor = true;
-		this.chkCol_1.Font = new System.Drawing.Font("Arial", 9f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-		base.AutoScaleDimensions = new System.Drawing.SizeF(6f, 13f);
-		base.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-		base.ClientSize = new System.Drawing.Size(731, 588);
-		base.Controls.Add(this.grpColumnFilter);
-		base.Controls.Add(this.uploadParameters);
-		base.Controls.Add(this.cmbDownloadLocation);
-		base.Controls.Add(this.lblRegionId);
-		base.Controls.Add(this.lblInactivityFilter);
-		base.Controls.Add(this.txtDownloadURL);
-		base.Controls.Add(this.txtAgeMaxDays);
-		base.Controls.Add(this.txtRegionId);
-		base.Controls.Add(this.progressBar1);
-		base.Controls.Add(this.dataGridView1);
-		base.Controls.Add(this.lblMessage);
-		base.Controls.Add(this.btnClear);
-		base.Controls.Add(this.btnWriteToGD77);
-		base.Controls.Add(this.button1);
-		base.Controls.Add(this.btnDownload);
-		base.Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
-		base.MaximizeBox = false;
-		base.MinimizeBox = false;
-		base.Name = "DMRIDForm";
-		this.Text = "DMR ID";
-		this.Font = new System.Drawing.Font("Arial", 9f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-		base.FormClosing += new System.Windows.Forms.FormClosingEventHandler(DMRIDFormNew_FormClosing);
-		base.Load += new System.EventHandler(DMRIDForm_Load);
-		((System.ComponentModel.ISupportInitialize)this.dataGridView1).EndInit();
-		this.groupBox1.ResumeLayout(false);
-		this.groupBox1.PerformLayout();
-		this.uploadParameters.ResumeLayout(false);
-		this.uploadParameters.PerformLayout();
-		this.grpColumnFilter.ResumeLayout(false);
-		this.grpColumnFilter.PerformLayout();
-		base.ResumeLayout(false);
-		base.PerformLayout();
+            this.btnWriteToGD77 = new System.Windows.Forms.Button();
+            this.txtRegionId = new System.Windows.Forms.TextBox();
+            this.btnClear = new System.Windows.Forms.Button();
+            this.lblMessage = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.txtAgeMaxDays = new System.Windows.Forms.TextBox();
+            this.lblRegionId = new System.Windows.Forms.Label();
+            this.lblInactivityFilter = new System.Windows.Forms.Label();
+            this.cmbStringLen = new System.Windows.Forms.ComboBox();
+            this.lblEnhancedLength = new System.Windows.Forms.Label();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.btnDownload = new System.Windows.Forms.Button();
+            this.btnImportCSV = new System.Windows.Forms.Button();
+            this.cmbRadioType = new System.Windows.Forms.ComboBox();
+            this.lblRadioType = new System.Windows.Forms.Label();
+            this.chkUseVPMemory = new System.Windows.Forms.CheckBox();
+            this.cmbDownloadLocation = new System.Windows.Forms.ComboBox();
+            this.txtDownloadURL = new System.Windows.Forms.TextBox();
+            this.uploadParameters = new System.Windows.Forms.GroupBox();
+            this.grpColumnFilter = new System.Windows.Forms.GroupBox();
+            this.cmbSeparator = new System.Windows.Forms.ComboBox();
+            this.lblSeparator = new System.Windows.Forms.Label();
+            this.chkCol_5 = new System.Windows.Forms.CheckBox();
+            this.chkCol_4 = new System.Windows.Forms.CheckBox();
+            this.chkCol_3 = new System.Windows.Forms.CheckBox();
+            this.chkCol_2 = new System.Windows.Forms.CheckBox();
+            this.chkCol_1 = new System.Windows.Forms.CheckBox();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.uploadParameters.SuspendLayout();
+            this.grpColumnFilter.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // btnWriteToGD77
+            // 
+            this.btnWriteToGD77.BackColor = System.Drawing.SystemColors.Control;
+            this.btnWriteToGD77.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnWriteToGD77.Location = new System.Drawing.Point(460, 541);
+            this.btnWriteToGD77.Name = "btnWriteToGD77";
+            this.btnWriteToGD77.Size = new System.Drawing.Size(233, 28);
+            this.btnWriteToGD77.TabIndex = 29;
+            this.btnWriteToGD77.Text = "Write to GD-77";
+            this.btnWriteToGD77.UseVisualStyleBackColor = false;
+            this.btnWriteToGD77.Click += new System.EventHandler(this.btnWriteToGD77_Click);
+            // 
+            // txtRegionId
+            // 
+            this.txtRegionId.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRegionId.Location = new System.Drawing.Point(106, 73);
+            this.txtRegionId.Name = "txtRegionId";
+            this.txtRegionId.Size = new System.Drawing.Size(300, 21);
+            this.txtRegionId.TabIndex = 3;
+            // 
+            // btnClear
+            // 
+            this.btnClear.BackColor = System.Drawing.SystemColors.Control;
+            this.btnClear.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClear.Location = new System.Drawing.Point(12, 541);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(204, 28);
+            this.btnClear.TabIndex = 28;
+            this.btnClear.Text = "Clear list";
+            this.btnClear.UseVisualStyleBackColor = false;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
+            // lblMessage
+            // 
+            this.lblMessage.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMessage.Location = new System.Drawing.Point(12, 9);
+            this.lblMessage.Name = "lblMessage";
+            this.lblMessage.Size = new System.Drawing.Size(405, 23);
+            this.lblMessage.TabIndex = 0;
+            this.lblMessage.Text = "lblMessage";
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToResizeColumns = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridView1.Location = new System.Drawing.Point(12, 228);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(680, 174);
+            this.dataGridView1.TabIndex = 20;
+            this.dataGridView1.SortCompare += new System.Windows.Forms.DataGridViewSortCompareEventHandler(this.dataGridView1_SortCompare);
+            // 
+            // txtAgeMaxDays
+            // 
+            this.txtAgeMaxDays.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAgeMaxDays.Location = new System.Drawing.Point(650, 73);
+            this.txtAgeMaxDays.Name = "txtAgeMaxDays";
+            this.txtAgeMaxDays.Size = new System.Drawing.Size(42, 21);
+            this.txtAgeMaxDays.TabIndex = 5;
+            this.txtAgeMaxDays.Text = "365";
+            this.txtAgeMaxDays.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // lblRegionId
+            // 
+            this.lblRegionId.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRegionId.Location = new System.Drawing.Point(12, 72);
+            this.lblRegionId.Name = "lblRegionId";
+            this.lblRegionId.Size = new System.Drawing.Size(88, 20);
+            this.lblRegionId.TabIndex = 2;
+            this.lblRegionId.Text = "Region";
+            this.lblRegionId.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblInactivityFilter
+            // 
+            this.lblInactivityFilter.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInactivityFilter.Location = new System.Drawing.Point(422, 73);
+            this.lblInactivityFilter.Name = "lblInactivityFilter";
+            this.lblInactivityFilter.Size = new System.Drawing.Size(219, 19);
+            this.lblInactivityFilter.TabIndex = 4;
+            this.lblInactivityFilter.Text = "HamDigital - Inactivity filter (days)";
+            this.lblInactivityFilter.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // cmbStringLen
+            // 
+            this.cmbStringLen.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbStringLen.FormattingEnabled = true;
+            this.cmbStringLen.Items.AddRange(new object[] {
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25",
+            "26",
+            "27",
+            "28",
+            "29",
+            "30",
+            "31",
+            "32",
+            "33",
+            "34",
+            "35",
+            "36",
+            "37",
+            "38",
+            "39",
+            "40",
+            "41",
+            "42",
+            "43",
+            "44",
+            "45",
+            "46",
+            "47",
+            "48",
+            "49",
+            "50"});
+            this.cmbStringLen.Location = new System.Drawing.Point(172, 42);
+            this.cmbStringLen.Name = "cmbStringLen";
+            this.cmbStringLen.Size = new System.Drawing.Size(56, 23);
+            this.cmbStringLen.TabIndex = 24;
+            this.cmbStringLen.SelectedIndexChanged += new System.EventHandler(this.cmbStringLen_SelectedIndexChanged);
+            // 
+            // lblEnhancedLength
+            // 
+            this.lblEnhancedLength.AutoSize = true;
+            this.lblEnhancedLength.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEnhancedLength.Location = new System.Drawing.Point(18, 45);
+            this.lblEnhancedLength.Name = "lblEnhancedLength";
+            this.lblEnhancedLength.Size = new System.Drawing.Size(126, 15);
+            this.lblEnhancedLength.TabIndex = 23;
+            this.lblEnhancedLength.Text = "Number of characters";
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(15, 35);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(677, 17);
+            this.progressBar1.TabIndex = 1;
+            // 
+            // btnDownload
+            // 
+            this.btnDownload.BackColor = System.Drawing.SystemColors.Control;
+            this.btnDownload.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDownload.Location = new System.Drawing.Point(15, 109);
+            this.btnDownload.Name = "btnDownload";
+            this.btnDownload.Size = new System.Drawing.Size(153, 23);
+            this.btnDownload.TabIndex = 6;
+            this.btnDownload.Text = "Download from ...";
+            this.btnDownload.UseVisualStyleBackColor = false;
+            this.btnDownload.Click += new System.EventHandler(this.btnDownloadFrom_Click);
+            // 
+            // btnImportCSV
+            // 
+            this.btnImportCSV.BackColor = System.Drawing.SystemColors.Control;
+            this.btnImportCSV.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImportCSV.Location = new System.Drawing.Point(460, 109);
+            this.btnImportCSV.Name = "btnImportCSV";
+            this.btnImportCSV.Size = new System.Drawing.Size(232, 23);
+            this.btnImportCSV.TabIndex = 8;
+            this.btnImportCSV.Text = "Import CSV";
+            this.btnImportCSV.UseVisualStyleBackColor = false;
+            this.btnImportCSV.Click += new System.EventHandler(this.btnImportCSV_Click);
+            // 
+            // cmbRadioType
+            // 
+            this.cmbRadioType.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbRadioType.FormattingEnabled = true;
+            this.cmbRadioType.Items.AddRange(new object[] {
+            "GD-77 / GD-77S / MD-760",
+            "DM-1801",
+            "RD-5R",
+            "MD-9600 / MD-UV3x0 / DM-1701",
+            "Custom 8Mb",
+            "Custom 16Mb"});
+            this.cmbRadioType.Location = new System.Drawing.Point(500, 55);
+            this.cmbRadioType.Name = "cmbRadioType";
+            this.cmbRadioType.Size = new System.Drawing.Size(158, 23);
+            this.cmbRadioType.TabIndex = 27;
+            this.cmbRadioType.SelectedIndexChanged += new System.EventHandler(this.cmbRadioType_SelectedIndexChanged);
+            // 
+            // lblRadioType
+            // 
+            this.lblRadioType.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRadioType.Location = new System.Drawing.Point(445, 58);
+            this.lblRadioType.Name = "lblRadioType";
+            this.lblRadioType.Size = new System.Drawing.Size(49, 19);
+            this.lblRadioType.TabIndex = 26;
+            this.lblRadioType.Text = "Radio";
+            this.lblRadioType.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // chkUseVPMemory
+            // 
+            this.chkUseVPMemory.AutoSize = true;
+            this.chkUseVPMemory.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkUseVPMemory.Location = new System.Drawing.Point(508, 19);
+            this.chkUseVPMemory.Name = "chkUseVPMemory";
+            this.chkUseVPMemory.Size = new System.Drawing.Size(172, 19);
+            this.chkUseVPMemory.TabIndex = 25;
+            this.chkUseVPMemory.Text = "Use Voice Prompt memory";
+            this.chkUseVPMemory.UseVisualStyleBackColor = true;
+            this.chkUseVPMemory.CheckedChanged += new System.EventHandler(this.chkUseVPMemory_CheckedChanged);
+            // 
+            // cmbDownloadLocation
+            // 
+            this.cmbDownloadLocation.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbDownloadLocation.FormattingEnabled = true;
+            this.cmbDownloadLocation.Items.AddRange(new object[] {
+            "RadioId.net",
+            "HamDigital",
+            "URL"});
+            this.cmbDownloadLocation.Location = new System.Drawing.Point(184, 109);
+            this.cmbDownloadLocation.Name = "cmbDownloadLocation";
+            this.cmbDownloadLocation.Size = new System.Drawing.Size(121, 23);
+            this.cmbDownloadLocation.TabIndex = 7;
+            this.cmbDownloadLocation.SelectedIndexChanged += new System.EventHandler(this.cmbDownloadLocation_SelectedIndexChanged);
+            // 
+            // txtDownloadURL
+            // 
+            this.txtDownloadURL.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDownloadURL.Location = new System.Drawing.Point(18, 141);
+            this.txtDownloadURL.Name = "txtDownloadURL";
+            this.txtDownloadURL.Size = new System.Drawing.Size(674, 21);
+            this.txtDownloadURL.TabIndex = 9;
+            // 
+            // uploadParameters
+            // 
+            this.uploadParameters.Controls.Add(this.cmbStringLen);
+            this.uploadParameters.Controls.Add(this.lblEnhancedLength);
+            this.uploadParameters.Controls.Add(this.chkUseVPMemory);
+            this.uploadParameters.Controls.Add(this.cmbRadioType);
+            this.uploadParameters.Controls.Add(this.lblRadioType);
+            this.uploadParameters.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uploadParameters.Location = new System.Drawing.Point(12, 424);
+            this.uploadParameters.Name = "uploadParameters";
+            this.uploadParameters.Size = new System.Drawing.Size(680, 100);
+            this.uploadParameters.TabIndex = 21;
+            this.uploadParameters.TabStop = false;
+            this.uploadParameters.Text = "Write parameters";
+            // 
+            // grpColumnFilter
+            // 
+            this.grpColumnFilter.Controls.Add(this.cmbSeparator);
+            this.grpColumnFilter.Controls.Add(this.lblSeparator);
+            this.grpColumnFilter.Controls.Add(this.chkCol_5);
+            this.grpColumnFilter.Controls.Add(this.chkCol_4);
+            this.grpColumnFilter.Controls.Add(this.chkCol_3);
+            this.grpColumnFilter.Controls.Add(this.chkCol_2);
+            this.grpColumnFilter.Controls.Add(this.chkCol_1);
+            this.grpColumnFilter.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpColumnFilter.Location = new System.Drawing.Point(18, 168);
+            this.grpColumnFilter.Name = "grpColumnFilter";
+            this.grpColumnFilter.Size = new System.Drawing.Size(674, 54);
+            this.grpColumnFilter.TabIndex = 10;
+            this.grpColumnFilter.TabStop = false;
+            this.grpColumnFilter.Text = "Data columns";
+            // 
+            // cmbSeparator
+            // 
+            this.cmbSeparator.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbSeparator.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbSeparator.FormattingEnabled = true;
+            this.cmbSeparator.ItemHeight = 15;
+            this.cmbSeparator.Items.AddRange(new object[] {
+            "SPACE",
+            "DOT"});
+            this.cmbSeparator.Location = new System.Drawing.Point(603, 18);
+            this.cmbSeparator.Name = "cmbSeparator";
+            this.cmbSeparator.Size = new System.Drawing.Size(65, 23);
+            this.cmbSeparator.TabIndex = 17;
+            this.cmbSeparator.SelectedIndexChanged += new System.EventHandler(this.cmbSeparator_SelectedIndexChanged);
+            // 
+            // lblSeparator
+            // 
+            this.lblSeparator.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSeparator.Location = new System.Drawing.Point(511, 20);
+            this.lblSeparator.Name = "lblSeparator";
+            this.lblSeparator.Size = new System.Drawing.Size(86, 19);
+            this.lblSeparator.TabIndex = 16;
+            this.lblSeparator.Text = "Separator";
+            this.lblSeparator.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // chkCol_5
+            // 
+            this.chkCol_5.AutoSize = true;
+            this.chkCol_5.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkCol_5.Location = new System.Drawing.Point(407, 19);
+            this.chkCol_5.Name = "chkCol_5";
+            this.chkCol_5.Size = new System.Drawing.Size(33, 19);
+            this.chkCol_5.TabIndex = 15;
+            this.chkCol_5.Text = "5";
+            this.chkCol_5.UseVisualStyleBackColor = true;
+            // 
+            // chkCol_4
+            // 
+            this.chkCol_4.AutoSize = true;
+            this.chkCol_4.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkCol_4.Location = new System.Drawing.Point(307, 19);
+            this.chkCol_4.Name = "chkCol_4";
+            this.chkCol_4.Size = new System.Drawing.Size(33, 19);
+            this.chkCol_4.TabIndex = 14;
+            this.chkCol_4.Text = "4";
+            this.chkCol_4.UseVisualStyleBackColor = true;
+            // 
+            // chkCol_3
+            // 
+            this.chkCol_3.AutoSize = true;
+            this.chkCol_3.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkCol_3.Location = new System.Drawing.Point(203, 19);
+            this.chkCol_3.Name = "chkCol_3";
+            this.chkCol_3.Size = new System.Drawing.Size(33, 19);
+            this.chkCol_3.TabIndex = 13;
+            this.chkCol_3.Text = "3";
+            this.chkCol_3.UseVisualStyleBackColor = true;
+            // 
+            // chkCol_2
+            // 
+            this.chkCol_2.AutoSize = true;
+            this.chkCol_2.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkCol_2.Location = new System.Drawing.Point(113, 19);
+            this.chkCol_2.Name = "chkCol_2";
+            this.chkCol_2.Size = new System.Drawing.Size(33, 19);
+            this.chkCol_2.TabIndex = 12;
+            this.chkCol_2.Text = "2";
+            this.chkCol_2.UseVisualStyleBackColor = true;
+            // 
+            // chkCol_1
+            // 
+            this.chkCol_1.AutoSize = true;
+            this.chkCol_1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkCol_1.Location = new System.Drawing.Point(15, 20);
+            this.chkCol_1.Name = "chkCol_1";
+            this.chkCol_1.Size = new System.Drawing.Size(33, 19);
+            this.chkCol_1.TabIndex = 11;
+            this.chkCol_1.Text = "1";
+            this.chkCol_1.UseVisualStyleBackColor = true;
+            // 
+            // DMRIDForm
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(731, 588);
+            this.Controls.Add(this.grpColumnFilter);
+            this.Controls.Add(this.uploadParameters);
+            this.Controls.Add(this.cmbDownloadLocation);
+            this.Controls.Add(this.lblRegionId);
+            this.Controls.Add(this.lblInactivityFilter);
+            this.Controls.Add(this.txtDownloadURL);
+            this.Controls.Add(this.txtAgeMaxDays);
+            this.Controls.Add(this.txtRegionId);
+            this.Controls.Add(this.progressBar1);
+            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.lblMessage);
+            this.Controls.Add(this.btnClear);
+            this.Controls.Add(this.btnWriteToGD77);
+            this.Controls.Add(this.btnImportCSV);
+            this.Controls.Add(this.btnDownload);
+            this.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "DMRIDForm";
+            this.Text = "DMR ID";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DMRIDFormNew_FormClosing);
+            this.Load += new System.EventHandler(this.DMRIDForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.uploadParameters.ResumeLayout(false);
+            this.uploadParameters.PerformLayout();
+            this.grpColumnFilter.ResumeLayout(false);
+            this.grpColumnFilter.PerformLayout();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
 	}
 }

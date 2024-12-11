@@ -35,13 +35,11 @@ public class PowerPwdForm : Form
 		{
 			string string_ = Base64Utils.smethod_0(txtPwd.Text.Trim());
 			IniFileUtils.WriteProfileString("setup", "Power", string_);
-			Settings.smethod_5(Settings.UserMode.Expert);
 			Settings.CUR_MODE = 1;
 		}
-		else if (txtPwd.Text == "TYT760")
+		else if (txtPwd.Text == "TYT380")
 		{
 			string string_2 = Base64Utils.smethod_0(txtPwd.Text.Trim());
-			Settings.smethod_5(Settings.UserMode.Expert);
 			Settings.CUR_MODE = 2;
 			IniFileUtils.WriteProfileString("setup", "Power", string_2);
 		}

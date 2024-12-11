@@ -560,14 +560,6 @@ public class CalibrationForm : Form
 
 	private void onFormShown(object sender, EventArgs e)
 	{
-		if (MainForm.RadioType == MainForm.RadioTypeEnum.RadioTypeSTM32)
-		{
-			this.Height = 80;
-		}
-		else
-		{
-			this.Height = 700;
-		}
 		MessageBox.Show(StringsDict["This_feature_is_highly_experimental"], StringsDict["Warning"]);
 	}
 

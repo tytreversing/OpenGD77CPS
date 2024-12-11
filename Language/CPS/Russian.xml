@@ -896,6 +896,15 @@
 			</Control>
 		</Controls>
 	</CalibrationForm>
+  <CalibrationFormMDUV380 Text="Работа с калибровками">
+    <Controls>
+      <Control Id="btnWrite" Text="Записать в рацию" />
+      <Control Id="btnReadFile" Text="Откпыть файл калибровок" />
+      <Control Id="btnReadFromRadio" Text="Считать калибровки из рации" />
+      <Control Id="lblMessage" Text="Радиостанции типа MD-UV380 (MD-UV390, Retevis RT-3S) хранят данные калибровок в защищенной области памяти. Их редактирование в режиме реального времени средствами OpenGD77 RUS CPS недоступно. Считайте и сохраните файл." />
+      <Control Id="btnSaveCalibration" Text="Сохранить файл калибровок" />
+    </Controls>
+  </CalibrationFormMDUV380>
 	<DMRIDForm Text="Загрузка базы позывных">
 		<Controls>
 			<Control Id="lblMessage" Text="Введите префикс региона и нажмите кнопку загрузки" />
@@ -985,6 +994,7 @@
 			<Item Id="RADIO_DISPLAY_MCU_ROM" Text="MCU ROM" />
 			<Item Id="RADIO_DISPLAY_Voice_prompts" Text="Голосовые" />
 			<Item Id="RADIO_DISPLAY_Restoring" Text="Восстановление" />
+      <Item Id="RADIO_DISPLAY_Calibrations" Text="калибровок" />
 			<Item Id="RADIO_DISPLAY_Reading" Text="Чтение" />
 			<Item Id="RADIO_DISPLAY_Writing" Text="Запись" />
       <Item Id="Theme" Text="темы" />
@@ -1024,8 +1034,9 @@
 			<Item Id="MCU_ROM_files" Text="Файлы MCU ROM" />
 			<Item Id="Voice_prompts_file_is_too_large" Text="Voice prompts file is too large." />
 			<Item Id="Calibration_data_could_not_be_found" Text="Calibration data could not be found. Please update your firmware" />
-			<Item Id="This_feature_is_highly_experimental" Text="Работа с калибровками выполняется на собственный страх и риск. Убедитесь, что сделали полный бэкап.." />
-			<Item Id="File_contains_invalid_STM32_calibration_header" Text="Файл содержит неправильный заголовок!" />
+			<Item Id="This_feature_is_highly_experimental" Text="Работа с калибровками выполняется на собственный страх и риск. Убедитесь, что сделали полный бэкап." />
+      <Item Id="NowSaveCalibrations" Text="Теперь сохраните калибровки в файл на компьютере" />
+      <Item Id="File_contains_invalid_STM32_calibration_header" Text="Файл содержит неправильный заголовок!" />
 			<Item Id="File_is_the_wrong_size" Text="Неверный размер файла!" />
 			<Item Id="File_saved" Text="Файл сохранен" />
 		</Commons>

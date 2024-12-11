@@ -38,6 +38,9 @@
     <Compile Update="DMR\CalibrationForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="DMR\CalibrationFormMDUV380.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="DMR\CalibrationNUDLabelControl.cs">
       <SubType>UserControl</SubType>
     </Compile>

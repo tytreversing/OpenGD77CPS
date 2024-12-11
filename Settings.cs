@@ -438,9 +438,7 @@ internal class Settings
 		return UserMode.Expert;
 	}
 
-	public static void smethod_5(UserMode userMode_0)
-	{
-	}
+
 
 	[CompilerGenerated]
 	public static SizeF smethod_6()
@@ -461,7 +459,7 @@ internal class Settings
 	}
 
 	[CompilerGenerated]
-	public static void smethod_9(string string_0)
+	public static void setPassword(string string_0)
 	{
 		_003CCurUserPwd_003Ek__BackingField = string_0;
 	}

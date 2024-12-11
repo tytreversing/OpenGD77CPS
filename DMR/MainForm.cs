@@ -450,6 +450,7 @@ public class MainForm : Form
             this.toolStripSeparator1,
             this.tsmiExit});
             this.tsmiFile.Name = "tsmiFile";
+            this.tsmiFile.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.A)));
             this.tsmiFile.Size = new System.Drawing.Size(41, 23);
             this.tsmiFile.Text = "File";
             // 
@@ -553,6 +554,7 @@ public class MainForm : Form
             // tsmiSetting
             // 
             this.tsmiSetting.Name = "tsmiSetting";
+            this.tsmiSetting.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.Y)));
             this.tsmiSetting.Size = new System.Drawing.Size(64, 23);
             this.tsmiSetting.Text = "Setting";
             this.tsmiSetting.DropDownOpening += new System.EventHandler(this.tsmiSetting_DropDownOpening);
@@ -632,9 +634,11 @@ public class MainForm : Form
             this.tsmiRadioType.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiRadioTypeItem_MK22,
             this.tsmiRadioTypeItem_STM32});
+            this.tsmiRadioType.Enabled = false;
             this.tsmiRadioType.Name = "tsmiRadioType";
             this.tsmiRadioType.Size = new System.Drawing.Size(87, 23);
             this.tsmiRadioType.Text = "Radio Type";
+            this.tsmiRadioType.Visible = false;
             // 
             // tsmiRadioTypeItem_MK22
             // 
@@ -722,28 +726,28 @@ public class MainForm : Form
             // tsmiCascade
             // 
             this.tsmiCascade.Name = "tsmiCascade";
-            this.tsmiCascade.Size = new System.Drawing.Size(180, 24);
+            this.tsmiCascade.Size = new System.Drawing.Size(162, 24);
             this.tsmiCascade.Text = "Cascade";
             this.tsmiCascade.Click += new System.EventHandler(this.tsmiCascade_Click);
             // 
             // tsmiTileHor
             // 
             this.tsmiTileHor.Name = "tsmiTileHor";
-            this.tsmiTileHor.Size = new System.Drawing.Size(180, 24);
+            this.tsmiTileHor.Size = new System.Drawing.Size(162, 24);
             this.tsmiTileHor.Text = "Tile Horzontal";
             this.tsmiTileHor.Click += new System.EventHandler(this.tsmiTileHor_Click);
             // 
             // tsmiTileVer
             // 
             this.tsmiTileVer.Name = "tsmiTileVer";
-            this.tsmiTileVer.Size = new System.Drawing.Size(180, 24);
+            this.tsmiTileVer.Size = new System.Drawing.Size(162, 24);
             this.tsmiTileVer.Text = "Tile Vertical";
             this.tsmiTileVer.Click += new System.EventHandler(this.tsmiTileVer_Click);
             // 
             // tsmiCloseAll
             // 
             this.tsmiCloseAll.Name = "tsmiCloseAll";
-            this.tsmiCloseAll.Size = new System.Drawing.Size(180, 24);
+            this.tsmiCloseAll.Size = new System.Drawing.Size(162, 24);
             this.tsmiCloseAll.Text = "Close All";
             this.tsmiCloseAll.Click += new System.EventHandler(this.tsmiCloseAll_Click);
             // 
@@ -1328,7 +1332,7 @@ public class MainForm : Form
 
 	private void MainForm_Load(object sender, EventArgs e)
 	{
-        string _profileStringWithDefault = IniFileUtils.getProfileStringWithDefault("Setup", "RadioType", "MK22");
+        string _profileStringWithDefault = IniFileUtils.getProfileStringWithDefault("Setup", "RadioType", "MD9600");
         if (!(_profileStringWithDefault == "MD9600"))
         {
             if (!(_profileStringWithDefault == "MK22"))
@@ -1421,8 +1425,7 @@ public class MainForm : Form
 			Settings.smethod_7(new SizeF(graphics.DpiX / 96f, graphics.DpiY / 96f));
 		}
 		tsmiBasic.Visible = true;
-		Settings.smethod_9("TYT760");
-		Settings.smethod_5(Settings.UserMode.Expert);
+		Settings.setPassword("TYT380");
 		Settings.CUR_MODE = 2;
 		ChannelForm.CurCntCh = 1024;
 		method_15();
@@ -1521,7 +1524,7 @@ public class MainForm : Form
 				break;
 			}
 		}
-		Text = getMainTitleStub() + " " + _lastCodeplugFileName;
+		Text = getMainTitleStub() + "       " + _lastCodeplugFileName;
 		if (IniFileUtils.getProfileStringWithDefault("Setup", "agreedToTerms", "no") == "no")
 		{
 			if (DialogResult.Yes != MessageBox.Show(Settings.dicCommon["userAgreement"], Settings.dicCommon["pleaseConfirm"], MessageBoxButtons.YesNo))
@@ -3222,9 +3225,19 @@ public class MainForm : Form
 	private void tsbtnCalibration_Click(object sender, EventArgs e)
 	{
 		closeAllForms();
-		CalibrationForm calibrationForm = new CalibrationForm();
-		calibrationForm.StartPosition = FormStartPosition.CenterParent;
-		calibrationForm.ShowDialog();
+        if (MainForm.RadioType == MainForm.RadioTypeEnum.RadioTypeSTM32)
+        {
+            CalibrationFormMDUV380 calibrationForm = new CalibrationFormMDUV380();
+            calibrationForm.StartPosition = FormStartPosition.CenterParent;
+            calibrationForm.ShowDialog();
+        }
+        else
+        {
+            CalibrationForm calibrationForm = new CalibrationForm();
+            calibrationForm.StartPosition = FormStartPosition.CenterParent;
+            calibrationForm.ShowDialog();
+        }
+
 	}
 
 	private void tsbtnTheme_Click(object sender, EventArgs e)

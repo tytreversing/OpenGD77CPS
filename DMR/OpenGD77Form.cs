@@ -49,7 +49,7 @@ public class OpenGD77Form : Form
 
 		[FieldOffset(8)]
 		[MarshalAs(UnmanagedType.ByValTStr, SizeConst = 16)]
-		public string gitRevision;
+		public string identifier;
 
 		[FieldOffset(24)]
 		[MarshalAs(UnmanagedType.ByValTStr, SizeConst = 16)]

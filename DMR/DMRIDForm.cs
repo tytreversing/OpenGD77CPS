@@ -355,7 +355,7 @@ public class DMRIDForm : Form
 		_wc = new WebClient();
 		try
 		{
-			lblMessage.Text = Settings.dicCommon["DownloadContactsDownloading"];
+            lblMessage.Text = StringsDict["Downloading"];
 			Cursor.Current = Cursors.WaitCursor;
 			Refresh();
 			Application.DoEvents();
@@ -523,7 +523,7 @@ public class DMRIDForm : Form
 	{
 		if (_radioIdCSV != null)
 		{
-			lblMessage.Text = Settings.dicCommon["Processing"];
+			lblMessage.Text = StringsDict["Processing"];
 			enableUI(state: false);
 			progressBar1.Style = ProgressBarStyle.Marquee;
 			progressBar1.Value = 100;
@@ -541,7 +541,7 @@ public class DMRIDForm : Form
 
 	private void updateTotalNumberMessage()
 	{
-		string format = Settings.dicCommon["DMRIdContcatsTotal"];
+		string format = Settings.dicCommon["DMRIdContactsTotal"];
 		lblMessage.Text = string.Format(format, DataList.Count, getMaxRecords(getSelectedRadioMemorySize()));
 	}
 
@@ -954,7 +954,7 @@ public class DMRIDForm : Form
 		openFileDialog.Filter = "firmware files|*.csv";
 		if (openFileDialog.ShowDialog() == DialogResult.OK && openFileDialog.FileName != null)
 		{
-			lblMessage.Text = "Processing...";
+			lblMessage.Text = StringsDict["Processing"];
 			enableUI(state: false);
 			progressBar1.Style = ProgressBarStyle.Marquee;
 			progressBar1.Value = 100;
@@ -991,7 +991,7 @@ public class DMRIDForm : Form
 		_wc = new WebClient();
 		try
 		{
-			lblMessage.Text = Settings.dicCommon["DownloadContactsDownloading"];
+			lblMessage.Text = StringsDict["Downloading"];
 			Cursor.Current = Cursors.WaitCursor;
 			Refresh();
 			Application.DoEvents();

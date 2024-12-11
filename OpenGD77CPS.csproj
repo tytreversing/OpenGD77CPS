@@ -13,10 +13,9 @@
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>app.ico</ApplicationIcon>
+    <ApplicationIcon>Images\apple-touch-icon-152.ico</ApplicationIcon>
     <RootNamespace />
-    <IncrementVersionOnBuild>1.yyyy.Mdd.Hmm</IncrementVersionOnBuild>
-    <Version>1.2024.1205.1125</Version>
+    <Version>1.2.0.0</Version>
   </PropertyGroup>
   <ItemGroup>
     <EmbeddedResource Remove="DMR.DMRIDForm.resx" />
@@ -26,6 +25,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Remove="Resources\70edc149804f8940f1227b62dd7ebbde.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Images\apple-touch-icon-152.ico" />
   </ItemGroup>
   <ItemGroup>
     <None Include="DMR.DMRIDForm.resx">
@@ -147,7 +149,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Driver\install_driver.bat">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Driver\pnputil.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

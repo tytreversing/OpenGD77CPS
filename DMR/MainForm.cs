@@ -634,11 +634,9 @@ public class MainForm : Form
             this.tsmiRadioType.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiRadioTypeItem_MK22,
             this.tsmiRadioTypeItem_STM32});
-            this.tsmiRadioType.Enabled = false;
             this.tsmiRadioType.Name = "tsmiRadioType";
             this.tsmiRadioType.Size = new System.Drawing.Size(87, 23);
             this.tsmiRadioType.Text = "Radio Type";
-            this.tsmiRadioType.Visible = false;
             // 
             // tsmiRadioTypeItem_MK22
             // 
@@ -1406,7 +1404,7 @@ public class MainForm : Form
 		Settings.dicCommon.Add("EnableMemoryAccessMode", Settings.SZ_EnableMemoryAccessMode);
 		Settings.dicCommon.Add("dataRead", Settings.SZ_dataRead);
 		Settings.dicCommon.Add("dataWrite", Settings.SZ_dataWrite);
-		Settings.dicCommon.Add("DMRIdContcatsTotal", Settings.SZ_DMRIdContcatsTotal);
+		Settings.dicCommon.Add("DMRIdContactsTotal", Settings.SZ_DMRIdContactsTotal);
 		Settings.dicCommon.Add("ErrorParsingData", Settings.SZ_ErrorParsingData);
 		Settings.dicCommon.Add("DMRIdIntroMessage", Settings.SZ_DMRIdIntroMessage);
 		Settings.dicCommon.Add("DMRIdTooManyIDs", "Too many ID's for the connected radio, the list will be truncated to the maximum capacity.");

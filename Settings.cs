@@ -234,7 +234,7 @@ internal class Settings
 
 	public static string SZ_dataWrite;
 
-	public static string SZ_DMRIdContactsTotal;
+	public static string SZ_DMRIdContcatsTotal;
 
 	public static string SZ_ErrorParsingData;
 
@@ -1540,9 +1540,9 @@ internal class Settings
 		SZ_EnableMemoryAccessMode = "The GD-77 does not seem to be in Memory Access mode\nHold keys SK2 (Blue side key), Green Menu and * when turning on the transceiver.\nand try again";
 		SZ_dataRead = "Reading data from GD-77";
 		SZ_dataWrite = "Writing data to GD-77";
-		SZ_DMRIdContactsTotal = "Число идентификаторов:{0}. Может быть загружено не более 10920.";
-		SZ_ErrorParsingData = "Ошибка парсинга данных";
-		SZ_DMRIdIntroMessage = "Данные загружены с Ham-digital.org";
+		SZ_DMRIdContcatsTotal = "Total number of IDs = {0}. Max of 10920 can be uploaded";
+		SZ_ErrorParsingData = "Error while parsing data";
+		SZ_DMRIdIntroMessage = "Data is downloaded from Ham-digital.org and appended any existing data";
 		EEROM_SPACE = 131072u;
 		ADDR_OPENGD77_CUSTOM_DATA_START = 126560;
 		ADDR_OPENGD77_CUSTOM_DATA_END = 131072;

@@ -88,7 +88,7 @@ public class CalibrationFormMDUV380 : Form
             commPort = null;
             return false;
         }
-        MainForm.RadioInfo = OpenGD77Form.readOpenGD77RadioInfo(commPort);
+        MainForm.RadioInfo = OpenGD77Form.readOpenGD77RadioInfoAndUpdateUSBBufferSize(commPort);
         if (MainForm.RadioInfo.radioType == 5 || MainForm.RadioInfo.radioType == 6 || MainForm.RadioInfo.radioType == 8 || MainForm.RadioInfo.radioType == 10 || MainForm.RadioInfo.radioType == 9 || MainForm.RadioInfo.radioType == 7)
         {
             writeCommandCharacter = 'X';
@@ -117,7 +117,11 @@ public class CalibrationFormMDUV380 : Form
                 array[4] = (byte)iSize;
                 array[5] = (byte)alignment;
                 array[6] = (byte)isInverted;
-                Buffer.BlockCopy(Encoding.ASCII.GetBytes(message), 0, array, 7, Math.Min(message.Length, 16));
+                Encoding inEncoding = Encoding.Unicode;
+                Encoding outEncoding = Encoding.GetEncoding(1251);
+                byte[] sourceBuffer = inEncoding.GetBytes(message);
+                byte[] destBuffer = Encoding.Convert(inEncoding, outEncoding, sourceBuffer);
+                Buffer.BlockCopy(destBuffer, 0, array, 7, Math.Min(message.Length, 16));
                 break;
             case 6:
                 array[2] = (byte)x_or_command_option_number;

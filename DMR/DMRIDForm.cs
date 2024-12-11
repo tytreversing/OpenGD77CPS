@@ -260,7 +260,7 @@ public class DMRIDForm : Form
 			commPort = null;
 			return false;
 		}
-		MainForm.RadioInfo = OpenGD77Form.readOpenGD77RadioInfo(commPort);
+		MainForm.RadioInfo = OpenGD77Form.readOpenGD77RadioInfoAndUpdateUSBBufferSize(commPort);
 		if (MainForm.RadioInfo.radioType == 5 || MainForm.RadioInfo.radioType == 6 || MainForm.RadioInfo.radioType == 8 || MainForm.RadioInfo.radioType == 10 || MainForm.RadioInfo.radioType == 9 || MainForm.RadioInfo.radioType == 7)
 		{
 			writeCommandCharacter = 'X';
@@ -355,7 +355,7 @@ public class DMRIDForm : Form
 		_wc = new WebClient();
 		try
 		{
-            lblMessage.Text = StringsDict["Downloading"];
+			lblMessage.Text = Settings.dicCommon["DownloadContactsDownloading"];
 			Cursor.Current = Cursors.WaitCursor;
 			Refresh();
 			Application.DoEvents();
@@ -523,7 +523,7 @@ public class DMRIDForm : Form
 	{
 		if (_radioIdCSV != null)
 		{
-			lblMessage.Text = StringsDict["Processing"];
+			lblMessage.Text = Settings.dicCommon["Processing"];
 			enableUI(state: false);
 			progressBar1.Style = ProgressBarStyle.Marquee;
 			progressBar1.Value = 100;
@@ -541,7 +541,7 @@ public class DMRIDForm : Form
 
 	private void updateTotalNumberMessage()
 	{
-		string format = Settings.dicCommon["DMRIdContactsTotal"];
+		string format = Settings.dicCommon["DMRIdContcatsTotal"];
 		lblMessage.Text = string.Format(format, DataList.Count, getMaxRecords(getSelectedRadioMemorySize()));
 	}
 
@@ -821,7 +821,7 @@ public class DMRIDForm : Form
 	{
 		int num = 196608;
 		enableUI(state: false);
-		MainForm.RadioInfo = OpenGD77Form.readOpenGD77RadioInfo(commPort);
+		MainForm.RadioInfo = OpenGD77Form.readOpenGD77RadioInfoAndUpdateUSBBufferSize(commPort);
 		if (MainForm.RadioInfo.buildDateTime != null)
 		{
 			int radioInfoMemorySize = getRadioInfoMemorySize(MainForm.RadioInfo);
@@ -954,7 +954,7 @@ public class DMRIDForm : Form
 		openFileDialog.Filter = "firmware files|*.csv";
 		if (openFileDialog.ShowDialog() == DialogResult.OK && openFileDialog.FileName != null)
 		{
-			lblMessage.Text = StringsDict["Processing"];
+			lblMessage.Text = "Processing...";
 			enableUI(state: false);
 			progressBar1.Style = ProgressBarStyle.Marquee;
 			progressBar1.Value = 100;
@@ -991,7 +991,7 @@ public class DMRIDForm : Form
 		_wc = new WebClient();
 		try
 		{
-			lblMessage.Text = StringsDict["Downloading"];
+			lblMessage.Text = Settings.dicCommon["DownloadContactsDownloading"];
 			Cursor.Current = Cursors.WaitCursor;
 			Refresh();
 			Application.DoEvents();

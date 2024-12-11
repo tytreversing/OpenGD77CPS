@@ -483,6 +483,7 @@
 			<MenuItem Id="tsmiDMRID" Text="Загрузить базу позывных" />
 			<MenuItem Id="tsmiCalibrationMK22" Text="Калибровка" />
 			<MenuItem Id="tsmiTheme" Text="Редактор тем" />
+
 			<MenuItem Id="tsmiOpenGD77" Text="Технический центр" />
 			<MenuItem Id="tsmiFirmwareLoader" Text="Загрузчик прошивки" />
 			<MenuItem Id="tsmiRadioType" Text="Тип рации" />
@@ -490,8 +491,9 @@
 			<MenuItem Id="tsmiImportCSV" Text="Импорт из CSV" />
 			<MenuItem Id="tsmiAppendCSV" Text="Добавить из CSV" />
 			<MenuItem Id="tsmiUpdateLocationCSV" Text="Обновить локации из CSV" />
-			<MenuItem Id="tsmiRadioTypeItem_MK22" Text="MD-760/GD77/GD77S/DM1801/RD5R" />
+			<MenuItem Id="tsmiRadioTypeItem_MK22" Text="GD77/GD77S/DM1801/RD5R" />
 			<MenuItem Id="tsmiRadioTypeItem_STM32" Text="MD-9600/RT-90, MD-UV380/MD-UV390/RT-3S, DM-1701/RT-84, MD-2017/RT-82" />
+
 		</MenuStrip>
 		<ContextMenuStrip>
 			<MenuItem Id="tsmiAdd" Text="Добавить" />
@@ -995,13 +997,7 @@
       <Item Id="RADIO_DISPLAY_Calibrations" Text="калибровок" />
 			<Item Id="RADIO_DISPLAY_Reading" Text="Чтение" />
 			<Item Id="RADIO_DISPLAY_Writing" Text="Запись" />
-      <Item Id="RADIO_DISPLAY_Data" Text="данных" />
-      <Item Id="RADIO_DISPLAY_Radio" Text="рации" />
       <Item Id="Theme" Text="темы" />
-      <Item Id="Downloading" Text="Загружаем..." />
-      <Item Id="Processing" Text="В процессе..." />
-      <Item Id="UnableDownloadFromInternet" Text="Ошибка загрузки из Интернета!" />
-      <Item Id="DownloadContactsDownloading" Text="В процессе..." />
       <Item Id="Colour_Conversion_Error" Text="Ошибка преобразования цвета!" />
 			<Item Id="Reading_EEPROM" Text="Чтение EEPROM" />
 			<Item Id="Reading_Flash" Text="Чтение флеша" />

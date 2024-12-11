@@ -634,9 +634,11 @@ public class MainForm : Form
             this.tsmiRadioType.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiRadioTypeItem_MK22,
             this.tsmiRadioTypeItem_STM32});
+            this.tsmiRadioType.Enabled = false;
             this.tsmiRadioType.Name = "tsmiRadioType";
             this.tsmiRadioType.Size = new System.Drawing.Size(87, 23);
             this.tsmiRadioType.Text = "Radio Type";
+            this.tsmiRadioType.Visible = false;
             // 
             // tsmiRadioTypeItem_MK22
             // 
@@ -1404,7 +1406,7 @@ public class MainForm : Form
 		Settings.dicCommon.Add("EnableMemoryAccessMode", Settings.SZ_EnableMemoryAccessMode);
 		Settings.dicCommon.Add("dataRead", Settings.SZ_dataRead);
 		Settings.dicCommon.Add("dataWrite", Settings.SZ_dataWrite);
-		Settings.dicCommon.Add("DMRIdContactsTotal", Settings.SZ_DMRIdContactsTotal);
+		Settings.dicCommon.Add("DMRIdContcatsTotal", Settings.SZ_DMRIdContcatsTotal);
 		Settings.dicCommon.Add("ErrorParsingData", Settings.SZ_ErrorParsingData);
 		Settings.dicCommon.Add("DMRIdIntroMessage", Settings.SZ_DMRIdIntroMessage);
 		Settings.dicCommon.Add("DMRIdTooManyIDs", "Too many ID's for the connected radio, the list will be truncated to the maximum capacity.");
@@ -1426,6 +1428,7 @@ public class MainForm : Form
 		Settings.setPassword("TYT380");
 		Settings.CUR_MODE = 2;
 		ChannelForm.CurCntCh = 1024;
+		method_15();
 		bool flag = false;
 		if (StartupArgs.Length != 0)
 		{
@@ -1682,7 +1685,7 @@ public class MainForm : Form
 				{
 					MessageBox.Show("This feature is not supported in the OpenGD77 firmware");
 				}
-				//_ = treeNodeItem.Type == typeof(ZoneBasicForm);
+				_ = treeNodeItem.Type == typeof(ZoneBasicForm);
 				Form form2 = (Form)Activator.CreateInstance(treeNodeItem.Type);
 				form2.MdiParent = this;
 				if (form2 is IDisp disp2)
@@ -3803,7 +3806,7 @@ public class MainForm : Form
 		}
 	}
 
-	private void createHelp()
+	private void method_15()
 	{
 		dicHelp.Clear();
 		XmlDocument xmlDocument = new XmlDocument();

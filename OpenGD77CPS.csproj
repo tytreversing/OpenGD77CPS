@@ -13,21 +13,16 @@
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Images\apple-touch-icon-152.ico</ApplicationIcon>
+    <ApplicationIcon>app.ico</ApplicationIcon>
     <RootNamespace />
-    <Version>1.2.0.0</Version>
+    <IncrementVersionOnBuild>1.yyyy.Mdd.Hmm</IncrementVersionOnBuild>
+    <Version>1.2024.1205.1125</Version>
   </PropertyGroup>
   <ItemGroup>
     <EmbeddedResource Remove="DMR.DMRIDForm.resx" />
     <EmbeddedResource Remove="DMR\ChannelForm.resx" />
     <EmbeddedResource Remove="DMR\MainForm.resx" />
     <EmbeddedResource Remove="DMR\RxGroupListForm.resx" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Remove="Resources\70edc149804f8940f1227b62dd7ebbde.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Images\apple-touch-icon-152.ico" />
   </ItemGroup>
   <ItemGroup>
     <None Include="DMR.DMRIDForm.resx">
@@ -68,11 +63,6 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>DMR.DMRIDForm.resx</DependentUpon>
-    </Compile>
-    <Compile Update="DMR.MainForm.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>DMR.MainForm.resx</DependentUpon>
     </Compile>
     <Compile Update="DMR.Properties.Resources.Designer.cs">
       <DesignTime>True</DesignTime>
@@ -149,7 +139,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Driver\install_driver.bat">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Driver\pnputil.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -167,6 +157,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Language\CPS\Czech.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Language\CPS\English.chm">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Language\CPS\English.xml">
@@ -217,9 +210,6 @@
     <None Update="Newtonsoft.Json.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-    </None>
     <None Update="SourceFirmware\MD9600-CSV%282571V5%29-V26.45.bin">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -238,8 +228,5 @@
     <None Update="WeifenLuo.WinFormsUI.Docking.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\" />
   </ItemGroup>
 </Project>

@@ -447,7 +447,7 @@
 			<MenuItem Id="tsmiDtmf" Text="Настройки DTMF" />
 			<MenuItem Id="tsmiEmgSystem" Text="APRS" />
 			<MenuItem Id="tsmiAPRSConfigs" Text="Настройки APRS" />
-			<MenuItem Id="tsmiContact" Text="Контакт" />
+			<MenuItem Id="tsmiContact" Text="Контакты" />
 			<MenuItem Id="tsmiDtmfContact" Text="DTMF" />
 			<MenuItem Id="tsmiDmrContacts" Text="Цифровые контакты" />
 			<MenuItem Id="tsmiContacts" Text="Контакты" />

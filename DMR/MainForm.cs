@@ -23,7 +23,6 @@ namespace DMR;
 
 public class MainForm : Form
 {
-    public const string swVersion = "1.1.64";
     public enum RadioTypeEnum
 	{
 		RadioTypeMK22,
@@ -1412,11 +1411,11 @@ public class MainForm : Form
 		Settings.dicCommon.Add("FirmwareFilefilter", "Файлы прошивки|*.bin");
 		Settings.dicCommon.Add("FirmwareSelectorTitle", "Select Firmware file");
 		Settings.dicCommon.Add("Processing", "Processing...");
-		string text = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "DockPanel.config");
+/*		string text = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "DockPanel.config");
 		if (File.Exists(text))
 		{
 			dockPanel.LoadFromXml(text, m_deserializeDockContent);
-		}
+		}*/
 		using (Graphics graphics = CreateGraphics())
 		{
 			Settings.smethod_7(new SizeF(graphics.DpiX / 96f, graphics.DpiY / 96f));
@@ -1551,7 +1550,7 @@ public class MainForm : Form
 
 	private string getMainTitleStub()
 	{
-		return "OpenGD77 RUS  [" + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version + "]";
+		return "OpenGD77 RUS  [" + PRODUCT_VERSION + "]";
 	}
 
 	private void MainForm_MdiChildActivate(object sender, EventArgs e)
@@ -4209,8 +4208,8 @@ public class MainForm : Form
 	{
 		CommsBuffer = null;
 		PRODUCT_NAME = ((AssemblyProductAttribute)Attribute.GetCustomAttribute(Assembly.GetExecutingAssembly(), typeof(AssemblyProductAttribute), inherit: false)).Product;
-        PRODUCT_VERSION = swVersion;
-		RadioType = RadioTypeEnum.RadioTypeMK22;
+		PRODUCT_VERSION = Assembly.GetExecutingAssembly().GetName().Version.ToString();
+        RadioType = RadioTypeEnum.RadioTypeMK22;
 		PreActiveMdiChild = null;
 		dicHelp = new Dictionary<string, string>();
 		dicTree = new Dictionary<string, string>();

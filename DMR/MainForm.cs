@@ -1428,7 +1428,6 @@ public class MainForm : Form
 		Settings.setPassword("TYT380");
 		Settings.CUR_MODE = 2;
 		ChannelForm.CurCntCh = 1024;
-		method_15();
 		bool flag = false;
 		if (StartupArgs.Length != 0)
 		{
@@ -1685,7 +1684,7 @@ public class MainForm : Form
 				{
 					MessageBox.Show("This feature is not supported in the OpenGD77 firmware");
 				}
-				_ = treeNodeItem.Type == typeof(ZoneBasicForm);
+				//_ = treeNodeItem.Type == typeof(ZoneBasicForm);
 				Form form2 = (Form)Activator.CreateInstance(treeNodeItem.Type);
 				form2.MdiParent = this;
 				if (form2 is IDisp disp2)
@@ -3806,7 +3805,7 @@ public class MainForm : Form
 		}
 	}
 
-	private void method_15()
+	private void createHelp()
 	{
 		dicHelp.Clear();
 		XmlDocument xmlDocument = new XmlDocument();

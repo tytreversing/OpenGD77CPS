@@ -2940,9 +2940,9 @@ public class OpenGD77Form : Form
 			sendCommand(port, 0);
 			sendCommand(port, 1);
 			sendCommand(port, 2, 0, 0, 3, 1, 0, "CPS");
-			sendCommand(port, 2, 0, 16, 3, 1, 0, "Read");
-			sendCommand(port, 2, 0, 32, 3, 1, 0, "Radio");
-			sendCommand(port, 2, 0, 48, 3, 1, 0, "Info");
+			sendCommand(port, 2, 0, 16, 3, 1, 0, StringsDict["RADIO_DISPLAY_Reading"]);
+			sendCommand(port, 2, 0, 32, 3, 1, 0, StringsDict["RADIO_DISPLAY_Data"]);
+			sendCommand(port, 2, 0, 48, 3, 1, 0, StringsDict["RADIO_DISPLAY_Radio"]);
 			sendCommand(port, 3);
 			sendCommand(port, 6, 4);
 		}

@@ -997,6 +997,8 @@
       <Item Id="RADIO_DISPLAY_Calibrations" Text="калибровок" />
 			<Item Id="RADIO_DISPLAY_Reading" Text="Чтение" />
 			<Item Id="RADIO_DISPLAY_Writing" Text="Запись" />
+      <Item Id="RADIO_DISPLAY_Data" Text="данных" />
+      <Item Id="RADIO_DISPLAY_Radio" Text="рации" />
       <Item Id="Theme" Text="темы" />
       <Item Id="Colour_Conversion_Error" Text="Ошибка преобразования цвета!" />
 			<Item Id="Reading_EEPROM" Text="Чтение EEPROM" />

@@ -88,7 +88,7 @@ public class CalibrationFormMDUV380 : Form
             commPort = null;
             return false;
         }
-        MainForm.RadioInfo = OpenGD77Form.readOpenGD77RadioInfoAndUpdateUSBBufferSize(commPort);
+        MainForm.RadioInfo = OpenGD77Form.readOpenGD77RadioInfo(commPort);
         if (MainForm.RadioInfo.radioType == 5 || MainForm.RadioInfo.radioType == 6 || MainForm.RadioInfo.radioType == 8 || MainForm.RadioInfo.radioType == 10 || MainForm.RadioInfo.radioType == 9 || MainForm.RadioInfo.radioType == 7)
         {
             writeCommandCharacter = 'X';

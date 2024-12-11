@@ -250,7 +250,7 @@ public class OpenGD77Form : Form
 			commPort = null;
 			return false;
 		}
-		MainForm.RadioInfo = readOpenGD77RadioInfoAndUpdateUSBBufferSize(commPort, stealth);
+		MainForm.RadioInfo = readOpenGD77RadioInfo(commPort, stealth);
 		if (MainForm.RadioInfo.radioType == 5 || MainForm.RadioInfo.radioType == 6 || MainForm.RadioInfo.radioType == 8 || MainForm.RadioInfo.radioType == 10 || MainForm.RadioInfo.radioType == 9 || MainForm.RadioInfo.radioType == 7)
 		{
 			writeCommandCharacter = 'X';
@@ -289,24 +289,7 @@ public class OpenGD77Form : Form
 		return dataBytes[offset] + dataBytes[offset + 1] * 256 + dataBytes[offset + 2] * 256 * 256 + dataBytes[offset + 3] * 256 * 256 * 256;
 	}
 
-	public static RadioInfo readOpenGD77RadioInfoAndUpdateUSBBufferSize(SerialPort port, bool stealth = false)
-	{
-		RadioInfo result = readOpenGD77RadioInfo(port, stealth);
-		string text = MainForm.RadioInfo.buildDateTime.Substring(0, 8);
-		oldUSBBufferSize = true;
-		try
-		{
-			if (int.Parse(text) > 20211002)
-			{
-				oldUSBBufferSize = false;
-			}
-		}
-		catch (FormatException)
-		{
-			MessageBox.Show("Unable to parse '" + text + "'");
-		}
-		return result;
-	}
+
 
 	public static int getUSBReadBufferSize()
 	{
@@ -1452,7 +1435,7 @@ public class OpenGD77Form : Form
 					commPort = null;
 					break;
 				}
-				MainForm.RadioInfo = readOpenGD77RadioInfoAndUpdateUSBBufferSize(commPort);
+				MainForm.RadioInfo = readOpenGD77RadioInfo(commPort);
 				sendCommand(commPort, 1);
 				sendCommand(commPort, 2, 0, 0, 3, 1, 0, StringsDict["RADIO_DISPLAY_CPS"]);
 				sendCommand(commPort, 2, 0, 16, 3, 1, 0, StringsDict["RADIO_DISPLAY_Reading"]);
@@ -1510,7 +1493,7 @@ public class OpenGD77Form : Form
 					commPort = null;
 					break;
 				}
-				MainForm.RadioInfo = readOpenGD77RadioInfoAndUpdateUSBBufferSize(commPort);
+				MainForm.RadioInfo = readOpenGD77RadioInfo(commPort);
 				sendCommand(commPort, 1);
 				sendCommand(commPort, 2, 0, 0, 3, 1, 0, StringsDict["RADIO_DISPLAY_CPS"]);
 				sendCommand(commPort, 2, 0, 16, 3, 1, 0, StringsDict["RADIO_DISPLAY_Backup"]);
@@ -1560,7 +1543,7 @@ public class OpenGD77Form : Form
 					commPort = null;
 					break;
 				}
-				readOpenGD77RadioInfoAndUpdateUSBBufferSize(commPort);
+                readOpenGD77RadioInfo(commPort);
 				sendCommand(commPort, 1);
 				sendCommand(commPort, 2, 0, 0, 3, 1, 0, StringsDict["RADIO_DISPLAY_CPS"]);
 				sendCommand(commPort, 2, 0, 16, 3, 1, 0, StringsDict["RADIO_DISPLAY_Backup"]);
@@ -1595,7 +1578,7 @@ public class OpenGD77Form : Form
 					commPort = null;
 					break;
 				}
-				readOpenGD77RadioInfoAndUpdateUSBBufferSize(commPort);
+                readOpenGD77RadioInfo(commPort);
 				sendCommand(commPort, 1);
 				sendCommand(commPort, 2, 0, 0, 3, 1, 0, StringsDict["RADIO_DISPLAY_CPS"]);
 				sendCommand(commPort, 2, 0, 16, 3, 1, 0, StringsDict["RADIO_DISPLAY_Backup"]);
@@ -1630,7 +1613,7 @@ public class OpenGD77Form : Form
 					commPort = null;
 					break;
 				}
-				readOpenGD77RadioInfoAndUpdateUSBBufferSize(commPort);
+                readOpenGD77RadioInfo(commPort);
 				sendCommand(commPort, 1);
 				sendCommand(commPort, 2, 0, 0, 3, 1, 0, StringsDict["RADIO_DISPLAY_CPS"]);
 				sendCommand(commPort, 2, 0, 16, 3, 1, 0, StringsDict["RADIO_DISPLAY_Restoring"]);
@@ -1666,7 +1649,7 @@ public class OpenGD77Form : Form
 					commPort = null;
 					break;
 				}
-				readOpenGD77RadioInfoAndUpdateUSBBufferSize(commPort);
+                readOpenGD77RadioInfo(commPort);
 				sendCommand(commPort, 1);
 				sendCommand(commPort, 2, 0, 0, 3, 1, 0, StringsDict["RADIO_DISPLAY_CPS"]);
 				sendCommand(commPort, 2, 0, 16, 3, 1, 0, StringsDict["RADIO_DISPLAY_Restoring"]);
@@ -1702,7 +1685,7 @@ public class OpenGD77Form : Form
 					commPort = null;
 					break;
 				}
-				readOpenGD77RadioInfoAndUpdateUSBBufferSize(commPort);
+				readOpenGD77RadioInfo(commPort);
 				sendCommand(commPort, 1);
 				sendCommand(commPort, 2, 0, 0, 3, 1, 0, StringsDict["RADIO_DISPLAY_CPS"]);
 				sendCommand(commPort, 2, 0, 16, 3, 1, 0, StringsDict["RADIO_DISPLAY_Restoring"]);
@@ -1737,7 +1720,7 @@ public class OpenGD77Form : Form
 					commPort = null;
 					break;
 				}
-				readOpenGD77RadioInfoAndUpdateUSBBufferSize(commPort);
+				readOpenGD77RadioInfo(commPort);
 				sendCommand(commPort, 1);
 				sendCommand(commPort, 2, 0, 0, 3, 1, 0, StringsDict["RADIO_DISPLAY_CPS"]);
 				sendCommand(commPort, 2, 0, 16, 3, 1, 0, StringsDict["RADIO_DISPLAY_Reading"]);
@@ -1852,7 +1835,7 @@ public class OpenGD77Form : Form
 					commPort = null;
 					break;
 				}
-				readOpenGD77RadioInfoAndUpdateUSBBufferSize(commPort);
+				readOpenGD77RadioInfo(commPort);
 				sendCommand(commPort, 1);
 				sendCommand(commPort, 2, 0, 0, 3, 1, 0, StringsDict["RADIO_DISPLAY_CPS"]);
 				sendCommand(commPort, 2, 0, 16, 3, 1, 0, StringsDict["RADIO_DISPLAY_Writing"]);
@@ -1954,7 +1937,7 @@ public class OpenGD77Form : Form
 					commPort = null;
 					break;
 				}
-				readOpenGD77RadioInfoAndUpdateUSBBufferSize(commPort);
+				readOpenGD77RadioInfo(commPort);
 				sendCommand(commPort, 1);
 				sendCommand(commPort, 2, 0, 0, 3, 1, 0, StringsDict["RADIO_DISPLAY_CPS"]);
 				sendCommand(commPort, 2, 0, 16, 3, 1, 0, StringsDict["RADIO_DISPLAY_Backup"]);
@@ -1989,7 +1972,7 @@ public class OpenGD77Form : Form
 				commPort = null;
 				break;
 			case OpenGD77CommsTransferData.CommsAction.DOWNLOAD_SCREENGRAB:
-				readOpenGD77RadioInfoAndUpdateUSBBufferSize(commPort, stealth: true);
+				readOpenGD77RadioInfo(commPort, stealth: true);
 				openGD77CommsTransferData.mode = OpenGD77CommsTransferData.CommsDataMode.DataModeReadScreenGrab;
 				openGD77CommsTransferData.localDataBufferStartPosition = 0;
 				openGD77CommsTransferData.startDataAddressInTheRadio = 0;
@@ -2018,7 +2001,7 @@ public class OpenGD77Form : Form
 				break;
 			case OpenGD77CommsTransferData.CommsAction.COMPRESS_AUDIO:
 				sendCommand(commPort, 0);
-				readOpenGD77RadioInfoAndUpdateUSBBufferSize(commPort);
+				readOpenGD77RadioInfo(commPort);
 				CompressWAV(commPort, openGD77CommsTransferData);
 				sendCommand(commPort, 5);
 				sendCommand(commPort, 7);
@@ -2033,7 +2016,7 @@ public class OpenGD77Form : Form
 					commPort = null;
 					break;
 				}
-				readOpenGD77RadioInfoAndUpdateUSBBufferSize(commPort);
+				readOpenGD77RadioInfo(commPort);
 				sendCommand(commPort, 1);
 				sendCommand(commPort, 2, 0, 0, 3, 1, 0, StringsDict["RADIO_DISPLAY_CPS"]);
 				sendCommand(commPort, 2, 0, 16, 3, 1, 0, StringsDict["RADIO_DISPLAY_Writing"]);
@@ -2077,7 +2060,7 @@ public class OpenGD77Form : Form
 					commPort = null;
 					break;
 				}
-				readOpenGD77RadioInfoAndUpdateUSBBufferSize(commPort);
+				readOpenGD77RadioInfo(commPort);
 				sendCommand(commPort, 1);
 				sendCommand(commPort, 2, 0, 0, 3, 1, 0, StringsDict["RADIO_DISPLAY_CPS"]);
 				sendCommand(commPort, 2, 0, 16, 3, 1, 0, StringsDict["RADIO_DISPLAY_Writing"]);
@@ -2145,7 +2128,7 @@ public class OpenGD77Form : Form
 					commPort = null;
 					break;
 				}
-				readOpenGD77RadioInfoAndUpdateUSBBufferSize(commPort);
+				readOpenGD77RadioInfo(commPort);
 				sendCommand(commPort, 1);
 				sendCommand(commPort, 2, 0, 0, 3, 1, 0, StringsDict["RADIO_DISPLAY_CPS"]);
 				sendCommand(commPort, 2, 0, 16, 3, 1, 0, StringsDict["RADIO_DISPLAY_Backup"]);
@@ -2182,7 +2165,7 @@ public class OpenGD77Form : Form
 					commPort = null;
 					break;
 				}
-				readOpenGD77RadioInfoAndUpdateUSBBufferSize(commPort);
+				readOpenGD77RadioInfo(commPort);
 				sendCommand(commPort, 1);
 				sendCommand(commPort, 2, 0, 0, 3, 1, 0, StringsDict["RADIO_DISPLAY_CPS"]);
 				sendCommand(commPort, 2, 0, 16, 3, 1, 0, StringsDict["RADIO_DISPLAY_Restoring"]);
@@ -2218,7 +2201,7 @@ public class OpenGD77Form : Form
 					commPort = null;
 					break;
 				}
-				readOpenGD77RadioInfoAndUpdateUSBBufferSize(commPort);
+				readOpenGD77RadioInfo(commPort);
 				sendCommand(commPort, 1);
 				sendCommand(commPort, 2, 0, 0, 3, 1, 0, StringsDict["RADIO_DISPLAY_CPS"]);
 				sendCommand(commPort, 2, 0, 16, 3, 1, 0, StringsDict["RADIO_DISPLAY_Backup"]);
@@ -2940,9 +2923,9 @@ public class OpenGD77Form : Form
 			sendCommand(port, 0);
 			sendCommand(port, 1);
 			sendCommand(port, 2, 0, 0, 3, 1, 0, "CPS");
-			sendCommand(port, 2, 0, 16, 3, 1, 0, StringsDict["RADIO_DISPLAY_Reading"]);
-			sendCommand(port, 2, 0, 32, 3, 1, 0, StringsDict["RADIO_DISPLAY_Data"]);
-			sendCommand(port, 2, 0, 48, 3, 1, 0, StringsDict["RADIO_DISPLAY_Radio"]);
+			sendCommand(port, 2, 0, 16, 3, 1, 0, "OpenGD77 RUS");
+			sendCommand(port, 2, 0, 32, 3, 1, 0, "");
+			sendCommand(port, 2, 0, 48, 3, 1, 0, "");
 			sendCommand(port, 3);
 			sendCommand(port, 6, 4);
 		}
@@ -2976,6 +2959,7 @@ public class OpenGD77Form : Form
 		{
 			sendCommand(port, 5);
 		}
+        //MessageBox.Show(MainForm.RadioInfo.buildDateTime);
 		return MainForm.RadioInfo;
 	}
 

@@ -271,7 +271,7 @@ public class ThemeForm : Form
 			commPort = null;
 			return false;
 		}
-		MainForm.RadioInfo = OpenGD77Form.readOpenGD77RadioInfoAndUpdateUSBBufferSize(commPort, stealth);
+		MainForm.RadioInfo = OpenGD77Form.readOpenGD77RadioInfo(commPort, stealth);
 		if (MainForm.RadioInfo.radioType == 5 || MainForm.RadioInfo.radioType == 6 || MainForm.RadioInfo.radioType == 8 || MainForm.RadioInfo.radioType == 10 || MainForm.RadioInfo.radioType == 9 || MainForm.RadioInfo.radioType == 7)
 		{
 			writeCommandCharacter = 'X';
@@ -413,7 +413,7 @@ public class ThemeForm : Form
 					commPort = null;
 					break;
 				}
-				MainForm.RadioInfo = OpenGD77Form.readOpenGD77RadioInfoAndUpdateUSBBufferSize(commPort);
+				MainForm.RadioInfo = OpenGD77Form.readOpenGD77RadioInfo(commPort);
 				OpenGD77Form.sendCommand(commPort, 1);
 				OpenGD77Form.sendCommand(commPort, 2, 0, 0, 3, 1, 0, OpenGD77StringsDict["RADIO_DISPLAY_CPS"]);
 				OpenGD77Form.sendCommand(commPort, 2, 0, 16, 3, 1, 0, OpenGD77StringsDict["RADIO_DISPLAY_Reading"]);
@@ -447,7 +447,7 @@ public class ThemeForm : Form
 					commPort = null;
 					break;
 				}
-				OpenGD77Form.readOpenGD77RadioInfoAndUpdateUSBBufferSize(commPort);
+				OpenGD77Form.readOpenGD77RadioInfo(commPort);
 				OpenGD77Form.sendCommand(commPort, 1);
 				OpenGD77Form.sendCommand(commPort, 2, 0, 0, 3, 1, 0, OpenGD77StringsDict["RADIO_DISPLAY_CPS"]);
 				OpenGD77Form.sendCommand(commPort, 2, 0, 16, 3, 1, 0, OpenGD77StringsDict["RADIO_DISPLAY_Writing"]);

@@ -272,23 +272,34 @@ public class ThemeForm : Form
 			return false;
 		}
 		MainForm.RadioInfo = OpenGD77Form.readOpenGD77RadioInfoAndUpdateUSBBufferSize(commPort, stealth);
-		if (MainForm.RadioInfo.radioType == 5 || MainForm.RadioInfo.radioType == 6 || MainForm.RadioInfo.radioType == 8 || MainForm.RadioInfo.radioType == 10 || MainForm.RadioInfo.radioType == 9 || MainForm.RadioInfo.radioType == 7)
+		if (MainForm.RadioInfo.identifier == "RUSSIAN")
 		{
-			writeCommandCharacter = 'X';
-			((MainForm)OpenGD77Form.getMainForm())?.changeRadioType(MainForm.RadioTypeEnum.RadioTypeSTM32);
+			if (MainForm.RadioInfo.radioType == 5 || MainForm.RadioInfo.radioType == 6 || MainForm.RadioInfo.radioType == 8 || MainForm.RadioInfo.radioType == 10 || MainForm.RadioInfo.radioType == 9 || MainForm.RadioInfo.radioType == 7)
+			{
+				writeCommandCharacter = 'X';
+				((MainForm)OpenGD77Form.getMainForm())?.changeRadioType(MainForm.RadioTypeEnum.RadioTypeSTM32);
+			}
+			else
+			{
+				writeCommandCharacter = 'W';
+				((MainForm)OpenGD77Form.getMainForm())?.changeRadioType(MainForm.RadioTypeEnum.RadioTypeMK22);
+			}
+			if (!stealth)
+			{
+				OpenGD77Form.sendCommand(commPort, 5);
+			}
+			commPort.Close();
+			commPort = null;
+			return true;
 		}
 		else
 		{
-			writeCommandCharacter = 'W';
-			((MainForm)OpenGD77Form.getMainForm())?.changeRadioType(MainForm.RadioTypeEnum.RadioTypeMK22);
-		}
-		if (!stealth)
-		{
-			OpenGD77Form.sendCommand(commPort, 5);
-		}
-		commPort.Close();
-		commPort = null;
-		return true;
+            OpenGD77Form.sendCommand(commPort, 6);
+            commPort.Close();
+            commPort = null;
+            MessageBox.Show(OpenGD77Form.StringsDict["Incorrect_firmware"], OpenGD77Form.StringsDict["Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return false;
+        }
 	}
 
 	private bool SaveToCodeplug(OpenGD77Form.CustomDataType daytimeOverride = OpenGD77Form.CustomDataType.UNINITIALISED_TYPE)
@@ -938,6 +949,8 @@ public class ThemeForm : Form
 
     private void ThemeForm_Load(object sender, EventArgs e)
     {
+        Settings.UpdateComponentTextsFromLanguageXmlData(this);
+        Settings.ReadCommonsForSectionIntoDictionary(OpenGD77Form.StringsDict, "OpenGD77Form");
         int num = System.Convert.ToInt32(IniFileUtils.getProfileStringWithDefault("ThemeEditor", "LastDaytimeDaySelected", "1"));
         rbDaytimeDay.Checked = num == 1;
         rbDaytimeNight.Checked = num != 1;

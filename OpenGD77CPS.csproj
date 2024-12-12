@@ -13,7 +13,7 @@
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>app.ico</ApplicationIcon>
+    <ApplicationIcon>Images\apple-touch-icon-167.ico</ApplicationIcon>
     <RootNamespace />
     <IncrementVersionOnBuild>1.yyyy.Mdd.Hmm</IncrementVersionOnBuild>
     <Version>1.2024.1205.1125</Version>
@@ -23,6 +23,9 @@
     <EmbeddedResource Remove="DMR\ChannelForm.resx" />
     <EmbeddedResource Remove="DMR\MainForm.resx" />
     <EmbeddedResource Remove="DMR\RxGroupListForm.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Images\apple-touch-icon-167.ico" />
   </ItemGroup>
   <ItemGroup>
     <None Include="DMR.DMRIDForm.resx">

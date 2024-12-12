@@ -987,9 +987,9 @@
 			<Item Id="Oops" Text="Oops" />
 			<Item Id="RADIO_DISPLAY_CPS" Text="CPS" />
 			<Item Id="RADIO_DISPLAY_Backup" Text="Бэкап" />
-			<Item Id="RADIO_DISPLAY_Calibration" Text="Калибровки" />
+			<Item Id="RADIO_DISPLAY_Calibration" Text="регистров" />
 			<Item Id="RADIO_DISPLAY_EEPROM" Text="EEPROM" />
-			<Item Id="RADIO_DISPLAY_Flash" Text="Флеш" />
+			<Item Id="RADIO_DISPLAY_Flash" Text="флеш-памяти" />
 			<Item Id="RADIO_DISPLAY_Codeplug" Text="кодплага" />
 			<Item Id="RADIO_DISPLAY_MCU_ROM" Text="MCU ROM" />
 			<Item Id="RADIO_DISPLAY_Voice_prompts" Text="Голосовые" />
@@ -998,6 +998,7 @@
 			<Item Id="RADIO_DISPLAY_Reading" Text="Чтение" />
 			<Item Id="RADIO_DISPLAY_Writing" Text="Запись" />
       <Item Id="Theme" Text="темы" />
+      <Item Id="Incorrect_firmware" Text="В рации установлена не прошивка OpenGD77 RUS, работа CPS с ней не поддерживается!" />
       <Item Id="Colour_Conversion_Error" Text="Ошибка преобразования цвета!" />
 			<Item Id="Reading_EEPROM" Text="Чтение EEPROM" />
 			<Item Id="Reading_Flash" Text="Чтение флеша" />

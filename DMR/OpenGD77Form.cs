@@ -49,7 +49,7 @@ public class OpenGD77Form : Form
 
 		[FieldOffset(8)]
 		[MarshalAs(UnmanagedType.ByValTStr, SizeConst = 16)]
-		public string gitRevision;
+		public string identifier;
 
 		[FieldOffset(24)]
 		[MarshalAs(UnmanagedType.ByValTStr, SizeConst = 16)]
@@ -251,37 +251,48 @@ public class OpenGD77Form : Form
 			return false;
 		}
 		MainForm.RadioInfo = readOpenGD77RadioInfoAndUpdateUSBBufferSize(commPort, stealth);
-		if (MainForm.RadioInfo.radioType == 5 || MainForm.RadioInfo.radioType == 6 || MainForm.RadioInfo.radioType == 8 || MainForm.RadioInfo.radioType == 10 || MainForm.RadioInfo.radioType == 9 || MainForm.RadioInfo.radioType == 7)
+		if (MainForm.RadioInfo.identifier == "RUSSIAN")
 		{
-			writeCommandCharacter = 'X';
-			btnBackupCalibration.Visible = false;
-			btnRestoreCalibration.Visible = false;
-			btnRestoreEEPROM.Visible = false;
-			btnBackupEEPROM.Visible = false;
-			btnBackupSettings.Visible = false;
-			btnRestoreSettings.Visible = false;
-			btnReadSecureRegisters.Visible = true;
-			((MainForm)getMainForm())?.changeRadioType(MainForm.RadioTypeEnum.RadioTypeSTM32);
+			if (MainForm.RadioInfo.radioType == 5 || MainForm.RadioInfo.radioType == 6 || MainForm.RadioInfo.radioType == 8 || MainForm.RadioInfo.radioType == 10 || MainForm.RadioInfo.radioType == 9 || MainForm.RadioInfo.radioType == 7)
+			{
+				writeCommandCharacter = 'X';
+				btnBackupCalibration.Visible = false;
+				btnRestoreCalibration.Visible = false;
+				btnRestoreEEPROM.Visible = false;
+				btnBackupEEPROM.Visible = false;
+				btnBackupSettings.Visible = false;
+				btnRestoreSettings.Visible = false;
+				btnReadSecureRegisters.Visible = true;
+				((MainForm)getMainForm())?.changeRadioType(MainForm.RadioTypeEnum.RadioTypeSTM32);
+			}
+			else
+			{
+				writeCommandCharacter = 'W';
+				btnBackupCalibration.Visible = true;
+				btnRestoreCalibration.Visible = true;
+				btnRestoreEEPROM.Visible = true;
+				btnBackupEEPROM.Visible = true;
+				btnBackupSettings.Visible = true;
+				btnRestoreSettings.Visible = true;
+				btnReadSecureRegisters.Visible = false;
+				((MainForm)getMainForm())?.changeRadioType(MainForm.RadioTypeEnum.RadioTypeMK22);
+			}
+			if (!stealth)
+			{
+				sendCommand(commPort, 5);
+			}
+			commPort.Close();
+			commPort = null;
+			return true;
 		}
 		else
 		{
-			writeCommandCharacter = 'W';
-			btnBackupCalibration.Visible = true;
-			btnRestoreCalibration.Visible = true;
-			btnRestoreEEPROM.Visible = true;
-			btnBackupEEPROM.Visible = true;
-			btnBackupSettings.Visible = true;
-			btnRestoreSettings.Visible = true;
-			btnReadSecureRegisters.Visible = false;
-			((MainForm)getMainForm())?.changeRadioType(MainForm.RadioTypeEnum.RadioTypeMK22);
+            sendCommand(commPort, 6);
+            commPort.Close();
+            commPort = null;
+            MessageBox.Show(StringsDict["Incorrect_firmware"], StringsDict["Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
+			return false;
 		}
-		if (!stealth)
-		{
-			sendCommand(commPort, 5);
-		}
-		commPort.Close();
-		commPort = null;
-		return true;
 	}
 
 	public static int LittleEndianToInt(byte[] dataBytes, int offset)

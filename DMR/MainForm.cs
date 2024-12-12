@@ -1428,7 +1428,6 @@ public class MainForm : Form
 		Settings.setPassword("TYT380");
 		Settings.CUR_MODE = 2;
 		ChannelForm.CurCntCh = 1024;
-		method_15();
 		bool flag = false;
 		if (StartupArgs.Length != 0)
 		{
@@ -3806,22 +3805,7 @@ public class MainForm : Form
 		}
 	}
 
-	private void method_15()
-	{
-		dicHelp.Clear();
-		XmlDocument xmlDocument = new XmlDocument();
-		xmlDocument.Load(Application.StartupPath + "/help.xml");
-		foreach (XmlNode item in xmlDocument.SelectNodes("//Control"))
-		{
-			string value = item.Attributes["id"].Value;
-			string value2 = item.Attributes["html"].Value;
-			if (!dicHelp.ContainsKey(value))
-			{
-				dicHelp.Add(value, value2);
-			}
-		}
-		xmlDocument.Clone();
-	}
+
 
 	private void method_16()
 	{

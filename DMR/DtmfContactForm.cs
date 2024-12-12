@@ -196,12 +196,9 @@ public class DtmfContactForm : DockContent, IDisp
 	private Button btnDel;
 
 	private Button btnAdd;
-
-	private MyDataGridViewTextBoxColumn txtName;
-
-	private DataGridViewTextBoxColumn txtCode;
-
-	private CustomPanel pnlDtmfContact;
+    private MyDataGridViewTextBoxColumn txtName;
+    private DataGridViewTextBoxColumn txtCode;
+    private CustomPanel pnlDtmfContact;
 
 	public TreeNode Node { get; set; }
 
@@ -261,17 +258,13 @@ public class DtmfContactForm : DockContent, IDisp
 		Scale(Settings.smethod_6());
 	}
 
-	private void method_0()
-	{
-		txtName.MaxByteLength = 15;
-	}
 
 	private void DtmfContactForm_Load(object sender, EventArgs e)
 	{
 		Settings.smethod_59(base.Controls);
 		Settings.UpdateComponentTextsFromLanguageXmlData(this);
-		method_0();
-		DispData();
+        txtName.MaxByteLength = 32;
+        DispData();
 	}
 
 	private void DtmfContactForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -279,7 +272,7 @@ public class DtmfContactForm : DockContent, IDisp
 		SaveData();
 	}
 
-	private void sscOhyqVop(object sender, EventArgs e)
+	private void newDTMFContact(object sender, EventArgs e)
 	{
 		int num = 0;
 		int num2 = 0;
@@ -291,7 +284,7 @@ public class DtmfContactForm : DockContent, IDisp
 		dgvContact.Rows[num2].Tag = num;
 		dgvContact.Rows[num2].Cells[0].Value = "DTMF-" + (num + 1);
 		dgvContact.Rows[num2].Cells[1].Value = "12345678";
-		method_1();
+		setButtonsState();
 	}
 
 	private void btnDel_Click(object sender, EventArgs e)
@@ -300,10 +293,10 @@ public class DtmfContactForm : DockContent, IDisp
 		int contactIndex = (int)dgvContact.Rows[index].Tag;
 		dgvContact.Rows.RemoveAt(index);
 		ButtonForm.data1.ClearByDtmfContact(contactIndex);
-		method_1();
+		setButtonsState();
 	}
 
-	private void method_1()
+	private void setButtonsState()
 	{
 		int count = dgvContact.Rows.Count;
 		btnAdd.Enabled = count < 63;
@@ -330,8 +323,8 @@ public class DtmfContactForm : DockContent, IDisp
 			DataGridViewTextBoxEditingControl dataGridViewTextBoxEditingControl = (DataGridViewTextBoxEditingControl)e.Control;
 			if (dataGridView.CurrentCell.ColumnIndex == 1)
 			{
-				dataGridViewTextBoxEditingControl.KeyPress -= Settings.smethod_57;
-				dataGridViewTextBoxEditingControl.KeyPress += Settings.smethod_57;
+				dataGridViewTextBoxEditingControl.KeyPress -= Settings.applyDTMFFilter;
+				dataGridViewTextBoxEditingControl.KeyPress += Settings.applyDTMFFilter;
 				dataGridViewTextBoxEditingControl.CharacterCasing = CharacterCasing.Upper;
 				dataGridViewTextBoxEditingControl.MaxLength = 16;
 			}
@@ -359,79 +352,108 @@ public class DtmfContactForm : DockContent, IDisp
 
 	private void InitializeComponent()
 	{
-		System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle = new System.Windows.Forms.DataGridViewCellStyle();
-		this.dgvContact = new System.Windows.Forms.DataGridView();
-		this.txtName = new DMR.MyDataGridViewTextBoxColumn();
-		this.txtCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-		this.btnDel = new System.Windows.Forms.Button();
-		this.btnAdd = new System.Windows.Forms.Button();
-		this.pnlDtmfContact = new CustomPanel();
-		((System.ComponentModel.ISupportInitialize)this.dgvContact).BeginInit();
-		this.pnlDtmfContact.SuspendLayout();
-		base.SuspendLayout();
-		this.dgvContact.AllowUserToAddRows = false;
-		dataGridViewCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-		dataGridViewCellStyle.BackColor = System.Drawing.SystemColors.Control;
-		dataGridViewCellStyle.Font = new System.Drawing.Font("Arial", 10f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-		dataGridViewCellStyle.ForeColor = System.Drawing.SystemColors.WindowText;
-		dataGridViewCellStyle.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-		dataGridViewCellStyle.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-		dataGridViewCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-		this.dgvContact.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle;
-		this.dgvContact.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-		this.dgvContact.Columns.AddRange(this.txtName, this.txtCode);
-		this.dgvContact.Location = new System.Drawing.Point(30, 69);
-		this.dgvContact.Name = "dgvContact";
-		this.dgvContact.RowTemplate.Height = 23;
-		this.dgvContact.Size = new System.Drawing.Size(394, 401);
-		this.dgvContact.TabIndex = 2;
-		this.dgvContact.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(dgvContact_CellValidating);
-		this.dgvContact.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(dgvContact_EditingControlShowing);
-		this.txtName.HeaderText = "Name";
-		this.txtName.MaxByteLength = int.MaxValue;
-		this.txtName.Name = "txtName";
-		this.txtName.Width = 175;
-		this.txtCode.HeaderText = "Number";
-		this.txtCode.Name = "txtCode";
-		this.txtCode.Width = 175;
-		this.btnDel.Location = new System.Drawing.Point(251, 28);
-		this.btnDel.Name = "btnDel";
-		this.btnDel.Size = new System.Drawing.Size(75, 23);
-		this.btnDel.TabIndex = 1;
-		this.btnDel.Text = "Delete";
-		this.btnDel.UseVisualStyleBackColor = true;
-		this.btnDel.Click += new System.EventHandler(btnDel_Click);
-		this.btnAdd.Location = new System.Drawing.Point(126, 28);
-		this.btnAdd.Name = "btnAdd";
-		this.btnAdd.Size = new System.Drawing.Size(75, 23);
-		this.btnAdd.TabIndex = 0;
-		this.btnAdd.Text = "Add";
-		this.btnAdd.UseVisualStyleBackColor = true;
-		this.btnAdd.Click += new System.EventHandler(sscOhyqVop);
-		this.pnlDtmfContact.AutoScroll = true;
-		this.pnlDtmfContact.AutoSize = true;
-		this.pnlDtmfContact.Controls.Add(this.dgvContact);
-		this.pnlDtmfContact.Controls.Add(this.btnAdd);
-		this.pnlDtmfContact.Controls.Add(this.btnDel);
-		this.pnlDtmfContact.Dock = System.Windows.Forms.DockStyle.Fill;
-		this.pnlDtmfContact.Location = new System.Drawing.Point(0, 0);
-		this.pnlDtmfContact.Name = "pnlDtmfContact";
-		this.pnlDtmfContact.Size = new System.Drawing.Size(454, 498);
-		this.pnlDtmfContact.TabIndex = 3;
-		base.ClientSize = new System.Drawing.Size(454, 498);
-		base.Controls.Add(this.pnlDtmfContact);
-		this.Font = new System.Drawing.Font("Arial", 10f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-		base.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-		base.MaximizeBox = false;
-		base.MinimizeBox = false;
-		base.Name = "DtmfContactForm";
-		this.Text = "DTMF Contact";
-		base.FormClosing += new System.Windows.Forms.FormClosingEventHandler(DtmfContactForm_FormClosing);
-		base.Load += new System.EventHandler(DtmfContactForm_Load);
-		((System.ComponentModel.ISupportInitialize)this.dgvContact).EndInit();
-		this.pnlDtmfContact.ResumeLayout(false);
-		base.ResumeLayout(false);
-		base.PerformLayout();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.dgvContact = new System.Windows.Forms.DataGridView();
+            this.btnDel = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.pnlDtmfContact = new CustomPanel();
+            this.txtName = new DMR.MyDataGridViewTextBoxColumn();
+            this.txtCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvContact)).BeginInit();
+            this.pnlDtmfContact.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // dgvContact
+            // 
+            this.dgvContact.AllowUserToAddRows = false;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvContact.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvContact.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvContact.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.txtName,
+            this.txtCode});
+            this.dgvContact.Location = new System.Drawing.Point(30, 69);
+            this.dgvContact.Name = "dgvContact";
+            this.dgvContact.RowTemplate.Height = 23;
+            this.dgvContact.Size = new System.Drawing.Size(394, 401);
+            this.dgvContact.TabIndex = 2;
+            this.dgvContact.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvContact_CellValidating);
+            this.dgvContact.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dgvContact_EditingControlShowing);
+            // 
+            // btnDel
+            // 
+            this.btnDel.BackColor = System.Drawing.SystemColors.Control;
+            this.btnDel.Location = new System.Drawing.Point(279, 28);
+            this.btnDel.Name = "btnDel";
+            this.btnDel.Size = new System.Drawing.Size(114, 23);
+            this.btnDel.TabIndex = 1;
+            this.btnDel.Text = "Delete";
+            this.btnDel.UseVisualStyleBackColor = false;
+            this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.BackColor = System.Drawing.SystemColors.Control;
+            this.btnAdd.Location = new System.Drawing.Point(106, 28);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(105, 23);
+            this.btnAdd.TabIndex = 0;
+            this.btnAdd.Text = "Add";
+            this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.Click += new System.EventHandler(this.newDTMFContact);
+            // 
+            // pnlDtmfContact
+            // 
+            this.pnlDtmfContact.AutoScroll = true;
+            this.pnlDtmfContact.AutoSize = true;
+            this.pnlDtmfContact.Controls.Add(this.dgvContact);
+            this.pnlDtmfContact.Controls.Add(this.btnAdd);
+            this.pnlDtmfContact.Controls.Add(this.btnDel);
+            this.pnlDtmfContact.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlDtmfContact.Location = new System.Drawing.Point(0, 0);
+            this.pnlDtmfContact.Name = "pnlDtmfContact";
+            this.pnlDtmfContact.Size = new System.Drawing.Size(454, 498);
+            this.pnlDtmfContact.TabIndex = 3;
+            // 
+            // txtName
+            // 
+            this.txtName.HeaderText = "Name";
+            this.txtName.MaxByteLength = 2147483647;
+            this.txtName.MaxInputLength = 16;
+            this.txtName.Name = "txtName";
+            this.txtName.Width = 175;
+            // 
+            // txtCode
+            // 
+            this.txtCode.HeaderText = "Number";
+            this.txtCode.MaxInputLength = 16;
+            this.txtCode.Name = "txtCode";
+            this.txtCode.Width = 175;
+            // 
+            // DtmfContactForm
+            // 
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(454, 498);
+            this.Controls.Add(this.pnlDtmfContact);
+            this.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "DtmfContactForm";
+            this.Text = "DTMF Contact";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DtmfContactForm_FormClosing);
+            this.Load += new System.EventHandler(this.DtmfContactForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvContact)).EndInit();
+            this.pnlDtmfContact.ResumeLayout(false);
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
 	}
 
 	static DtmfContactForm()

@@ -250,11 +250,11 @@
 			<Item Id="DigitKey" Text="Number Key " />
 		</Commons>
 	</DigitalKeyContactForm>
-	<DtmfContactForm Text="Контакт DTMF">
+	<DtmfContactForm Text="Контакты DTMF">
 		<Controls>
-			<Control Id="dgvContact" Text="Name,Number">
-				<ControlItem Id="txtName" Text="Name" />
-				<ControlItem Id="txtCode" Text="Number" />
+			<Control Id="dgvContact" Text="Имя,Номер">
+				<ControlItem Id="txtName" Text="Имя" />
+				<ControlItem Id="txtCode" Text="Номер" />
 			</Control>
 			<Control Id="btnAdd" Text="Добавить" />
 			<Control Id="btnDel" Text="Удалить" />
@@ -630,6 +630,7 @@
 			<Control Id="grpUnselected" Text="Доступны" />
 			<Control Id="btnDel" Text="Удалить" />
 			<Control Id="lblName" Text="Название" />
+      <Control Id="lblWarning" Text="Максимальная длина названия - 16 символов" />
       <Control Id="tsrGrpList" Text="">
         <ToolStripItem Id="tslblInfo" Text="" />
         <ToolStripItem Id="tsbtnFirst" Text="Первый" />
@@ -793,7 +794,8 @@
 			<Control Id="btnAdd" Text="Добавить" />
 			<Control Id="grpUnselected" Text="Доступно" />
 			<Control Id="btnDel" Text="Удалить" />
-			<Control Id="lblName" Text="Имя" />
+			<Control Id="lblName" Text="Название" />
+      <Control Id="lblWarning" Text="Максимальная длина названия - 16 символов" />
 		</Controls>
 	</ZoneForm>
 	<DownloadContactsForm Text="Загрузка контактов">
@@ -899,7 +901,7 @@
   <CalibrationFormMDUV380 Text="Работа с калибровками">
     <Controls>
       <Control Id="btnWrite" Text="Записать в рацию" />
-      <Control Id="btnReadFile" Text="Откпыть файл калибровок" />
+      <Control Id="btnReadFile" Text="Открыть файл калибровок" />
       <Control Id="btnReadFromRadio" Text="Считать калибровки из рации" />
       <Control Id="lblMessage" Text="Радиостанции типа MD-UV380 (MD-UV390, Retevis RT-3S) хранят данные калибровок в защищенной области памяти. Их редактирование в режиме реального времени средствами OpenGD77 RUS CPS недоступно. Считайте и сохраните файл." />
       <Control Id="btnSaveCalibration" Text="Сохранить файл калибровок" />
@@ -1116,7 +1118,7 @@
       <Item Id="DownloadRussian" Text="Скачать русский языковой файл" />
       <Item Id="WillBeReplaced" Text="Существующий файл будет перезаписан!" />
       <Item Id="FileUpdated" Text="Загружен актуальный файл локализации" />
-			<Item Id="FirmwareFiles" Text="firmware files" />
+			<Item Id="FirmwareFiles" Text="Файлы прошивки" />
 			<Item Id="OfficialFWVerified" Text="The official firmware file has been verified, and Open firmware uploads will now have DMR functionality" />
 			<Item Id="OfficialFWNotCorrect" Text="The file you selected was NOT the official firmware version" />
 			<Item Id="ConnectingToRadio" Text="Соединение с рацией..." />
@@ -1146,13 +1148,13 @@
 			<Item Id="CSVs_Created_in" Text="Файлы созданы в:" />
 			<Item Id="Imported" Text="импортирована" />
 			<Item Id="Appended" Text="добавлена" />
-			<Item Id="ERROR:-_Could_not_open" Text="ERROR:- Could not open" />
-			<Item Id="May_be_in_use_by_another_program" Text="May be in use by another program" />
-			<Item Id="Format_error_in" Text="Format error in"  />
-			<Item Id="Not_enough_columns_in_line" Text="Not enough columns in line" />
-			<Item Id="Line" Text="Line" />
-			<Item Id="is_not_valid_in" Text="is not valid in" />
-			<Item Id="and_will_be_skipped" Text="and will be skipped" />
+			<Item Id="ERROR:-_Could_not_open" Text="Невозможно открыть файл" />
+			<Item Id="May_be_in_use_by_another_program" Text="Он может использоваться другой программой в этот момент" />
+			<Item Id="Format_error_in" Text="Ошибка формата в"  />
+			<Item Id="Not_enough_columns_in_line" Text="Недостаточно колонок в ряду" />
+			<Item Id="Line" Text="Ряд" />
+			<Item Id="is_not_valid_in" Text="некорректен в" />
+			<Item Id="and_will_be_skipped" Text="и будет пропущен" />
       <Item Id="mismatch" Text="Несовпадение имен!" />
 			<Item Id="Contacts" Text="Контактов" />
 			<Item Id="TG_Lists" Text="Списков групп" />
@@ -1237,14 +1239,14 @@
 	</CommPortSelector>
 	<Commons>
 		<Item Id="None" Text="Нет" />
-		<Item Id="Selected" Text="Selected" />
-		<Item Id="RadioIdNotEmpty" Text="Radio ID can not be empty!" />
-		<Item Id="RadioIdOutOfRange" Text="Radio ID out of range!" />
-		<Item Id="Read" Text="Read" />
-		<Item Id="Write" Text="Write" />
-		<Item Id="ReadComplete" Text="Read Complete" />
-		<Item Id="WriteComplete" Text="Write Complete" />
-		<Item Id="NameExist" Text="Name exists" />
+		<Item Id="Selected" Text="Выбрано" />
+		<Item Id="RadioIdNotEmpty" Text="ID не может быть пустым!" />
+		<Item Id="RadioIdOutOfRange" Text="ID вне допустимого диапазона!" />
+		<Item Id="Read" Text="Читать" />
+		<Item Id="Write" Text="Записать" />
+		<Item Id="ReadComplete" Text="Чтение завершено" />
+		<Item Id="WriteComplete" Text="Запись завершена" />
+		<Item Id="NameExist" Text="Имя существует" />
 		<Item Id="FirstChNotDelete" Text="The first channel in the first zone cannot be deleted" />
 		<Item Id="FileFormatError" Text="File format error" />
 		<Item Id="OpenSuccessfully" Text="Кодплаг открыт из файла" />
@@ -1254,15 +1256,15 @@
 		<Item Id="KeyPressHex" Text="Please input : " />
 		<Item Id="KeyPressDigit" Text="Please input : Digit and {0}" />
 		<Item Id="KeyPressPrint" Text="Please input print" />
-		<Item Id="DeviceNotFound" Text="Device not found" />
+		<Item Id="DeviceNotFound" Text="Устройство не найдено" />
 		<Item Id="ModelNotMatch" Text="Model mismatch" />
 		<Item Id="PromptKey1" Text="Сохранить кодплаг перед выходом?" />
 		<Item Id="PromptKey2" Text="Загрузить шаблон кодплага? Все данные будут заменены." />
-		<Item Id="DataFormatError" Text="Data format error" />
-		<Item Id="FirstNotDelete" Text="The first row cannot be deleted" />
-		<Item Id="OpenPortFail" Text="Failed to open serial port" />
-		<Item Id="CommError" Text="Communication error" />
-		<Item Id="Add" Text="Add: " />
+		<Item Id="DataFormatError" Text="Ошибка формата данных" />
+		<Item Id="FirstNotDelete" Text="Ряд не может быть удален" />
+		<Item Id="OpenPortFail" Text="Ошибка открытия порта" />
+		<Item Id="CommError" Text="Ошибка соединения" />
+		<Item Id="Add" Text="Добавить: " />
 		<Item Id="ScanSelected" Text="Unable to operate selected" />
 		<Item Id="codePlugReadConfirm"  Text="Are you sure you want to read the codeplug from the GD-77?.This will overwrite the current codeplug." />
 		<Item Id="codePlugWriteConfirm"  Text="Are you sure you want to write this codeplug to the GD-77?.This will overwrite codeplug currently in the GD-77" />
@@ -1273,9 +1275,9 @@
 		<Item Id="DownloadContactsDownloading" Text="Downloading..." />
 		<Item Id="DownloadContactsSelectContactsToImport" Text="Please select the contacts you would like to import" />
 		<Item Id="DownloadContactsTooMany" Text="Not all contacts could be imported because the maximum number of Digital Contacts has been reached" />
-		<Item Id="Warning" Text="Warning" />
+		<Item Id="Warning" Text="Внимание" />
 		<Item Id="UnableDownloadFromInternet" Text="Невозможно загрузить данные. Возможно, нет доступа к удаленному ресурсу." />
-		<Item Id="DownloadContactsImportComplete" Text="Import complete" />
+		<Item Id="DownloadContactsImportComplete" Text="Импорт завершен" />
 		<Item Id="CodeplugUpgradeNotice" Text="This appears to be a V3.0.6 Codeplug. It will be converted to V3.1.x" />
 		<Item Id="CodeplugUpgradeWarningToManyRxGroups" Text="Version 3.1.x can only have 76 Rx Groups. Additional Rx Groups have been ignored" />
 		<Item Id="CodeplugRead" Text="Reading codeplug from GD-77" />
@@ -1284,17 +1286,17 @@
 		<Item Id="DMRIDWrite" Text="Writing DMR ID database to GD-77" />
 		<Item Id="CalibrationRead" Text="Reading calibration data from GD-77" />
 		<Item Id="CalibrationWrite" Text="Writing calibration data to GD-77" />
-		<Item Id="IdAlreadyExists" Text="ID / Timeslot already exists！" />
-		<Item Id="IdOutOfRange" Text="ID out of range!" />
-		<Item Id="IdNotEmpty" Text="ID can not be empty!" />
-		<Item Id="ContactNameDuplicate" Text="Warning. Duplicate contact name." />
+		<Item Id="IdAlreadyExists" Text="Такой ID уже существует！" />
+		<Item Id="IdOutOfRange" Text="ID вне диапазона!" />
+		<Item Id="IdNotEmpty" Text="ID не может быть пустым!" />
+		<Item Id="ContactNameDuplicate" Text="Повторяющееся имя контакта!" />
 		<Item Id="EnableMemoryAccessMode" Text ="The GD-77 does not seem to be in Memory Access mode.Hold keys SK2 (Blue side key), Green Menu and * when turning on the transceiver, and try again" />
 		<Item Id="dataRead" Text="Reading data from GD-77"/>
 		<Item Id="dataWrite" Text="Writing data to GD-77"/>
-		<Item Id="DMRIdContcatsTotal" Text="Total number of IDs = {0}. Max of {1} can be uploaded" />
-		<Item Id="ErrorParsingData" Text="Error while parsing data" />
+		<Item Id="DMRIdContcatsTotal" Text="Полное число ID: {0}. Максимум может быть загружено: {1} " />
+		<Item Id="ErrorParsingData" Text="Ошибка парсинга данных" />
 		<Item Id="DMRIdTooManyIDs" Text="Too many IDs for the connected radio, the list will be truncated to the maximum capacity." />
-		<Item Id="N/A" Text="N/A"/>
+		<Item Id="N/A" Text="Нет"/>
 		<Item Id="OfficialFWNotSelected" Text="You must first select the location of the official / donor firmware file" />
 		<Item Id="Error" Text="Ошибка" />
 		<Item Id="FirmwareFilefilter" Text="Файлы прошивки|*.bin" />

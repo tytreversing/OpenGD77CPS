@@ -23,6 +23,7 @@
     <EmbeddedResource Remove="DMR\ChannelForm.resx" />
     <EmbeddedResource Remove="DMR\MainForm.resx" />
     <EmbeddedResource Remove="DMR\RxGroupListForm.resx" />
+    <EmbeddedResource Remove="DMR\ZoneForm.resx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Images\apple-touch-icon-167.ico" />
@@ -35,6 +36,7 @@
     <None Include="DMR\ChannelForm.resx" />
     <None Include="DMR\MainForm.resx" />
     <None Include="DMR\RxGroupListForm.resx" />
+    <None Include="DMR\ZoneForm.resx" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Xml" />
@@ -66,6 +68,11 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>DMR.DMRIDForm.resx</DependentUpon>
+    </Compile>
+    <Compile Update="DMR.MainForm.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DMR.MainForm.resx</DependentUpon>
     </Compile>
     <Compile Update="DMR.Properties.Resources.Designer.cs">
       <DesignTime>True</DesignTime>
@@ -231,5 +238,8 @@
     <None Update="WeifenLuo.WinFormsUI.Docking.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
   </ItemGroup>
 </Project>

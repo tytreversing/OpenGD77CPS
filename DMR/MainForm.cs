@@ -1260,6 +1260,7 @@ public class MainForm : Form
             // MainForm
             // 
             this.BackColor = System.Drawing.Color.White;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1099, 709);
             this.Controls.Add(this.dockPanel);
             this.Controls.Add(this.tsrMain);
@@ -1321,7 +1322,7 @@ public class MainForm : Form
 		_TextBox.Visible = false;
 		_TextBox.LostFocus += _TextBox_LostFocus;
 		_TextBox.Validating += _TextBox_Validating;
-		_TextBox.KeyPress += Settings.smethod_57;
+		_TextBox.KeyPress += Settings.applyDTMFFilter;
 		base.Controls.Add(_TextBox);
 		m_deserializeDockContent = method_0;
 		initialiseTree();

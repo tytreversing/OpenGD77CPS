@@ -66,8 +66,8 @@ public class RxGroupListForm : DockContent, IDisp
 	private CustomPanel pnlRxGrpList;
 
 	public static RxListData data;
-
-	private ComponentResourceManager componentResourceManager;
+    private Label lblWarning;
+    private ComponentResourceManager componentResourceManager;
 
 	public TreeNode Node { get; set; }
 
@@ -86,6 +86,7 @@ public class RxGroupListForm : DockContent, IDisp
             this.tsmiAdd = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiDel = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlRxGrpList = new CustomPanel();
+            this.lblWarning = new System.Windows.Forms.Label();
             this.tsrGrpList = new System.Windows.Forms.ToolStrip();
             this.tslblInfo = new System.Windows.Forms.ToolStripLabel();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
@@ -152,6 +153,7 @@ public class RxGroupListForm : DockContent, IDisp
             this.pnlRxGrpList.AutoScroll = true;
             this.pnlRxGrpList.AutoSize = true;
             this.pnlRxGrpList.BackColor = System.Drawing.Color.White;
+            this.pnlRxGrpList.Controls.Add(this.lblWarning);
             this.pnlRxGrpList.Controls.Add(this.tsrGrpList);
             this.pnlRxGrpList.Controls.Add(this.btnDown);
             this.pnlRxGrpList.Controls.Add(this.btnUp);
@@ -166,6 +168,15 @@ public class RxGroupListForm : DockContent, IDisp
             this.pnlRxGrpList.Name = "pnlRxGrpList";
             this.pnlRxGrpList.Size = new System.Drawing.Size(693, 567);
             this.pnlRxGrpList.TabIndex = 8;
+            // 
+            // lblWarning
+            // 
+            this.lblWarning.AutoSize = true;
+            this.lblWarning.Location = new System.Drawing.Point(249, 42);
+            this.lblWarning.Name = "lblWarning";
+            this.lblWarning.Size = new System.Drawing.Size(45, 16);
+            this.lblWarning.TabIndex = 10;
+            this.lblWarning.Text = "label1";
             // 
             // tsrGrpList
             // 
@@ -277,12 +288,15 @@ public class RxGroupListForm : DockContent, IDisp
             // 
             // txtName
             // 
+            this.txtName.CausesValidation = false;
             this.txtName.InputString = null;
             this.txtName.Location = new System.Drawing.Point(100, 39);
             this.txtName.MaxByteLength = 0;
+            this.txtName.MaxLength = 16;
             this.txtName.Name = "txtName";
             this.txtName.OnlyAllowInputStringAndCapitaliseCharacters = false;
-            this.txtName.Size = new System.Drawing.Size(115, 23);
+            this.txtName.ShortcutsEnabled = false;
+            this.txtName.Size = new System.Drawing.Size(140, 23);
             this.txtName.TabIndex = 1;
             this.txtName.Leave += new System.EventHandler(this.txtName_Leave);
             // 
@@ -356,7 +370,7 @@ public class RxGroupListForm : DockContent, IDisp
             // 
             // lblName
             // 
-            this.lblName.Location = new System.Drawing.Point(7, 39);
+            this.lblName.Location = new System.Drawing.Point(21, 39);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(86, 23);
             this.lblName.TabIndex = 0;
@@ -866,4 +880,6 @@ public class RxGroupListForm : DockContent, IDisp
 			return base.ProcessCmdKey(ref msg, keyData);
 		}
 	}
+
+
 }

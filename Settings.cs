@@ -1159,7 +1159,7 @@ internal class Settings
 		return false;
 	}
 
-	public static void smethod_57(object sender, KeyPressEventArgs e)
+	public static void applyDTMFFilter(object sender, KeyPressEventArgs e)
 	{
 		if ("0123456789ABCD*#\b".IndexOf(char.ToUpper(e.KeyChar)) < 0 && e.KeyChar != '\b' && e.KeyChar != '.')
 		{

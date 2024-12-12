@@ -735,8 +735,8 @@ public class ZoneForm : DockContent, IDisp
 	public static Zone data;
 
 	public static readonly int SPACE_BASIC_ZONE;
-
-	private ComponentResourceManager componentResourceManager;
+    private Label lblWarning;
+    private ComponentResourceManager componentResourceManager;
 
 	public static int MainChIndex { get; set; }
 
@@ -826,6 +826,7 @@ public class ZoneForm : DockContent, IDisp
 	private void InitializeComponent()
 	{
             this.pnlZone = new CustomPanel();
+            this.lblWarning = new System.Windows.Forms.Label();
             this.tsrZone = new System.Windows.Forms.ToolStrip();
             this.tslblInfo = new System.Windows.Forms.ToolStripLabel();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
@@ -865,6 +866,7 @@ public class ZoneForm : DockContent, IDisp
             // 
             this.pnlZone.AutoScroll = true;
             this.pnlZone.AutoSize = true;
+            this.pnlZone.Controls.Add(this.lblWarning);
             this.pnlZone.Controls.Add(this.tsrZone);
             this.pnlZone.Controls.Add(this.mnsZone);
             this.pnlZone.Controls.Add(this.btnDown);
@@ -880,6 +882,14 @@ public class ZoneForm : DockContent, IDisp
             this.pnlZone.Name = "pnlZone";
             this.pnlZone.Size = new System.Drawing.Size(794, 560);
             this.pnlZone.TabIndex = 8;
+            // 
+            // lblWarning
+            // 
+            this.lblWarning.AutoSize = true;
+            this.lblWarning.Location = new System.Drawing.Point(352, 75);
+            this.lblWarning.Name = "lblWarning";
+            this.lblWarning.Size = new System.Drawing.Size(0, 16);
+            this.lblWarning.TabIndex = 35;
             // 
             // tsrZone
             // 
@@ -1063,8 +1073,9 @@ public class ZoneForm : DockContent, IDisp
             // txtName
             // 
             this.txtName.InputString = null;
-            this.txtName.Location = new System.Drawing.Point(316, 62);
+            this.txtName.Location = new System.Drawing.Point(183, 71);
             this.txtName.MaxByteLength = 0;
+            this.txtName.MaxLength = 16;
             this.txtName.Name = "txtName";
             this.txtName.OnlyAllowInputStringAndCapitaliseCharacters = false;
             this.txtName.Size = new System.Drawing.Size(150, 23);
@@ -1143,7 +1154,7 @@ public class ZoneForm : DockContent, IDisp
             // 
             // lblName
             // 
-            this.lblName.Location = new System.Drawing.Point(216, 63);
+            this.lblName.Location = new System.Drawing.Point(83, 72);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(90, 23);
             this.lblName.TabIndex = 0;

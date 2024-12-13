@@ -46,7 +46,7 @@ public class MainForm : Form
 
 	public static string Language_Name;
 
-	private const string DEFAULT_DATA_FILE_NAME = "DefaultOpenGD77.ogd";
+	private const string DEFAULT_DATA_FILE_NAME = "OpenGD77RUS.ogd";
 
 	public const int LIBREDMR_CODEPLUG_VERSION = 1;
 
@@ -1077,12 +1077,12 @@ public class MainForm : Form
             // 
             // ofdMain
             // 
-            this.ofdMain.Filter = "OpenGD77 RUS (*.ogd)|*.ogd|OpenGD77 (*.g77)|*.g77|GD-77 (*.dat,*.g77)|*.dat;*.g77" +
+            this.ofdMain.Filter = "OpenGD77 RUS (*.ogd)|*.ogd" +
     "";
             // 
             // sfdMain
             // 
-            this.sfdMain.Filter = "OpenGD77 RUS (*.ogd)|*.ogd|OpenGD77 (*.g77)|*.g77|GD-77 (*.dat,*.g77)|*.dat;*.g77" +
+            this.sfdMain.Filter = "OpenGD77 RUS (*.ogd)|*.ogd" +
     "";
             // 
             // cmsTree
@@ -2832,7 +2832,7 @@ public class MainForm : Form
 
 	private void loadDefaultOrInitialFile(string overRideWithFile = null)
 	{
-		string text = Application.StartupPath + Path.DirectorySeparatorChar + "DefaultOpenGD77.ogd";
+		string text = Application.StartupPath + Path.DirectorySeparatorChar + DEFAULT_DATA_FILE_NAME;
 		if (overRideWithFile != null)
 		{
 			text = overRideWithFile;
@@ -2907,23 +2907,54 @@ public class MainForm : Form
 		bool flag = !array.Take(8).All((byte x) => x == Settings.CUR_MODEL[index++]);
 		if (num && flag)
 		{
-			MessageBox.Show(Settings.dicCommon["Model does not match"]);
+			MessageBox.Show("Кодплаг в файле не является кодплагом поддерживаемых прошивок OpenGD77 RUS!\r\nЕсли он создан в стандартной CPS OpenGD77 или считан из рации под управлением стандартной прошивки OpenGD77, используйте пункт меню \"Файл->Импорт из OpenGD77\".", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			IniFileUtils.WriteProfileString("Setup", "LastFilePath", "");
 			return;
 		}
-		CurFileName = fileName;
-		IniFileUtils.WriteProfileString("Setup", "LastFilePath", fileName);
-		closeAllForms();
-		if (!checkZonesFor80Channels(array))
+		else
 		{
-			convertTo80ChannelZoneCodeplug(array);
+			CurFileName = fileName;
+			IniFileUtils.WriteProfileString("Setup", "LastFilePath", fileName);
+			closeAllForms();
+			if (!checkZonesFor80Channels(array))
+			{
+				convertTo80ChannelZoneCodeplug(array);
+			}
+			ByteToData(array, isFromFile: true);
+			InitTree();
+			Text = getMainTitleStub() + " " + fileName;
 		}
-		ByteToData(array, isFromFile: true);
-		InitTree();
-		Text = getMainTitleStub() + " " + fileName;
 	}
 
-	private void tsbtnOpen_Click(object sender, EventArgs e)
+    private void importCodeplugFile(string fileName)
+    {
+        int index = 0;
+        byte[] OLD_CODEPLUG = new byte[8] { 77, 68, 45, 55, 54, 48, 80, 255 };
+        byte[] array = File.ReadAllBytes(fileName);
+        bool num = !array.Take(8).All((byte byte_0) => byte_0 == byte.MaxValue);
+        bool flag = !array.Take(8).All((byte x) => x == OLD_CODEPLUG[index++]);
+        if (num && flag)
+        {
+            MessageBox.Show("Кодплаг в файле не является кодплагом OpenGD77!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            IniFileUtils.WriteProfileString("Setup", "LastFilePath", "");
+            return;
+        }
+        else
+        {
+            CurFileName = fileName;
+            IniFileUtils.WriteProfileString("Setup", "LastFilePath", fileName);
+            closeAllForms();
+            if (!checkZonesFor80Channels(array))
+            {
+                convertTo80ChannelZoneCodeplug(array);
+            }
+            ByteToData(array, isFromFile: true);
+            InitTree();
+            Text = getMainTitleStub() + " " + fileName;
+        }
+    }
+
+    private void tsbtnOpen_Click(object sender, EventArgs e)
 	{
 		try
 		{
@@ -4235,7 +4266,7 @@ public class MainForm : Form
             }
             if (importFileDialog.ShowDialog() == DialogResult.OK && !string.IsNullOrEmpty(importFileDialog.FileName))
             {
-                openCodeplugFile(importFileDialog.FileName);
+                importCodeplugFile(importFileDialog.FileName);
             }
         }
         catch (Exception ex2)

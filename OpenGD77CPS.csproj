@@ -133,7 +133,7 @@
     <None Update="app.ico">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
-    <None Update="DefaultOpenGD77.ogd">
+    <None Update="OpenGD77RUS.ogd">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="DefaultTheme.gtm">

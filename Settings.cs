@@ -1554,7 +1554,7 @@ internal class Settings
 		dicCommon = new Dictionary<string, string>();
 		_languageXML = null;
 		LanguageFile = "";
-		CUR_MODEL = new byte[8] { 77, 68, 45, 55, 54, 48, 80, 255 };
+		CUR_MODEL = new byte[8] { 82, 85, 83, 83, 73, 65, 78, 255 };
 		SZ_NONE = "None";
 		SZ_SELECTED = "Selected";
 		SZ_ADD = "Add";

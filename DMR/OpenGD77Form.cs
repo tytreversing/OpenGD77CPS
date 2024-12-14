@@ -470,7 +470,7 @@ public class OpenGD77Form : Form
 		}
 		catch (Exception)
 		{
-			MessageBox.Show(Settings.dicCommon["UnableDownloadFromInternet"]);
+			MessageBox.Show("Не удалось загрузить данные спутников из Интернета!");
 			flag = true;
 			enableDisableAllButtons(show: true);
 		}
@@ -606,7 +606,7 @@ public class OpenGD77Form : Form
 		}
 		if (num2 == 0)
 		{
-			MessageBox.Show("No keps data received.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+			MessageBox.Show("Данные не получены", "Внимание!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 			return false;
 		}
 		int returnedOffsetPos = 0;
@@ -2092,7 +2092,7 @@ public class OpenGD77Form : Form
 				sendCommand(commPort, 1);
 				sendCommand(commPort, 2, 0, 0, 3, 1, 0, StringsDict["RADIO_DISPLAY_CPS"]);
 				sendCommand(commPort, 2, 0, 16, 3, 1, 0, StringsDict["RADIO_DISPLAY_Writing"]);
-				sendCommand(commPort, 2, 0, 32, 3, 1, 0, "Keps");
+				sendCommand(commPort, 2, 0, 32, 3, 1, 0, "спутников");
 				sendCommand(commPort, 3);
 				sendCommand(commPort, 6, 4);
 				openGD77CommsTransferData.mode = OpenGD77CommsTransferData.CommsDataMode.DataModeWriteFlash;

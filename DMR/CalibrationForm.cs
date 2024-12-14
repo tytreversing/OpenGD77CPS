@@ -218,10 +218,10 @@ public class CalibrationForm : Form
 		OpenGD77CommsTransferData openGD77CommsTransferData = new OpenGD77CommsTransferData();
 		sendCommand(commPort, 0);
 		sendCommand(commPort, 1);
-		sendCommand(commPort, 2, 0, 0, 3, 1, 0, "CPS");
-		sendCommand(commPort, 2, 0, 16, 3, 1, 0, "Backup");
-		sendCommand(commPort, 2, 0, 32, 3, 1, 0, "Calibration");
-		sendCommand(commPort, 3);
+        sendCommand(commPort, 2, 0, 0, 3, 1, 0, "CPS");
+        sendCommand(commPort, 2, 0, 16, 3, 1, 0, StringsDict["RADIO_DISPLAY_Reading"]);
+        sendCommand(commPort, 2, 0, 32, 3, 1, 0, StringsDict["RADIO_DISPLAY_Calibrations"]);
+        sendCommand(commPort, 3);
 		sendCommand(commPort, 6, 3);
 		openGD77CommsTransferData.mode = OpenGD77CommsTransferData.CommsDataMode.DataModeReadFlash;
 		openGD77CommsTransferData.dataBuff = new byte[(MainForm.RadioType == MainForm.RadioTypeEnum.RadioTypeSTM32) ? CALIBRATION_DATA_SIZE_STM32 : CALIBRATION_DATA_SIZE];
@@ -353,10 +353,10 @@ public class CalibrationForm : Form
 		}
 		sendCommand(commPort, 0);
 		sendCommand(commPort, 1);
-		sendCommand(commPort, 2, 0, 0, 3, 1, 0, "CPS");
-		sendCommand(commPort, 2, 0, 16, 3, 1, 0, "Restoring");
-		sendCommand(commPort, 2, 0, 32, 3, 1, 0, "Calibration");
-		sendCommand(commPort, 3);
+        sendCommand(commPort, 2, 0, 0, 3, 1, 0, "CPS");
+        sendCommand(commPort, 2, 0, 16, 3, 1, 0, StringsDict["RADIO_DISPLAY_Restoring"]);
+        sendCommand(commPort, 2, 0, 32, 3, 1, 0, StringsDict["RADIO_DISPLAY_Calibrations"]);
+        sendCommand(commPort, 3);
 		sendCommand(commPort, 6, 4);
 		openGD77CommsTransferData.mode = OpenGD77CommsTransferData.CommsDataMode.DataModeWriteFlash;
 		openGD77CommsTransferData.localDataBufferStartPosition = 0;
@@ -364,14 +364,14 @@ public class CalibrationForm : Form
 		openGD77CommsTransferData.transferLength = ((MainForm.RadioType == MainForm.RadioTypeEnum.RadioTypeSTM32) ? CALIBRATION_DATA_SIZE_STM32 : CALIBRATION_DATA_SIZE);
 		if (!WriteFlash(commPort, openGD77CommsTransferData))
 		{
-			MessageBox.Show("Error while restoring");
+			MessageBox.Show("Ошибка при восстановлении!");
 			openGD77CommsTransferData.responseCode = 1;
 		}
 		sendCommand(commPort, 6, 2);
 		sendCommand(commPort, 6, 1);
 		commPort.Close();
 		commPort = null;
-		lblMessage.Text = "Calibration update completed";
+		lblMessage.Text = "Обновление калибровок завершено";
 	}
 
 	private bool flashWriteSector(SerialPort port, char writeCharacter, ref byte[] sendbuffer, ref byte[] readbuffer, OpenGD77CommsTransferData dataObj)
@@ -589,7 +589,7 @@ public class CalibrationForm : Form
 			}
 			else
 			{
-				MessageBox.Show("File contains invalid MK22 calibration header");
+				MessageBox.Show("Неверный заголовок файла для процессора МК22!");
 			}
 		}
 		else if (array.Length == CALIBRATION_DATA_SIZE_STM32)
@@ -603,8 +603,8 @@ public class CalibrationForm : Form
 			}
 			else
 			{
-				MessageBox.Show(StringsDict["File_contains_invalid_STM32_calibration_header"]);
-			}
+                MessageBox.Show("Неверный заголовок файла для процессора STM32!");
+            }
 		}
 		else
 		{
@@ -679,19 +679,20 @@ public class CalibrationForm : Form
             // 
             this.tabCtlBands.Controls.Add(this.tabVHF);
             this.tabCtlBands.Controls.Add(this.tabUHF);
+            this.tabCtlBands.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tabCtlBands.Location = new System.Drawing.Point(12, 85);
             this.tabCtlBands.Name = "tabCtlBands";
             this.tabCtlBands.SelectedIndex = 0;
-            this.tabCtlBands.Size = new System.Drawing.Size(921, 524);
+            this.tabCtlBands.Size = new System.Drawing.Size(921, 549);
             this.tabCtlBands.TabIndex = 0;
             // 
             // tabVHF
             // 
             this.tabVHF.Controls.Add(this.calibrationBandControlVHF);
-            this.tabVHF.Location = new System.Drawing.Point(4, 22);
+            this.tabVHF.Location = new System.Drawing.Point(4, 23);
             this.tabVHF.Name = "tabVHF";
             this.tabVHF.Padding = new System.Windows.Forms.Padding(3);
-            this.tabVHF.Size = new System.Drawing.Size(913, 498);
+            this.tabVHF.Size = new System.Drawing.Size(913, 522);
             this.tabVHF.TabIndex = 0;
             this.tabVHF.Text = "VHF";
             this.tabVHF.UseVisualStyleBackColor = true;
@@ -699,10 +700,10 @@ public class CalibrationForm : Form
             // tabUHF
             // 
             this.tabUHF.Controls.Add(this.calibrationBandControlUHF);
-            this.tabUHF.Location = new System.Drawing.Point(4, 22);
+            this.tabUHF.Location = new System.Drawing.Point(4, 23);
             this.tabUHF.Name = "tabUHF";
             this.tabUHF.Padding = new System.Windows.Forms.Padding(3);
-            this.tabUHF.Size = new System.Drawing.Size(913, 498);
+            this.tabUHF.Size = new System.Drawing.Size(913, 497);
             this.tabUHF.TabIndex = 1;
             this.tabUHF.Text = "UHF";
             this.tabUHF.UseVisualStyleBackColor = true;
@@ -711,9 +712,9 @@ public class CalibrationForm : Form
             // 
             this.btnWrite.BackColor = System.Drawing.SystemColors.Control;
             this.btnWrite.Font = new System.Drawing.Font("Arial", 8F);
-            this.btnWrite.Location = new System.Drawing.Point(172, 12);
+            this.btnWrite.Location = new System.Drawing.Point(12, 41);
             this.btnWrite.Name = "btnWrite";
-            this.btnWrite.Size = new System.Drawing.Size(102, 23);
+            this.btnWrite.Size = new System.Drawing.Size(239, 23);
             this.btnWrite.TabIndex = 1;
             this.btnWrite.Text = "Write to radio";
             this.btnWrite.UseVisualStyleBackColor = false;
@@ -724,9 +725,9 @@ public class CalibrationForm : Form
             // 
             this.btnReadFile.BackColor = System.Drawing.SystemColors.Control;
             this.btnReadFile.Font = new System.Drawing.Font("Arial", 8F);
-            this.btnReadFile.Location = new System.Drawing.Point(815, 12);
+            this.btnReadFile.Location = new System.Drawing.Point(722, 12);
             this.btnReadFile.Name = "btnReadFile";
-            this.btnReadFile.Size = new System.Drawing.Size(123, 23);
+            this.btnReadFile.Size = new System.Drawing.Size(216, 23);
             this.btnReadFile.TabIndex = 1;
             this.btnReadFile.Text = "Open Calibration file";
             this.btnReadFile.UseVisualStyleBackColor = false;
@@ -738,7 +739,7 @@ public class CalibrationForm : Form
             this.btnReadFromRadio.Font = new System.Drawing.Font("Arial", 8F);
             this.btnReadFromRadio.Location = new System.Drawing.Point(12, 12);
             this.btnReadFromRadio.Name = "btnReadFromRadio";
-            this.btnReadFromRadio.Size = new System.Drawing.Size(154, 23);
+            this.btnReadFromRadio.Size = new System.Drawing.Size(239, 23);
             this.btnReadFromRadio.TabIndex = 1;
             this.btnReadFromRadio.Text = "Read calibration from radio";
             this.btnReadFromRadio.UseVisualStyleBackColor = false;
@@ -747,19 +748,20 @@ public class CalibrationForm : Form
             // lblMessage
             // 
             this.lblMessage.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
-            this.lblMessage.Location = new System.Drawing.Point(301, 12);
+            this.lblMessage.Location = new System.Drawing.Point(257, 12);
             this.lblMessage.Name = "lblMessage";
-            this.lblMessage.Size = new System.Drawing.Size(415, 35);
+            this.lblMessage.Size = new System.Drawing.Size(459, 35);
             this.lblMessage.TabIndex = 2;
             this.lblMessage.Text = "Please read the calibration data from the radio or open a calibration file";
+            this.lblMessage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnSaveCalibration
             // 
             this.btnSaveCalibration.BackColor = System.Drawing.SystemColors.Control;
             this.btnSaveCalibration.Font = new System.Drawing.Font("Arial", 8F);
-            this.btnSaveCalibration.Location = new System.Drawing.Point(815, 41);
+            this.btnSaveCalibration.Location = new System.Drawing.Point(722, 41);
             this.btnSaveCalibration.Name = "btnSaveCalibration";
-            this.btnSaveCalibration.Size = new System.Drawing.Size(123, 23);
+            this.btnSaveCalibration.Size = new System.Drawing.Size(216, 23);
             this.btnSaveCalibration.TabIndex = 1;
             this.btnSaveCalibration.Text = "Save Calibration file";
             this.btnSaveCalibration.UseVisualStyleBackColor = false;
@@ -769,9 +771,9 @@ public class CalibrationForm : Form
             // calibrationBandControlVHF
             // 
             this.calibrationBandControlVHF.Font = new System.Drawing.Font("Arial", 8F);
-            this.calibrationBandControlVHF.Location = new System.Drawing.Point(5, 5);
+            this.calibrationBandControlVHF.Location = new System.Drawing.Point(6, 7);
             this.calibrationBandControlVHF.Name = "calibrationBandControlVHF";
-            this.calibrationBandControlVHF.Size = new System.Drawing.Size(880, 487);
+            this.calibrationBandControlVHF.Size = new System.Drawing.Size(880, 509);
             this.calibrationBandControlVHF.TabIndex = 0;
             this.calibrationBandControlVHF.Type = "VHF";
             // 

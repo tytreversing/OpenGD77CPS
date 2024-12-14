@@ -819,15 +819,15 @@
 		<Controls>
 			<Control Id="calibrationBandControlVHF" Text="VHF" />
 			<Control Id="calibrationBandControlUHF" Text="UHF" />
-			<Control Id="btnWrite" Text="Write to radio" />
-			<Control Id="btnReadFile" Text="Open Calibration file" />
-			<Control Id="btnReadFromRadio" Text="Read calibration from radio" />
-			<Control Id="lblMessage" Text="Please read the calibration data from the radio or open a calibration file" />
-			<Control Id="btnSaveCalibration" Text="Save Calibration file" />
+			<Control Id="btnWrite" Text="Записать в рацию" />
+			<Control Id="btnReadFile" Text="Открыть файл калибровок" />
+			<Control Id="btnReadFromRadio" Text="Считать калибровки из рации" />
+			<Control Id="lblMessage" Text="Сначала считайте калибровки или загрузите ранее сохраненный файл" />
+			<Control Id="btnSaveCalibration" Text="Сохранить файл калибровок" />
 			<Control Id="tabCtlBands" Text="" >
 				<ControlItem Id="tabVHF" Text="VHF">
 					<Control Id="calibrationBandControlVHF" Text="" >
-						<ControlItem Id="calibrationPowerControlHigh" Text="High power"/>
+						<ControlItem Id="calibrationPowerControlHigh" Text="высокая мощность"/>
 						<ControlItem Id="calibrationPowerControlLow" Text=""/>
 						<ControlItem Id="calibrationTXIandQ" Text=""/>
 						<ControlItem Id=" grpAnalogTxDeviation" Text=""/>
@@ -994,7 +994,7 @@
 			<Item Id="RADIO_DISPLAY_Flash" Text="флеш-памяти" />
 			<Item Id="RADIO_DISPLAY_Codeplug" Text="кодплага" />
 			<Item Id="RADIO_DISPLAY_MCU_ROM" Text="MCU ROM" />
-			<Item Id="RADIO_DISPLAY_Voice_prompts" Text="Голосовые" />
+			<Item Id="RADIO_DISPLAY_Voice_prompts" Text="голосовых" />
 			<Item Id="RADIO_DISPLAY_Restoring" Text="Восстановление" />
       <Item Id="RADIO_DISPLAY_Calibrations" Text="калибровок" />
 			<Item Id="RADIO_DISPLAY_Reading" Text="Чтение" />
@@ -1018,24 +1018,24 @@
 			<Item Id="Screengrab_files" Text="Скриншоты" />
 			<Item Id="Error_while_reading_flash" Text="Ошибка при чтении флеш-памяти!" />
 			<Item Id="Reading_Calibration" Text="Чтение калибровок" />
-			<Item Id="Error_while_reading_calibration" Text="Error while reading calibration" />
-			<Item Id="Error_while_reading_EEPROM" Text="Error while reading EEPROM" />
-			<Item Id="Restoring_Flash" Text="Restoring Flash" />
-			<Item Id="Error_while_restoring" Text="Error while restoring" />
-			<Item Id="Restoring_Calibration" Text="Restoring Calibration" />
-			<Item Id="Error_while_restoring_Calibration" Text="Error while restoring Calibration" />
-			<Item Id="Restoring_EEPROM" Text="Restoring EEPROM" />
-			<Item Id="Error_while_reading" Text="Error while reading" />
+			<Item Id="Error_while_reading_calibration" Text="Ошибка при чтении калибровок" />
+			<Item Id="Error_while_reading_EEPROM" Text="Ошибка при чтении EEPROM" />
+			<Item Id="Restoring_Flash" Text="Восстановление флеш-памяти" />
+			<Item Id="Error_while_restoring" Text="Ошибка при восстановлении" />
+			<Item Id="Restoring_Calibration" Text="Восстановление" />
+			<Item Id="Error_while_restoring_Calibration" Text="Ошибка при восстановлении" />
+			<Item Id="Restoring_EEPROM" Text="Восстановление EEPROM" />
+			<Item Id="Error_while_reading" Text="Ошибка при чтении" />
 			<Item Id="Codeplug_read_complete" Text="Кодплаг загружен из рации" />
-			<Item Id="Reading_MCU_ROM" Text="Reading MCU ROM" />
-			<Item Id="Error_while_Reading_MCU_ROM" Text="Error while Reading MCU ROM" />
-			<Item Id="Error_while_downloading_Screengrab" Text="Error while downloading Screengrab" />
-			<Item Id="Error_while_write_voice_prompts" Text="Error while writing voice prompts" />
-			<Item Id="Error_while_write_voice_satellite_keps" Text="Error while writing satellite keps" />
-			<Item Id="Are_you_sure_you_want_to_restore_the_EEPROM_from_a_previously_saved_file" Text="Are you sure you want to restore the EEPROM from a previously saved file?" />
+			<Item Id="Reading_MCU_ROM" Text="Чтение MCU ROM" />
+			<Item Id="Error_while_Reading_MCU_ROM" Text="Ошибка при чтении MCU ROM" />
+			<Item Id="Error_while_downloading_Screengrab" Text="Ошибка при сохранении скриншота" />
+			<Item Id="Error_while_write_voice_prompts" Text="Ошибка при записи голосовых оповещений" />
+			<Item Id="Error_while_write_voice_satellite_keps" Text="Ошибка при записи данных спутников" />
+			<Item Id="Are_you_sure_you_want_to_restore_the_EEPROM_from_a_previously_saved_file" Text="Восстановить EEPROM из файла?" />
 			<Item Id="PNG_image_files" Text="Файлы PNG" />
 			<Item Id="MCU_ROM_files" Text="Файлы MCU ROM" />
-			<Item Id="Voice_prompts_file_is_too_large" Text="Voice prompts file is too large." />
+			<Item Id="Voice_prompts_file_is_too_large" Text="Голосовой файл слишком большой" />
 			<Item Id="Calibration_data_could_not_be_found" Text="Calibration data could not be found. Please update your firmware" />
 			<Item Id="This_feature_is_highly_experimental" Text="Работа с калибровками выполняется на собственный страх и риск. Убедитесь, что сделали полный бэкап." />
       <Item Id="NowSaveCalibrations" Text="Теперь сохраните калибровки в файл на компьютере" />

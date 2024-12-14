@@ -634,11 +634,9 @@ public class MainForm : Form
             this.tsmiRadioType.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiRadioTypeItem_MK22,
             this.tsmiRadioTypeItem_STM32});
-            this.tsmiRadioType.Enabled = false;
             this.tsmiRadioType.Name = "tsmiRadioType";
             this.tsmiRadioType.Size = new System.Drawing.Size(87, 23);
             this.tsmiRadioType.Text = "Radio Type";
-            this.tsmiRadioType.Visible = false;
             // 
             // tsmiRadioTypeItem_MK22
             // 
@@ -711,6 +709,7 @@ public class MainForm : Form
             this.tsmiLanguage.Name = "tsmiLanguage";
             this.tsmiLanguage.Size = new System.Drawing.Size(81, 23);
             this.tsmiLanguage.Text = "Language";
+            this.tsmiLanguage.Visible = false;
             // 
             // tsmiWindow
             // 
@@ -1077,13 +1076,11 @@ public class MainForm : Form
             // 
             // ofdMain
             // 
-            this.ofdMain.Filter = "OpenGD77 RUS (*.ogd)|*.ogd" +
-    "";
+            this.ofdMain.Filter = "OpenGD77 RUS (*.ogd)|*.ogd";
             // 
             // sfdMain
             // 
-            this.sfdMain.Filter = "OpenGD77 RUS (*.ogd)|*.ogd" +
-    "";
+            this.sfdMain.Filter = "OpenGD77 RUS (*.ogd)|*.ogd";
             // 
             // cmsTree
             // 

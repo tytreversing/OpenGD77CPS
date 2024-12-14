@@ -22,8 +22,6 @@ public class CalibrationFormMDUV380 : Form
 
     public static int CALIBRATION_MEMORY_LOCATION_OFFICIAL_USB_PROTOCOL = 31744;
 
-    private const int VHF_OFFSET = 112;
-
     public static int CALIBRATION_DATA_SIZE = 224;
 
     public static int CALIBRATION_DATA_SIZE_STM32 = 512;
@@ -33,8 +31,6 @@ public class CalibrationFormMDUV380 : Form
     public static byte[] CALIBRATION_HEADER = new byte[8] { 160, 15, 192, 18, 160, 15, 192, 18 };
 
     private char writeCommandCharacter = 'W';
-
-    private const int MAX_TRANSFER_SIZE = 32;
 
     private SerialPort commPort;
 
@@ -327,7 +323,7 @@ public class CalibrationFormMDUV380 : Form
         openGD77CommsTransferData.transferLength = ((MainForm.RadioType == MainForm.RadioTypeEnum.RadioTypeSTM32) ? CALIBRATION_DATA_SIZE_STM32 : CALIBRATION_DATA_SIZE);
         if (!WriteFlash(commPort, openGD77CommsTransferData))
         {
-            MessageBox.Show("Error while restoring");
+            MessageBox.Show("Ошибка при восстановлении!");
             openGD77CommsTransferData.responseCode = 1;
         }
         sendCommand(commPort, 6, 2);

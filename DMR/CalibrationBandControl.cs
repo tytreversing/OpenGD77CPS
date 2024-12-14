@@ -135,13 +135,13 @@ public class CalibrationBandControl : UserControl
 		set
 		{
 			_type = value;
-			string[] names = new string[8] { "136MHz", "140MHz", "145MHz", "150MHz", "155MHz", "160MHz", "165MHz", "172MHz" };
+			string[] names = new string[8] { "136 ћ√ц", "140 ћ√ц", "145 ћ√ц", "150 ћ√ц", "155 ћ√ц", "160 ћ√ц", "165 ћ√ц", "172 ћ√ц" };
 			string[] names2 = new string[16]
 			{
-				"400MHz", "405MHz", "410MHz", "415MHz", "420MHz", "425MHz", "430MHz", "435MHz", "440MHz", "445MHz",
-				"450MHz", "455MHz", "460MHz", "465MHz", "470MHz", "475MHz"
-			};
-			string[] names3 = new string[8] { "405MHz", "415MHz", "425MHz", "435MHz", "445MHz", "455MHz", "465MHz", "475MHz" };
+                "400 ћ√ц", "405 ћ√ц", "410 ћ√ц", "415 ћ√ц", "420 ћ√ц", "425 ћ√ц", "430 ћ√ц", "435 ћ√ц", "440 ћ√ц", "445 ћ√ц",
+                "450 ћ√ц", "455 ћ√ц", "460 ћ√ц", "465 ћ√ц", "470 ћ√ц", "475 ћ√ц"
+            };
+			string[] names3 = new string[8] { "405 ћ√ц", "415 ћ√ц", "425 ћ√ц", "435 ћ√ц", "445 ћ√ц", "455 ћ√ц", "465 ћ√ц", "475 ћ√ц" };
 			string type = _type;
 			if (!(type == "VHF"))
 			{
@@ -377,12 +377,12 @@ public class CalibrationBandControl : UserControl
 		this.grpSquelch.Controls.Add(this.lblSquelchWide);
 		this.grpSquelch.Controls.Add(this.lblSquelchCloseNormal);
 		this.grpSquelch.Controls.Add(this.lblSquelchOpenNormal);
-		this.grpSquelch.Location = new System.Drawing.Point(8, 273);
+		this.grpSquelch.Location = new System.Drawing.Point(8, 276);
 		this.grpSquelch.Name = "grpSquelch";
 		this.grpSquelch.Size = new System.Drawing.Size(197, 144);
 		this.grpSquelch.TabIndex = 8;
 		this.grpSquelch.TabStop = false;
-		this.grpSquelch.Text = "Analog squelch";
+		this.grpSquelch.Text = "јналоговый Ўѕƒ";
 		this.nudSquelchNarrowTightClose.Location = new System.Drawing.Point(136, 112);
 		this.nudSquelchNarrowTightClose.Maximum = new decimal(new int[4] { 255, 0, 0, 0 });
 		this.nudSquelchNarrowTightClose.Name = "nudSquelchNarrowTightClose";
@@ -408,13 +408,13 @@ public class CalibrationBandControl : UserControl
 		this.lblSquelchCloseTight.Name = "lblSquelchCloseTight";
 		this.lblSquelchCloseTight.Size = new System.Drawing.Size(60, 13);
 		this.lblSquelchCloseTight.TabIndex = 10;
-		this.lblSquelchCloseTight.Text = "Close Tight";
+		this.lblSquelchCloseTight.Text = "«акр. (макс)";
 		this.lblSquelchOpenTight.AutoSize = true;
 		this.lblSquelchOpenTight.Location = new System.Drawing.Point(6, 88);
 		this.lblSquelchOpenTight.Name = "lblSquelchOpenTight";
 		this.lblSquelchOpenTight.Size = new System.Drawing.Size(60, 13);
 		this.lblSquelchOpenTight.TabIndex = 9;
-		this.lblSquelchOpenTight.Text = "Open Tight";
+		this.lblSquelchOpenTight.Text = "ќткр. (макс)";
 		this.nudSquelchNarrowNormClose.Location = new System.Drawing.Point(136, 58);
 		this.nudSquelchNarrowNormClose.Maximum = new decimal(new int[4] { 255, 0, 0, 0 });
 		this.nudSquelchNarrowNormClose.Name = "nudSquelchNarrowNormClose";
@@ -440,25 +440,25 @@ public class CalibrationBandControl : UserControl
 		this.lblSquelchNarrow.Name = "lblSquelchNarrow";
 		this.lblSquelchNarrow.Size = new System.Drawing.Size(41, 13);
 		this.lblSquelchNarrow.TabIndex = 4;
-		this.lblSquelchNarrow.Text = "Narrow";
+		this.lblSquelchNarrow.Text = "FMN";
 		this.lblSquelchWide.AutoSize = true;
 		this.lblSquelchWide.Location = new System.Drawing.Point(79, 16);
 		this.lblSquelchWide.Name = "lblSquelchWide";
 		this.lblSquelchWide.Size = new System.Drawing.Size(32, 13);
 		this.lblSquelchWide.TabIndex = 3;
-		this.lblSquelchWide.Text = "Wide";
+		this.lblSquelchWide.Text = "FM";
 		this.lblSquelchCloseNormal.AutoSize = true;
 		this.lblSquelchCloseNormal.Location = new System.Drawing.Point(6, 60);
 		this.lblSquelchCloseNormal.Name = "lblSquelchCloseNormal";
 		this.lblSquelchCloseNormal.Size = new System.Drawing.Size(69, 13);
 		this.lblSquelchCloseNormal.TabIndex = 2;
-		this.lblSquelchCloseNormal.Text = "Close Normal";
+		this.lblSquelchCloseNormal.Text = "«акр. (норм)";
 		this.lblSquelchOpenNormal.AutoSize = true;
 		this.lblSquelchOpenNormal.Location = new System.Drawing.Point(6, 34);
 		this.lblSquelchOpenNormal.Name = "lblSquelchOpenNormal";
 		this.lblSquelchOpenNormal.Size = new System.Drawing.Size(69, 13);
 		this.lblSquelchOpenNormal.TabIndex = 1;
-		this.lblSquelchOpenNormal.Text = "Open Normal";
+		this.lblSquelchOpenNormal.Text = "ќткр. (норм)";
 		this.nudVhfOscRef.Location = new System.Drawing.Point(712, 322);
 		this.nudVhfOscRef.Maximum = new decimal(new int[4] { 127, 0, 0, 0 });
 		this.nudVhfOscRef.Minimum = new decimal(new int[4] { 128, 0, 0, -2147483648 });
@@ -466,17 +466,19 @@ public class CalibrationBandControl : UserControl
 		this.nudVhfOscRef.Size = new System.Drawing.Size(63, 20);
 		this.nudVhfOscRef.TabIndex = 7;
 		this.lblReferenceOscTuning.AutoSize = true;
-		this.lblReferenceOscTuning.Location = new System.Drawing.Point(573, 322);
+		this.lblReferenceOscTuning.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+		this.lblReferenceOscTuning.Location = new System.Drawing.Point(562, 322);
 		this.lblReferenceOscTuning.Name = "lblReferenceOscTuning";
-		this.lblReferenceOscTuning.Size = new System.Drawing.Size(133, 13);
+		this.lblReferenceOscTuning.Size = new System.Drawing.Size(102, 13);
 		this.lblReferenceOscTuning.TabIndex = 6;
-		this.lblReferenceOscTuning.Text = "Reference oscillator tuning\t";
-		this.lblReceiveAGCTarget.AutoSize = true;
+		this.lblReferenceOscTuning.Text = "—двиг частоты осцилл€тора";
+		this.lblReceiveAGCTarget.AutoSize = false;
 		this.lblReceiveAGCTarget.Location = new System.Drawing.Point(592, 354);
 		this.lblReceiveAGCTarget.Name = "lblReceiveAGCTarget";
 		this.lblReceiveAGCTarget.Size = new System.Drawing.Size(102, 13);
 		this.lblReceiveAGCTarget.TabIndex = 6;
-		this.lblReceiveAGCTarget.Text = "Receive AGC target\t";
+        this.lblReceiveAGCTarget.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+        this.lblReceiveAGCTarget.Text = "AGC на прием\t";
 		this.nudReceiveAGCTarget.Location = new System.Drawing.Point(711, 352);
 		this.nudReceiveAGCTarget.Maximum = new decimal(new int[4] { 255, 0, 0, 0 });
 		this.nudReceiveAGCTarget.Name = "nudReceiveAGCTarget";
@@ -487,7 +489,7 @@ public class CalibrationBandControl : UserControl
 		this.lblAnalogMicGain.Name = "lblAnalogMicGain";
 		this.lblAnalogMicGain.Size = new System.Drawing.Size(82, 13);
 		this.lblAnalogMicGain.TabIndex = 6;
-		this.lblAnalogMicGain.Text = "Analog mic gain\t";
+		this.lblAnalogMicGain.Text = "”силение микрофона";
 		this.nudAnalogMicGain.Location = new System.Drawing.Point(130, 65);
 		this.nudAnalogMicGain.Maximum = new decimal(new int[4] { 255, 0, 0, 0 });
 		this.nudAnalogMicGain.Name = "nudAnalogMicGain";
@@ -502,7 +504,7 @@ public class CalibrationBandControl : UserControl
 		this.grpSMeter.Size = new System.Drawing.Size(117, 87);
 		this.grpSMeter.TabIndex = 10;
 		this.grpSMeter.TabStop = false;
-		this.grpSMeter.Text = "S Meter";
+		this.grpSMeter.Text = "S-метр";
 		this.nudSMeterHigh.Location = new System.Drawing.Point(61, 56);
 		this.nudSMeterHigh.Maximum = new decimal(new int[4] { 255, 0, 0, 0 });
 		this.nudSMeterHigh.Name = "nudSMeterHigh";
@@ -518,13 +520,13 @@ public class CalibrationBandControl : UserControl
 		this.lblSMeterLowEnd.Name = "lblSMeterLowEnd";
 		this.lblSMeterLowEnd.Size = new System.Drawing.Size(49, 13);
 		this.lblSMeterLowEnd.TabIndex = 8;
-		this.lblSMeterLowEnd.Text = "Low End\t";
+		this.lblSMeterLowEnd.Text = "ћин.";
 		this.lblSMeterHighEnd.AutoSize = true;
 		this.lblSMeterHighEnd.Location = new System.Drawing.Point(6, 58);
 		this.lblSMeterHighEnd.Name = "lblSMeterHighEnd";
 		this.lblSMeterHighEnd.Size = new System.Drawing.Size(51, 13);
 		this.lblSMeterHighEnd.TabIndex = 7;
-		this.lblSMeterHighEnd.Text = "High End\t";
+		this.lblSMeterHighEnd.Text = "ћакс.";
 		this.grpAnalogTxDeviation.Controls.Add(this.lblOverallGain);
 		this.grpAnalogTxDeviation.Controls.Add(this.nudAnalogTxGainNarrowband);
 		this.grpAnalogTxDeviation.Controls.Add(this.nudAnalogTxGainWideband);
@@ -545,13 +547,13 @@ public class CalibrationBandControl : UserControl
 		this.grpAnalogTxDeviation.Size = new System.Drawing.Size(342, 130);
 		this.grpAnalogTxDeviation.TabIndex = 11;
 		this.grpAnalogTxDeviation.TabStop = false;
-		this.grpAnalogTxDeviation.Text = "Analog Tx deviation";
+		this.grpAnalogTxDeviation.Text = "ƒевиаци€ (аналог)";
 		this.lblOverallGain.AutoSize = true;
 		this.lblOverallGain.Location = new System.Drawing.Point(106, 85);
 		this.lblOverallGain.Name = "lblOverallGain";
 		this.lblOverallGain.Size = new System.Drawing.Size(63, 13);
 		this.lblOverallGain.TabIndex = 11;
-		this.lblOverallGain.Text = "Overall gain";
+		this.lblOverallGain.Text = "”силение";
 		this.nudAnalogTxGainNarrowband.Location = new System.Drawing.Point(264, 82);
 		this.nudAnalogTxGainNarrowband.Maximum = new decimal(new int[4] { 65535, 0, 0, 0 });
 		this.nudAnalogTxGainNarrowband.Name = "nudAnalogTxGainNarrowband";
@@ -594,7 +596,7 @@ public class CalibrationBandControl : UserControl
 		this.lblAnalogTxDeviationNarrow.Name = "lblAnalogTxDeviationNarrow";
 		this.lblAnalogTxDeviationNarrow.Size = new System.Drawing.Size(41, 13);
 		this.lblAnalogTxDeviationNarrow.TabIndex = 1;
-		this.lblAnalogTxDeviationNarrow.Text = "Narrow";
+		this.lblAnalogTxDeviationNarrow.Text = "FMN";
 		this.nudAnalogTxDeviationCTCSSWideband.Location = new System.Drawing.Point(178, 28);
 		this.nudAnalogTxDeviationCTCSSWideband.Maximum = new decimal(new int[4] { 255, 0, 0, 0 });
 		this.nudAnalogTxDeviationCTCSSWideband.Name = "nudAnalogTxDeviationCTCSSWideband";
@@ -605,7 +607,7 @@ public class CalibrationBandControl : UserControl
 		this.lblAnalogTxDeviationWide.Name = "lblAnalogTxDeviationWide";
 		this.lblAnalogTxDeviationWide.Size = new System.Drawing.Size(32, 13);
 		this.lblAnalogTxDeviationWide.TabIndex = 1;
-		this.lblAnalogTxDeviationWide.Text = "Wide";
+		this.lblAnalogTxDeviationWide.Text = "FM";
 		this.nudAnalogTxDeviation1750Tone.Location = new System.Drawing.Point(71, 53);
 		this.nudAnalogTxDeviation1750Tone.Maximum = new decimal(new int[4] { 255, 0, 0, 0 });
 		this.nudAnalogTxDeviation1750Tone.Name = "nudAnalogTxDeviation1750Tone";
@@ -616,7 +618,7 @@ public class CalibrationBandControl : UserControl
 		this.lblToneBurst.Name = "lblToneBurst";
 		this.lblToneBurst.Size = new System.Drawing.Size(58, 13);
 		this.lblToneBurst.TabIndex = 1;
-		this.lblToneBurst.Text = "Tone burst";
+		this.lblToneBurst.Text = "ѕакет тонов";
 		this.nudAnalogTxDeviationDTMF.Location = new System.Drawing.Point(71, 28);
 		this.nudAnalogTxDeviationDTMF.Maximum = new decimal(new int[4] { 255, 0, 0, 0 });
 		this.nudAnalogTxDeviationDTMF.Name = "nudAnalogTxDeviationDTMF";
@@ -638,19 +640,19 @@ public class CalibrationBandControl : UserControl
 		this.grpIFGain.Size = new System.Drawing.Size(215, 77);
 		this.grpIFGain.TabIndex = 12;
 		this.grpIFGain.TabStop = false;
-		this.grpIFGain.Text = "IF gain";
+		this.grpIFGain.Text = "”силение IF";
 		this.lblDigitalGainNarrow.AutoSize = true;
 		this.lblDigitalGainNarrow.Location = new System.Drawing.Point(147, 26);
 		this.lblDigitalGainNarrow.Name = "lblDigitalGainNarrow";
 		this.lblDigitalGainNarrow.Size = new System.Drawing.Size(27, 13);
 		this.lblDigitalGainNarrow.TabIndex = 6;
-		this.lblDigitalGainNarrow.Text = "Fine";
+		this.lblDigitalGainNarrow.Text = "“онко";
 		this.lblDigitalGainWide.AutoSize = true;
 		this.lblDigitalGainWide.Location = new System.Drawing.Point(60, 27);
 		this.lblDigitalGainWide.Name = "lblDigitalGainWide";
 		this.lblDigitalGainWide.Size = new System.Drawing.Size(40, 13);
 		this.lblDigitalGainWide.TabIndex = 5;
-		this.lblDigitalGainWide.Text = "Course";
+		this.lblDigitalGainWide.Text = "√рубо";
 		this.nudDigitalRxGainNarrowband.Location = new System.Drawing.Point(139, 45);
 		this.nudDigitalRxGainNarrowband.Maximum = new decimal(new int[4] { 65535, 0, 0, 0 });
 		this.nudDigitalRxGainNarrowband.Name = "nudDigitalRxGainNarrowband";
@@ -679,19 +681,19 @@ public class CalibrationBandControl : UserControl
 		this.grpAnalogGain.Size = new System.Drawing.Size(215, 96);
 		this.grpAnalogGain.TabIndex = 13;
 		this.grpAnalogGain.TabStop = false;
-		this.grpAnalogGain.Text = "Audio gain";
+		this.grpAnalogGain.Text = "”силение звука";
 		this.lblAnalogAudioGainNarrow.AutoSize = true;
 		this.lblAnalogAudioGainNarrow.Location = new System.Drawing.Point(138, 22);
 		this.lblAnalogAudioGainNarrow.Name = "lblAnalogAudioGainNarrow";
 		this.lblAnalogAudioGainNarrow.Size = new System.Drawing.Size(27, 13);
 		this.lblAnalogAudioGainNarrow.TabIndex = 10;
-		this.lblAnalogAudioGainNarrow.Text = "Fine";
+		this.lblAnalogAudioGainNarrow.Text = "“онко";
 		this.lblAnalogAudioGainWide.AutoSize = true;
 		this.lblAnalogAudioGainWide.Location = new System.Drawing.Point(53, 22);
 		this.lblAnalogAudioGainWide.Name = "lblAnalogAudioGainWide";
 		this.lblAnalogAudioGainWide.Size = new System.Drawing.Size(40, 13);
 		this.lblAnalogAudioGainWide.TabIndex = 9;
-		this.lblAnalogAudioGainWide.Text = "Course";
+		this.lblAnalogAudioGainWide.Text = "√рубо";
 		this.nudAnalogRxGainNarrowband.Location = new System.Drawing.Point(130, 40);
 		this.nudAnalogRxGainNarrowband.Maximum = new decimal(new int[4] { 65535, 0, 0, 0 });
 		this.nudAnalogRxGainNarrowband.Name = "nudAnalogRxGainNarrowband";
@@ -719,7 +721,7 @@ public class CalibrationBandControl : UserControl
 		this.calibrationTXIandQ.Text = "DMR Tx 4FSK";
 		this.calibrationTXIandQ.Values = new int[8];
 		this.calibrationPowerControlLow.Cols = 16;
-		this.calibrationPowerControlLow.CtrlText = "1W (Low power)";
+		this.calibrationPowerControlLow.CtrlText = "1 ¬т";
 		this.calibrationPowerControlLow.Location = new System.Drawing.Point(7, 95);
 		this.calibrationPowerControlLow.Name = "calibrationPowerControlLow";
 		this.calibrationPowerControlLow.Names = new string[16]
@@ -730,10 +732,10 @@ public class CalibrationBandControl : UserControl
 		this.calibrationPowerControlLow.Rows = 1;
 		this.calibrationPowerControlLow.Size = new System.Drawing.Size(817, 97);
 		this.calibrationPowerControlLow.TabIndex = 9;
-		this.calibrationPowerControlLow.Text = "1W (Low power)";
+		this.calibrationPowerControlLow.Text = "1 ¬т";
 		this.calibrationPowerControlLow.Values = new int[16];
 		this.calibrationPowerControlHigh.Cols = 16;
-		this.calibrationPowerControlHigh.CtrlText = "5W (High power)";
+		this.calibrationPowerControlHigh.CtrlText = "5 ¬т";
 		this.calibrationPowerControlHigh.Location = new System.Drawing.Point(7, 5);
 		this.calibrationPowerControlHigh.Name = "calibrationPowerControlHigh";
 		this.calibrationPowerControlHigh.Names = new string[16]
@@ -744,7 +746,7 @@ public class CalibrationBandControl : UserControl
 		this.calibrationPowerControlHigh.Rows = 1;
 		this.calibrationPowerControlHigh.Size = new System.Drawing.Size(817, 97);
 		this.calibrationPowerControlHigh.TabIndex = 9;
-		this.calibrationPowerControlHigh.Text = "5W (High power)";
+		this.calibrationPowerControlHigh.Text = "5 ¬т";
 		this.calibrationPowerControlHigh.Values = new int[16];
 		base.AutoScaleDimensions = new System.Drawing.SizeF(6f, 13f);
 		base.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;

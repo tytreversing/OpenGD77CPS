@@ -220,6 +220,9 @@
     <None Update="Newtonsoft.Json.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Satellites.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="SourceFirmware\MD9600-CSV%282571V5%29-V26.45.bin">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

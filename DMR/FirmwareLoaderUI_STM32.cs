@@ -34,7 +34,7 @@ public class FirmwareLoaderUI_STM32 : Form
 
 	public static RegistryKey regKeyOfficialFirmware = null;
 
-	public static string officialFirmwareFile = Application.ExecutablePath + "\\SourceFirmware\\source.bin";
+	public static string officialFirmwareFile = "";
 
 	public string officialFirmwareFilePath = "";
 
@@ -192,14 +192,15 @@ public class FirmwareLoaderUI_STM32 : Form
 					string path = languageFile + ".gla";
 					if (!File.Exists(path))
 					{
-						lblMessage.Text = "";
+                        /*lblMessage.Text = "";
 						MessageBox.Show(string.Format(StringsDict["AdditionalLanguageNotFound"], languageFile + ".gla"));
 						Button button3 = btnProgram;
 						Button button4 = btnSelectDonorFW;
 						flag2 = (grpRadioType.Enabled = true);
 						flag4 = (button4.Enabled = flag2);
 						enabled = (button3.Enabled = flag4);
-						return;
+						return;*/
+                        downloadGLA();
 					}
 					languageFile = path;
 					userLanguageBuf = File.ReadAllBytes(languageFile);
@@ -618,7 +619,20 @@ public class FirmwareLoaderUI_STM32 : Form
         {
             WebClient glaDownloader = new WebClient();
             fullURI = remoteUri + fileName;
-            File.Copy(Application.StartupPath + "\\Language\\Firmware\\Russian.gla", Application.StartupPath + "\\Language\\Firmware\\Russian.bak", true);
+            try
+            {
+                if (File.Exists(Application.StartupPath + "\\Language\\Firmware\\Russian.gla"))
+                {
+                    File.Delete(Application.StartupPath + "\\Language\\Firmware\\Russian.bak");
+                    File.Move(Application.StartupPath + "\\Language\\Firmware\\Russian.gla", Application.StartupPath + "\\Language\\Firmware\\Russian.bak");
+                }
+               
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, StringsDict["Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             try
             {
                 glaDownloader.DownloadFile(fullURI, Application.StartupPath + "\\Language\\Firmware\\" + fileName);

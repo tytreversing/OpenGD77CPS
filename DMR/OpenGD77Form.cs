@@ -234,7 +234,7 @@ public class OpenGD77Form : Form
 		return ((uint)MainForm.RadioInfo.features & (uint)feature) != 0;
 	}
 
-	private bool probeRadioModel(bool stealth = false)
+	public bool probeRadioModel(bool stealth = false)
 	{
 		if (!setupCommPort())
 		{

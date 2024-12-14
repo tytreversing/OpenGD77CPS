@@ -1538,6 +1538,7 @@ public class MainForm : Form
 			base.FormClosing += MainForm_FormClosing;
 		}
 		CSVEML.InitCSVs();
+
 	}
 
 	private string getMainTitleStub()

@@ -1047,11 +1047,11 @@
 	<FirmwareLoaderUI_MK22 Text="Загрузчик прошивки">
 		<Controls>
 			<Control Id="btnDetectModel" Text="Detect Radio Type" />
-			<Control Id="grpboxProgress" Text="  Progress " />
-			<Control Id="btnClose"		Text="&amp;Close" />
+			<Control Id="grpboxProgress" Text="Ход выполнения" />
+			<Control Id="btnClose"		Text="Закрыть" />
 			<Control Id="btnDownloadFirmware" Text="&amp;Download &amp;&amp; Update" />
-			<Control Id="btnUploadFirmware" Text="Select a &amp;File &amp;&amp; Update" />
-			<Control Id="grpboxModel" Text="Select your radio type " />
+			<Control Id="btnUploadFirmware" Text="Выбрать прошивку и загрузить" />
+			<Control Id="grpboxModel" Text="Тип рации" />
 			<Control Id="btnFWInstructions" Text="Firmware Installation &amp;Instructions." />
 			<Control Id="btnSelectOfficialFW" Text="Selec&amp;t official firmware (donor) file" />
 			<Control Id="lblLanguage" Text="Additional language" />

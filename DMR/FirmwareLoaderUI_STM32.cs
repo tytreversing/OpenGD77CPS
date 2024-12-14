@@ -34,7 +34,7 @@ public class FirmwareLoaderUI_STM32 : Form
 
 	public static RegistryKey regKeyOfficialFirmware = null;
 
-	public static string officialFirmwareFile = Environment.CurrentDirectory + "\\SourceFirmware\\source.bin";
+	public static string officialFirmwareFile = Application.ExecutablePath + "\\SourceFirmware\\source.bin";
 
 	public string officialFirmwareFilePath = "";
 

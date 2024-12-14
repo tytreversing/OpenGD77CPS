@@ -74,6 +74,7 @@ public class FirmwareLoaderUI_STM32 : Form
     private Label warning;
     private Label doNotUse;
     private Button downloadRussian;
+    private CheckBox chkAutoUpdateLanguage;
     private GroupBox grpRadioType;
 
 	public FirmwareLoaderUI_STM32()
@@ -110,6 +111,7 @@ public class FirmwareLoaderUI_STM32 : Form
 		warning.Text = StringsDict["Description"];
 		doNotUse.Text = StringsDict["DoNotUse"];
         downloadRussian.Text = StringsDict["DownloadRussian"];
+        chkAutoUpdateLanguage.Checked = IniFileUtils.getProfileStringWithDefault("Setup", "AutoUploadLanguageFile", null) == "yes";
 
     }
 
@@ -141,7 +143,11 @@ public class FirmwareLoaderUI_STM32 : Form
 				return;
 			}
 			IniFileUtils.WriteProfileString("Setup", "LastFirmwareLocation" + outputType, Path.GetDirectoryName(dlgOpenFile.FileName));
-			lblMessage.Text = "";
+            if (chkAutoUpdateLanguage.Checked)
+            {
+                downloadGLA();
+            }    
+            lblMessage.Text = "";
 			Progress.Value = 0;
 			Button button = btnProgram;
 			Button button2 = btnSelectDonorFW;
@@ -337,6 +343,7 @@ public class FirmwareLoaderUI_STM32 : Form
             this.warning = new System.Windows.Forms.Label();
             this.doNotUse = new System.Windows.Forms.Label();
             this.downloadRussian = new System.Windows.Forms.Button();
+            this.chkAutoUpdateLanguage = new System.Windows.Forms.CheckBox();
             this.grpRadioType.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -518,11 +525,23 @@ public class FirmwareLoaderUI_STM32 : Form
             this.downloadRussian.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.downloadRussian.Location = new System.Drawing.Point(12, 160);
             this.downloadRussian.Name = "downloadRussian";
-            this.downloadRussian.Size = new System.Drawing.Size(200, 66);
+            this.downloadRussian.Size = new System.Drawing.Size(200, 47);
             this.downloadRussian.TabIndex = 15;
             this.downloadRussian.Text = "button1";
             this.downloadRussian.UseVisualStyleBackColor = false;
             this.downloadRussian.Click += new System.EventHandler(this.downloadRussian_Click);
+            // 
+            // chkAutoUpdateLanguage
+            // 
+            this.chkAutoUpdateLanguage.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.chkAutoUpdateLanguage.Location = new System.Drawing.Point(12, 213);
+            this.chkAutoUpdateLanguage.Name = "chkAutoUpdateLanguage";
+            this.chkAutoUpdateLanguage.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.chkAutoUpdateLanguage.Size = new System.Drawing.Size(246, 47);
+            this.chkAutoUpdateLanguage.TabIndex = 16;
+            this.chkAutoUpdateLanguage.Text = "Обновлять языковой файл автоматически";
+            this.chkAutoUpdateLanguage.UseVisualStyleBackColor = true;
+            this.chkAutoUpdateLanguage.CheckedChanged += new System.EventHandler(this.chkAutoUpdateLanguage_CheckedChanged);
             // 
             // FirmwareLoaderUI_STM32
             // 
@@ -530,6 +549,8 @@ public class FirmwareLoaderUI_STM32 : Form
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(549, 363);
+            this.Controls.Add(this.btnProgram);
+            this.Controls.Add(this.chkAutoUpdateLanguage);
             this.Controls.Add(this.downloadRussian);
             this.Controls.Add(this.doNotUse);
             this.Controls.Add(this.warning);
@@ -539,7 +560,6 @@ public class FirmwareLoaderUI_STM32 : Form
             this.Controls.Add(this.lblMessage);
             this.Controls.Add(this.Progress);
             this.Controls.Add(this.btnSelectDonorFW);
-            this.Controls.Add(this.btnProgram);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -588,16 +608,19 @@ public class FirmwareLoaderUI_STM32 : Form
         }
     }
 
-    private void downloadRussian_Click(object sender, EventArgs e)
+    private void downloadGLA(bool showMessage = false)
     {
         string remoteUri = "https://opengd77rus.ru/data/";
         string fileName = "Russian.gla", fullURI = null;
+        DialogResult dialogResult = DialogResult.Yes;
         lblMessage.Text = "";
-        DialogResult dialogResult = MessageBox.Show(StringsDict["WillBeReplaced"], StringsDict["DownloadRussian"], MessageBoxButtons.YesNo);
+        if (showMessage) 
+            dialogResult = MessageBox.Show(StringsDict["WillBeReplaced"], StringsDict["DownloadRussian"], MessageBoxButtons.YesNo);
         if (dialogResult == DialogResult.Yes)
         {
             WebClient glaDownloader = new WebClient();
             fullURI = remoteUri + fileName;
+            File.Copy("Language\\Firmware\\Russian.gla", "Language\\Firmware\\Russian.bak", true);
             try
             {
                 glaDownloader.DownloadFile(fullURI, "Language\\Firmware\\" + fileName);
@@ -606,8 +629,27 @@ public class FirmwareLoaderUI_STM32 : Form
             {
                 MessageBox.Show(ex.Message, StringsDict["Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            lblMessage.Text = StringsDict["FileUpdated"];
+            finally
+            {
+                lblMessage.Text = StringsDict["FileUpdated"];
+            }
         }
-        
+    }
+
+    private void downloadRussian_Click(object sender, EventArgs e)
+    {
+        downloadGLA(true);        
+    }
+
+    private void chkAutoUpdateLanguage_CheckedChanged(object sender, EventArgs e)
+    {
+        if (chkAutoUpdateLanguage.Checked)
+        {
+            IniFileUtils.WriteProfileString("Setup", "AutoUploadLanguageFile", "yes");
+        }
+        else
+        {
+            IniFileUtils.WriteProfileString("Setup", "AutoUploadLanguageFile", "no");
+        }
     }
 }

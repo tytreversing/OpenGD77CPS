@@ -68,7 +68,7 @@ internal class Settings
 
 	public const string SZ_FIRST_NOT_DELETE_N = "FirstNotDelete";
 
-	public const string SZ_NAME_EXIST = "Name exists";
+	public const string SZ_NAME_EXIST = "Имя существует!";
 
 	public const string SZ_FILE_FORMAT_ERROR_N = "FileFormatError";
 
@@ -1536,7 +1536,7 @@ internal class Settings
 		SZ_DMRID_WRITE = "Writing DMR ID database to GD-77";
 		SZ_CALIBRATION_READ = "Reading calibration data from GD-77";
 		SZ_CALIBRATION_WRITE = "Writing calibration data to GD-77";
-		SZ_CONTACT_DUPLICATE_NAME = "Warning. Duplicate contact name.";
+		SZ_CONTACT_DUPLICATE_NAME = "Дублирующееся имя контакта!";
 		SZ_EnableMemoryAccessMode = "The GD-77 does not seem to be in Memory Access mode\nHold keys SK2 (Blue side key), Green Menu and * when turning on the transceiver.\nand try again";
 		SZ_dataRead = "Reading data from GD-77";
 		SZ_dataWrite = "Writing data to GD-77";

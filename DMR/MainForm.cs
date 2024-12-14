@@ -637,6 +637,7 @@ public class MainForm : Form
             this.tsmiRadioType.Name = "tsmiRadioType";
             this.tsmiRadioType.Size = new System.Drawing.Size(87, 23);
             this.tsmiRadioType.Text = "Radio Type";
+            this.tsmiRadioType.Visible = false;
             // 
             // tsmiRadioTypeItem_MK22
             // 
@@ -1362,7 +1363,7 @@ public class MainForm : Form
 		Settings.dicCommon.Add("Write", Settings.SZ_WRITE);
 		Settings.dicCommon.Add("ReadComplete", Settings.SZ_READ_COMPLETE);
 		Settings.dicCommon.Add("WriteComplete", Settings.SZ_WRITE_COMPLETE);
-		Settings.dicCommon.Add(Settings.SZ_NAME_EXIST_NAME, "Name exists");
+		Settings.dicCommon.Add(Settings.SZ_NAME_EXIST_NAME, "Имя существует!");
 		Settings.dicCommon.Add("FirstChNotDelete", Settings.SZ_FIRST_CH_NOT_DELETE);
 		Settings.dicCommon.Add("IdNotEmpty", Settings.SZ_ID_NOT_EMPTY);
 		Settings.dicCommon.Add("IdOutOfRange", Settings.SZ_ID_OUT_OF_RANGE);
@@ -2213,7 +2214,7 @@ public class MainForm : Form
 			}
 			if (Settings.nodeNameExistsOrEmpty(e.Node, e.Label))
 			{
-				MessageBox.Show("Name exists");
+				MessageBox.Show("Имя существует!");
 				e.CancelEdit = true;
 			}
 			else if (e.Node.Tag is TreeNodeItem { Data: var data } treeNodeItem)

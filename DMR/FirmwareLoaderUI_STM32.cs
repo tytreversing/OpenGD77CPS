@@ -104,8 +104,6 @@ public class FirmwareLoaderUI_STM32 : Form
 			}
 		}
 		Settings.ReadCommonsForSectionIntoDictionary(StringsDict, base.Name);
-		object[] array = new object[MainForm.FirmwareLanguageFiles.Length + 1];
-		array[0] = StringsDict["AdditionalLanguageNone"];
 		findFirmwareLink.Text = StringsDict["FindFirmware"];
 		flashInstruction.Text = StringsDict["FlashFirmware"];
 		warning.Text = StringsDict["Description"];
@@ -191,7 +189,7 @@ public class FirmwareLoaderUI_STM32 : Form
 			{
 				if (languageFile != "")
 				{
-					string path = Path.Combine(Path.GetDirectoryName(dlgOpenFile.FileName), languageFile + ".gla");
+					string path = languageFile + ".gla";
 					if (!File.Exists(path))
 					{
 						lblMessage.Text = "";
@@ -620,10 +618,10 @@ public class FirmwareLoaderUI_STM32 : Form
         {
             WebClient glaDownloader = new WebClient();
             fullURI = remoteUri + fileName;
-            File.Copy("Language\\Firmware\\Russian.gla", "Language\\Firmware\\Russian.bak", true);
+            File.Copy(Application.StartupPath + "\\Language\\Firmware\\Russian.gla", Application.StartupPath + "\\Language\\Firmware\\Russian.bak", true);
             try
             {
-                glaDownloader.DownloadFile(fullURI, "Language\\Firmware\\" + fileName);
+                glaDownloader.DownloadFile(fullURI, Application.StartupPath + "\\Language\\Firmware\\" + fileName);
             }
             catch (Exception ex)
             {

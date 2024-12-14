@@ -600,14 +600,14 @@ public class MainForm : Form
             this.tsmiTree.Checked = true;
             this.tsmiTree.CheckState = System.Windows.Forms.CheckState.Checked;
             this.tsmiTree.Name = "tsmiTree";
-            this.tsmiTree.Size = new System.Drawing.Size(140, 24);
+            this.tsmiTree.Size = new System.Drawing.Size(180, 24);
             this.tsmiTree.Text = "TreeView";
             this.tsmiTree.Click += new System.EventHandler(this.tsmiTree_Click);
             // 
             // tsmiHelp
             // 
             this.tsmiHelp.Name = "tsmiHelp";
-            this.tsmiHelp.Size = new System.Drawing.Size(140, 24);
+            this.tsmiHelp.Size = new System.Drawing.Size(180, 24);
             this.tsmiHelp.Text = "HelpView";
             this.tsmiHelp.Click += new System.EventHandler(this.tsmiHelp_Click);
             // 
@@ -616,7 +616,7 @@ public class MainForm : Form
             this.tsmiToolBar.Checked = true;
             this.tsmiToolBar.CheckState = System.Windows.Forms.CheckState.Checked;
             this.tsmiToolBar.Name = "tsmiToolBar";
-            this.tsmiToolBar.Size = new System.Drawing.Size(140, 24);
+            this.tsmiToolBar.Size = new System.Drawing.Size(180, 24);
             this.tsmiToolBar.Text = "Toolbar";
             this.tsmiToolBar.Click += new System.EventHandler(this.tsmiToolBar_Click);
             // 
@@ -625,7 +625,7 @@ public class MainForm : Form
             this.tsmiStatusBar.Checked = true;
             this.tsmiStatusBar.CheckState = System.Windows.Forms.CheckState.Checked;
             this.tsmiStatusBar.Name = "tsmiStatusBar";
-            this.tsmiStatusBar.Size = new System.Drawing.Size(140, 24);
+            this.tsmiStatusBar.Size = new System.Drawing.Size(180, 24);
             this.tsmiStatusBar.Text = "Status Bar";
             this.tsmiStatusBar.Click += new System.EventHandler(this.tsmiStatusBar_Click);
             // 
@@ -637,7 +637,6 @@ public class MainForm : Form
             this.tsmiRadioType.Name = "tsmiRadioType";
             this.tsmiRadioType.Size = new System.Drawing.Size(87, 23);
             this.tsmiRadioType.Text = "Radio Type";
-            this.tsmiRadioType.Visible = false;
             // 
             // tsmiRadioTypeItem_MK22
             // 
@@ -649,6 +648,8 @@ public class MainForm : Form
             // 
             // tsmiRadioTypeItem_STM32
             // 
+            this.tsmiRadioTypeItem_STM32.Checked = true;
+            this.tsmiRadioTypeItem_STM32.CheckState = System.Windows.Forms.CheckState.Checked;
             this.tsmiRadioTypeItem_STM32.Name = "tsmiRadioTypeItem_STM32";
             this.tsmiRadioTypeItem_STM32.Size = new System.Drawing.Size(295, 24);
             this.tsmiRadioTypeItem_STM32.Tag = DMR.MainForm.RadioTypeEnum.RadioTypeSTM32;
@@ -1414,11 +1415,6 @@ public class MainForm : Form
 		Settings.dicCommon.Add("FirmwareFilefilter", "Файлы прошивки|*.bin");
 		Settings.dicCommon.Add("FirmwareSelectorTitle", "Select Firmware file");
 		Settings.dicCommon.Add("Processing", "Processing...");
-/*		string text = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "DockPanel.config");
-		if (File.Exists(text))
-		{
-			dockPanel.LoadFromXml(text, m_deserializeDockContent);
-		}*/
 		using (Graphics graphics = CreateGraphics())
 		{
 			Settings.smethod_7(new SizeF(graphics.DpiX / 96f, graphics.DpiY / 96f));
@@ -1508,11 +1504,6 @@ public class MainForm : Form
 		base.AutoScaleMode = AutoScaleMode.Font;
 		Font = new Font("Arial", 10f, FontStyle.Regular);
 		GetAllLang();
-		FirmwareLanguageFiles = new string[18]
-		{
-			"Catalan", "Croatian", "Czech", "Danish", "Dutch", "Finnish", "French", "German", "Hungarian", "Italian",
-			"Polish", "PortuguesBrazil", "Portuguese", "Romanian", "Slovenian", "Spanish", "Swedish", "Turkish"
-		};
 		string profileStringWithDefault2 = IniFileUtils.getProfileStringWithDefault("Setup", "Language", "Russian.xml");
 		foreach (ToolStripMenuItem dropDownItem in tsmiLanguage.DropDownItems)
 		{

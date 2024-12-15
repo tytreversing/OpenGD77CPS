@@ -739,7 +739,7 @@ public class OpenGD77Form : Form
 		{
 			return num != -1;
 		}
-		return false;
+        return false;
 	}
 
 	public static bool flashWritePrepareSector(SerialPort port, char writeCharacter, int address, ref byte[] sendbuffer, ref byte[] readbuffer, OpenGD77CommsTransferData dataObj)

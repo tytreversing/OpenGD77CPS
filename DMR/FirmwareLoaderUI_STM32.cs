@@ -9,7 +9,7 @@ using System.Linq;
 using System.Net;
 using System.Security.Cryptography;
 using System.Windows.Forms;
-using Microsoft.Win32;
+//using Microsoft.Win32;
 
 namespace DMR;
 
@@ -32,7 +32,7 @@ public class FirmwareLoaderUI_STM32 : Form
 		241, 31
 	};
 
-	public static RegistryKey regKeyOfficialFirmware = null;
+	public static Microsoft.Win32.RegistryKey regKeyOfficialFirmware = null;
 
 	public static string officialFirmwareFile = "";
 
@@ -56,7 +56,7 @@ public class FirmwareLoaderUI_STM32 : Form
 
 	private Label lblMessage;
 
-	private OpenFileDialog dlgOpenFile;
+	private System.Windows.Forms.OpenFileDialog dlgOpenFile;
 
 	private Button btnSelectDonorFW;
 

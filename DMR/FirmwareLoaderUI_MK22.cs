@@ -10,7 +10,7 @@ using System.Net;
 using System.Security.Cryptography;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Microsoft.Win32;
+
 
 namespace DMR;
 
@@ -28,7 +28,7 @@ public class FirmwareLoaderUI_MK22 : Form
 
 	public static Dictionary<string, string> StringsDict = new Dictionary<string, string>();
 
-	public static RegistryKey regKeyOfficialFirmware = null;
+	public static Microsoft.Win32.RegistryKey regKeyOfficialFirmware = null;
 
 	public static string languageFile = "";
 

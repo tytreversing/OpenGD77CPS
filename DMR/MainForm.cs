@@ -287,6 +287,7 @@ public class MainForm : Form
     private ToolStripSeparator toolStripSeparator5;
     private OpenFileDialog importFileDialog;
     public Label radioInformation;
+    private Timer pingTimer;
     public static bool EnableHiddenFeatures;
 
 	public static string CurFileName { get; set; }
@@ -405,6 +406,7 @@ public class MainForm : Form
             this.tsbtnAbout = new System.Windows.Forms.ToolStripButton();
             this.importFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.radioInformation = new System.Windows.Forms.Label();
+            this.pingTimer = new System.Windows.Forms.Timer(this.components);
             this.mnsMain.SuspendLayout();
             this.cmsGroup.SuspendLayout();
             this.cmsSub.SuspendLayout();
@@ -639,6 +641,7 @@ public class MainForm : Form
             this.tsmiRadioType.Name = "tsmiRadioType";
             this.tsmiRadioType.Size = new System.Drawing.Size(87, 23);
             this.tsmiRadioType.Text = "Radio Type";
+            this.tsmiRadioType.Visible = false;
             // 
             // tsmiRadioTypeItem_MK22
             // 
@@ -1263,16 +1266,19 @@ public class MainForm : Form
             this.radioInformation.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.radioInformation.AutoSize = true;
             this.radioInformation.BackColor = System.Drawing.Color.Transparent;
-            this.radioInformation.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.radioInformation.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.radioInformation.Location = new System.Drawing.Point(817, 480);
             this.radioInformation.Name = "radioInformation";
             this.radioInformation.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.radioInformation.Size = new System.Drawing.Size(46, 18);
+            this.radioInformation.Size = new System.Drawing.Size(44, 16);
             this.radioInformation.TabIndex = 15;
             this.radioInformation.Text = "label1";
             this.radioInformation.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.radioInformation.Visible = false;
+            // 
+            // pingTimer
+            // 
+            this.pingTimer.Interval = 500;
+            this.pingTimer.Tick += new System.EventHandler(this.pingTimer_Tick);
             // 
             // MainForm
             // 
@@ -1590,7 +1596,7 @@ public class MainForm : Form
 			base.FormClosing += MainForm_FormClosing;
 		}
 		CSVEML.InitCSVs();
-		pingRadio();
+        pingTimer.Enabled = true;
 	}
 
 	private string getMainTitleStub()
@@ -3269,7 +3275,8 @@ public class MainForm : Form
 
 	private void tsbtnContactsDownload_Click(object sender, EventArgs e)
 	{
-		closeAllForms();
+        pingTimer.Stop();
+        closeAllForms();
 		DownloadContactsForm downloadContactsForm = new DownloadContactsForm();
 		downloadContactsForm.mainForm = this;
 		TreeNode treeNode = method_9(typeof(ContactsForm), tvwMain.Nodes);
@@ -3287,7 +3294,8 @@ public class MainForm : Form
 
 	private void tsbtnDMRID_Click(object sender, EventArgs e)
 	{
-		closeAllForms();
+        pingTimer.Stop();
+        closeAllForms();
 		DMRIDForm dMRIDForm = new DMRIDForm();
 		dMRIDForm.StartPosition = FormStartPosition.CenterParent;
 		dMRIDForm.ShowDialog();
@@ -3295,7 +3303,8 @@ public class MainForm : Form
 
 	private void tsbtnCalibration_Click(object sender, EventArgs e)
 	{
-		closeAllForms();
+        pingTimer.Stop();
+        closeAllForms();
         if (MainForm.RadioType == MainForm.RadioTypeEnum.RadioTypeSTM32)
         {
             CalibrationFormMDUV380 calibrationForm = new CalibrationFormMDUV380();
@@ -3313,7 +3322,8 @@ public class MainForm : Form
 
 	private void tsbtnTheme_Click(object sender, EventArgs e)
 	{
-		closeAllForms();
+        pingTimer.Stop();
+        closeAllForms();
 		ThemeForm themeForm = new ThemeForm();
 		themeForm.StartPosition = FormStartPosition.CenterParent;
 		themeForm.ShowDialog();
@@ -3321,7 +3331,8 @@ public class MainForm : Form
 
 	private void openGD77Form(OpenGD77CommsTransferData.CommsAction buttonAction)
 	{
-		closeAllForms();
+        pingTimer.Stop();
+        closeAllForms();
 		OpenGD77Form obj = new OpenGD77Form(buttonAction);
 		obj.StartPosition = FormStartPosition.CenterParent;
 		obj.ShowDialog();
@@ -3330,12 +3341,14 @@ public class MainForm : Form
 
 	private void tsmiOpenGD77_Click(object sender, EventArgs e)
 	{
-		openGD77Form(OpenGD77CommsTransferData.CommsAction.NONE);
+        pingTimer.Stop();
+        openGD77Form(OpenGD77CommsTransferData.CommsAction.NONE);
 	}
 
 	private void tsmiFirmwareLoader_Click(object sender, EventArgs e)
 	{
-		RadioTypeEnum radioType = RadioType;
+        pingTimer.Stop();
+        RadioTypeEnum radioType = RadioType;
 		if (radioType != 0 && radioType == RadioTypeEnum.RadioTypeSTM32)
 		{
 			new FirmwareLoaderUI_STM32().ShowDialog();
@@ -3348,7 +3361,8 @@ public class MainForm : Form
 
 	private void tsmiFirmwareLoaderMD9600_Click(object sender, EventArgs e)
 	{
-		new FirmwareLoaderUI_STM32().ShowDialog();
+        pingTimer.Stop();
+        new FirmwareLoaderUI_STM32().ShowDialog();
 	}
 
 	private void tsmiRadioTypeClickHandler(object sender, EventArgs e)
@@ -3391,12 +3405,14 @@ public class MainForm : Form
 
 	private void tsbtnRead_Click(object sender, EventArgs e)
 	{
+		pingTimer.Stop();
 		openGD77Form(OpenGD77CommsTransferData.CommsAction.READ_CODEPLUG);
 	}
 
 	private void tsbtnWrite_Click(object sender, EventArgs e)
 	{
-		openGD77Form(OpenGD77CommsTransferData.CommsAction.WRITE_CODEPLUG);
+        pingTimer.Stop();
+        openGD77Form(OpenGD77CommsTransferData.CommsAction.WRITE_CODEPLUG);
 	}
 
 	private void tsmiTree_Click(object sender, EventArgs e)
@@ -4312,5 +4328,17 @@ public class MainForm : Form
     private void dummyClick(object sender, EventArgs e)
     {
 		MessageBox.Show("На данный момент функция неактивна!");
+    }
+
+    private void pingTimer_Tick(object sender, EventArgs e)
+    {
+		try
+		{
+			pingRadio();
+		}
+		catch 
+		{ 
+			radioInformation.Text = "";
+		}
     }
 }

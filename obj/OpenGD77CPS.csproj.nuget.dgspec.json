@@ -1,15 +1,15 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\maste\\Documents\\GitHub\\OpenGD77CPS\\OpenGD77CPS.csproj": {}
+    "C:\\Users\\maste\\Documents\\Github\\OpenGD77CPS\\OpenGD77CPS.csproj": {}
   },
   "projects": {
-    "C:\\Users\\maste\\Documents\\GitHub\\OpenGD77CPS\\OpenGD77CPS.csproj": {
+    "C:\\Users\\maste\\Documents\\Github\\OpenGD77CPS\\OpenGD77CPS.csproj": {
       "version": "1.2024.1205.1125",
       "restore": {
-        "projectUniqueName": "C:\\Users\\maste\\Documents\\GitHub\\OpenGD77CPS\\OpenGD77CPS.csproj",
+        "projectUniqueName": "C:\\Users\\maste\\Documents\\Github\\OpenGD77CPS\\OpenGD77CPS.csproj",
         "projectName": "OpenGD77RUS CPS",
-        "projectPath": "C:\\Users\\maste\\Documents\\GitHub\\OpenGD77CPS\\OpenGD77CPS.csproj",
+        "projectPath": "C:\\Users\\maste\\Documents\\Github\\OpenGD77CPS\\OpenGD77CPS.csproj",
         "packagesPath": "C:\\Users\\maste\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\maste\\Documents\\Github\\OpenGD77CPS\\obj\\",
         "projectStyle": "PackageReference",

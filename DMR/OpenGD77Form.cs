@@ -234,12 +234,18 @@ public class OpenGD77Form : Form
 		return ((uint)MainForm.RadioInfo.features & (uint)feature) != 0;
 	}
 
-	public bool probeRadioModel(bool stealth = false)
-	{
-		if (!setupCommPort())
+
+
+
+    public bool probeRadioModel(bool stealth = false, bool startup = false)
+    {
+		if (!setupCommPort(startup))
 		{
-			SystemSounds.Hand.Play();
-			MessageBox.Show(StringsDict["No_com_port"]);
+			if (!stealth)
+			{
+				SystemSounds.Hand.Play();
+				MessageBox.Show(StringsDict["No_com_port"]);
+			}
 			return false;
 		}
 		sendCommand(commPort, 254);
@@ -2285,7 +2291,7 @@ public class OpenGD77Form : Form
 		}
 	}
 
-	private bool setupCommPort()
+	private bool setupCommPort(bool startup = false)
 	{
 		if (commPort != null)
 		{
@@ -2305,7 +2311,7 @@ public class OpenGD77Form : Form
 		{
 			string text = null;
 			text = SetupDiWrap.ComPortNameFromFriendlyNamePrefix("OpenGD77");
-			if (text == null)
+			if (text == null && !startup)
 			{
 				CommPortSelector commPortSelector = new CommPortSelector();
 				if (DialogResult.OK != commPortSelector.ShowDialog())
@@ -2314,11 +2320,8 @@ public class OpenGD77Form : Form
 				}
 				text = SetupDiWrap.ComPortNameFromFriendlyNamePrefix(commPortSelector.SelectedPort);
 				IniFileUtils.WriteProfileString("Setup", "LastCommPort", text);
-			}
-			if (text == null)
-			{
-				MessageBox.Show(StringsDict["Please_connect_the_radio,_and_try_again."], StringsDict["Radio_not_detected."]);
-			}
+                MessageBox.Show(StringsDict["Please_connect_the_radio,_and_try_again."], StringsDict["Radio_not_detected."]);
+            }
 			else
 			{
 				commPort = new SerialPort(text, 115200, Parity.None, 8, StopBits.One);
@@ -2328,8 +2331,11 @@ public class OpenGD77Form : Form
 		catch (Exception)
 		{
 			commPort = null;
-			SystemSounds.Hand.Play();
-			MessageBox.Show(StringsDict["Failed_to_open_comm_port"], StringsDict["Error"]);
+			if (!startup)
+			{
+                SystemSounds.Hand.Play();
+                MessageBox.Show(StringsDict["Failed_to_open_comm_port"], StringsDict["Error"]);
+			}
 			IniFileUtils.WriteProfileString("Setup", "LastCommPort", "");
 			return false;
 		}
@@ -2339,8 +2345,11 @@ public class OpenGD77Form : Form
 		}
 		catch (Exception)
 		{
-			SystemSounds.Hand.Play();
-			MessageBox.Show(StringsDict["Comm_port_not_available"]);
+			if (!startup)
+			{
+				SystemSounds.Hand.Play();
+				MessageBox.Show(StringsDict["Comm_port_not_available"]);
+			}
 			commPort = null;
 			return false;
 		}

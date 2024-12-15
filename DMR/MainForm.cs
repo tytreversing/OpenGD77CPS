@@ -180,7 +180,7 @@ public class MainForm : Form
 
 	private ToolStripMenuItem tsmiCollapseAll;
 
-	private DockPanel dockPanel;
+    private DockPanel dockPanel;
 
 	private Panel pnlTvw;
 
@@ -286,6 +286,7 @@ public class MainForm : Form
     private ToolStripMenuItem tsmiImportG77;
     private ToolStripSeparator toolStripSeparator5;
     private OpenFileDialog importFileDialog;
+    public Label radioInformation;
     public static bool EnableHiddenFeatures;
 
 	public static string CurFileName { get; set; }
@@ -403,6 +404,7 @@ public class MainForm : Form
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbtnAbout = new System.Windows.Forms.ToolStripButton();
             this.importFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.radioInformation = new System.Windows.Forms.Label();
             this.mnsMain.SuspendLayout();
             this.cmsGroup.SuspendLayout();
             this.cmsSub.SuspendLayout();
@@ -600,14 +602,14 @@ public class MainForm : Form
             this.tsmiTree.Checked = true;
             this.tsmiTree.CheckState = System.Windows.Forms.CheckState.Checked;
             this.tsmiTree.Name = "tsmiTree";
-            this.tsmiTree.Size = new System.Drawing.Size(180, 24);
+            this.tsmiTree.Size = new System.Drawing.Size(140, 24);
             this.tsmiTree.Text = "TreeView";
             this.tsmiTree.Click += new System.EventHandler(this.tsmiTree_Click);
             // 
             // tsmiHelp
             // 
             this.tsmiHelp.Name = "tsmiHelp";
-            this.tsmiHelp.Size = new System.Drawing.Size(180, 24);
+            this.tsmiHelp.Size = new System.Drawing.Size(140, 24);
             this.tsmiHelp.Text = "HelpView";
             this.tsmiHelp.Click += new System.EventHandler(this.tsmiHelp_Click);
             // 
@@ -616,7 +618,7 @@ public class MainForm : Form
             this.tsmiToolBar.Checked = true;
             this.tsmiToolBar.CheckState = System.Windows.Forms.CheckState.Checked;
             this.tsmiToolBar.Name = "tsmiToolBar";
-            this.tsmiToolBar.Size = new System.Drawing.Size(180, 24);
+            this.tsmiToolBar.Size = new System.Drawing.Size(140, 24);
             this.tsmiToolBar.Text = "Toolbar";
             this.tsmiToolBar.Click += new System.EventHandler(this.tsmiToolBar_Click);
             // 
@@ -625,7 +627,7 @@ public class MainForm : Form
             this.tsmiStatusBar.Checked = true;
             this.tsmiStatusBar.CheckState = System.Windows.Forms.CheckState.Checked;
             this.tsmiStatusBar.Name = "tsmiStatusBar";
-            this.tsmiStatusBar.Size = new System.Drawing.Size(180, 24);
+            this.tsmiStatusBar.Size = new System.Drawing.Size(140, 24);
             this.tsmiStatusBar.Text = "Status Bar";
             this.tsmiStatusBar.Click += new System.EventHandler(this.tsmiStatusBar_Click);
             // 
@@ -1256,11 +1258,28 @@ public class MainForm : Form
             this.importFileDialog.DefaultExt = "g77";
             this.importFileDialog.Filter = "Кодплаги OpenGD77 (*.g77)|*.g77|Все файлы (*.*)|*.*";
             // 
+            // radioInformation
+            // 
+            this.radioInformation.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.radioInformation.AutoSize = true;
+            this.radioInformation.BackColor = System.Drawing.Color.Transparent;
+            this.radioInformation.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.radioInformation.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.radioInformation.Location = new System.Drawing.Point(817, 480);
+            this.radioInformation.Name = "radioInformation";
+            this.radioInformation.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.radioInformation.Size = new System.Drawing.Size(46, 18);
+            this.radioInformation.TabIndex = 15;
+            this.radioInformation.Text = "label1";
+            this.radioInformation.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.radioInformation.Visible = false;
+            // 
             // MainForm
             // 
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1099, 709);
+            this.Controls.Add(this.radioInformation);
             this.Controls.Add(this.dockPanel);
             this.Controls.Add(this.tsrMain);
             this.Controls.Add(this.ssrMain);
@@ -1328,7 +1347,40 @@ public class MainForm : Form
 		method_20(method_19());
 		frmHelp.VisibleChanged += FormPanel_VisibleChanged;
 		frmTree.VisibleChanged += FormPanel_VisibleChanged;
+		radioInformation.Text = "";
+    }
+
+	private void pingRadio()
+	{
+		bool result;
+		OpenGD77Form temp = new OpenGD77Form(OpenGD77CommsTransferData.CommsAction.NONE);
+		result = temp.probeRadioModel(true, true);
+		if (result)
+		{
+			showRadioInfo();
+		}
+		temp.Dispose();
+		return;
 	}
+
+
+	public void showRadioInfo()
+	{
+		radioInformation.Text = "Рация подключена\r\n";
+		if (RadioInfo.identifier!="RUSSIAN")
+		{
+			radioInformation.Text += "На рации не установлена прошивка OpenGD77 RUS!";
+		}
+		else
+		{
+            radioInformation.Text += "Установлена корректная прошивка OpenGD77 RUS";
+        }
+		radioInformation.Text += "\r\nСборка прошивки: ";
+		radioInformation.Text += RadioInfo.buildDateTime.Substring(0,8);
+        radioInformation.Text += "\r\n";
+		radioInformation.Text += RadioInfo.features.ToString(); 
+
+    }
 
 	private void MainForm_Load(object sender, EventArgs e)
 	{
@@ -1538,7 +1590,7 @@ public class MainForm : Form
 			base.FormClosing += MainForm_FormClosing;
 		}
 		CSVEML.InitCSVs();
-
+		pingRadio();
 	}
 
 	private string getMainTitleStub()
@@ -1968,16 +2020,15 @@ public class MainForm : Form
 	{
 		int num = 0;
 		int num2 = 0;
-		int num3 = 0;
 		method_5(typeof(ChannelForm));
 		parentNode.Nodes.Clear();
 		for (num = 0; num < ChannelForm.CurCntCh; num++)
 		{
-			num3 = num;
-			if (ChannelForm.data.DataIsValid(num3))
+			num2 = num;
+			if (ChannelForm.data.DataIsValid(num2))
 			{
-				int chMode = ChannelForm.data.GetChMode(num3);
-				AddTreeViewNode(parentNode.Nodes, ChannelForm.data.GetName(num3), new TreeNodeItem(cmsSub, typeof(ChannelForm), null, ChannelForm.CurCntCh, num, chMode switch
+				int chMode = ChannelForm.data.GetChMode(num2);
+				AddTreeViewNode(parentNode.Nodes, ChannelForm.data.GetName(num2), new TreeNodeItem(cmsSub, typeof(ChannelForm), null, ChannelForm.CurCntCh, num, chMode switch
 				{
 					0 => 2, 
 					1 => 6, 
@@ -2548,30 +2599,29 @@ public class MainForm : Form
 	private void tsmiPaste_Click(object sender, EventArgs e)
 	{
 		TreeNode selectedNode = tvwMain.SelectedNode;
-		TreeNodeItem treeNodeItem = null;
 		if (selectedNode == null)
 		{
 			return;
 		}
 		_ = selectedNode.Parent;
-		if (selectedNode.Tag is TreeNodeItem treeNodeItem2 && CopyItem != null)
+		if (selectedNode.Tag is TreeNodeItem treeNodeItem && CopyItem != null)
 		{
-			if (CopyItem.Type != treeNodeItem2.Type)
+			if (CopyItem.Type != treeNodeItem.Type)
 			{
 				MessageBox.Show(Settings.dicCommon["TypeNotMatch"]);
 				return;
 			}
-			if (treeNodeItem2 != null && base.ActiveMdiChild is IDisp disp)
+			if (treeNodeItem != null && base.ActiveMdiChild is IDisp disp)
 			{
 				disp.SaveData();
 			}
-			treeNodeItem2.Paste(CopyItem);
+			treeNodeItem.Paste(CopyItem);
 			Form form = method_6(selectedNode);
 			if (form != null && form is IDisp disp2 && disp2.Node == selectedNode)
 			{
 				disp2.DispData();
 			}
-			RefreshRelatedForm(treeNodeItem2.Type);
+			RefreshRelatedForm(treeNodeItem.Type);
 		}
 		else
 		{

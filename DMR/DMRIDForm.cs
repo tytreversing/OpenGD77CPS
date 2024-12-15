@@ -835,9 +835,8 @@ public class DMRIDForm : Form
 			OpenGD77Form.sendCommand(commPort, 0);
 			OpenGD77Form.sendCommand(commPort, 1);
 			OpenGD77Form.sendCommand(commPort, 2, 0, 0, 3, 1, 0, "CPS");
-			OpenGD77Form.sendCommand(commPort, 2, 0, 16, 3, 1, 0, "Writing");
-			OpenGD77Form.sendCommand(commPort, 2, 0, 32, 3, 1, 0, "DMRID");
-			OpenGD77Form.sendCommand(commPort, 2, 0, 48, 3, 1, 0, "Database");
+			OpenGD77Form.sendCommand(commPort, 2, 0, 16, 3, 1, 0, "Запись");
+			OpenGD77Form.sendCommand(commPort, 2, 0, 32, 3, 1, 0, "DMR ID");
 			OpenGD77Form.sendCommand(commPort, 3);
 			OpenGD77Form.sendCommand(commPort, 6, 4);
 			OpenGD77CommsTransferData openGD77CommsTransferData = new OpenGD77CommsTransferData();

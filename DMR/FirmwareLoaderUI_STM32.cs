@@ -630,7 +630,8 @@ public class FirmwareLoaderUI_STM32 : Form
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, StringsDict["Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
+                lblMessage.Text = ex.Message;
+                File.Move(Application.StartupPath + "\\Language\\Firmware\\Russian.bak", Application.StartupPath + "\\Language\\Firmware\\Russian.gla");
                 return;
             }
             try
@@ -639,7 +640,8 @@ public class FirmwareLoaderUI_STM32 : Form
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, StringsDict["Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
+                lblMessage.Text = ex.Message;
+                File.Move(Application.StartupPath + "\\Language\\Firmware\\Russian.bak", Application.StartupPath + "\\Language\\Firmware\\Russian.gla");
             }
             finally
             {

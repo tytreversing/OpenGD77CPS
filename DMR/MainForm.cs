@@ -3910,13 +3910,7 @@ public class MainForm : Form
 		}
 	}
 
-	public string[] GetFirmwareLanguageFiles()
-	{
-		string startupPath = Application.StartupPath;
-		return (from f in Directory.GetFiles(startupPath + Path.DirectorySeparatorChar + "Language" + Path.DirectorySeparatorChar + "Firmware", "*.gla")
-			orderby f
-			select f).ToArray();
-	}
+
 
 	public string GetLangName(string xmlFile)
 	{

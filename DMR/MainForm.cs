@@ -1383,8 +1383,41 @@ public class MainForm : Form
         }
 		radioInformation.Text += "\r\nСборка прошивки: ";
 		radioInformation.Text += RadioInfo.buildDateTime.Substring(0,8);
-        radioInformation.Text += "\r\n";
-		radioInformation.Text += RadioInfo.features.ToString(); 
+        radioInformation.Text += "\r\nМодель рации: ";
+		switch (RadioInfo.radioType)
+		{
+			case 0:
+				radioInformation.Text += "TYT MD-760/Radioddity GD-77";
+				break;
+			case 1:
+                radioInformation.Text += "Radioddity GD-77S";
+                break;
+			case 2:
+                radioInformation.Text += "Baofeng DM-1801";
+                break;
+			case 3:
+                radioInformation.Text += "Baofeng RD-5R";
+                break;
+			case 4:
+                radioInformation.Text += "Baofeng DM-1801A";
+                break;
+			case 5:
+                radioInformation.Text += "TYT MD-9600/Retevis RT-90";
+                break;
+			case 6:
+                radioInformation.Text += "TYT MD-UV380/TYT MD-UV390/Retevis RT-3S";
+                break;
+			case 8:
+			case 10:
+                radioInformation.Text += "Baofeng DM-1701/Retevis RT-84";
+                break;
+			case 9:
+                radioInformation.Text += "TYT MD-2017/Retevis RT-82";
+                break;
+
+        }
+		radioInformation.Text += "\r\nЧип флеш-памяти: ";
+		radioInformation.Text += RadioInfo.flashId.ToString();
 
     }
 

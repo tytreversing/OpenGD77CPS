@@ -1,64 +1,64 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\maste\\Documents\\Github\\OpenGD77CPS\\",
+  "WorkspaceRootPath": "D:\\OpenGD77 Repo\\OpenGD77CPS\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1565D13D-7D28-4024-BF98-A764C1B1D9C5}|OpenGD77CPS.csproj|c:\\users\\maste\\documents\\github\\opengd77cps\\dmr\\opengd77form.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1565D13D-7D28-4024-BF98-A764C1B1D9C5}|OpenGD77CPS.csproj|solutionrelative:dmr\\opengd77form.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1565D13D-7D28-4024-BF98-A764C1B1D9C5}|OpenGD77CPS.csproj|c:\\users\\maste\\documents\\github\\opengd77cps\\dmr\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{1565D13D-7D28-4024-BF98-A764C1B1D9C5}|OpenGD77CPS.csproj|d:\\opengd77 repo\\opengd77cps\\dmr\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1565D13D-7D28-4024-BF98-A764C1B1D9C5}|OpenGD77CPS.csproj|solutionrelative:dmr\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1565D13D-7D28-4024-BF98-A764C1B1D9C5}|OpenGD77CPS.csproj|c:\\users\\maste\\documents\\github\\opengd77cps\\dmr\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{1565D13D-7D28-4024-BF98-A764C1B1D9C5}|OpenGD77CPS.csproj|d:\\opengd77 repo\\opengd77cps\\dmr\\opengd77form.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1565D13D-7D28-4024-BF98-A764C1B1D9C5}|OpenGD77CPS.csproj|solutionrelative:dmr\\opengd77form.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1565D13D-7D28-4024-BF98-A764C1B1D9C5}|OpenGD77CPS.csproj|D:\\OpenGD77 Repo\\OpenGD77CPS\\dmr\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{1565D13D-7D28-4024-BF98-A764C1B1D9C5}|OpenGD77CPS.csproj|solutionrelative:dmr\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1565D13D-7D28-4024-BF98-A764C1B1D9C5}|OpenGD77CPS.csproj|c:\\users\\maste\\documents\\github\\opengd77cps\\dmr\\firmwareloaderui_mk22.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{1565D13D-7D28-4024-BF98-A764C1B1D9C5}|OpenGD77CPS.csproj|d:\\opengd77 repo\\opengd77cps\\dmr\\firmwareloaderui_mk22.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1565D13D-7D28-4024-BF98-A764C1B1D9C5}|OpenGD77CPS.csproj|solutionrelative:dmr\\firmwareloaderui_mk22.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1565D13D-7D28-4024-BF98-A764C1B1D9C5}|OpenGD77CPS.csproj|c:\\users\\maste\\documents\\github\\opengd77cps\\dmr\\firmwareloaderui_stm32.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{1565D13D-7D28-4024-BF98-A764C1B1D9C5}|OpenGD77CPS.csproj|d:\\opengd77 repo\\opengd77cps\\dmr\\firmwareloaderui_stm32.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1565D13D-7D28-4024-BF98-A764C1B1D9C5}|OpenGD77CPS.csproj|solutionrelative:dmr\\firmwareloaderui_stm32.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1565D13D-7D28-4024-BF98-A764C1B1D9C5}|OpenGD77CPS.csproj|c:\\users\\maste\\documents\\github\\opengd77cps\\language\\cps\\russian.xml||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "AbsoluteMoniker": "D:0:0:{1565D13D-7D28-4024-BF98-A764C1B1D9C5}|OpenGD77CPS.csproj|d:\\opengd77 repo\\opengd77cps\\language\\cps\\russian.xml||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
       "RelativeMoniker": "D:0:0:{1565D13D-7D28-4024-BF98-A764C1B1D9C5}|OpenGD77CPS.csproj|solutionrelative:language\\cps\\russian.xml||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\maste\\AppData\\Local\\Temp\\.vsdbgsrc\\ef4b5b4103107eb9625d846ba15175bbc8789aeabe7c55ef120ce942887318dc\\Form.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1565D13D-7D28-4024-BF98-A764C1B1D9C5}|OpenGD77CPS.csproj|c:\\users\\maste\\documents\\github\\opengd77cps\\dmr\\calibrationform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{1565D13D-7D28-4024-BF98-A764C1B1D9C5}|OpenGD77CPS.csproj|d:\\opengd77 repo\\opengd77cps\\dmr\\calibrationform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1565D13D-7D28-4024-BF98-A764C1B1D9C5}|OpenGD77CPS.csproj|solutionrelative:dmr\\calibrationform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1565D13D-7D28-4024-BF98-A764C1B1D9C5}|OpenGD77CPS.csproj|C:\\Users\\maste\\Documents\\Github\\OpenGD77CPS\\dmr\\zoneform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{1565D13D-7D28-4024-BF98-A764C1B1D9C5}|OpenGD77CPS.csproj|D:\\OpenGD77 Repo\\OpenGD77CPS\\dmr\\zoneform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{1565D13D-7D28-4024-BF98-A764C1B1D9C5}|OpenGD77CPS.csproj|solutionrelative:dmr\\zoneform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1565D13D-7D28-4024-BF98-A764C1B1D9C5}|OpenGD77CPS.csproj|c:\\users\\maste\\documents\\github\\opengd77cps\\dmr\\zoneform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{1565D13D-7D28-4024-BF98-A764C1B1D9C5}|OpenGD77CPS.csproj|d:\\opengd77 repo\\opengd77cps\\dmr\\zoneform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1565D13D-7D28-4024-BF98-A764C1B1D9C5}|OpenGD77CPS.csproj|solutionrelative:dmr\\zoneform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1565D13D-7D28-4024-BF98-A764C1B1D9C5}|OpenGD77CPS.csproj|C:\\Users\\maste\\Documents\\Github\\OpenGD77CPS\\dmr\\rxgrouplistform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{1565D13D-7D28-4024-BF98-A764C1B1D9C5}|OpenGD77CPS.csproj|D:\\OpenGD77 Repo\\OpenGD77CPS\\dmr\\rxgrouplistform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{1565D13D-7D28-4024-BF98-A764C1B1D9C5}|OpenGD77CPS.csproj|solutionrelative:dmr\\rxgrouplistform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1565D13D-7D28-4024-BF98-A764C1B1D9C5}|OpenGD77CPS.csproj|c:\\users\\maste\\documents\\github\\opengd77cps\\dmr\\rxgrouplistform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{1565D13D-7D28-4024-BF98-A764C1B1D9C5}|OpenGD77CPS.csproj|d:\\opengd77 repo\\opengd77cps\\dmr\\rxgrouplistform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1565D13D-7D28-4024-BF98-A764C1B1D9C5}|OpenGD77CPS.csproj|solutionrelative:dmr\\rxgrouplistform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1565D13D-7D28-4024-BF98-A764C1B1D9C5}|OpenGD77CPS.csproj|c:\\users\\maste\\documents\\github\\opengd77cps\\dmr\\contactform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{1565D13D-7D28-4024-BF98-A764C1B1D9C5}|OpenGD77CPS.csproj|d:\\opengd77 repo\\opengd77cps\\dmr\\contactform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1565D13D-7D28-4024-BF98-A764C1B1D9C5}|OpenGD77CPS.csproj|solutionrelative:dmr\\contactform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1565D13D-7D28-4024-BF98-A764C1B1D9C5}|OpenGD77CPS.csproj|c:\\users\\maste\\documents\\github\\opengd77cps\\dmr\\csveml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{1565D13D-7D28-4024-BF98-A764C1B1D9C5}|OpenGD77CPS.csproj|d:\\opengd77 repo\\opengd77cps\\dmr\\csveml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1565D13D-7D28-4024-BF98-A764C1B1D9C5}|OpenGD77CPS.csproj|solutionrelative:dmr\\csveml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1565D13D-7D28-4024-BF98-A764C1B1D9C5}|OpenGD77CPS.csproj|c:\\users\\maste\\documents\\github\\opengd77cps\\language\\cps\\english.xml||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "AbsoluteMoniker": "D:0:0:{1565D13D-7D28-4024-BF98-A764C1B1D9C5}|OpenGD77CPS.csproj|d:\\opengd77 repo\\opengd77cps\\language\\cps\\english.xml||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
       "RelativeMoniker": "D:0:0:{1565D13D-7D28-4024-BF98-A764C1B1D9C5}|OpenGD77CPS.csproj|solutionrelative:language\\cps\\english.xml||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     }
   ],
@@ -69,35 +69,33 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 5,
               "Title": "Russian.xml",
-              "DocumentMoniker": "C:\\Users\\maste\\Documents\\Github\\OpenGD77CPS\\Language\\CPS\\Russian.xml",
+              "DocumentMoniker": "D:\\OpenGD77 Repo\\OpenGD77CPS\\Language\\CPS\\Russian.xml",
               "RelativeDocumentMoniker": "Language\\CPS\\Russian.xml",
-              "ToolTip": "C:\\Users\\maste\\Documents\\Github\\OpenGD77CPS\\Language\\CPS\\Russian.xml",
+              "ToolTip": "D:\\OpenGD77 Repo\\OpenGD77CPS\\Language\\CPS\\Russian.xml",
               "RelativeToolTip": "Language\\CPS\\Russian.xml",
               "ViewState": "AgIAAH4BAAAAAAAAAAAewJABAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003576|",
               "WhenOpened": "2024-12-05T06:15:31.037Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
               "DocumentIndex": 7,
               "Title": "CalibrationForm.cs",
-              "DocumentMoniker": "C:\\Users\\maste\\Documents\\Github\\OpenGD77CPS\\DMR\\CalibrationForm.cs",
+              "DocumentMoniker": "D:\\OpenGD77 Repo\\OpenGD77CPS\\DMR\\CalibrationForm.cs",
               "RelativeDocumentMoniker": "DMR\\CalibrationForm.cs",
-              "ToolTip": "C:\\Users\\maste\\Documents\\Github\\OpenGD77CPS\\DMR\\CalibrationForm.cs",
+              "ToolTip": "D:\\OpenGD77 Repo\\OpenGD77CPS\\DMR\\CalibrationForm.cs",
               "RelativeToolTip": "DMR\\CalibrationForm.cs",
               "ViewState": "AgIAAB8AAAAAAAAAAAAYwDYAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-08T17:45:54.151Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Bookmark",
@@ -107,35 +105,33 @@
               "$type": "Document",
               "DocumentIndex": 3,
               "Title": "FirmwareLoaderUI_MK22.cs",
-              "DocumentMoniker": "C:\\Users\\maste\\Documents\\Github\\OpenGD77CPS\\DMR\\FirmwareLoaderUI_MK22.cs",
+              "DocumentMoniker": "D:\\OpenGD77 Repo\\OpenGD77CPS\\DMR\\FirmwareLoaderUI_MK22.cs",
               "RelativeDocumentMoniker": "DMR\\FirmwareLoaderUI_MK22.cs",
-              "ToolTip": "C:\\Users\\maste\\Documents\\Github\\OpenGD77CPS\\DMR\\FirmwareLoaderUI_MK22.cs",
+              "ToolTip": "D:\\OpenGD77 Repo\\OpenGD77CPS\\DMR\\FirmwareLoaderUI_MK22.cs",
               "RelativeToolTip": "DMR\\FirmwareLoaderUI_MK22.cs",
               "ViewState": "AgIAAA0AAAAAAAAAAAAhwB4AAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-15T09:44:16.506Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-15T09:44:16.506Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
               "Title": "FirmwareLoaderUI_STM32.cs",
-              "DocumentMoniker": "C:\\Users\\maste\\Documents\\Github\\OpenGD77CPS\\DMR\\FirmwareLoaderUI_STM32.cs",
+              "DocumentMoniker": "D:\\OpenGD77 Repo\\OpenGD77CPS\\DMR\\FirmwareLoaderUI_STM32.cs",
               "RelativeDocumentMoniker": "DMR\\FirmwareLoaderUI_STM32.cs",
-              "ToolTip": "C:\\Users\\maste\\Documents\\Github\\OpenGD77CPS\\DMR\\FirmwareLoaderUI_STM32.cs",
+              "ToolTip": "D:\\OpenGD77 Repo\\OpenGD77CPS\\DMR\\FirmwareLoaderUI_STM32.cs",
               "RelativeToolTip": "DMR\\FirmwareLoaderUI_STM32.cs",
               "ViewState": "AgIAABAAAAAAAAAAAAApwCIAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-15T09:43:17.783Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-15T09:43:17.783Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "OpenGD77Form.cs",
-              "DocumentMoniker": "C:\\Users\\maste\\Documents\\Github\\OpenGD77CPS\\DMR\\OpenGD77Form.cs",
+              "DocumentMoniker": "D:\\OpenGD77 Repo\\OpenGD77CPS\\DMR\\OpenGD77Form.cs",
               "RelativeDocumentMoniker": "DMR\\OpenGD77Form.cs",
-              "ToolTip": "C:\\Users\\maste\\Documents\\Github\\OpenGD77CPS\\DMR\\OpenGD77Form.cs",
+              "ToolTip": "D:\\OpenGD77 Repo\\OpenGD77CPS\\DMR\\OpenGD77Form.cs",
               "RelativeToolTip": "DMR\\OpenGD77Form.cs",
               "ViewState": "AgIAAMECAAAAAAAAAAAuwOQCAAADAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -147,35 +143,20 @@
               "DocumentIndex": 6,
               "Title": "Form.cs",
               "DocumentMoniker": "C:\\Users\\maste\\AppData\\Local\\Temp\\.vsdbgsrc\\ef4b5b4103107eb9625d846ba15175bbc8789aeabe7c55ef120ce942887318dc\\Form.cs",
-              "RelativeDocumentMoniker": "..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\ef4b5b4103107eb9625d846ba15175bbc8789aeabe7c55ef120ce942887318dc\\Form.cs",
               "ToolTip": "C:\\Users\\maste\\AppData\\Local\\Temp\\.vsdbgsrc\\ef4b5b4103107eb9625d846ba15175bbc8789aeabe7c55ef120ce942887318dc\\Form.cs",
-              "RelativeToolTip": "..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\ef4b5b4103107eb9625d846ba15175bbc8789aeabe7c55ef120ce942887318dc\\Form.cs",
               "ViewState": "AgIAABUHAAAAAAAAAIAwwCYHAAAGAAAAAQAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-15T07:17:06.61Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-15T07:17:06.61Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "MainForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "DocumentMoniker": "C:\\Users\\maste\\Documents\\Github\\OpenGD77CPS\\DMR\\MainForm.cs",
-              "RelativeDocumentMoniker": "DMR\\MainForm.cs",
-              "ToolTip": "C:\\Users\\maste\\Documents\\Github\\OpenGD77CPS\\DMR\\MainForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "RelativeToolTip": "DMR\\MainForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-15T06:32:57.233Z",
-              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "MainForm.cs",
-              "DocumentMoniker": "C:\\Users\\maste\\Documents\\Github\\OpenGD77CPS\\DMR\\MainForm.cs",
+              "DocumentMoniker": "D:\\OpenGD77 Repo\\OpenGD77CPS\\DMR\\MainForm.cs",
               "RelativeDocumentMoniker": "DMR\\MainForm.cs",
-              "ToolTip": "C:\\Users\\maste\\Documents\\Github\\OpenGD77CPS\\DMR\\MainForm.cs",
+              "ToolTip": "D:\\OpenGD77 Repo\\OpenGD77CPS\\DMR\\MainForm.cs",
               "RelativeToolTip": "DMR\\MainForm.cs",
-              "ViewState": "AgIAAEMFAAAAAAAAAAAcwFUFAAATAAAAAAAAAA==",
+              "ViewState": "AgIAAHMFAAAAAAAAAAAUwIsFAAA4AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-10T16:06:18.011Z",
               "EditorCaption": ""
@@ -184,9 +165,9 @@
               "$type": "Document",
               "DocumentIndex": 9,
               "Title": "ZoneForm.cs",
-              "DocumentMoniker": "C:\\Users\\maste\\Documents\\Github\\OpenGD77CPS\\DMR\\ZoneForm.cs",
+              "DocumentMoniker": "D:\\OpenGD77 Repo\\OpenGD77CPS\\DMR\\ZoneForm.cs",
               "RelativeDocumentMoniker": "DMR\\ZoneForm.cs",
-              "ToolTip": "C:\\Users\\maste\\Documents\\Github\\OpenGD77CPS\\DMR\\ZoneForm.cs",
+              "ToolTip": "D:\\OpenGD77 Repo\\OpenGD77CPS\\DMR\\ZoneForm.cs",
               "RelativeToolTip": "DMR\\ZoneForm.cs",
               "ViewState": "AgIAAAUAAAAAAAAAAIBJwCAAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -197,9 +178,9 @@
               "$type": "Document",
               "DocumentIndex": 11,
               "Title": "RxGroupListForm.cs",
-              "DocumentMoniker": "C:\\Users\\maste\\Documents\\Github\\OpenGD77CPS\\DMR\\RxGroupListForm.cs",
+              "DocumentMoniker": "D:\\OpenGD77 Repo\\OpenGD77CPS\\DMR\\RxGroupListForm.cs",
               "RelativeDocumentMoniker": "DMR\\RxGroupListForm.cs",
-              "ToolTip": "C:\\Users\\maste\\Documents\\Github\\OpenGD77CPS\\DMR\\RxGroupListForm.cs",
+              "ToolTip": "D:\\OpenGD77 Repo\\OpenGD77CPS\\DMR\\RxGroupListForm.cs",
               "RelativeToolTip": "DMR\\RxGroupListForm.cs",
               "ViewState": "AgIAABsBAAAAAAAAAAAMwCsBAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -210,64 +191,69 @@
               "$type": "Document",
               "DocumentIndex": 12,
               "Title": "ContactForm.cs",
-              "DocumentMoniker": "C:\\Users\\maste\\Documents\\Github\\OpenGD77CPS\\DMR\\ContactForm.cs",
+              "DocumentMoniker": "D:\\OpenGD77 Repo\\OpenGD77CPS\\DMR\\ContactForm.cs",
               "RelativeDocumentMoniker": "DMR\\ContactForm.cs",
-              "ToolTip": "C:\\Users\\maste\\Documents\\Github\\OpenGD77CPS\\DMR\\ContactForm.cs",
+              "ToolTip": "D:\\OpenGD77 Repo\\OpenGD77CPS\\DMR\\ContactForm.cs",
               "RelativeToolTip": "DMR\\ContactForm.cs",
               "ViewState": "AgIAAP4EAAAAAAAAAAAQwA4FAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-10T08:24:46.465Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-10T08:24:46.465Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 13,
               "Title": "CSVEML.cs",
-              "DocumentMoniker": "C:\\Users\\maste\\Documents\\Github\\OpenGD77CPS\\DMR\\CSVEML.cs",
+              "DocumentMoniker": "D:\\OpenGD77 Repo\\OpenGD77CPS\\DMR\\CSVEML.cs",
               "RelativeDocumentMoniker": "DMR\\CSVEML.cs",
-              "ToolTip": "C:\\Users\\maste\\Documents\\Github\\OpenGD77CPS\\DMR\\CSVEML.cs",
+              "ToolTip": "D:\\OpenGD77 Repo\\OpenGD77CPS\\DMR\\CSVEML.cs",
               "RelativeToolTip": "DMR\\CSVEML.cs",
               "ViewState": "AgIAAJkHAAAAAAAAAIBJwFMFAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-09T11:10:09.376Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-09T11:10:09.376Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 14,
               "Title": "English.xml",
-              "DocumentMoniker": "C:\\Users\\maste\\Documents\\Github\\OpenGD77CPS\\Language\\CPS\\English.xml",
+              "DocumentMoniker": "D:\\OpenGD77 Repo\\OpenGD77CPS\\Language\\CPS\\English.xml",
               "RelativeDocumentMoniker": "Language\\CPS\\English.xml",
-              "ToolTip": "C:\\Users\\maste\\Documents\\Github\\OpenGD77CPS\\Language\\CPS\\English.xml",
+              "ToolTip": "D:\\OpenGD77 Repo\\OpenGD77CPS\\Language\\CPS\\English.xml",
               "RelativeToolTip": "Language\\CPS\\English.xml",
               "ViewState": "AgIAAHIEAAAAAAAAAAAnwIMEAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003576|",
-              "WhenOpened": "2024-12-05T08:04:01.763Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-05T08:04:01.763Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MainForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "DocumentMoniker": "D:\\OpenGD77 Repo\\OpenGD77CPS\\DMR\\MainForm.cs",
+              "RelativeDocumentMoniker": "DMR\\MainForm.cs",
+              "ToolTip": "D:\\OpenGD77 Repo\\OpenGD77CPS\\DMR\\MainForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "RelativeToolTip": "DMR\\MainForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-15T06:32:57.233Z",
+              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
             },
             {
               "$type": "Document",
               "DocumentIndex": 8,
               "Title": "ZoneForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "DocumentMoniker": "C:\\Users\\maste\\Documents\\Github\\OpenGD77CPS\\DMR\\ZoneForm.cs",
+              "DocumentMoniker": "D:\\OpenGD77 Repo\\OpenGD77CPS\\DMR\\ZoneForm.cs",
               "RelativeDocumentMoniker": "DMR\\ZoneForm.cs",
               "ToolTip": "C:\\Users\\maste\\Documents\\Github\\OpenGD77CPS\\DMR\\ZoneForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "RelativeToolTip": "DMR\\ZoneForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-10T17:29:34.248Z",
-              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
+              "WhenOpened": "2024-12-10T17:29:34.248Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 10,
               "Title": "RxGroupListForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "DocumentMoniker": "C:\\Users\\maste\\Documents\\Github\\OpenGD77CPS\\DMR\\RxGroupListForm.cs",
+              "DocumentMoniker": "D:\\OpenGD77 Repo\\OpenGD77CPS\\DMR\\RxGroupListForm.cs",
               "RelativeDocumentMoniker": "DMR\\RxGroupListForm.cs",
               "ToolTip": "C:\\Users\\maste\\Documents\\Github\\OpenGD77CPS\\DMR\\RxGroupListForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "RelativeToolTip": "DMR\\RxGroupListForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-10T15:26:26.781Z",
-              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
+              "WhenOpened": "2024-12-10T15:26:26.781Z"
             }
           ]
         }

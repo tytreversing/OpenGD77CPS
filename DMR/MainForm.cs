@@ -1460,14 +1460,19 @@ public class MainForm : Form
         pingTimer.Interval = IniFileUtils.getProfileIntWithDefault("Setup", "PollingInterval", 500);
     }
 
+	public bool shownInfo = false;
 	private void pingRadio()
 	{
 		bool result;
 		OpenGD77Form temp = new OpenGD77Form(OpenGD77CommsTransferData.CommsAction.NONE);
 		result = temp.probeRadioModel(true, true);
-		if (result)
+		if (result && !shownInfo)
 		{
 			showRadioInfo();
+		}
+		else
+		{
+			shownInfo = false;
 		}
 		temp.Dispose();
 		return;
@@ -1477,95 +1482,99 @@ public class MainForm : Form
 	public void showRadioInfo()
 	{
 		string firmwareVersion = "";
-		radioInformation.Text = "Рация подключена\r\n";
-		if (RadioInfo.identifier!="RUSSIAN")
+		if (!shownInfo)
 		{
-			radioInformation.Text += "На рации не установлена прошивка OpenGD77 RUS!";
-		}
-		else
-		{
-            radioInformation.Text += "Установлена корректная прошивка OpenGD77 RUS";
-        }
-		radioInformation.Text += "\r\nСборка прошивки: ";
-		firmwareVersion = RadioInfo.buildDateTime.Substring(0, 8);
-        radioInformation.Text += firmwareVersion;
-        radioInformation.Text += "\r\nМодель рации: ";
-		switch (RadioInfo.radioType)
-		{
-			case 0:
-				radioInformation.Text += "TYT MD-760/Radioddity GD-77";
-				break;
-			case 1:
-                radioInformation.Text += "Radioddity GD-77S";
-                break;
-			case 2:
-                radioInformation.Text += "Baofeng DM-1801";
-                break;
-			case 3:
-                radioInformation.Text += "Baofeng RD-5R";
-                break;
-			case 4:
-                radioInformation.Text += "Baofeng DM-1801A";
-                break;
-			case 5:
-                radioInformation.Text += "TYT MD-9600/Retevis RT-90";
-                break;
-			case 6:
-                radioInformation.Text += "TYT MD-UV380/TYT MD-UV390/Retevis RT-3S";
-                break;
-			case 8:
-			case 10:
-                radioInformation.Text += "Baofeng DM-1701/Retevis RT-84";
-                break;
-			case 9:
-                radioInformation.Text += "TYT MD-2017/Retevis RT-82";
-                break;
-
-        }
-		radioInformation.Text += "\r\nЧип флеш-памяти: ";
-		radioInformation.Text += RadioInfo.flashId.ToString();
-		if (IniFileUtils.getProfileStringWithDefault("Setup", "CheckFirmware", "yes") == "yes" && !messageShown)
-		{
-            messageShown = true;
-            string remoteUri = IniFileUtils.getProfileStringWithDefault("Setup", "ServerURI", "https://opengd77rus.ru/data/") + "Firmware.num";
-			WebClient checker = new WebClient();
-			string localName = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Firmware.ver";
-			bool fail = false;
-			string remoteVersion = "";
-			try
+			shownInfo = true;
+			radioInformation.Text = "Рация подключена\r\n";
+			if (RadioInfo.identifier != "RUSSIAN")
 			{
-				checker.DownloadFile(remoteUri, localName);
+				radioInformation.Text += "На рации не установлена прошивка OpenGD77 RUS!";
 			}
-			catch (Exception ex)
+			else
 			{
-				MessageBox.Show(ex.Message);
-				fail = true;
+				radioInformation.Text += "Установлена корректная прошивка OpenGD77 RUS";
 			}
-			if (!fail)
+			radioInformation.Text += "\r\nСборка прошивки: ";
+			firmwareVersion = RadioInfo.buildDateTime.Substring(0, 8);
+			radioInformation.Text += firmwareVersion;
+			radioInformation.Text += "\r\nМодель рации: ";
+			switch (RadioInfo.radioType)
 			{
-				try
-				{
-					StreamReader sr = new StreamReader(localName);
-					remoteVersion = sr.ReadLine();
-					sr.Close();
-				}
-				catch
-				{
+				case 0:
+					radioInformation.Text += "TYT MD-760/Radioddity GD-77";
+					break;
+				case 1:
+					radioInformation.Text += "Radioddity GD-77S";
+					break;
+				case 2:
+					radioInformation.Text += "Baofeng DM-1801";
+					break;
+				case 3:
+					radioInformation.Text += "Baofeng RD-5R";
+					break;
+				case 4:
+					radioInformation.Text += "Baofeng DM-1801A";
+					break;
+				case 5:
+					radioInformation.Text += "TYT MD-9600/Retevis RT-90";
+					break;
+				case 6:
+					radioInformation.Text += "TYT MD-UV380/TYT MD-UV390/Retevis RT-3S";
+					break;
+				case 8:
+				case 10:
+					radioInformation.Text += "Baofeng DM-1701/Retevis RT-84";
+					break;
+				case 9:
+					radioInformation.Text += "TYT MD-2017/Retevis RT-82";
+					break;
 
-				}
-				if (int.Parse(remoteVersion) > int.Parse(RadioInfo.buildDateTime))
+			}
+			radioInformation.Text += "\r\nЧип флеш-памяти: ";
+			radioInformation.Text += RadioInfo.flashId.ToString();
+				if (IniFileUtils.getProfileStringWithDefault("Setup", "CheckFirmware", "yes") == "yes" && !messageShown && RadioInfo.identifier == "RUSSIAN")
 				{
-					DialogResult decision = MessageBox.Show("На сайте проекта доступна новая версия прошивки.\r\nТекущая версия: " + RadioInfo.buildDateTime + "\r\nВерсия на сервере: " + remoteVersion +
-						"\r\nОткрыть страницу загрузок?", "Обновление прошивки", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-					if (decision == DialogResult.Yes)
+					messageShown = true;
+					string remoteUri = IniFileUtils.getProfileStringWithDefault("Setup", "ServerURI", "https://opengd77rus.ru/data/") + "Firmware.num";
+					WebClient checker = new WebClient();
+					string localName = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Firmware.ver";
+					bool fail = false;
+					string remoteVersion = "";
+					try
 					{
-						System.Diagnostics.Process.Start("https://opengd77rus.ru/%d0%bf%d1%80%d0%be%d1%88%d0%b8%d0%b2%d0%ba%d0%b0/");
+						checker.DownloadFile(remoteUri, localName);
 					}
-					File.Delete(localName);
+					catch (Exception ex)
+					{
+						MessageBox.Show(ex.Message);
+						fail = true;
+					}
+					if (!fail)
+					{
+						try
+						{
+							StreamReader sr = new StreamReader(localName);
+							remoteVersion = sr.ReadLine();
+							sr.Close();
+						}
+						catch
+						{
+
+						}
+						if (int.Parse(remoteVersion) > int.Parse(RadioInfo.buildDateTime))
+						{
+							DialogResult decision = MessageBox.Show("На сайте проекта доступна новая версия прошивки.\r\nТекущая версия: " + RadioInfo.buildDateTime + "\r\nВерсия на сервере: " + remoteVersion +
+								"\r\nОткрыть страницу загрузок?", "Обновление прошивки", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+							if (decision == DialogResult.Yes)
+							{
+								System.Diagnostics.Process.Start("https://opengd77rus.ru/%d0%bf%d1%80%d0%be%d1%88%d0%b8%d0%b2%d0%ba%d0%b0/");
+							}
+							File.Delete(localName);
+						}
+
+
+					}
 				}
-
-
-			}
 		}
         }
 

@@ -200,7 +200,7 @@ public class MainForm : Form
 
 	private StatusStrip ssrMain;
 
-	private ToolStripStatusLabel slblComapny;
+	private ToolStripStatusLabel slblCompany;
 
 	private ToolStrip tsrMain;
 
@@ -288,6 +288,8 @@ public class MainForm : Form
     private OpenFileDialog importFileDialog;
     public Label radioInformation;
     private Timer pingTimer;
+    private ToolStripSeparator toolStripSeparator6;
+    private ToolStripMenuItem tsmiSetup;
     public static bool EnableHiddenFeatures;
 
 	public static string CurFileName { get; set; }
@@ -394,7 +396,7 @@ public class MainForm : Form
             this.pnlTvw = new System.Windows.Forms.Panel();
             this.tvwMain = new System.Windows.Forms.TreeView();
             this.ssrMain = new System.Windows.Forms.StatusStrip();
-            this.slblComapny = new System.Windows.Forms.ToolStripStatusLabel();
+            this.slblCompany = new System.Windows.Forms.ToolStripStatusLabel();
             this.tsrMain = new System.Windows.Forms.ToolStrip();
             this.tsbtnNew = new System.Windows.Forms.ToolStripButton();
             this.tsbtnOpen = new System.Windows.Forms.ToolStripButton();
@@ -407,6 +409,8 @@ public class MainForm : Form
             this.importFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.radioInformation = new System.Windows.Forms.Label();
             this.pingTimer = new System.Windows.Forms.Timer(this.components);
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmiSetup = new System.Windows.Forms.ToolStripMenuItem();
             this.mnsMain.SuspendLayout();
             this.cmsGroup.SuspendLayout();
             this.cmsSub.SuspendLayout();
@@ -668,7 +672,9 @@ public class MainForm : Form
             this.tsmiOpenGD77,
             this.tsmiFirmwareLoader,
             this.tsmiCalibrationMK22,
-            this.tsmiTheme});
+            this.tsmiTheme,
+            this.toolStripSeparator6,
+            this.tsmiSetup});
             this.tsmiExtras.Name = "tsmiExtras";
             this.tsmiExtras.Size = new System.Drawing.Size(57, 23);
             this.tsmiExtras.Text = "Extras";
@@ -679,6 +685,7 @@ public class MainForm : Form
             this.tsmiDMRID.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
             this.tsmiDMRID.Size = new System.Drawing.Size(257, 24);
             this.tsmiDMRID.Text = "DMR ID";
+            this.tsmiDMRID.ToolTipText = "Загрузка и редактирование базы DMR ID";
             this.tsmiDMRID.Click += new System.EventHandler(this.tsbtnDMRID_Click);
             // 
             // tsmiOpenGD77
@@ -687,6 +694,7 @@ public class MainForm : Form
             this.tsmiOpenGD77.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.T)));
             this.tsmiOpenGD77.Size = new System.Drawing.Size(257, 24);
             this.tsmiOpenGD77.Text = "OpenGD77 support";
+            this.tsmiOpenGD77.ToolTipText = "Общий обмен данными с рацией";
             this.tsmiOpenGD77.Click += new System.EventHandler(this.tsmiOpenGD77_Click);
             // 
             // tsmiFirmwareLoader
@@ -695,6 +703,7 @@ public class MainForm : Form
             this.tsmiFirmwareLoader.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L)));
             this.tsmiFirmwareLoader.Size = new System.Drawing.Size(257, 24);
             this.tsmiFirmwareLoader.Text = "Firmware loader";
+            this.tsmiFirmwareLoader.ToolTipText = "Загрузчик прошивки OpenGD77 RUS";
             this.tsmiFirmwareLoader.Click += new System.EventHandler(this.tsmiFirmwareLoader_Click);
             // 
             // tsmiCalibrationMK22
@@ -702,6 +711,7 @@ public class MainForm : Form
             this.tsmiCalibrationMK22.Name = "tsmiCalibrationMK22";
             this.tsmiCalibrationMK22.Size = new System.Drawing.Size(257, 24);
             this.tsmiCalibrationMK22.Text = "Calibration editor";
+            this.tsmiCalibrationMK22.ToolTipText = "Сохранение и запись калибровочных данных";
             this.tsmiCalibrationMK22.Click += new System.EventHandler(this.tsbtnCalibration_Click);
             // 
             // tsmiTheme
@@ -709,6 +719,7 @@ public class MainForm : Form
             this.tsmiTheme.Name = "tsmiTheme";
             this.tsmiTheme.Size = new System.Drawing.Size(257, 24);
             this.tsmiTheme.Text = "Theme editor";
+            this.tsmiTheme.ToolTipText = "Редактирование цветовых тем рации";
             this.tsmiTheme.Click += new System.EventHandler(this.tsbtnTheme_Click);
             // 
             // tsmiLanguage
@@ -732,28 +743,28 @@ public class MainForm : Form
             // tsmiCascade
             // 
             this.tsmiCascade.Name = "tsmiCascade";
-            this.tsmiCascade.Size = new System.Drawing.Size(162, 24);
+            this.tsmiCascade.Size = new System.Drawing.Size(180, 24);
             this.tsmiCascade.Text = "Cascade";
             this.tsmiCascade.Click += new System.EventHandler(this.tsmiCascade_Click);
             // 
             // tsmiTileHor
             // 
             this.tsmiTileHor.Name = "tsmiTileHor";
-            this.tsmiTileHor.Size = new System.Drawing.Size(162, 24);
+            this.tsmiTileHor.Size = new System.Drawing.Size(180, 24);
             this.tsmiTileHor.Text = "Tile Horzontal";
             this.tsmiTileHor.Click += new System.EventHandler(this.tsmiTileHor_Click);
             // 
             // tsmiTileVer
             // 
             this.tsmiTileVer.Name = "tsmiTileVer";
-            this.tsmiTileVer.Size = new System.Drawing.Size(162, 24);
+            this.tsmiTileVer.Size = new System.Drawing.Size(180, 24);
             this.tsmiTileVer.Text = "Tile Vertical";
             this.tsmiTileVer.Click += new System.EventHandler(this.tsmiTileVer_Click);
             // 
             // tsmiCloseAll
             // 
             this.tsmiCloseAll.Name = "tsmiCloseAll";
-            this.tsmiCloseAll.Size = new System.Drawing.Size(162, 24);
+            this.tsmiCloseAll.Size = new System.Drawing.Size(180, 24);
             this.tsmiCloseAll.Text = "Close All";
             this.tsmiCloseAll.Click += new System.EventHandler(this.tsmiCloseAll_Click);
             // 
@@ -1153,7 +1164,7 @@ public class MainForm : Form
             // ssrMain
             // 
             this.ssrMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.slblComapny});
+            this.slblCompany});
             this.ssrMain.Location = new System.Drawing.Point(234, 685);
             this.ssrMain.Name = "ssrMain";
             this.ssrMain.Padding = new System.Windows.Forms.Padding(1, 0, 17, 0);
@@ -1161,11 +1172,11 @@ public class MainForm : Form
             this.ssrMain.TabIndex = 12;
             this.ssrMain.Text = "statusStrip1";
             // 
-            // slblComapny
+            // slblCompany
             // 
-            this.slblComapny.Name = "slblComapny";
-            this.slblComapny.Size = new System.Drawing.Size(62, 19);
-            this.slblComapny.Text = "Prompt：";
+            this.slblCompany.Name = "slblCompany";
+            this.slblCompany.Size = new System.Drawing.Size(62, 19);
+            this.slblCompany.Text = "Prompt：";
             // 
             // tsrMain
             // 
@@ -1280,6 +1291,19 @@ public class MainForm : Form
             this.pingTimer.Interval = 500;
             this.pingTimer.Tick += new System.EventHandler(this.pingTimer_Tick);
             // 
+            // toolStripSeparator6
+            // 
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            this.toolStripSeparator6.Size = new System.Drawing.Size(254, 6);
+            // 
+            // tsmiSetup
+            // 
+            this.tsmiSetup.Name = "tsmiSetup";
+            this.tsmiSetup.Size = new System.Drawing.Size(257, 24);
+            this.tsmiSetup.Text = "Settings";
+            this.tsmiSetup.ToolTipText = "Настройки программы";
+            this.tsmiSetup.Click += new System.EventHandler(this.tsmiSetup_Click);
+            // 
             // MainForm
             // 
             this.BackColor = System.Drawing.Color.White;
@@ -1354,6 +1378,7 @@ public class MainForm : Form
 		frmHelp.VisibleChanged += FormPanel_VisibleChanged;
 		frmTree.VisibleChanged += FormPanel_VisibleChanged;
 		radioInformation.Text = "";
+		pingTimer.Interval = IniFileUtils.getProfileIntWithDefault("Setup", "PollingInterval", 500);
     }
 
 	private void pingRadio()
@@ -2453,7 +2478,7 @@ public class MainForm : Form
 				AddTreeViewNode(selectedNode.Nodes, text, new TreeNodeItem(cmsSub, treeNodeItem.SubType, null, 0, num, 11, treeNodeItem.Data));
 			}
 			treeNodeItem.Data.SetName(num, text);
-			slblComapny.Text = string.Format(Settings.SZ_ADD + text);
+			slblCompany.Text = string.Format(Settings.SZ_ADD + text);
 			if (!selectedNode.IsExpanded)
 			{
 				selectedNode.Expand();
@@ -3308,7 +3333,6 @@ public class MainForm : Form
 
 	private void tsbtnContactsDownload_Click(object sender, EventArgs e)
 	{
-        pingTimer.Stop();
         closeAllForms();
 		DownloadContactsForm downloadContactsForm = new DownloadContactsForm();
 		downloadContactsForm.mainForm = this;
@@ -3327,7 +3351,6 @@ public class MainForm : Form
 
 	private void tsbtnDMRID_Click(object sender, EventArgs e)
 	{
-        pingTimer.Stop();
         closeAllForms();
 		DMRIDForm dMRIDForm = new DMRIDForm();
 		dMRIDForm.StartPosition = FormStartPosition.CenterParent;
@@ -3336,7 +3359,6 @@ public class MainForm : Form
 
 	private void tsbtnCalibration_Click(object sender, EventArgs e)
 	{
-        pingTimer.Stop();
         closeAllForms();
         if (MainForm.RadioType == MainForm.RadioTypeEnum.RadioTypeSTM32)
         {
@@ -3355,7 +3377,6 @@ public class MainForm : Form
 
 	private void tsbtnTheme_Click(object sender, EventArgs e)
 	{
-        pingTimer.Stop();
         closeAllForms();
 		ThemeForm themeForm = new ThemeForm();
 		themeForm.StartPosition = FormStartPosition.CenterParent;
@@ -3364,7 +3385,6 @@ public class MainForm : Form
 
 	private void openGD77Form(OpenGD77CommsTransferData.CommsAction buttonAction)
 	{
-        pingTimer.Stop();
         closeAllForms();
 		OpenGD77Form obj = new OpenGD77Form(buttonAction);
 		obj.StartPosition = FormStartPosition.CenterParent;
@@ -3374,13 +3394,11 @@ public class MainForm : Form
 
 	private void tsmiOpenGD77_Click(object sender, EventArgs e)
 	{
-        pingTimer.Stop();
         openGD77Form(OpenGD77CommsTransferData.CommsAction.NONE);
 	}
 
 	private void tsmiFirmwareLoader_Click(object sender, EventArgs e)
 	{
-        pingTimer.Stop();
         RadioTypeEnum radioType = RadioType;
 		if (radioType != 0 && radioType == RadioTypeEnum.RadioTypeSTM32)
 		{
@@ -3394,7 +3412,6 @@ public class MainForm : Form
 
 	private void tsmiFirmwareLoaderMD9600_Click(object sender, EventArgs e)
 	{
-        pingTimer.Stop();
         new FirmwareLoaderUI_STM32().ShowDialog();
 	}
 
@@ -3438,13 +3455,11 @@ public class MainForm : Form
 
 	private void tsbtnRead_Click(object sender, EventArgs e)
 	{
-		pingTimer.Stop();
 		openGD77Form(OpenGD77CommsTransferData.CommsAction.READ_CODEPLUG);
 	}
 
 	private void tsbtnWrite_Click(object sender, EventArgs e)
 	{
-        pingTimer.Stop();
         openGD77Form(OpenGD77CommsTransferData.CommsAction.WRITE_CODEPLUG);
 	}
 
@@ -3549,7 +3564,7 @@ public class MainForm : Form
 
 	private void languageChangeHandler(object sender, EventArgs e)
 	{
-		slblComapny.Text = "";
+		slblCompany.Text = "";
 		closeAllForms();
 		frmHelp.ShowHelp(null);
 		ToolStripMenuItem obj = sender as ToolStripMenuItem;
@@ -4321,7 +4336,7 @@ public class MainForm : Form
 		CommsBuffer = null;
 		PRODUCT_NAME = ((AssemblyProductAttribute)Attribute.GetCustomAttribute(Assembly.GetExecutingAssembly(), typeof(AssemblyProductAttribute), inherit: false)).Product;
 		PRODUCT_VERSION = Assembly.GetExecutingAssembly().GetName().Version.ToString();
-        RadioType = RadioTypeEnum.RadioTypeMK22;
+        RadioType = RadioTypeEnum.RadioTypeSTM32;
 		PreActiveMdiChild = null;
 		dicHelp = new Dictionary<string, string>();
 		dicTree = new Dictionary<string, string>();
@@ -4365,6 +4380,8 @@ public class MainForm : Form
 
     private void pingTimer_Tick(object sender, EventArgs e)
     {
+		FormCollection forms = Application.OpenForms;
+		if (forms.Count > 2) return;
 		try
 		{
 			pingRadio();
@@ -4373,5 +4390,11 @@ public class MainForm : Form
 		{ 
 			radioInformation.Text = "";
 		}
+    }
+
+    private void tsmiSetup_Click(object sender, EventArgs e)
+    {
+		AppSettings setupForm = new AppSettings();
+        setupForm.ShowDialog();
     }
 }

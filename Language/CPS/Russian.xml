@@ -433,7 +433,8 @@
       <MenuItem Id="tsmiSort" Text="Упорядочить" />
       <MenuItem Id="tsmiSortContacts" Text="Контакты по алфавиту" />
       <MenuItem Id="tsmiSortZones" Text="Зоны по алфавиту" />
-			<MenuItem Id="tsmiSetting" Text="Настройки" />
+			<MenuItem Id="tsmiSetting" Text="Кодплаг" />
+      <MenuItem Id="tsmiSetup" Text="Настройки" />
 			<MenuItem Id="tsmiDeviceInfo" Text="Ограничения частот" />
 			<MenuItem Id="tsmiBootItem" Text="Загрузочный экран" />
 			<MenuItem Id="tsmiMenu" Text="Меню" />
@@ -1238,6 +1239,22 @@
 			<Control Id="btnCancel" Text="Отмена" />
 		</Controls>
 	</CommPortSelector>
+  <AppSettings Text="Настройки CPS">
+    <Controls>
+      <Control Id="gbCommunication" Text="Соединение" />
+      <Control Id="gbInternet" Text="Интернет" />
+      <Control Id="lblComPort" Text="Прямой выбор COM-порта: " />
+      <Control Id="lblCOM" Text="Настройка применяется в случае, если система не обнаруживает устройство с заданным именем" />
+      <Control Id="lblPollDescription" Text="Частота запросов поиска подключенной рации"/>
+      <Control Id="lblPolling" Text="Интервал поллинга, мс:" />
+      <Control Id="lblURI" Text="Адрес поиска данных:" />
+      <Control Id="lblURIDescription" Text="Настройка позволяет задать адрес зеркала для скачивания файлов программой" />
+      <Control Id="lblWarning" Text="Изменения вступят в силу после перезапуска приложения" />
+      <Control Id="btnRestart" Text="Рестарт" />
+      <Control Id="btnApply" Text="Применить" />
+      <Control Id="btnCancel" Text="Отмена" />
+    </Controls>
+  </AppSettings>
 	<Commons>
 		<Item Id="None" Text="Нет" />
 		<Item Id="Selected" Text="Выбрано" />

@@ -609,7 +609,7 @@ public class FirmwareLoaderUI_STM32 : Form
 
     private void downloadGLA(bool showMessage = false)
     {
-        string remoteUri = "https://opengd77rus.ru/data/";
+        string remoteUri = IniFileUtils.getProfileStringWithDefault("Setup", "ServerURI", "https://opengd77rus.ru/data/");
         string fileName = "Russian.gla", fullURI = null;
         DialogResult dialogResult = DialogResult.Yes;
         lblMessage.Text = "";

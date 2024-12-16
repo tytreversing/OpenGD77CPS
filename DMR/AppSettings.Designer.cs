@@ -40,6 +40,7 @@
             this.lblURIDescription = new System.Windows.Forms.Label();
             this.tbURI = new System.Windows.Forms.TextBox();
             this.lblURI = new System.Windows.Forms.Label();
+            this.chUpdates = new System.Windows.Forms.CheckBox();
             this.gbCommunication.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numPolling)).BeginInit();
             this.gbInternet.SuspendLayout();
@@ -155,12 +156,13 @@
             // 
             // gbInternet
             // 
+            this.gbInternet.Controls.Add(this.chUpdates);
             this.gbInternet.Controls.Add(this.lblURIDescription);
             this.gbInternet.Controls.Add(this.tbURI);
             this.gbInternet.Controls.Add(this.lblURI);
             this.gbInternet.Location = new System.Drawing.Point(14, 142);
             this.gbInternet.Name = "gbInternet";
-            this.gbInternet.Size = new System.Drawing.Size(446, 115);
+            this.gbInternet.Size = new System.Drawing.Size(446, 130);
             this.gbInternet.TabIndex = 5;
             this.gbInternet.TabStop = false;
             this.gbInternet.Text = "Интернет";
@@ -189,6 +191,18 @@
             this.lblURI.Size = new System.Drawing.Size(160, 26);
             this.lblURI.TabIndex = 0;
             this.lblURI.Text = "Адрес поиска данных: ";
+            // 
+            // chUpdates
+            // 
+            this.chUpdates.AutoSize = true;
+            this.chUpdates.Checked = true;
+            this.chUpdates.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chUpdates.Location = new System.Drawing.Point(12, 103);
+            this.chUpdates.Name = "chUpdates";
+            this.chUpdates.Size = new System.Drawing.Size(92, 20);
+            this.chUpdates.TabIndex = 3;
+            this.chUpdates.Text = "checkBox1";
+            this.chUpdates.UseVisualStyleBackColor = true;
             // 
             // AppSettings
             // 
@@ -235,5 +249,6 @@
         private System.Windows.Forms.Label lblURI;
         private System.Windows.Forms.TextBox tbURI;
         private System.Windows.Forms.Label lblURIDescription;
+        private System.Windows.Forms.CheckBox chUpdates;
     }
 }

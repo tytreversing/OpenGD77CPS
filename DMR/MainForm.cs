@@ -6,16 +6,20 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using System.Windows.Shapes;
 using System.Xml;
 using DMR.Properties;
 using Extras.OpenGD77;
 using WeifenLuo.WinFormsUI.Docking;
+using Path = System.IO.Path;
 
 
 
@@ -1378,7 +1382,7 @@ public class MainForm : Form
 		frmHelp.VisibleChanged += FormPanel_VisibleChanged;
 		frmTree.VisibleChanged += FormPanel_VisibleChanged;
 		radioInformation.Text = "";
-		pingTimer.Interval = IniFileUtils.getProfileIntWithDefault("Setup", "PollingInterval", 500);
+        pingTimer.Interval = IniFileUtils.getProfileIntWithDefault("Setup", "PollingInterval", 500);
     }
 
 	private void pingRadio()
@@ -1451,9 +1455,6 @@ public class MainForm : Form
         string _profileStringWithDefault = IniFileUtils.getProfileStringWithDefault("Setup", "RadioType", "MD9600");
         if (!(_profileStringWithDefault == "MD9600"))
         {
-            if (!(_profileStringWithDefault == "MK22"))
-            {
-            }
             RadioType = RadioTypeEnum.RadioTypeMK22;
         }
         else
@@ -1544,7 +1545,7 @@ public class MainForm : Form
 		{
 			if (File.Exists(StartupArgs[0]))
 			{
-				switch (Path.GetExtension(StartupArgs[0]))
+				switch (System.IO.Path.GetExtension(StartupArgs[0]))
 				{
                 case ".ogd":
                     openCodeplugFile(StartupArgs[0]);
@@ -1623,7 +1624,7 @@ public class MainForm : Form
 		string profileStringWithDefault2 = IniFileUtils.getProfileStringWithDefault("Setup", "Language", "Russian.xml");
 		foreach (ToolStripMenuItem dropDownItem in tsmiLanguage.DropDownItems)
 		{
-			if (Path.GetFileName(dropDownItem.Tag.ToString()) == profileStringWithDefault2)
+			if (System.IO.Path.GetFileName(dropDownItem.Tag.ToString()) == profileStringWithDefault2)
 			{
 				dropDownItem.PerformClick();
 				break;
@@ -1655,6 +1656,49 @@ public class MainForm : Form
 		}
 		CSVEML.InitCSVs();
         pingTimer.Enabled = true;
+		bool checkUpdate = IniFileUtils.getProfileStringWithDefault("Setup", "CheckVersion", "yes") == "yes";
+		if (checkUpdate)
+		{
+            string remoteUri = IniFileUtils.getProfileStringWithDefault("Setup", "ServerURI", "https://opengd77rus.ru/data/") + "Version.num";
+            WebClient checker = new WebClient();
+			string localName = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\OpenGD77RUS.ver";
+			bool fail = false;
+			string remoteVersion = "";
+            try
+            {
+                checker.DownloadFile(remoteUri, localName);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+				fail = true;
+            }
+            if (!fail)
+            {
+				try
+				{
+                    StreamReader sr = new StreamReader(localName);
+                    remoteVersion = (sr.ReadLine()).Replace(".", "");
+                    sr.Close();
+                }
+				catch
+				{
+
+				}                
+				string currVersion = (Assembly.GetExecutingAssembly().GetName().Version.ToString()).Replace(".", "");
+				if (int.Parse(remoteVersion) > int.Parse(currVersion))
+				{
+					DialogResult decision = MessageBox.Show("На сайте проекта доступна новая версия OpenGD77 CPS.\r\nОткрыть страницу загрузок?", "Обновление", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+					if (decision == DialogResult.Yes)
+					{
+                        System.Diagnostics.Process.Start("https://opengd77rus.ru/download/opengd77-rus-cps/");
+                    }
+					File.Delete(localName);
+				}
+
+
+            }
+        }
 	}
 
 	private string getMainTitleStub()

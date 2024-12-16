@@ -15,6 +15,7 @@ namespace DMR
     {
         private int oldInterval = 0;
         private string oldURI = "";
+        private string oldUpdate = "";
         public AppSettings()
         {
             InitializeComponent();
@@ -22,6 +23,8 @@ namespace DMR
             numPolling.Value = oldInterval;
             tbURI.Text = IniFileUtils.getProfileStringWithDefault("Setup", "ServerURI", "https://opengd77rus.ru/data/");
             oldURI = tbURI.Text;
+            oldUpdate = IniFileUtils.getProfileStringWithDefault("Setup", "CheckVersion", "yes");
+            chUpdates.Checked = oldUpdate == "yes";
         }
 
         private void AppSettings_Load(object sender, EventArgs e)
@@ -34,6 +37,7 @@ namespace DMR
             {
                 MessageBox.Show(ex.Message);
             }
+            base.Icon = Icon.ExtractAssociatedIcon(System.Windows.Forms.Application.ExecutablePath);
         }
 
         private void btnApply_Click(object sender, EventArgs e)
@@ -41,12 +45,21 @@ namespace DMR
             btnRestart.Visible = true;
             IniFileUtils.WriteProfileInt("Setup", "PollingInterval", (int)numPolling.Value);
             IniFileUtils.WriteProfileString("Setup", "ServerURI", tbURI.Text);
+            if (chUpdates.Checked)
+            {
+                IniFileUtils.WriteProfileString("Setup", "CheckVersion", "yes");
+            }
+            else
+            {
+                IniFileUtils.WriteProfileString("Setup", "CheckVersion", "no");
+            }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
             IniFileUtils.WriteProfileInt("Setup", "PollingInterval", oldInterval);
             IniFileUtils.WriteProfileString("Setup", "ServerURI", oldURI);
+            IniFileUtils.WriteProfileString("Setup", "CheckVersion", oldUpdate);
             Close();
         }
 

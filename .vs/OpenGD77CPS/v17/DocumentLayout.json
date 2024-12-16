@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "D:\\OpenGD77 Repo\\OpenGD77CPS\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{1565D13D-7D28-4024-BF98-A764C1B1D9C5}|OpenGD77CPS.csproj|d:\\opengd77 repo\\opengd77cps\\dmr\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{1565D13D-7D28-4024-BF98-A764C1B1D9C5}|OpenGD77CPS.csproj|solutionrelative:dmr\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{1565D13D-7D28-4024-BF98-A764C1B1D9C5}|OpenGD77CPS.csproj|d:\\opengd77 repo\\opengd77cps\\properties\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1565D13D-7D28-4024-BF98-A764C1B1D9C5}|OpenGD77CPS.csproj|solutionrelative:properties\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -35,10 +39,6 @@
       "RelativeMoniker": "D:0:0:{1565D13D-7D28-4024-BF98-A764C1B1D9C5}|OpenGD77CPS.csproj|solutionrelative:dmr\\appsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1565D13D-7D28-4024-BF98-A764C1B1D9C5}|OpenGD77CPS.csproj|D:\\OpenGD77 Repo\\OpenGD77CPS\\dmr\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{1565D13D-7D28-4024-BF98-A764C1B1D9C5}|OpenGD77CPS.csproj|solutionrelative:dmr\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{1565D13D-7D28-4024-BF98-A764C1B1D9C5}|OpenGD77CPS.csproj|d:\\opengd77 repo\\opengd77cps\\dmr\\zoneform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1565D13D-7D28-4024-BF98-A764C1B1D9C5}|OpenGD77CPS.csproj|solutionrelative:dmr\\zoneform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -66,11 +66,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 14,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "Russian.xml",
               "DocumentMoniker": "D:\\OpenGD77 Repo\\OpenGD77CPS\\Language\\CPS\\Russian.xml",
               "RelativeDocumentMoniker": "Language\\CPS\\Russian.xml",
@@ -82,8 +82,12 @@
               "IsPinned": true
             },
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "AssemblyInfo.cs",
               "DocumentMoniker": "D:\\OpenGD77 Repo\\OpenGD77CPS\\Properties\\AssemblyInfo.cs",
               "RelativeDocumentMoniker": "Properties\\AssemblyInfo.cs",
@@ -91,16 +95,11 @@
               "RelativeToolTip": "Properties\\AssemblyInfo.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-16T13:16:04.749Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+              "WhenOpened": "2024-12-16T13:16:04.749Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "AboutForm.cs",
               "DocumentMoniker": "D:\\OpenGD77 Repo\\OpenGD77CPS\\DMR\\AboutForm.cs",
               "RelativeDocumentMoniker": "DMR\\AboutForm.cs",
@@ -112,7 +111,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "FirmwareLoaderUI_STM32.cs",
               "DocumentMoniker": "D:\\OpenGD77 Repo\\OpenGD77CPS\\DMR\\FirmwareLoaderUI_STM32.cs",
               "RelativeDocumentMoniker": "DMR\\FirmwareLoaderUI_STM32.cs",
@@ -125,7 +124,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "FirmwareLoaderUI_STM32.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "DocumentMoniker": "D:\\OpenGD77 Repo\\OpenGD77CPS\\DMR\\FirmwareLoaderUI_STM32.cs",
               "RelativeDocumentMoniker": "DMR\\FirmwareLoaderUI_STM32.cs",
@@ -136,7 +135,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "AppSettings.cs",
               "DocumentMoniker": "D:\\OpenGD77 Repo\\OpenGD77CPS\\DMR\\AppSettings.cs",
               "RelativeDocumentMoniker": "DMR\\AppSettings.cs",
@@ -149,7 +148,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "AppSettings.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "DocumentMoniker": "D:\\OpenGD77 Repo\\OpenGD77CPS\\DMR\\AppSettings.cs",
               "RelativeDocumentMoniker": "DMR\\AppSettings.cs",
@@ -160,7 +159,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "MainForm.cs",
               "DocumentMoniker": "D:\\OpenGD77 Repo\\OpenGD77CPS\\DMR\\MainForm.cs",
               "RelativeDocumentMoniker": "DMR\\MainForm.cs",
@@ -233,14 +232,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 0,
               "Title": "MainForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "DocumentMoniker": "D:\\OpenGD77 Repo\\OpenGD77CPS\\DMR\\MainForm.cs",
               "RelativeDocumentMoniker": "DMR\\MainForm.cs",
               "ToolTip": "D:\\OpenGD77 Repo\\OpenGD77CPS\\DMR\\MainForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "RelativeToolTip": "DMR\\MainForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-15T06:32:57.233Z"
+              "WhenOpened": "2024-12-15T06:32:57.233Z",
+              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
             }
           ]
         }

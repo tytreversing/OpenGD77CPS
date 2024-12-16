@@ -294,6 +294,12 @@ public class MainForm : Form
     private Timer pingTimer;
     private ToolStripSeparator toolStripSeparator6;
     private ToolStripMenuItem tsmiSetup;
+    private ToolStripButton tsbtnDMR;
+    private ToolStripSeparator toolStripSeparator7;
+    private ToolStripButton tsbtnSettings;
+    private ToolStripButton tsbtnPalette;
+    private ToolStripButton toolStripButton1;
+    private ToolStripButton tsbtnOpenGD;
     public static bool EnableHiddenFeatures;
 
 	public static string CurFileName { get; set; }
@@ -343,6 +349,8 @@ public class MainForm : Form
             this.tsmiFirmwareLoader = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiCalibrationMK22 = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiTheme = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmiSetup = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiLanguage = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiWindow = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiCascade = new System.Windows.Forms.ToolStripMenuItem();
@@ -403,18 +411,22 @@ public class MainForm : Form
             this.slblCompany = new System.Windows.Forms.ToolStripStatusLabel();
             this.tsrMain = new System.Windows.Forms.ToolStrip();
             this.tsbtnNew = new System.Windows.Forms.ToolStripButton();
-            this.tsbtnOpen = new System.Windows.Forms.ToolStripButton();
-            this.tsbtnSave = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsbtnRead = new System.Windows.Forms.ToolStripButton();
-            this.tsbtnWrite = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsbtnAbout = new System.Windows.Forms.ToolStripButton();
             this.importFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.radioInformation = new System.Windows.Forms.Label();
             this.pingTimer = new System.Windows.Forms.Timer(this.components);
-            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsmiSetup = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsbtnOpen = new System.Windows.Forms.ToolStripButton();
+            this.tsbtnSave = new System.Windows.Forms.ToolStripButton();
+            this.tsbtnRead = new System.Windows.Forms.ToolStripButton();
+            this.tsbtnWrite = new System.Windows.Forms.ToolStripButton();
+            this.tsbtnAbout = new System.Windows.Forms.ToolStripButton();
+            this.tsbtnSettings = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsbtnDMR = new System.Windows.Forms.ToolStripButton();
+            this.tsbtnPalette = new System.Windows.Forms.ToolStripButton();
+            this.tsbtnOpenGD = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.mnsMain.SuspendLayout();
             this.cmsGroup.SuspendLayout();
             this.cmsSub.SuspendLayout();
@@ -726,6 +738,19 @@ public class MainForm : Form
             this.tsmiTheme.ToolTipText = "Редактирование цветовых тем рации";
             this.tsmiTheme.Click += new System.EventHandler(this.tsbtnTheme_Click);
             // 
+            // toolStripSeparator6
+            // 
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            this.toolStripSeparator6.Size = new System.Drawing.Size(254, 6);
+            // 
+            // tsmiSetup
+            // 
+            this.tsmiSetup.Name = "tsmiSetup";
+            this.tsmiSetup.Size = new System.Drawing.Size(257, 24);
+            this.tsmiSetup.Text = "Settings";
+            this.tsmiSetup.ToolTipText = "Настройки программы";
+            this.tsmiSetup.Click += new System.EventHandler(this.tsmiSetup_Click);
+            // 
             // tsmiLanguage
             // 
             this.tsmiLanguage.Name = "tsmiLanguage";
@@ -747,28 +772,28 @@ public class MainForm : Form
             // tsmiCascade
             // 
             this.tsmiCascade.Name = "tsmiCascade";
-            this.tsmiCascade.Size = new System.Drawing.Size(180, 24);
+            this.tsmiCascade.Size = new System.Drawing.Size(162, 24);
             this.tsmiCascade.Text = "Cascade";
             this.tsmiCascade.Click += new System.EventHandler(this.tsmiCascade_Click);
             // 
             // tsmiTileHor
             // 
             this.tsmiTileHor.Name = "tsmiTileHor";
-            this.tsmiTileHor.Size = new System.Drawing.Size(180, 24);
+            this.tsmiTileHor.Size = new System.Drawing.Size(162, 24);
             this.tsmiTileHor.Text = "Tile Horzontal";
             this.tsmiTileHor.Click += new System.EventHandler(this.tsmiTileHor_Click);
             // 
             // tsmiTileVer
             // 
             this.tsmiTileVer.Name = "tsmiTileVer";
-            this.tsmiTileVer.Size = new System.Drawing.Size(180, 24);
+            this.tsmiTileVer.Size = new System.Drawing.Size(162, 24);
             this.tsmiTileVer.Text = "Tile Vertical";
             this.tsmiTileVer.Click += new System.EventHandler(this.tsmiTileVer_Click);
             // 
             // tsmiCloseAll
             // 
             this.tsmiCloseAll.Name = "tsmiCloseAll";
-            this.tsmiCloseAll.Size = new System.Drawing.Size(180, 24);
+            this.tsmiCloseAll.Size = new System.Drawing.Size(162, 24);
             this.tsmiCloseAll.Text = "Close All";
             this.tsmiCloseAll.Click += new System.EventHandler(this.tsmiCloseAll_Click);
             // 
@@ -1131,10 +1156,10 @@ public class MainForm : Form
             this.dockPanel.AllowEndUserDocking = false;
             this.dockPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dockPanel.DocumentStyle = WeifenLuo.WinFormsUI.Docking.DocumentStyle.SystemMdi;
-            this.dockPanel.Location = new System.Drawing.Point(234, 56);
+            this.dockPanel.Location = new System.Drawing.Point(234, 71);
             this.dockPanel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dockPanel.Name = "dockPanel";
-            this.dockPanel.Size = new System.Drawing.Size(865, 629);
+            this.dockPanel.Size = new System.Drawing.Size(865, 614);
             this.dockPanel.TabIndex = 6;
             // 
             // pnlTvw
@@ -1184,7 +1209,7 @@ public class MainForm : Form
             // 
             // tsrMain
             // 
-            this.tsrMain.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.tsrMain.ImageScalingSize = new System.Drawing.Size(35, 35);
             this.tsrMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbtnNew,
             this.tsbtnOpen,
@@ -1193,83 +1218,38 @@ public class MainForm : Form
             this.tsbtnRead,
             this.tsbtnWrite,
             this.toolStripSeparator3,
+            this.tsbtnDMR,
+            this.toolStripButton1,
+            this.tsbtnOpenGD,
+            this.tsbtnPalette,
+            this.toolStripSeparator7,
+            this.tsbtnSettings,
             this.tsbtnAbout});
             this.tsrMain.Location = new System.Drawing.Point(234, 29);
             this.tsrMain.Name = "tsrMain";
-            this.tsrMain.Size = new System.Drawing.Size(865, 27);
+            this.tsrMain.Size = new System.Drawing.Size(865, 42);
             this.tsrMain.TabIndex = 13;
             this.tsrMain.Text = "toolStrip1";
             // 
             // tsbtnNew
             // 
             this.tsbtnNew.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbtnNew.Image = global::DMR_MainForm.tsbtnNew_Image;
+            this.tsbtnNew.Image = global::DMR_MainForm.file;
             this.tsbtnNew.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbtnNew.Name = "tsbtnNew";
-            this.tsbtnNew.Size = new System.Drawing.Size(24, 24);
-            this.tsbtnNew.Text = "New";
+            this.tsbtnNew.Size = new System.Drawing.Size(39, 39);
+            this.tsbtnNew.Text = "Новый кодплаг";
             this.tsbtnNew.Click += new System.EventHandler(this.tsbtnNew_Click);
-            // 
-            // tsbtnOpen
-            // 
-            this.tsbtnOpen.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbtnOpen.Image = global::DMR_MainForm.tsbtnOpen_Image;
-            this.tsbtnOpen.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbtnOpen.Name = "tsbtnOpen";
-            this.tsbtnOpen.Size = new System.Drawing.Size(24, 24);
-            this.tsbtnOpen.Text = "Open";
-            this.tsbtnOpen.Click += new System.EventHandler(this.tsbtnOpen_Click);
-            // 
-            // tsbtnSave
-            // 
-            this.tsbtnSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbtnSave.Image = global::DMR_MainForm.tsbtnSave_Image;
-            this.tsbtnSave.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbtnSave.Name = "tsbtnSave";
-            this.tsbtnSave.Size = new System.Drawing.Size(24, 24);
-            this.tsbtnSave.Text = "Save";
-            this.tsbtnSave.ToolTipText = "Save";
-            this.tsbtnSave.Click += new System.EventHandler(this.tsbtnSave_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 27);
-            // 
-            // tsbtnRead
-            // 
-            this.tsbtnRead.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbtnRead.Image = global::DMR_MainForm.tsbtnRead_Image;
-            this.tsbtnRead.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbtnRead.Name = "tsbtnRead";
-            this.tsbtnRead.Size = new System.Drawing.Size(24, 24);
-            this.tsbtnRead.Text = "Read";
-            this.tsbtnRead.Click += new System.EventHandler(this.tsbtnRead_Click);
-            // 
-            // tsbtnWrite
-            // 
-            this.tsbtnWrite.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbtnWrite.Image = global::DMR_MainForm.tsbtnWrite_Image;
-            this.tsbtnWrite.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbtnWrite.Name = "tsbtnWrite";
-            this.tsbtnWrite.Size = new System.Drawing.Size(24, 24);
-            this.tsbtnWrite.Text = "Write";
-            this.tsbtnWrite.Click += new System.EventHandler(this.tsbtnWrite_Click);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 42);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 27);
-            // 
-            // tsbtnAbout
-            // 
-            this.tsbtnAbout.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbtnAbout.Image = global::DMR_MainForm.tsbtnAbout_Image;
-            this.tsbtnAbout.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbtnAbout.Name = "tsbtnAbout";
-            this.tsbtnAbout.Size = new System.Drawing.Size(24, 24);
-            this.tsbtnAbout.Text = "About";
-            this.tsbtnAbout.Click += new System.EventHandler(this.tsbtnAbout_Click);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 42);
             // 
             // importFileDialog
             // 
@@ -1295,18 +1275,111 @@ public class MainForm : Form
             this.pingTimer.Interval = 500;
             this.pingTimer.Tick += new System.EventHandler(this.pingTimer_Tick);
             // 
-            // toolStripSeparator6
+            // tsbtnOpen
             // 
-            this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(254, 6);
+            this.tsbtnOpen.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbtnOpen.Image = global::DMR_MainForm.open;
+            this.tsbtnOpen.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbtnOpen.Name = "tsbtnOpen";
+            this.tsbtnOpen.Size = new System.Drawing.Size(39, 39);
+            this.tsbtnOpen.Text = "Открыть кодплаг";
+            this.tsbtnOpen.Click += new System.EventHandler(this.tsbtnOpen_Click);
             // 
-            // tsmiSetup
+            // tsbtnSave
             // 
-            this.tsmiSetup.Name = "tsmiSetup";
-            this.tsmiSetup.Size = new System.Drawing.Size(257, 24);
-            this.tsmiSetup.Text = "Settings";
-            this.tsmiSetup.ToolTipText = "Настройки программы";
-            this.tsmiSetup.Click += new System.EventHandler(this.tsmiSetup_Click);
+            this.tsbtnSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbtnSave.Image = global::DMR_MainForm.save;
+            this.tsbtnSave.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbtnSave.Name = "tsbtnSave";
+            this.tsbtnSave.Size = new System.Drawing.Size(39, 39);
+            this.tsbtnSave.Text = "Сохранить кодплаг";
+            this.tsbtnSave.ToolTipText = "Save";
+            this.tsbtnSave.Click += new System.EventHandler(this.tsbtnSave_Click);
+            // 
+            // tsbtnRead
+            // 
+            this.tsbtnRead.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbtnRead.Image = global::DMR_MainForm.read;
+            this.tsbtnRead.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbtnRead.Name = "tsbtnRead";
+            this.tsbtnRead.Size = new System.Drawing.Size(39, 39);
+            this.tsbtnRead.Text = "Читать из рации";
+            this.tsbtnRead.Click += new System.EventHandler(this.tsbtnRead_Click);
+            // 
+            // tsbtnWrite
+            // 
+            this.tsbtnWrite.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbtnWrite.Image = global::DMR_MainForm.write;
+            this.tsbtnWrite.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbtnWrite.Name = "tsbtnWrite";
+            this.tsbtnWrite.Size = new System.Drawing.Size(39, 39);
+            this.tsbtnWrite.Text = "Записать в рацию";
+            this.tsbtnWrite.Click += new System.EventHandler(this.tsbtnWrite_Click);
+            // 
+            // tsbtnAbout
+            // 
+            this.tsbtnAbout.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbtnAbout.Image = global::DMR_MainForm.about;
+            this.tsbtnAbout.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbtnAbout.Name = "tsbtnAbout";
+            this.tsbtnAbout.Size = new System.Drawing.Size(39, 39);
+            this.tsbtnAbout.Text = "О программе";
+            this.tsbtnAbout.Click += new System.EventHandler(this.tsbtnAbout_Click);
+            // 
+            // tsbtnSettings
+            // 
+            this.tsbtnSettings.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbtnSettings.Image = global::DMR_MainForm.settings;
+            this.tsbtnSettings.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbtnSettings.Name = "tsbtnSettings";
+            this.tsbtnSettings.Size = new System.Drawing.Size(39, 39);
+            this.tsbtnSettings.Text = "Настройки программы";
+            this.tsbtnSettings.Click += new System.EventHandler(this.tsmiSetup_Click);
+            // 
+            // toolStripSeparator7
+            // 
+            this.toolStripSeparator7.Name = "toolStripSeparator7";
+            this.toolStripSeparator7.Size = new System.Drawing.Size(6, 42);
+            // 
+            // tsbtnDMR
+            // 
+            this.tsbtnDMR.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbtnDMR.Image = global::DMR_MainForm.users;
+            this.tsbtnDMR.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbtnDMR.Name = "tsbtnDMR";
+            this.tsbtnDMR.Size = new System.Drawing.Size(39, 39);
+            this.tsbtnDMR.Text = "Загрузка базы DMR ID";
+            this.tsbtnDMR.Click += new System.EventHandler(this.tsbtnDMRID_Click);
+            // 
+            // tsbtnPalette
+            // 
+            this.tsbtnPalette.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbtnPalette.Image = global::DMR_MainForm.palette;
+            this.tsbtnPalette.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbtnPalette.Name = "tsbtnPalette";
+            this.tsbtnPalette.Size = new System.Drawing.Size(39, 39);
+            this.tsbtnPalette.Text = "Редактор цветовых тем";
+            this.tsbtnPalette.Click += new System.EventHandler(this.tsbtnTheme_Click);
+            // 
+            // tsbtnOpenGD
+            // 
+            this.tsbtnOpenGD.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbtnOpenGD.Image = global::DMR_MainForm.toolbox;
+            this.tsbtnOpenGD.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbtnOpenGD.Name = "tsbtnOpenGD";
+            this.tsbtnOpenGD.Size = new System.Drawing.Size(39, 39);
+            this.tsbtnOpenGD.Text = "Технический центр";
+            this.tsbtnOpenGD.Click += new System.EventHandler(this.tsmiOpenGD77_Click);
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton1.Image = global::DMR_MainForm.firmware;
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(39, 39);
+            this.toolStripButton1.Text = "Загрузчик прошивки";
+            this.toolStripButton1.Click += new System.EventHandler(this.tsmiFirmwareLoader_Click);
             // 
             // MainForm
             // 

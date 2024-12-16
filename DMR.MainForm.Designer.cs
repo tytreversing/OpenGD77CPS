@@ -61,12 +61,102 @@ internal class DMR_MainForm {
     }
     
     /// <summary>
+    ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+    /// </summary>
+    internal static System.Drawing.Bitmap about {
+        get {
+            object obj = ResourceManager.GetObject("about", resourceCulture);
+            return ((System.Drawing.Bitmap)(obj));
+        }
+    }
+    
+    /// <summary>
+    ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+    /// </summary>
+    internal static System.Drawing.Bitmap file {
+        get {
+            object obj = ResourceManager.GetObject("file", resourceCulture);
+            return ((System.Drawing.Bitmap)(obj));
+        }
+    }
+    
+    /// <summary>
+    ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+    /// </summary>
+    internal static System.Drawing.Bitmap firmware {
+        get {
+            object obj = ResourceManager.GetObject("firmware", resourceCulture);
+            return ((System.Drawing.Bitmap)(obj));
+        }
+    }
+    
+    /// <summary>
     ///   Поиск локализованного ресурса типа System.Windows.Forms.ImageListStreamer.
     /// </summary>
     internal static System.Windows.Forms.ImageListStreamer imgMain_ImageStream {
         get {
             object obj = ResourceManager.GetObject("imgMain.ImageStream", resourceCulture);
             return ((System.Windows.Forms.ImageListStreamer)(obj));
+        }
+    }
+    
+    /// <summary>
+    ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+    /// </summary>
+    internal static System.Drawing.Bitmap open {
+        get {
+            object obj = ResourceManager.GetObject("open", resourceCulture);
+            return ((System.Drawing.Bitmap)(obj));
+        }
+    }
+    
+    /// <summary>
+    ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+    /// </summary>
+    internal static System.Drawing.Bitmap palette {
+        get {
+            object obj = ResourceManager.GetObject("palette", resourceCulture);
+            return ((System.Drawing.Bitmap)(obj));
+        }
+    }
+    
+    /// <summary>
+    ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+    /// </summary>
+    internal static System.Drawing.Bitmap read {
+        get {
+            object obj = ResourceManager.GetObject("read", resourceCulture);
+            return ((System.Drawing.Bitmap)(obj));
+        }
+    }
+    
+    /// <summary>
+    ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+    /// </summary>
+    internal static System.Drawing.Bitmap save {
+        get {
+            object obj = ResourceManager.GetObject("save", resourceCulture);
+            return ((System.Drawing.Bitmap)(obj));
+        }
+    }
+    
+    /// <summary>
+    ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+    /// </summary>
+    internal static System.Drawing.Bitmap settings {
+        get {
+            object obj = ResourceManager.GetObject("settings", resourceCulture);
+            return ((System.Drawing.Bitmap)(obj));
+        }
+    }
+    
+    /// <summary>
+    ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+    /// </summary>
+    internal static System.Drawing.Bitmap toolbox {
+        get {
+            object obj = ResourceManager.GetObject("toolbox", resourceCulture);
+            return ((System.Drawing.Bitmap)(obj));
         }
     }
     
@@ -126,6 +216,26 @@ internal class DMR_MainForm {
     internal static System.Drawing.Bitmap tsbtnWrite_Image {
         get {
             object obj = ResourceManager.GetObject("tsbtnWrite.Image", resourceCulture);
+            return ((System.Drawing.Bitmap)(obj));
+        }
+    }
+    
+    /// <summary>
+    ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+    /// </summary>
+    internal static System.Drawing.Bitmap users {
+        get {
+            object obj = ResourceManager.GetObject("users", resourceCulture);
+            return ((System.Drawing.Bitmap)(obj));
+        }
+    }
+    
+    /// <summary>
+    ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+    /// </summary>
+    internal static System.Drawing.Bitmap write {
+        get {
+            object obj = ResourceManager.GetObject("write", resourceCulture);
             return ((System.Drawing.Bitmap)(obj));
         }
     }

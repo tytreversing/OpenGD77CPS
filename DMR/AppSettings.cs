@@ -15,7 +15,8 @@ namespace DMR
     {
         private int oldInterval = 0;
         private string oldURI = "";
-        private string oldUpdate = "";
+        private string oldUpdateCPS = "";
+        private string oldUpdateFW = "";
         public AppSettings()
         {
             InitializeComponent();
@@ -23,8 +24,10 @@ namespace DMR
             numPolling.Value = oldInterval;
             tbURI.Text = IniFileUtils.getProfileStringWithDefault("Setup", "ServerURI", "https://opengd77rus.ru/data/");
             oldURI = tbURI.Text;
-            oldUpdate = IniFileUtils.getProfileStringWithDefault("Setup", "CheckVersion", "yes");
-            chUpdates.Checked = oldUpdate == "yes";
+            oldUpdateCPS = IniFileUtils.getProfileStringWithDefault("Setup", "CheckVersion", "yes");
+            chUpdates.Checked = oldUpdateCPS == "yes";
+            oldUpdateFW = IniFileUtils.getProfileStringWithDefault("Setup", "CheckFirmware", "yes");
+            chFirmware.Checked = oldUpdateFW == "yes";
         }
 
         private void AppSettings_Load(object sender, EventArgs e)
@@ -53,13 +56,22 @@ namespace DMR
             {
                 IniFileUtils.WriteProfileString("Setup", "CheckVersion", "no");
             }
+            if (chFirmware.Checked)
+            {
+                IniFileUtils.WriteProfileString("Setup", "CheckFirmware", "yes");
+            }
+            else
+            {
+                IniFileUtils.WriteProfileString("Setup", "CheckFirmware", "no");
+            }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
             IniFileUtils.WriteProfileInt("Setup", "PollingInterval", oldInterval);
             IniFileUtils.WriteProfileString("Setup", "ServerURI", oldURI);
-            IniFileUtils.WriteProfileString("Setup", "CheckVersion", oldUpdate);
+            IniFileUtils.WriteProfileString("Setup", "CheckVersion", oldUpdateCPS);
+            IniFileUtils.WriteProfileString("Setup", "CheckFirmware", oldUpdateFW);
             Close();
         }
 

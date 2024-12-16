@@ -37,10 +37,11 @@
             this.lblWarning = new System.Windows.Forms.Label();
             this.btnRestart = new System.Windows.Forms.Button();
             this.gbInternet = new System.Windows.Forms.GroupBox();
+            this.chFirmware = new System.Windows.Forms.CheckBox();
+            this.chUpdates = new System.Windows.Forms.CheckBox();
             this.lblURIDescription = new System.Windows.Forms.Label();
             this.tbURI = new System.Windows.Forms.TextBox();
             this.lblURI = new System.Windows.Forms.Label();
-            this.chUpdates = new System.Windows.Forms.CheckBox();
             this.gbCommunication.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numPolling)).BeginInit();
             this.gbInternet.SuspendLayout();
@@ -75,7 +76,7 @@
             this.gbCommunication.Controls.Add(this.lblPolling);
             this.gbCommunication.Location = new System.Drawing.Point(13, 13);
             this.gbCommunication.Name = "gbCommunication";
-            this.gbCommunication.Size = new System.Drawing.Size(447, 119);
+            this.gbCommunication.Size = new System.Drawing.Size(447, 93);
             this.gbCommunication.TabIndex = 2;
             this.gbCommunication.TabStop = false;
             this.gbCommunication.Text = "Соединение";
@@ -156,16 +157,39 @@
             // 
             // gbInternet
             // 
+            this.gbInternet.Controls.Add(this.chFirmware);
             this.gbInternet.Controls.Add(this.chUpdates);
             this.gbInternet.Controls.Add(this.lblURIDescription);
             this.gbInternet.Controls.Add(this.tbURI);
             this.gbInternet.Controls.Add(this.lblURI);
-            this.gbInternet.Location = new System.Drawing.Point(14, 142);
+            this.gbInternet.Location = new System.Drawing.Point(14, 112);
             this.gbInternet.Name = "gbInternet";
-            this.gbInternet.Size = new System.Drawing.Size(446, 130);
+            this.gbInternet.Size = new System.Drawing.Size(446, 160);
             this.gbInternet.TabIndex = 5;
             this.gbInternet.TabStop = false;
             this.gbInternet.Text = "Интернет";
+            // 
+            // chFirmware
+            // 
+            this.chFirmware.AutoSize = true;
+            this.chFirmware.Checked = true;
+            this.chFirmware.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chFirmware.Location = new System.Drawing.Point(12, 134);
+            this.chFirmware.Name = "chFirmware";
+            this.chFirmware.Size = new System.Drawing.Size(15, 14);
+            this.chFirmware.TabIndex = 4;
+            this.chFirmware.UseVisualStyleBackColor = true;
+            // 
+            // chUpdates
+            // 
+            this.chUpdates.AutoSize = true;
+            this.chUpdates.Checked = true;
+            this.chUpdates.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chUpdates.Location = new System.Drawing.Point(12, 108);
+            this.chUpdates.Name = "chUpdates";
+            this.chUpdates.Size = new System.Drawing.Size(15, 14);
+            this.chUpdates.TabIndex = 3;
+            this.chUpdates.UseVisualStyleBackColor = true;
             // 
             // lblURIDescription
             // 
@@ -174,7 +198,6 @@
             this.lblURIDescription.Name = "lblURIDescription";
             this.lblURIDescription.Size = new System.Drawing.Size(418, 46);
             this.lblURIDescription.TabIndex = 2;
-            this.lblURIDescription.Text = "label1";
             // 
             // tbURI
             // 
@@ -191,18 +214,6 @@
             this.lblURI.Size = new System.Drawing.Size(160, 26);
             this.lblURI.TabIndex = 0;
             this.lblURI.Text = "Адрес поиска данных: ";
-            // 
-            // chUpdates
-            // 
-            this.chUpdates.AutoSize = true;
-            this.chUpdates.Checked = true;
-            this.chUpdates.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chUpdates.Location = new System.Drawing.Point(12, 103);
-            this.chUpdates.Name = "chUpdates";
-            this.chUpdates.Size = new System.Drawing.Size(92, 20);
-            this.chUpdates.TabIndex = 3;
-            this.chUpdates.Text = "checkBox1";
-            this.chUpdates.UseVisualStyleBackColor = true;
             // 
             // AppSettings
             // 
@@ -250,5 +261,6 @@
         private System.Windows.Forms.TextBox tbURI;
         private System.Windows.Forms.Label lblURIDescription;
         private System.Windows.Forms.CheckBox chUpdates;
+        private System.Windows.Forms.CheckBox chFirmware;
     }
 }

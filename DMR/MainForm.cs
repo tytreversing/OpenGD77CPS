@@ -302,6 +302,8 @@ public class MainForm : Form
     private ToolStripButton tsbtnOpenGD;
     public static bool EnableHiddenFeatures;
 
+	public static bool messageShown = false;
+
 	public static string CurFileName { get; set; }
 
 	protected override void Dispose(bool disposing)
@@ -1474,6 +1476,7 @@ public class MainForm : Form
 
 	public void showRadioInfo()
 	{
+		string firmwareVersion = "";
 		radioInformation.Text = "Рация подключена\r\n";
 		if (RadioInfo.identifier!="RUSSIAN")
 		{
@@ -1484,7 +1487,8 @@ public class MainForm : Form
             radioInformation.Text += "Установлена корректная прошивка OpenGD77 RUS";
         }
 		radioInformation.Text += "\r\nСборка прошивки: ";
-		radioInformation.Text += RadioInfo.buildDateTime.Substring(0,8);
+		firmwareVersion = RadioInfo.buildDateTime.Substring(0, 8);
+        radioInformation.Text += firmwareVersion;
         radioInformation.Text += "\r\nМодель рации: ";
 		switch (RadioInfo.radioType)
 		{
@@ -1520,8 +1524,50 @@ public class MainForm : Form
         }
 		radioInformation.Text += "\r\nЧип флеш-памяти: ";
 		radioInformation.Text += RadioInfo.flashId.ToString();
+		if (IniFileUtils.getProfileStringWithDefault("Setup", "CheckFirmware", "yes") == "yes" && !messageShown)
+		{
+            messageShown = true;
+            string remoteUri = IniFileUtils.getProfileStringWithDefault("Setup", "ServerURI", "https://opengd77rus.ru/data/") + "Firmware.num";
+			WebClient checker = new WebClient();
+			string localName = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Firmware.ver";
+			bool fail = false;
+			string remoteVersion = "";
+			try
+			{
+				checker.DownloadFile(remoteUri, localName);
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message);
+				fail = true;
+			}
+			if (!fail)
+			{
+				try
+				{
+					StreamReader sr = new StreamReader(localName);
+					remoteVersion = sr.ReadLine();
+					sr.Close();
+				}
+				catch
+				{
 
-    }
+				}
+				if (int.Parse(remoteVersion) > int.Parse(RadioInfo.buildDateTime))
+				{
+					DialogResult decision = MessageBox.Show("На сайте проекта доступна новая версия прошивки.\r\nТекущая версия: " + RadioInfo.buildDateTime + "\r\nВерсия на сервере: " + remoteVersion +
+						"\r\nОткрыть страницу загрузок?", "Обновление прошивки", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+					if (decision == DialogResult.Yes)
+					{
+						System.Diagnostics.Process.Start("https://opengd77rus.ru/%d0%bf%d1%80%d0%be%d1%88%d0%b8%d0%b2%d0%ba%d0%b0/");
+					}
+					File.Delete(localName);
+				}
+
+
+			}
+		}
+        }
 
 	private void MainForm_Load(object sender, EventArgs e)
 	{

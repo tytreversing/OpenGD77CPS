@@ -1519,7 +1519,7 @@ public class MainForm : Form
 					radioInformation.Text += "TYT MD-9600/Retevis RT-90";
 					break;
 				case 6:
-					radioInformation.Text += "TYT MD-UV380/TYT MD-UV390/Retevis RT-3S";
+					radioInformation.Text += "TYT MD-UV380/TYT MD-UV390 (5W)/Retevis RT-3S";
 					break;
 				case 8:
 				case 10:
@@ -1528,8 +1528,11 @@ public class MainForm : Form
 				case 9:
 					radioInformation.Text += "TYT MD-2017/Retevis RT-82";
 					break;
+				case 106:
+                    radioInformation.Text += "TYT MD-UV390 10W";
+                    break;
 
-			}
+            }
 			radioInformation.Text += "\r\nЧип флеш-памяти: ";
 			radioInformation.Text += RadioInfo.flashId.ToString();
 				if (IniFileUtils.getProfileStringWithDefault("Setup", "CheckFirmware", "yes") == "yes" && !messageShown && RadioInfo.identifier == "RUSSIAN")

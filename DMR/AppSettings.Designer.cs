@@ -106,7 +106,7 @@
             0,
             0});
             this.numPolling.Minimum = new decimal(new int[] {
-            200,
+            300,
             0,
             0,
             0});

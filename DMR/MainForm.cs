@@ -301,8 +301,8 @@ public class MainForm : Form
     private ToolStripButton toolStripButton1;
     private ToolStripButton tsbtnOpenGD;
     public static bool EnableHiddenFeatures;
-
-	public static bool messageShown = false;
+    public SaveFileDialog saveFileDialog;
+    public static bool messageShown = false;
 
 	public static string CurFileName { get; set; }
 
@@ -413,22 +413,23 @@ public class MainForm : Form
             this.slblCompany = new System.Windows.Forms.ToolStripStatusLabel();
             this.tsrMain = new System.Windows.Forms.ToolStrip();
             this.tsbtnNew = new System.Windows.Forms.ToolStripButton();
+            this.tsbtnOpen = new System.Windows.Forms.ToolStripButton();
+            this.tsbtnSave = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsbtnRead = new System.Windows.Forms.ToolStripButton();
+            this.tsbtnWrite = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsbtnDMR = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.tsbtnOpenGD = new System.Windows.Forms.ToolStripButton();
+            this.tsbtnPalette = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsbtnSettings = new System.Windows.Forms.ToolStripButton();
+            this.tsbtnAbout = new System.Windows.Forms.ToolStripButton();
             this.importFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.radioInformation = new System.Windows.Forms.Label();
             this.pingTimer = new System.Windows.Forms.Timer(this.components);
-            this.tsbtnOpen = new System.Windows.Forms.ToolStripButton();
-            this.tsbtnSave = new System.Windows.Forms.ToolStripButton();
-            this.tsbtnRead = new System.Windows.Forms.ToolStripButton();
-            this.tsbtnWrite = new System.Windows.Forms.ToolStripButton();
-            this.tsbtnAbout = new System.Windows.Forms.ToolStripButton();
-            this.tsbtnSettings = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsbtnDMR = new System.Windows.Forms.ToolStripButton();
-            this.tsbtnPalette = new System.Windows.Forms.ToolStripButton();
-            this.tsbtnOpenGD = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.mnsMain.SuspendLayout();
             this.cmsGroup.SuspendLayout();
             this.cmsSub.SuspendLayout();
@@ -1243,15 +1244,121 @@ public class MainForm : Form
             this.tsbtnNew.Text = "Новый кодплаг";
             this.tsbtnNew.Click += new System.EventHandler(this.tsbtnNew_Click);
             // 
+            // tsbtnOpen
+            // 
+            this.tsbtnOpen.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbtnOpen.Image = global::DMR_MainForm.open;
+            this.tsbtnOpen.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbtnOpen.Name = "tsbtnOpen";
+            this.tsbtnOpen.Size = new System.Drawing.Size(39, 39);
+            this.tsbtnOpen.Text = "Открыть кодплаг";
+            this.tsbtnOpen.Click += new System.EventHandler(this.tsbtnOpen_Click);
+            // 
+            // tsbtnSave
+            // 
+            this.tsbtnSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbtnSave.Image = global::DMR_MainForm.save;
+            this.tsbtnSave.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbtnSave.Name = "tsbtnSave";
+            this.tsbtnSave.Size = new System.Drawing.Size(39, 39);
+            this.tsbtnSave.Text = "Сохранить кодплаг";
+            this.tsbtnSave.ToolTipText = "Save";
+            this.tsbtnSave.Click += new System.EventHandler(this.tsbtnSave_Click);
+            // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(6, 42);
             // 
+            // tsbtnRead
+            // 
+            this.tsbtnRead.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbtnRead.Image = global::DMR_MainForm.read;
+            this.tsbtnRead.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbtnRead.Name = "tsbtnRead";
+            this.tsbtnRead.Size = new System.Drawing.Size(39, 39);
+            this.tsbtnRead.Text = "Читать из рации";
+            this.tsbtnRead.Click += new System.EventHandler(this.tsbtnRead_Click);
+            // 
+            // tsbtnWrite
+            // 
+            this.tsbtnWrite.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbtnWrite.Image = global::DMR_MainForm.write;
+            this.tsbtnWrite.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbtnWrite.Name = "tsbtnWrite";
+            this.tsbtnWrite.Size = new System.Drawing.Size(39, 39);
+            this.tsbtnWrite.Text = "Записать в рацию";
+            this.tsbtnWrite.Click += new System.EventHandler(this.tsbtnWrite_Click);
+            // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(6, 42);
+            // 
+            // tsbtnDMR
+            // 
+            this.tsbtnDMR.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbtnDMR.Image = global::DMR_MainForm.users;
+            this.tsbtnDMR.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbtnDMR.Name = "tsbtnDMR";
+            this.tsbtnDMR.Size = new System.Drawing.Size(39, 39);
+            this.tsbtnDMR.Text = "Загрузка базы DMR ID";
+            this.tsbtnDMR.Click += new System.EventHandler(this.tsbtnDMRID_Click);
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton1.Image = global::DMR_MainForm.firmware;
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(39, 39);
+            this.toolStripButton1.Text = "Загрузчик прошивки";
+            this.toolStripButton1.Click += new System.EventHandler(this.tsmiFirmwareLoader_Click);
+            // 
+            // tsbtnOpenGD
+            // 
+            this.tsbtnOpenGD.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbtnOpenGD.Image = global::DMR_MainForm.toolbox;
+            this.tsbtnOpenGD.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbtnOpenGD.Name = "tsbtnOpenGD";
+            this.tsbtnOpenGD.Size = new System.Drawing.Size(39, 39);
+            this.tsbtnOpenGD.Text = "Технический центр";
+            this.tsbtnOpenGD.Click += new System.EventHandler(this.tsmiOpenGD77_Click);
+            // 
+            // tsbtnPalette
+            // 
+            this.tsbtnPalette.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbtnPalette.Image = global::DMR_MainForm.palette;
+            this.tsbtnPalette.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbtnPalette.Name = "tsbtnPalette";
+            this.tsbtnPalette.Size = new System.Drawing.Size(39, 39);
+            this.tsbtnPalette.Text = "Редактор цветовых тем";
+            this.tsbtnPalette.Click += new System.EventHandler(this.tsbtnTheme_Click);
+            // 
+            // toolStripSeparator7
+            // 
+            this.toolStripSeparator7.Name = "toolStripSeparator7";
+            this.toolStripSeparator7.Size = new System.Drawing.Size(6, 42);
+            // 
+            // tsbtnSettings
+            // 
+            this.tsbtnSettings.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbtnSettings.Image = global::DMR_MainForm.settings;
+            this.tsbtnSettings.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbtnSettings.Name = "tsbtnSettings";
+            this.tsbtnSettings.Size = new System.Drawing.Size(39, 39);
+            this.tsbtnSettings.Text = "Настройки программы";
+            this.tsbtnSettings.Click += new System.EventHandler(this.tsmiSetup_Click);
+            // 
+            // tsbtnAbout
+            // 
+            this.tsbtnAbout.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbtnAbout.Image = global::DMR_MainForm.about;
+            this.tsbtnAbout.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbtnAbout.Name = "tsbtnAbout";
+            this.tsbtnAbout.Size = new System.Drawing.Size(39, 39);
+            this.tsbtnAbout.Text = "О программе";
+            this.tsbtnAbout.Click += new System.EventHandler(this.tsbtnAbout_Click);
             // 
             // importFileDialog
             // 
@@ -1277,111 +1384,10 @@ public class MainForm : Form
             this.pingTimer.Interval = 500;
             this.pingTimer.Tick += new System.EventHandler(this.pingTimer_Tick);
             // 
-            // tsbtnOpen
+            // saveFileDialog
             // 
-            this.tsbtnOpen.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbtnOpen.Image = global::DMR_MainForm.open;
-            this.tsbtnOpen.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbtnOpen.Name = "tsbtnOpen";
-            this.tsbtnOpen.Size = new System.Drawing.Size(39, 39);
-            this.tsbtnOpen.Text = "Открыть кодплаг";
-            this.tsbtnOpen.Click += new System.EventHandler(this.tsbtnOpen_Click);
-            // 
-            // tsbtnSave
-            // 
-            this.tsbtnSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbtnSave.Image = global::DMR_MainForm.save;
-            this.tsbtnSave.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbtnSave.Name = "tsbtnSave";
-            this.tsbtnSave.Size = new System.Drawing.Size(39, 39);
-            this.tsbtnSave.Text = "Сохранить кодплаг";
-            this.tsbtnSave.ToolTipText = "Save";
-            this.tsbtnSave.Click += new System.EventHandler(this.tsbtnSave_Click);
-            // 
-            // tsbtnRead
-            // 
-            this.tsbtnRead.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbtnRead.Image = global::DMR_MainForm.read;
-            this.tsbtnRead.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbtnRead.Name = "tsbtnRead";
-            this.tsbtnRead.Size = new System.Drawing.Size(39, 39);
-            this.tsbtnRead.Text = "Читать из рации";
-            this.tsbtnRead.Click += new System.EventHandler(this.tsbtnRead_Click);
-            // 
-            // tsbtnWrite
-            // 
-            this.tsbtnWrite.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbtnWrite.Image = global::DMR_MainForm.write;
-            this.tsbtnWrite.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbtnWrite.Name = "tsbtnWrite";
-            this.tsbtnWrite.Size = new System.Drawing.Size(39, 39);
-            this.tsbtnWrite.Text = "Записать в рацию";
-            this.tsbtnWrite.Click += new System.EventHandler(this.tsbtnWrite_Click);
-            // 
-            // tsbtnAbout
-            // 
-            this.tsbtnAbout.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbtnAbout.Image = global::DMR_MainForm.about;
-            this.tsbtnAbout.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbtnAbout.Name = "tsbtnAbout";
-            this.tsbtnAbout.Size = new System.Drawing.Size(39, 39);
-            this.tsbtnAbout.Text = "О программе";
-            this.tsbtnAbout.Click += new System.EventHandler(this.tsbtnAbout_Click);
-            // 
-            // tsbtnSettings
-            // 
-            this.tsbtnSettings.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbtnSettings.Image = global::DMR_MainForm.settings;
-            this.tsbtnSettings.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbtnSettings.Name = "tsbtnSettings";
-            this.tsbtnSettings.Size = new System.Drawing.Size(39, 39);
-            this.tsbtnSettings.Text = "Настройки программы";
-            this.tsbtnSettings.Click += new System.EventHandler(this.tsmiSetup_Click);
-            // 
-            // toolStripSeparator7
-            // 
-            this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(6, 42);
-            // 
-            // tsbtnDMR
-            // 
-            this.tsbtnDMR.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbtnDMR.Image = global::DMR_MainForm.users;
-            this.tsbtnDMR.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbtnDMR.Name = "tsbtnDMR";
-            this.tsbtnDMR.Size = new System.Drawing.Size(39, 39);
-            this.tsbtnDMR.Text = "Загрузка базы DMR ID";
-            this.tsbtnDMR.Click += new System.EventHandler(this.tsbtnDMRID_Click);
-            // 
-            // tsbtnPalette
-            // 
-            this.tsbtnPalette.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbtnPalette.Image = global::DMR_MainForm.palette;
-            this.tsbtnPalette.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbtnPalette.Name = "tsbtnPalette";
-            this.tsbtnPalette.Size = new System.Drawing.Size(39, 39);
-            this.tsbtnPalette.Text = "Редактор цветовых тем";
-            this.tsbtnPalette.Click += new System.EventHandler(this.tsbtnTheme_Click);
-            // 
-            // tsbtnOpenGD
-            // 
-            this.tsbtnOpenGD.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbtnOpenGD.Image = global::DMR_MainForm.toolbox;
-            this.tsbtnOpenGD.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbtnOpenGD.Name = "tsbtnOpenGD";
-            this.tsbtnOpenGD.Size = new System.Drawing.Size(39, 39);
-            this.tsbtnOpenGD.Text = "Технический центр";
-            this.tsbtnOpenGD.Click += new System.EventHandler(this.tsmiOpenGD77_Click);
-            // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = global::DMR_MainForm.firmware;
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(39, 39);
-            this.toolStripButton1.Text = "Загрузчик прошивки";
-            this.toolStripButton1.Click += new System.EventHandler(this.tsmiFirmwareLoader_Click);
+            this.saveFileDialog.Filter = "Архивы|*.zip";
+            this.saveFileDialog.Title = "Сохранение прошивки";
             // 
             // MainForm
             // 
@@ -1478,8 +1484,9 @@ public class MainForm : Form
 		return;
 	}
 
-
-	public void showRadioInfo()
+	private string firmwareName = "";
+    private string remoteVersion = "";
+    public void showRadioInfo()
 	{
 		string firmwareVersion = "";
 		if (!shownInfo)
@@ -1502,35 +1509,48 @@ public class MainForm : Form
 			{
 				case 0:
 					radioInformation.Text += "TYT MD-760/Radioddity GD-77";
+					firmwareName = "";
 					break;
 				case 1:
 					radioInformation.Text += "Radioddity GD-77S";
-					break;
+                    firmwareName = "";
+                    break;
 				case 2:
 					radioInformation.Text += "Baofeng DM-1801";
-					break;
+                    firmwareName = "";
+                    break;
 				case 3:
 					radioInformation.Text += "Baofeng RD-5R";
-					break;
+                    firmwareName = "";
+                    break;
 				case 4:
 					radioInformation.Text += "Baofeng DM-1801A";
-					break;
+                    firmwareName = "";
+                    break;
 				case 5:
 					radioInformation.Text += "TYT MD-9600/Retevis RT-90";
-					break;
+                    firmwareName = "OpenMD9600RUS";
+                    break;
 				case 6:
 					radioInformation.Text += "TYT MD-UV380/TYT MD-UV390 (5W)/Retevis RT-3S";
-					break;
+                    firmwareName = "OpenMDUV380_RUS";
+                    break;
 				case 8:
 				case 10:
 					radioInformation.Text += "Baofeng DM-1701/Retevis RT-84";
-					break;
+                    firmwareName = "Open1701-84_RUS";
+                    break;
 				case 9:
 					radioInformation.Text += "TYT MD-2017/Retevis RT-82";
-					break;
-				case 106:
-                    radioInformation.Text += "TYT MD-UV390 10W";
+                    firmwareName = "OpenMD2017RUS";
                     break;
+				case 106:
+                    radioInformation.Text += "TYT MD-UV390 (10W)";
+                    firmwareName = "OpenMDUV380_10W_PLUS_RUS";
+                    break;
+				default:
+					firmwareName = "";
+					break;
 
             }
 			radioInformation.Text += "\r\nЧип флеш-памяти: ";
@@ -1538,11 +1558,11 @@ public class MainForm : Form
 				if (IniFileUtils.getProfileStringWithDefault("Setup", "CheckFirmware", "yes") == "yes" && !messageShown && RadioInfo.identifier == "RUSSIAN")
 				{
 					messageShown = true;
-					string remoteUri = IniFileUtils.getProfileStringWithDefault("Setup", "ServerURI", "https://opengd77rus.ru/data/") + "Firmware.num";
+					string remoteURL = IniFileUtils.getProfileStringWithDefault("Setup", "ServerURI", "https://opengd77rus.ru/data/") + "Firmware.num";
+				    Uri remoteUri = new Uri(remoteURL);
 					WebClient checker = new WebClient();
 					string localName = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Firmware.ver";
 					bool fail = false;
-					string remoteVersion = "";
 					try
 					{
 						checker.DownloadFile(remoteUri, localName);
@@ -1569,9 +1589,26 @@ public class MainForm : Form
 							DialogResult decision = MessageBox.Show("На сайте проекта доступна новая версия прошивки.\r\nТекущая версия: " + RadioInfo.buildDateTime + "\r\nВерсия на сервере: " + remoteVersion +
 								"\r\nОткрыть страницу загрузок?", "Обновление прошивки", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 							if (decision == DialogResult.Yes)
+						{
+                            string saveFileName = firmwareName + "_" + remoteVersion + ".zip";
+							this.saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+							this.saveFileDialog.FileName = saveFileName;
+                            if (saveFileDialog.ShowDialog() != DialogResult.Cancel)
 							{
-								System.Diagnostics.Process.Start("https://opengd77rus.ru/%d0%bf%d1%80%d0%be%d1%88%d0%b8%d0%b2%d0%ba%d0%b0/");
-							}
+								Uri firmwareURI = new Uri("https://opengd77rus.ru/firmwares/" + firmwareName + ".zip");
+								WebClient downloader = new WebClient();
+								downloader.DownloadFileCompleted += new AsyncCompletedEventHandler(downloadFileCallback);
+                                try
+								{
+									downloader.DownloadFileAsync(firmwareURI, saveFileDialog.FileName);
+								}
+                                catch (Exception ex)
+                                {
+                                    MessageBox.Show(ex.Message);
+                                    fail = true;
+                                }
+                            }
+                        }
 							File.Delete(localName);
 						}
 
@@ -1581,7 +1618,14 @@ public class MainForm : Form
 		}
         }
 
-	private void MainForm_Load(object sender, EventArgs e)
+    private static void downloadFileCallback(object sender, AsyncCompletedEventArgs e)
+    {
+		if (!e.Cancelled && e.Error==null)
+		{
+			MessageBox.Show("Файл с прошивкой успешно загружен!", "Загрузка прошивки", MessageBoxButtons.OK, MessageBoxIcon.Information);
+		}
+    }
+    private void MainForm_Load(object sender, EventArgs e)
 	{
         string _profileStringWithDefault = IniFileUtils.getProfileStringWithDefault("Setup", "RadioType", "MD9600");
         if (!(_profileStringWithDefault == "MD9600"))

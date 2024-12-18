@@ -94,7 +94,9 @@ public class ZoneBasicForm : DockContent, IDisp
 				});
 			}
 		}
-		lstZones.SelectedIndex = _selectedIndex;
+		try
+		{ lstZones.SelectedIndex = _selectedIndex; }
+		catch { }
 	}
 
 	public void RefreshName()
@@ -166,8 +168,15 @@ public class ZoneBasicForm : DockContent, IDisp
 	{
 		Settings.smethod_59(base.Controls);
 		Settings.UpdateComponentTextsFromLanguageXmlData(this);
-		DispData();
-	}
+		try
+		{
+			DispData();
+		}
+        catch (Exception ex)
+        {
+            MessageBox.Show(ex.Message);
+        }
+    }
 
 	private void ZoneBasicForm_FormClosing(object sender, FormClosingEventArgs e)
 	{

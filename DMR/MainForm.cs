@@ -11,6 +11,7 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Runtime.InteropServices.ComTypes;
+using System.Security.Principal;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
@@ -1627,6 +1628,16 @@ public class MainForm : Form
     }
     private void MainForm_Load(object sender, EventArgs e)
 	{
+        bool isElevated;
+		string thisFilePath = Application.StartupPath;
+        WindowsIdentity identity = WindowsIdentity.GetCurrent();
+        WindowsPrincipal principal = new WindowsPrincipal(identity);
+        isElevated = principal.IsInRole(WindowsBuiltInRole.Administrator);
+
+        if (isElevated == false && thisFilePath.Contains("Program Files"))
+        {
+			MessageBox.Show("Программа установлена в папку " + thisFilePath + ", но не запущена от имени администратора. Автообновление файла локализации и ручное его скачивание через Загрузчик прошивки будет недоступно из-за ограничений Windows. Удалите программу и переустановите ее в другую папку, либо установите для исполняемого файла программы галочку запуска от имени администратора.", "Внимание!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        };
         string _profileStringWithDefault = IniFileUtils.getProfileStringWithDefault("Setup", "RadioType", "MD9600");
         if (!(_profileStringWithDefault == "MD9600"))
         {

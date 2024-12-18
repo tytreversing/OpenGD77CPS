@@ -227,6 +227,9 @@
     <None Update="Newtonsoft.Json.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+    </None>
     <None Update="Satellites.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

@@ -1292,7 +1292,7 @@
 		<Item Id="userAgreement"  Text="Это программное обеспечение предоставляется как есть, без гарантий работоспособности. Оно предназначено только для работы с модифицированными прошивками OpenGD77 RUS. Разработчик не несет ответственности за действия пользователя. Нажимая ДА, Вы соглашаетесь с условиями предоставления программного обеспечения." />
 		<Item Id="DownloadContactsMessageAdded" Text="There are {0} new IDs which are not already in your contacts" />
 		<Item Id="DownloadContactsRegionEmpty" Text="Please enter the 3 digit Region prefix code. e.g. 505 for Australia." />
-		<Item Id="DownloadContactsDownloading" Text="Downloading..." />
+		<Item Id="DownloadContactsDownloading" Text="Загружаем..." />
 		<Item Id="DownloadContactsSelectContactsToImport" Text="Please select the contacts you would like to import" />
 		<Item Id="DownloadContactsTooMany" Text="Not all contacts could be imported because the maximum number of Digital Contacts has been reached" />
 		<Item Id="Warning" Text="Внимание" />

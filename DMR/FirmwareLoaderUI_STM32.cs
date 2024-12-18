@@ -75,6 +75,7 @@ public class FirmwareLoaderUI_STM32 : Form
     private Label doNotUse;
     private Button downloadRussian;
     private CheckBox chkAutoUpdateLanguage;
+    private Label lblWarning;
     private GroupBox grpRadioType;
 
 	public FirmwareLoaderUI_STM32()
@@ -152,6 +153,8 @@ public class FirmwareLoaderUI_STM32 : Form
 			bool flag2 = (grpRadioType.Enabled = false);
 			bool flag4 = (button2.Enabled = flag2);
 			bool enabled = (button.Enabled = flag4);
+            downloadRussian.Enabled = false;
+            chkAutoUpdateLanguage.Enabled = false;
 			byte[] openFirmwareBuf = null;
 			byte[] userLanguageBuf = null;
 			if (Path.GetExtension(dlgOpenFile.FileName).ToLower() == ".zip")
@@ -219,7 +222,9 @@ public class FirmwareLoaderUI_STM32 : Form
 			bool flag2 = (grpRadioType.Enabled = true);
 			bool flag4 = (button6.Enabled = flag2);
 			bool enabled = (button5.Enabled = flag4);
-		}
+            downloadRussian.Enabled = true;
+            chkAutoUpdateLanguage.Enabled = true;
+        }
 	}
 
 	private void UploadCompleted(object sender, FirmwareUpdateMessageEventArgs e)
@@ -234,7 +239,10 @@ public class FirmwareLoaderUI_STM32 : Form
 		bool flag2 = (grpRadioType.Enabled = true);
 		bool flag4 = (button2.Enabled = flag2);
 		bool enabled = (button.Enabled = flag4);
-	}
+        downloadRussian.Enabled = true;
+        chkAutoUpdateLanguage.Enabled = true;
+        lblWarning.Visible = true;
+    }
 
 	private void DisplayMessage(object sender, FirmwareUpdateMessageEventArgs e)
 	{
@@ -343,6 +351,7 @@ public class FirmwareLoaderUI_STM32 : Form
             this.doNotUse = new System.Windows.Forms.Label();
             this.downloadRussian = new System.Windows.Forms.Button();
             this.chkAutoUpdateLanguage = new System.Windows.Forms.CheckBox();
+            this.lblWarning = new System.Windows.Forms.Label();
             this.grpRadioType.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -510,7 +519,7 @@ public class FirmwareLoaderUI_STM32 : Form
             this.doNotUse.AutoEllipsis = true;
             this.doNotUse.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.doNotUse.ForeColor = System.Drawing.Color.Red;
-            this.doNotUse.Location = new System.Drawing.Point(277, 126);
+            this.doNotUse.Location = new System.Drawing.Point(277, 146);
             this.doNotUse.Name = "doNotUse";
             this.doNotUse.Size = new System.Drawing.Size(219, 100);
             this.doNotUse.TabIndex = 14;
@@ -542,12 +551,28 @@ public class FirmwareLoaderUI_STM32 : Form
             this.chkAutoUpdateLanguage.UseVisualStyleBackColor = true;
             this.chkAutoUpdateLanguage.CheckedChanged += new System.EventHandler(this.chkAutoUpdateLanguage_CheckedChanged);
             // 
+            // lblWarning
+            // 
+            this.lblWarning.BackColor = System.Drawing.Color.Yellow;
+            this.lblWarning.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblWarning.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblWarning.ForeColor = System.Drawing.Color.Black;
+            this.lblWarning.Location = new System.Drawing.Point(231, 68);
+            this.lblWarning.Name = "lblWarning";
+            this.lblWarning.Size = new System.Drawing.Size(303, 77);
+            this.lblWarning.TabIndex = 17;
+            this.lblWarning.Text = "ѕри первой установке прошивки OpenGD77 RUS насто€тельно рекомендуетс€ в первый ра" +
+    "з включить рацию в режиме сброса (с зажатой SK2).";
+            this.lblWarning.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblWarning.Visible = false;
+            // 
             // FirmwareLoaderUI_STM32
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(549, 363);
+            this.Controls.Add(this.lblWarning);
             this.Controls.Add(this.btnProgram);
             this.Controls.Add(this.chkAutoUpdateLanguage);
             this.Controls.Add(this.downloadRussian);

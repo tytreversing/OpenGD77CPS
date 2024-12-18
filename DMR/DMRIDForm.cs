@@ -355,7 +355,7 @@ public class DMRIDForm : Form
 		_wc = new WebClient();
 		try
 		{
-			lblMessage.Text = Settings.dicCommon["DownloadContactsDownloading"];
+			lblMessage.Text = "Загружаем контакты...";
 			Cursor.Current = Cursors.WaitCursor;
 			Refresh();
 			Application.DoEvents();
@@ -523,7 +523,7 @@ public class DMRIDForm : Form
 	{
 		if (_radioIdCSV != null)
 		{
-			lblMessage.Text = Settings.dicCommon["Processing"];
+			lblMessage.Text = "Обработка...";
 			enableUI(state: false);
 			progressBar1.Style = ProgressBarStyle.Marquee;
 			progressBar1.Value = 100;
@@ -705,7 +705,7 @@ public class DMRIDForm : Form
 		}
 		if (dataObj.data_sector != -1 && !OpenGD77Form.flashWriteSector(port, writeCommandCharacter, ref sendbuffer, ref readbuffer, dataObj))
 		{
-			Console.WriteLine($"Error. Write stopped (write sector error at {num2:X8})");
+			//Console.WriteLine($"Error. Write stopped (write sector error at {num2:X8})");
 		}
 	}
 
@@ -1477,7 +1477,7 @@ public class DMRIDForm : Form
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(731, 588);
+            this.ClientSize = new System.Drawing.Size(703, 588);
             this.Controls.Add(this.grpColumnFilter);
             this.Controls.Add(this.uploadParameters);
             this.Controls.Add(this.cmbDownloadLocation);

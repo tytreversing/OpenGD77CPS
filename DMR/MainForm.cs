@@ -1539,7 +1539,7 @@ public class MainForm : Form
 				case 8:
 				case 10:
 					radioInformation.Text += "Baofeng DM-1701/Retevis RT-84";
-                    firmwareName = "Open1701-84_RUS";
+                    firmwareName = "OpenDM1701-RT84_RUS";
                     break;
 				case 9:
 					radioInformation.Text += "TYT MD-2017/Retevis RT-82";

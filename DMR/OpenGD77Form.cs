@@ -259,7 +259,7 @@ public class OpenGD77Form : Form
 		MainForm.RadioInfo = readOpenGD77RadioInfoAndUpdateUSBBufferSize(commPort, stealth);
 		if (MainForm.RadioInfo.identifier == "RUSSIAN")
 		{
-			if (MainForm.RadioInfo.radioType == 5 || MainForm.RadioInfo.radioType == 6 || MainForm.RadioInfo.radioType == 8 || MainForm.RadioInfo.radioType == 10 || MainForm.RadioInfo.radioType == 9 || MainForm.RadioInfo.radioType == 7)
+			if (MainForm.RadioInfo.radioType == 5 || MainForm.RadioInfo.radioType == 6 || MainForm.RadioInfo.radioType == 8 || MainForm.RadioInfo.radioType == 10 || MainForm.RadioInfo.radioType == 9 || MainForm.RadioInfo.radioType == 7 || MainForm.RadioInfo.radioType == 106)
 			{
 				writeCommandCharacter = 'X';
 				btnBackupCalibration.Visible = false;

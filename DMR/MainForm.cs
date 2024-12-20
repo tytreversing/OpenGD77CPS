@@ -1627,6 +1627,36 @@ public class MainForm : Form
 			MessageBox.Show("Файл с прошивкой успешно загружен!", "Загрузка прошивки", MessageBoxButtons.OK, MessageBoxIcon.Information);
 		}
     }
+
+	private bool hasInternet()
+	{
+        try
+        {
+            HttpWebRequest httpReq = (HttpWebRequest)HttpWebRequest.Create("https://opengd77rus.ru");
+			httpReq.Timeout = 1000;
+			HttpWebResponse httpWeb = (HttpWebResponse)httpReq.GetResponse();
+
+            if (HttpStatusCode.OK == httpWeb.StatusCode)
+            {
+                httpWeb.Close();
+                return true;
+            }
+            else
+            {
+                httpWeb.Close();
+                MessageBox.Show("Соединение с сервером отсутствует, либо он сейчас недоступен. Функция проверки обновлений и загрузки файла локализации будет недоступна.", "Ошибка сети", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+        }
+        catch (WebException)
+        {
+            MessageBox.Show("Ошибка при соединении с сервером!", "Ошибка сети", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return false;
+        }
+    }
+
+    public static bool connectionAwailable = false;
+
     private void MainForm_Load(object sender, EventArgs e)
 	{
         bool isElevated;
@@ -1640,7 +1670,7 @@ public class MainForm : Form
 			MessageBox.Show("Программа установлена в папку " + thisFilePath + ", но не запущена от имени администратора. Автообновление файла локализации и ручное его скачивание через Загрузчик прошивки будет недоступно из-за ограничений Windows. Удалите программу и переустановите ее в другую папку, либо установите для исполняемого файла программы галочку запуска от имени администратора.", "Внимание!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         };
 
-        using Ping ping = new();
+		connectionAwailable = hasInternet();
 
         string _profileStringWithDefault = IniFileUtils.getProfileStringWithDefault("Setup", "RadioType", "MD9600");
         if (!(_profileStringWithDefault == "MD9600"))
@@ -1847,7 +1877,7 @@ public class MainForm : Form
 		CSVEML.InitCSVs();
         pingTimer.Enabled = true;
 		bool checkUpdate = IniFileUtils.getProfileStringWithDefault("Setup", "CheckVersion", "yes") == "yes";
-		if (checkUpdate)
+		if (checkUpdate && connectionAwailable)
 		{
             string remoteUri = IniFileUtils.getProfileStringWithDefault("Setup", "ServerURI", "https://opengd77rus.ru/data/") + "Version.num";
             WebClient checker = new WebClient();

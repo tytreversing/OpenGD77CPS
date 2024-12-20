@@ -144,7 +144,7 @@ public class FirmwareLoaderUI_STM32 : Form
 			IniFileUtils.WriteProfileString("Setup", "LastFirmwareLocation" + outputType, Path.GetDirectoryName(dlgOpenFile.FileName));
             if (chkAutoUpdateLanguage.Checked)
             {
-                downloadGLA();
+                    downloadGLA();
             }    
             lblMessage.Text = "";
 			Progress.Value = 0;
@@ -632,47 +632,76 @@ public class FirmwareLoaderUI_STM32 : Form
         }
     }
 
-    private void downloadGLA(bool showMessage = false)
+    private bool hasInternet()
     {
-        string remoteUri = IniFileUtils.getProfileStringWithDefault("Setup", "ServerURI", "https://opengd77rus.ru/data/");
-        string fileName = "Russian.gla", fullURI = null;
-        DialogResult dialogResult = DialogResult.Yes;
-        lblMessage.Text = "";
-        if (showMessage) 
-            dialogResult = MessageBox.Show(StringsDict["WillBeReplaced"], StringsDict["DownloadRussian"], MessageBoxButtons.YesNo);
-        if (dialogResult == DialogResult.Yes)
+        try
         {
-            WebClient glaDownloader = new WebClient();
-            fullURI = remoteUri + fileName;
-            try
+            HttpWebRequest httpReq = (HttpWebRequest)HttpWebRequest.Create("https://opengd77rus.ru");
+            httpReq.Timeout = 1000;
+            HttpWebResponse httpWeb = (HttpWebResponse)httpReq.GetResponse();
+            if (HttpStatusCode.OK == httpWeb.StatusCode)
             {
-                if (File.Exists(Application.StartupPath + "\\Language\\Firmware\\Russian.gla"))
-                {
-                    File.Delete(Application.StartupPath + "\\Language\\Firmware\\Russian.bak");
-                    File.Move(Application.StartupPath + "\\Language\\Firmware\\Russian.gla", Application.StartupPath + "\\Language\\Firmware\\Russian.bak");
-                }
-               
+                httpWeb.Close();
+                return true;
             }
-            catch (Exception ex)
+            else
             {
-                lblMessage.Text = ex.Message;
-                File.Move(Application.StartupPath + "\\Language\\Firmware\\Russian.bak", Application.StartupPath + "\\Language\\Firmware\\Russian.gla");
-                return;
-            }
-            try
-            {
-                glaDownloader.DownloadFile(fullURI, Application.StartupPath + "\\Language\\Firmware\\" + fileName);
-            }
-            catch (Exception ex)
-            {
-                lblMessage.Text = ex.Message;
-                File.Move(Application.StartupPath + "\\Language\\Firmware\\Russian.bak", Application.StartupPath + "\\Language\\Firmware\\Russian.gla");
-            }
-            finally
-            {
-                lblMessage.Text = StringsDict["FileUpdated"];
+                httpWeb.Close();
+                return false;
             }
         }
+        catch (WebException)
+        {
+            return false;
+        }
+    }
+
+    private void downloadGLA(bool showMessage = false)
+    {
+        if (hasInternet())
+        {
+            string remoteUri = IniFileUtils.getProfileStringWithDefault("Setup", "ServerURI", "https://opengd77rus.ru/data/");
+            string fileName = "Russian.gla", fullURI = null;
+            DialogResult dialogResult = DialogResult.Yes;
+            lblMessage.Text = "";
+            if (showMessage)
+                dialogResult = MessageBox.Show(StringsDict["WillBeReplaced"], StringsDict["DownloadRussian"], MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                WebClient glaDownloader = new WebClient();
+                fullURI = remoteUri + fileName;
+                try
+                {
+                    if (File.Exists(Application.StartupPath + "\\Language\\Firmware\\Russian.gla"))
+                    {
+                        File.Delete(Application.StartupPath + "\\Language\\Firmware\\Russian.bak");
+                        File.Move(Application.StartupPath + "\\Language\\Firmware\\Russian.gla", Application.StartupPath + "\\Language\\Firmware\\Russian.bak");
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    lblMessage.Text = ex.Message;
+                    File.Move(Application.StartupPath + "\\Language\\Firmware\\Russian.bak", Application.StartupPath + "\\Language\\Firmware\\Russian.gla");
+                    return;
+                }
+                try
+                {
+                    glaDownloader.DownloadFile(fullURI, Application.StartupPath + "\\Language\\Firmware\\" + fileName);
+                }
+                catch (Exception ex)
+                {
+                    lblMessage.Text = ex.Message;
+                    File.Move(Application.StartupPath + "\\Language\\Firmware\\Russian.bak", Application.StartupPath + "\\Language\\Firmware\\Russian.gla");
+                }
+                finally
+                {
+                    lblMessage.Text = StringsDict["FileUpdated"];
+                }
+            }
+        }
+        else
+            lblMessage.Text = StringsDict["FileUpdated"];
     }
 
     private void downloadRussian_Click(object sender, EventArgs e)

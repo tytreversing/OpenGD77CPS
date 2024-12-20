@@ -1120,6 +1120,7 @@
       <Item Id="DownloadRussian" Text="Скачать русский языковой файл" />
       <Item Id="WillBeReplaced" Text="Существующий файл будет сохранен в резервную копию. Загрузить версию с сервера?" />
       <Item Id="FileUpdated" Text="Загружен актуальный файл локализации" />
+      <Item Id="NoInternet" Text="Нет соединения с сервером!" />
 			<Item Id="FirmwareFiles" Text="Файлы прошивки" />
 			<Item Id="OfficialFWVerified" Text="The official firmware file has been verified, and Open firmware uploads will now have DMR functionality" />
 			<Item Id="OfficialFWNotCorrect" Text="The file you selected was NOT the official firmware version" />

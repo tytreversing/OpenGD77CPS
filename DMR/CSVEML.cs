@@ -253,7 +253,7 @@ internal class CSVEML
 		return text;
 	}
 
-	private static void Insertstring(int offset, string st, byte maxlen, byte filler)
+	private static void InsertString(int offset, string st, byte maxlen, byte filler)
 	{
 		int num = 0;
 		int length = st.Length;
@@ -552,7 +552,7 @@ internal class CSVEML
 		for (int i = 0; i < ContactForm.data.Count; i++)
 		{
 			int num = Settings.ADDR_DMR_CONTACT_EX + i * 24;
-			Insertstring(num, ContactName[i], 16, byte.MaxValue);
+			InsertString(num, ContactName[i], 16, byte.MaxValue);
 			InsertID(num + 16, ContactID[i]);
 			InsertByte(num + 20, ContactType[i]);
 			InsertByte(num + 23, ContactTS[i]);
@@ -579,7 +579,7 @@ internal class CSVEML
 		for (int i = 0; i < 63; i++)
 		{
 			int num = Settings.ADDR_DTMF_CONTACT + i * 32;
-			Insertstring(num, DTMFName[i], 16, byte.MaxValue);
+			InsertString(num, DTMFName[i], 16, byte.MaxValue);
 			InsertDTMFCode(num + 16, DTMFCode[i]);
 		}
 	}
@@ -638,7 +638,7 @@ internal class CSVEML
 		{
 			int num = 0;
 			int num2 = Settings.ADDR_RX_GRP_LIST_EX + 128 + i * 80;
-			Insertstring(num2, TGListName[i], 16, 0);
+			InsertString(num2, TGListName[i], 16, 0);
 			if (TGListName[i] != "")
 			{
 				num = 1;
@@ -749,12 +749,12 @@ internal class CSVEML
 				int num2 = ChannelStartBank[i] + 16 + j * 56;
 				if (ChannelName[num] == "")
 				{
-					Insertstring(num2, ChannelName[num], 16, 0);
+					InsertString(num2, ChannelName[num], 16, 0);
 					SetBitArray(ChannelStartBank[i], (byte)j, 0);
 				}
 				else
 				{
-					Insertstring(num2, ChannelName[num], 16, byte.MaxValue);
+					InsertString(num2, ChannelName[num], 16, byte.MaxValue);
 					SetBitArray(ChannelStartBank[i], (byte)j, 1);
 				}
 				for (int k = 0; k < 40; k++)
@@ -801,12 +801,12 @@ internal class CSVEML
 			int num = Settings.ADDR_EX_ZONE_LIST + 32 + i * 176;
 			if (ZoneName[i] != "")
 			{
-				Insertstring(num, ZoneName[i], 16, byte.MaxValue);
+				InsertString(num, ZoneName[i], 16, byte.MaxValue);
 				SetBitArray(Settings.ADDR_EX_ZONE_LIST, (byte)i, 1);
 			}
 			else
 			{
-				Insertstring(num, ZoneName[i], 16, 0);
+				InsertString(num, ZoneName[i], 16, 0);
 				SetBitArray(Settings.ADDR_EX_ZONE_LIST, (byte)i, 0);
 			}
 			for (int j = 0; j < 80; j++)

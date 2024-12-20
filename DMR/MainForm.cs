@@ -7,6 +7,7 @@ using System.Drawing.Drawing2D;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.NetworkInformation;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
@@ -1638,6 +1639,9 @@ public class MainForm : Form
         {
 			MessageBox.Show("Программа установлена в папку " + thisFilePath + ", но не запущена от имени администратора. Автообновление файла локализации и ручное его скачивание через Загрузчик прошивки будет недоступно из-за ограничений Windows. Удалите программу и переустановите ее в другую папку, либо установите для исполняемого файла программы галочку запуска от имени администратора.", "Внимание!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         };
+
+        using Ping ping = new();
+
         string _profileStringWithDefault = IniFileUtils.getProfileStringWithDefault("Setup", "RadioType", "MD9600");
         if (!(_profileStringWithDefault == "MD9600"))
         {
@@ -1889,7 +1893,7 @@ public class MainForm : Form
 
 	private string getMainTitleStub()
 	{
-		return "OpenGD77 RUS  [" + PRODUCT_VERSION + "]";
+		return "OpenGD77 RUS  [Версия " + PRODUCT_VERSION + "]";
 	}
 
 	private void MainForm_MdiChildActivate(object sender, EventArgs e)

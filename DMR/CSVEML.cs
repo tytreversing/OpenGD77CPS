@@ -5,6 +5,7 @@ using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
+using System.Xml.Linq;
 using Microsoft.VisualBasic.FileIO;
 
 namespace DMR;
@@ -227,27 +228,53 @@ internal class CSVEML
 		ExtractDTMFs();
 	}
 
-	private static string Extractstring(int offset, short maxlen)
+	private static string ExtractString(int offset, short maxlen)
 	{
 		string text = "";
-		for (int i = 0; i < maxlen; i++)
+        Encoding decoder = Encoding.GetEncoding(1251);
+        Encoding encoder = Encoding.UTF8;
+		byte[] inBuffer = new byte[maxlen];
+        byte[] outBuffer = new byte[maxlen];
+		int stop = 0;
+        for (int i = 0; i < maxlen; i++)
 		{
 			int num = Codeplug[offset + i];
 			if (num == 0 || num == 255)
 			{
 				break;
 			}
-			text += (char)num;
+			stop++;
+			if (num == 0x7f)
+				num = 0xff;
+			inBuffer[i] = (byte)num;
 		}
+		outBuffer = Encoding.Convert(decoder, encoder, inBuffer, 0, stop);
+		text = encoder.GetString(outBuffer);
 		return text;
 	}
 
 	private static void Insertstring(int offset, string st, byte maxlen, byte filler)
 	{
+		int num = 0;
 		int length = st.Length;
-		for (int i = 0; i < maxlen; i++)
+        Encoding decoder = Encoding.GetEncoding(1251);
+		byte[] inBuffer = new byte[maxlen];
+		inBuffer = decoder.GetBytes(st);
+        for (int i = 0; i < inBuffer.Length; i++)
 		{
-			int num = ((i < length) ? ((int)st[i]) : ((int)filler));
+			if (inBuffer[i] == 0xff)
+				inBuffer[i] = 0x7f;
+		}
+        for (int i = 0; i < maxlen; i++)
+		{
+			if (i<length)
+			{
+				num = (int)inBuffer[i];
+			}
+			else
+			{
+				num = filler;
+			}
 			Codeplug[offset + i] = (byte)num;
 		}
 	}
@@ -509,7 +536,7 @@ internal class CSVEML
 		for (int i = 0; i < ContactForm.data.Count; i++)
 		{
 			int num = Settings.ADDR_DMR_CONTACT_EX + i * 24;
-			ContactName[i] = Extractstring(num, 16);
+			ContactName[i] = ExtractString(num, 16);
 			ContactID[i] = ExtractID(num + 16);
 			ContactType[i] = ExtractByte(num + 20);
 			ContactTS[i] = ExtractByte(num + 23);
@@ -538,7 +565,7 @@ internal class CSVEML
 		for (int i = 0; i < 63; i++)
 		{
 			int num = Settings.ADDR_DTMF_CONTACT + i * 32;
-			DTMFName[i] = Extractstring(num, 16);
+			DTMFName[i] = ExtractString(num, 16);
 			DTMFCode[i] = ExtractDTMFCode(num + 16);
 			if (DTMFName[i] != "")
 			{
@@ -577,7 +604,7 @@ internal class CSVEML
 			if (tGListSize > 0)
 			{
 				tGListSize--;
-				TGListName[i] = Extractstring(num, 16);
+				TGListName[i] = ExtractString(num, 16);
 				for (int j = 0; j < 32; j++)
 				{
 					if (j < tGListSize)
@@ -690,7 +717,7 @@ internal class CSVEML
 				int num2 = ChannelStartBank[i] + 16 + j * 56;
 				if (TestBitArray(ChannelStartBank[i], (byte)j) == 1)
 				{
-					ChannelName[num] = Extractstring(num2, 16);
+					ChannelName[num] = ExtractString(num2, 16);
 					for (int k = 0; k < 40; k++)
 					{
 						ChannelByte[num, k] = ExtractByte(num2 + 16 + k);
@@ -746,7 +773,7 @@ internal class CSVEML
 			int num = Settings.ADDR_EX_ZONE_LIST + 32 + i * 176;
 			if (TestBitArray(Settings.ADDR_EX_ZONE_LIST, (byte)i) == 1)
 			{
-				ZoneName[i] = Extractstring(num, 16);
+				ZoneName[i] = ExtractString(num, 16);
 				for (int j = 0; j < 80; j++)
 				{
 					ZoneMember[i, j] = (short)(ExtractByte(num + 16 + j * 2) + ExtractByte(num + 17 + j * 2) * 256);
@@ -1143,10 +1170,15 @@ internal class CSVEML
 			if (TGListName[j] != "")
 			{
 				TGListCount++;
-				text = text + NumberFormatting(TGListName[j]) + writeSeparator;
+				string outListName = /*convert1251toUTF8*/(TGListName[j]);
+				string outContactName = "";
+				text = text + NumberFormatting(outListName) + writeSeparator;
 				for (int k = 0; k < 32; k++)
 				{
-					text = ((TGListMember[j, k] <= 0) ? (text + writeSeparator) : (text + NumberFormatting(ContactName[TGListMember[j, k] - 1]) + writeSeparator));
+					if (TGListMember[j, k] > 0) 
+						outContactName = convert1251toUTF8(ContactName[TGListMember[j, k] - 1]);
+
+                    text = ((TGListMember[j, k] <= 0) ? (text + writeSeparator) : (text + NumberFormatting(outContactName) + writeSeparator));
 				}
 				text = text.Substring(0, text.Length - 1);
 				text += Environment.NewLine;
@@ -1263,10 +1295,19 @@ internal class CSVEML
 			if (ZoneName[j] != "")
 			{
 				Zonecount++;
-				text = text + NumberFormatting(ZoneName[j]) + writeSeparator;
+				string zone = ZoneName[j];
+                text = text + NumberFormatting(zone) + writeSeparator;
 				for (int k = 0; k < 80; k++)
 				{
-					text = ((ZoneMember[j, k] <= 0) ? (text + writeSeparator) : (text + NumberFormatting(ChannelName[ZoneMember[j, k] - 1]) + writeSeparator));
+					if (ZoneMember[j, k] <= 0)
+					{ 
+						text += writeSeparator;
+					}
+					else
+					{
+						string name = ChannelName[ZoneMember[j, k] - 1];
+                        text += NumberFormatting(name) + writeSeparator;
+					};
 				}
 				text = text.Substring(0, text.Length - 1);
 				text += Environment.NewLine;
@@ -1284,7 +1325,8 @@ internal class CSVEML
 		return true;
 	}
 
-	private static bool OpenZonesCSV()
+
+    private static bool OpenZonesCSV()
 	{
 		string text = CSVName + "Zones.csv";
 		int num = (append ? Zonecount : 0);

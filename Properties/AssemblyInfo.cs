@@ -8,7 +8,7 @@ using System.Security.Permissions;
 
 [assembly: ComVisible(false)]
 [assembly: Guid("5fe60217-045f-4e01-82b5-3953a1856b3f")]
-[assembly: AssemblyFileVersion("2024.12.20.0")]
+[assembly: AssemblyFileVersion("2024.12.21.0")]
 [assembly: AssemblyTrademark("OpenGD77 RUS")]
 [assembly: AssemblyTitle("OpenGD77 RUS CPS")]
 [assembly: AssemblyCopyright("Aufwiegler, 2024")]
@@ -18,4 +18,4 @@ using System.Security.Permissions;
 [assembly: AssemblyProduct("OpenGD77 RUS CPS")]
 [assembly: AssemblyDelaySign(false)]
 [assembly: AssemblyKeyName("")]
-[assembly: AssemblyVersion("2024.12.20.0")]
+[assembly: AssemblyVersion("2024.12.21.0")]

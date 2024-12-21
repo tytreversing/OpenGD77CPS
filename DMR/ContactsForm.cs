@@ -134,6 +134,7 @@ public class ContactsForm : DockContent, IDisp, ISingleRow
             this.btnSortContacts.TabIndex = 13;
             this.btnSortContacts.Text = "Sort by name";
             this.btnSortContacts.UseVisualStyleBackColor = false;
+            this.btnSortContacts.Visible = false;
             // 
             // btnInternetDownload
             // 

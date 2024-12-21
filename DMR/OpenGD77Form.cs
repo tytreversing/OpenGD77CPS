@@ -2882,14 +2882,17 @@ public class OpenGD77Form : Form
 		if (DialogResult.OK == openFileDialog.ShowDialog())
 		{
 			OpenGD77CommsTransferData openGD77CommsTransferData = new OpenGD77CommsTransferData(OpenGD77CommsTransferData.CommsAction.WRITE_VOICE_PROMPTS);
-			openGD77CommsTransferData.dataBuff = File.ReadAllBytes(openFileDialog.FileName);
+            byte[] dataBuff = Enumerable.Repeat(byte.MaxValue, 4).ToArray();
+            openGD77CommsTransferData.dataBuff = dataBuff;
+            perFormCommsTask(openGD77CommsTransferData);
+            openGD77CommsTransferData.dataBuff = File.ReadAllBytes(openFileDialog.FileName);
 			IniFileUtils.WriteProfileString("Setup", "LastVoicePromptLocation", Path.GetDirectoryName(openFileDialog.FileName));
 			if (openGD77CommsTransferData.dataBuff.Length > 166912)
 			{
 				MessageBox.Show(StringsDict["Voice_prompts_file_is_too_large"], StringsDict["Error"], MessageBoxButtons.OK, MessageBoxIcon.Hand);
 				return;
 			}
-			enableDisableAllButtons(show: false);
+            enableDisableAllButtons(show: false);
 			perFormCommsTask(openGD77CommsTransferData);
 		}
 	}

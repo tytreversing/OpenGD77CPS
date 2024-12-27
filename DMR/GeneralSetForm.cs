@@ -1207,7 +1207,7 @@ public class GeneralSetForm : DockContent, IDisp
             this.pnlFill.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlFill.Location = new System.Drawing.Point(0, 0);
             this.pnlFill.Name = "pnlFill";
-            this.pnlFill.Size = new System.Drawing.Size(309, 120);
+            this.pnlFill.Size = new System.Drawing.Size(312, 118);
             this.pnlFill.TabIndex = 0;
             // 
             // btnLookupIDForCallsign
@@ -1992,7 +1992,7 @@ public class GeneralSetForm : DockContent, IDisp
             // GeneralSetForm
             // 
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(309, 120);
+            this.ClientSize = new System.Drawing.Size(312, 118);
             this.Controls.Add(this.pnlFill);
             this.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;

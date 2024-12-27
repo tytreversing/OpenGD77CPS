@@ -1449,7 +1449,7 @@ public class OpenGD77Form : Form
 	private void worker_DoWork(object sender, DoWorkEventArgs e)
 	{
 		OpenGD77CommsTransferData openGD77CommsTransferData = e.Argument as OpenGD77CommsTransferData;
-		int aDDR_OPENGD77_CUSTOM_DATA_START = Settings.ADDR_OPENGD77_CUSTOM_DATA_START;
+		int ADDR_OPENGD77_CUSTOM_DATA_START = Settings.ADDR_OPENGD77_CUSTOM_DATA_START;
 		if (commPort == null)
 		{
 			SystemSounds.Hand.Play();
@@ -1822,7 +1822,7 @@ public class OpenGD77Form : Form
 				{
 					openGD77CommsTransferData.startDataAddressInTheRadio = 503808;
 				}
-				openGD77CommsTransferData.transferLength = aDDR_OPENGD77_CUSTOM_DATA_START - openGD77CommsTransferData.localDataBufferStartPosition;
+				openGD77CommsTransferData.transferLength = ADDR_OPENGD77_CUSTOM_DATA_START - openGD77CommsTransferData.localDataBufferStartPosition;
 				displayMessage(string.Format(StringsDict["Reading_Flash"] + " 0x{0:X6} - 0x{1:X6}", openGD77CommsTransferData.localDataBufferStartPosition, openGD77CommsTransferData.localDataBufferStartPosition + openGD77CommsTransferData.transferLength));
 				if (!ReadFlashOrEEPROMOrROMOrScreengrab(commPort, openGD77CommsTransferData))
 				{
@@ -1928,7 +1928,7 @@ public class OpenGD77Form : Form
 				{
 					openGD77CommsTransferData.startDataAddressInTheRadio = 503808;
 				}
-				openGD77CommsTransferData.transferLength = aDDR_OPENGD77_CUSTOM_DATA_START - openGD77CommsTransferData.localDataBufferStartPosition;
+				openGD77CommsTransferData.transferLength = ADDR_OPENGD77_CUSTOM_DATA_START - openGD77CommsTransferData.localDataBufferStartPosition;
 				displayMessage(string.Format(StringsDict["Writing_Flash"] + " 0x{0:X6} - 0x{1:X6}", openGD77CommsTransferData.localDataBufferStartPosition, openGD77CommsTransferData.localDataBufferStartPosition + openGD77CommsTransferData.transferLength));
 				if (!WriteFlash(commPort, openGD77CommsTransferData))
 				{

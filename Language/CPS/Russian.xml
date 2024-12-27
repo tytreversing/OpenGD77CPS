@@ -684,17 +684,17 @@
 	<VfoForm Text="Vfo">
 		<Controls>
 			<Control Id="btnCopy" Text=">>" />
-			<Control Id="lblSquelch" Text="Squelch" />
-			<Control Id="lblSql" Text="OpenGD77 Squelch Level" />
-			<Control Id="grpDigit" Text="Digital" />
+			<Control Id="lblSquelch" Text="Шумоподавление" />
+			<Control Id="lblSql" Text="Шумоподавитель" />
+			<Control Id="grpDigit" Text="Цифровой режим" />
 			<Control Id="lblTimingPreference" Text="Timing Leader Preference" />
-			<Control Id="lblRepeaterSlot" Text="Repeater Slot" />
+			<Control Id="lblRepeaterSlot" Text="Таймслот" />
 			<Control Id="lblArs" Text="ARS" />
 			<Control Id="lblKeySwitch" Text="Privacy" />
 			<Control Id="lblKey" Text="Privacy Group" />
-			<Control Id="lblTxColor" Text="Color Code" />
+			<Control Id="lblTxColor" Text="Колоркод" />
 			<Control Id="lblEmgSystem" Text="APRS" />
-			<Control Id="lblContact" Text="Contact" />
+			<Control Id="lblContact" Text="Контакт" />
 			<Control Id="chkDualCapacity" Text="Dual Capacity Direct Mode" />
 			<Control Id="chkUdpDataHead" Text="Compressed UDP Data Header" />
 			<Control Id="chkAllowTxInterupt" Text="Allow Interruption" />
@@ -703,51 +703,51 @@
 			<Control Id="chkDataCall" Text="Data Call Confirmed" />
 			<Control Id="chkEmgConfirmed" Text="Emergency Alarm Ack" />
 			<Control Id="chkEnhancedChAccess" Text="Enhanced Channel Access" />
-			<Control Id="lblRxColor" Text="Rx Color Code" />
-			<Control Id="lblRxGroup" Text="TG List" />
-			<Control Id="chkRxOnly" Text="Rx Only" />
+			<Control Id="lblRxColor" Text="Колоркод Rx" />
+			<Control Id="lblRxGroup" Text="Список групп" />
+			<Control Id="chkRxOnly" Text="Только прием" />
 			<Control Id="chkAllowTalkaround" Text="Allow Talkaround" />
-			<Control Id="grpAnalog" Text="Analog" />
-			<Control Id="lblChBandwidth" Text="Bandwidth [KHz]" />
+			<Control Id="grpAnalog" Text="Аналоговый режим" />
+			<Control Id="lblChBandwidth" Text="Полоса, кГц" />
 			<Control Id="lblVoiceEmphasis" Text="Voice Emphasis" />
 			<Control Id="lblSte" Text="STE" />
 			<Control Id="lblNonSte" Text="Non STE" />
-			<Control Id="lblRxTone" Text="Rx Tone [Hz]" />
+			<Control Id="lblRxTone" Text="Субтон на прием" />
 			<Control Id="lblRxSignaling" Text="Rx Signaling System" />
 			<Control Id="lblUnmuteRule" Text="Unmute Rule" />
 			<Control Id="lblArtsInterval" Text="ARTS Interval [s]" />
 			<Control Id="lblPttidType" Text="PTTID Type" />
 			<Control Id="lblTxSignaling" Text="Tx Signaling System" />
-			<Control Id="lblTxTone" Text="Tx Tone [Hz]" />
+			<Control Id="lblTxTone" Text="Субтон на передачу" />
 			<Control Id="chkDataPl" Text="PL for Data" />
 			<Control Id="chkLoneWoker" Text="Lone Work" />
-			<Control Id="chkOpenGD77ScanAllSkip" Text="Scan: All skip" />
-			<Control Id="chkVox" Text="Vox" />
+			<Control Id="chkOpenGD77ScanAllSkip" Text="Пропуск при сканировании всех зон" />
+			<Control Id="chkVox" Text="Активация голосом" />
 			<Control Id="chkAutoScan" Text="Auto Scan" />
-			<Control Id="chkOpenGD77ScanZoneSkip" Text="Scan: Zone skip" />
-			<Control Id="chkNoBeep" Text="No Beep" />
-			<Control Id="chkNoEco" Text="No Eco" />
+			<Control Id="chkOpenGD77ScanZoneSkip" Text="Пропуск при сканировании зоны" />
+			<Control Id="chkNoBeep" Text="Без сигналов" />
+			<Control Id="chkNoEco" Text="Без экономайзера" />
 			<Control Id="chkDMRForceDMO" Text="Принудительно DMO" />
-			<Control Id="lblChName" Text="Name" />
-			<Control Id="lblChMode" Text="Mode" />
-			<Control Id="lblTot" Text="TOT [s]" />
+			<Control Id="lblChName" Text="Имя" />
+			<Control Id="lblChMode" Text="Режим" />
+			<Control Id="lblTot" Text="Ограничение передачи, с" />
 			<Control Id="lblTotRekey" Text="TOT Rekey Delay [s]" />
 			<Control Id="lblRssiThreshold" Text="RSSI Threshold [dBm]" />
 			<Control Id="lblRxRefFreq" Text="Rx Reference Frequency" />
 			<Control Id="lblTxRefFreq" Text="Tx Reference Frequency" />
-			<Control Id="lblRxFreq" Text="Rx Freq [MHz]" />
-			<Control Id="lblLibreDMR_Power" Text="Power Level" />
+			<Control Id="lblRxFreq" Text="Прием, МГц" />
+			<Control Id="lblLibreDMR_Power" Text="Мощность" />
 			<Control Id="lblAdmitCriteria" Text="Admit Criteria" />
-			<Control Id="lblTxFreq" Text="Tx Freq [MHz]" />
-			<Control Id="lblLatitude" Text="Latitude" />
-			<Control Id="lblOffsetStep" Text="Offset Step" />
+			<Control Id="lblTxFreq" Text="Передача, МГц" />
+			<Control Id="lblLatitude" Text="Широта" />
+			<Control Id="lblOffsetStep" Text="Шаг сетки" />
 			<Control Id="lblOffsetDirection" Text="Offset Direction" />
 			<Control Id="lblOffsetFreq" Text="Offset Freq" />
-			<Control Id="lblTS1TaTx" Text="TS1 Talker Alias Tx" />
-			<Control Id="lblTS2TaTx" Text="TS2 Talker Alias Tx" />
+			<Control Id="lblTS1TaTx" Text="Алиас в таймслоте 1" />
+			<Control Id="lblTS2TaTx" Text="Алиас в таймслоте 2" />
 		</Controls>
 		<Commons>
-			<Item Id="ChMode" Text="Analog,Digital" />
+			<Item Id="ChMode" Text="Аналог,Цифра" />
 			<Item Id="RefFreq" Text="Low,Middle,High" />
 			<Item Id="Power" Text="Low,High" />
 			<Item Id="AdmitCriterica" Text="Always,Channel Free,CTCSS/DCS" />
@@ -1209,7 +1209,7 @@
 			<Control Id="lblColour_13" Text="Выделение меню"/>
 			<Control Id="lblColour_14" Text="Значение параметра"/>
 			<Control Id="lblColour_15" Text="Текст заголовка"/>
-			<Control Id="lblColour_16" Text="Фон заголовка"/>
+			<Control Id="lblColour_16" Text="Фон заголовка и подвала"/>
 			<Control Id="lblColour_17" Text="Полоска RSSI"/>
 			<Control Id="lblColour_18" Text="Полоска RSSI S9+"/>
 			<Control Id="lblColour_19" Text="Название канала"/>

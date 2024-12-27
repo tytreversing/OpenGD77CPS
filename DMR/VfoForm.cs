@@ -2254,9 +2254,9 @@ public class VfoForm : DockContent, IDisp
             // 
             // lblOffsetStep
             // 
-            this.lblOffsetStep.Location = new System.Drawing.Point(245, 56);
+            this.lblOffsetStep.Location = new System.Drawing.Point(225, 56);
             this.lblOffsetStep.Name = "lblOffsetStep";
-            this.lblOffsetStep.Size = new System.Drawing.Size(113, 20);
+            this.lblOffsetStep.Size = new System.Drawing.Size(133, 20);
             this.lblOffsetStep.TabIndex = 6;
             this.lblOffsetStep.Text = "Offset Step";
             this.lblOffsetStep.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -2695,7 +2695,7 @@ public class VfoForm : DockContent, IDisp
             // 
             this.chkRxOnly.AccessibleDescription = "Rx only";
             this.chkRxOnly.AccessibleName = "Rx only";
-            this.chkRxOnly.Location = new System.Drawing.Point(802, 63);
+            this.chkRxOnly.Location = new System.Drawing.Point(832, 69);
             this.chkRxOnly.Name = "chkRxOnly";
             this.chkRxOnly.Size = new System.Drawing.Size(295, 20);
             this.chkRxOnly.TabIndex = 18;
@@ -2783,9 +2783,9 @@ public class VfoForm : DockContent, IDisp
             // 
             // lblChBandwidth
             // 
-            this.lblChBandwidth.Location = new System.Drawing.Point(252, 34);
+            this.lblChBandwidth.Location = new System.Drawing.Point(181, 34);
             this.lblChBandwidth.Name = "lblChBandwidth";
-            this.lblChBandwidth.Size = new System.Drawing.Size(143, 20);
+            this.lblChBandwidth.Size = new System.Drawing.Size(214, 20);
             this.lblChBandwidth.TabIndex = 23;
             this.lblChBandwidth.Text = "Channel Bandwidth [KHz]";
             this.lblChBandwidth.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -2846,7 +2846,7 @@ public class VfoForm : DockContent, IDisp
             this.cmbRxTone.AccessibleName = "Rx CTCSS / DCS";
             this.cmbRxTone.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbRxTone.FormattingEnabled = true;
-            this.cmbRxTone.Location = new System.Drawing.Point(137, 59);
+            this.cmbRxTone.Location = new System.Drawing.Point(52, 50);
             this.cmbRxTone.MaxLength = 5;
             this.cmbRxTone.Name = "cmbRxTone";
             this.cmbRxTone.Size = new System.Drawing.Size(120, 24);
@@ -2889,9 +2889,9 @@ public class VfoForm : DockContent, IDisp
             // 
             // lblRxTone
             // 
-            this.lblRxTone.Location = new System.Drawing.Point(9, 59);
+            this.lblRxTone.Location = new System.Drawing.Point(12, 22);
             this.lblRxTone.Name = "lblRxTone";
-            this.lblRxTone.Size = new System.Drawing.Size(119, 20);
+            this.lblRxTone.Size = new System.Drawing.Size(161, 20);
             this.lblRxTone.TabIndex = 21;
             this.lblRxTone.Text = "Rx CTCSS/DCS [Hz]";
             this.lblRxTone.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -2908,9 +2908,9 @@ public class VfoForm : DockContent, IDisp
             // 
             // lblSql
             // 
-            this.lblSql.Location = new System.Drawing.Point(217, 89);
+            this.lblSql.Location = new System.Drawing.Point(181, 89);
             this.lblSql.Name = "lblSql";
-            this.lblSql.Size = new System.Drawing.Size(180, 20);
+            this.lblSql.Size = new System.Drawing.Size(216, 20);
             this.lblSql.TabIndex = 27;
             this.lblSql.Text = "Squelch Level";
             this.lblSql.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -2937,9 +2937,9 @@ public class VfoForm : DockContent, IDisp
             // 
             // lblEmgSystem
             // 
-            this.lblEmgSystem.Location = new System.Drawing.Point(229, 121);
+            this.lblEmgSystem.Location = new System.Drawing.Point(181, 121);
             this.lblEmgSystem.Name = "lblEmgSystem";
-            this.lblEmgSystem.Size = new System.Drawing.Size(166, 20);
+            this.lblEmgSystem.Size = new System.Drawing.Size(214, 20);
             this.lblEmgSystem.TabIndex = 18;
             this.lblEmgSystem.Text = "APRS";
             this.lblEmgSystem.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -3022,9 +3022,9 @@ public class VfoForm : DockContent, IDisp
             // 
             // lblTxTone
             // 
-            this.lblTxTone.Location = new System.Drawing.Point(276, 63);
+            this.lblTxTone.Location = new System.Drawing.Point(178, 63);
             this.lblTxTone.Name = "lblTxTone";
-            this.lblTxTone.Size = new System.Drawing.Size(119, 20);
+            this.lblTxTone.Size = new System.Drawing.Size(217, 20);
             this.lblTxTone.TabIndex = 25;
             this.lblTxTone.Text = "Tx CTCSS/DCS [Hz]";
             this.lblTxTone.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -3044,7 +3044,7 @@ public class VfoForm : DockContent, IDisp
             // 
             this.chkOpenGD77ScanAllSkip.AccessibleDescription = "Scan. All skip";
             this.chkOpenGD77ScanAllSkip.AccessibleName = "Scan. All skip";
-            this.chkOpenGD77ScanAllSkip.Location = new System.Drawing.Point(802, 25);
+            this.chkOpenGD77ScanAllSkip.Location = new System.Drawing.Point(832, 31);
             this.chkOpenGD77ScanAllSkip.Name = "chkOpenGD77ScanAllSkip";
             this.chkOpenGD77ScanAllSkip.Size = new System.Drawing.Size(295, 20);
             this.chkOpenGD77ScanAllSkip.TabIndex = 16;
@@ -3055,7 +3055,7 @@ public class VfoForm : DockContent, IDisp
             // 
             this.chkVox.AccessibleDescription = "VOX";
             this.chkVox.AccessibleName = "VOX";
-            this.chkVox.Location = new System.Drawing.Point(802, 44);
+            this.chkVox.Location = new System.Drawing.Point(832, 50);
             this.chkVox.Name = "chkVox";
             this.chkVox.Size = new System.Drawing.Size(295, 20);
             this.chkVox.TabIndex = 17;
@@ -3066,7 +3066,7 @@ public class VfoForm : DockContent, IDisp
             // 
             this.chkOpenGD77ScanZoneSkip.AccessibleDescription = "Scan. Zone skip";
             this.chkOpenGD77ScanZoneSkip.AccessibleName = "Scan. Zone skip";
-            this.chkOpenGD77ScanZoneSkip.Location = new System.Drawing.Point(802, 6);
+            this.chkOpenGD77ScanZoneSkip.Location = new System.Drawing.Point(832, 12);
             this.chkOpenGD77ScanZoneSkip.Name = "chkOpenGD77ScanZoneSkip";
             this.chkOpenGD77ScanZoneSkip.Size = new System.Drawing.Size(295, 20);
             this.chkOpenGD77ScanZoneSkip.TabIndex = 15;
@@ -3077,7 +3077,7 @@ public class VfoForm : DockContent, IDisp
             // 
             this.chkNoBeep.AccessibleDescription = "No beep";
             this.chkNoBeep.AccessibleName = "No beep";
-            this.chkNoBeep.Location = new System.Drawing.Point(802, 82);
+            this.chkNoBeep.Location = new System.Drawing.Point(832, 88);
             this.chkNoBeep.Name = "chkNoBeep";
             this.chkNoBeep.Size = new System.Drawing.Size(236, 20);
             this.chkNoBeep.TabIndex = 19;
@@ -3089,7 +3089,7 @@ public class VfoForm : DockContent, IDisp
             // 
             this.chkNoEco.AccessibleDescription = "No economy";
             this.chkNoEco.AccessibleName = "No economy";
-            this.chkNoEco.Location = new System.Drawing.Point(802, 101);
+            this.chkNoEco.Location = new System.Drawing.Point(832, 107);
             this.chkNoEco.Name = "chkNoEco";
             this.chkNoEco.Size = new System.Drawing.Size(236, 20);
             this.chkNoEco.TabIndex = 20;
@@ -3111,9 +3111,9 @@ public class VfoForm : DockContent, IDisp
             // 
             // lblChName
             // 
-            this.lblChName.Location = new System.Drawing.Point(38, 56);
+            this.lblChName.Location = new System.Drawing.Point(12, 56);
             this.lblChName.Name = "lblChName";
-            this.lblChName.Size = new System.Drawing.Size(47, 20);
+            this.lblChName.Size = new System.Drawing.Size(73, 20);
             this.lblChName.TabIndex = 2;
             this.lblChName.Text = "Name";
             this.lblChName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -3122,7 +3122,7 @@ public class VfoForm : DockContent, IDisp
             // 
             this.txtTxFreq.AccessibleDescription = "Tx frequency";
             this.txtTxFreq.AccessibleName = "Tx frequency";
-            this.txtTxFreq.Location = new System.Drawing.Point(651, 26);
+            this.txtTxFreq.Location = new System.Drawing.Point(690, 26);
             this.txtTxFreq.Name = "txtTxFreq";
             this.txtTxFreq.Size = new System.Drawing.Size(120, 23);
             this.txtTxFreq.TabIndex = 12;
@@ -3130,18 +3130,18 @@ public class VfoForm : DockContent, IDisp
             // 
             // lblChMode
             // 
-            this.lblChMode.Location = new System.Drawing.Point(38, 26);
+            this.lblChMode.Location = new System.Drawing.Point(12, 26);
             this.lblChMode.Name = "lblChMode";
-            this.lblChMode.Size = new System.Drawing.Size(47, 20);
+            this.lblChMode.Size = new System.Drawing.Size(73, 20);
             this.lblChMode.TabIndex = 0;
             this.lblChMode.Text = "Mode";
             this.lblChMode.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // lblTot
             // 
-            this.lblTot.Location = new System.Drawing.Point(524, 56);
+            this.lblTot.Location = new System.Drawing.Point(490, 56);
             this.lblTot.Name = "lblTot";
-            this.lblTot.Size = new System.Drawing.Size(119, 20);
+            this.lblTot.Size = new System.Drawing.Size(192, 20);
             this.lblTot.TabIndex = 13;
             this.lblTot.Text = "TOT [s]";
             this.lblTot.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -3209,9 +3209,9 @@ public class VfoForm : DockContent, IDisp
             // 
             // lblRxFreq
             // 
-            this.lblRxFreq.Location = new System.Drawing.Point(245, 26);
+            this.lblRxFreq.Location = new System.Drawing.Point(225, 26);
             this.lblRxFreq.Name = "lblRxFreq";
-            this.lblRxFreq.Size = new System.Drawing.Size(113, 20);
+            this.lblRxFreq.Size = new System.Drawing.Size(133, 20);
             this.lblRxFreq.TabIndex = 4;
             this.lblRxFreq.Text = "Rx Frequency [MHz]";
             this.lblRxFreq.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -3238,9 +3238,9 @@ public class VfoForm : DockContent, IDisp
             // 
             // lblPower
             // 
-            this.lblPower.Location = new System.Drawing.Point(237, 86);
+            this.lblPower.Location = new System.Drawing.Point(168, 86);
             this.lblPower.Name = "lblPower";
-            this.lblPower.Size = new System.Drawing.Size(119, 20);
+            this.lblPower.Size = new System.Drawing.Size(188, 20);
             this.lblPower.TabIndex = 8;
             this.lblPower.Text = "Power Level";
             this.lblPower.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -3248,9 +3248,9 @@ public class VfoForm : DockContent, IDisp
             // 
             // lblTxFreq
             // 
-            this.lblTxFreq.Location = new System.Drawing.Point(524, 26);
+            this.lblTxFreq.Location = new System.Drawing.Point(532, 26);
             this.lblTxFreq.Name = "lblTxFreq";
-            this.lblTxFreq.Size = new System.Drawing.Size(119, 20);
+            this.lblTxFreq.Size = new System.Drawing.Size(150, 20);
             this.lblTxFreq.TabIndex = 11;
             this.lblTxFreq.Text = "Tx Frequency [MHz]";
             this.lblTxFreq.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -3259,7 +3259,7 @@ public class VfoForm : DockContent, IDisp
             // 
             this.nudTot.AccessibleDescription = "Timeout";
             this.nudTot.AccessibleName = "Timeout";
-            this.nudTot.Location = new System.Drawing.Point(651, 56);
+            this.nudTot.Location = new System.Drawing.Point(690, 56);
             this.nudTot.Name = "nudTot";
             this.nudTot.Size = new System.Drawing.Size(120, 23);
             this.nudTot.TabIndex = 14;
@@ -3944,9 +3944,9 @@ public class VfoForm : DockContent, IDisp
 		SZ_SQUELCH = new string[2] { "Tight", "Normal" };
 		SZ_SQUELCH_LEVEL = new string[22]
 		{
-			"Master", "Open", "5%", "10%", "15%", "20%", "25%", "30%", "35%", "40%",
+			"Общий", "Открыт", "5%", "10%", "15%", "20%", "25%", "30%", "35%", "40%",
 			"45%", "50%", "55%", "60%", "65%", "70%", "75%", "80%", "85%", "90%",
-			"95%", "Closed"
+			"95%", "Закрыт"
 		};
 		SZ_VOICE_EMPHASIS = new string[4] { "None", "De & Pre", "De Only", "Pre Only" };
 		SZ_STE = new string[4] { "Frequency", "120°", "180°", "240°" };

@@ -958,7 +958,7 @@ public class ContactForm : DockContent, IDisp
             this.cmbRepeaterSlot.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbRepeaterSlot.FormattingEnabled = true;
             this.cmbRepeaterSlot.Items.AddRange(new object[] {
-            "Disabled",
+            "Не задан",
             "TS 1",
             "TS 2"});
             this.cmbRepeaterSlot.Location = new System.Drawing.Point(125, 32);

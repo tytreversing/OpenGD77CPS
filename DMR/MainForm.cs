@@ -1670,7 +1670,7 @@ public class MainForm : Form
 			MessageBox.Show("Программа установлена в папку " + thisFilePath + ", но не запущена от имени администратора. Автообновление файла локализации и ручное его скачивание через Загрузчик прошивки будет недоступно из-за ограничений Windows. Удалите программу и переустановите ее в другую папку, либо установите для исполняемого файла программы галочку запуска от имени администратора.", "Внимание!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         };
 
-		connectionAwailable = hasInternet();
+		
 
         string _profileStringWithDefault = IniFileUtils.getProfileStringWithDefault("Setup", "RadioType", "MD9600");
         if (!(_profileStringWithDefault == "MD9600"))
@@ -1875,6 +1875,7 @@ public class MainForm : Form
 			base.FormClosing += MainForm_FormClosing;
 		}
 		CSVEML.InitCSVs();
+        connectionAwailable = hasInternet();
         pingTimer.Enabled = true;
 		bool checkUpdate = IniFileUtils.getProfileStringWithDefault("Setup", "CheckVersion", "yes") == "yes";
 		if (checkUpdate && connectionAwailable)

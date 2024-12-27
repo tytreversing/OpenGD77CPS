@@ -274,7 +274,7 @@ public class ThemeForm : Form
 		MainForm.RadioInfo = OpenGD77Form.readOpenGD77RadioInfoAndUpdateUSBBufferSize(commPort, stealth);
 		if (MainForm.RadioInfo.identifier == "RUSSIAN")
 		{
-			if (MainForm.RadioInfo.radioType == 5 || MainForm.RadioInfo.radioType == 6 || MainForm.RadioInfo.radioType == 8 || MainForm.RadioInfo.radioType == 10 || MainForm.RadioInfo.radioType == 9 || MainForm.RadioInfo.radioType == 7)
+			if (MainForm.RadioInfo.radioType == 5 || MainForm.RadioInfo.radioType == 6 || MainForm.RadioInfo.radioType == 8 || MainForm.RadioInfo.radioType == 10 || MainForm.RadioInfo.radioType == 9 || MainForm.RadioInfo.radioType == 7 || MainForm.RadioInfo.radioType == 106)
 			{
 				writeCommandCharacter = 'X';
 				((MainForm)OpenGD77Form.getMainForm())?.changeRadioType(MainForm.RadioTypeEnum.RadioTypeSTM32);
@@ -703,7 +703,7 @@ public class ThemeForm : Form
 				MessageBox.Show(OpenGD77StringsDict["No_com_port"]);
 				return;
 			}
-			if (MainForm.RadioInfo.radioType != 6 && MainForm.RadioInfo.radioType != 8 && MainForm.RadioInfo.radioType != 10 && MainForm.RadioInfo.radioType != 9)
+			if (MainForm.RadioInfo.radioType != 6 && MainForm.RadioInfo.radioType != 8 && MainForm.RadioInfo.radioType != 10 && MainForm.RadioInfo.radioType != 9 && MainForm.RadioInfo.radioType != 106)
 			{
 				MessageBox.Show(ThemeStringsDict["colour_not_supported"], OpenGD77StringsDict["Error"]);
 				return;
@@ -724,7 +724,7 @@ public class ThemeForm : Form
 				SystemSounds.Hand.Play();
 				MessageBox.Show(OpenGD77StringsDict["No_com_port"]);
 			}
-			else if (MainForm.RadioInfo.radioType != 6 && MainForm.RadioInfo.radioType != 8 && MainForm.RadioInfo.radioType != 10 && MainForm.RadioInfo.radioType != 9)
+			else if (MainForm.RadioInfo.radioType != 6 && MainForm.RadioInfo.radioType != 8 && MainForm.RadioInfo.radioType != 10 && MainForm.RadioInfo.radioType != 9 && MainForm.RadioInfo.radioType != 106)
 			{
 				MessageBox.Show(ThemeStringsDict["colour_not_supported"], OpenGD77StringsDict["Error"]);
 			}

@@ -74,6 +74,7 @@ public class FirmwareLoaderUI_STM32 : Form
     private Label warning;
     private Label doNotUse;
     private Label lblWarning;
+    private Label label1;
     private GroupBox grpRadioType;
 
 	public FirmwareLoaderUI_STM32()
@@ -341,6 +342,7 @@ public class FirmwareLoaderUI_STM32 : Form
             this.warning = new System.Windows.Forms.Label();
             this.doNotUse = new System.Windows.Forms.Label();
             this.lblWarning = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.grpRadioType.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -530,12 +532,23 @@ public class FirmwareLoaderUI_STM32 : Form
             this.lblWarning.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblWarning.Visible = false;
             // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(13, 161);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(226, 84);
+            this.label1.TabIndex = 18;
+            this.label1.Text = "CPS рассчитана на прошивки, начиная с 20241230. Убедитесь, что прошиваете соответ" +
+    "ствующую сборку.";
+            // 
             // FirmwareLoaderUI_STM32
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(549, 363);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.lblWarning);
             this.Controls.Add(this.btnProgram);
             this.Controls.Add(this.doNotUse);

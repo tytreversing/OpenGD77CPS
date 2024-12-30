@@ -73,8 +73,6 @@ public class FirmwareLoaderUI_STM32 : Form
     private LinkLabel flashInstruction;
     private Label warning;
     private Label doNotUse;
-    private Button downloadRussian;
-    private CheckBox chkAutoUpdateLanguage;
     private Label lblWarning;
     private GroupBox grpRadioType;
 
@@ -109,8 +107,7 @@ public class FirmwareLoaderUI_STM32 : Form
 		flashInstruction.Text = StringsDict["FlashFirmware"];
 		warning.Text = StringsDict["Description"];
 		doNotUse.Text = StringsDict["DoNotUse"];
-        downloadRussian.Text = StringsDict["DownloadRussian"];
-        chkAutoUpdateLanguage.Checked = IniFileUtils.getProfileStringWithDefault("Setup", "AutoUploadLanguageFile", null) == "yes";
+
 
     }
 
@@ -131,9 +128,9 @@ public class FirmwareLoaderUI_STM32 : Form
 				}
 			}
 			
-		    languageFile = Application.StartupPath + "\\Language\\Firmware\\Russian";
+		    //languageFile = Application.StartupPath + "\\Language\\Firmware\\Russian";
 			
-			IniFileUtils.WriteProfileString("Setup", "LastFirmwareLanguage", languageFile);
+			//IniFileUtils.WriteProfileString("Setup", "LastFirmwareLanguage", languageFile);
 			dlgOpenFile.InitialDirectory = IniFileUtils.getProfileStringWithDefault("Setup", "LastFirmwareLocation" + outputType, null);
 			dlgOpenFile.Filter = Settings.dicCommon["FirmwareFilefilter"];
 			dlgOpenFile.Title = Settings.dicCommon["FirmwareSelectorTitle"];
@@ -142,10 +139,10 @@ public class FirmwareLoaderUI_STM32 : Form
 				return;
 			}
 			IniFileUtils.WriteProfileString("Setup", "LastFirmwareLocation" + outputType, Path.GetDirectoryName(dlgOpenFile.FileName));
-            if (chkAutoUpdateLanguage.Checked)
+           /* if (chkAutoUpdateLanguage.Checked)
             {
                     downloadGLA();
-            }    
+            }    */
             lblMessage.Text = "";
 			Progress.Value = 0;
 			Button button = btnProgram;
@@ -153,10 +150,8 @@ public class FirmwareLoaderUI_STM32 : Form
 			bool flag2 = (grpRadioType.Enabled = false);
 			bool flag4 = (button2.Enabled = flag2);
 			bool enabled = (button.Enabled = flag4);
-            downloadRussian.Enabled = false;
-            chkAutoUpdateLanguage.Enabled = false;
 			byte[] openFirmwareBuf = null;
-			byte[] userLanguageBuf = null;
+			//byte[] userLanguageBuf = null;
 			if (Path.GetExtension(dlgOpenFile.FileName).ToLower() == ".zip")
 			{
 				ZipArchive val = ZipFile.OpenRead(dlgOpenFile.FileName);
@@ -171,7 +166,7 @@ public class FirmwareLoaderUI_STM32 : Form
 						}
 						stream.Close();
 					}
-					if (languageFile != "")
+					/*if (languageFile != "")
 					{
 						string langauageFileFullName = languageFile + ".gla";
 						using Stream stream2 = val.Entries.Where((ZipArchiveEntry fn) => fn.FullName == langauageFileFullName).FirstOrDefault().Open();
@@ -181,7 +176,7 @@ public class FirmwareLoaderUI_STM32 : Form
 							userLanguageBuf = memoryStream2.ToArray();
 						}
 						stream2.Close();
-					}
+					}*/
 				}
 				finally
 				{
@@ -190,27 +185,27 @@ public class FirmwareLoaderUI_STM32 : Form
 			}
 			else
 			{
-				if (languageFile != "")
+				/*if (languageFile != "")
 				{
 					string path = languageFile + ".gla";
 					if (!File.Exists(path))
 					{
-                        /*lblMessage.Text = "";
+                        lblMessage.Text = "";
 						MessageBox.Show(string.Format(StringsDict["AdditionalLanguageNotFound"], languageFile + ".gla"));
 						Button button3 = btnProgram;
 						Button button4 = btnSelectDonorFW;
 						flag2 = (grpRadioType.Enabled = true);
 						flag4 = (button4.Enabled = flag2);
 						enabled = (button3.Enabled = flag4);
-						return;*/
+						return;
                         downloadGLA();
 					}
 					languageFile = path;
 					userLanguageBuf = File.ReadAllBytes(languageFile);
-				}
+				}*/
 				openFirmwareBuf = File.ReadAllBytes(dlgOpenFile.FileName);
 			}
-			fwUpdate.UpdateRadioFirmware(this, openFirmwareBuf, officialFirmwareFile, userLanguageBuf, outputType);
+			fwUpdate.UpdateRadioFirmware(this, openFirmwareBuf, officialFirmwareFile, /*userLanguageBuf,*/ outputType);
 		}
 		catch (Exception ex)
 		{
@@ -222,8 +217,6 @@ public class FirmwareLoaderUI_STM32 : Form
 			bool flag2 = (grpRadioType.Enabled = true);
 			bool flag4 = (button6.Enabled = flag2);
 			bool enabled = (button5.Enabled = flag4);
-            downloadRussian.Enabled = true;
-            chkAutoUpdateLanguage.Enabled = true;
         }
 	}
 
@@ -239,8 +232,6 @@ public class FirmwareLoaderUI_STM32 : Form
 		bool flag2 = (grpRadioType.Enabled = true);
 		bool flag4 = (button2.Enabled = flag2);
 		bool enabled = (button.Enabled = flag4);
-        downloadRussian.Enabled = true;
-        chkAutoUpdateLanguage.Enabled = true;
         lblWarning.Visible = true;
     }
 
@@ -349,8 +340,6 @@ public class FirmwareLoaderUI_STM32 : Form
             this.flashInstruction = new System.Windows.Forms.LinkLabel();
             this.warning = new System.Windows.Forms.Label();
             this.doNotUse = new System.Windows.Forms.Label();
-            this.downloadRussian = new System.Windows.Forms.Button();
-            this.chkAutoUpdateLanguage = new System.Windows.Forms.CheckBox();
             this.lblWarning = new System.Windows.Forms.Label();
             this.grpRadioType.SuspendLayout();
             this.SuspendLayout();
@@ -526,38 +515,13 @@ public class FirmwareLoaderUI_STM32 : Form
             this.doNotUse.Text = "Õ≈ »—œŒÀ‹«”…“≈\r\n—“¿Õƒ¿–“Õ€≈\r\nœ–Œÿ»¬ »\r\nOPENGD77!";
             this.doNotUse.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // downloadRussian
-            // 
-            this.downloadRussian.AutoSize = true;
-            this.downloadRussian.BackColor = System.Drawing.SystemColors.Control;
-            this.downloadRussian.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.downloadRussian.Location = new System.Drawing.Point(12, 160);
-            this.downloadRussian.Name = "downloadRussian";
-            this.downloadRussian.Size = new System.Drawing.Size(200, 47);
-            this.downloadRussian.TabIndex = 15;
-            this.downloadRussian.Text = "button1";
-            this.downloadRussian.UseVisualStyleBackColor = false;
-            this.downloadRussian.Click += new System.EventHandler(this.downloadRussian_Click);
-            // 
-            // chkAutoUpdateLanguage
-            // 
-            this.chkAutoUpdateLanguage.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.chkAutoUpdateLanguage.Location = new System.Drawing.Point(12, 213);
-            this.chkAutoUpdateLanguage.Name = "chkAutoUpdateLanguage";
-            this.chkAutoUpdateLanguage.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.chkAutoUpdateLanguage.Size = new System.Drawing.Size(246, 47);
-            this.chkAutoUpdateLanguage.TabIndex = 16;
-            this.chkAutoUpdateLanguage.Text = "Œ·ÌÓ‚ÎˇÚ¸ ˇÁ˚ÍÓ‚ÓÈ Ù‡ÈÎ ‡‚ÚÓÏ‡ÚË˜ÂÒÍË";
-            this.chkAutoUpdateLanguage.UseVisualStyleBackColor = true;
-            this.chkAutoUpdateLanguage.CheckedChanged += new System.EventHandler(this.chkAutoUpdateLanguage_CheckedChanged);
-            // 
             // lblWarning
             // 
             this.lblWarning.BackColor = System.Drawing.Color.Yellow;
             this.lblWarning.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblWarning.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lblWarning.ForeColor = System.Drawing.Color.Black;
-            this.lblWarning.Location = new System.Drawing.Point(231, 68);
+            this.lblWarning.Location = new System.Drawing.Point(232, 68);
             this.lblWarning.Name = "lblWarning";
             this.lblWarning.Size = new System.Drawing.Size(303, 77);
             this.lblWarning.TabIndex = 17;
@@ -574,8 +538,6 @@ public class FirmwareLoaderUI_STM32 : Form
             this.ClientSize = new System.Drawing.Size(549, 363);
             this.Controls.Add(this.lblWarning);
             this.Controls.Add(this.btnProgram);
-            this.Controls.Add(this.chkAutoUpdateLanguage);
-            this.Controls.Add(this.downloadRussian);
             this.Controls.Add(this.doNotUse);
             this.Controls.Add(this.warning);
             this.Controls.Add(this.flashInstruction);
@@ -704,20 +666,7 @@ public class FirmwareLoaderUI_STM32 : Form
             lblMessage.Text = StringsDict["FileUpdated"];
     }
 
-    private void downloadRussian_Click(object sender, EventArgs e)
-    {
-        downloadGLA(true);        
-    }
 
-    private void chkAutoUpdateLanguage_CheckedChanged(object sender, EventArgs e)
-    {
-        if (chkAutoUpdateLanguage.Checked)
-        {
-            IniFileUtils.WriteProfileString("Setup", "AutoUploadLanguageFile", "yes");
-        }
-        else
-        {
-            IniFileUtils.WriteProfileString("Setup", "AutoUploadLanguageFile", "no");
-        }
-    }
+
+
 }

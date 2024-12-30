@@ -1114,7 +1114,7 @@
 			<Item Id="Error" Text="Ошибка" />
       <Item Id="FindFirmware" Text="Найти актуальную прошивку OpenGD77 RUS" />
       <Item Id="FlashFirmware" Text="Инструкция по прошивке рации" />
-      <Item Id="Description" Text="При прошивке будут автоматически загружены английский и русский языки. После прошивки выберите русский язык в настройках рации." />
+      <Item Id="Description" Text="При прошивке будут автоматически загружены английский и русский языки. Русский язык выбран по умолчанию." />
       <Item Id="DoNotUse" Text="НЕ ИСПОЛЬЗУЙТЕ ОРИГИНАЛЬНЫЕ ПРОШИВКИ OPENGD77!" />
 			<Item Id="SelectOfficialFirmware" Text="Select the official firmware file" />
       <Item Id="DownloadRussian" Text="Скачать русский языковой файл" />

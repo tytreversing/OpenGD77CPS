@@ -502,12 +502,12 @@ internal class STM_DFU_FwUpdate
 
 	public event FirmwareMessageEventHandler UploadCompleted;
 
-	public void UpdateRadioFirmware(IWin32Window parent, byte[] openFirmwareBuf, string officialDonorFirmwarePath, byte[] userLanguageBuf, FirmwareLoaderUI_STM32.OutputType outputType)
+	public void UpdateRadioFirmware(IWin32Window parent, byte[] openFirmwareBuf, string officialDonorFirmwarePath, /*byte[] userLanguageBuf,*/ FirmwareLoaderUI_STM32.OutputType outputType)
 	{
 		parentWindow = parent;
 		firmwareBuf = openFirmwareBuf;
 		officialFirmwarePath = officialDonorFirmwarePath;
-		languageBuf = userLanguageBuf;
+		//languageBuf = userLanguageBuf;
 		_outputType = outputType;
 		thread = new Thread(DoRadioFirmwareUpdate);
 		thread.Name = "Firmware Updater";
@@ -561,10 +561,10 @@ internal class STM_DFU_FwUpdate
 					}
 				}
 			}
-			if (languageBuf != null)
+			/*if (languageBuf != null)
 			{
 				new Utils().MergeLanguageFile(parentWindow, ref openFirmwareData, languageBuf);
-			}
+			}*/
 			switch (_outputType)
 			{
 			case FirmwareLoaderUI_STM32.OutputType.OutputType_MD9600:

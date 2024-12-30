@@ -1628,7 +1628,7 @@ public class MainForm : Form
 		}
     }
 
-	private bool hasInternet()
+/*	private bool hasInternet()
 	{
         try
         {
@@ -1653,7 +1653,7 @@ public class MainForm : Form
             MessageBox.Show("Ошибка при соединении с сервером!", "Ошибка сети", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return false;
         }
-    }
+    }*/
 
     public static bool connectionAwailable = false;
 
@@ -1875,7 +1875,7 @@ public class MainForm : Form
 			base.FormClosing += MainForm_FormClosing;
 		}
 		CSVEML.InitCSVs();
-        connectionAwailable = hasInternet();
+		connectionAwailable = true;// hasInternet();
         pingTimer.Enabled = true;
 		bool checkUpdate = IniFileUtils.getProfileStringWithDefault("Setup", "CheckVersion", "yes") == "yes";
 		if (checkUpdate && connectionAwailable)

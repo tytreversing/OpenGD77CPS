@@ -58,7 +58,7 @@ internal class STM_DFU_FwUpdate
 
 	private byte[] firmwareBuf;
 
-	private byte[] languageBuf;
+	//private byte[] languageBuf;
 
 	private string officialFirmwarePath;
 

@@ -2590,6 +2590,7 @@ public class OpenGD77Form : Form
 		btnBackupFlash.Enabled = show;
 		btnRestoreEEPROM.Enabled = show;
 		btnRestoreFlash.Enabled = show;
+		btnResetSettings.Enabled = show;
 		btnReadCodeplug.Enabled = show;
 		btnWriteCodeplug.Enabled = show;
 		btnBackupCalibration.Enabled = show;
@@ -2706,7 +2707,7 @@ public class OpenGD77Form : Form
 				MessageBox.Show("—брос настроек через CPS не поддерживаетс€ на этой версии прошивки!", "ќшибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			else
 			{
-				sendCommand(commPort, 77);
+                sendCommand(commPort, 77);
 				sendCommand(commPort, 6);
 			}
             commPort.Close();

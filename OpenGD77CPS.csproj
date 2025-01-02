@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
   <PropertyGroup>
     <AssemblyName>OpenGD77RUS CPS</AssemblyName>
-    <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+    <GenerateAssemblyInfo>True</GenerateAssemblyInfo>
     <OutputType>WinExe</OutputType>
     <UseWindowsForms>True</UseWindowsForms>
     <TargetFramework>net48</TargetFramework>
@@ -16,20 +16,24 @@
     <ApplicationIcon>Images\apple-touch-icon-167.ico</ApplicationIcon>
     <RootNamespace />
     <IncrementVersionOnBuild>1.yyyy.Mdd.Hmm</IncrementVersionOnBuild>
-    <Version>1.2024.1205.1125</Version>
+    <Version>2025.1.2.0</Version>
+    <AssemblyVersion>2025.1.2.5</AssemblyVersion>
+    <FileVersion>2025.1.2.5</FileVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <ShouldCreateLogs>True</ShouldCreateLogs>
-    <AdvancedSettingsExpanded>False</AdvancedSettingsExpanded>
+    <AdvancedSettingsExpanded>True</AdvancedSettingsExpanded>
     <UpdateAssemblyVersion>False</UpdateAssemblyVersion>
     <UpdateAssemblyFileVersion>False</UpdateAssemblyFileVersion>
     <UpdateAssemblyInfoVersion>False</UpdateAssemblyInfoVersion>
     <AssemblyVersionSettings>None.None.Increment.DateStamp</AssemblyVersionSettings>
-    <UpdatePackageVersion>False</UpdatePackageVersion>
+    <UpdatePackageVersion>True</UpdatePackageVersion>
     <AssemblyInfoVersionType>SettingsVersion</AssemblyInfoVersionType>
     <InheritWinAppVersionFrom>None</InheritWinAppVersionFrom>
     <AssemblyFileVersionSettings>None.None.Increment.DateStamp</AssemblyFileVersionSettings>
     <AssemblyInfoVersionSettings>None.None.Increment.DateStamp</AssemblyInfoVersionSettings>
+    <PackageVersionSettings>AssemblyVersion.IncrementWithAutoReset.None</PackageVersionSettings>
+    <PrimaryVersionType>AssemblyFileVersionAttribute</PrimaryVersionType>
   </PropertyGroup>
   <ItemGroup>
     <EmbeddedResource Remove="DMR.DMRIDForm.resx" />
@@ -150,9 +154,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Update="app.ico">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </None>
     <None Update="OpenGD77RUS.ogd">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

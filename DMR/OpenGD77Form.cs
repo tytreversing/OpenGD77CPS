@@ -2700,11 +2700,15 @@ public class OpenGD77Form : Form
             if (!setupCommPort())
             {
                 SystemSounds.Hand.Play();
-                MessageBox.Show(StringsDict["No_com_port"]);
                 return;
             }
-            sendCommand(commPort, 77);
-            sendCommand(commPort, 6);
+			if (int.Parse(MainForm.RadioInfo.buildDateTime.Substring(0, 4)) < 2025)
+				MessageBox.Show("—брос настроек через CPS не поддерживаетс€ на этой версии прошивки!", "ќшибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			else
+			{
+				sendCommand(commPort, 77);
+				sendCommand(commPort, 6);
+			}
             commPort.Close();
             commPort = null;
         }
@@ -3547,7 +3551,7 @@ public class OpenGD77Form : Form
             this.btnResetSettings.Name = "btnResetSettings";
             this.btnResetSettings.Size = new System.Drawing.Size(216, 27);
             this.btnResetSettings.TabIndex = 45;
-            this.btnResetSettings.Text = "button1";
+            this.btnResetSettings.Text = "Restore settings";
             this.btnResetSettings.UseVisualStyleBackColor = false;
             this.btnResetSettings.Click += new System.EventHandler(this.btnResetSettings_Click);
             // 

@@ -939,6 +939,7 @@
 			<Control Id="btnRestoreFlash" Text="Восстановить флеш-память" />
 			<Control Id="btnReadCodeplug" Text="Считать кодплаг" />
 			<Control Id="btnWriteCodeplug" Text="Записать кодплаг" />
+      <Control Id="btnResetSettings" Text="Сбросить настройки" />
 			<Control Id="btnBackupCalibration" Text="Бэкап калибровок" />
 			<Control Id="btnRestoreCalibration" Text="Восстановление калибровок" />
 			<Control Id="btnBackupMCUROM" Text="Бэкап MCU ROM" />

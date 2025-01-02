@@ -3317,7 +3317,7 @@ public class ChannelForm : DockContent, IDisp
             this.tsbtnDel});
             this.tsrCh.Location = new System.Drawing.Point(0, 0);
             this.tsrCh.Name = "tsrCh";
-            this.tsrCh.Size = new System.Drawing.Size(1188, 25);
+            this.tsrCh.Size = new System.Drawing.Size(1209, 25);
             this.tsrCh.TabIndex = 31;
             this.tsrCh.Text = "toolStrip1";
             // 
@@ -3484,7 +3484,7 @@ public class ChannelForm : DockContent, IDisp
             this.pnlChannel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlChannel.Location = new System.Drawing.Point(0, 25);
             this.pnlChannel.Name = "pnlChannel";
-            this.pnlChannel.Size = new System.Drawing.Size(1188, 394);
+            this.pnlChannel.Size = new System.Drawing.Size(1209, 395);
             this.pnlChannel.TabIndex = 0;
             this.pnlChannel.TabStop = true;
             // 
@@ -4108,7 +4108,7 @@ public class ChannelForm : DockContent, IDisp
             // ChannelForm
             // 
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1188, 419);
+            this.ClientSize = new System.Drawing.Size(1209, 420);
             this.Controls.Add(this.pnlChannel);
             this.Controls.Add(this.tsrCh);
             this.Controls.Add(this.mnsCh);

@@ -165,8 +165,8 @@ public class OpenGD77Form : Form
 	private Button btnRestoreSettings;
 
 	private Button btnSaveNMEA;
-
-	private Button btnReadSecureRegisters;
+    private Button btnResetSettings;
+    private Button btnReadSecureRegisters;
 
 	public OpenGD77Form(OpenGD77CommsTransferData.CommsAction initAction)
 	{
@@ -720,7 +720,11 @@ public class OpenGD77Form : Form
 			array[2] = (byte)x_or_command_option_number;
 			num2++;
 			break;
-		}
+		case 77:
+            array[2] = (byte)x_or_command_option_number;
+            num2++;
+            break;
+        }
 		port.Write(array, 0, num2);
 		while (port.BytesToWrite > 0)
 		{
@@ -2689,7 +2693,24 @@ public class OpenGD77Form : Form
 		}
 	}
 
-	private void btnBackupMCUROM_Click(object sender, EventArgs e)
+    private void btnResetSettings_Click(object sender, EventArgs e)
+    {
+        if (probeRadioModel())
+        {
+            if (!setupCommPort())
+            {
+                SystemSounds.Hand.Play();
+                MessageBox.Show(StringsDict["No_com_port"]);
+                return;
+            }
+            sendCommand(commPort, 77);
+            sendCommand(commPort, 6);
+            commPort.Close();
+            commPort = null;
+        }
+    }
+
+    private void btnBackupMCUROM_Click(object sender, EventArgs e)
 	{
 		if (probeRadioModel())
 		{
@@ -2967,11 +2988,12 @@ public class OpenGD77Form : Form
 	{
 		if (!stealth)
 		{
-			sendCommand(port, 0);
+            var currentYear = DateTime.Now.Year;
+            sendCommand(port, 0);
 			sendCommand(port, 1);
 			sendCommand(port, 2, 0, 0, 3, 1, 0, "CPS");
 			sendCommand(port, 2, 0, 16, 3, 1, 0, "OpenGD77 RUS");
-			sendCommand(port, 2, 0, 32, 3, 1, 0, "(c) 2024");
+			sendCommand(port, 2, 0, 32, 3, 1, 0, "(c) 2024 - " + currentYear.ToString());
 			sendCommand(port, 2, 0, 48, 3, 1, 0, "");
 			sendCommand(port, 3);
 			sendCommand(port, 6, 4);
@@ -3179,6 +3201,7 @@ public class OpenGD77Form : Form
             this.btnRestoreSettings = new System.Windows.Forms.Button();
             this.btnSaveNMEA = new System.Windows.Forms.Button();
             this.btnReadSecureRegisters = new System.Windows.Forms.Button();
+            this.btnResetSettings = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.grpFunThings.SuspendLayout();
             this.SuspendLayout();
@@ -3469,7 +3492,7 @@ public class OpenGD77Form : Form
             // 
             this.btnBackupSettings.BackColor = System.Drawing.SystemColors.Control;
             this.btnBackupSettings.Font = new System.Drawing.Font("Arial", 9F);
-            this.btnBackupSettings.Location = new System.Drawing.Point(525, 82);
+            this.btnBackupSettings.Location = new System.Drawing.Point(525, 128);
             this.btnBackupSettings.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnBackupSettings.Name = "btnBackupSettings";
             this.btnBackupSettings.Size = new System.Drawing.Size(216, 27);
@@ -3482,7 +3505,7 @@ public class OpenGD77Form : Form
             // 
             this.btnRestoreSettings.BackColor = System.Drawing.SystemColors.Control;
             this.btnRestoreSettings.Font = new System.Drawing.Font("Arial", 9F);
-            this.btnRestoreSettings.Location = new System.Drawing.Point(525, 115);
+            this.btnRestoreSettings.Location = new System.Drawing.Point(525, 161);
             this.btnRestoreSettings.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnRestoreSettings.Name = "btnRestoreSettings";
             this.btnRestoreSettings.Size = new System.Drawing.Size(216, 27);
@@ -3515,8 +3538,18 @@ public class OpenGD77Form : Form
             this.btnReadSecureRegisters.TabIndex = 4;
             this.btnReadSecureRegisters.Text = "Backup Registers";
             this.btnReadSecureRegisters.UseVisualStyleBackColor = false;
-            this.btnReadSecureRegisters.Visible = true;
             this.btnReadSecureRegisters.Click += new System.EventHandler(this.btnReadSecureRegisters_Click);
+            // 
+            // btnResetSettings
+            // 
+            this.btnResetSettings.BackColor = System.Drawing.SystemColors.Control;
+            this.btnResetSettings.Location = new System.Drawing.Point(525, 82);
+            this.btnResetSettings.Name = "btnResetSettings";
+            this.btnResetSettings.Size = new System.Drawing.Size(216, 27);
+            this.btnResetSettings.TabIndex = 45;
+            this.btnResetSettings.Text = "button1";
+            this.btnResetSettings.UseVisualStyleBackColor = false;
+            this.btnResetSettings.Click += new System.EventHandler(this.btnResetSettings_Click);
             // 
             // OpenGD77Form
             // 
@@ -3524,6 +3557,7 @@ public class OpenGD77Form : Form
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(759, 527);
+            this.Controls.Add(this.btnResetSettings);
             this.Controls.Add(this.txtKepsServer);
             this.Controls.Add(this.grpFunThings);
             this.Controls.Add(this.txtMessage);
@@ -3563,4 +3597,6 @@ public class OpenGD77Form : Form
             this.PerformLayout();
 
 	}
+
+
 }

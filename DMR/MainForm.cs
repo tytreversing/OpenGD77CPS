@@ -1628,32 +1628,7 @@ public class MainForm : Form
 		}
     }
 
-/*	private bool hasInternet()
-	{
-        try
-        {
-            HttpWebRequest httpReq = (HttpWebRequest)HttpWebRequest.Create("https://opengd77rus.ru");
-			httpReq.Timeout = 1000;
-			HttpWebResponse httpWeb = (HttpWebResponse)httpReq.GetResponse();
 
-            if (HttpStatusCode.OK == httpWeb.StatusCode)
-            {
-                httpWeb.Close();
-                return true;
-            }
-            else
-            {
-                httpWeb.Close();
-                MessageBox.Show("Соединение с сервером отсутствует, либо он сейчас недоступен. Функция проверки обновлений и загрузки файла локализации будет недоступна.", "Ошибка сети", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
-        }
-        catch (WebException)
-        {
-            MessageBox.Show("Ошибка при соединении с сервером!", "Ошибка сети", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            return false;
-        }
-    }*/
 
     public static bool connectionAwailable = false;
 
@@ -1899,17 +1874,17 @@ public class MainForm : Form
 				try
 				{
                     StreamReader sr = new StreamReader(localName);
-                    remoteVersion = (sr.ReadLine()).Replace(".", "");
+                    remoteVersion = sr.ReadLine();
                     sr.Close();
                 }
 				catch
 				{
 
 				}                
-				string currVersion = (Assembly.GetExecutingAssembly().GetName().Version.ToString()).Replace(".", "");
-				if (int.Parse(remoteVersion) > int.Parse(currVersion))
+				string currVersion = Assembly.GetExecutingAssembly().GetName().Version.ToString();
+				if (remoteVersion != currVersion)
 				{
-					DialogResult decision = MessageBox.Show("На сайте проекта доступна новая версия OpenGD77 CPS.\r\nОткрыть страницу загрузок?", "Обновление", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+					DialogResult decision = MessageBox.Show("На сайте проекта опубликована другая версия OpenGD77 CPS " + remoteVersion + ".\r\nОткрыть страницу загрузок?", "Обновление", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 					if (decision == DialogResult.Yes)
 					{
                         System.Diagnostics.Process.Start("https://opengd77rus.ru/download/opengd77-rus-cps/");

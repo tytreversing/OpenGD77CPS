@@ -58,8 +58,6 @@ public class FirmwareLoaderUI_STM32 : Form
 
 	private System.Windows.Forms.OpenFileDialog dlgOpenFile;
 
-	private Button btnSelectDonorFW;
-
 	private RadioButton rbMD9600;
 
 	private RadioButton rbMDUV380;
@@ -75,6 +73,7 @@ public class FirmwareLoaderUI_STM32 : Form
     private Label doNotUse;
     private Label lblWarning;
     private Label label1;
+    private Button btnSelectDonorFW;
     private GroupBox grpRadioType;
 
 	public FirmwareLoaderUI_STM32()
@@ -330,7 +329,6 @@ public class FirmwareLoaderUI_STM32 : Form
             this.Progress = new System.Windows.Forms.ProgressBar();
             this.lblMessage = new System.Windows.Forms.Label();
             this.dlgOpenFile = new System.Windows.Forms.OpenFileDialog();
-            this.btnSelectDonorFW = new System.Windows.Forms.Button();
             this.rbMD9600 = new System.Windows.Forms.RadioButton();
             this.rbMDUV380 = new System.Windows.Forms.RadioButton();
             this.rbMD2017 = new System.Windows.Forms.RadioButton();
@@ -343,6 +341,7 @@ public class FirmwareLoaderUI_STM32 : Form
             this.doNotUse = new System.Windows.Forms.Label();
             this.lblWarning = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnSelectDonorFW = new System.Windows.Forms.Button();
             this.grpRadioType.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -350,7 +349,7 @@ public class FirmwareLoaderUI_STM32 : Form
             // 
             this.btnProgram.BackColor = System.Drawing.SystemColors.Control;
             this.btnProgram.Font = new System.Drawing.Font("Arial", 9F);
-            this.btnProgram.Location = new System.Drawing.Point(140, 259);
+            this.btnProgram.Location = new System.Drawing.Point(138, 321);
             this.btnProgram.Name = "btnProgram";
             this.btnProgram.Size = new System.Drawing.Size(263, 26);
             this.btnProgram.TabIndex = 7;
@@ -360,7 +359,7 @@ public class FirmwareLoaderUI_STM32 : Form
             // 
             // Progress
             // 
-            this.Progress.Location = new System.Drawing.Point(12, 306);
+            this.Progress.Location = new System.Drawing.Point(11, 353);
             this.Progress.Name = "Progress";
             this.Progress.Size = new System.Drawing.Size(523, 21);
             this.Progress.TabIndex = 9;
@@ -368,22 +367,10 @@ public class FirmwareLoaderUI_STM32 : Form
             // lblMessage
             // 
             this.lblMessage.Font = new System.Drawing.Font("Arial", 9F);
-            this.lblMessage.Location = new System.Drawing.Point(13, 330);
+            this.lblMessage.Location = new System.Drawing.Point(12, 388);
             this.lblMessage.Name = "lblMessage";
             this.lblMessage.Size = new System.Drawing.Size(522, 24);
             this.lblMessage.TabIndex = 10;
-            // 
-            // btnSelectDonorFW
-            // 
-            this.btnSelectDonorFW.Font = new System.Drawing.Font("Arial", 9F);
-            this.btnSelectDonorFW.Location = new System.Drawing.Point(256, 325);
-            this.btnSelectDonorFW.Name = "btnSelectDonorFW";
-            this.btnSelectDonorFW.Size = new System.Drawing.Size(240, 26);
-            this.btnSelectDonorFW.TabIndex = 8;
-            this.btnSelectDonorFW.Text = "Select official firmware (donor) file";
-            this.btnSelectDonorFW.UseVisualStyleBackColor = true;
-            this.btnSelectDonorFW.Visible = false;
-            this.btnSelectDonorFW.Click += new System.EventHandler(this.btnSelectDonorFW_Click);
             // 
             // rbMD9600
             // 
@@ -521,35 +508,47 @@ public class FirmwareLoaderUI_STM32 : Form
             // 
             this.lblWarning.BackColor = System.Drawing.Color.Yellow;
             this.lblWarning.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblWarning.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblWarning.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lblWarning.ForeColor = System.Drawing.Color.Black;
             this.lblWarning.Location = new System.Drawing.Point(232, 68);
             this.lblWarning.Name = "lblWarning";
-            this.lblWarning.Size = new System.Drawing.Size(303, 77);
+            this.lblWarning.Size = new System.Drawing.Size(303, 178);
             this.lblWarning.TabIndex = 17;
-            this.lblWarning.Text = "ѕри первой установке прошивки OpenGD77 RUS насто€тельно рекомендуетс€ в первый ра" +
-    "з включить рацию в режиме сброса (с зажатой SK2).";
+            this.lblWarning.Text = "ѕри установке прошивки OpenGD77 RUS насто€тельно рекомендуетс€ в первый раз включ" +
+    "ить рацию в режиме сброса (с зажатой SK2 на портативных модел€х, с P3 на MD-9600" +
+    ").";
             this.lblWarning.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblWarning.Visible = false;
             // 
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(13, 161);
+            this.label1.Location = new System.Drawing.Point(12, 259);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(226, 84);
+            this.label1.Size = new System.Drawing.Size(522, 59);
             this.label1.TabIndex = 18;
             this.label1.Text = "CPS рассчитана на прошивки, начина€ с 20241230. ”бедитесь, что прошиваете соответ" +
     "ствующую сборку.";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnSelectDonorFW
+            // 
+            this.btnSelectDonorFW.Location = new System.Drawing.Point(458, 322);
+            this.btnSelectDonorFW.Name = "btnSelectDonorFW";
+            this.btnSelectDonorFW.Size = new System.Drawing.Size(75, 23);
+            this.btnSelectDonorFW.TabIndex = 19;
+            this.btnSelectDonorFW.UseVisualStyleBackColor = true;
+            this.btnSelectDonorFW.Visible = false;
             // 
             // FirmwareLoaderUI_STM32
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(549, 363);
-            this.Controls.Add(this.label1);
+            this.ClientSize = new System.Drawing.Size(549, 421);
+            this.Controls.Add(this.btnSelectDonorFW);
             this.Controls.Add(this.lblWarning);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnProgram);
             this.Controls.Add(this.doNotUse);
             this.Controls.Add(this.warning);
@@ -558,7 +557,6 @@ public class FirmwareLoaderUI_STM32 : Form
             this.Controls.Add(this.grpRadioType);
             this.Controls.Add(this.lblMessage);
             this.Controls.Add(this.Progress);
-            this.Controls.Add(this.btnSelectDonorFW);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;

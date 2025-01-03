@@ -22,7 +22,7 @@ public class AboutForm : Form
 	private void AboutForm_Load(object sender, EventArgs e)
 	{
 		Settings.UpdateComponentTextsFromLanguageXmlData(this);
-        lblVersion.Text = "OpenGD77 CPS - русская версия\r\n\r\nПредназначена для работы ТОЛЬКО\r\nс модифицированной прошивкой OpenGD77 RUS\r\n\r\n" + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version + "\r\n\r\n" + "(с) Aufwiegler, 2024";
+        lblVersion.Text = "OpenGD77 CPS - русская версия\r\n\r\nПредназначена для работы ТОЛЬКО\r\nс прошивками OpenGD77 RUS\r\n\r\n" + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version + "\r\n\r\n" + "(с) Aufwiegler, 2024-" + DateTime.Now.Year.ToString();
 
     }
 
@@ -99,7 +99,7 @@ public class AboutForm : Form
             this.Controls.Add(this.lblTranslationCredit);
             this.Controls.Add(this.lblVersion);
             this.Font = new System.Drawing.Font("Arial", 10F);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;

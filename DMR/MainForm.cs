@@ -4051,7 +4051,7 @@ public class MainForm : Form
 		Settings.MIN_FREQ[0] = 380u;
 		Settings.MAX_FREQ[0] = 564u;
 		Settings.MIN_FREQ[1] = 127u;
-		Settings.MAX_FREQ[1] = 282u;
+		Settings.MAX_FREQ[1] = 349u;
 		array = new byte[Settings.SPACE_GENERAL_SET];
 		Array.Copy(eerom, Settings.ADDR_GENERAL_SET, array, 0, array.Length);
 		GeneralSetForm.data = (GeneralSetForm.GeneralSet)Settings.byteArrayToObject(array, GeneralSetForm.data.GetType());

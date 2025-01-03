@@ -375,7 +375,7 @@ public class DeviceInfoForm : DockContent, IDisp
             this.pnlDeviceInfo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlDeviceInfo.Location = new System.Drawing.Point(0, 0);
             this.pnlDeviceInfo.Name = "pnlDeviceInfo";
-            this.pnlDeviceInfo.Size = new System.Drawing.Size(397, 95);
+            this.pnlDeviceInfo.Size = new System.Drawing.Size(423, 89);
             this.pnlDeviceInfo.TabIndex = 0;
             // 
             // lblTo1
@@ -620,7 +620,7 @@ public class DeviceInfoForm : DockContent, IDisp
             // DeviceInfoForm
             // 
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(397, 95);
+            this.ClientSize = new System.Drawing.Size(423, 89);
             this.Controls.Add(this.pnlDeviceInfo);
             this.Font = new System.Drawing.Font("Arial", 10F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;

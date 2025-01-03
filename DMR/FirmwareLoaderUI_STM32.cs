@@ -115,6 +115,7 @@ public class FirmwareLoaderUI_STM32 : Form
 	{
 		try
 		{
+            lblWarning.Visible = false;
 			lblMessage.Text = "";
 			Progress.Value = 0;
 			OutputType outputType = OutputType.OutputType_MD9600;
@@ -325,6 +326,7 @@ public class FirmwareLoaderUI_STM32 : Form
 
 	private void InitializeComponent()
 	{
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FirmwareLoaderUI_STM32));
             this.btnProgram = new System.Windows.Forms.Button();
             this.Progress = new System.Windows.Forms.ProgressBar();
             this.lblMessage = new System.Windows.Forms.Label();
@@ -514,9 +516,7 @@ public class FirmwareLoaderUI_STM32 : Form
             this.lblWarning.Name = "lblWarning";
             this.lblWarning.Size = new System.Drawing.Size(303, 178);
             this.lblWarning.TabIndex = 17;
-            this.lblWarning.Text = "ѕри установке прошивки OpenGD77 RUS насто€тельно рекомендуетс€ в первый раз включ" +
-    "ить рацию в режиме сброса (с зажатой SK2 на портативных модел€х, с P3 на MD-9600" +
-    ").";
+            this.lblWarning.Text = resources.GetString("lblWarning.Text");
             this.lblWarning.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblWarning.Visible = false;
             // 

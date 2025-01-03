@@ -2709,7 +2709,8 @@ public class OpenGD77Form : Form
 			{
                 sendCommand(commPort, 77);
 				sendCommand(commPort, 6);
-			}
+                MessageBox.Show("—брос настроек выполнен!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
             commPort.Close();
             commPort = null;
         }

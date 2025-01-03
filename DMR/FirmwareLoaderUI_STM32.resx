@@ -120,4 +120,7 @@
   <metadata name="dlgOpenFile.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="lblWarning.Text" xml:space="preserve">
+    <value>При установке прошивки OpenGD77 RUS настоятельно рекомендуется в первый раз включить рацию в режиме сброса (с зажатой SK2 на портативных моделях, с P3 на MD-9600), либо выполнить сброс через Технический центр CPS.</value>
+  </data>
 </root>

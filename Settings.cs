@@ -1596,9 +1596,9 @@ internal class Settings
 		SZ_NA = "N/A";
 		CUR_MODE = 2;
 		MIN_FREQ = new uint[2] { 380u, 127u };
-		MAX_FREQ = new uint[2] { 564u, 282u };
+		MAX_FREQ = new uint[2] { 564u, 349u };
 		VALID_MIN_FREQ = new uint[2] { 380u, 127u };
-		VALID_MAX_FREQ = new uint[2] { 564u, 178u };
+		VALID_MAX_FREQ = new uint[2] { 564u, 349u };
 		CUR_CH_GROUP = 0;
 		CUR_ZONE_GROUP = 0;
 		CUR_ZONE = 0;

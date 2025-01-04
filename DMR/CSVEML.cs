@@ -1170,7 +1170,7 @@ internal class CSVEML
 			if (TGListName[j] != "")
 			{
 				TGListCount++;
-				string outListName = /*convert1251toUTF8*/(TGListName[j]);
+				string outListName = TGListName[j];
 				string outContactName = "";
 				text = text + NumberFormatting(outListName) + writeSeparator;
 				for (int k = 0; k < 32; k++)
@@ -1406,7 +1406,7 @@ internal class CSVEML
 	{
 		
         string path = CSVName + "Channels.csv";
-		string text = "Channel Number" + writeSeparator + "Channel Name" + writeSeparator + "Channel Type" + writeSeparator + "Rx Frequency" + writeSeparator + "Tx Frequency" + writeSeparator + "Bandwidth (kHz)" + writeSeparator + "Colour Code" + writeSeparator + "Timeslot" + writeSeparator + "Contact" + writeSeparator + "TG List" + writeSeparator + "DMR ID" + writeSeparator + "TS1_TA_Tx" + writeSeparator + "TS2_TA_Tx ID" + writeSeparator + "RX Tone" + writeSeparator + "TX Tone" + writeSeparator + "Squelch" + writeSeparator + "Power" + writeSeparator + "Rx Only" + writeSeparator + "Zone Skip" + writeSeparator + "All Skip" + writeSeparator + "TOT" + writeSeparator + "VOX" + writeSeparator + "No Beep" + writeSeparator + "No Eco" + writeSeparator + "APRS" + writeSeparator + "Latitude" + writeSeparator + "Longitude" + writeSeparator + "Use Location" + Environment.NewLine;
+		string text = "Channel Number" + writeSeparator + "Channel Name" + writeSeparator + "Channel Type" + writeSeparator + "Rx Frequency" + writeSeparator + "Tx Frequency" + writeSeparator + "Bandwidth (kHz)" + writeSeparator + "Colour Code" + writeSeparator + "Timeslot" + writeSeparator + "Contact" + writeSeparator + "TG List" + writeSeparator + "DMR ID" + writeSeparator + "TS1_TA_Tx" + writeSeparator + "TS2_TA_Tx ID" + writeSeparator + "RX Tone" + writeSeparator + "TX Tone" + writeSeparator + "Squelch" + writeSeparator + "Power" + writeSeparator + "Rx Only" + writeSeparator + "Zone Skip" + writeSeparator + "All Skip" + writeSeparator + "TOT" + writeSeparator + "VOX" + writeSeparator + "No Beep" + writeSeparator + "No Eco" + writeSeparator + "APRS" + writeSeparator + "Latitude" + writeSeparator + "Longitude" + writeSeparator + "Use Location" + writeSeparator + "Fastcall" + Environment.NewLine;
 		ChannelCount = 0;
 		for (int i = 0; i < 1024; i++)
 		{
@@ -1479,8 +1479,10 @@ internal class CSVEML
 				text += writeSeparator;
 				text = text + DecodeLatLon(ChannelByte[i, 13], ChannelByte[i, 12], ChannelByte[i, 10]) + writeSeparator;
 				text = text + DecodeLatLon(ChannelByte[i, 20], ChannelByte[i, 15], ChannelByte[i, 14]) + writeSeparator;
-				text = (((ChannelByte[i, 22] & 8) == 0) ? (text + "No") : (text + "Yes"));
-				text += Environment.NewLine;
+				text = (((ChannelByte[i, 22] & 8) == 0) ? (text + "No") : (text + "Yes")) + writeSeparator;
+                text = (((ChannelByte[i, 21] & 0x80) == 0) ? (text + "No") : (text + "Yes"));
+                text += writeSeparator;
+                text += Environment.NewLine;
 			}
 		}
 		try
@@ -1671,7 +1673,16 @@ internal class CSVEML
 					{
 						ChannelByte[num, 22] |= 8;
 					}
-				}
+					try
+					{
+						if (array[28] == "Yes")
+						{
+							ChannelByte[num, 21] |= 128;
+						}
+					}
+					catch (Exception)
+					{ }
+                }
 				catch (Exception)
 				{
 					MessageBox.Show(StringsDict["Line"] + " " + (textFieldParser.LineNumber - 1) + " " + StringsDict["is_not_valid_in"] + " Channels.csv " + StringsDict["and_will_be_skipped"]);

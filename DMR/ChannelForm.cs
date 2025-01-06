@@ -545,6 +545,25 @@ public class ChannelForm : DockContent, IDisp
             }
         }
 
+        public bool openGD77RUS_PriorityChannel
+        {
+            get
+            {
+                return (openGD77RUS & 0x40) != 0;
+            }
+            set
+            {
+                if (value)
+                {
+                    openGD77RUS |= 64;
+                }
+                else
+                {
+                    openGD77RUS = (byte)(openGD77RUS & -65);
+                }
+            }
+        }
+
         public void clearFastcall()
         {
             openGD77RUS = (byte)(openGD77RUS & -129);
@@ -2077,6 +2096,11 @@ public class ChannelForm : DockContent, IDisp
             chList[index].openGD77RUS_FastcallChannel = value;
         }
 
+        public void SetChannelPriority(int index, bool value)
+        {
+            chList[index].openGD77RUS_PriorityChannel = value;
+        }
+
         public void SetChannelRoaming(int index, bool value)
         {
             chList[index].LibreDMR_Roaming = value;
@@ -2460,6 +2484,7 @@ public class ChannelForm : DockContent, IDisp
 
     private CheckBox chkUseLocation;
     private CheckBox chkFastcall;
+    private CheckBox chkPriority;
     private SGTextBox txtRadioId;
 
     public static int CurCntCh { get; set; }
@@ -2504,6 +2529,7 @@ public class ChannelForm : DockContent, IDisp
             value.LoneWoker = chkOpenGD77ScanAllSkip.Checked;
             value.OnlyRx = chkRxOnly.Checked;
             value.openGD77RUS_FastcallChannel = chkFastcall.Checked;
+            value.openGD77RUS_PriorityChannel = chkPriority.Checked;
             value.Bandwidth = cmbChBandwidth.SelectedIndex;
             value.Sql = cmbSql.SelectedIndex;
             value.UnmuteRule = data[index].UnmuteRule;
@@ -2572,6 +2598,7 @@ public class ChannelForm : DockContent, IDisp
         chkNoBeep.Checked = channelOne.LibreDMR_NoBeepChannel;
         chkNoEco.Checked = channelOne.LibreDMR_NoEcoChannel;
         chkFastcall.Checked = channelOne.openGD77RUS_FastcallChannel;
+        chkPriority.Checked = channelOne.openGD77RUS_PriorityChannel;
         chkRoaming.Checked = channelOne.LibreDMR_Roaming;
         chkUseLocation.Checked = channelOne.LibreDMR_UseLocation;
         chkDMRForceDMO.Checked = channelOne.LibreDMR_DMRForceDMO;
@@ -3227,6 +3254,12 @@ public class ChannelForm : DockContent, IDisp
         data.SetChannelFastcall(num % 1024, chkFastcall.Checked);
     }
 
+    private void chkPriority_CheckedChanged(object sender, EventArgs e)
+    {
+        int num = Convert.ToInt32(base.Tag);
+        data.SetChannelPriority(num % 1024, chkPriority.Checked);
+    }
+
     private void chkDMRForceDMO_CheckedChanged(object sender, EventArgs e)
     {
         int num = Convert.ToInt32(base.Tag);
@@ -3295,6 +3328,8 @@ public class ChannelForm : DockContent, IDisp
             this.tsmiAdd = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiDel = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlChannel = new CustomPanel();
+            this.chkPriority = new System.Windows.Forms.CheckBox();
+            this.chkFastcall = new System.Windows.Forms.CheckBox();
             this.grpLocation = new System.Windows.Forms.GroupBox();
             this.chkUseLocation = new System.Windows.Forms.CheckBox();
             this.chkRoaming = new System.Windows.Forms.CheckBox();
@@ -3348,7 +3383,6 @@ public class ChannelForm : DockContent, IDisp
             this.lblRxFreq = new System.Windows.Forms.Label();
             this.lblTxFreq = new System.Windows.Forms.Label();
             this.nudTot = new CustomNumericUpDown();
-            this.chkFastcall = new System.Windows.Forms.CheckBox();
             this.tsrCh.SuspendLayout();
             this.mnsCh.SuspendLayout();
             this.pnlChannel.SuspendLayout();
@@ -3515,6 +3549,7 @@ public class ChannelForm : DockContent, IDisp
             // 
             this.pnlChannel.AutoScroll = true;
             this.pnlChannel.AutoSize = true;
+            this.pnlChannel.Controls.Add(this.chkPriority);
             this.pnlChannel.Controls.Add(this.chkFastcall);
             this.pnlChannel.Controls.Add(this.grpLocation);
             this.pnlChannel.Controls.Add(this.btnCopy);
@@ -3544,6 +3579,28 @@ public class ChannelForm : DockContent, IDisp
             this.pnlChannel.Size = new System.Drawing.Size(1209, 395);
             this.pnlChannel.TabIndex = 0;
             this.pnlChannel.TabStop = true;
+            // 
+            // chkPriority
+            // 
+            this.chkPriority.AutoSize = true;
+            this.chkPriority.Location = new System.Drawing.Point(888, 11);
+            this.chkPriority.Name = "chkPriority";
+            this.chkPriority.Size = new System.Drawing.Size(104, 20);
+            this.chkPriority.TabIndex = 38;
+            this.chkPriority.Text = "Priority scan";
+            this.chkPriority.UseVisualStyleBackColor = true;
+            this.chkPriority.CheckedChanged += new System.EventHandler(this.chkPriority_CheckedChanged);
+            // 
+            // chkFastcall
+            // 
+            this.chkFastcall.AutoSize = true;
+            this.chkFastcall.Location = new System.Drawing.Point(888, 144);
+            this.chkFastcall.Name = "chkFastcall";
+            this.chkFastcall.Size = new System.Drawing.Size(75, 20);
+            this.chkFastcall.TabIndex = 37;
+            this.chkFastcall.Text = "Fastcall";
+            this.chkFastcall.UseVisualStyleBackColor = true;
+            this.chkFastcall.CheckedChanged += new System.EventHandler(this.chkFastcall_CheckedChanged);
             // 
             // grpLocation
             // 
@@ -4161,17 +4218,6 @@ public class ChannelForm : DockContent, IDisp
             0,
             0});
             this.nudTot.ValueChanged += new System.EventHandler(this.nudTot_ValueChanged);
-            // 
-            // chkFastcall
-            // 
-            this.chkFastcall.AutoSize = true;
-            this.chkFastcall.Location = new System.Drawing.Point(888, 144);
-            this.chkFastcall.Name = "chkFastcall";
-            this.chkFastcall.Size = new System.Drawing.Size(75, 20);
-            this.chkFastcall.TabIndex = 37;
-            this.chkFastcall.Text = "Fastcall";
-            this.chkFastcall.UseVisualStyleBackColor = true;
-            this.chkFastcall.CheckedChanged += new System.EventHandler(this.chkFastcall_CheckedChanged);
             // 
             // ChannelForm
             // 

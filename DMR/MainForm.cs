@@ -4048,10 +4048,10 @@ public class MainForm : Form
 		byte[] array = new byte[Settings.SPACE_DEVICE_INFO];
 		Array.Copy(eerom, Settings.ADDR_DEVICE_INFO, array, 0, array.Length);
 		DeviceInfoForm.data = (DeviceInfoForm.DeviceInfo)Settings.byteArrayToObject(array, DeviceInfoForm.data.GetType());
-		Settings.MIN_FREQ[0] = 380u;
+		Settings.MIN_FREQ[0] = 220u;
 		Settings.MAX_FREQ[0] = 564u;
 		Settings.MIN_FREQ[1] = 127u;
-		Settings.MAX_FREQ[1] = 349u;
+		Settings.MAX_FREQ[1] = 174u;
 		array = new byte[Settings.SPACE_GENERAL_SET];
 		Array.Copy(eerom, Settings.ADDR_GENERAL_SET, array, 0, array.Length);
 		GeneralSetForm.data = (GeneralSetForm.GeneralSet)Settings.byteArrayToObject(array, GeneralSetForm.data.GetType());

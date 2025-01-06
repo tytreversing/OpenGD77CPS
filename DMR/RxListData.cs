@@ -41,7 +41,7 @@ public class RxListData : IData
 
 	public int Count => 76;
 
-	public string Format => "GroupList{0}";
+	public string Format => "Список {0}";
 
 	public bool ListIsEmpty
 	{

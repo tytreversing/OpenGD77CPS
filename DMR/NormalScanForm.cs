@@ -353,7 +353,7 @@ public class NormalScanForm : DockContent, IDisp
 
 		public int Count => 64;
 
-		public string Format => "ScanList{0}";
+		public string Format => "Список {0}";
 
 		public bool ListIsEmpty
 		{

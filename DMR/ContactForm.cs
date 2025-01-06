@@ -346,7 +346,7 @@ public class ContactForm : DockContent, IDisp
 			}
 		}
 
-		public string Format => "Contact{0}";
+		public string Format => "Контакт {0}";
 
 		public bool ListIsEmpty
 		{

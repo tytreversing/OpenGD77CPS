@@ -1406,7 +1406,7 @@ internal class CSVEML
 	{
 		
         string path = CSVName + "Channels.csv";
-		string text = "Channel Number" + writeSeparator + "Channel Name" + writeSeparator + "Channel Type" + writeSeparator + "Rx Frequency" + writeSeparator + "Tx Frequency" + writeSeparator + "Bandwidth (kHz)" + writeSeparator + "Colour Code" + writeSeparator + "Timeslot" + writeSeparator + "Contact" + writeSeparator + "TG List" + writeSeparator + "DMR ID" + writeSeparator + "TS1_TA_Tx" + writeSeparator + "TS2_TA_Tx ID" + writeSeparator + "RX Tone" + writeSeparator + "TX Tone" + writeSeparator + "Squelch" + writeSeparator + "Power" + writeSeparator + "Rx Only" + writeSeparator + "Zone Skip" + writeSeparator + "All Skip" + writeSeparator + "TOT" + writeSeparator + "VOX" + writeSeparator + "No Beep" + writeSeparator + "No Eco" + writeSeparator + "APRS" + writeSeparator + "Latitude" + writeSeparator + "Longitude" + writeSeparator + "Use Location" + writeSeparator + "Fastcall" + Environment.NewLine;
+		string text = "Channel Number" + writeSeparator + "Channel Name" + writeSeparator + "Channel Type" + writeSeparator + "Rx Frequency" + writeSeparator + "Tx Frequency" + writeSeparator + "Bandwidth (kHz)" + writeSeparator + "Colour Code" + writeSeparator + "Timeslot" + writeSeparator + "Contact" + writeSeparator + "TG List" + writeSeparator + "DMR ID" + writeSeparator + "TS1_TA_Tx" + writeSeparator + "TS2_TA_Tx ID" + writeSeparator + "RX Tone" + writeSeparator + "TX Tone" + writeSeparator + "Squelch" + writeSeparator + "Power" + writeSeparator + "Rx Only" + writeSeparator + "Zone Skip" + writeSeparator + "All Skip" + writeSeparator + "TOT" + writeSeparator + "VOX" + writeSeparator + "No Beep" + writeSeparator + "No Eco" + writeSeparator + "APRS" + writeSeparator + "Latitude" + writeSeparator + "Longitude" + writeSeparator + "Use Location" + writeSeparator + "Fastcall" + writeSeparator + "Priority" + Environment.NewLine;
 		ChannelCount = 0;
 		for (int i = 0; i < 1024; i++)
 		{
@@ -1480,7 +1480,8 @@ internal class CSVEML
 				text = text + DecodeLatLon(ChannelByte[i, 13], ChannelByte[i, 12], ChannelByte[i, 10]) + writeSeparator;
 				text = text + DecodeLatLon(ChannelByte[i, 20], ChannelByte[i, 15], ChannelByte[i, 14]) + writeSeparator;
 				text = (((ChannelByte[i, 22] & 8) == 0) ? (text + "No") : (text + "Yes")) + writeSeparator;
-                text = (((ChannelByte[i, 21] & 0x80) == 0) ? (text + "No") : (text + "Yes"));
+                text = (((ChannelByte[i, 21] & 0x80) == 0) ? (text + "No") : (text + "Yes")) + writeSeparator;
+                text = (((ChannelByte[i, 21] & 0x40) == 0) ? (text + "No") : (text + "Yes"));
                 text += writeSeparator;
                 text += Environment.NewLine;
 			}
@@ -1682,6 +1683,15 @@ internal class CSVEML
 					}
 					catch (Exception)
 					{ }
+                    try
+                    {
+                        if (array[29] == "Yes")
+                        {
+                            ChannelByte[num, 21] |= 64;
+                        }
+                    }
+                    catch (Exception)
+                    { }
                 }
 				catch (Exception)
 				{

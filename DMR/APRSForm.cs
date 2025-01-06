@@ -492,7 +492,7 @@ public class APRSForm : DockContent, IDisp
 
 		public int Count => 8;
 
-		public string Format => "APRS{0}";
+		public string Format => "APRS {0}";
 
 		public bool ListIsEmpty
 		{

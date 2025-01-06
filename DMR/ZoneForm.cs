@@ -191,7 +191,7 @@ public class ZoneForm : DockContent, IDisp
 			}
 		}
 
-		public string Format => "Zone{0}";
+		public string Format => "Зона {0}";
 
 		public bool ListIsEmpty
 		{

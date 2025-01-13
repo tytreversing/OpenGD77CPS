@@ -33,7 +33,8 @@ public class OpenGD77Form : Form
 	{
 		SCREEN_INVERTED = 1,
 		DMRID_USES_VOICE_PROMPTS = 2,
-		VOICE_PROMPTS_AVAILABLE = 4
+		VOICE_PROMPTS_AVAILABLE = 4,
+		SUPPORT_SETTINGS_ACCESS = 8
 	}
 
 	[StructLayout(LayoutKind.Explicit, Pack = 1, Size = 46)]

@@ -1492,118 +1492,143 @@ public class MainForm : Form
 	{
 		string firmwareVersion = "";
 		if (!shownInfo)
-		{
-			shownInfo = true;
-			radioInformation.Text = "Рация подключена\r\n";
-			if (RadioInfo.identifier != "RUSSIAN")
-			{
-				radioInformation.Text += "На рации не установлена прошивка OpenGD77 RUS!";
-			}
-			else
-			{
-				radioInformation.Text += "Установлена корректная прошивка OpenGD77 RUS";
-			}
-			radioInformation.Text += "\r\nСборка прошивки: ";
-			firmwareVersion = RadioInfo.buildDateTime.Substring(0, 8);
-			radioInformation.Text += firmwareVersion;
-			radioInformation.Text += "\r\nМодель рации: ";
-			switch (RadioInfo.radioType)
-			{
-				case 0:
-					radioInformation.Text += "TYT MD-760/Radioddity GD-77";
-					firmwareName = "";
-					break;
-				case 1:
-					radioInformation.Text += "Radioddity GD-77S";
+        {
+            shownInfo = true;
+            radioInformation.Text = "Рация подключена\r\n";
+            if (RadioInfo.identifier != "RUSSIAN")
+            {
+                radioInformation.Text += "На рации не установлена прошивка OpenGD77 RUS!";
+            }
+            else
+            {
+                radioInformation.Text += "Установлена корректная прошивка OpenGD77 RUS";
+            }
+            radioInformation.Text += "\r\nСборка прошивки: ";
+            firmwareVersion = RadioInfo.buildDateTime.Substring(0, 8);
+            radioInformation.Text += firmwareVersion;
+            radioInformation.Text += "\r\nМодель рации: ";
+            switch (RadioInfo.radioType)
+            {
+                case 0:
+                    radioInformation.Text += "TYT MD-760/Radioddity GD-77";
                     firmwareName = "";
                     break;
-				case 2:
-					radioInformation.Text += "Baofeng DM-1801";
+                case 1:
+                    radioInformation.Text += "Radioddity GD-77S";
                     firmwareName = "";
                     break;
-				case 3:
-					radioInformation.Text += "Baofeng RD-5R";
+                case 2:
+                    radioInformation.Text += "Baofeng DM-1801";
                     firmwareName = "";
                     break;
-				case 4:
-					radioInformation.Text += "Baofeng DM-1801A";
+                case 3:
+                    radioInformation.Text += "Baofeng RD-5R";
                     firmwareName = "";
                     break;
-				case 5:
-					radioInformation.Text += "TYT MD-9600/Retevis RT-90";
+                case 4:
+                    radioInformation.Text += "Baofeng DM-1801A";
+                    firmwareName = "";
+                    break;
+                case 5:
+                    radioInformation.Text += "TYT MD-9600/Retevis RT-90";
                     firmwareName = "OpenMD9600RUS";
                     break;
-				case 6:
-					radioInformation.Text += "TYT MD-UV380/TYT MD-UV390 (5W)/Retevis RT-3S";
+                case 6:
+                    radioInformation.Text += "TYT MD-UV380/TYT MD-UV390 (5W)/Retevis RT-3S";
                     firmwareName = "OpenMDUV380_RUS";
                     break;
-				case 8:
-				case 10:
-					radioInformation.Text += "Baofeng DM-1701/Retevis RT-84";
+                case 8:
+                case 10:
+                    radioInformation.Text += "Baofeng DM-1701/Retevis RT-84";
                     firmwareName = "OpenDM1701-RT84_RUS";
                     break;
-				case 9:
-					radioInformation.Text += "TYT MD-2017/Retevis RT-82";
+                case 9:
+                    radioInformation.Text += "TYT MD-2017/Retevis RT-82";
                     firmwareName = "OpenMD2017RUS";
                     break;
-				case 106:
+                case 106:
                     radioInformation.Text += "TYT MD-UV390 (10W)";
                     firmwareName = "OpenMDUV380_10W_PLUS_RUS";
                     break;
-				default:
-					firmwareName = "";
-					break;
+                default:
+                    firmwareName = "";
+                    break;
 
             }
-			radioInformation.Text += "\r\nЧип флеш-памяти: ";
-			radioInformation.Text += RadioInfo.flashId.ToString();
-				if (IniFileUtils.getProfileStringWithDefault("Setup", "CheckFirmware", "yes") == "yes" && !messageShown && RadioInfo.identifier == "RUSSIAN")
-				{
-					messageShown = true;
-					string remoteURL = IniFileUtils.getProfileStringWithDefault("Setup", "ServerURI", "https://opengd77rus.ru/data/") + "Firmware.num";
-				    Uri remoteUri = new Uri(remoteURL);
-					WebClient checker = new WebClient();
-					string localName = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Firmware.ver";
-					bool fail = false;
-					try
-					{
-						checker.DownloadFile(remoteUri, localName);
-					}
-					catch (Exception ex)
-					{
-						MessageBox.Show(ex.Message);
-						fail = true;
-					}
-					if (!fail)
-					{
-						try
-						{
-							StreamReader sr = new StreamReader(localName);
-							remoteVersion = sr.ReadLine();
-							sr.Close();
-						}
-						catch
-						{
+            radioInformation.Text += "\r\nЧип флеш-памяти: ";
+            radioInformation.Text += RadioInfo.flashId.ToString();
+			/*
+ 	public enum RadioInfoFeatures : ushort
+	{
+		SCREEN_INVERTED = 1,
+		DMRID_USES_VOICE_PROMPTS = 2,
+		VOICE_PROMPTS_AVAILABLE = 4,
+		SUPPORT_SETTINGS_ACCESS = 8
+	}
+			*/
+            if (OpenGD77Form.RadioInfoIsFeatureSet(OpenGD77Form.RadioInfoFeatures.SCREEN_INVERTED))
+            {
+                radioInformation.Text += "\r\nИзображение инвертировано";
+            }
+            if (OpenGD77Form.RadioInfoIsFeatureSet(OpenGD77Form.RadioInfoFeatures.DMRID_USES_VOICE_PROMPTS))
+            {
+                radioInformation.Text += "\r\nБаза ID расширена за счет памяти голосовых сообщений";
+            }
+            if (OpenGD77Form.RadioInfoIsFeatureSet(OpenGD77Form.RadioInfoFeatures.VOICE_PROMPTS_AVAILABLE))
+            {
+                radioInformation.Text += "\r\nГолосовые оповещения загружены";
+            }
+            if (OpenGD77Form.RadioInfoIsFeatureSet(OpenGD77Form.RadioInfoFeatures.SUPPORT_SETTINGS_ACCESS))
+			{
+                radioInformation.Text += "\r\nДоступно чтение настроек";
+            }
+            if (IniFileUtils.getProfileStringWithDefault("Setup", "CheckFirmware", "yes") == "yes" && !messageShown && RadioInfo.identifier == "RUSSIAN")
+            {
+                messageShown = true;
+                string remoteURL = IniFileUtils.getProfileStringWithDefault("Setup", "ServerURI", "https://opengd77rus.ru/data/") + "Firmware.num";
+                Uri remoteUri = new Uri(remoteURL);
+                WebClient checker = new WebClient();
+                string localName = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Firmware.ver";
+                bool fail = false;
+                try
+                {
+                    checker.DownloadFile(remoteUri, localName);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    fail = true;
+                }
+                if (!fail)
+                {
+                    try
+                    {
+                        StreamReader sr = new StreamReader(localName);
+                        remoteVersion = sr.ReadLine();
+                        sr.Close();
+                    }
+                    catch
+                    {
 
-						}
-						if (int.Parse(remoteVersion) > int.Parse(RadioInfo.buildDateTime))
-						{
-							DialogResult decision = MessageBox.Show("На сайте проекта доступна новая версия прошивки.\r\nТекущая версия: " + RadioInfo.buildDateTime + "\r\nВерсия на сервере: " + remoteVersion +
-								"\r\nОткрыть страницу загрузок?", "Обновление прошивки", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-							if (decision == DialogResult.Yes)
-						{
+                    }
+                    if (int.Parse(remoteVersion) > int.Parse(RadioInfo.buildDateTime))
+                    {
+                        DialogResult decision = MessageBox.Show("На сайте проекта доступна новая версия прошивки.\r\nТекущая версия: " + RadioInfo.buildDateTime + "\r\nВерсия на сервере: " + remoteVersion +
+                            "\r\nОткрыть страницу загрузок?", "Обновление прошивки", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        if (decision == DialogResult.Yes)
+                        {
                             string saveFileName = firmwareName + "_" + remoteVersion + ".zip";
-							this.saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-							this.saveFileDialog.FileName = saveFileName;
+                            this.saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                            this.saveFileDialog.FileName = saveFileName;
                             if (saveFileDialog.ShowDialog() != DialogResult.Cancel)
-							{
-								Uri firmwareURI = new Uri("https://opengd77rus.ru/firmwares/" + firmwareName + ".zip");
-								WebClient downloader = new WebClient();
-								downloader.DownloadFileCompleted += new AsyncCompletedEventHandler(downloadFileCallback);
+                            {
+                                Uri firmwareURI = new Uri("https://opengd77rus.ru/firmwares/" + firmwareName + ".zip");
+                                WebClient downloader = new WebClient();
+                                downloader.DownloadFileCompleted += new AsyncCompletedEventHandler(downloadFileCallback);
                                 try
-								{
-									downloader.DownloadFileAsync(firmwareURI, saveFileDialog.FileName);
-								}
+                                {
+                                    downloader.DownloadFileAsync(firmwareURI, saveFileDialog.FileName);
+                                }
                                 catch (Exception ex)
                                 {
                                     MessageBox.Show(ex.Message);
@@ -1611,14 +1636,14 @@ public class MainForm : Form
                                 }
                             }
                         }
-							File.Delete(localName);
-						}
+                        File.Delete(localName);
+                    }
 
 
-					}
-				}
-		}
+                }
+            }
         }
+    }
 
     private static void downloadFileCallback(object sender, AsyncCompletedEventArgs e)
     {

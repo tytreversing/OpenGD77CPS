@@ -98,7 +98,7 @@
 			<Control Id="chkNoBeep" Text="Без звуков" />
 			<Control Id="chkNoEco" Text="Без экономайзера" />
       <Control Id="chkPriority" Text="Приоритетное сканирование" />
-      <Control Id="chkFastcall" Text="Быстрый вызов (MD-9600/RT-90)" />
+      <Control Id="chkFastcall" Text="Быстрый вызов" />
 			<Control Id="chkDMRForceDMO" Text="Прямая связь" />
 			<Control Id="chkUseLocation" Text="Использовать заданное местоположение" />
 			<Control Id="lblChName" Text="Имя" />

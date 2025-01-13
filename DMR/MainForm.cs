@@ -1555,8 +1555,21 @@ public class MainForm : Form
                     break;
 
             }
-            radioInformation.Text += "\r\nЧип флеш-памяти: ";
-            radioInformation.Text += RadioInfo.flashId.ToString();
+			switch(RadioInfo.structVersion) //версия унаследована от OpenGD77
+			{
+				case 0x03:
+					radioInformation.Text += "\r\nЧип флеш-памяти: ";
+				    radioInformation.Text += RadioInfo.flashId.ToString();
+					break;
+				case 0x04:
+                    radioInformation.Text += "\r\nВерсия блока настроек: 0x";
+					radioInformation.Text += RadioInfo.flashId.ToString("X4");
+                    break;
+				default:
+                    radioInformation.Text += "\r\nИдентификатор не распознан: ";
+                    radioInformation.Text += RadioInfo.structVersion.ToString();
+					break;
+            }
 			/*
  	public enum RadioInfoFeatures : ushort
 	{

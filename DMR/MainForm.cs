@@ -1369,17 +1369,15 @@ public class MainForm : Form
             // 
             // radioInformation
             // 
-            this.radioInformation.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.radioInformation.AutoSize = true;
-            this.radioInformation.BackColor = System.Drawing.Color.Transparent;
+            this.radioInformation.BackColor = System.Drawing.Color.White;
+            this.radioInformation.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.radioInformation.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.radioInformation.Location = new System.Drawing.Point(817, 480);
+            this.radioInformation.Location = new System.Drawing.Point(234, 595);
             this.radioInformation.Name = "radioInformation";
             this.radioInformation.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.radioInformation.Size = new System.Drawing.Size(44, 16);
+            this.radioInformation.Size = new System.Drawing.Size(865, 90);
             this.radioInformation.TabIndex = 15;
             this.radioInformation.Text = "label1";
-            this.radioInformation.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // pingTimer
             // 
@@ -1591,9 +1589,13 @@ public class MainForm : Form
             {
                 radioInformation.Text += "\r\nГолосовые оповещения загружены";
             }
-            if (OpenGD77Form.RadioInfoIsFeatureSet(OpenGD77Form.RadioInfoFeatures.SUPPORT_SETTINGS_ACCESS))
+            if (OpenGD77Form.RadioInfoIsFeatureSet(OpenGD77Form.RadioInfoFeatures.SUPPORT_SETTINGS_ACCESS) && (RadioInfo.flashId >= 0x477D))
 			{
                 radioInformation.Text += "\r\nДоступно чтение настроек";
+            }
+			else
+			{
+                radioInformation.Text += "\r\nЧтение блока настроек не поддерживается прошивкой";
             }
             if (IniFileUtils.getProfileStringWithDefault("Setup", "CheckFirmware", "yes") == "yes" && !messageShown && RadioInfo.identifier == "RUSSIAN")
             {
@@ -1853,7 +1855,7 @@ public class MainForm : Form
 		imgMain.Images.AddStrip(Resources.smethod_0());
 		base.AutoScaleMode = AutoScaleMode.Font;
 		Font = new Font("Arial", 10f, FontStyle.Regular);
-		GetAllLang();
+        GetAllLang();
 		string profileStringWithDefault2 = IniFileUtils.getProfileStringWithDefault("Setup", "Language", "Russian.xml");
 		foreach (ToolStripMenuItem dropDownItem in tsmiLanguage.DropDownItems)
 		{
@@ -4675,4 +4677,6 @@ public class MainForm : Form
 		AppSettings setupForm = new AppSettings();
         setupForm.ShowDialog();
     }
+
+
 }

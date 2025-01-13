@@ -3693,7 +3693,7 @@ public class ChannelForm : DockContent, IDisp
             this.btnCopy.BackColor = System.Drawing.SystemColors.Control;
             this.btnCopy.Location = new System.Drawing.Point(490, 25);
             this.btnCopy.Name = "btnCopy";
-            this.btnCopy.Size = new System.Drawing.Size(33, 23);
+            this.btnCopy.Size = new System.Drawing.Size(48, 26);
             this.btnCopy.TabIndex = 3;
             this.btnCopy.Text = ">>";
             this.btnCopy.UseVisualStyleBackColor = false;
@@ -4001,10 +4001,9 @@ public class ChannelForm : DockContent, IDisp
             // 
             // lblRxTone
             // 
-            this.lblRxTone.AutoSize = true;
-            this.lblRxTone.Location = new System.Drawing.Point(137, 94);
+            this.lblRxTone.Location = new System.Drawing.Point(15, 92);
             this.lblRxTone.Name = "lblRxTone";
-            this.lblRxTone.Size = new System.Drawing.Size(134, 16);
+            this.lblRxTone.Size = new System.Drawing.Size(256, 20);
             this.lblRxTone.TabIndex = 21;
             this.lblRxTone.Text = "Rx CTCSS/DCS [Hz]";
             this.lblRxTone.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -4047,10 +4046,9 @@ public class ChannelForm : DockContent, IDisp
             // 
             // lblTxTone
             // 
-            this.lblTxTone.AutoSize = true;
-            this.lblTxTone.Location = new System.Drawing.Point(137, 60);
+            this.lblTxTone.Location = new System.Drawing.Point(15, 60);
             this.lblTxTone.Name = "lblTxTone";
-            this.lblTxTone.Size = new System.Drawing.Size(133, 16);
+            this.lblTxTone.Size = new System.Drawing.Size(255, 19);
             this.lblTxTone.TabIndex = 25;
             this.lblTxTone.Text = "Tx CTCSS/DCS [Hz]";
             this.lblTxTone.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -4248,7 +4246,6 @@ public class ChannelForm : DockContent, IDisp
             this.grpDigit.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudTxColor)).EndInit();
             this.grpAnalog.ResumeLayout(false);
-            this.grpAnalog.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudTot)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

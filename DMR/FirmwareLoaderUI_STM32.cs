@@ -326,7 +326,6 @@ public class FirmwareLoaderUI_STM32 : Form
 
 	private void InitializeComponent()
 	{
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FirmwareLoaderUI_STM32));
             this.btnProgram = new System.Windows.Forms.Button();
             this.Progress = new System.Windows.Forms.ProgressBar();
             this.lblMessage = new System.Windows.Forms.Label();
@@ -516,7 +515,8 @@ public class FirmwareLoaderUI_STM32 : Form
             this.lblWarning.Name = "lblWarning";
             this.lblWarning.Size = new System.Drawing.Size(303, 178);
             this.lblWarning.TabIndex = 17;
-            this.lblWarning.Text = resources.GetString("lblWarning.Text");
+            this.lblWarning.Text = "ѕосле первой установки прошивки ќЅя«ј“≈Ћ№Ќќ записать в рацию пустой кодплаг, и то" +
+    "лько затем что-то редактировать. Ќе пытайтесь сразу считывать данные из рации.";
             this.lblWarning.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblWarning.Visible = false;
             // 
@@ -676,8 +676,6 @@ public class FirmwareLoaderUI_STM32 : Form
         else
             lblMessage.Text = StringsDict["FileUpdated"];
     }
-
-
 
 
 }

@@ -106,6 +106,8 @@ public class MainForm : Form
 
 	private ToolStripMenuItem tsmiVfoB;
 
+	private ToolStripMenuItem tsmiCodeplugSettings;
+
 	private ToolStripMenuItem tsmiAbout;
 
 	private ContextMenuStrip cmsGroup;
@@ -385,6 +387,7 @@ public class MainForm : Form
             this.tsmiVfos = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiVfoA = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiVfoB = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiCodeplugSettings = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiBasic = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiContactsDownload = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsGroup = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -962,6 +965,13 @@ public class MainForm : Form
             this.tsmiVfos.Name = "tsmiVfos";
             this.tsmiVfos.Size = new System.Drawing.Size(191, 22);
             this.tsmiVfos.Text = "VFOs";
+            // 
+            // tsmiCodeplugSettings
+            // 
+            this.tsmiCodeplugSettings.Name = "tsmiCodeplugSettings";
+            this.tsmiCodeplugSettings.Size = new System.Drawing.Size(191, 22);
+            this.tsmiCodeplugSettings.Text = "Settings";
+	    	this.tsmiCodeplugSettings.Click += new System.EventHandler(this.tsmiCodeplugSettings_Click);
             // 
             // tsmiVfoA
             // 
@@ -1708,7 +1718,7 @@ public class MainForm : Form
         }
         else
         {
-            this.tsmiSetting.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[10] { this.tsmiBootItem, this.tsmiGerneralSet, this.tsmiDeviceInfo, this.tsmiDtmf, this.tsmiAPRSConfigs, this.tsmiContact, this.tsmiGrpRxList, this.tsmiZone, this.tsmiChannels, this.tsmiVfos });
+            this.tsmiSetting.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[11] { this.tsmiBootItem, this.tsmiGerneralSet, this.tsmiDeviceInfo, this.tsmiDtmf, this.tsmiAPRSConfigs, this.tsmiContact, this.tsmiGrpRxList, this.tsmiZone, this.tsmiChannels, this.tsmiVfos, this.tsmiCodeplugSettings });
         }
         Settings.dicCommon.Add("None", Settings.SZ_NONE);
 		Settings.dicCommon.Add("Selected", Settings.SZ_SELECTED);
@@ -3575,7 +3585,16 @@ public class MainForm : Form
 		}
 	}
 
-	private void tsmiScanBasic_Click(object sender, EventArgs e)
+    private void tsmiCodeplugSettings_Click(object sender, EventArgs e)
+    {
+        TreeNode treeNode = method_9(typeof(CodeplugSettingsForm), tvwMain.Nodes);
+        if (treeNode != null)
+        {
+            treeviewDoubleClickHandler(treeNode, bool_0: true);
+        }
+    }
+
+    private void tsmiScanBasic_Click(object sender, EventArgs e)
 	{
 		TreeNode treeNode = method_9(typeof(ScanBasicForm), tvwMain.Nodes);
 		if (treeNode != null)
@@ -4324,7 +4343,8 @@ public class MainForm : Form
 	{
 		lstTreeNodeItem.Clear();
 		lstTreeNodeItem.Add(new TreeNodeItem(null, null, null, 0, -1, 18, null));
-		lstTreeNodeItem.Add(new TreeNodeItem(null, typeof(GeneralSetForm), null, 0, -1, 5, null));
+        lstTreeNodeItem.Add(new TreeNodeItem(null, typeof(CodeplugSettingsForm), null, 0, -1, 1, null));
+        lstTreeNodeItem.Add(new TreeNodeItem(null, typeof(GeneralSetForm), null, 0, -1, 5, null));
 		lstTreeNodeItem.Add(new TreeNodeItem(null, typeof(BootItemForm), null, 0, -1, 30, null));
 		lstTreeNodeItem.Add(new TreeNodeItem(null, typeof(DeviceInfoForm), null, 0, -1, 20, null));
 		if (EnableHiddenFeatures)
@@ -4351,7 +4371,8 @@ public class MainForm : Form
 				_ => 54, 
 			}, VfoForm.data));
 		}
-	}
+        
+    }
 
 	private DataTable method_19()
 	{
@@ -4360,7 +4381,8 @@ public class MainForm : Form
 		dataTable.Columns.Add("Name");
 		dataTable.Columns.Add("ParentId");
 		dataTable.Rows.Add("00", "Model", "-1");
-		dataTable.Rows.Add("0001", "GeneralSetting", "00");
+        dataTable.Rows.Add("0017", "Settings", "00");
+        dataTable.Rows.Add("0001", "GeneralSetting", "00");
 		dataTable.Rows.Add("0002", "BootItem", "00");
 		dataTable.Rows.Add("0005", "BasicInfo", "00");
 		if (EnableHiddenFeatures)
@@ -4378,7 +4400,8 @@ public class MainForm : Form
 		dataTable.Rows.Add("0016", "VFO", "00");
 		dataTable.Rows.Add("001600", "VFOA", "0016");
 		dataTable.Rows.Add("001601", "VFOB", "0016");
-		return dataTable;
+        
+        return dataTable;
 	}
 
 	private void method_20(DataTable dataTable_0)

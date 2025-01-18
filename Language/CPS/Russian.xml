@@ -49,6 +49,31 @@
 			<Item Id="CallTypeA" Text="DTMF Call" />
 		</Commons>
 	</ButtonForm>
+  <CodeplugSettingsForm Text="Настройки рации">
+    <Controls>
+      <Control Id="gbGeneral" Text="Общие" />
+      <Control Id="lblLongPress" Text="Длительное нажатие, с" />
+      <Control Id="lblRepeat" Text="Повторное нажатие, c" />
+      <Control Id="lblAutoBlock" Text="Автоблокировка клавиатуры" />
+      <Control Id="lblP3" Text="Кнопка SK1/P3" />
+      <Control Id="lblP3Long" Text="Кнопка SK1/P3 (длительно)" />
+      <Control Id="lblHotspot" Text="Режим хотспота" />
+      <Control Id="lblBattery" Text="Калибровка аккумулятора" />
+      <Control Id="lblAPO" Text="Автоотключение рации" />
+      <Control Id="chAPOReset" Text="Сброс автоотключения по Rx/Tx" />
+      <Control Id="chAutoSat" Text="Автоматический выбор спутника" />
+      <Control Id="lblGPSMode" Text="Режим GPS-модуля" />
+      <Control Id="gbRadio" Text="Радиосвязь" />
+      <Control Id="lblBandlimit" Text="Ограничения частот" />
+      <Control Id="lblDMRFilter" Text="Фильтр DMR, c" />
+      <Control Id="lblScanPause" Text="Пауза сканирования, c" />
+      <Control Id="lblScanTime" Text="Время сканирования, мc" />
+      <Control Id="lblPriority" Text="Множитель приоритета" />
+    </Controls>
+    <Commons>
+      
+    </Commons>
+  </CodeplugSettingsForm>
 	<ChannelForm Text="Канал">
 		<Controls>
 			<Control Id="btnCopy" Text=">>" />
@@ -424,6 +449,7 @@
 			<TreeNode Id="VFO" Text="Частотный режим" />
 			<TreeNode Id="VFOA" Text="VFO A" />
 			<TreeNode Id="VFOB" Text="VFO B" />
+      <TreeNode Id="Settings" Text="Настройки рации" />
 		</TreeView>
 		<MenuStrip>
 			<MenuItem Id="tsmiFile" Text="&amp;Файл" />
@@ -460,6 +486,7 @@
 			<MenuItem Id="tsmiZoneBasic" Text="Список зон" />
 			<MenuItem Id="tsmiChannels" Text="Каналы" />
 			<MenuItem Id="tsmiVfos" Text="VFO" />
+      <MenuItem Id="tsmiCodeplugSettings" Text="Настройки рации" />
 			<MenuItem Id="tsmiScan" Text="Сканирование" />
 			<MenuItem Id="tsmiScanBasic" Text="Основное" />
 			<MenuItem Id="tsmiScanList" Text="Широта" />

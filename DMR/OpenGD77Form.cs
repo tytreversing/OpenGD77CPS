@@ -65,7 +65,112 @@ public class OpenGD77Form : Form
 		public ushort features;
 	}
 
-	public static byte[] CustomData;
+    /*
+typedef struct __attribute__ ((__packed__))
+{
+	uint32_t 		magicNumber;
+	uint8_t			timezone;// Lower 7 bits are the timezone. 64 = UTC, values < 64 are negative TZ values.  Bit 8 is a flag which indicates TZ/UTC. 0 = UTC
+	uint8_t			beepOptions; // 2 pairs of bits + 1 (TX and RX beeps)
+	uint32_t		bitfieldOptions; // see bitfieldOptions_t
+	uint32_t		aprsBeaconingSettingsPart1;
+	uint32_t		aprsBeaconingSettingsPart2;
+	uint16_t		aprsBeaconingSettingsPart3;
+	uint8_t			txPowerLevel;
+	uint8_t			txTimeoutBeepX5Secs;
+	uint8_t			beepVolumeDivider;
+	uint8_t			micGainDMR;
+	uint8_t			micGainFM;
+	uint8_t			backlightMode; // see BACKLIGHT_MODE enum
+	uint8_t			backLightTimeout; // 0 = never timeout. 1 - 255 time in seconds
+	int8_t			displayContrast;
+	int8_t			displayBacklightPercentageDay;
+	int8_t			displayBacklightPercentageNight;
+	int8_t			displayBacklightPercentageOff; // backlight level when "off"
+	uint8_t			extendedInfosOnScreen;
+	uint8_t			scanModePause;
+	uint8_t			scanDelay;
+	uint8_t			DMR_RxAGC;
+	uint8_t			hotspotType;
+	uint8_t			scanStepTime;
+	uint8_t			dmrCaptureTimeout;
+	uint8_t    		privateCalls;
+	uint8_t			contactDisplayPriority;
+	uint8_t			splitContact;
+	uint8_t			voxThreshold; // 0: disabled
+	uint8_t			voxTailUnits; // 500ms units
+	uint8_t			audioPromptMode;
+	uint8_t			batteryCalibration; // Units of 0.01V (NOTE: only the 4 lower bits are used)
+	uint8_t			squelchDefaultVHF; // VHF, 200 and UHF
+	uint8_t			squelchDefaultUHF; // VHF, 200 and UHF
+	uint8_t			squelchDefault220; // VHF, 200 and UHF
+	uint8_t			ecoLevel;// Power saving / economy level
+	uint8_t			apo; // unit: 30 minutes (5 is skipped, as we want 0, 30, 60, 90, 120 and 180)
+	uint8_t			keypadTimerLong;
+	uint8_t			keypadTimerRepeat;
+	uint8_t			autolockTimer; // in minutes
+	uint8_t         buttonP3; //Режим работы кнопки P3
+	uint8_t         buttonP3Long;
+	uint8_t         scanPriority; //множитель приоритетного сканирования, 2...10
+} settingsAlignedStruct_t;
+	*/
+
+    [StructLayout(LayoutKind.Explicit, Pack = 1, Size = 46)]
+	public struct RadioSettings
+	{
+        [FieldOffset(0)]
+        [MarshalAs(UnmanagedType.U4)]
+        public uint magicNumber;
+
+        [FieldOffset(4)]
+        [MarshalAs(UnmanagedType.U4)]
+        public uint LocationLat;
+
+        [FieldOffset(8)]
+        [MarshalAs(UnmanagedType.U4)]
+        public uint LocationLon;
+
+        [FieldOffset(12)]
+        [MarshalAs(UnmanagedType.U1)]
+        public uint tomezone;
+
+        [FieldOffset(13)]
+        [MarshalAs(UnmanagedType.U1)]
+        public uint beepOptions;
+
+		[FieldOffset(14)]
+		[MarshalAs(UnmanagedType.U2)]
+		public uint vfoSweepSettings;
+
+        [FieldOffset(16)]
+        [MarshalAs(UnmanagedType.U4)]
+        public uint overrideTG;
+
+        [FieldOffset(20)]
+        [MarshalAs(UnmanagedType.U4)]
+        public uint vfoScanLowA;
+
+        [FieldOffset(24)]
+        [MarshalAs(UnmanagedType.U4)]
+        public uint vfoScanLowB;
+
+        [FieldOffset(28)]
+        [MarshalAs(UnmanagedType.U4)]
+        public uint vfoScanHighA;
+
+        [FieldOffset(32)]
+        [MarshalAs(UnmanagedType.U4)]
+        public uint vfoScanHighB;
+
+        [FieldOffset(36)]
+        [MarshalAs(UnmanagedType.U4)]
+        public uint bitfieldOptions;
+
+        [FieldOffset(40)]
+        [MarshalAs(UnmanagedType.U4)]
+        public uint radioType;
+    }
+
+    public static byte[] CustomData;
 
 	public static byte[] LastUsedChannelsData;
 

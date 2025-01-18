@@ -56,6 +56,9 @@
     <Compile Update="DMR\ChannelsForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="DMR\CodeplugSettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="DMR\CommPortSelector.cs">
       <SubType>Form</SubType>
     </Compile>

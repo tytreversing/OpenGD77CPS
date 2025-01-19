@@ -51,6 +51,10 @@
 	</ButtonForm>
   <CodeplugSettingsForm Text="Настройки рации">
     <Controls>
+      <Control Id="btnReadSettings" Text="Чтение настроек из рации" />
+      <Control Id="btnWriteSettings" Text="Запись настроек в рацию" />
+      <Control Id="btnSaveSettings" Text="Сохранить настройки в файл" />
+      <Control Id="btnLoadSettings" Text="Загрузить настройки из файла" />
       <Control Id="gbGeneral" Text="Общие" />
       <Control Id="lblLongPress" Text="Длительное нажатие, с" />
       <Control Id="lblRepeat" Text="Повторное нажатие, c" />
@@ -1028,6 +1032,7 @@
 			<Item Id="RADIO_DISPLAY_Voice_prompts" Text="голосовых" />
 			<Item Id="RADIO_DISPLAY_Restoring" Text="Восстановление" />
       <Item Id="RADIO_DISPLAY_Calibrations" Text="калибровок" />
+      <Item Id="RADIO_DISPLAY_Settings" Text="настроек" />
 			<Item Id="RADIO_DISPLAY_Reading" Text="Чтение" />
 			<Item Id="RADIO_DISPLAY_Writing" Text="Запись" />
       <Item Id="Theme" Text="темы" />

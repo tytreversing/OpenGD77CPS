@@ -208,8 +208,6 @@ public class MainForm : Form
 
 	private StatusStrip ssrMain;
 
-	private ToolStripStatusLabel slblCompany;
-
 	private ToolStrip tsrMain;
 
 	private ToolStripButton tsbtnNew;
@@ -415,7 +413,6 @@ public class MainForm : Form
             this.pnlTvw = new System.Windows.Forms.Panel();
             this.tvwMain = new System.Windows.Forms.TreeView();
             this.ssrMain = new System.Windows.Forms.StatusStrip();
-            this.slblCompany = new System.Windows.Forms.ToolStripStatusLabel();
             this.tsrMain = new System.Windows.Forms.ToolStrip();
             this.tsbtnNew = new System.Windows.Forms.ToolStripButton();
             this.tsbtnOpen = new System.Windows.Forms.ToolStripButton();
@@ -441,7 +438,6 @@ public class MainForm : Form
             this.cmsGroupContact.SuspendLayout();
             this.cmsTree.SuspendLayout();
             this.pnlTvw.SuspendLayout();
-            this.ssrMain.SuspendLayout();
             this.tsrMain.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -966,13 +962,6 @@ public class MainForm : Form
             this.tsmiVfos.Size = new System.Drawing.Size(191, 22);
             this.tsmiVfos.Text = "VFOs";
             // 
-            // tsmiCodeplugSettings
-            // 
-            this.tsmiCodeplugSettings.Name = "tsmiCodeplugSettings";
-            this.tsmiCodeplugSettings.Size = new System.Drawing.Size(191, 22);
-            this.tsmiCodeplugSettings.Text = "Settings";
-	    	this.tsmiCodeplugSettings.Click += new System.EventHandler(this.tsmiCodeplugSettings_Click);
-            // 
             // tsmiVfoA
             // 
             this.tsmiVfoA.Name = "tsmiVfoA";
@@ -986,6 +975,13 @@ public class MainForm : Form
             this.tsmiVfoB.Size = new System.Drawing.Size(118, 24);
             this.tsmiVfoB.Text = "VFO B";
             this.tsmiVfoB.Click += new System.EventHandler(this.tsmiVfoB_Click);
+            // 
+            // tsmiCodeplugSettings
+            // 
+            this.tsmiCodeplugSettings.Name = "tsmiCodeplugSettings";
+            this.tsmiCodeplugSettings.Size = new System.Drawing.Size(191, 22);
+            this.tsmiCodeplugSettings.Text = "Settings";
+            this.tsmiCodeplugSettings.Click += new System.EventHandler(this.tsmiCodeplugSettings_Click);
             // 
             // tsmiBasic
             // 
@@ -1174,7 +1170,7 @@ public class MainForm : Form
             this.dockPanel.Location = new System.Drawing.Point(234, 71);
             this.dockPanel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dockPanel.Name = "dockPanel";
-            this.dockPanel.Size = new System.Drawing.Size(865, 614);
+            this.dockPanel.Size = new System.Drawing.Size(865, 616);
             this.dockPanel.TabIndex = 6;
             // 
             // pnlTvw
@@ -1207,20 +1203,12 @@ public class MainForm : Form
             // 
             // ssrMain
             // 
-            this.ssrMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.slblCompany});
-            this.ssrMain.Location = new System.Drawing.Point(234, 685);
+            this.ssrMain.Location = new System.Drawing.Point(234, 687);
             this.ssrMain.Name = "ssrMain";
             this.ssrMain.Padding = new System.Windows.Forms.Padding(1, 0, 17, 0);
-            this.ssrMain.Size = new System.Drawing.Size(865, 24);
+            this.ssrMain.Size = new System.Drawing.Size(865, 22);
             this.ssrMain.TabIndex = 12;
             this.ssrMain.Text = "statusStrip1";
-            // 
-            // slblCompany
-            // 
-            this.slblCompany.Name = "slblCompany";
-            this.slblCompany.Size = new System.Drawing.Size(62, 19);
-            this.slblCompany.Text = "Prompt：";
             // 
             // tsrMain
             // 
@@ -1382,7 +1370,7 @@ public class MainForm : Form
             this.radioInformation.BackColor = System.Drawing.Color.White;
             this.radioInformation.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.radioInformation.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.radioInformation.Location = new System.Drawing.Point(234, 595);
+            this.radioInformation.Location = new System.Drawing.Point(234, 597);
             this.radioInformation.Name = "radioInformation";
             this.radioInformation.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.radioInformation.Size = new System.Drawing.Size(865, 90);
@@ -1427,8 +1415,6 @@ public class MainForm : Form
             this.cmsGroupContact.ResumeLayout(false);
             this.cmsTree.ResumeLayout(false);
             this.pnlTvw.ResumeLayout(false);
-            this.ssrMain.ResumeLayout(false);
-            this.ssrMain.PerformLayout();
             this.tsrMain.ResumeLayout(false);
             this.tsrMain.PerformLayout();
             this.ResumeLayout(false);
@@ -1493,6 +1479,8 @@ public class MainForm : Form
 		temp.Dispose();
 		return;
 	}
+
+
 
 	private string firmwareName = "";
     private string remoteVersion = "";
@@ -2768,7 +2756,7 @@ public class MainForm : Form
 				AddTreeViewNode(selectedNode.Nodes, text, new TreeNodeItem(cmsSub, treeNodeItem.SubType, null, 0, num, 11, treeNodeItem.Data));
 			}
 			treeNodeItem.Data.SetName(num, text);
-			slblCompany.Text = string.Format(Settings.SZ_ADD + text);
+
 			if (!selectedNode.IsExpanded)
 			{
 				selectedNode.Expand();
@@ -3863,7 +3851,7 @@ public class MainForm : Form
 
 	private void languageChangeHandler(object sender, EventArgs e)
 	{
-		slblCompany.Text = "";
+
 		closeAllForms();
 		frmHelp.ShowHelp(null);
 		ToolStripMenuItem obj = sender as ToolStripMenuItem;
@@ -4684,7 +4672,7 @@ public class MainForm : Form
     private void pingTimer_Tick(object sender, EventArgs e)
     {
 		FormCollection forms = Application.OpenForms;
-		if (forms.Count > 2) return;
+        if (forms.Count > 2) return;
 		try
 		{
 			pingRadio();

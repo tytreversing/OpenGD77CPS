@@ -14,7 +14,9 @@ public class OpenGD77CommsTransferData
 		DataModeWriteWAV,
 		DataModeReadAMBE,
 		DataModeReadRadioInfo,
-		DataModeReadSecureRegisters
+		DataModeReadSecureRegisters,
+		DataModeReadSettings,
+		DataModeWriteSettings
 	}
 
 	public enum CommsAction
@@ -38,7 +40,9 @@ public class OpenGD77CommsTransferData
 		READ_THEME,
 		WRITE_THEME,
 		READ_SECURE_REGISTERS,
-		SAVE_NMEA_LOG
+		SAVE_NMEA_LOG,
+		READ_SETTINGS,
+		WRITE_SETTINGS
 	}
 
 	public CommsDataMode mode;

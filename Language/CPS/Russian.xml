@@ -68,6 +68,8 @@
       <Control Id="chAutoSat" Text="Автоматический выбор спутника" />
       <Control Id="lblGPSMode" Text="Режим GPS-модуля" />
       <Control Id="gbRadio" Text="Радиосвязь" />
+      <Control Id="rbHam" Text="радиолюбительские" />
+      <Control Id="rbCPS" Text="по CPS" />
       <Control Id="lblBandlimit" Text="Ограничения частот" />
       <Control Id="lblDMRFilter" Text="Фильтр DMR, c" />
       <Control Id="lblScanPause" Text="Пауза сканирования, c" />

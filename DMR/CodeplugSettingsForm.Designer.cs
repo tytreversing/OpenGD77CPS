@@ -53,8 +53,15 @@
             this.btnWriteSettings = new System.Windows.Forms.Button();
             this.btnSaveSettings = new System.Windows.Forms.Button();
             this.btnLoadSettings = new System.Windows.Forms.Button();
+            this.nmPriority = new System.Windows.Forms.NumericUpDown();
+            this.tbScanTime = new System.Windows.Forms.TextBox();
+            this.tbScanPause = new System.Windows.Forms.TextBox();
+            this.tbDMRFilter = new System.Windows.Forms.TextBox();
+            this.rbHam = new System.Windows.Forms.RadioButton();
+            this.rbCPS = new System.Windows.Forms.RadioButton();
             this.gbGeneral.SuspendLayout();
             this.gbRadio.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nmPriority)).BeginInit();
             this.SuspendLayout();
             // 
             // gbGeneral
@@ -199,6 +206,12 @@
             // 
             // gbRadio
             // 
+            this.gbRadio.Controls.Add(this.rbCPS);
+            this.gbRadio.Controls.Add(this.rbHam);
+            this.gbRadio.Controls.Add(this.tbDMRFilter);
+            this.gbRadio.Controls.Add(this.tbScanPause);
+            this.gbRadio.Controls.Add(this.tbScanTime);
+            this.gbRadio.Controls.Add(this.nmPriority);
             this.gbRadio.Controls.Add(this.lblPriority);
             this.gbRadio.Controls.Add(this.lblScanTime);
             this.gbRadio.Controls.Add(this.lblScanPause);
@@ -214,7 +227,7 @@
             // lblPriority
             // 
             this.lblPriority.AutoSize = true;
-            this.lblPriority.Location = new System.Drawing.Point(13, 93);
+            this.lblPriority.Location = new System.Drawing.Point(13, 136);
             this.lblPriority.Name = "lblPriority";
             this.lblPriority.Size = new System.Drawing.Size(38, 13);
             this.lblPriority.TabIndex = 4;
@@ -224,7 +237,7 @@
             // lblScanTime
             // 
             this.lblScanTime.AutoSize = true;
-            this.lblScanTime.Location = new System.Drawing.Point(13, 76);
+            this.lblScanTime.Location = new System.Drawing.Point(13, 111);
             this.lblScanTime.Name = "lblScanTime";
             this.lblScanTime.Size = new System.Drawing.Size(52, 13);
             this.lblScanTime.TabIndex = 3;
@@ -235,7 +248,7 @@
             // lblScanPause
             // 
             this.lblScanPause.AutoSize = true;
-            this.lblScanPause.Location = new System.Drawing.Point(13, 59);
+            this.lblScanPause.Location = new System.Drawing.Point(13, 85);
             this.lblScanPause.Name = "lblScanPause";
             this.lblScanPause.Size = new System.Drawing.Size(62, 13);
             this.lblScanPause.TabIndex = 2;
@@ -246,7 +259,7 @@
             // lblDMRFilter
             // 
             this.lblDMRFilter.AutoSize = true;
-            this.lblDMRFilter.Location = new System.Drawing.Point(13, 42);
+            this.lblDMRFilter.Location = new System.Drawing.Point(13, 59);
             this.lblDMRFilter.Name = "lblDMRFilter";
             this.lblDMRFilter.Size = new System.Drawing.Size(57, 13);
             this.lblDMRFilter.TabIndex = 1;
@@ -258,7 +271,7 @@
             // lblBandlimit
             // 
             this.lblBandlimit.AutoSize = true;
-            this.lblBandlimit.Location = new System.Drawing.Point(13, 25);
+            this.lblBandlimit.Location = new System.Drawing.Point(13, 16);
             this.lblBandlimit.Name = "lblBandlimit";
             this.lblBandlimit.Size = new System.Drawing.Size(48, 13);
             this.lblBandlimit.TabIndex = 0;
@@ -310,6 +323,82 @@
             this.btnLoadSettings.Text = "load";
             this.btnLoadSettings.UseVisualStyleBackColor = false;
             // 
+            // nmPriority
+            // 
+            this.nmPriority.Location = new System.Drawing.Point(179, 134);
+            this.nmPriority.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.nmPriority.Minimum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            this.nmPriority.Name = "nmPriority";
+            this.nmPriority.ReadOnly = true;
+            this.nmPriority.Size = new System.Drawing.Size(120, 20);
+            this.nmPriority.TabIndex = 5;
+            this.nmPriority.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            // 
+            // tbScanTime
+            // 
+            this.tbScanTime.Location = new System.Drawing.Point(179, 108);
+            this.tbScanTime.Name = "tbScanTime";
+            this.tbScanTime.Size = new System.Drawing.Size(120, 20);
+            this.tbScanTime.TabIndex = 6;
+            this.tbScanTime.Text = "30";
+            this.tbScanTime.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.filterNumerics);
+            this.tbScanTime.Leave += new System.EventHandler(this.tbScanTime_Leave);
+            // 
+            // tbScanPause
+            // 
+            this.tbScanPause.Location = new System.Drawing.Point(179, 82);
+            this.tbScanPause.Name = "tbScanPause";
+            this.tbScanPause.Size = new System.Drawing.Size(120, 20);
+            this.tbScanPause.TabIndex = 7;
+            this.tbScanPause.Text = "5";
+            this.tbScanPause.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.filterNumerics);
+            this.tbScanPause.Leave += new System.EventHandler(this.tbScanPause_Leave);
+            // 
+            // tbDMRFilter
+            // 
+            this.tbDMRFilter.Location = new System.Drawing.Point(179, 56);
+            this.tbDMRFilter.Name = "tbDMRFilter";
+            this.tbDMRFilter.Size = new System.Drawing.Size(120, 20);
+            this.tbDMRFilter.TabIndex = 8;
+            this.tbDMRFilter.Text = "10";
+            this.tbDMRFilter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.filterNumerics);
+            this.tbDMRFilter.Leave += new System.EventHandler(this.tbDMRFilter_Leave);
+            // 
+            // rbHam
+            // 
+            this.rbHam.AutoSize = true;
+            this.rbHam.Checked = true;
+            this.rbHam.Location = new System.Drawing.Point(179, 16);
+            this.rbHam.Name = "rbHam";
+            this.rbHam.Size = new System.Drawing.Size(85, 17);
+            this.rbHam.TabIndex = 9;
+            this.rbHam.TabStop = true;
+            this.rbHam.Text = "radioButton1";
+            this.rbHam.UseVisualStyleBackColor = true;
+            // 
+            // rbCPS
+            // 
+            this.rbCPS.AutoSize = true;
+            this.rbCPS.Location = new System.Drawing.Point(179, 33);
+            this.rbCPS.Name = "rbCPS";
+            this.rbCPS.Size = new System.Drawing.Size(85, 17);
+            this.rbCPS.TabIndex = 10;
+            this.rbCPS.TabStop = true;
+            this.rbCPS.Text = "radioButton1";
+            this.rbCPS.UseVisualStyleBackColor = true;
+            // 
             // CodeplugSettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -329,6 +418,7 @@
             this.gbGeneral.PerformLayout();
             this.gbRadio.ResumeLayout(false);
             this.gbRadio.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nmPriority)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -358,5 +448,11 @@
         private System.Windows.Forms.Button btnWriteSettings;
         private System.Windows.Forms.Button btnSaveSettings;
         private System.Windows.Forms.Button btnLoadSettings;
+        private System.Windows.Forms.NumericUpDown nmPriority;
+        private System.Windows.Forms.TextBox tbScanTime;
+        private System.Windows.Forms.TextBox tbScanPause;
+        private System.Windows.Forms.TextBox tbDMRFilter;
+        private System.Windows.Forms.RadioButton rbHam;
+        private System.Windows.Forms.RadioButton rbCPS;
     }
 }

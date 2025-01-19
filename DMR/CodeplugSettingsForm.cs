@@ -27,56 +27,9 @@ namespace DMR
         private SerialPort commPort;
         public static Dictionary<string, string> OpenGD77StringsDict = new Dictionary<string, string>();
         private BackgroundWorker worker;
-/*
-typedef struct __attribute__ ((__packed__))
-{
-uint32_t 		magicNumber;
-uint8_t			timezone;// Lower 7 bits are the timezone. 64 = UTC, values < 64 are negative TZ values.  Bit 8 is a flag which indicates TZ/UTC. 0 = UTC
-uint8_t			beepOptions; // 2 pairs of bits + 1 (TX and RX beeps)
-uint32_t		bitfieldOptions; // see bitfieldOptions_t
-uint32_t		aprsBeaconingSettingsPart1;
-uint32_t		aprsBeaconingSettingsPart2;
-uint16_t		aprsBeaconingSettingsPart3;
-uint8_t			txPowerLevel;
-uint8_t			txTimeoutBeepX5Secs;
-uint8_t			beepVolumeDivider;
-uint8_t			micGainDMR;
-uint8_t			micGainFM;
-uint8_t			backlightMode; // see BACKLIGHT_MODE enum
-uint8_t			backLightTimeout; // 0 = never timeout. 1 - 255 time in seconds
-int8_t			displayContrast;
-int8_t			displayBacklightPercentageDay;
-int8_t			displayBacklightPercentageNight;
-int8_t			displayBacklightPercentageOff; // backlight level when "off"
-uint8_t			extendedInfosOnScreen;
-uint8_t			scanModePause;
-uint8_t			scanDelay;
-uint8_t			DMR_RxAGC;
-uint8_t			hotspotType;
-uint8_t			scanStepTime;
-uint8_t			dmrCaptureTimeout;
-uint8_t    		privateCalls;
-uint8_t			contactDisplayPriority;
-uint8_t			splitContact;
-uint8_t			voxThreshold; // 0: disabled
-uint8_t			voxTailUnits; // 500ms units
-uint8_t			audioPromptMode;
-uint8_t			batteryCalibration; // Units of 0.01V (NOTE: only the 4 lower bits are used)
-uint8_t			squelchDefaultVHF; // VHF, 200 and UHF
-uint8_t			squelchDefaultUHF; // VHF, 200 and UHF
-uint8_t			squelchDefault220; // VHF, 200 and UHF
-uint8_t			ecoLevel;// Power saving / economy level
-uint8_t			apo; // unit: 30 minutes (5 is skipped, as we want 0, 30, 60, 90, 120 and 180)
-uint8_t			keypadTimerLong;
-uint8_t			keypadTimerRepeat;
-uint8_t			autolockTimer; // in minutes
-uint8_t         buttonP3; //Режим работы кнопки P3
-uint8_t         buttonP3Long;
-uint8_t         scanPriority; //множитель приоритетного сканирования, 2...10
-} settingsAlignedStruct_t;
-*/
 
-        [StructLayout(LayoutKind.Explicit, Pack = 1, Size = 56)]
+
+        [StructLayout(LayoutKind.Explicit, Pack = 1, Size = 57)]
         public struct RadioSettings
         {
             [FieldOffset(0)]
@@ -89,13 +42,175 @@ uint8_t         scanPriority; //множитель приоритетного с
 
             [FieldOffset(5)]
             [MarshalAs(UnmanagedType.U1)]
-            public uint beepOptions;
+            public byte beepOptions;
 
-            
+            [FieldOffset(6)]
+            [MarshalAs(UnmanagedType.U4)]
+            public uint bitfieldOptions;
+
+            [FieldOffset(10)]
+            [MarshalAs(UnmanagedType.U4)]
+            public uint aprsBeaconingSettingsPart1;
+
+            [FieldOffset(14)]
+            [MarshalAs(UnmanagedType.U4)]
+            public uint aprsBeaconingSettingsPart2;
+
+            [FieldOffset(18)]
+            [MarshalAs(UnmanagedType.U2)]
+            public ushort aprsBeaconingSettingsPart3;
+
+            [FieldOffset(20)]
+            [MarshalAs(UnmanagedType.U1)]
+            public byte txPowerLevel;
+
+            [FieldOffset(21)]
+            [MarshalAs(UnmanagedType.U1)]
+            public byte txTimeoutBeepX5Secs;
+
+            [FieldOffset(22)]
+            [MarshalAs(UnmanagedType.U1)]
+            public byte beepVolumeDivider;
+
+            [FieldOffset(23)]
+            [MarshalAs(UnmanagedType.U1)]
+            public byte micGainDMR;
+
+            [FieldOffset(24)]
+            [MarshalAs(UnmanagedType.U1)]
+            public byte micGainFM;
+
+            [FieldOffset(25)]
+            [MarshalAs(UnmanagedType.U1)]
+            public byte backlightMode;
+
+            [FieldOffset(26)]
+            [MarshalAs(UnmanagedType.U1)]
+            public byte backLightTimeout;
+
+            [FieldOffset(27)]
+            [MarshalAs(UnmanagedType.U1)]
+            public byte displayContrast;
+
+            [FieldOffset(28)]
+            [MarshalAs(UnmanagedType.U1)]
+            public byte displayBacklightPercentageDay;
+
+            [FieldOffset(29)]
+            [MarshalAs(UnmanagedType.U1)]
+            public byte displayBacklightPercentageNight;
+
+            [FieldOffset(30)]
+            [MarshalAs(UnmanagedType.U1)]
+            public byte displayBacklightPercentageOff;
+
+            [FieldOffset(31)]
+            [MarshalAs(UnmanagedType.U1)]
+            public byte extendedInfosOnScreen;
+
+            [FieldOffset(32)]
+            [MarshalAs(UnmanagedType.U1)]
+            public byte scanModePause;
+
+            [FieldOffset(33)]
+            [MarshalAs(UnmanagedType.U1)]
+            public byte scanDelay;
+
+            [FieldOffset(34)]
+            [MarshalAs(UnmanagedType.U1)]
+            public byte DMR_RxAGC;
+
+            [FieldOffset(35)]
+            [MarshalAs(UnmanagedType.U1)]
+            public byte hotspotType;
+
+            [FieldOffset(36)]
+            [MarshalAs(UnmanagedType.U1)]
+            public byte scanStepTime;
+
+            [FieldOffset(37)]
+            [MarshalAs(UnmanagedType.U1)]
+            public byte dmrCaptureTimeout;
+
+            [FieldOffset(38)]
+            [MarshalAs(UnmanagedType.U1)]
+            public byte privateCalls;
+
+            [FieldOffset(39)]
+            [MarshalAs(UnmanagedType.U1)]
+            public byte contactDisplayPriority;
+
+            [FieldOffset(40)]
+            [MarshalAs(UnmanagedType.U1)]
+            public byte splitContact;
+
+            [FieldOffset(41)]
+            [MarshalAs(UnmanagedType.U1)]
+            public byte voxThreshold; // 0: disabled
+
+            [FieldOffset(42)]
+            [MarshalAs(UnmanagedType.U1)]
+            public byte voxTailUnits; // 500ms units
+
+            [FieldOffset(43)]
+            [MarshalAs(UnmanagedType.U1)]
+            public byte audioPromptMode;
+
+            [FieldOffset(44)]
+            [MarshalAs(UnmanagedType.U1)]
+            public byte batteryCalibration; // Units of 0.01V (NOTE: only the 4 lower bits are used)
+
+            [FieldOffset(45)]
+            [MarshalAs(UnmanagedType.U1)]
+            public byte quelchDefaultVHF; // VHF, 200 and UHF
+
+            [FieldOffset(46)]
+            [MarshalAs(UnmanagedType.U1)]
+            public byte squelchDefaultUHF; // VHF, 200 and UHF
+
+            [FieldOffset(47)]
+            [MarshalAs(UnmanagedType.U1)]
+            public byte squelchDefault220; // VHF, 200 and UHF
+
+            [FieldOffset(48)]
+            [MarshalAs(UnmanagedType.U1)]
+            public byte ecoLevel;// Power saving / economy level
+
+            [FieldOffset(49)]
+            [MarshalAs(UnmanagedType.U1)]
+            public byte apo; // unit: 30 minutes (5 is skipped, as we want 0, 30, 60, 90, 120 and 180)
+
+            [FieldOffset(50)]
+            [MarshalAs(UnmanagedType.U1)]
+            public byte keypadTimerLong;
+
+            [FieldOffset(51)]
+            [MarshalAs(UnmanagedType.U1)]
+            public byte keypadTimerRepeat;
+
+            [FieldOffset(52)]
+            [MarshalAs(UnmanagedType.U1)]
+            public byte autolockTimer; // in minutes
+
+            [FieldOffset(53)]
+            [MarshalAs(UnmanagedType.U1)]
+            public byte buttonP3; //Режим работы кнопки P3
+
+            [FieldOffset(54)]
+            [MarshalAs(UnmanagedType.U1)]
+            public byte buttonP3Long;
+
+            [FieldOffset(55)]
+            [MarshalAs(UnmanagedType.U1)]
+            public byte scanPriority;
+
+            [FieldOffset(56)]
+            [MarshalAs(UnmanagedType.U1)]
+            public byte txFreqLimited;
         }
 
 
-        public CodeplugSettingsForm()
+            public CodeplugSettingsForm()
         {
             InitializeComponent();
             base.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
@@ -280,7 +395,7 @@ uint8_t         scanPriority; //множитель приоритетного с
                         OpenGD77Form.sendCommand(commPort, 3);
                         OpenGD77Form.sendCommand(commPort, 6, 3);
                         openGD77CommsTransferData.mode = OpenGD77CommsTransferData.CommsDataMode.DataModeReadSettings;
-                        openGD77CommsTransferData.dataBuff = new byte[56];
+                        openGD77CommsTransferData.dataBuff = new byte[57];
                         openGD77CommsTransferData.localDataBufferStartPosition = 0;
                         openGD77CommsTransferData.transferLength = openGD77CommsTransferData.dataBuff.Length;
                         if (!ReadData(commPort, openGD77CommsTransferData))
@@ -359,7 +474,14 @@ uint8_t         scanPriority; //множитель приоритетного с
                     switch (openGD77CommsTransferData.action)
                     {
                         case OpenGD77CommsTransferData.CommsAction.READ_SETTINGS:
-
+                            openGD77CommsTransferData.action = OpenGD77CommsTransferData.CommsAction.NONE;
+                            RadioSettings radioSettings = ByteArrayToRadioInfo(openGD77CommsTransferData.dataBuff);
+                            nmPriority.Value = radioSettings.scanPriority;
+                            tbDMRFilter.Text = radioSettings.dmrCaptureTimeout.ToString();
+                            tbScanTime.Text = (radioSettings.scanStepTime * 30 + 30).ToString();
+                            tbScanPause.Text = radioSettings.scanDelay.ToString();
+                            rbCPS.Checked = (radioSettings.txFreqLimited != 0);
+                            rbHam.Checked = !rbCPS.Checked;
                             break;
                         case OpenGD77CommsTransferData.CommsAction.WRITE_SETTINGS:
                             openGD77CommsTransferData.action = OpenGD77CommsTransferData.CommsAction.NONE;
@@ -369,7 +491,7 @@ uint8_t         scanPriority; //множитель приоритетного с
                 else
                 {
                     SystemSounds.Hand.Play();
-                    MessageBox.Show(OpenGD77StringsDict["There_has_been_an_error._Refer_to_the_last_status_message_that_was_displayed"], OpenGD77StringsDict["Oops"]);
+                    MessageBox.Show(OpenGD77StringsDict["There_has_been_an_error._Refer_to_the_last_status_message_that_was_displayed"], OpenGD77StringsDict["Oops"], MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 }
             }
@@ -388,6 +510,19 @@ uint8_t         scanPriority; //множитель приоритетного с
             {
                 SystemSounds.Hand.Play();
                 MessageBox.Show(ex.Message);
+            }
+        }
+
+        private static RadioSettings ByteArrayToRadioInfo(byte[] bytes)
+        {
+            GCHandle gCHandle = GCHandle.Alloc(bytes, GCHandleType.Pinned);
+            try
+            {
+                return (RadioSettings)Marshal.PtrToStructure(gCHandle.AddrOfPinnedObject(), typeof(RadioSettings));
+            }
+            finally
+            {
+                gCHandle.Free();
             }
         }
 
@@ -418,8 +553,52 @@ uint8_t         scanPriority; //множитель приоритетного с
                 openGD77CommsTransferData.dataBuff = new byte[Settings.ADDR_OPENGD77_CUSTOM_DATA_END - Settings.ADDR_OPENGD77_CUSTOM_DATA_START];
                 perFormCommsTask(openGD77CommsTransferData);
                 SystemSounds.Exclamation.Play();
+                
             }
 
+        }
+
+        private void filterNumerics(object sender, KeyPressEventArgs e)
+        {
+            char number = e.KeyChar;
+            if (!Char.IsDigit(number) && number != 8) // цифры и клавиша BackSpace
+            {
+                e.Handled = true;
+            }
+        }
+
+
+
+        private void tbDMRFilter_Leave(object sender, EventArgs e)
+        {
+            int value = Int32.Parse(tbDMRFilter.Text);
+            if (value < 2)
+                value = 2;
+            else if (value > 90)
+                value = 90;
+            tbDMRFilter.Text = value.ToString();
+        }
+
+        private void tbScanTime_Leave(object sender, EventArgs e)
+        {
+            int value = Int32.Parse(tbScanTime.Text);
+            if (value < 30)
+                value = 30;
+            else if (value > 480)
+                value = 480;
+            value -= 30;
+            value = (int)Math.Round(value / 30.0f) * 30 + 30;
+            tbScanTime.Text = value.ToString();
+        }
+
+        private void tbScanPause_Leave(object sender, EventArgs e)
+        {
+            int value = Int32.Parse(tbScanPause.Text);
+            if (value < 1)
+                value = 1;
+            else if (value > 30)
+                value = 30;
+            tbScanPause.Text = value.ToString();
         }
     }
 }

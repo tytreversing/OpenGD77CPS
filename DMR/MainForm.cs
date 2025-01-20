@@ -1530,7 +1530,7 @@ public class MainForm : Form
                     firmwareName = "OpenMD9600RUS";
                     break;
                 case 6:
-                    radioInformation.Text += "TYT MD-UV380/TYT MD-UV390 (5W)/Retevis RT-3S";
+                    radioInformation.Text += "TYT MD-UV380/TYT MD-UV390/Retevis RT-3S";
                     firmwareName = "OpenMDUV380_RUS";
                     break;
                 case 8:
@@ -1543,7 +1543,7 @@ public class MainForm : Form
                     firmwareName = "OpenMD2017RUS";
                     break;
                 case 106:
-                    radioInformation.Text += "TYT MD-UV390 (10W)";
+                    radioInformation.Text += "TYT MD-UV390 (10W Plus)";
                     firmwareName = "OpenMDUV380_10W_PLUS_RUS";
                     break;
                 default:
@@ -1551,7 +1551,7 @@ public class MainForm : Form
                     break;
 
             }
-			switch(RadioInfo.structVersion) //версия унаследована от OpenGD77
+			switch(RadioInfo.structVersion) 
 			{
 				case 0x03:
 					radioInformation.Text += "\r\nЧип флеш-памяти: ";

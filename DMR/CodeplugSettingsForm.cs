@@ -265,6 +265,10 @@ namespace DMR
             Scale(Settings.smethod_6());
             Settings.ReadCommonsForSectionIntoDictionary(OpenGD77StringsDict, "OpenGD77Form");
             cbPowerLevel.SelectedIndex = 4;
+            cmbHotspot.SelectedIndex = 0;
+            cmbSK1.SelectedIndex = 0;
+            cmbSK1Long.SelectedIndex = 0;
+            cmbEco.SelectedIndex = 0;
         }
 
         private void CodeplugSettingsForm_Load(object sender, EventArgs e)
@@ -525,12 +529,17 @@ namespace DMR
                         case OpenGD77CommsTransferData.CommsAction.READ_SETTINGS:
                             openGD77CommsTransferData.action = OpenGD77CommsTransferData.CommsAction.NONE;
                             RadioSettings radioSettings = ByteArrayToRadioSettings(openGD77CommsTransferData.dataBuff);
+                            cmbHotspot.SelectedIndex = radioSettings.hotspotType;
+                            cmbSK1.SelectedIndex = radioSettings.buttonP3;
+                            cmbSK1Long.SelectedIndex = radioSettings.buttonP3Long;
                             cbTrackball.Checked = checkOptionBit(radioSettings.bitfieldOptions, (byte)SettingBits.BIT_TRACKBALL_ENABLED);
                             cbFastTrackball.Checked = checkOptionBit(radioSettings.bitfieldOptions, (byte)SettingBits.BIT_TRACKBALL_FAST_MOTION);
                             chAPOReset.Checked = checkOptionBit(radioSettings.bitfieldOptions, (byte)SettingBits.BIT_APO_WITH_RF);
                             chAutoSat.Checked = checkOptionBit(radioSettings.bitfieldOptions, (byte)SettingBits.BIT_SATELLITE_MANUAL_AUTO);
                             rbGlonass.Checked = checkOptionBit(radioSettings.bitfieldOptions, (byte)SettingBits.BIT_GPS_MODULE_CUSTOM);
                             rbBeiDou.Checked = !rbGlonass.Checked;
+                            cmbEco.SelectedIndex = radioSettings.ecoLevel;
+                            cbSafeOn.Checked = checkOptionBit(radioSettings.bitfieldOptions, (byte)SettingBits.BIT_SAFE_POWER_ON);
                             nmPriority.Value = radioSettings.scanPriority;
                             tbDMRFilter.Text = radioSettings.dmrCaptureTimeout.ToString();
                             tbScanTime.Text = (radioSettings.scanStepTime * 30 + 30).ToString();
@@ -792,6 +801,28 @@ namespace DMR
             if (value > 10)
                 value = (int)Math.Round(value / 10.0f) * 10;
             nmMinBacklight.Value = value;
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            if (probeRadioModel())
+            {
+                if (!setupCommPort())
+                {
+                    SystemSounds.Hand.Play();
+                    return;
+                }
+                if (int.Parse(MainForm.RadioInfo.buildDateTime.Substring(0, 4)) < 2025)
+                    MessageBox.Show("Сброс настроек через CPS не поддерживается на этой версии прошивки!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else
+                {
+                    sendCommand(commPort, 77);
+                    sendCommand(commPort, 6);
+                    MessageBox.Show("Сброс настроек выполнен!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                commPort.Close();
+                commPort = null;
+            }
         }
     }
 }

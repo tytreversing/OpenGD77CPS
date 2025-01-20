@@ -55,7 +55,7 @@
       <Control Id="btnWriteSettings" Text="Запись настроек в рацию" />
       <Control Id="btnSaveSettings" Text="Сохранить настройки в файл" />
       <Control Id="btnLoadSettings" Text="Загрузить настройки из файла" />
-
+      <Control Id="btnReset" Text="Сбросить настройки в рации" />
     </Controls>
     <Commons>
       

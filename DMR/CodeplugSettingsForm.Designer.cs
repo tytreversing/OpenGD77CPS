@@ -83,6 +83,11 @@
             this.rbPause = new System.Windows.Forms.RadioButton();
             this.tabs = new System.Windows.Forms.TabControl();
             this.tpCommons = new System.Windows.Forms.TabPage();
+            this.cmbAPO = new System.Windows.Forms.ComboBox();
+            this.nmLongPress = new System.Windows.Forms.NumericUpDown();
+            this.nmRepeat = new System.Windows.Forms.NumericUpDown();
+            this.cmbAutolock = new System.Windows.Forms.ComboBox();
+            this.cmbVoltCal = new System.Windows.Forms.ComboBox();
             this.cmbHotspot = new System.Windows.Forms.ComboBox();
             this.cmbSK1Long = new System.Windows.Forms.ComboBox();
             this.cmbSK1 = new System.Windows.Forms.ComboBox();
@@ -100,18 +105,19 @@
             this.nmMinBacklight = new System.Windows.Forms.NumericUpDown();
             this.nmNightBacklight = new System.Windows.Forms.NumericUpDown();
             this.nmDayBacklight = new System.Windows.Forms.NumericUpDown();
+            this.tbSound = new System.Windows.Forms.TabPage();
+            this.tbAPRS = new System.Windows.Forms.TabPage();
             this.btnReset = new System.Windows.Forms.Button();
             this.lblWarning = new System.Windows.Forms.Label();
-            this.cmbVoltCal = new System.Windows.Forms.ComboBox();
-            this.cmbAutolock = new System.Windows.Forms.ComboBox();
-            this.nmRepeat = new System.Windows.Forms.NumericUpDown();
-            this.nmLongPress = new System.Windows.Forms.NumericUpDown();
-            this.cmbAPO = new System.Windows.Forms.ComboBox();
+            this.pbConnection = new System.Windows.Forms.ProgressBar();
+            this.sfdSettings = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.nmPriority)).BeginInit();
             this.pnBandlimit.SuspendLayout();
             this.pnScanMode.SuspendLayout();
             this.tabs.SuspendLayout();
             this.tpCommons.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nmLongPress)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nmRepeat)).BeginInit();
             this.tpRadio.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nm220Squelch)).BeginInit();
@@ -121,8 +127,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.nmMinBacklight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmNightBacklight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmDayBacklight)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nmRepeat)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nmLongPress)).BeginInit();
             this.SuspendLayout();
             // 
             // lblGPSMode
@@ -594,6 +598,7 @@
             this.btnSaveSettings.TabIndex = 4;
             this.btnSaveSettings.Text = "save";
             this.btnSaveSettings.UseVisualStyleBackColor = false;
+            this.btnSaveSettings.Click += new System.EventHandler(this.btnSaveSettings_Click);
             // 
             // btnLoadSettings
             // 
@@ -686,6 +691,8 @@
             this.tabs.Controls.Add(this.tpCommons);
             this.tabs.Controls.Add(this.tpRadio);
             this.tabs.Controls.Add(this.tpDisplay);
+            this.tabs.Controls.Add(this.tbSound);
+            this.tabs.Controls.Add(this.tbAPRS);
             this.tabs.HotTrack = true;
             this.tabs.Location = new System.Drawing.Point(3, 13);
             this.tabs.Name = "tabs";
@@ -696,6 +703,7 @@
             // 
             // tpCommons
             // 
+            this.tpCommons.BackColor = System.Drawing.Color.White;
             this.tpCommons.Controls.Add(this.cmbAPO);
             this.tpCommons.Controls.Add(this.nmLongPress);
             this.tpCommons.Controls.Add(this.nmRepeat);
@@ -728,7 +736,142 @@
             this.tpCommons.Size = new System.Drawing.Size(346, 515);
             this.tpCommons.TabIndex = 0;
             this.tpCommons.Text = "Общие";
-            this.tpCommons.UseVisualStyleBackColor = true;
+            // 
+            // cmbAPO
+            // 
+            this.cmbAPO.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbAPO.FormattingEnabled = true;
+            this.cmbAPO.Items.AddRange(new object[] {
+            "выкл",
+            "30 мин",
+            "1 ч",
+            "1 ч 30 мин",
+            "2 ч",
+            "3 ч"});
+            this.cmbAPO.Location = new System.Drawing.Point(194, 170);
+            this.cmbAPO.Name = "cmbAPO";
+            this.cmbAPO.Size = new System.Drawing.Size(121, 21);
+            this.cmbAPO.TabIndex = 26;
+            // 
+            // nmLongPress
+            // 
+            this.nmLongPress.DecimalPlaces = 1;
+            this.nmLongPress.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.nmLongPress.Location = new System.Drawing.Point(194, 12);
+            this.nmLongPress.Maximum = new decimal(new int[] {
+            9,
+            0,
+            0,
+            0});
+            this.nmLongPress.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.nmLongPress.Name = "nmLongPress";
+            this.nmLongPress.Size = new System.Drawing.Size(120, 20);
+            this.nmLongPress.TabIndex = 25;
+            this.nmLongPress.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            // 
+            // nmRepeat
+            // 
+            this.nmRepeat.DecimalPlaces = 1;
+            this.nmRepeat.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.nmRepeat.Location = new System.Drawing.Point(194, 33);
+            this.nmRepeat.Maximum = new decimal(new int[] {
+            9,
+            0,
+            0,
+            0});
+            this.nmRepeat.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.nmRepeat.Name = "nmRepeat";
+            this.nmRepeat.Size = new System.Drawing.Size(120, 20);
+            this.nmRepeat.TabIndex = 24;
+            this.nmRepeat.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.nmRepeat.Leave += new System.EventHandler(this.nmRepeat_Leave);
+            // 
+            // cmbAutolock
+            // 
+            this.cmbAutolock.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbAutolock.FormattingEnabled = true;
+            this.cmbAutolock.Items.AddRange(new object[] {
+            "выкл",
+            "30 с",
+            "1 мин",
+            "1 мин 30 с",
+            "2 мин",
+            "2 мин 30 с",
+            "3 мин",
+            "3 мин 30 с",
+            "4 мин",
+            "4 мин 30 с",
+            "5 мин",
+            "5 мин 30 с",
+            "6 мин",
+            "6 мин 30 с",
+            "7 мин",
+            "7 мин 30 с",
+            "8 мин",
+            "8 мин 30 с",
+            "9 мин",
+            "9 мин 30 с",
+            "10 мин",
+            "10 мин 30 с",
+            "11 мин",
+            "11 мин 30 с",
+            "12 мин",
+            "12 мин 30 с",
+            "13 мин",
+            "13 мин 30 с",
+            "14 мин",
+            "14 мин 30 с",
+            "15 мин"});
+            this.cmbAutolock.Location = new System.Drawing.Point(194, 55);
+            this.cmbAutolock.Name = "cmbAutolock";
+            this.cmbAutolock.Size = new System.Drawing.Size(121, 21);
+            this.cmbAutolock.TabIndex = 23;
+            // 
+            // cmbVoltCal
+            // 
+            this.cmbVoltCal.BackColor = System.Drawing.SystemColors.Window;
+            this.cmbVoltCal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbVoltCal.FormattingEnabled = true;
+            this.cmbVoltCal.Items.AddRange(new object[] {
+            "-0,5 В",
+            "-0,4 В",
+            "-0,3 В",
+            "-0,2 В",
+            "-0,1 В",
+            "0 В",
+            "0,1 В",
+            "0,2 В",
+            "0,3 В",
+            "0,4 В",
+            "0,5 В"});
+            this.cmbVoltCal.Location = new System.Drawing.Point(194, 147);
+            this.cmbVoltCal.Name = "cmbVoltCal";
+            this.cmbVoltCal.Size = new System.Drawing.Size(121, 21);
+            this.cmbVoltCal.TabIndex = 22;
             // 
             // cmbHotspot
             // 
@@ -1011,10 +1154,28 @@
             this.nmDayBacklight.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.filterNumerics);
             this.nmDayBacklight.Leave += new System.EventHandler(this.nmDayBacklight_Leave);
             // 
+            // tbSound
+            // 
+            this.tbSound.Location = new System.Drawing.Point(4, 22);
+            this.tbSound.Name = "tbSound";
+            this.tbSound.Size = new System.Drawing.Size(346, 515);
+            this.tbSound.TabIndex = 3;
+            this.tbSound.Text = "Звук";
+            this.tbSound.UseVisualStyleBackColor = true;
+            // 
+            // tbAPRS
+            // 
+            this.tbAPRS.Location = new System.Drawing.Point(4, 22);
+            this.tbAPRS.Name = "tbAPRS";
+            this.tbAPRS.Size = new System.Drawing.Size(346, 515);
+            this.tbAPRS.TabIndex = 4;
+            this.tbAPRS.Text = "APRS";
+            this.tbAPRS.UseVisualStyleBackColor = true;
+            // 
             // btnReset
             // 
             this.btnReset.BackColor = System.Drawing.SystemColors.Control;
-            this.btnReset.Location = new System.Drawing.Point(363, 164);
+            this.btnReset.Location = new System.Drawing.Point(363, 185);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(223, 25);
             this.btnReset.TabIndex = 7;
@@ -1026,148 +1187,28 @@
             // 
             this.lblWarning.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lblWarning.ForeColor = System.Drawing.Color.Red;
-            this.lblWarning.Location = new System.Drawing.Point(365, 199);
+            this.lblWarning.Location = new System.Drawing.Point(366, 227);
             this.lblWarning.Name = "lblWarning";
             this.lblWarning.Size = new System.Drawing.Size(220, 163);
             this.lblWarning.TabIndex = 8;
             this.lblWarning.Text = "Настройки рации при нажатии этой кнопки будут сброшены на значения по умолчанию, " +
     "жестко заданные прошивкой.";
             // 
-            // cmbVoltCal
+            // pbConnection
             // 
-            this.cmbVoltCal.BackColor = System.Drawing.SystemColors.Window;
-            this.cmbVoltCal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbVoltCal.FormattingEnabled = true;
-            this.cmbVoltCal.Items.AddRange(new object[] {
-            "-0,5 В",
-            "-0,4 В",
-            "-0,3 В",
-            "-0,2 В",
-            "-0,1 В",
-            "0 В",
-            "0,1 В",
-            "0,2 В",
-            "0,3 В",
-            "0,4 В",
-            "0,5 В"});
-            this.cmbVoltCal.Location = new System.Drawing.Point(194, 147);
-            this.cmbVoltCal.Name = "cmbVoltCal";
-            this.cmbVoltCal.Size = new System.Drawing.Size(121, 21);
-            this.cmbVoltCal.TabIndex = 22;
+            this.pbConnection.BackColor = System.Drawing.Color.White;
+            this.pbConnection.ForeColor = System.Drawing.Color.Blue;
+            this.pbConnection.Location = new System.Drawing.Point(363, 151);
+            this.pbConnection.MarqueeAnimationSpeed = 20;
+            this.pbConnection.Name = "pbConnection";
+            this.pbConnection.Size = new System.Drawing.Size(223, 23);
+            this.pbConnection.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+            this.pbConnection.TabIndex = 9;
+            this.pbConnection.Visible = false;
             // 
-            // cmbAutolock
+            // sfdSettings
             // 
-            this.cmbAutolock.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbAutolock.FormattingEnabled = true;
-            this.cmbAutolock.Items.AddRange(new object[] {
-            "выкл",
-            "30 с",
-            "1 мин",
-            "1 мин 30 с",
-            "2 мин",
-            "2 мин 30 с",
-            "3 мин",
-            "3 мин 30 с",
-            "4 мин",
-            "4 мин 30 с",
-            "5 мин",
-            "5 мин 30 с",
-            "6 мин",
-            "6 мин 30 с",
-            "7 мин",
-            "7 мин 30 с",
-            "8 мин",
-            "8 мин 30 с",
-            "9 мин",
-            "9 мин 30 с",
-            "10 мин",
-            "10 мин 30 с",
-            "11 мин",
-            "11 мин 30 с",
-            "12 мин",
-            "12 мин 30 с",
-            "13 мин",
-            "13 мин 30 с",
-            "14 мин",
-            "14 мин 30 с",
-            "15 мин"});
-            this.cmbAutolock.Location = new System.Drawing.Point(194, 55);
-            this.cmbAutolock.Name = "cmbAutolock";
-            this.cmbAutolock.Size = new System.Drawing.Size(121, 21);
-            this.cmbAutolock.TabIndex = 23;
-            // 
-            // nmRepeat
-            // 
-            this.nmRepeat.DecimalPlaces = 1;
-            this.nmRepeat.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.nmRepeat.Location = new System.Drawing.Point(194, 33);
-            this.nmRepeat.Maximum = new decimal(new int[] {
-            9,
-            0,
-            0,
-            0});
-            this.nmRepeat.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.nmRepeat.Name = "nmRepeat";
-            this.nmRepeat.Size = new System.Drawing.Size(120, 20);
-            this.nmRepeat.TabIndex = 24;
-            this.nmRepeat.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.nmRepeat.Leave += new System.EventHandler(this.nmRepeat_Leave);
-            // 
-            // nmLongPress
-            // 
-            this.nmLongPress.DecimalPlaces = 1;
-            this.nmLongPress.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.nmLongPress.Location = new System.Drawing.Point(194, 12);
-            this.nmLongPress.Maximum = new decimal(new int[] {
-            9,
-            0,
-            0,
-            0});
-            this.nmLongPress.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.nmLongPress.Name = "nmLongPress";
-            this.nmLongPress.Size = new System.Drawing.Size(120, 20);
-            this.nmLongPress.TabIndex = 25;
-            this.nmLongPress.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            // 
-            // cmbAPO
-            // 
-            this.cmbAPO.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbAPO.FormattingEnabled = true;
-            this.cmbAPO.Items.AddRange(new object[] {
-            "выкл",
-            "30 мин",
-            "60 мин",
-            "90 мин",
-            "120 мин",
-            "180 мин"});
-            this.cmbAPO.Location = new System.Drawing.Point(194, 170);
-            this.cmbAPO.Name = "cmbAPO";
-            this.cmbAPO.Size = new System.Drawing.Size(121, 21);
-            this.cmbAPO.TabIndex = 26;
+            this.sfdSettings.Filter = "Файлы настроек|*.ogds";
             // 
             // CodeplugSettingsForm
             // 
@@ -1175,6 +1216,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(607, 565);
+            this.Controls.Add(this.pbConnection);
             this.Controls.Add(this.lblWarning);
             this.Controls.Add(this.btnReset);
             this.Controls.Add(this.tabs);
@@ -1182,7 +1224,9 @@
             this.Controls.Add(this.btnSaveSettings);
             this.Controls.Add(this.btnWriteSettings);
             this.Controls.Add(this.btnReadSettings);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "CodeplugSettingsForm";
             this.Text = "CodeplugSettingsForm";
             this.Load += new System.EventHandler(this.CodeplugSettingsForm_Load);
@@ -1194,6 +1238,8 @@
             this.tabs.ResumeLayout(false);
             this.tpCommons.ResumeLayout(false);
             this.tpCommons.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nmLongPress)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nmRepeat)).EndInit();
             this.tpRadio.ResumeLayout(false);
             this.tpRadio.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -1206,8 +1252,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.nmMinBacklight)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmNightBacklight)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmDayBacklight)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nmRepeat)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nmLongPress)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1290,5 +1334,9 @@
         private System.Windows.Forms.NumericUpDown nmRepeat;
         private System.Windows.Forms.NumericUpDown nmLongPress;
         private System.Windows.Forms.ComboBox cmbAPO;
+        private System.Windows.Forms.ProgressBar pbConnection;
+        private System.Windows.Forms.TabPage tbSound;
+        private System.Windows.Forms.TabPage tbAPRS;
+        private System.Windows.Forms.SaveFileDialog sfdSettings;
     }
 }

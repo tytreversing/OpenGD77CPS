@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using System.Xml.Serialization;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -24,12 +24,13 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace DMR
 {
+
     public partial class CodeplugSettingsForm : DockContent//, IDisp, ISingleRow
     {
         private SerialPort commPort;
         public static Dictionary<string, string> OpenGD77StringsDict = new Dictionary<string, string>();
         private BackgroundWorker worker;
-
+        XmlSerializer xmlSerializer = new XmlSerializer(typeof(SettingsStruct));
 
         [StructLayout(LayoutKind.Explicit, Pack = 1, Size = 64)]
         public struct RadioSettings
@@ -622,6 +623,7 @@ namespace DMR
                             openGD77CommsTransferData.action = OpenGD77CommsTransferData.CommsAction.NONE;
                             break;
                     }
+                    pbConnection.Visible = false;
                 }
                 else
                 {
@@ -686,6 +688,8 @@ namespace DMR
                 }
                 OpenGD77CommsTransferData openGD77CommsTransferData = new OpenGD77CommsTransferData(OpenGD77CommsTransferData.CommsAction.READ_SETTINGS);
                 openGD77CommsTransferData.dataBuff = new byte[Settings.ADDR_OPENGD77_CUSTOM_DATA_END - Settings.ADDR_OPENGD77_CUSTOM_DATA_START];
+                pbConnection.Visible = true;
+                pbConnection.Value = 0;
                 perFormCommsTask(openGD77CommsTransferData);
                 SystemSounds.Exclamation.Play();
                 
@@ -846,5 +850,96 @@ namespace DMR
                 commPort = null;
             }
         }
+
+        private void btnSaveSettings_Click(object sender, EventArgs e)
+        {
+            string profileStringWithDefault = IniFileUtils.getProfileStringWithDefault("Setup", "LastFilePath", "");
+            string initialDirectory;
+
+            try
+            {
+                initialDirectory = ((!(profileStringWithDefault == "")) ? Path.GetDirectoryName(profileStringWithDefault) : Environment.GetFolderPath(Environment.SpecialFolder.Personal));
+            }
+            catch (Exception)
+            {
+                initialDirectory = "";
+            }
+            try
+            {
+
+                sfdSettings.FileName = "Настройки_" + GeneralSetForm.data.Callsign + "_" + DateTime.Now.ToString("MMdd_HHmmss") + ".ogds";
+                sfdSettings.InitialDirectory = initialDirectory;
+
+                if (sfdSettings.ShowDialog() == DialogResult.OK && !string.IsNullOrEmpty(sfdSettings.FileName))
+                {
+                    SettingsStruct dumpStruct = new SettingsStruct();
+                    dumpStruct.SettingsBlockVersion = 0xDEFECA7E;
+                    dumpStruct.KeypadLongPress = (float)(nmLongPress.Value);
+                    dumpStruct.KeypadRepeat = (float)(nmRepeat.Value);
+                    dumpStruct.AutolockTimer = cmbAutolock.SelectedIndex * 30;
+                    dumpStruct.ProgrammableButton = (byte)cmbSK1.SelectedIndex;
+                    dumpStruct.ProgrammableButtonLong = (byte)cmbSK1Long.SelectedIndex;
+                    dumpStruct.HotspotMode = (byte)cmbHotspot.SelectedIndex;
+                    dumpStruct.VoltageCalibration = (float)Math.Round(cmbVoltCal.SelectedIndex * 0.1f - 0.5f, 1);
+                    dumpStruct.AutoPowerOffTimer = (byte)(cmbAPO.SelectedIndex * 30);
+                    if (dumpStruct.AutoPowerOffTimer == 150)
+                        dumpStruct.AutoPowerOffTimer = 180; //снова костыль
+                    dumpStruct.ResetAPOEnabled = chAPOReset.Checked;
+                    dumpStruct.SatelliteAutoMode = chAutoSat.Checked;
+                    dumpStruct.CustomGNSSMode = rbGlonass.Checked;
+                    dumpStruct.UsingTrackball = cbTrackball.Checked;
+                    dumpStruct.TrackballFastMode = cbFastTrackball.Checked;
+                    dumpStruct.EcoLevel = (byte)cmbEco.SelectedIndex;
+                    dumpStruct.SafePowerOn = cbSafeOn.Checked;
+                    dumpStruct.BandlimitByCPS = rbCPS.Checked;
+                    dumpStruct.TimeslotFilteringTime = Byte.Parse(tbDMRFilter.Text);
+                    dumpStruct.ScanPauseTime = Byte.Parse(tbScanPause.Text);
+                    dumpStruct.ScanStepTime = Byte.Parse(tbScanTime.Text);
+                    try
+                    {
+                        using (FileStream fs = new FileStream(sfdSettings.FileName, FileMode.Create))
+                        {
+                            xmlSerializer.Serialize(fs, dumpStruct);
+
+                        }
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Не удалось сохранить файл " + sfdSettings.FileName, "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            catch (Exception ex2)
+            {
+                MessageBox.Show(ex2.Message);
+            }
+            
+
+        }
+    }
+
+    [Serializable]
+    public class SettingsStruct
+    {
+        public uint SettingsBlockVersion;
+        public bool ResetAPOEnabled;
+        public bool SatelliteAutoMode;
+        public bool CustomGNSSMode;
+        public byte HotspotMode;
+        public float VoltageCalibration; 
+        public byte AutoPowerOffTimer; 
+        public float KeypadLongPress;
+        public float KeypadRepeat;
+        public int AutolockTimer; 
+        public byte ProgrammableButton; 
+        public byte ProgrammableButtonLong;
+        public bool UsingTrackball;
+        public bool TrackballFastMode;
+        public byte EcoLevel;
+        public bool SafePowerOn;
+        public bool BandlimitByCPS;
+        public byte TimeslotFilteringTime;
+        public byte ScanPauseTime;
+        public byte ScanStepTime;
     }
 }

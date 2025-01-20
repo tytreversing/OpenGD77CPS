@@ -1960,7 +1960,7 @@ public class MainForm : Form
 
 	private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
 	{
-		switch (MessageBox.Show(Settings.dicCommon["PromptKey1"], "", MessageBoxButtons.YesNoCancel))
+		switch (MessageBox.Show(Settings.dicCommon["PromptKey1"], "Выход", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question))
 		{
 		case DialogResult.Cancel:
 			e.Cancel = true;

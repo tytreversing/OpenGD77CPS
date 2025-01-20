@@ -68,6 +68,8 @@
             this.lblDayBacklight = new System.Windows.Forms.Label();
             this.lblNightBacklight = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.lblEco = new System.Windows.Forms.Label();
+            this.cbSafeOn = new System.Windows.Forms.CheckBox();
             this.btnReadSettings = new System.Windows.Forms.Button();
             this.btnWriteSettings = new System.Windows.Forms.Button();
             this.btnSaveSettings = new System.Windows.Forms.Button();
@@ -81,6 +83,10 @@
             this.rbPause = new System.Windows.Forms.RadioButton();
             this.tabs = new System.Windows.Forms.TabControl();
             this.tpCommons = new System.Windows.Forms.TabPage();
+            this.cmbHotspot = new System.Windows.Forms.ComboBox();
+            this.cmbSK1Long = new System.Windows.Forms.ComboBox();
+            this.cmbSK1 = new System.Windows.Forms.ComboBox();
+            this.cmbEco = new System.Windows.Forms.ComboBox();
             this.tpRadio = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
             this.rbPrivateByPTT = new System.Windows.Forms.RadioButton();
@@ -94,14 +100,13 @@
             this.nmMinBacklight = new System.Windows.Forms.NumericUpDown();
             this.nmNightBacklight = new System.Windows.Forms.NumericUpDown();
             this.nmDayBacklight = new System.Windows.Forms.NumericUpDown();
-            this.lblEco = new System.Windows.Forms.Label();
-            this.cmbEco = new System.Windows.Forms.ComboBox();
-            this.cbSafeOn = new System.Windows.Forms.CheckBox();
-            this.cmbSK1 = new System.Windows.Forms.ComboBox();
-            this.cmbSK1Long = new System.Windows.Forms.ComboBox();
             this.btnReset = new System.Windows.Forms.Button();
             this.lblWarning = new System.Windows.Forms.Label();
-            this.cmbHotspot = new System.Windows.Forms.ComboBox();
+            this.cmbVoltCal = new System.Windows.Forms.ComboBox();
+            this.cmbAutolock = new System.Windows.Forms.ComboBox();
+            this.nmRepeat = new System.Windows.Forms.NumericUpDown();
+            this.nmLongPress = new System.Windows.Forms.NumericUpDown();
+            this.cmbAPO = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.nmPriority)).BeginInit();
             this.pnBandlimit.SuspendLayout();
             this.pnScanMode.SuspendLayout();
@@ -116,6 +121,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.nmMinBacklight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmNightBacklight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmDayBacklight)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nmRepeat)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nmLongPress)).BeginInit();
             this.SuspendLayout();
             // 
             // lblGPSMode
@@ -166,7 +173,7 @@
             // lblBattery
             // 
             this.lblBattery.AutoSize = true;
-            this.lblBattery.Location = new System.Drawing.Point(17, 157);
+            this.lblBattery.Location = new System.Drawing.Point(17, 150);
             this.lblBattery.Name = "lblBattery";
             this.lblBattery.Size = new System.Drawing.Size(133, 13);
             this.lblBattery.TabIndex = 6;
@@ -208,7 +215,7 @@
             // lblAutoBlock
             // 
             this.lblAutoBlock.AutoSize = true;
-            this.lblAutoBlock.Location = new System.Drawing.Point(17, 46);
+            this.lblAutoBlock.Location = new System.Drawing.Point(17, 58);
             this.lblAutoBlock.Name = "lblAutoBlock";
             this.lblAutoBlock.Size = new System.Drawing.Size(91, 13);
             this.lblAutoBlock.TabIndex = 2;
@@ -218,7 +225,7 @@
             // lblRepeat
             // 
             this.lblRepeat.AutoSize = true;
-            this.lblRepeat.Location = new System.Drawing.Point(17, 29);
+            this.lblRepeat.Location = new System.Drawing.Point(17, 35);
             this.lblRepeat.Name = "lblRepeat";
             this.lblRepeat.Size = new System.Drawing.Size(90, 13);
             this.lblRepeat.TabIndex = 1;
@@ -535,6 +542,28 @@
             this.tips.SetToolTip(this.label1, "На этот режим подсветка переходит по истечению таймера.\r\nПри установке 0% подсвет" +
         "ка выключается, при установке в\r\nнесколько процентов реализуется тлеющий режим.");
             // 
+            // lblEco
+            // 
+            this.lblEco.AutoSize = true;
+            this.lblEco.Location = new System.Drawing.Point(17, 298);
+            this.lblEco.Name = "lblEco";
+            this.lblEco.Size = new System.Drawing.Size(76, 13);
+            this.lblEco.TabIndex = 16;
+            this.lblEco.Text = "Экономайзер";
+            this.tips.SetToolTip(this.lblEco, "Работает только на портативных рациях. Задает соотношение \r\nвремени активности и " +
+        "неактивности приемника.");
+            // 
+            // cbSafeOn
+            // 
+            this.cbSafeOn.AutoSize = true;
+            this.cbSafeOn.Location = new System.Drawing.Point(20, 324);
+            this.cbSafeOn.Name = "cbSafeOn";
+            this.cbSafeOn.Size = new System.Drawing.Size(145, 17);
+            this.cbSafeOn.TabIndex = 18;
+            this.cbSafeOn.Text = "Безопасное включение";
+            this.tips.SetToolTip(this.cbSafeOn, resources.GetString("cbSafeOn.ToolTip"));
+            this.cbSafeOn.UseVisualStyleBackColor = true;
+            // 
             // btnReadSettings
             // 
             this.btnReadSettings.BackColor = System.Drawing.SystemColors.Control;
@@ -667,6 +696,11 @@
             // 
             // tpCommons
             // 
+            this.tpCommons.Controls.Add(this.cmbAPO);
+            this.tpCommons.Controls.Add(this.nmLongPress);
+            this.tpCommons.Controls.Add(this.nmRepeat);
+            this.tpCommons.Controls.Add(this.cmbAutolock);
+            this.tpCommons.Controls.Add(this.cmbVoltCal);
             this.tpCommons.Controls.Add(this.cmbHotspot);
             this.tpCommons.Controls.Add(this.cmbSK1Long);
             this.tpCommons.Controls.Add(this.cmbSK1);
@@ -695,6 +729,65 @@
             this.tpCommons.TabIndex = 0;
             this.tpCommons.Text = "Общие";
             this.tpCommons.UseVisualStyleBackColor = true;
+            // 
+            // cmbHotspot
+            // 
+            this.cmbHotspot.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbHotspot.FormattingEnabled = true;
+            this.cmbHotspot.Items.AddRange(new object[] {
+            "выкл",
+            "MMDVM",
+            "BlueDV"});
+            this.cmbHotspot.Location = new System.Drawing.Point(194, 124);
+            this.cmbHotspot.Name = "cmbHotspot";
+            this.cmbHotspot.Size = new System.Drawing.Size(121, 21);
+            this.cmbHotspot.TabIndex = 21;
+            // 
+            // cmbSK1Long
+            // 
+            this.cmbSK1Long.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbSK1Long.FormattingEnabled = true;
+            this.cmbSK1Long.Items.AddRange(new object[] {
+            "информация/выкл",
+            "реверс частот",
+            "прямая связь",
+            "быстрый канал",
+            "отключение фильтров"});
+            this.cmbSK1Long.Location = new System.Drawing.Point(194, 101);
+            this.cmbSK1Long.Name = "cmbSK1Long";
+            this.cmbSK1Long.Size = new System.Drawing.Size(121, 21);
+            this.cmbSK1Long.TabIndex = 20;
+            // 
+            // cmbSK1
+            // 
+            this.cmbSK1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbSK1.FormattingEnabled = true;
+            this.cmbSK1.Items.AddRange(new object[] {
+            "информация/выкл",
+            "реверс частот",
+            "прямая связь",
+            "быстрый канал",
+            "отключение фильтров"});
+            this.cmbSK1.Location = new System.Drawing.Point(194, 78);
+            this.cmbSK1.Name = "cmbSK1";
+            this.cmbSK1.Size = new System.Drawing.Size(121, 21);
+            this.cmbSK1.TabIndex = 19;
+            // 
+            // cmbEco
+            // 
+            this.cmbEco.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbEco.FormattingEnabled = true;
+            this.cmbEco.Items.AddRange(new object[] {
+            "выкл.",
+            "1:1",
+            "1:2",
+            "1:3",
+            "1:4",
+            "1:5"});
+            this.cmbEco.Location = new System.Drawing.Point(194, 296);
+            this.cmbEco.Name = "cmbEco";
+            this.cmbEco.Size = new System.Drawing.Size(121, 21);
+            this.cmbEco.TabIndex = 17;
             // 
             // tpRadio
             // 
@@ -918,74 +1011,6 @@
             this.nmDayBacklight.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.filterNumerics);
             this.nmDayBacklight.Leave += new System.EventHandler(this.nmDayBacklight_Leave);
             // 
-            // lblEco
-            // 
-            this.lblEco.AutoSize = true;
-            this.lblEco.Location = new System.Drawing.Point(17, 298);
-            this.lblEco.Name = "lblEco";
-            this.lblEco.Size = new System.Drawing.Size(76, 13);
-            this.lblEco.TabIndex = 16;
-            this.lblEco.Text = "Экономайзер";
-            this.tips.SetToolTip(this.lblEco, "Работает только на портативных рациях. Задает соотношение \r\nвремени активности и " +
-        "неактивности приемника.");
-            // 
-            // cmbEco
-            // 
-            this.cmbEco.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbEco.FormattingEnabled = true;
-            this.cmbEco.Items.AddRange(new object[] {
-            "выкл.",
-            "1:1",
-            "1:2",
-            "1:3",
-            "1:4",
-            "1:5"});
-            this.cmbEco.Location = new System.Drawing.Point(194, 296);
-            this.cmbEco.Name = "cmbEco";
-            this.cmbEco.Size = new System.Drawing.Size(121, 21);
-            this.cmbEco.TabIndex = 17;
-            // 
-            // cbSafeOn
-            // 
-            this.cbSafeOn.AutoSize = true;
-            this.cbSafeOn.Location = new System.Drawing.Point(20, 324);
-            this.cbSafeOn.Name = "cbSafeOn";
-            this.cbSafeOn.Size = new System.Drawing.Size(145, 17);
-            this.cbSafeOn.TabIndex = 18;
-            this.cbSafeOn.Text = "Безопасное включение";
-            this.tips.SetToolTip(this.cbSafeOn, resources.GetString("cbSafeOn.ToolTip"));
-            this.cbSafeOn.UseVisualStyleBackColor = true;
-            // 
-            // cmbSK1
-            // 
-            this.cmbSK1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbSK1.FormattingEnabled = true;
-            this.cmbSK1.Items.AddRange(new object[] {
-            "информация/выкл",
-            "реверс частот",
-            "прямая связь",
-            "быстрый канал",
-            "отключение фильтров"});
-            this.cmbSK1.Location = new System.Drawing.Point(194, 78);
-            this.cmbSK1.Name = "cmbSK1";
-            this.cmbSK1.Size = new System.Drawing.Size(121, 21);
-            this.cmbSK1.TabIndex = 19;
-            // 
-            // cmbSK1Long
-            // 
-            this.cmbSK1Long.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbSK1Long.FormattingEnabled = true;
-            this.cmbSK1Long.Items.AddRange(new object[] {
-            "информация/выкл",
-            "реверс частот",
-            "прямая связь",
-            "быстрый канал",
-            "отключение фильтров"});
-            this.cmbSK1Long.Location = new System.Drawing.Point(194, 101);
-            this.cmbSK1Long.Name = "cmbSK1Long";
-            this.cmbSK1Long.Size = new System.Drawing.Size(121, 21);
-            this.cmbSK1Long.TabIndex = 20;
-            // 
             // btnReset
             // 
             this.btnReset.BackColor = System.Drawing.SystemColors.Control;
@@ -1008,18 +1033,141 @@
             this.lblWarning.Text = "Настройки рации при нажатии этой кнопки будут сброшены на значения по умолчанию, " +
     "жестко заданные прошивкой.";
             // 
-            // cmbHotspot
+            // cmbVoltCal
             // 
-            this.cmbHotspot.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbHotspot.FormattingEnabled = true;
-            this.cmbHotspot.Items.AddRange(new object[] {
+            this.cmbVoltCal.BackColor = System.Drawing.SystemColors.Window;
+            this.cmbVoltCal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbVoltCal.FormattingEnabled = true;
+            this.cmbVoltCal.Items.AddRange(new object[] {
+            "-0,5 В",
+            "-0,4 В",
+            "-0,3 В",
+            "-0,2 В",
+            "-0,1 В",
+            "0 В",
+            "0,1 В",
+            "0,2 В",
+            "0,3 В",
+            "0,4 В",
+            "0,5 В"});
+            this.cmbVoltCal.Location = new System.Drawing.Point(194, 147);
+            this.cmbVoltCal.Name = "cmbVoltCal";
+            this.cmbVoltCal.Size = new System.Drawing.Size(121, 21);
+            this.cmbVoltCal.TabIndex = 22;
+            // 
+            // cmbAutolock
+            // 
+            this.cmbAutolock.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbAutolock.FormattingEnabled = true;
+            this.cmbAutolock.Items.AddRange(new object[] {
             "выкл",
-            "MMDVM",
-            "BlueDV"});
-            this.cmbHotspot.Location = new System.Drawing.Point(194, 124);
-            this.cmbHotspot.Name = "cmbHotspot";
-            this.cmbHotspot.Size = new System.Drawing.Size(121, 21);
-            this.cmbHotspot.TabIndex = 21;
+            "30 с",
+            "1 мин",
+            "1 мин 30 с",
+            "2 мин",
+            "2 мин 30 с",
+            "3 мин",
+            "3 мин 30 с",
+            "4 мин",
+            "4 мин 30 с",
+            "5 мин",
+            "5 мин 30 с",
+            "6 мин",
+            "6 мин 30 с",
+            "7 мин",
+            "7 мин 30 с",
+            "8 мин",
+            "8 мин 30 с",
+            "9 мин",
+            "9 мин 30 с",
+            "10 мин",
+            "10 мин 30 с",
+            "11 мин",
+            "11 мин 30 с",
+            "12 мин",
+            "12 мин 30 с",
+            "13 мин",
+            "13 мин 30 с",
+            "14 мин",
+            "14 мин 30 с",
+            "15 мин"});
+            this.cmbAutolock.Location = new System.Drawing.Point(194, 55);
+            this.cmbAutolock.Name = "cmbAutolock";
+            this.cmbAutolock.Size = new System.Drawing.Size(121, 21);
+            this.cmbAutolock.TabIndex = 23;
+            // 
+            // nmRepeat
+            // 
+            this.nmRepeat.DecimalPlaces = 1;
+            this.nmRepeat.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.nmRepeat.Location = new System.Drawing.Point(194, 33);
+            this.nmRepeat.Maximum = new decimal(new int[] {
+            9,
+            0,
+            0,
+            0});
+            this.nmRepeat.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.nmRepeat.Name = "nmRepeat";
+            this.nmRepeat.Size = new System.Drawing.Size(120, 20);
+            this.nmRepeat.TabIndex = 24;
+            this.nmRepeat.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.nmRepeat.Leave += new System.EventHandler(this.nmRepeat_Leave);
+            // 
+            // nmLongPress
+            // 
+            this.nmLongPress.DecimalPlaces = 1;
+            this.nmLongPress.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.nmLongPress.Location = new System.Drawing.Point(194, 12);
+            this.nmLongPress.Maximum = new decimal(new int[] {
+            9,
+            0,
+            0,
+            0});
+            this.nmLongPress.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.nmLongPress.Name = "nmLongPress";
+            this.nmLongPress.Size = new System.Drawing.Size(120, 20);
+            this.nmLongPress.TabIndex = 25;
+            this.nmLongPress.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            // 
+            // cmbAPO
+            // 
+            this.cmbAPO.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbAPO.FormattingEnabled = true;
+            this.cmbAPO.Items.AddRange(new object[] {
+            "выкл",
+            "30 мин",
+            "60 мин",
+            "90 мин",
+            "120 мин",
+            "180 мин"});
+            this.cmbAPO.Location = new System.Drawing.Point(194, 170);
+            this.cmbAPO.Name = "cmbAPO";
+            this.cmbAPO.Size = new System.Drawing.Size(121, 21);
+            this.cmbAPO.TabIndex = 26;
             // 
             // CodeplugSettingsForm
             // 
@@ -1058,6 +1206,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.nmMinBacklight)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmNightBacklight)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmDayBacklight)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nmRepeat)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nmLongPress)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1135,5 +1285,10 @@
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.Label lblWarning;
         private System.Windows.Forms.ComboBox cmbHotspot;
+        private System.Windows.Forms.ComboBox cmbVoltCal;
+        private System.Windows.Forms.ComboBox cmbAutolock;
+        private System.Windows.Forms.NumericUpDown nmRepeat;
+        private System.Windows.Forms.NumericUpDown nmLongPress;
+        private System.Windows.Forms.ComboBox cmbAPO;
     }
 }

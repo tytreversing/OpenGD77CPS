@@ -269,6 +269,10 @@ namespace DMR
             cmbSK1.SelectedIndex = 0;
             cmbSK1Long.SelectedIndex = 0;
             cmbEco.SelectedIndex = 0;
+            cmbVoltCal.SelectedIndex = 5;
+            cmbAutolock.SelectedIndex = 0;
+            nmRepeat.Value = (decimal)0.3;
+            cmbAPO.SelectedIndex = 0;
         }
 
         private void CodeplugSettingsForm_Load(object sender, EventArgs e)
@@ -529,7 +533,15 @@ namespace DMR
                         case OpenGD77CommsTransferData.CommsAction.READ_SETTINGS:
                             openGD77CommsTransferData.action = OpenGD77CommsTransferData.CommsAction.NONE;
                             RadioSettings radioSettings = ByteArrayToRadioSettings(openGD77CommsTransferData.dataBuff);
+                            nmRepeat.Value = (decimal)(radioSettings.keypadTimerRepeat / 10.0f);
+                            nmLongPress.Value = (decimal)(radioSettings.keypadTimerLong / 10.0f);
+                            cmbAutolock.SelectedIndex = radioSettings.autolockTimer;
+                            cmbVoltCal.SelectedIndex = radioSettings.batteryCalibration & 0x0F;
                             cmbHotspot.SelectedIndex = radioSettings.hotspotType;
+                            if (radioSettings.apo > 5)
+                                cmbAPO.SelectedIndex = 5; // костыль из-за пропуска 150 между 120 и 180
+                            else
+                                cmbAPO.SelectedIndex = radioSettings.apo;
                             cmbSK1.SelectedIndex = radioSettings.buttonP3;
                             cmbSK1Long.SelectedIndex = radioSettings.buttonP3Long;
                             cbTrackball.Checked = checkOptionBit(radioSettings.bitfieldOptions, (byte)SettingBits.BIT_TRACKBALL_ENABLED);
@@ -801,6 +813,16 @@ namespace DMR
             if (value > 10)
                 value = (int)Math.Round(value / 10.0f) * 10;
             nmMinBacklight.Value = value;
+        }
+
+        private void nmRepeat_Leave(object sender, EventArgs e)
+        {
+            float value = (float)nmMinBacklight.Value;
+            if (value < 0.1f)
+                value = 0.1f;
+            else if (value > 9)
+                value = 9;
+            nmMinBacklight.Value = (decimal)value;
         }
 
         private void btnReset_Click(object sender, EventArgs e)

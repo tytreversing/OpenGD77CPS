@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,6 +13,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Windows.Controls;
+using System.Windows.Documents;
 using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Markup;
@@ -29,7 +31,7 @@ namespace DMR
         private BackgroundWorker worker;
 
 
-        [StructLayout(LayoutKind.Explicit, Pack = 1, Size = 57)]
+        [StructLayout(LayoutKind.Explicit, Pack = 1, Size = 64)]
         public struct RadioSettings
         {
             [FieldOffset(0)]
@@ -162,7 +164,7 @@ namespace DMR
 
             [FieldOffset(45)]
             [MarshalAs(UnmanagedType.U1)]
-            public byte quelchDefaultVHF; // VHF, 200 and UHF
+            public byte squelchDefaultVHF; // VHF, 200 and UHF
 
             [FieldOffset(46)]
             [MarshalAs(UnmanagedType.U1)]
@@ -207,15 +209,62 @@ namespace DMR
             [FieldOffset(56)]
             [MarshalAs(UnmanagedType.U1)]
             public byte txFreqLimited;
+
+            [FieldOffset(57)]
+            [MarshalAs(UnmanagedType.U1)]
+            public byte reserve1;
+
+            [FieldOffset(58)]
+            [MarshalAs(UnmanagedType.U2)]
+            public ushort reserve2;
+
+            [FieldOffset(60)]
+            [MarshalAs(UnmanagedType.U4)]
+            public uint reserve3;
         }
 
+        public enum SettingBits
+        {
+            BIT_INVERSE_VIDEO,
+            BIT_PTT_LATCH,
+            BIT_UNUSED_2,
+            BIT_BATTERY_VOLTAGE_IN_HEADER,
+            BIT_SETTINGS_UPDATED,
+            BIT_TX_RX_FREQ_LOCK,
+            BIT_ALL_LEDS_DISABLED,
+            BIT_SCAN_ON_BOOT_ENABLED,
+            BIT_POWEROFF_SUSPEND,
+            BIT_SATELLITE_MANUAL_AUTO,
+            BIT_UNUSED_1,
+	        BIT_SPEAKER_CLICK_SUPPRESS,
+            BIT_DMR_CRC_IGNORED,
+            BIT_APO_WITH_RF,
+            BIT_SAFE_POWER_ON,
+            BIT_AUTO_NIGHT,
+            BIT_AUTO_NIGHT_OVERRIDE,
+            BIT_AUTO_NIGHT_DAYTIME,
+	        BIT_VISUAL_VOLUME,
+            BIT_SECONDARY_LANGUAGE,
+            BIT_SORT_CHANNEL_DISTANCE,
+            BIT_DISPLAY_CHANNEL_DISTANCE,
+	        BIT_TRACKBALL_ENABLED,
+	        BIT_TRACKBALL_FAST_MOTION,
+	        BIT_FORCE_10W_RADIO,
+            BIT_GPS_MODULE_CUSTOM
+        }
 
+        public bool checkOptionBit(uint settings, byte bit)
+        {
+            return (((settings >> bit) & 1) != 0);
+        }
+        
             public CodeplugSettingsForm()
         {
             InitializeComponent();
             base.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
             Scale(Settings.smethod_6());
             Settings.ReadCommonsForSectionIntoDictionary(OpenGD77StringsDict, "OpenGD77Form");
+            cbPowerLevel.SelectedIndex = 4;
         }
 
         private void CodeplugSettingsForm_Load(object sender, EventArgs e)
@@ -395,7 +444,7 @@ namespace DMR
                         OpenGD77Form.sendCommand(commPort, 3);
                         OpenGD77Form.sendCommand(commPort, 6, 3);
                         openGD77CommsTransferData.mode = OpenGD77CommsTransferData.CommsDataMode.DataModeReadSettings;
-                        openGD77CommsTransferData.dataBuff = new byte[57];
+                        openGD77CommsTransferData.dataBuff = new byte[64];
                         openGD77CommsTransferData.localDataBufferStartPosition = 0;
                         openGD77CommsTransferData.transferLength = openGD77CommsTransferData.dataBuff.Length;
                         if (!ReadData(commPort, openGD77CommsTransferData))
@@ -475,13 +524,78 @@ namespace DMR
                     {
                         case OpenGD77CommsTransferData.CommsAction.READ_SETTINGS:
                             openGD77CommsTransferData.action = OpenGD77CommsTransferData.CommsAction.NONE;
-                            RadioSettings radioSettings = ByteArrayToRadioInfo(openGD77CommsTransferData.dataBuff);
+                            RadioSettings radioSettings = ByteArrayToRadioSettings(openGD77CommsTransferData.dataBuff);
+                            cbTrackball.Checked = checkOptionBit(radioSettings.bitfieldOptions, (byte)SettingBits.BIT_TRACKBALL_ENABLED);
+                            cbFastTrackball.Checked = checkOptionBit(radioSettings.bitfieldOptions, (byte)SettingBits.BIT_TRACKBALL_FAST_MOTION);
+                            chAPOReset.Checked = checkOptionBit(radioSettings.bitfieldOptions, (byte)SettingBits.BIT_APO_WITH_RF);
+                            chAutoSat.Checked = checkOptionBit(radioSettings.bitfieldOptions, (byte)SettingBits.BIT_SATELLITE_MANUAL_AUTO);
+                            rbGlonass.Checked = checkOptionBit(radioSettings.bitfieldOptions, (byte)SettingBits.BIT_GPS_MODULE_CUSTOM);
+                            rbBeiDou.Checked = !rbGlonass.Checked;
                             nmPriority.Value = radioSettings.scanPriority;
                             tbDMRFilter.Text = radioSettings.dmrCaptureTimeout.ToString();
                             tbScanTime.Text = (radioSettings.scanStepTime * 30 + 30).ToString();
                             tbScanPause.Text = radioSettings.scanDelay.ToString();
                             rbCPS.Checked = (radioSettings.txFreqLimited != 0);
                             rbHam.Checked = !rbCPS.Checked;
+                            switch (radioSettings.scanModePause)
+                            {
+                                case 0:
+                                    rbHold.Checked = true;
+                                    rbPause.Checked = false;
+                                    rbStop.Checked = false;
+                                    break;
+                                case 1:
+                                    rbHold.Checked = false;
+                                    rbPause.Checked = true;
+                                    rbStop.Checked = false;
+                                    break;
+                                case 2:
+                                    rbHold.Checked = false;
+                                    rbPause.Checked = false;
+                                    rbStop.Checked = true;
+                                    break;
+                                default:
+                                    radioSettings.scanModePause = 0;
+                                    rbHold.Checked = true;
+                                    rbPause.Checked = false;
+                                    rbStop.Checked = false;
+                                    break;
+                            }
+                            chAutoScan.Checked = checkOptionBit(radioSettings.bitfieldOptions, (byte)SettingBits.BIT_SCAN_ON_BOOT_ENABLED);
+                            nmVHFSquelch.Value = (radioSettings.squelchDefaultVHF - 1) * 5;
+                            nmUHFSquelch.Value = (radioSettings.squelchDefaultUHF - 1) * 5;
+                            nm220Squelch.Value = (radioSettings.squelchDefault220 - 1) * 5;
+                            cbPTTLatch.Checked = checkOptionBit(radioSettings.bitfieldOptions, (byte)SettingBits.BIT_PTT_LATCH);
+                            cbPowerLevel.SelectedIndex = radioSettings.txPowerLevel;
+                            switch (radioSettings.privateCalls)
+                            {
+                                case 0:
+                                    rbPrivateOff.Checked = true;
+                                    rbPrivateOn.Checked = false;
+                                    rbPrivateByPTT.Checked = false;
+                                    break;
+                                case 1:
+                                    rbPrivateOff.Checked = false;
+                                    rbPrivateOn.Checked = true;
+                                    rbPrivateByPTT.Checked = false;
+                                    break;
+                                case 2:
+                                    rbPrivateOff.Checked = false;
+                                    rbPrivateOn.Checked = false;
+                                    rbPrivateByPTT.Checked = true;
+                                    break;
+                                default:
+                                    radioSettings.privateCalls = 1;
+                                    rbPrivateOff.Checked = false;
+                                    rbPrivateOn.Checked = true;
+                                    rbPrivateByPTT.Checked = false;
+                                    break;
+                            }
+                            cbDMRCRC.Checked = checkOptionBit(radioSettings.bitfieldOptions, (byte)SettingBits.BIT_DMR_CRC_IGNORED);
+                            cb10WMode.Checked = checkOptionBit(radioSettings.bitfieldOptions, (byte)SettingBits.BIT_FORCE_10W_RADIO);
+                            nmDayBacklight.Value = radioSettings.displayBacklightPercentageDay;
+                            nmNightBacklight.Value = radioSettings.displayBacklightPercentageNight;
+                            nmMinBacklight.Value = radioSettings.displayBacklightPercentageOff;
                             break;
                         case OpenGD77CommsTransferData.CommsAction.WRITE_SETTINGS:
                             openGD77CommsTransferData.action = OpenGD77CommsTransferData.CommsAction.NONE;
@@ -513,7 +627,7 @@ namespace DMR
             }
         }
 
-        private static RadioSettings ByteArrayToRadioInfo(byte[] bytes)
+        private static RadioSettings ByteArrayToRadioSettings(byte[] bytes)
         {
             GCHandle gCHandle = GCHandle.Alloc(bytes, GCHandleType.Pinned);
             try
@@ -599,6 +713,85 @@ namespace DMR
             else if (value > 30)
                 value = 30;
             tbScanPause.Text = value.ToString();
+        }
+
+        private void nmPriority_Leave(object sender, EventArgs e)
+        {
+            int value = (int)nmPriority.Value;
+            if (value < 2)
+                value = 2;
+            else if (value > 10)
+                value = 10;
+            nmPriority.Value = value;
+        }
+
+        private void nmVHFSquelch_Leave(object sender, EventArgs e)
+        {
+            int value = (int)nmVHFSquelch.Value;
+            if (value < 0)
+                value = 0;
+            else if (value > 100)
+                value = 100;
+            value = (int)Math.Round(value / 5.0f) * 5;
+            nmVHFSquelch.Value = value;
+        }
+
+        private void nmUHFSquelch_Leave(object sender, EventArgs e)
+        {
+            int value = (int)nmUHFSquelch.Value;
+            if (value < 0)
+                value = 0;
+            else if (value > 100)
+                value = 100;
+            value = (int)Math.Round(value / 5.0f) * 5;
+            nmUHFSquelch.Value = value;
+        }
+
+        private void nm220Squelch_Leave(object sender, EventArgs e)
+        {
+            int value = (int)nm220Squelch.Value;
+            if (value < 0)
+                value = 0;
+            else if (value > 100)
+                value = 100;
+            value = (int)Math.Round(value / 5.0f) * 5;
+            nm220Squelch.Value = value;
+        }
+
+        private void nmDayBacklight_Leave(object sender, EventArgs e)
+        {
+            int value = (int)nmDayBacklight.Value;
+            if (value < 0)
+                value = 0;
+            else if (value > 100)
+                value = 100;
+            if (value > 10)
+                value = (int)Math.Round(value / 10.0f) * 10;
+            nmDayBacklight.Value = value;
+        }
+
+        private void nmNightBacklight_Leave(object sender, EventArgs e)
+        {
+            int value = (int)nmNightBacklight.Value;
+            if (value < 0)
+                value = 0;
+            else if (value > 100)
+                value = 100;
+            if (value > 10)
+                value = (int)Math.Round(value / 10.0f) * 10;
+            nmNightBacklight.Value = value;
+        }
+
+        private void nmMinBacklight_Leave(object sender, EventArgs e)
+        {
+            int value = (int)nmMinBacklight.Value;
+            if (value < 0)
+                value = 0;
+            else if (value > 90)
+                value = 90;
+            if (value > 10)
+                value = (int)Math.Round(value / 10.0f) * 10;
+            nmMinBacklight.Value = value;
         }
     }
 }

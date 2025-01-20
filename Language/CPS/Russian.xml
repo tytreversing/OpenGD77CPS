@@ -55,26 +55,7 @@
       <Control Id="btnWriteSettings" Text="Запись настроек в рацию" />
       <Control Id="btnSaveSettings" Text="Сохранить настройки в файл" />
       <Control Id="btnLoadSettings" Text="Загрузить настройки из файла" />
-      <Control Id="gbGeneral" Text="Общие" />
-      <Control Id="lblLongPress" Text="Длительное нажатие, с" />
-      <Control Id="lblRepeat" Text="Повторное нажатие, c" />
-      <Control Id="lblAutoBlock" Text="Автоблокировка клавиатуры" />
-      <Control Id="lblP3" Text="Кнопка SK1/P3" />
-      <Control Id="lblP3Long" Text="Кнопка SK1/P3 (длительно)" />
-      <Control Id="lblHotspot" Text="Режим хотспота" />
-      <Control Id="lblBattery" Text="Калибровка аккумулятора" />
-      <Control Id="lblAPO" Text="Автоотключение рации" />
-      <Control Id="chAPOReset" Text="Сброс автоотключения по Rx/Tx" />
-      <Control Id="chAutoSat" Text="Автоматический выбор спутника" />
-      <Control Id="lblGPSMode" Text="Режим GPS-модуля" />
-      <Control Id="gbRadio" Text="Радиосвязь" />
-      <Control Id="rbHam" Text="радиолюбительские" />
-      <Control Id="rbCPS" Text="по CPS" />
-      <Control Id="lblBandlimit" Text="Ограничения частот" />
-      <Control Id="lblDMRFilter" Text="Фильтр DMR, c" />
-      <Control Id="lblScanPause" Text="Пауза сканирования, c" />
-      <Control Id="lblScanTime" Text="Время сканирования, мc" />
-      <Control Id="lblPriority" Text="Множитель приоритета" />
+
     </Controls>
     <Commons>
       

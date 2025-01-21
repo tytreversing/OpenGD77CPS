@@ -188,4 +188,7 @@ BlueDV - подключение к ПК с запущенной программ
   <metadata name="sfdSettings.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>95, 17</value>
   </metadata>
+  <metadata name="ofdSettings.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>218, 17</value>
+  </metadata>
 </root>

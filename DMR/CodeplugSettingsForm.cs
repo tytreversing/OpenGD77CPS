@@ -1,23 +1,16 @@
 ﻿using System.Xml.Serialization;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.IO;
 using System.IO.Ports;
-using System.Linq;
 using System.Media;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
-using System.Windows.Controls;
-using System.Windows.Documents;
 using System.Windows.Forms;
-using System.Windows.Input;
-using System.Windows.Markup;
-using System.Xml.Linq;
+using System.Xml;
 using WeifenLuo.WinFormsUI.Docking;
 using static DMR.OpenGD77Form;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
@@ -27,6 +20,9 @@ namespace DMR
 
     public partial class CodeplugSettingsForm : DockContent//, IDisp, ISingleRow
     {
+        public const uint CURRENTVERSION = 0xDEFECA7E;
+
+
         private SerialPort commPort;
         public static Dictionary<string, string> OpenGD77StringsDict = new Dictionary<string, string>();
         private BackgroundWorker worker;
@@ -519,6 +515,8 @@ namespace DMR
             e.Result = openGD77CommsTransferData;
         }
 
+
+
         private void worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             if (!(e.Result is OpenGD77CommsTransferData openGD77CommsTransferData))
@@ -534,90 +532,8 @@ namespace DMR
                         case OpenGD77CommsTransferData.CommsAction.READ_SETTINGS:
                             openGD77CommsTransferData.action = OpenGD77CommsTransferData.CommsAction.NONE;
                             RadioSettings radioSettings = ByteArrayToRadioSettings(openGD77CommsTransferData.dataBuff);
-                            nmRepeat.Value = (decimal)(radioSettings.keypadTimerRepeat / 10.0f);
-                            nmLongPress.Value = (decimal)(radioSettings.keypadTimerLong / 10.0f);
-                            cmbAutolock.SelectedIndex = radioSettings.autolockTimer;
-                            cmbVoltCal.SelectedIndex = radioSettings.batteryCalibration & 0x0F;
-                            cmbHotspot.SelectedIndex = radioSettings.hotspotType;
-                            if (radioSettings.apo > 5)
-                                cmbAPO.SelectedIndex = 5; // костыль из-за пропуска 150 между 120 и 180
-                            else
-                                cmbAPO.SelectedIndex = radioSettings.apo;
-                            cmbSK1.SelectedIndex = radioSettings.buttonP3;
-                            cmbSK1Long.SelectedIndex = radioSettings.buttonP3Long;
-                            cbTrackball.Checked = checkOptionBit(radioSettings.bitfieldOptions, (byte)SettingBits.BIT_TRACKBALL_ENABLED);
-                            cbFastTrackball.Checked = checkOptionBit(radioSettings.bitfieldOptions, (byte)SettingBits.BIT_TRACKBALL_FAST_MOTION);
-                            chAPOReset.Checked = checkOptionBit(radioSettings.bitfieldOptions, (byte)SettingBits.BIT_APO_WITH_RF);
-                            chAutoSat.Checked = checkOptionBit(radioSettings.bitfieldOptions, (byte)SettingBits.BIT_SATELLITE_MANUAL_AUTO);
-                            rbGlonass.Checked = checkOptionBit(radioSettings.bitfieldOptions, (byte)SettingBits.BIT_GPS_MODULE_CUSTOM);
-                            rbBeiDou.Checked = !rbGlonass.Checked;
-                            cmbEco.SelectedIndex = radioSettings.ecoLevel;
-                            cbSafeOn.Checked = checkOptionBit(radioSettings.bitfieldOptions, (byte)SettingBits.BIT_SAFE_POWER_ON);
-                            nmPriority.Value = radioSettings.scanPriority;
-                            tbDMRFilter.Text = radioSettings.dmrCaptureTimeout.ToString();
-                            tbScanTime.Text = (radioSettings.scanStepTime * 30 + 30).ToString();
-                            tbScanPause.Text = radioSettings.scanDelay.ToString();
-                            rbCPS.Checked = (radioSettings.txFreqLimited != 0);
-                            rbHam.Checked = !rbCPS.Checked;
-                            switch (radioSettings.scanModePause)
-                            {
-                                case 0:
-                                    rbHold.Checked = true;
-                                    rbPause.Checked = false;
-                                    rbStop.Checked = false;
-                                    break;
-                                case 1:
-                                    rbHold.Checked = false;
-                                    rbPause.Checked = true;
-                                    rbStop.Checked = false;
-                                    break;
-                                case 2:
-                                    rbHold.Checked = false;
-                                    rbPause.Checked = false;
-                                    rbStop.Checked = true;
-                                    break;
-                                default:
-                                    radioSettings.scanModePause = 0;
-                                    rbHold.Checked = true;
-                                    rbPause.Checked = false;
-                                    rbStop.Checked = false;
-                                    break;
-                            }
-                            chAutoScan.Checked = checkOptionBit(radioSettings.bitfieldOptions, (byte)SettingBits.BIT_SCAN_ON_BOOT_ENABLED);
-                            nmVHFSquelch.Value = (radioSettings.squelchDefaultVHF - 1) * 5;
-                            nmUHFSquelch.Value = (radioSettings.squelchDefaultUHF - 1) * 5;
-                            nm220Squelch.Value = (radioSettings.squelchDefault220 - 1) * 5;
-                            cbPTTLatch.Checked = checkOptionBit(radioSettings.bitfieldOptions, (byte)SettingBits.BIT_PTT_LATCH);
-                            cbPowerLevel.SelectedIndex = radioSettings.txPowerLevel;
-                            switch (radioSettings.privateCalls)
-                            {
-                                case 0:
-                                    rbPrivateOff.Checked = true;
-                                    rbPrivateOn.Checked = false;
-                                    rbPrivateByPTT.Checked = false;
-                                    break;
-                                case 1:
-                                    rbPrivateOff.Checked = false;
-                                    rbPrivateOn.Checked = true;
-                                    rbPrivateByPTT.Checked = false;
-                                    break;
-                                case 2:
-                                    rbPrivateOff.Checked = false;
-                                    rbPrivateOn.Checked = false;
-                                    rbPrivateByPTT.Checked = true;
-                                    break;
-                                default:
-                                    radioSettings.privateCalls = 1;
-                                    rbPrivateOff.Checked = false;
-                                    rbPrivateOn.Checked = true;
-                                    rbPrivateByPTT.Checked = false;
-                                    break;
-                            }
-                            cbDMRCRC.Checked = checkOptionBit(radioSettings.bitfieldOptions, (byte)SettingBits.BIT_DMR_CRC_IGNORED);
-                            cb10WMode.Checked = checkOptionBit(radioSettings.bitfieldOptions, (byte)SettingBits.BIT_FORCE_10W_RADIO);
-                            nmDayBacklight.Value = radioSettings.displayBacklightPercentageDay;
-                            nmNightBacklight.Value = radioSettings.displayBacklightPercentageNight;
-                            nmMinBacklight.Value = radioSettings.displayBacklightPercentageOff;
+                            buildVariablesFromRadio(radioSettings);
+
                             break;
                         case OpenGD77CommsTransferData.CommsAction.WRITE_SETTINGS:
                             openGD77CommsTransferData.action = OpenGD77CommsTransferData.CommsAction.NONE;
@@ -687,7 +603,7 @@ namespace DMR
                     return;
                 }
                 OpenGD77CommsTransferData openGD77CommsTransferData = new OpenGD77CommsTransferData(OpenGD77CommsTransferData.CommsAction.READ_SETTINGS);
-                openGD77CommsTransferData.dataBuff = new byte[Settings.ADDR_OPENGD77_CUSTOM_DATA_END - Settings.ADDR_OPENGD77_CUSTOM_DATA_START];
+                openGD77CommsTransferData.dataBuff = new byte[100];
                 pbConnection.Visible = true;
                 pbConnection.Value = 0;
                 perFormCommsTask(openGD77CommsTransferData);
@@ -695,6 +611,39 @@ namespace DMR
                 
             }
 
+        }
+
+        private void btnWriteSettings_Click(object sender, EventArgs e)
+        {
+            if (probeRadioModel())
+            {
+                if (!setupCommPort())
+                {
+                    SystemSounds.Hand.Play();
+                    MessageBox.Show(OpenGD77StringsDict["No_com_port"]);
+                    return;
+                }
+                if (MainForm.RadioInfo.radioType != 5 && MainForm.RadioInfo.radioType != 6 && MainForm.RadioInfo.radioType != 8 && MainForm.RadioInfo.radioType != 10 && MainForm.RadioInfo.radioType != 9 && MainForm.RadioInfo.radioType != 106)
+                {
+                    SystemSounds.Hand.Play();
+                    MessageBox.Show("Тип рации не поддерживается!", OpenGD77StringsDict["Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if (!OpenGD77Form.RadioInfoIsFeatureSet(OpenGD77Form.RadioInfoFeatures.SUPPORT_SETTINGS_ACCESS))
+                {
+                    SystemSounds.Hand.Play();
+                    MessageBox.Show("В рации установлена устаревшая прошивка, не поддерживающая чтение и запись настроек через CPS!\r\nВерсия прошивки: " + MainForm.RadioInfo.buildDateTime + "\r\nНеобходимая версия прошивки: не ниже 20250120", OpenGD77StringsDict["Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if (MainForm.RadioInfo.flashId != CURRENTVERSION)
+                {
+                    DialogResult result = MessageBox.Show("Версия блока настроек радиостанции (0x" + MainForm.RadioInfo.flashId.ToString("X4") + ") не соответствует поддерживаемому этой версией CPS (0x" + CURRENTVERSION.ToString("X4") + ").\r\nЕсли рация использует устаревшую прошивку, часть введенных настроек не будет работать в ней. Если вы используете устаревшую версию CPS, недоступные в ней настройки будут установлены непредсказуемо.\r\nНастоятельно рекомендуем следить за актуальностью программного обеспечения!\r\nНажмите \"ОК\", чтобы все равно записать настройки, или \"Отмена\".", "Внимание!", MessageBoxButtons.OKCancel, MessageBoxIcon.Hand);
+                    if (result == DialogResult.Cancel)
+                        return;
+                    SystemSounds.Asterisk.Play();
+                }
+
+            }
         }
 
         private void filterNumerics(object sender, KeyPressEventArgs e)
@@ -873,34 +822,13 @@ namespace DMR
                 if (sfdSettings.ShowDialog() == DialogResult.OK && !string.IsNullOrEmpty(sfdSettings.FileName))
                 {
                     SettingsStruct dumpStruct = new SettingsStruct();
-                    dumpStruct.SettingsBlockVersion = 0xDEFECA7E;
-                    dumpStruct.KeypadLongPress = (float)(nmLongPress.Value);
-                    dumpStruct.KeypadRepeat = (float)(nmRepeat.Value);
-                    dumpStruct.AutolockTimer = cmbAutolock.SelectedIndex * 30;
-                    dumpStruct.ProgrammableButton = (byte)cmbSK1.SelectedIndex;
-                    dumpStruct.ProgrammableButtonLong = (byte)cmbSK1Long.SelectedIndex;
-                    dumpStruct.HotspotMode = (byte)cmbHotspot.SelectedIndex;
-                    dumpStruct.VoltageCalibration = (float)Math.Round(cmbVoltCal.SelectedIndex * 0.1f - 0.5f, 1);
-                    dumpStruct.AutoPowerOffTimer = (byte)(cmbAPO.SelectedIndex * 30);
-                    if (dumpStruct.AutoPowerOffTimer == 150)
-                        dumpStruct.AutoPowerOffTimer = 180; //снова костыль
-                    dumpStruct.ResetAPOEnabled = chAPOReset.Checked;
-                    dumpStruct.SatelliteAutoMode = chAutoSat.Checked;
-                    dumpStruct.CustomGNSSMode = rbGlonass.Checked;
-                    dumpStruct.UsingTrackball = cbTrackball.Checked;
-                    dumpStruct.TrackballFastMode = cbFastTrackball.Checked;
-                    dumpStruct.EcoLevel = (byte)cmbEco.SelectedIndex;
-                    dumpStruct.SafePowerOn = cbSafeOn.Checked;
-                    dumpStruct.BandlimitByCPS = rbCPS.Checked;
-                    dumpStruct.TimeslotFilteringTime = Byte.Parse(tbDMRFilter.Text);
-                    dumpStruct.ScanPauseTime = Byte.Parse(tbScanPause.Text);
-                    dumpStruct.ScanStepTime = Byte.Parse(tbScanTime.Text);
+                    buildSettingsStruct(dumpStruct);
+
                     try
                     {
                         using (FileStream fs = new FileStream(sfdSettings.FileName, FileMode.Create))
                         {
                             xmlSerializer.Serialize(fs, dumpStruct);
-
                         }
                     }
                     catch
@@ -916,30 +844,322 @@ namespace DMR
             
 
         }
+
+
+
+        private string unknownElements = "";
+        private bool hasUnknownElements = false;
+
+        private void unknownElementEvent(object sender, XmlElementEventArgs e)
+        {
+            hasUnknownElements = true;
+            unknownElements += ("\r\n" + e.Element.Name + ": " + e.Element.InnerXml);
+        }
+
+        private void btnLoadSettings_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string profileStringWithDefault = IniFileUtils.getProfileStringWithDefault("Setup", "LastFilePath", "");
+                try
+                {
+                    if (profileStringWithDefault == null || "" == profileStringWithDefault)
+                    {
+                        ofdSettings.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+                    }
+                    else
+                    {
+                        ofdSettings.InitialDirectory = Path.GetDirectoryName(profileStringWithDefault);
+                    }
+                }
+                catch (Exception)
+                {
+                    ofdSettings.InitialDirectory = "";
+                }
+                if (ofdSettings.ShowDialog() == DialogResult.OK && !string.IsNullOrEmpty(ofdSettings.FileName))
+                {
+                    SettingsStruct dumpStruct = new SettingsStruct();
+                    try
+                    {
+                        using (FileStream fs = new FileStream(ofdSettings.FileName, FileMode.Open))
+                        {
+                            xmlSerializer.UnknownElement += new XmlElementEventHandler(unknownElementEvent);
+                            dumpStruct = xmlSerializer.Deserialize(fs) as SettingsStruct;
+                            if (hasUnknownElements)
+                            {
+                                hasUnknownElements = false;
+                                SystemSounds.Exclamation.Play();
+                                MessageBox.Show("В блоке настроек обнаружены неподдерживаемые этой версией CPS поля.\r\nВозможно, он рассчитан под более новую версию CPS и соответствующие прошивки.\r\nПоля, которые не могут быть распознаны:" + unknownElements, "Внимание!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                unknownElements = "";
+                            }
+                            buildVariablesFromSettingsStruct(dumpStruct);
+                        }
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Не удалось открыть файл " + ofdSettings.FileName, "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            catch (Exception ex2)
+            {
+                MessageBox.Show(ex2.Message);
+            }
+        }
+
+        private void buildVariablesFromRadio(RadioSettings radioSettings)
+        {
+            nmRepeat.Value = (decimal)(radioSettings.keypadTimerRepeat / 10.0f);
+            nmLongPress.Value = (decimal)(radioSettings.keypadTimerLong / 10.0f);
+            cmbAutolock.SelectedIndex = radioSettings.autolockTimer;
+            cmbVoltCal.SelectedIndex = radioSettings.batteryCalibration & 0x0F;
+            cmbHotspot.SelectedIndex = radioSettings.hotspotType;
+            if (radioSettings.apo > 5)
+                cmbAPO.SelectedIndex = 5; // костыль из-за пропуска 150 между 120 и 180
+            else
+                cmbAPO.SelectedIndex = radioSettings.apo;
+            cmbSK1.SelectedIndex = radioSettings.buttonP3;
+            cmbSK1Long.SelectedIndex = radioSettings.buttonP3Long;
+            cbTrackball.Checked = checkOptionBit(radioSettings.bitfieldOptions, (byte)SettingBits.BIT_TRACKBALL_ENABLED);
+            cbFastTrackball.Checked = checkOptionBit(radioSettings.bitfieldOptions, (byte)SettingBits.BIT_TRACKBALL_FAST_MOTION);
+            chAPOReset.Checked = checkOptionBit(radioSettings.bitfieldOptions, (byte)SettingBits.BIT_APO_WITH_RF);
+            chAutoSat.Checked = checkOptionBit(radioSettings.bitfieldOptions, (byte)SettingBits.BIT_SATELLITE_MANUAL_AUTO);
+            rbGlonass.Checked = checkOptionBit(radioSettings.bitfieldOptions, (byte)SettingBits.BIT_GPS_MODULE_CUSTOM);
+            rbBeiDou.Checked = !rbGlonass.Checked;
+            cmbEco.SelectedIndex = radioSettings.ecoLevel;
+            cbSafeOn.Checked = checkOptionBit(radioSettings.bitfieldOptions, (byte)SettingBits.BIT_SAFE_POWER_ON);
+            nmPriority.Value = radioSettings.scanPriority;
+            tbDMRFilter.Text = radioSettings.dmrCaptureTimeout.ToString();
+            tbScanTime.Text = (radioSettings.scanStepTime * 30 + 30).ToString();
+            tbScanPause.Text = radioSettings.scanDelay.ToString();
+            rbCPS.Checked = (radioSettings.txFreqLimited != 0);
+            rbHam.Checked = !rbCPS.Checked;
+            switch (radioSettings.scanModePause)
+            {
+                case 0:
+                    rbHold.Checked = true;
+                    rbPause.Checked = false;
+                    rbStop.Checked = false;
+                    break;
+                case 1:
+                    rbHold.Checked = false;
+                    rbPause.Checked = true;
+                    rbStop.Checked = false;
+                    break;
+                case 2:
+                    rbHold.Checked = false;
+                    rbPause.Checked = false;
+                    rbStop.Checked = true;
+                    break;
+                default:
+                    radioSettings.scanModePause = 0;
+                    rbHold.Checked = true;
+                    rbPause.Checked = false;
+                    rbStop.Checked = false;
+                    break;
+            }
+            chAutoScan.Checked = checkOptionBit(radioSettings.bitfieldOptions, (byte)SettingBits.BIT_SCAN_ON_BOOT_ENABLED);
+            nmVHFSquelch.Value = (radioSettings.squelchDefaultVHF - 1) * 5;
+            nmUHFSquelch.Value = (radioSettings.squelchDefaultUHF - 1) * 5;
+            nm220Squelch.Value = (radioSettings.squelchDefault220 - 1) * 5;
+            cbPTTLatch.Checked = checkOptionBit(radioSettings.bitfieldOptions, (byte)SettingBits.BIT_PTT_LATCH);
+            cbPowerLevel.SelectedIndex = radioSettings.txPowerLevel;
+            switch (radioSettings.privateCalls)
+            {
+                case 0:
+                    rbPrivateOff.Checked = true;
+                    rbPrivateOn.Checked = false;
+                    rbPrivateByPTT.Checked = false;
+                    break;
+                case 2:
+                    rbPrivateOff.Checked = false;
+                    rbPrivateOn.Checked = false;
+                    rbPrivateByPTT.Checked = true;
+                    break;
+                default:
+                    radioSettings.privateCalls = 1;
+                    rbPrivateOff.Checked = false;
+                    rbPrivateOn.Checked = true;
+                    rbPrivateByPTT.Checked = false;
+                    break;
+            }
+            cbDMRCRC.Checked = checkOptionBit(radioSettings.bitfieldOptions, (byte)SettingBits.BIT_DMR_CRC_IGNORED);
+            cb10WMode.Checked = checkOptionBit(radioSettings.bitfieldOptions, (byte)SettingBits.BIT_FORCE_10W_RADIO);
+            nmDayBacklight.Value = radioSettings.displayBacklightPercentageDay;
+            nmNightBacklight.Value = radioSettings.displayBacklightPercentageNight;
+            nmMinBacklight.Value = radioSettings.displayBacklightPercentageOff;
+        }
+
+        private void buildSettingsStruct(SettingsStruct d)
+        {
+            d.SettingsBlockVersion = 0xDEFECA7E;
+            d.KeypadLongPress = (float)(nmLongPress.Value);
+            d.KeypadRepeat = (float)(nmRepeat.Value);
+            d.AutolockTimer = cmbAutolock.SelectedIndex * 30;
+            d.ProgrammableButton = cmbSK1.SelectedIndex;
+            d.ProgrammableButtonLong = cmbSK1Long.SelectedIndex;
+            d.HotspotMode = cmbHotspot.SelectedIndex;
+            d.VoltageCalibration = (float)Math.Round(cmbVoltCal.SelectedIndex * 0.1f - 0.5f, 1);
+            d.AutoPowerOffTimer = cmbAPO.SelectedIndex * 30;
+            if (d.AutoPowerOffTimer == 150)
+                d.AutoPowerOffTimer = 180; //снова костыль
+            d.ResetAPOEnabled = chAPOReset.Checked;
+            d.SatelliteAutoMode = chAutoSat.Checked;
+            d.CustomGNSSMode = rbGlonass.Checked;
+            d.UsingTrackball = cbTrackball.Checked;
+            d.TrackballFastMode = cbFastTrackball.Checked;
+            d.EcoLevel = cmbEco.SelectedIndex;
+            d.SafePowerOn = cbSafeOn.Checked;
+            d.BandlimitByCPS = rbCPS.Checked;
+            d.TimeslotFilteringTime = Int32.Parse(tbDMRFilter.Text);
+            d.ScanPauseTime = Int32.Parse(tbScanPause.Text);
+            d.ScanStepTime = Int32.Parse(tbScanTime.Text);
+            d.PriorityMultiplier = (int)nmPriority.Value;
+            if (rbHold.Checked)
+                d.ScanMode = 0;
+            else if (rbPause.Checked)
+                d.ScanMode = 1;
+            else
+                d.ScanMode = 2;
+            d.AutoScanningMode = chAutoScan.Checked;
+            d.SquelchLevel144 = (int)nmVHFSquelch.Value;
+            d.SquelchLevel433 = (int)nmUHFSquelch.Value;
+            d.SquelchLevel220 = (int)nm220Squelch.Value;
+            d.PTTLatchEnabled = cbPTTLatch.Checked;
+            d.Allow10W = cb10WMode.Checked;
+            d.TxPowerLevel = cbPowerLevel.SelectedIndex;
+            if (rbPrivateOff.Checked)
+                d.PrivateCallsMode = 0;
+            else if (rbPrivateOn.Checked)
+                d.PrivateCallsMode = 1;
+            else
+                d.PrivateCallsMode = 2;
+            d.DisableCRC = cbDMRCRC.Checked;
+        }
+
+
+        private void buildVariablesFromSettingsStruct(SettingsStruct d)
+        {
+
+            nmLongPress.Value = (decimal)d.KeypadLongPress;
+            nmRepeat.Value = (decimal)d.KeypadRepeat;
+            cmbAutolock.SelectedIndex = d.AutolockTimer / 30;
+            cmbSK1.SelectedIndex = d.ProgrammableButton;
+            cmbSK1Long.SelectedIndex = d.ProgrammableButtonLong;
+            cmbHotspot.SelectedIndex = d.HotspotMode;
+            cmbVoltCal.SelectedIndex = (int)Math.Round((d.VoltageCalibration + 0.5f) * 10.0f);
+            var x = d.AutoPowerOffTimer / 30;
+            if (x == 6)
+                x = 5; //снова костыль
+            cmbAPO.SelectedIndex = x;
+            chAPOReset.Checked = d.ResetAPOEnabled;
+            chAutoSat.Checked = d.SatelliteAutoMode;
+            rbGlonass.Checked = d.CustomGNSSMode;
+            rbBeiDou.Checked = !rbGlonass.Checked;
+            cbTrackball.Checked = d.UsingTrackball;
+            cbFastTrackball.Checked = d.TrackballFastMode;
+            cmbEco.SelectedIndex = d.EcoLevel;
+            cbSafeOn.Checked = d.SafePowerOn;
+            rbCPS.Checked = d.BandlimitByCPS;
+            rbHam.Checked = !rbCPS.Checked;
+            tbDMRFilter.Text = d.TimeslotFilteringTime.ToString();
+            tbScanPause.Text = d.ScanPauseTime.ToString();
+            tbScanTime.Text = d.ScanStepTime.ToString();
+            nmPriority.Value = d.PriorityMultiplier;
+            switch (d.ScanMode)
+            {
+                case 1:
+                    rbHold.Checked = false;
+                    rbPause.Checked = true;
+                    rbStop.Checked = false;
+                    break;
+                case 2:
+                    rbHold.Checked = false;
+                    rbPause.Checked = false;
+                    rbStop.Checked = true;
+                    break;
+                default:
+                    rbHold.Checked = true;
+                    rbPause.Checked = false;
+                    rbStop.Checked = false;
+                    break;
+            }
+            chAutoScan.Checked = d.AutoScanningMode;
+            nmVHFSquelch.Value = d.SquelchLevel144;
+            nmUHFSquelch.Value = d.SquelchLevel433;
+            nm220Squelch.Value = d.SquelchLevel220;
+            cbPTTLatch.Checked = d.PTTLatchEnabled;
+            cb10WMode.Checked = d.Allow10W;
+            cbPowerLevel.SelectedIndex = d.TxPowerLevel;
+            switch (d.PrivateCallsMode)
+            {
+                case 1:
+                    rbPrivateOff.Checked = false;
+                    rbPrivateOn.Checked = true;
+                    rbPrivateByPTT.Checked = false;
+                    break;
+                case 2:
+                    rbPrivateOff.Checked = false;
+                    rbPrivateOn.Checked = false;
+                    rbPrivateByPTT.Checked = true;
+                    break;
+                default:
+                    rbPrivateOff.Checked = true;
+                    rbPrivateOn.Checked = false;
+                    rbPrivateByPTT.Checked = false;
+                    break;
+            }
+            cbDMRCRC.Checked = d.DisableCRC;
+        }
+
+        
     }
 
+
+
+
+
     [Serializable]
+    [XmlRootAttribute("TransceiverSettings", Namespace = "https://opengd77rus.ru")]
     public class SettingsStruct
     {
         public uint SettingsBlockVersion;
         public bool ResetAPOEnabled;
         public bool SatelliteAutoMode;
         public bool CustomGNSSMode;
-        public byte HotspotMode;
+        public int HotspotMode;
         public float VoltageCalibration; 
-        public byte AutoPowerOffTimer; 
+        public int AutoPowerOffTimer; 
         public float KeypadLongPress;
         public float KeypadRepeat;
         public int AutolockTimer; 
-        public byte ProgrammableButton; 
-        public byte ProgrammableButtonLong;
+        public int ProgrammableButton; 
+        public int ProgrammableButtonLong;
         public bool UsingTrackball;
         public bool TrackballFastMode;
-        public byte EcoLevel;
+        public int EcoLevel;
         public bool SafePowerOn;
         public bool BandlimitByCPS;
-        public byte TimeslotFilteringTime;
-        public byte ScanPauseTime;
-        public byte ScanStepTime;
+        public int TimeslotFilteringTime;
+        public int ScanPauseTime;
+        public int ScanStepTime;
+        public int PriorityMultiplier;
+        public int ScanMode;
+        public bool AutoScanningMode;
+        public int SquelchLevel144;
+        public int SquelchLevel433;
+        public int SquelchLevel220;
+        public bool PTTLatchEnabled;
+        public bool Allow10W;
+        public int TxPowerLevel;
+        public int PrivateCallsMode;
+        public bool DisableCRC;
+
+
+        public SettingsStruct()
+        {
+            SettingsBlockVersion = CodeplugSettingsForm.CURRENTVERSION;
+            
+        }
     }
 }

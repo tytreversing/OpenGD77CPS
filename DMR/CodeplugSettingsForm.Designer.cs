@@ -111,6 +111,8 @@
             this.lblWarning = new System.Windows.Forms.Label();
             this.pbConnection = new System.Windows.Forms.ProgressBar();
             this.sfdSettings = new System.Windows.Forms.SaveFileDialog();
+            this.ofdSettings = new System.Windows.Forms.OpenFileDialog();
+            this.pnGPS = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.nmPriority)).BeginInit();
             this.pnBandlimit.SuspendLayout();
             this.pnScanMode.SuspendLayout();
@@ -588,6 +590,7 @@
             this.btnWriteSettings.TabIndex = 3;
             this.btnWriteSettings.Text = "write";
             this.btnWriteSettings.UseVisualStyleBackColor = false;
+            this.btnWriteSettings.Click += new System.EventHandler(this.btnWriteSettings_Click);
             // 
             // btnSaveSettings
             // 
@@ -609,6 +612,7 @@
             this.btnLoadSettings.TabIndex = 5;
             this.btnLoadSettings.Text = "load";
             this.btnLoadSettings.UseVisualStyleBackColor = false;
+            this.btnLoadSettings.Click += new System.EventHandler(this.btnLoadSettings_Click);
             // 
             // rbBeiDou
             // 
@@ -730,6 +734,7 @@
             this.tpCommons.Controls.Add(this.lblAPO);
             this.tpCommons.Controls.Add(this.lblHotspot);
             this.tpCommons.Controls.Add(this.lblBattery);
+            this.tpCommons.Controls.Add(this.pnGPS);
             this.tpCommons.Location = new System.Drawing.Point(4, 22);
             this.tpCommons.Name = "tpCommons";
             this.tpCommons.Padding = new System.Windows.Forms.Padding(3);
@@ -1210,6 +1215,18 @@
             // 
             this.sfdSettings.Filter = "Файлы настроек|*.ogds";
             // 
+            // ofdSettings
+            // 
+            this.ofdSettings.FileName = "openFileDialog1";
+            this.ofdSettings.Filter = "Файлы настроек|*.ogds";
+            // 
+            // pnGPS
+            // 
+            this.pnGPS.Location = new System.Drawing.Point(192, 223);
+            this.pnGPS.Name = "pnGPS";
+            this.pnGPS.Size = new System.Drawing.Size(121, 43);
+            this.pnGPS.TabIndex = 27;
+            // 
             // CodeplugSettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1338,5 +1355,7 @@
         private System.Windows.Forms.TabPage tbSound;
         private System.Windows.Forms.TabPage tbAPRS;
         private System.Windows.Forms.SaveFileDialog sfdSettings;
+        private System.Windows.Forms.OpenFileDialog ofdSettings;
+        private System.Windows.Forms.Panel pnGPS;
     }
 }

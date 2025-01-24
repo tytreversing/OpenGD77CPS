@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CodeplugSettingsForm));
-            this.lblGPSMode = new System.Windows.Forms.Label();
             this.chAutoSat = new System.Windows.Forms.CheckBox();
             this.chAPOReset = new System.Windows.Forms.CheckBox();
             this.lblAPO = new System.Windows.Forms.Label();
@@ -74,8 +73,6 @@
             this.btnWriteSettings = new System.Windows.Forms.Button();
             this.btnSaveSettings = new System.Windows.Forms.Button();
             this.btnLoadSettings = new System.Windows.Forms.Button();
-            this.rbBeiDou = new System.Windows.Forms.RadioButton();
-            this.rbGlonass = new System.Windows.Forms.RadioButton();
             this.rbHold = new System.Windows.Forms.RadioButton();
             this.pnBandlimit = new System.Windows.Forms.Panel();
             this.pnScanMode = new System.Windows.Forms.Panel();
@@ -112,7 +109,6 @@
             this.pbConnection = new System.Windows.Forms.ProgressBar();
             this.sfdSettings = new System.Windows.Forms.SaveFileDialog();
             this.ofdSettings = new System.Windows.Forms.OpenFileDialog();
-            this.pnGPS = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.nmPriority)).BeginInit();
             this.pnBandlimit.SuspendLayout();
             this.pnScanMode.SuspendLayout();
@@ -130,16 +126,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.nmNightBacklight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmDayBacklight)).BeginInit();
             this.SuspendLayout();
-            // 
-            // lblGPSMode
-            // 
-            this.lblGPSMode.AutoSize = true;
-            this.lblGPSMode.Location = new System.Drawing.Point(17, 225);
-            this.lblGPSMode.Name = "lblGPSMode";
-            this.lblGPSMode.Size = new System.Drawing.Size(158, 13);
-            this.lblGPSMode.TabIndex = 10;
-            this.lblGPSMode.Text = "Режим геопозиционирования";
-            this.tips.SetToolTip(this.lblGPSMode, resources.GetString("lblGPSMode.ToolTip"));
             // 
             // chAutoSat
             // 
@@ -498,7 +484,7 @@
             // cbTrackball
             // 
             this.cbTrackball.AutoSize = true;
-            this.cbTrackball.Location = new System.Drawing.Point(20, 259);
+            this.cbTrackball.Location = new System.Drawing.Point(20, 229);
             this.cbTrackball.Name = "cbTrackball";
             this.cbTrackball.Size = new System.Drawing.Size(143, 17);
             this.cbTrackball.TabIndex = 13;
@@ -509,7 +495,7 @@
             // cbFastTrackball
             // 
             this.cbFastTrackball.AutoSize = true;
-            this.cbFastTrackball.Location = new System.Drawing.Point(20, 274);
+            this.cbFastTrackball.Location = new System.Drawing.Point(20, 244);
             this.cbFastTrackball.Name = "cbFastTrackball";
             this.cbFastTrackball.Size = new System.Drawing.Size(192, 17);
             this.cbFastTrackball.TabIndex = 14;
@@ -551,7 +537,7 @@
             // lblEco
             // 
             this.lblEco.AutoSize = true;
-            this.lblEco.Location = new System.Drawing.Point(17, 298);
+            this.lblEco.Location = new System.Drawing.Point(17, 268);
             this.lblEco.Name = "lblEco";
             this.lblEco.Size = new System.Drawing.Size(76, 13);
             this.lblEco.TabIndex = 16;
@@ -562,7 +548,7 @@
             // cbSafeOn
             // 
             this.cbSafeOn.AutoSize = true;
-            this.cbSafeOn.Location = new System.Drawing.Point(20, 324);
+            this.cbSafeOn.Location = new System.Drawing.Point(20, 294);
             this.cbSafeOn.Name = "cbSafeOn";
             this.cbSafeOn.Size = new System.Drawing.Size(145, 17);
             this.cbSafeOn.TabIndex = 18;
@@ -613,29 +599,6 @@
             this.btnLoadSettings.Text = "load";
             this.btnLoadSettings.UseVisualStyleBackColor = false;
             this.btnLoadSettings.Click += new System.EventHandler(this.btnLoadSettings_Click);
-            // 
-            // rbBeiDou
-            // 
-            this.rbBeiDou.AutoSize = true;
-            this.rbBeiDou.Checked = true;
-            this.rbBeiDou.Location = new System.Drawing.Point(194, 225);
-            this.rbBeiDou.Name = "rbBeiDou";
-            this.rbBeiDou.Size = new System.Drawing.Size(88, 17);
-            this.rbBeiDou.TabIndex = 11;
-            this.rbBeiDou.TabStop = true;
-            this.rbBeiDou.Text = "GPS+BeiDou";
-            this.rbBeiDou.UseVisualStyleBackColor = true;
-            // 
-            // rbGlonass
-            // 
-            this.rbGlonass.AutoSize = true;
-            this.rbGlonass.Location = new System.Drawing.Point(194, 242);
-            this.rbGlonass.Name = "rbGlonass";
-            this.rbGlonass.Size = new System.Drawing.Size(104, 17);
-            this.rbGlonass.TabIndex = 12;
-            this.rbGlonass.TabStop = true;
-            this.rbGlonass.Text = "GPS+ГЛОНАСС";
-            this.rbGlonass.UseVisualStyleBackColor = true;
             // 
             // rbHold
             // 
@@ -721,11 +684,8 @@
             this.tpCommons.Controls.Add(this.lblEco);
             this.tpCommons.Controls.Add(this.cbFastTrackball);
             this.tpCommons.Controls.Add(this.cbTrackball);
-            this.tpCommons.Controls.Add(this.rbGlonass);
             this.tpCommons.Controls.Add(this.lblLongPress);
-            this.tpCommons.Controls.Add(this.rbBeiDou);
             this.tpCommons.Controls.Add(this.lblRepeat);
-            this.tpCommons.Controls.Add(this.lblGPSMode);
             this.tpCommons.Controls.Add(this.lblAutoBlock);
             this.tpCommons.Controls.Add(this.chAutoSat);
             this.tpCommons.Controls.Add(this.lblP3);
@@ -734,7 +694,6 @@
             this.tpCommons.Controls.Add(this.lblAPO);
             this.tpCommons.Controls.Add(this.lblHotspot);
             this.tpCommons.Controls.Add(this.lblBattery);
-            this.tpCommons.Controls.Add(this.pnGPS);
             this.tpCommons.Location = new System.Drawing.Point(4, 22);
             this.tpCommons.Name = "tpCommons";
             this.tpCommons.Padding = new System.Windows.Forms.Padding(3);
@@ -932,7 +891,7 @@
             "1:3",
             "1:4",
             "1:5"});
-            this.cmbEco.Location = new System.Drawing.Point(194, 296);
+            this.cmbEco.Location = new System.Drawing.Point(194, 266);
             this.cmbEco.Name = "cmbEco";
             this.cmbEco.Size = new System.Drawing.Size(121, 21);
             this.cmbEco.TabIndex = 17;
@@ -1220,13 +1179,6 @@
             this.ofdSettings.FileName = "openFileDialog1";
             this.ofdSettings.Filter = "Файлы настроек|*.ogds";
             // 
-            // pnGPS
-            // 
-            this.pnGPS.Location = new System.Drawing.Point(192, 223);
-            this.pnGPS.Name = "pnGPS";
-            this.pnGPS.Size = new System.Drawing.Size(121, 43);
-            this.pnGPS.TabIndex = 27;
-            // 
             // CodeplugSettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1284,7 +1236,6 @@
         private System.Windows.Forms.Label lblAPO;
         private System.Windows.Forms.CheckBox chAPOReset;
         private System.Windows.Forms.CheckBox chAutoSat;
-        private System.Windows.Forms.Label lblGPSMode;
         private System.Windows.Forms.Label lblBandlimit;
         private System.Windows.Forms.ToolTip tips;
         private System.Windows.Forms.Label lblDMRFilter;
@@ -1301,8 +1252,6 @@
         private System.Windows.Forms.TextBox tbDMRFilter;
         private System.Windows.Forms.RadioButton rbHam;
         private System.Windows.Forms.RadioButton rbCPS;
-        private System.Windows.Forms.RadioButton rbGlonass;
-        private System.Windows.Forms.RadioButton rbBeiDou;
         private System.Windows.Forms.Label lblScanMode;
         private System.Windows.Forms.RadioButton rbHold;
         private System.Windows.Forms.Panel pnBandlimit;
@@ -1356,6 +1305,5 @@
         private System.Windows.Forms.TabPage tbAPRS;
         private System.Windows.Forms.SaveFileDialog sfdSettings;
         private System.Windows.Forms.OpenFileDialog ofdSettings;
-        private System.Windows.Forms.Panel pnGPS;
     }
 }

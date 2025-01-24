@@ -246,8 +246,7 @@ namespace DMR
             BIT_DISPLAY_CHANNEL_DISTANCE,
 	        BIT_TRACKBALL_ENABLED,
 	        BIT_TRACKBALL_FAST_MOTION,
-	        BIT_FORCE_10W_RADIO,
-            BIT_GPS_MODULE_CUSTOM
+	        BIT_FORCE_10W_RADIO
         }
 
         public bool checkOptionBit(uint settings, byte bit)
@@ -464,7 +463,6 @@ namespace DMR
                             OpenGD77Form.sendCommand(commPort, 7);
                             commPort.Close();
                             commPort = null;
-                            File.WriteAllBytes("test.bin", openGD77CommsTransferData.dataBuff);
                         }
                         break;
                     case OpenGD77CommsTransferData.CommsAction.WRITE_SETTINGS:
@@ -924,8 +922,6 @@ namespace DMR
             cbFastTrackball.Checked = checkOptionBit(radioSettings.bitfieldOptions, (byte)SettingBits.BIT_TRACKBALL_FAST_MOTION);
             chAPOReset.Checked = checkOptionBit(radioSettings.bitfieldOptions, (byte)SettingBits.BIT_APO_WITH_RF);
             chAutoSat.Checked = checkOptionBit(radioSettings.bitfieldOptions, (byte)SettingBits.BIT_SATELLITE_MANUAL_AUTO);
-            rbGlonass.Checked = checkOptionBit(radioSettings.bitfieldOptions, (byte)SettingBits.BIT_GPS_MODULE_CUSTOM);
-            rbBeiDou.Checked = !rbGlonass.Checked;
             cmbEco.SelectedIndex = radioSettings.ecoLevel;
             cbSafeOn.Checked = checkOptionBit(radioSettings.bitfieldOptions, (byte)SettingBits.BIT_SAFE_POWER_ON);
             nmPriority.Value = radioSettings.scanPriority;
@@ -1005,7 +1001,6 @@ namespace DMR
                 d.AutoPowerOffTimer = 180; //снова костыль
             d.ResetAPOEnabled = chAPOReset.Checked;
             d.SatelliteAutoMode = chAutoSat.Checked;
-            d.CustomGNSSMode = rbGlonass.Checked;
             d.UsingTrackball = cbTrackball.Checked;
             d.TrackballFastMode = cbFastTrackball.Checked;
             d.EcoLevel = cmbEco.SelectedIndex;
@@ -1054,8 +1049,6 @@ namespace DMR
             cmbAPO.SelectedIndex = x;
             chAPOReset.Checked = d.ResetAPOEnabled;
             chAutoSat.Checked = d.SatelliteAutoMode;
-            rbGlonass.Checked = d.CustomGNSSMode;
-            rbBeiDou.Checked = !rbGlonass.Checked;
             cbTrackball.Checked = d.UsingTrackball;
             cbFastTrackball.Checked = d.TrackballFastMode;
             cmbEco.SelectedIndex = d.EcoLevel;
@@ -1126,7 +1119,6 @@ namespace DMR
         public uint SettingsBlockVersion;
         public bool ResetAPOEnabled;
         public bool SatelliteAutoMode;
-        public bool CustomGNSSMode;
         public int HotspotMode;
         public float VoltageCalibration; 
         public int AutoPowerOffTimer; 

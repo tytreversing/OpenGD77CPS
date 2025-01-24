@@ -120,14 +120,6 @@
   <metadata name="tips.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <data name="lblGPSMode.ToolTip" xml:space="preserve">
-    <value>Тип обрабатываемых сигналов спутниковых группировок геопозиционирования.
-Штатный модуль, устанавливаемый на радиостанции, может работать только
-в режиме GPS+BeiDou. Для использования режима GPS+ГЛОНАСС необходима
-самостоятельная установка кастомного модуля (например, ublox NEO-M7 и новее),
-заранее настроенного соответствующим образом.
-</value>
-  </data>
   <data name="lblHotspot.ToolTip" xml:space="preserve">
     <value>Режим хотспота. Рация должна быть подключена штатным кабелем программирования к целевому устройству.
 Доступные варианты:

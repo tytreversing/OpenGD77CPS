@@ -17,8 +17,8 @@
     <RootNamespace />
     <IncrementVersionOnBuild>1.yyyy.Mdd.Hmm</IncrementVersionOnBuild>
     <Version>2025.1.2.0</Version>
-    <AssemblyVersion>2025.1.21.35</AssemblyVersion>
-    <FileVersion>2025.1.21.35</FileVersion>
+    <AssemblyVersion>2025.1.24.1</AssemblyVersion>
+    <FileVersion>2025.1.24.1</FileVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <ShouldCreateLogs>True</ShouldCreateLogs>

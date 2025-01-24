@@ -195,7 +195,7 @@ public class OpenGD77Form : Form
 		{
 			loadMelodyFromCodeplug(returnedOffsetPos + 8);
 		}
-		txtKepsServer.Text = IniFileUtils.getProfileStringWithDefault("Setup", "SatelliteKepsURL_20241007", "https://celestrak.org/NORAD/elements/gp.php?GROUP=amateur&FORMAT=tle");
+		txtKepsServer.Text = IniFileUtils.getProfileStringWithDefault("Setup", "SatelliteKepsURL", "https://celestrak.org/NORAD/elements/gp.php?GROUP=amateur&FORMAT=tle");
 	}
 
 	private void loadSatellitesTxtData(string satelliteDataFile)
@@ -2111,7 +2111,7 @@ public class OpenGD77Form : Form
 				openGD77CommsTransferData.mode = OpenGD77CommsTransferData.CommsDataMode.DataModeWriteFlash;
 				openGD77CommsTransferData.localDataBufferStartPosition = 0;
 				openGD77CommsTransferData.transferLength = openGD77CommsTransferData.dataBuff.Length;
-				displayMessage("Writing keps");
+				displayMessage("Запись данных спутников");
 				if (MainForm.RadioInfo.radioType == 8)
 				{
 					convertThemeColours565(ref openGD77CommsTransferData.dataBuff, CUSTOM_DATA_HEADER_SIZE, checkForCustomDataHeader: false);
@@ -2956,7 +2956,7 @@ public class OpenGD77Form : Form
 	private void OpenGD77Form_FormClosing(object sender, FormClosingEventArgs e)
 	{
 		melodyToBytes(playTune: false);
-	}
+    }
 
 	private static bool ReadRadioInfo(SerialPort port, OpenGD77CommsTransferData dataObj)
 	{
@@ -3527,6 +3527,7 @@ public class OpenGD77Form : Form
             // btnSaveNMEA
             // 
             this.btnSaveNMEA.BackColor = System.Drawing.SystemColors.Control;
+            this.btnSaveNMEA.Enabled = false;
             this.btnSaveNMEA.Font = new System.Drawing.Font("Arial", 9F);
             this.btnSaveNMEA.Location = new System.Drawing.Point(278, 161);
             this.btnSaveNMEA.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -3535,6 +3536,7 @@ public class OpenGD77Form : Form
             this.btnSaveNMEA.TabIndex = 10;
             this.btnSaveNMEA.Text = "Save NMEA Log";
             this.btnSaveNMEA.UseVisualStyleBackColor = false;
+            this.btnSaveNMEA.Visible = false;
             this.btnSaveNMEA.Click += new System.EventHandler(this.btnSaveNMEA_Click);
             // 
             // btnReadSecureRegisters

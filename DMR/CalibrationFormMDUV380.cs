@@ -9,6 +9,8 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
+using System.Xml.Serialization;
+using static DMR.CodeplugSettingsForm;
 
 namespace DMR;
 
@@ -47,6 +49,10 @@ public class CalibrationFormMDUV380 : Form
     private Button btnReadFromRadio;
     private Label lblMessage;
     private Button btnSaveCalibration;
+    private SaveFileDialog saveFileDialog;
+    XmlSerializer xmlSerializer = new XmlSerializer(typeof(CalibrationDataSTM32));
+
+    CalibrationDataSTM32 CalData = new CalibrationDataSTM32();
 
     public CalibrationFormMDUV380()
     {
@@ -85,7 +91,7 @@ public class CalibrationFormMDUV380 : Form
             return false;
         }
         MainForm.RadioInfo = OpenGD77Form.readOpenGD77RadioInfoAndUpdateUSBBufferSize(commPort);
-        if (MainForm.RadioInfo.radioType == 5 || MainForm.RadioInfo.radioType == 6 || MainForm.RadioInfo.radioType == 8 || MainForm.RadioInfo.radioType == 10 || MainForm.RadioInfo.radioType == 9 || MainForm.RadioInfo.radioType == 7)
+        if (MainForm.RadioInfo.radioType == 5 || MainForm.RadioInfo.radioType == 6 || MainForm.RadioInfo.radioType == 8 || MainForm.RadioInfo.radioType == 10 || MainForm.RadioInfo.radioType == 9 || MainForm.RadioInfo.radioType == 7 || MainForm.RadioInfo.radioType == 106)
         {
             writeCommandCharacter = 'X';
             ((MainForm)getMainForm())?.changeRadioType(MainForm.RadioTypeEnum.RadioTypeSTM32);
@@ -187,6 +193,19 @@ public class CalibrationFormMDUV380 : Form
         return result;
     }
 
+    private static CalibrationDataSTM32 ByteArrayToCalData(byte[] bytes)
+    {
+        GCHandle gCHandle = GCHandle.Alloc(bytes, GCHandleType.Pinned);
+        try
+        {
+            return (CalibrationDataSTM32)Marshal.PtrToStructure(gCHandle.AddrOfPinnedObject(), typeof(CalibrationDataSTM32));
+        }
+        finally
+        {
+            gCHandle.Free();
+        }
+    }
+
     public bool readDataFromRadio()
     {
         bool result = true;
@@ -228,7 +247,8 @@ public class CalibrationFormMDUV380 : Form
         sendCommand(commPort, 7);
         commPort.Close();
         commPort = null;
-        Array.Copy(openGD77CommsTransferData.dataBuff, 0, calibrationDataSTM32, 0, calibrationDataSTM32.Length);
+        CalData = ByteArrayToCalData(openGD77CommsTransferData.dataBuff);
+        //Array.Copy(openGD77CommsTransferData.dataBuff, 0, calibrationDataSTM32, 0, calibrationDataSTM32.Length);
         return result;
     }
 
@@ -553,11 +573,61 @@ public class CalibrationFormMDUV380 : Form
 
     private void btnSaveCalibration_Click(object sender, EventArgs e)
     {
-        SaveFileDialog saveFileDialog = new SaveFileDialog();
+        string profileStringWithDefault = IniFileUtils.getProfileStringWithDefault("Setup", "LastFilePath", "");
+        string initialDirectory;
+        string radioType = "";
+
+        try
+        {
+            initialDirectory = ((!(profileStringWithDefault == "")) ? Path.GetDirectoryName(profileStringWithDefault) : Environment.GetFolderPath(Environment.SpecialFolder.Personal));
+        }
+        catch (Exception)
+        {
+            initialDirectory = "";
+        }
+        switch (MainForm.RadioInfo.radioType)
+        {
+            case 5:
+                radioType = "MD-9600_RT-90";
+                break;
+            case 6:
+                radioType = "MD-UV380_MD-UV390_RT-3S";
+                break;
+            case 8:
+            case 10:
+                radioType = "DM-1701_RT-84";
+                break;
+            case 9:
+                radioType = "MD-2017_RT-82";
+                break;
+            case 106:
+                radioType = "MD-UV390(10W_Plus)";
+                break;
+        }
+        saveFileDialog.FileName = "Калибровки_" + radioType + "_" + DateTime.Now.ToString("MMdd_HHmmss");
+        saveFileDialog.InitialDirectory = initialDirectory;
         if (saveFileDialog.ShowDialog() == DialogResult.OK && !string.IsNullOrEmpty(saveFileDialog.FileName))
         {
-            File.WriteAllBytes(saveFileDialog.FileName, calibrationDataSTM32);
+            //File.WriteAllBytes(saveFileDialog.FileName, calibrationDataSTM32);
+            try
+            {
+                //CalibrationStruct d = new();
+                //buildCalibrationStructFromRaw(calibrationDataSTM32);
+                using (FileStream fs = new FileStream(saveFileDialog.FileName, FileMode.Create))
+                {
+                    xmlSerializer.Serialize(fs, CalData);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Не удалось сохранить файл " + saveFileDialog.FileName + "\r\n" + ex.Message, "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+    }
+
+    void buildCalibrationStructFromRaw(byte[] data)
+    {
+
     }
 
     protected override void Dispose(bool disposing)
@@ -576,6 +646,7 @@ public class CalibrationFormMDUV380 : Form
             this.btnReadFromRadio = new System.Windows.Forms.Button();
             this.btnSaveCalibration = new System.Windows.Forms.Button();
             this.lblMessage = new System.Windows.Forms.Label();
+            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.SuspendLayout();
             // 
             // btnWrite
@@ -637,6 +708,10 @@ public class CalibrationFormMDUV380 : Form
             this.lblMessage.Size = new System.Drawing.Size(482, 119);
             this.lblMessage.TabIndex = 2;
             this.lblMessage.Text = "label1";
+            // 
+            // saveFileDialog
+            // 
+            this.saveFileDialog.Filter = "Файлы калибровок|*.ogdc";
             // 
             // CalibrationFormMDUV380
             // 

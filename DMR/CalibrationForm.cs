@@ -9,6 +9,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
+using System.Xml.Serialization;
 
 namespace DMR;
 
@@ -64,7 +65,9 @@ public class CalibrationForm : Form
 
 	private Button btnSaveCalibration;
 
-	public CalibrationForm()
+    XmlSerializer xmlSerializer = new XmlSerializer(typeof(CalibrationStruct));
+
+    public CalibrationForm()
 	{
 		InitializeComponent();
 		base.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
@@ -627,6 +630,8 @@ public class CalibrationForm : Form
 		btnSaveCalibration.Visible = true;
 	}
 
+	
+
 	private void btnSaveCalibration_Click(object sender, EventArgs e)
 	{
 		SaveFileDialog saveFileDialog = new SaveFileDialog();
@@ -636,7 +641,7 @@ public class CalibrationForm : Form
 			if (MainForm.RadioType == MainForm.RadioTypeEnum.RadioTypeSTM32)
 			{
 				File.WriteAllBytes(saveFileDialog.FileName, calibrationDataSTM32);
-			}
+            }
 			else
 			{
 				byte[] array = new byte[CALIBRATION_DATA_SIZE];
@@ -811,3 +816,133 @@ public class CalibrationForm : Form
 
 	}
 }
+
+/*typedef struct
+{
+//0x00
+	uint8_t VoxLevel1;				//calibration for Vox Setting 1
+	uint8_t VoxLevel10;				//calibration for Vox Setting 10
+	uint8_t RxLowVoltage;			//Exact use unknown
+	uint8_t RxHighVoltage;			//Exact use unknown
+	uint8_t RSSI120;			    //RSSI Calibration for -120dBm
+	uint8_t RSSI70;					//RSSI Calibration for -70dBm
+	uint8_t UnknownBlock1[2];		//Unknown
+//0x08
+	uint8_t Unknown1;				//Unknown
+	uint8_t UHFOscRefTune;			//UHF reference tuning
+	uint8_t UnknownBlock2[2];		//Unknown
+	uint8_t VHFOscRefTune;			//UHF reference tuning
+	uint8_t UnknownBlock3[3];		//Unknown
+//0x10
+	uint8_t UHFHighPowerCal[9];	//UHF High Power Calibration 9 frequencies
+//0x19
+	uint8_t VHFHighPowerCal[5];	//VHF High Power Calibration 5 frequencies
+//0x1E
+	uint8_t UnknownBlock4[2];		//Unknown
+//0x20
+	uint8_t UHFLowPowerCal[9];		//UHF Low Power Calibration 9 frequencies
+//0x29
+	uint8_t VHFLowPowerCal[5];		//VHF Low Power Calibration 5 frequencies
+//0x2E
+	uint8_t UnknownBlock5[2];		//Unknown
+//0x30
+	uint8_t UHFRxTuning[9];		//UHF Rx Front End Tuning 9 frequencies
+//0x39
+	uint8_t VHFRxTuning[5];		//VHF Rx Front End Tuning 5 frequencies
+//0x3E
+	uint8_t UnknownBlock6[2];		//Unknown
+//0x40
+	uint8_t UHFOpenSquelch9[9];   //UHF Squelch Level 9 Opening  9 frequencies
+//0x49
+	uint8_t UnknownBlock7[7];		//Unknown
+//0x50
+	uint8_t UHFCloseSquelch9[9];   //UHF Squelch Level 9 Closing 9 frequencies
+//0x59
+	uint8_t UnknownBlock8[7];		//Unknown
+//0x60
+	uint8_t UHFOpenSquelch1[9];   //UHF Squelch Level 1 Opening  9 frequencies
+//0x69
+	uint8_t UnknownBlock9[7];		//Unknown
+//0x70
+	uint8_t UHFCloseSquelch1[9];   //UHF Squelch Level 1 Closing 9 frequencies
+//0x79
+	uint8_t UnknownBlock10[7];		//Unknown
+//0x80
+	uint8_t UnknownBlock11[16];		//Unknown
+//0x90
+	uint8_t UHFCTC67[9];			//UHF CTCSS Deviation for 67Hz Tone 9 frequencies
+//0x99
+	uint8_t UnknownBlock12[2];		//Unknown
+//0x9B
+	uint8_t VHFCTC67[5];			//VHF CTCSS Deviation for 67Hz Tone 5 frequencies
+//0xA0
+	uint8_t UHFCTC151[9];			//UHF CTCSS Deviation for 151.4Hz Tone 9 frequencies
+//0xA9
+	uint8_t UnknownBlock13[2];		//Unknown
+//0x9B
+	uint8_t VHFCTC151[5];			//VHF CTCSS Deviation for 151.4Hz Tone 5 frequencies
+//0xB0
+	uint8_t UHFCTC254[9];			//UHF CTCSS Deviation for 254.1Hz Tone 9 frequencies
+//0xB9
+	uint8_t UnknownBlock14[2];		//Unknown
+//0xBB
+	uint8_t VHFCTC254[5];			//VHF CTCSS Deviation for 254.1Hz Tone 5 frequencies
+//0xC0
+	uint8_t UnknownBlock15[16];		//Unknown
+//0xD0
+	uint8_t UHFDCS[9];				//UHF DCS Deviation 9 frequencies
+//0xD9
+	uint8_t UnknownBlock16[2];		//Unknown
+//0xDB
+	uint8_t VHFDCS[5];				//VHF DCS Deviation 5 frequencies
+//0xE0
+	uint8_t VHFOpenSquelch9[5];     //VHF Squelch Level 9 Opening  5 frequencies
+	uint8_t VHFCloseSquelch9[5];     //VHF Squelch Level 9 Closing  5 frequencies
+	uint8_t VHFOpenSquelch1[5];     //VHF Squelch Level 1 Opening  5 frequencies
+	uint8_t VHFCloseSquelch1[5];     //VHF Squelch Level 1 Closing  5 frequencies
+//0xF4
+	uint8_t UnknownBlock17[12];		//Unknown
+//0x100
+	uint8_t VHFCalFreqs[10][4];		// VHF Calibration Frequencies 4 BCD bytes per freq, 5 pairs of freqs Rx and Tx
+//0x128
+	uint8_t UnknownBlock18[8];		//Unknown
+//0x130
+	uint8_t UHFDMRIGain[9];			//UHF I Gain for DMR	9 Frequencies
+//0x139
+	uint8_t VHFDMRIGain[5];			//VHF I Gain for DMR	5 Frequencies
+	uint8_t UnknownBlock19[2];		//Unknown
+//0x140
+	uint8_t UHFDMRQGain[9];			//UHF Q Gain for DMR	9 Frequencies
+//0x149
+	uint8_t VHFDMRQGain[5];			//VHF Q Gain for DMR	5 Frequencies
+	uint8_t UnknownBlock20[2];		//Unknown
+//0x150
+	uint8_t UnknownBlock21[32];		//Unknown
+//0x170
+	uint8_t UHFFMIGain[9];			//UHF I Gain for FM	9 Frequencies
+//0x179
+	uint8_t VHFFMIGain[5];			//VHF I Gain for FM	5 Frequencies
+	uint8_t UnknownBlock22[2];		//Unknown
+//0x180
+	uint8_t UHFFMQGain[9];			//UHF Q Gain for FM	9 Frequencies
+//0x189
+	uint8_t VHFFMQGain[5];			//VHF Q Gain for FM	5 Frequencies
+	uint8_t UnknownBlock23[2];		//Unknown
+//0x190
+	uint8_t UHFMidPowerCal[9];		//UHF Mid Power Calibration 9 frequencies
+//0x199
+	uint8_t VHFMidPowerCal[5];		//VHF Mid Power Calibration 5 frequencies
+//0x19E
+	uint8_t UnknownBlock24[2];		//Unknown
+//0x1A0
+	uint8_t UHFMidLowPowerCal[9];		//UHF MidLow Power Calibration 9 frequencies
+//0x1A9
+	uint8_t VHFMidLowPowerCal[5];		//VHF MidLow Power Calibration 5 frequencies
+//0x1AE
+	uint8_t UnknownBlock25[2];		//Unknown
+//0x1B0
+	uint8_t UHFCalFreqs[18][4];		// UHF Calibration Frequencies 4 BCD bytes per freq, 9 pairs of freqs Rx and Tx
+	uint8_t UnknownBlock26[8];		//Unknown
+//0x200
+} CalibrationData_t;*/
+

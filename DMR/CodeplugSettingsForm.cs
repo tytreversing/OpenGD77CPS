@@ -802,6 +802,7 @@ namespace DMR
         {
             string profileStringWithDefault = IniFileUtils.getProfileStringWithDefault("Setup", "LastFilePath", "");
             string initialDirectory;
+            string radioType = "";
 
             try
             {
@@ -813,8 +814,26 @@ namespace DMR
             }
             try
             {
-
-                sfdSettings.FileName = "Настройки_" + GeneralSetForm.data.Callsign + "_" + DateTime.Now.ToString("MMdd_HHmmss") + ".ogds";
+                switch (MainForm.RadioInfo.radioType)
+                {
+                    case 5:
+                        radioType = "MD-9600_RT-90";
+                        break;
+                    case 6:
+                        radioType = "MD-UV380_MD-UV390_RT-3S";
+                        break;
+                    case 8:
+                    case 10:
+                        radioType = "DM-1701_RT-84";
+                        break;
+                    case 9:
+                        radioType = "MD-2017_RT-82";
+                        break;
+                    case 106:
+                        radioType = "MD-UV390(10W_Plus)";
+                        break;
+                }
+                sfdSettings.FileName = "Настройки_" + radioType + "_" + DateTime.Now.ToString("MMdd_HHmmss") + ".ogds";
                 sfdSettings.InitialDirectory = initialDirectory;
 
                 if (sfdSettings.ShowDialog() == DialogResult.OK && !string.IsNullOrEmpty(sfdSettings.FileName))

@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 using System.Xml.Serialization;
-using static DMR.CodeplugSettingsForm;
+
 
 namespace DMR;
 
@@ -47,24 +47,49 @@ public class CalibrationFormMDUV380 : Form
     private Button btnReadFile;
 
     private Button btnReadFromRadio;
-    private Label lblMessage;
     private Button btnSaveCalibration;
     private SaveFileDialog saveFileDialog;
-    XmlSerializer xmlSerializer = new XmlSerializer(typeof(CalibrationDataSTM32));
+    private OpenFileDialog openFileDialog;
 
+    XmlSerializer xmlSerializer = new XmlSerializer(typeof(CalibrationDataSTM32));
+    private TabControl tabs;
+    private TabPage tabVHF;
+    private TabPage tabUHF;
+    private GroupBox gbCommons;
+    private NumericUpDown nmVOXMaxLevel;
+    private NumericUpDown nmVOXMinLevel;
+    private Label label2;
+    private Label label1;
+    private Label label3;
+    private NumericUpDown nmRxLowLevel;
+    private NumericUpDown nmRxHighLevel;
+    private Label label4;
+    private Button btnResetCalibrations;
+    private NumericUpDown nmRSSI120;
+    private Label label5;
+    private NumericUpDown nmRSSI70;
+    private Label label6;
+    private TableLayoutPanel tlpVHF;
+    private Label label7;
+    private Label label8;
+    private Label label9;
+    private Label label10;
+    private Label label11;
+    private Label label12;
     CalibrationDataSTM32 CalData = new CalibrationDataSTM32();
 
     public CalibrationFormMDUV380()
     {
         InitializeComponent();
-        base.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
+        base.Icon = Icon.ExtractAssociatedIcon(System.Windows.Forms.Application.ExecutablePath);
         Settings.ReadCommonsForSectionIntoDictionary(StringsDict, "OpenGD77Form");
         calibrationDataSTM32 = new byte[CALIBRATION_DATA_SIZE_STM32];
+        prepareTables();
     }
 
     private Form getMainForm()
     {
-        foreach (Form openForm in Application.OpenForms)
+        foreach (Form openForm in System.Windows.Forms.Application.OpenForms)
         {
             if (openForm is MainForm)
             {
@@ -142,6 +167,24 @@ public class CalibrationFormMDUV380 : Form
     {
     }
 
+    private int IntFromBCDData(BCDData bcd)
+    {
+        int result = 0;
+        result += (10 * (bcd.byte4 >> 4));
+        result += bcd.byte4 & 0xf;
+        result += (1000 * (bcd.byte3 >> 4));
+        result += (100 * (bcd.byte3 & 0xf));
+        result += (100000 * (bcd.byte2 >> 4));
+        result += (10000 * (bcd.byte2 & 0xf));
+        result += (10000000 * (bcd.byte1 >> 4));
+        result += (1000000 * (bcd.byte2 & 0xf));
+        return result;
+    }
+
+    private string IntToFrequency(int f)
+    {
+        return (f / 100000.0f).ToString();
+    }
     private bool ReadFlashOrEEPROM(SerialPort port, OpenGD77CommsTransferData dataObj)
     {
         int num = 0;
@@ -248,7 +291,7 @@ public class CalibrationFormMDUV380 : Form
         commPort.Close();
         commPort = null;
         CalData = ByteArrayToCalData(openGD77CommsTransferData.dataBuff);
-        //Array.Copy(openGD77CommsTransferData.dataBuff, 0, calibrationDataSTM32, 0, calibrationDataSTM32.Length);
+        buildVariablesFromCalData(CalData);
         return result;
     }
 
@@ -327,8 +370,10 @@ public class CalibrationFormMDUV380 : Form
             MessageBox.Show(StringsDict["No_com_port"]);
             return;
         }
+        buildCalDataFromVariables(CalData);
         OpenGD77CommsTransferData openGD77CommsTransferData = new OpenGD77CommsTransferData();
         openGD77CommsTransferData.dataBuff = new byte[CALIBRATION_DATA_SIZE_STM32];
+        calibrationDataSTM32 = DataToByte(CalData);
         Array.Copy(calibrationDataSTM32, 0, openGD77CommsTransferData.dataBuff, 0, CALIBRATION_DATA_SIZE_STM32);
         sendCommand(commPort, 0);
         sendCommand(commPort, 1);
@@ -494,14 +539,10 @@ public class CalibrationFormMDUV380 : Form
     }
 
 
-    public static byte[] DataToByte(CalibrationData calData)
+    public static byte[] DataToByte(CalibrationDataSTM32 calData)
     {
-        if (calData.DACOscRefTune < 0)
-        {
-            calData.DACOscRefTune = (short)(1024 + calData.DACOscRefTune);
-        }
-        calData.Q_MOD2_OFFSET = (sbyte)calData.DACOscRefTune;
-        int num = Marshal.SizeOf(typeof(CalibrationData));
+        
+        int num = Marshal.SizeOf(typeof(CalibrationDataSTM32));
         byte[] array = new byte[num];
         IntPtr intPtr = Marshal.AllocHGlobal(num);
         Marshal.StructureToPtr(calData, intPtr, fDeleteOld: false);
@@ -522,38 +563,56 @@ public class CalibrationFormMDUV380 : Form
         }
     }
 
+    private string unknownElements = "";
+    private bool hasUnknownElements = false;
 
+    private void unknownElementEvent(object sender, XmlElementEventArgs e)
+    {
+        hasUnknownElements = true;
+        unknownElements += ("\r\n" + e.Element.Name + ": " + e.Element.InnerXml);
+    }
 
     private void btnReadFile_Click(object sender, EventArgs e)
     {
-        byte[] array = null;
-        OpenFileDialog openFileDialog = new OpenFileDialog();
+        string profileStringWithDefault = IniFileUtils.getProfileStringWithDefault("Setup", "LastFilePath", "");
+        string initialDirectory;
+        try
+        {
+            initialDirectory = ((!(profileStringWithDefault == "")) ? Path.GetDirectoryName(profileStringWithDefault) : Environment.GetFolderPath(Environment.SpecialFolder.Personal));
+        }
+        catch (Exception)
+        {
+            initialDirectory = "";
+        }
+        
+        saveFileDialog.InitialDirectory = initialDirectory;
         if (openFileDialog.ShowDialog() != DialogResult.OK || string.IsNullOrEmpty(openFileDialog.FileName))
         {
             return;
         }
-        int num = Marshal.SizeOf(typeof(CalibrationData));
-        byte[] array2 = new byte[num];
-        array = File.ReadAllBytes(openFileDialog.FileName);
+        try
+        {
+            using (FileStream fs = new FileStream(openFileDialog.FileName, FileMode.Open))
+            {
+                xmlSerializer.UnknownElement += new XmlElementEventHandler(unknownElementEvent);
+                CalData = xmlSerializer.Deserialize(fs) as CalibrationDataSTM32;
+                if (hasUnknownElements)
+                {
+                    hasUnknownElements = false;
+                    SystemSounds.Exclamation.Play();
+                    MessageBox.Show("В блоке калибровок обнаружены неподдерживаемые поля.\r\nПоля, которые не могут быть распознаны:" + unknownElements, "Внимание!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    unknownElements = "";
+                }
+                else
+                    showButtons();
+                buildVariablesFromCalData(CalData);
+            }
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show("Не удалось открыть файл " + saveFileDialog.FileName + "\r\n" + ex.Message, "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
 
-        if (array.Length == CALIBRATION_DATA_SIZE_STM32)
-        {
-            int num2 = 432;
-            if (array[num2] == 0 && array[num2 + 1] == 37 && array[num2 + 2] == 0 && array[num2 + 3] == 64 && array[num2 + 4] == 0 && array[num2 + 5] == 69 && array[num2 + 6] == 1 && array[num2 + 7] == 64)
-            {
-                ((MainForm)getMainForm())?.changeRadioType(MainForm.RadioTypeEnum.RadioTypeSTM32);
-                Array.Copy(array, 0, calibrationDataSTM32, 0, CALIBRATION_DATA_SIZE_STM32);
-                showButtons();
-            }
-            else
-            {
-                MessageBox.Show(StringsDict["File_contains_invalid_STM32_calibration_header"]);
-            }
-        }
-        else
-        {
-            MessageBox.Show(StringsDict["File_is_the_wrong_size"]);
-        }
     }
 
     private void btnReadFromRadio_Click(object sender, EventArgs e)
@@ -611,8 +670,6 @@ public class CalibrationFormMDUV380 : Form
             //File.WriteAllBytes(saveFileDialog.FileName, calibrationDataSTM32);
             try
             {
-                //CalibrationStruct d = new();
-                //buildCalibrationStructFromRaw(calibrationDataSTM32);
                 using (FileStream fs = new FileStream(saveFileDialog.FileName, FileMode.Create))
                 {
                     xmlSerializer.Serialize(fs, CalData);
@@ -625,10 +682,93 @@ public class CalibrationFormMDUV380 : Form
         }
     }
 
-    void buildCalibrationStructFromRaw(byte[] data)
-    {
+    private TextBox[] frequenciesRxVHF = new TextBox[5];
+    private TextBox[] frequenciesTxVHF = new TextBox[5];
+    private NumericUpDown[] maxPowersVHF = new NumericUpDown[5];
+    private NumericUpDown[] midPowersVHF = new NumericUpDown[5];
+    private NumericUpDown[] midLowPowersVHF = new NumericUpDown[5];
+    private NumericUpDown[] minPowersVHF = new NumericUpDown[5];
 
+    private void prepareTables()
+    {
+        Padding margin = new Padding(0);
+
+        for (int i = 0; i < 5; i++)
+        {
+            frequenciesTxVHF[i] = new TextBox();
+            frequenciesTxVHF[i].Width = 74;
+            frequenciesTxVHF[i].Height = 20;
+            frequenciesTxVHF[i].Margin = margin;
+            frequenciesTxVHF[i].ReadOnly = true;
+            frequenciesRxVHF[i] = new TextBox();
+            frequenciesRxVHF[i].Width = 74;
+            frequenciesRxVHF[i].Height = 20;
+            frequenciesRxVHF[i].Margin = margin;
+            frequenciesRxVHF[i].ReadOnly = true;
+            maxPowersVHF[i] = new NumericUpDown();
+            maxPowersVHF[i].Width = 74;
+            maxPowersVHF[i].Height = 20;
+            maxPowersVHF[i].Margin = margin;
+            maxPowersVHF[i].Minimum = 0;
+            maxPowersVHF[i].Maximum = 255;
+            midPowersVHF[i] = new NumericUpDown();
+            midPowersVHF[i].Width = 74;
+            midPowersVHF[i].Height = 20;
+            midPowersVHF[i].Margin = margin;
+            midPowersVHF[i].Minimum = 0;
+            midPowersVHF[i].Maximum = 255;
+            midLowPowersVHF[i] = new NumericUpDown();
+            midLowPowersVHF[i].Width = 74;
+            midLowPowersVHF[i].Height = 20;
+            midLowPowersVHF[i].Margin = margin;
+            midLowPowersVHF[i].Minimum = 0;
+            midLowPowersVHF[i].Maximum = 255;
+            minPowersVHF[i] = new NumericUpDown();
+            minPowersVHF[i].Width = 74;
+            minPowersVHF[i].Height = 20;
+            minPowersVHF[i].Margin = margin;
+            minPowersVHF[i].Minimum = 0;
+            minPowersVHF[i].Maximum = 255;
+            tlpVHF.Controls.Add(frequenciesRxVHF[i], i + 1, 0);
+            tlpVHF.Controls.Add(frequenciesTxVHF[i], i + 1, 1);
+            tlpVHF.Controls.Add(maxPowersVHF[i], i + 1, 2);
+            tlpVHF.Controls.Add(midPowersVHF[i], i + 1, 3);
+            tlpVHF.Controls.Add(midLowPowersVHF[i], i + 1, 4);
+            tlpVHF.Controls.Add(minPowersVHF[i], i + 1, 5);
+        }
     }
+
+    private void buildVariablesFromCalData(CalibrationDataSTM32 c)
+    {
+        nmVOXMinLevel.Value = c.VoxLevel1;
+        nmVOXMaxLevel.Value = c.VoxLevel10;
+        nmRxLowLevel.Value = c.RxLowVoltage;
+        nmRxHighLevel.Value = c.RxHighVoltage;
+        nmRSSI120.Value = c.RSSI120;
+        nmRSSI70.Value = c.RSSI70;
+        //tlpVHF
+
+        for (int i = 0; i < 5; i ++)
+        {
+            frequenciesRxVHF[i].Text = IntToFrequency(IntFromBCDData(CalData.VHFCalFreqs[i * 2]));
+            frequenciesTxVHF[i].Text = IntToFrequency(IntFromBCDData(CalData.VHFCalFreqs[i * 2 + 1]));
+            maxPowersVHF[i].Value = (decimal)CalData.VHFHighPowerCal[i];
+            midPowersVHF[i].Value = (decimal)CalData.VHFMidPowerCal[i];
+            midLowPowersVHF[i].Value = (decimal)CalData.VHFMidLowPowerCal[i];
+            minPowersVHF[i].Value = (decimal)CalData.VHFLowPowerCal[i];
+        }
+    }
+
+    private void buildCalDataFromVariables(CalibrationDataSTM32 c)
+    {
+        c.VoxLevel1 = (byte)nmVOXMinLevel.Value;
+        c.VoxLevel10 = (byte)nmVOXMaxLevel.Value;
+        c.RxLowVoltage = (byte)nmRxLowLevel.Value;
+        c.RxHighVoltage = (byte)nmRxHighLevel.Value;
+        c.RSSI120 = (byte)nmRSSI120.Value;
+        c.RSSI70 = (byte)nmRSSI70.Value;
+    }
+
 
     protected override void Dispose(bool disposing)
     {
@@ -645,17 +785,51 @@ public class CalibrationFormMDUV380 : Form
             this.btnReadFile = new System.Windows.Forms.Button();
             this.btnReadFromRadio = new System.Windows.Forms.Button();
             this.btnSaveCalibration = new System.Windows.Forms.Button();
-            this.lblMessage = new System.Windows.Forms.Label();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.tabs = new System.Windows.Forms.TabControl();
+            this.tabVHF = new System.Windows.Forms.TabPage();
+            this.tlpVHF = new System.Windows.Forms.TableLayoutPanel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.tabUHF = new System.Windows.Forms.TabPage();
+            this.gbCommons = new System.Windows.Forms.GroupBox();
+            this.nmRSSI70 = new System.Windows.Forms.NumericUpDown();
+            this.label6 = new System.Windows.Forms.Label();
+            this.nmRSSI120 = new System.Windows.Forms.NumericUpDown();
+            this.label5 = new System.Windows.Forms.Label();
+            this.nmRxHighLevel = new System.Windows.Forms.NumericUpDown();
+            this.label4 = new System.Windows.Forms.Label();
+            this.nmRxLowLevel = new System.Windows.Forms.NumericUpDown();
+            this.label3 = new System.Windows.Forms.Label();
+            this.nmVOXMaxLevel = new System.Windows.Forms.NumericUpDown();
+            this.nmVOXMinLevel = new System.Windows.Forms.NumericUpDown();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnResetCalibrations = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.tabs.SuspendLayout();
+            this.tabVHF.SuspendLayout();
+            this.tlpVHF.SuspendLayout();
+            this.gbCommons.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nmRSSI70)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nmRSSI120)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nmRxHighLevel)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nmRxLowLevel)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nmVOXMaxLevel)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nmVOXMinLevel)).BeginInit();
             this.SuspendLayout();
             // 
             // btnWrite
             // 
             this.btnWrite.BackColor = System.Drawing.SystemColors.Control;
             this.btnWrite.Font = new System.Drawing.Font("Arial", 8F);
-            this.btnWrite.Location = new System.Drawing.Point(12, 41);
+            this.btnWrite.Location = new System.Drawing.Point(771, 342);
             this.btnWrite.Name = "btnWrite";
-            this.btnWrite.Size = new System.Drawing.Size(238, 23);
+            this.btnWrite.Size = new System.Drawing.Size(268, 23);
             this.btnWrite.TabIndex = 1;
             this.btnWrite.Text = "Write to radio";
             this.btnWrite.UseVisualStyleBackColor = false;
@@ -666,9 +840,9 @@ public class CalibrationFormMDUV380 : Form
             // 
             this.btnReadFile.BackColor = System.Drawing.SystemColors.Control;
             this.btnReadFile.Font = new System.Drawing.Font("Arial", 8F);
-            this.btnReadFile.Location = new System.Drawing.Point(256, 12);
+            this.btnReadFile.Location = new System.Drawing.Point(771, 313);
             this.btnReadFile.Name = "btnReadFile";
-            this.btnReadFile.Size = new System.Drawing.Size(238, 23);
+            this.btnReadFile.Size = new System.Drawing.Size(268, 23);
             this.btnReadFile.TabIndex = 1;
             this.btnReadFile.Text = "Open Calibration file";
             this.btnReadFile.UseVisualStyleBackColor = false;
@@ -678,9 +852,9 @@ public class CalibrationFormMDUV380 : Form
             // 
             this.btnReadFromRadio.BackColor = System.Drawing.SystemColors.Control;
             this.btnReadFromRadio.Font = new System.Drawing.Font("Arial", 8F);
-            this.btnReadFromRadio.Location = new System.Drawing.Point(12, 12);
+            this.btnReadFromRadio.Location = new System.Drawing.Point(771, 284);
             this.btnReadFromRadio.Name = "btnReadFromRadio";
-            this.btnReadFromRadio.Size = new System.Drawing.Size(238, 23);
+            this.btnReadFromRadio.Size = new System.Drawing.Size(268, 23);
             this.btnReadFromRadio.TabIndex = 1;
             this.btnReadFromRadio.Text = "Read calibration from radio";
             this.btnReadFromRadio.UseVisualStyleBackColor = false;
@@ -690,36 +864,318 @@ public class CalibrationFormMDUV380 : Form
             // 
             this.btnSaveCalibration.BackColor = System.Drawing.SystemColors.Control;
             this.btnSaveCalibration.Font = new System.Drawing.Font("Arial", 8F);
-            this.btnSaveCalibration.Location = new System.Drawing.Point(256, 41);
+            this.btnSaveCalibration.Location = new System.Drawing.Point(771, 371);
             this.btnSaveCalibration.Name = "btnSaveCalibration";
-            this.btnSaveCalibration.Size = new System.Drawing.Size(238, 23);
+            this.btnSaveCalibration.Size = new System.Drawing.Size(268, 23);
             this.btnSaveCalibration.TabIndex = 1;
             this.btnSaveCalibration.Text = "Save Calibration file";
             this.btnSaveCalibration.UseVisualStyleBackColor = false;
             this.btnSaveCalibration.Visible = false;
             this.btnSaveCalibration.Click += new System.EventHandler(this.btnSaveCalibration_Click);
             // 
-            // lblMessage
-            // 
-            this.lblMessage.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblMessage.ForeColor = System.Drawing.Color.Blue;
-            this.lblMessage.Location = new System.Drawing.Point(12, 77);
-            this.lblMessage.Name = "lblMessage";
-            this.lblMessage.Size = new System.Drawing.Size(482, 119);
-            this.lblMessage.TabIndex = 2;
-            this.lblMessage.Text = "label1";
-            // 
             // saveFileDialog
             // 
             this.saveFileDialog.Filter = "Файлы калибровок|*.ogdc";
+            // 
+            // openFileDialog
+            // 
+            this.openFileDialog.Filter = "Файлы калибровки|*.ogdc";
+            // 
+            // tabs
+            // 
+            this.tabs.Controls.Add(this.tabVHF);
+            this.tabs.Controls.Add(this.tabUHF);
+            this.tabs.Location = new System.Drawing.Point(14, 12);
+            this.tabs.Name = "tabs";
+            this.tabs.SelectedIndex = 0;
+            this.tabs.Size = new System.Drawing.Size(739, 466);
+            this.tabs.TabIndex = 2;
+            // 
+            // tabVHF
+            // 
+            this.tabVHF.Controls.Add(this.tlpVHF);
+            this.tabVHF.Location = new System.Drawing.Point(4, 22);
+            this.tabVHF.Name = "tabVHF";
+            this.tabVHF.Padding = new System.Windows.Forms.Padding(3);
+            this.tabVHF.Size = new System.Drawing.Size(731, 440);
+            this.tabVHF.TabIndex = 0;
+            this.tabVHF.Text = "Диапазон 2 м";
+            this.tabVHF.UseVisualStyleBackColor = true;
+            // 
+            // tlpVHF
+            // 
+            this.tlpVHF.BackColor = System.Drawing.SystemColors.Window;
+            this.tlpVHF.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
+            this.tlpVHF.ColumnCount = 6;
+            this.tlpVHF.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.tlpVHF.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
+            this.tlpVHF.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
+            this.tlpVHF.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
+            this.tlpVHF.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
+            this.tlpVHF.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
+            this.tlpVHF.Controls.Add(this.label7, 0, 0);
+            this.tlpVHF.Controls.Add(this.label8, 0, 1);
+            this.tlpVHF.Controls.Add(this.label9, 0, 2);
+            this.tlpVHF.Controls.Add(this.label10, 0, 3);
+            this.tlpVHF.Controls.Add(this.label11, 0, 4);
+            this.tlpVHF.Controls.Add(this.label12, 0, 5);
+            this.tlpVHF.Location = new System.Drawing.Point(110, 29);
+            this.tlpVHF.Margin = new System.Windows.Forms.Padding(0);
+            this.tlpVHF.Name = "tlpVHF";
+            this.tlpVHF.RowCount = 11;
+            this.tlpVHF.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tlpVHF.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tlpVHF.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tlpVHF.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tlpVHF.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tlpVHF.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tlpVHF.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tlpVHF.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tlpVHF.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tlpVHF.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tlpVHF.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tlpVHF.Size = new System.Drawing.Size(526, 264);
+            this.tlpVHF.TabIndex = 0;
+            // 
+            // label7
+            // 
+            this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label7.Location = new System.Drawing.Point(1, 1);
+            this.label7.Margin = new System.Windows.Forms.Padding(0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(150, 20);
+            this.label7.TabIndex = 0;
+            this.label7.Text = "Частота Rx";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label8
+            // 
+            this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label8.Location = new System.Drawing.Point(1, 22);
+            this.label8.Margin = new System.Windows.Forms.Padding(0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(150, 20);
+            this.label8.TabIndex = 1;
+            this.label8.Text = "Частота Tx";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label9
+            // 
+            this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label9.Location = new System.Drawing.Point(4, 43);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(144, 20);
+            this.label9.TabIndex = 2;
+            this.label9.Text = "Уровень мощности 4";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label10
+            // 
+            this.label10.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label10.Location = new System.Drawing.Point(4, 64);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(144, 20);
+            this.label10.TabIndex = 3;
+            this.label10.Text = "Уровень мощности 3";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // tabUHF
+            // 
+            this.tabUHF.Location = new System.Drawing.Point(4, 22);
+            this.tabUHF.Name = "tabUHF";
+            this.tabUHF.Padding = new System.Windows.Forms.Padding(3);
+            this.tabUHF.Size = new System.Drawing.Size(731, 440);
+            this.tabUHF.TabIndex = 1;
+            this.tabUHF.Text = "Диапазон 70 см";
+            this.tabUHF.UseVisualStyleBackColor = true;
+            // 
+            // gbCommons
+            // 
+            this.gbCommons.Controls.Add(this.nmRSSI70);
+            this.gbCommons.Controls.Add(this.label6);
+            this.gbCommons.Controls.Add(this.nmRSSI120);
+            this.gbCommons.Controls.Add(this.label5);
+            this.gbCommons.Controls.Add(this.nmRxHighLevel);
+            this.gbCommons.Controls.Add(this.label4);
+            this.gbCommons.Controls.Add(this.nmRxLowLevel);
+            this.gbCommons.Controls.Add(this.label3);
+            this.gbCommons.Controls.Add(this.nmVOXMaxLevel);
+            this.gbCommons.Controls.Add(this.nmVOXMinLevel);
+            this.gbCommons.Controls.Add(this.label2);
+            this.gbCommons.Controls.Add(this.label1);
+            this.gbCommons.Location = new System.Drawing.Point(771, 12);
+            this.gbCommons.Name = "gbCommons";
+            this.gbCommons.Size = new System.Drawing.Size(268, 201);
+            this.gbCommons.TabIndex = 3;
+            this.gbCommons.TabStop = false;
+            this.gbCommons.Text = "Общие настройки";
+            // 
+            // nmRSSI70
+            // 
+            this.nmRSSI70.Location = new System.Drawing.Point(179, 162);
+            this.nmRSSI70.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.nmRSSI70.Name = "nmRSSI70";
+            this.nmRSSI70.Size = new System.Drawing.Size(66, 20);
+            this.nmRSSI70.TabIndex = 11;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(14, 164);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(124, 13);
+            this.label6.TabIndex = 10;
+            this.label6.Text = "Уровень RSSI -70 дБм:";
+            // 
+            // nmRSSI120
+            // 
+            this.nmRSSI120.Location = new System.Drawing.Point(179, 133);
+            this.nmRSSI120.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.nmRSSI120.Name = "nmRSSI120";
+            this.nmRSSI120.Size = new System.Drawing.Size(67, 20);
+            this.nmRSSI120.TabIndex = 9;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(14, 135);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(130, 13);
+            this.label5.TabIndex = 8;
+            this.label5.Text = "Уровень RSSI -120 дБм:";
+            // 
+            // nmRxHighLevel
+            // 
+            this.nmRxHighLevel.Location = new System.Drawing.Point(179, 105);
+            this.nmRxHighLevel.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.nmRxHighLevel.Name = "nmRxHighLevel";
+            this.nmRxHighLevel.Size = new System.Drawing.Size(69, 20);
+            this.nmRxHighLevel.TabIndex = 7;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(14, 107);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(165, 13);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "Верхний порог напряжения Rx:";
+            // 
+            // nmRxLowLevel
+            // 
+            this.nmRxLowLevel.Location = new System.Drawing.Point(179, 78);
+            this.nmRxLowLevel.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.nmRxLowLevel.Name = "nmRxLowLevel";
+            this.nmRxLowLevel.Size = new System.Drawing.Size(69, 20);
+            this.nmRxLowLevel.TabIndex = 5;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(14, 80);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(163, 13);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Нижний порог напряжения Rx:";
+            // 
+            // nmVOXMaxLevel
+            // 
+            this.nmVOXMaxLevel.Location = new System.Drawing.Point(179, 51);
+            this.nmVOXMaxLevel.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.nmVOXMaxLevel.Name = "nmVOXMaxLevel";
+            this.nmVOXMaxLevel.Size = new System.Drawing.Size(68, 20);
+            this.nmVOXMaxLevel.TabIndex = 3;
+            // 
+            // nmVOXMinLevel
+            // 
+            this.nmVOXMinLevel.Location = new System.Drawing.Point(179, 25);
+            this.nmVOXMinLevel.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.nmVOXMinLevel.Name = "nmVOXMinLevel";
+            this.nmVOXMinLevel.Size = new System.Drawing.Size(69, 20);
+            this.nmVOXMinLevel.TabIndex = 2;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(14, 53);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(158, 13);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Максимальный уровень VOX:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(14, 28);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(152, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Минимальный уровень VOX:";
+            // 
+            // btnResetCalibrations
+            // 
+            this.btnResetCalibrations.BackColor = System.Drawing.SystemColors.Control;
+            this.btnResetCalibrations.ForeColor = System.Drawing.Color.Red;
+            this.btnResetCalibrations.Location = new System.Drawing.Point(771, 400);
+            this.btnResetCalibrations.Name = "btnResetCalibrations";
+            this.btnResetCalibrations.Size = new System.Drawing.Size(268, 23);
+            this.btnResetCalibrations.TabIndex = 4;
+            this.btnResetCalibrations.Text = "Сброс калибровок к заводским значениям";
+            this.btnResetCalibrations.UseVisualStyleBackColor = false;
+            // 
+            // label11
+            // 
+            this.label11.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label11.Location = new System.Drawing.Point(4, 85);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(144, 20);
+            this.label11.TabIndex = 4;
+            this.label11.Text = "Уровень мощности 2";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label12
+            // 
+            this.label12.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label12.Location = new System.Drawing.Point(4, 106);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(144, 20);
+            this.label12.TabIndex = 5;
+            this.label12.Text = "Уровень мощности 1";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // CalibrationFormMDUV380
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(505, 204);
-            this.Controls.Add(this.lblMessage);
+            this.ClientSize = new System.Drawing.Size(1051, 497);
+            this.Controls.Add(this.btnResetCalibrations);
+            this.Controls.Add(this.gbCommons);
+            this.Controls.Add(this.tabs);
             this.Controls.Add(this.btnReadFromRadio);
             this.Controls.Add(this.btnSaveCalibration);
             this.Controls.Add(this.btnReadFile);
@@ -730,6 +1186,17 @@ public class CalibrationFormMDUV380 : Form
             this.Name = "CalibrationFormMDUV380";
             this.Text = "Calibration";
             this.Load += new System.EventHandler(this.onFormLoad);
+            this.tabs.ResumeLayout(false);
+            this.tabVHF.ResumeLayout(false);
+            this.tlpVHF.ResumeLayout(false);
+            this.gbCommons.ResumeLayout(false);
+            this.gbCommons.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nmRSSI70)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nmRSSI120)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nmRxHighLevel)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nmRxLowLevel)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nmVOXMaxLevel)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nmVOXMinLevel)).EndInit();
             this.ResumeLayout(false);
 
     }

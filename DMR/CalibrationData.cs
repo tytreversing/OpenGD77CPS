@@ -1,4 +1,5 @@
 using System;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Xml.Serialization;
 
@@ -32,6 +33,21 @@ public struct BYTE
 {
     [XmlAttribute(AttributeName = "value")]
     public byte VALUE;
+
+    public static explicit operator decimal(BYTE v)
+    {
+        return (decimal)v.VALUE;
+    }
+
+    public static implicit operator BYTE(int x)
+    {
+        return new BYTE { VALUE = (byte)x };
+    }
+
+    public static implicit operator BYTE(decimal x)
+    {
+        return new BYTE { VALUE = (byte)x };
+    }
 }
 
 [Serializable]

@@ -16,7 +16,9 @@ public class OpenGD77CommsTransferData
 		DataModeReadRadioInfo,
 		DataModeReadSecureRegisters,
 		DataModeReadSettings,
-		DataModeWriteSettings
+		DataModeWriteSettings,
+		DataModeReadFactoryCalibrations,
+		DataModeReadBandlimits
 	}
 
 	public enum CommsAction

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.IO;
 using System.IO.Ports;
@@ -10,6 +11,7 @@ using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 using System.Xml.Serialization;
+using static DMR.OpenGD77Form;
 
 
 namespace DMR;
@@ -64,7 +66,6 @@ public class CalibrationFormMDUV380 : Form
     private NumericUpDown nmRxLowLevel;
     private NumericUpDown nmRxHighLevel;
     private Label label4;
-    private Button btnResetCalibrations;
     private NumericUpDown nmRSSI120;
     private Label label5;
     private NumericUpDown nmRSSI70;
@@ -76,6 +77,26 @@ public class CalibrationFormMDUV380 : Form
     private Label label10;
     private Label label11;
     private Label label12;
+    private Button btnReadFactoryFromRadio;
+    private Label label14;
+    private Label label13;
+    private TextBox tbVHFMax;
+    private TextBox tbVHFMin;
+    private TextBox tbVHFMinCal;
+    private Label label15;
+    private Label lblCalc;
+    private GroupBox gbCalcVHF;
+    private NumericUpDown nmCalc;
+    private Label label17;
+    private Button btnCalc;
+    private TextBox tbVHFHighPower;
+    private Label label18;
+    private TextBox tbVHFMidPower;
+    private Label label19;
+    private TextBox tbVHFMidLowPower;
+    private Label label20;
+    private TextBox tbVHFLowPower;
+    private Label label21;
     CalibrationDataSTM32 CalData = new CalibrationDataSTM32();
 
     public CalibrationFormMDUV380()
@@ -97,6 +118,82 @@ public class CalibrationFormMDUV380 : Form
             }
         }
         return null;
+    }
+
+    private RadioBandlimits radioBandlimits = new();
+
+    private static RadioBandlimits ByteArrayToRadioBandlimits(byte[] bytes)
+    {
+        GCHandle gCHandle = GCHandle.Alloc(bytes, GCHandleType.Pinned);
+        try
+        {
+            return (RadioBandlimits)Marshal.PtrToStructure(gCHandle.AddrOfPinnedObject(), typeof(RadioBandlimits));
+        }
+        finally
+        {
+            gCHandle.Free();
+        }
+    }
+
+    private static bool ReadRadioBandlimits(SerialPort port, OpenGD77CommsTransferData dataObj)
+    {
+        byte[] array = new byte[1032];
+        byte[] array2 = new byte[1032];
+        int num = 0;
+        array[0] = 82;
+        array[1] = (byte)dataObj.mode;
+        array[2] = 0;
+        array[3] = 0;
+        array[4] = 0;
+        array[5] = 0;
+        array[6] = 0;
+        array[7] = 0;
+        port.Write(array, 0, 8);
+        while (port.BytesToWrite > 0)
+        {
+            Thread.Sleep(1);
+        }
+        while (port.BytesToRead == 0)
+        {
+            Thread.Sleep(5);
+        }
+        port.Read(array2, 0, port.BytesToRead);
+        if (array2[0] == 82)
+        {
+            int num2 = (array2[1] << 8) + array2[2];
+            for (int i = 0; i < num2; i++)
+            {
+                dataObj.dataBuff[num++] = array2[i + 3];
+            }
+            return true;
+        }
+        return false;
+    }
+    private bool readBandlimits()
+    {
+        if (!setupCommPort())
+        {
+            SystemSounds.Hand.Play();
+            MessageBox.Show(StringsDict["No_com_port"]);
+            return false;
+        }
+
+        OpenGD77CommsTransferData openGD77CommsTransferData = new OpenGD77CommsTransferData();
+        openGD77CommsTransferData.mode = OpenGD77CommsTransferData.CommsDataMode.DataModeReadBandlimits;
+        openGD77CommsTransferData.localDataBufferStartPosition = 0;
+        openGD77CommsTransferData.transferLength = 0;
+        openGD77CommsTransferData.dataBuff = new byte[128];
+        radioBandlimits = default(RadioBandlimits);
+        if (ReadRadioBandlimits(commPort, openGD77CommsTransferData))
+        {
+            radioBandlimits = ByteArrayToRadioBandlimits(openGD77CommsTransferData.dataBuff);
+            
+        }
+        commPort.Close();
+        commPort = null;
+
+        return true;
+
     }
 
     private bool probeRadioModel()
@@ -236,6 +333,42 @@ public class CalibrationFormMDUV380 : Form
         return result;
     }
 
+    private bool ReadData(SerialPort port, OpenGD77CommsTransferData dataObj)
+    {
+        byte[] array = new byte[1032];
+        byte[] array2 = new byte[1032];
+        int num = 0;
+        array[0] = 82;
+        array[1] = (byte)dataObj.mode;
+        array[2] = 0;
+        array[3] = 0;
+        array[4] = 0;
+        array[5] = 0;
+        array[6] = 0;
+        array[7] = 0;
+        port.Write(array, 0, 8);
+        while (port.BytesToWrite > 0)
+        {
+            Thread.Sleep(1);
+        }
+        while (port.BytesToRead == 0)
+        {
+            Thread.Sleep(5);
+        }
+        port.Read(array2, 0, port.BytesToRead);
+        if (array2[0] == 82)
+        {
+            int num2 = (array2[1] << 8) + array2[2];
+            for (int i = 0; i < num2; i++)
+            {
+                dataObj.dataBuff[num++] = array2[i + 3];
+            }
+            return true;
+        }
+        //Console.WriteLine($"read stopped (error at {0:X8})");
+        return false;
+    }
+
     private static CalibrationDataSTM32 ByteArrayToCalData(byte[] bytes)
     {
         GCHandle gCHandle = GCHandle.Alloc(bytes, GCHandleType.Pinned);
@@ -249,7 +382,7 @@ public class CalibrationFormMDUV380 : Form
         }
     }
 
-    public bool readDataFromRadio()
+    public bool readDataFromRadio(bool factory = false)
     {
         bool result = true;
         int num = Marshal.SizeOf(typeof(CalibrationData));
@@ -272,20 +405,39 @@ public class CalibrationFormMDUV380 : Form
         sendCommand(commPort, 2, 0, 32, 3, 1, 0, StringsDict["RADIO_DISPLAY_Calibrations"]);
         sendCommand(commPort, 3);
         sendCommand(commPort, 6, 3);
-        openGD77CommsTransferData.mode = OpenGD77CommsTransferData.CommsDataMode.DataModeReadFlash;
-        openGD77CommsTransferData.dataBuff = new byte[(MainForm.RadioType == MainForm.RadioTypeEnum.RadioTypeSTM32) ? CALIBRATION_DATA_SIZE_STM32 : CALIBRATION_DATA_SIZE];
+        if (factory)
+            openGD77CommsTransferData.mode = OpenGD77CommsTransferData.CommsDataMode.DataModeReadFactoryCalibrations;
+        else
+            openGD77CommsTransferData.mode = OpenGD77CommsTransferData.CommsDataMode.DataModeReadFlash;
+        openGD77CommsTransferData.dataBuff = new byte[CALIBRATION_DATA_SIZE_STM32];
         openGD77CommsTransferData.localDataBufferStartPosition = 0;
-        openGD77CommsTransferData.startDataAddressInTheRadio = ((MainForm.RadioType == MainForm.RadioTypeEnum.RadioTypeSTM32) ? MEMORY_LOCATION_STM32 : MEMORY_LOCATION);
-        openGD77CommsTransferData.transferLength = ((MainForm.RadioType == MainForm.RadioTypeEnum.RadioTypeSTM32) ? CALIBRATION_DATA_SIZE_STM32 : CALIBRATION_DATA_SIZE);
-        if (!ReadFlashOrEEPROM(commPort, openGD77CommsTransferData))
+        openGD77CommsTransferData.startDataAddressInTheRadio = MEMORY_LOCATION_STM32;
+        openGD77CommsTransferData.transferLength = CALIBRATION_DATA_SIZE_STM32;
+        if (factory)
         {
-            result = false;
-            openGD77CommsTransferData.responseCode = 1;
+            if (!ReadData(commPort, openGD77CommsTransferData))
+            {
+                result = false;
+                openGD77CommsTransferData.responseCode = 1;
+            }
+            else
+            {
+                SystemSounds.Exclamation.Play();
+            }
         }
         else
         {
-            SystemSounds.Exclamation.Play();
+            if (!ReadFlashOrEEPROM(commPort, openGD77CommsTransferData))
+            {
+                result = false;
+                openGD77CommsTransferData.responseCode = 1;
+            }
+            else
+            {
+                SystemSounds.Exclamation.Play();
+            }
         }
+
         sendCommand(commPort, 5);
         sendCommand(commPort, 7);
         commPort.Close();
@@ -619,8 +771,29 @@ public class CalibrationFormMDUV380 : Form
     {
         if (readDataFromRadio())
         {
-            MessageBox.Show(StringsDict["NowSaveCalibrations"]);
+            //MessageBox.Show(StringsDict["NowSaveCalibrations"]);
             showButtons();
+        }
+        if (readBandlimits())
+        {
+            tbVHFMinCal.Text = (radioBandlimits.VHFLowCal / 100000.0f).ToString("N3");
+            tbVHFMin.Text = (radioBandlimits.VHFLow / 100000.0f).ToString("N3");
+            tbVHFMax.Text = (radioBandlimits.VHFHigh / 100000.0f).ToString("N3");
+        }
+    }
+
+    private void btnReadFactoryFromRadio_Click(object sender, EventArgs e)
+    {
+        if (readDataFromRadio(true))
+        {
+            //MessageBox.Show(StringsDict["NowSaveCalibrations"]);
+            showButtons();
+        }
+        if (readBandlimits())
+        {
+            tbVHFMinCal.Text = (radioBandlimits.VHFLowCal / 100000.0f).ToString("N3");
+            tbVHFMin.Text = (radioBandlimits.VHFLow / 100000.0f).ToString("N3");
+            tbVHFMax.Text = (radioBandlimits.VHFHigh / 100000.0f).ToString("N3");
         }
     }
 
@@ -628,6 +801,8 @@ public class CalibrationFormMDUV380 : Form
     {
         btnWrite.Visible = true;
         btnSaveCalibration.Visible = true;
+        gbCalcVHF.Visible = true;
+        lblCalc.Visible = true;
     }
 
     private void btnSaveCalibration_Click(object sender, EventArgs e)
@@ -781,6 +956,7 @@ public class CalibrationFormMDUV380 : Form
 
     private void InitializeComponent()
     {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CalibrationFormMDUV380));
             this.btnWrite = new System.Windows.Forms.Button();
             this.btnReadFile = new System.Windows.Forms.Button();
             this.btnReadFromRadio = new System.Windows.Forms.Button();
@@ -794,6 +970,8 @@ public class CalibrationFormMDUV380 : Form
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.tabUHF = new System.Windows.Forms.TabPage();
             this.gbCommons = new System.Windows.Forms.GroupBox();
             this.nmRSSI70 = new System.Windows.Forms.NumericUpDown();
@@ -808,9 +986,26 @@ public class CalibrationFormMDUV380 : Form
             this.nmVOXMinLevel = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnResetCalibrations = new System.Windows.Forms.Button();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
+            this.btnReadFactoryFromRadio = new System.Windows.Forms.Button();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.tbVHFMinCal = new System.Windows.Forms.TextBox();
+            this.tbVHFMin = new System.Windows.Forms.TextBox();
+            this.tbVHFMax = new System.Windows.Forms.TextBox();
+            this.lblCalc = new System.Windows.Forms.Label();
+            this.gbCalcVHF = new System.Windows.Forms.GroupBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.nmCalc = new System.Windows.Forms.NumericUpDown();
+            this.label18 = new System.Windows.Forms.Label();
+            this.tbVHFHighPower = new System.Windows.Forms.TextBox();
+            this.btnCalc = new System.Windows.Forms.Button();
+            this.label19 = new System.Windows.Forms.Label();
+            this.tbVHFMidPower = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.tbVHFMidLowPower = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.tbVHFLowPower = new System.Windows.Forms.TextBox();
             this.tabs.SuspendLayout();
             this.tabVHF.SuspendLayout();
             this.tlpVHF.SuspendLayout();
@@ -821,6 +1016,8 @@ public class CalibrationFormMDUV380 : Form
             ((System.ComponentModel.ISupportInitialize)(this.nmRxLowLevel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmVOXMaxLevel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmVOXMinLevel)).BeginInit();
+            this.gbCalcVHF.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nmCalc)).BeginInit();
             this.SuspendLayout();
             // 
             // btnWrite
@@ -852,7 +1049,7 @@ public class CalibrationFormMDUV380 : Form
             // 
             this.btnReadFromRadio.BackColor = System.Drawing.SystemColors.Control;
             this.btnReadFromRadio.Font = new System.Drawing.Font("Arial", 8F);
-            this.btnReadFromRadio.Location = new System.Drawing.Point(771, 284);
+            this.btnReadFromRadio.Location = new System.Drawing.Point(771, 255);
             this.btnReadFromRadio.Name = "btnReadFromRadio";
             this.btnReadFromRadio.Size = new System.Drawing.Size(268, 23);
             this.btnReadFromRadio.TabIndex = 1;
@@ -888,16 +1085,23 @@ public class CalibrationFormMDUV380 : Form
             this.tabs.Location = new System.Drawing.Point(14, 12);
             this.tabs.Name = "tabs";
             this.tabs.SelectedIndex = 0;
-            this.tabs.Size = new System.Drawing.Size(739, 466);
+            this.tabs.Size = new System.Drawing.Size(739, 608);
             this.tabs.TabIndex = 2;
             // 
             // tabVHF
             // 
+            this.tabVHF.Controls.Add(this.lblCalc);
+            this.tabVHF.Controls.Add(this.tbVHFMax);
+            this.tabVHF.Controls.Add(this.tbVHFMin);
+            this.tabVHF.Controls.Add(this.tbVHFMinCal);
+            this.tabVHF.Controls.Add(this.label15);
+            this.tabVHF.Controls.Add(this.label14);
+            this.tabVHF.Controls.Add(this.label13);
             this.tabVHF.Controls.Add(this.tlpVHF);
             this.tabVHF.Location = new System.Drawing.Point(4, 22);
             this.tabVHF.Name = "tabVHF";
             this.tabVHF.Padding = new System.Windows.Forms.Padding(3);
-            this.tabVHF.Size = new System.Drawing.Size(731, 440);
+            this.tabVHF.Size = new System.Drawing.Size(731, 582);
             this.tabVHF.TabIndex = 0;
             this.tabVHF.Text = "Диапазон 2 м";
             this.tabVHF.UseVisualStyleBackColor = true;
@@ -912,14 +1116,14 @@ public class CalibrationFormMDUV380 : Form
             this.tlpVHF.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
             this.tlpVHF.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
             this.tlpVHF.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.tlpVHF.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
+            this.tlpVHF.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
             this.tlpVHF.Controls.Add(this.label7, 0, 0);
             this.tlpVHF.Controls.Add(this.label8, 0, 1);
             this.tlpVHF.Controls.Add(this.label9, 0, 2);
             this.tlpVHF.Controls.Add(this.label10, 0, 3);
             this.tlpVHF.Controls.Add(this.label11, 0, 4);
             this.tlpVHF.Controls.Add(this.label12, 0, 5);
-            this.tlpVHF.Location = new System.Drawing.Point(110, 29);
+            this.tlpVHF.Location = new System.Drawing.Point(103, 111);
             this.tlpVHF.Margin = new System.Windows.Forms.Padding(0);
             this.tlpVHF.Name = "tlpVHF";
             this.tlpVHF.RowCount = 11;
@@ -978,6 +1182,26 @@ public class CalibrationFormMDUV380 : Form
             this.label10.TabIndex = 3;
             this.label10.Text = "Уровень мощности 3";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label11
+            // 
+            this.label11.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label11.Location = new System.Drawing.Point(4, 85);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(144, 20);
+            this.label11.TabIndex = 4;
+            this.label11.Text = "Уровень мощности 2";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label12
+            // 
+            this.label12.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label12.Location = new System.Drawing.Point(4, 106);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(144, 20);
+            this.label12.TabIndex = 5;
+            this.label12.Text = "Уровень мощности 1";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // tabUHF
             // 
@@ -1136,44 +1360,212 @@ public class CalibrationFormMDUV380 : Form
             this.label1.TabIndex = 0;
             this.label1.Text = "Минимальный уровень VOX:";
             // 
-            // btnResetCalibrations
+            // btnReadFactoryFromRadio
             // 
-            this.btnResetCalibrations.BackColor = System.Drawing.SystemColors.Control;
-            this.btnResetCalibrations.ForeColor = System.Drawing.Color.Red;
-            this.btnResetCalibrations.Location = new System.Drawing.Point(771, 400);
-            this.btnResetCalibrations.Name = "btnResetCalibrations";
-            this.btnResetCalibrations.Size = new System.Drawing.Size(268, 23);
-            this.btnResetCalibrations.TabIndex = 4;
-            this.btnResetCalibrations.Text = "Сброс калибровок к заводским значениям";
-            this.btnResetCalibrations.UseVisualStyleBackColor = false;
+            this.btnReadFactoryFromRadio.BackColor = System.Drawing.SystemColors.Control;
+            this.btnReadFactoryFromRadio.Location = new System.Drawing.Point(771, 284);
+            this.btnReadFactoryFromRadio.Name = "btnReadFactoryFromRadio";
+            this.btnReadFactoryFromRadio.Size = new System.Drawing.Size(268, 23);
+            this.btnReadFactoryFromRadio.TabIndex = 5;
+            this.btnReadFactoryFromRadio.Text = "button1";
+            this.btnReadFactoryFromRadio.UseVisualStyleBackColor = false;
+            this.btnReadFactoryFromRadio.Click += new System.EventHandler(this.btnReadFactoryFromRadio_Click);
             // 
-            // label11
+            // label13
             // 
-            this.label11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label11.Location = new System.Drawing.Point(4, 85);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(144, 20);
-            this.label11.TabIndex = 4;
-            this.label11.Text = "Уровень мощности 2";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(100, 20);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(269, 13);
+            this.label13.TabIndex = 1;
+            this.label13.Text = "Минимальная частота калибровок OpenGD77 RUS:";
             // 
-            // label12
+            // label14
             // 
-            this.label12.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label12.Location = new System.Drawing.Point(4, 106);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(144, 20);
-            this.label12.TabIndex = 5;
-            this.label12.Text = "Уровень мощности 1";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(100, 40);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(250, 13);
+            this.label14.TabIndex = 2;
+            this.label14.Text = "Минимальная частота диапазона для расчетов:";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(100, 60);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(256, 13);
+            this.label15.TabIndex = 3;
+            this.label15.Text = "Максимальная частота диапазона для расчетов:";
+            // 
+            // tbVHFMinCal
+            // 
+            this.tbVHFMinCal.Location = new System.Drawing.Point(374, 17);
+            this.tbVHFMinCal.Name = "tbVHFMinCal";
+            this.tbVHFMinCal.ReadOnly = true;
+            this.tbVHFMinCal.Size = new System.Drawing.Size(79, 20);
+            this.tbVHFMinCal.TabIndex = 4;
+            // 
+            // tbVHFMin
+            // 
+            this.tbVHFMin.Location = new System.Drawing.Point(374, 37);
+            this.tbVHFMin.Name = "tbVHFMin";
+            this.tbVHFMin.ReadOnly = true;
+            this.tbVHFMin.Size = new System.Drawing.Size(79, 20);
+            this.tbVHFMin.TabIndex = 5;
+            // 
+            // tbVHFMax
+            // 
+            this.tbVHFMax.Location = new System.Drawing.Point(374, 57);
+            this.tbVHFMax.Name = "tbVHFMax";
+            this.tbVHFMax.ReadOnly = true;
+            this.tbVHFMax.Size = new System.Drawing.Size(79, 20);
+            this.tbVHFMax.TabIndex = 6;
+            // 
+            // lblCalc
+            // 
+            this.lblCalc.Location = new System.Drawing.Point(464, 15);
+            this.lblCalc.Name = "lblCalc";
+            this.lblCalc.Size = new System.Drawing.Size(249, 83);
+            this.lblCalc.TabIndex = 7;
+            this.lblCalc.Text = resources.GetString("lblCalc.Text");
+            this.lblCalc.Visible = false;
+            // 
+            // gbCalcVHF
+            // 
+            this.gbCalcVHF.Controls.Add(this.tbVHFLowPower);
+            this.gbCalcVHF.Controls.Add(this.label21);
+            this.gbCalcVHF.Controls.Add(this.tbVHFMidLowPower);
+            this.gbCalcVHF.Controls.Add(this.label20);
+            this.gbCalcVHF.Controls.Add(this.tbVHFMidPower);
+            this.gbCalcVHF.Controls.Add(this.label19);
+            this.gbCalcVHF.Controls.Add(this.btnCalc);
+            this.gbCalcVHF.Controls.Add(this.tbVHFHighPower);
+            this.gbCalcVHF.Controls.Add(this.label18);
+            this.gbCalcVHF.Controls.Add(this.nmCalc);
+            this.gbCalcVHF.Controls.Add(this.label17);
+            this.gbCalcVHF.Location = new System.Drawing.Point(771, 412);
+            this.gbCalcVHF.Name = "gbCalcVHF";
+            this.gbCalcVHF.Size = new System.Drawing.Size(268, 204);
+            this.gbCalcVHF.TabIndex = 8;
+            this.gbCalcVHF.TabStop = false;
+            this.gbCalcVHF.Text = "Калькулятор параметров";
+            this.gbCalcVHF.Visible = false;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(22, 30);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(52, 13);
+            this.label17.TabIndex = 0;
+            this.label17.Text = "Частота:";
+            // 
+            // nmCalc
+            // 
+            this.nmCalc.Location = new System.Drawing.Point(145, 28);
+            this.nmCalc.Maximum = new decimal(new int[] {
+            564,
+            0,
+            0,
+            0});
+            this.nmCalc.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.nmCalc.Name = "nmCalc";
+            this.nmCalc.Size = new System.Drawing.Size(65, 20);
+            this.nmCalc.TabIndex = 1;
+            this.nmCalc.Value = new decimal(new int[] {
+            144,
+            0,
+            0,
+            0});
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(22, 51);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(118, 13);
+            this.label18.TabIndex = 2;
+            this.label18.Text = "Уровень мощности 4:";
+            // 
+            // tbVHFHighPower
+            // 
+            this.tbVHFHighPower.Location = new System.Drawing.Point(145, 48);
+            this.tbVHFHighPower.Name = "tbVHFHighPower";
+            this.tbVHFHighPower.Size = new System.Drawing.Size(65, 20);
+            this.tbVHFHighPower.TabIndex = 3;
+            // 
+            // btnCalc
+            // 
+            this.btnCalc.BackColor = System.Drawing.SystemColors.Control;
+            this.btnCalc.Location = new System.Drawing.Point(62, 177);
+            this.btnCalc.Name = "btnCalc";
+            this.btnCalc.Size = new System.Drawing.Size(167, 21);
+            this.btnCalc.TabIndex = 4;
+            this.btnCalc.Text = "Подсчитать";
+            this.btnCalc.UseVisualStyleBackColor = false;
+            this.btnCalc.Click += new System.EventHandler(this.btnCalc_Click);
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(22, 71);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(118, 13);
+            this.label19.TabIndex = 5;
+            this.label19.Text = "Уровень мощности 3:";
+            // 
+            // tbVHFMidPower
+            // 
+            this.tbVHFMidPower.Location = new System.Drawing.Point(145, 68);
+            this.tbVHFMidPower.Name = "tbVHFMidPower";
+            this.tbVHFMidPower.Size = new System.Drawing.Size(65, 20);
+            this.tbVHFMidPower.TabIndex = 6;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(22, 90);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(118, 13);
+            this.label20.TabIndex = 7;
+            this.label20.Text = "Уровень мощности 2:";
+            // 
+            // tbVHFMidLowPower
+            // 
+            this.tbVHFMidLowPower.Location = new System.Drawing.Point(145, 88);
+            this.tbVHFMidLowPower.Name = "tbVHFMidLowPower";
+            this.tbVHFMidLowPower.Size = new System.Drawing.Size(65, 20);
+            this.tbVHFMidLowPower.TabIndex = 8;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(22, 110);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(118, 13);
+            this.label21.TabIndex = 9;
+            this.label21.Text = "Уровень мощности 1:";
+            // 
+            // tbVHFLowPower
+            // 
+            this.tbVHFLowPower.Location = new System.Drawing.Point(145, 108);
+            this.tbVHFLowPower.Name = "tbVHFLowPower";
+            this.tbVHFLowPower.Size = new System.Drawing.Size(65, 20);
+            this.tbVHFLowPower.TabIndex = 10;
             // 
             // CalibrationFormMDUV380
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1051, 497);
-            this.Controls.Add(this.btnResetCalibrations);
+            this.ClientSize = new System.Drawing.Size(1051, 644);
+            this.Controls.Add(this.gbCalcVHF);
+            this.Controls.Add(this.btnReadFactoryFromRadio);
             this.Controls.Add(this.gbCommons);
             this.Controls.Add(this.tabs);
             this.Controls.Add(this.btnReadFromRadio);
@@ -1188,6 +1580,7 @@ public class CalibrationFormMDUV380 : Form
             this.Load += new System.EventHandler(this.onFormLoad);
             this.tabs.ResumeLayout(false);
             this.tabVHF.ResumeLayout(false);
+            this.tabVHF.PerformLayout();
             this.tlpVHF.ResumeLayout(false);
             this.gbCommons.ResumeLayout(false);
             this.gbCommons.PerformLayout();
@@ -1197,7 +1590,150 @@ public class CalibrationFormMDUV380 : Form
             ((System.ComponentModel.ISupportInitialize)(this.nmRxLowLevel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmVOXMaxLevel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmVOXMinLevel)).EndInit();
+            this.gbCalcVHF.ResumeLayout(false);
+            this.gbCalcVHF.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nmCalc)).EndInit();
             this.ResumeLayout(false);
 
     }
+
+    private int CLAMP(int x, int low, int high)
+    {
+        return (((x) > (high)) ? (high) : (((x) < (low)) ? (low) : (x)));
+    }
+
+    private int interpolate(int lowerpoint, int upperpoint, int numerator, int denominator)
+    {
+        return lowerpoint + (((upperpoint - lowerpoint) * numerator) / denominator);
+    }
+
+    private void calibrationGetPowerForFrequency(int freq)
+    {
+        int index;
+        int offset;
+        int limit;
+        int upper;
+        int lower;
+
+        freq *= 100000;
+
+        if (freq > 34900000)
+
+        {
+            index = (int)((freq - radioBandlimits.UHFLowCal) / 1000000);
+            offset = (int)((freq - radioBandlimits.UHFLowCal) % 1000000);
+            limit = 8;
+            index = CLAMP(index, 0, limit);
+            lower = CalData.UHFLowPowerCal[index].VALUE << 4;             
+
+            if (index < limit)
+            {
+                upper = CalData.UHFLowPowerCal[index + 1].VALUE << 4;         
+            }
+            else
+            {
+                upper = lower + (lower - (CalData.UHFLowPowerCal[index - 1].VALUE << 4));       
+            }
+
+           /* powerSettings->lowPower = CLAMP(interpolate(lower, upper, offset, 1000000), 0, 4096);
+            lower = calibrationData.UHFMidLowPowerCal[index] << 4;              // get the Lower lookup point and scale it to 12 bits
+
+            if (index < limit)
+            {
+                upper = calibrationData.UHFMidLowPowerCal[index + 1] << 4;          //get the higher lookup point and scale it to 12 bits
+            }
+            else
+            {
+                upper = lower + (lower - (calibrationData.UHFMidLowPowerCal[index - 1] << 4));       //extrapolate outside top point using the same slope
+            }
+
+            powerSettings->midLowPower = CLAMP(interpolate(lower, upper, offset, 1000000), 0, 4096);
+            lower = calibrationData.UHFMidPowerCal[index] << 4;             // get the Lower lookup point and scale it to 12 bits
+
+            if (index < limit)
+            {
+                upper = calibrationData.UHFMidPowerCal[index + 1] << 4;         //get the higher lookup point and scale it to 12 bits
+            }
+            else
+            {
+                upper = lower + (lower - (calibrationData.UHFMidPowerCal[index - 1] << 4));       //extrapolate outside top point using the same slope
+            }
+
+            powerSettings->midPower = CLAMP(interpolate(lower, upper, offset, 1000000), 0, 4096);
+            lower = calibrationData.UHFHighPowerCal[index] << 4;                // get the Lower lookup point and scale it to 12 bits
+
+            if (index < limit)
+            {
+                upper = calibrationData.UHFHighPowerCal[index + 1] << 4;            //get the higher lookup point and scale it to 12 bits
+            }
+            else
+            {
+                upper = lower + (lower - (calibrationData.UHFHighPowerCal[index - 1] << 4));       //extrapolate outside top point using the same slope
+            }
+
+            powerSettings->highPower = CLAMP(interpolate(lower, upper, offset, 1000000), 0, 4096);*/
+
+            return;
+        }
+
+        index = (int)((freq - radioBandlimits.VHFLowCal) / 950000);
+        offset = (int)((freq - radioBandlimits.VHFLowCal) % 950000);
+        limit = 4;
+        index = CLAMP(index, 0, limit);
+        lower = CalData.VHFLowPowerCal[index].VALUE << 4;             
+
+        if (index < limit)
+        {
+            upper = CalData.VHFLowPowerCal[index + 1].VALUE << 4;        
+        }
+        else
+        {
+            upper = lower + (lower - (CalData.VHFLowPowerCal[index - 1].VALUE << 4));       
+        }
+
+        tbVHFLowPower.Text = CLAMP(interpolate(lower, upper, offset, 950000), 0, 4096).ToString();
+        lower = CalData.VHFMidLowPowerCal[index].VALUE << 4;             
+
+        if (index < limit)
+        {
+            upper = CalData.VHFMidLowPowerCal[index + 1].VALUE << 4;         
+        }
+        else
+        {
+            upper = lower + (lower - (CalData.VHFMidLowPowerCal[index - 1].VALUE << 4));       
+        }
+
+        tbVHFMidLowPower.Text = CLAMP(interpolate(lower, upper, offset, 950000), 0, 4096).ToString();
+        lower = CalData.VHFMidPowerCal[index].VALUE << 4;             
+
+        if (index < limit)
+        {
+            upper = CalData.VHFMidPowerCal[index + 1].VALUE << 4;        
+        }
+        else
+        {
+            upper = lower + (lower - (CalData.VHFMidPowerCal[index - 1].VALUE << 4));     
+        }
+
+        tbVHFMidPower.Text = CLAMP(interpolate(lower, upper, offset, 950000), 0, 4096).ToString();
+        lower = CalData.VHFHighPowerCal[index].VALUE << 4;                
+
+        if (index < limit)
+        {
+            upper = CalData.VHFHighPowerCal[index + 1].VALUE << 4;            
+        }
+        else
+        {
+            upper = lower + (lower - (CalData.VHFHighPowerCal[index - 1].VALUE << 4));       
+        }
+
+        tbVHFHighPower.Text = CLAMP(interpolate(lower, upper, offset, 950000), 0, 4096).ToString();
+    }
+
+    private void btnCalc_Click(object sender, EventArgs e)
+    {
+        calibrationGetPowerForFrequency((int)nmCalc.Value);
+    }
+
+ 
 }

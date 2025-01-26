@@ -123,4 +123,7 @@
   <metadata name="openFileDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>159, 17</value>
   </metadata>
+  <data name="lblCalc.Text" xml:space="preserve">
+    <value>Значения параметров "Частота Rx", "Частота Tx", заданные в заводской таблице калибровок, не используются в прошивке. Для расчета используйте калькулятор параметров, соответствующий алгоритму OpenGD77 RUS.</value>
+  </data>
 </root>

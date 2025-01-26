@@ -838,7 +838,7 @@
 			<Control Id="calibrationBandControlUHF" Text="UHF" />
 			<Control Id="btnWrite" Text="Записать в рацию" />
 			<Control Id="btnReadFile" Text="Открыть файл калибровок" />
-			<Control Id="btnReadFromRadio" Text="Считать калибровки из рации" />
+			<Control Id="btnReadFromRadio" Text="Считать активные калибровки из рации" />
 			<Control Id="lblMessage" Text="Сначала считайте калибровки или загрузите ранее сохраненный файл" />
 			<Control Id="btnSaveCalibration" Text="Сохранить файл калибровок" />
 			<Control Id="tabCtlBands" Text="" >
@@ -917,9 +917,10 @@
 	</CalibrationForm>
   <CalibrationFormMDUV380 Text="Работа с калибровками">
     <Controls>
-      <Control Id="btnWrite" Text="Записать в рацию" />
+      <Control Id="btnWrite" Text="Записать в активные калибровки рации" />
       <Control Id="btnReadFile" Text="Открыть файл калибровок" />
-      <Control Id="btnReadFromRadio" Text="Считать калибровки из рации" />
+      <Control Id="btnReadFromRadio" Text="Считать активные калибровки из рации" />
+      <Control Id="btnReadFactoryFromRadio" Text="Считать заводские калибровки из рации" />
       <Control Id="lblMessage" Text="Радиостанции типа MD-UV380 (MD-UV390, Retevis RT-3S) хранят данные калибровок в защищенной области памяти. Их редактирование в режиме реального времени средствами OpenGD77 RUS CPS недоступно. Считайте и сохраните файл." />
       <Control Id="btnSaveCalibration" Text="Сохранить файл калибровок" />
     </Controls>

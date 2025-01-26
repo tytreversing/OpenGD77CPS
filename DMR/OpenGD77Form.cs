@@ -3041,7 +3041,8 @@ public class OpenGD77Form : Form
 		return MainForm.RadioInfo;
 	}
 
-	private static RadioInfo ByteArrayToRadioInfo(byte[] bytes)
+
+    private static RadioInfo ByteArrayToRadioInfo(byte[] bytes)
 	{
 		GCHandle gCHandle = GCHandle.Alloc(bytes, GCHandleType.Pinned);
 		try

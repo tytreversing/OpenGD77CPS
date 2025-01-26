@@ -122,14 +122,20 @@ public class CalibrationDataSTM32
     
     [MarshalAs(UnmanagedType.ByValArray, SizeConst = 9)]                                  //0x40
     public BYTE[] UHFOpenSquelch9;   //UHF Squelch Level 9 Opening  9 frequencies
- 
-    [MarshalAs(UnmanagedType.ByValArray, SizeConst = 7)]                                //0x49
+
+    [MarshalAs(UnmanagedType.U4)]               //0x49
+    public UInt32 VHFLowFrequency;
+
+    [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)]                                
     private byte[] UnknownBlock7;       //Unknown
     
     [MarshalAs(UnmanagedType.ByValArray, SizeConst = 9)]                                  //0x50
     public BYTE[] UHFCloseSquelch9;   //UHF Squelch Level 9 Closing 9 frequencies
 
-    [MarshalAs(UnmanagedType.ByValArray, SizeConst = 7)]                                 //0x59
+    [MarshalAs(UnmanagedType.U4)]               //0x59
+    public UInt32 UHFLowFrequency;
+
+    [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)]                                 
     private byte[] UnknownBlock8;       //Unknown
     
     [MarshalAs(UnmanagedType.ByValArray, SizeConst = 9)]                                  //0x60
@@ -293,10 +299,12 @@ public class CalibrationDataSTM32
         UHFRxTuning = new BYTE[9];     
         VHFRxTuning = new BYTE[5];     
         UnknownBlock6 = new byte[2];      
-        UHFOpenSquelch9 = new BYTE[9];   
-        UnknownBlock7 = new byte[7]; 
-        UHFCloseSquelch9 = new BYTE[9];   
-        UnknownBlock8 = new byte[7];      
+        UHFOpenSquelch9 = new BYTE[9];
+        VHFLowFrequency = 0;
+        UnknownBlock7 = new byte[3]; 
+        UHFCloseSquelch9 = new BYTE[9];
+        UHFLowFrequency = 0;
+        UnknownBlock8 = new byte[3];      
         UHFOpenSquelch1 = new BYTE[9];  
         UnknownBlock9 = new byte[7];       
         UHFCloseSquelch1 = new BYTE[9];   
@@ -357,6 +365,59 @@ public class CalibrationDataSTM32
             UHFCalFreqs[i].byte4 = 0;
         }
         UnknownBlock26 = new byte[8];
+    }
+}
+
+[StructLayout(LayoutKind.Explicit, Pack = 1, Size = 36)]
+public class RadioBandlimits
+{
+    [FieldOffset(0)]
+    [MarshalAs(UnmanagedType.U4)]
+    public uint VHFLowCal;
+
+    [FieldOffset(4)]
+    [MarshalAs(UnmanagedType.U4)]
+    public uint VHFLow;
+
+    [FieldOffset(8)]
+    [MarshalAs(UnmanagedType.U4)]
+    public uint VHFHigh;
+
+    [FieldOffset(12)]
+    [MarshalAs(UnmanagedType.U4)]
+    public uint f220LowCal;
+
+    [FieldOffset(16)]
+    [MarshalAs(UnmanagedType.U4)]
+    public uint f220Low;
+
+    [FieldOffset(20)]
+    [MarshalAs(UnmanagedType.U4)]
+    public uint f220High;
+
+    [FieldOffset(24)]
+    [MarshalAs(UnmanagedType.U4)]
+    public uint UHFLowCal;
+
+    [FieldOffset(28)]
+    [MarshalAs(UnmanagedType.U4)]
+    public uint UHFLow;
+
+    [FieldOffset(32)]
+    [MarshalAs(UnmanagedType.U4)]
+    public uint UHFHigh;
+
+    public RadioBandlimits()
+    {
+        VHFLowCal = 13600000;
+        VHFLow = 12700000;
+        VHFHigh = 17400000;
+        f220LowCal = 20000000;
+        f220Low = 20000000;
+        f220High = 26000000;
+        UHFLowCal = 40000000;
+        UHFLow = 38000000;
+        UHFHigh = 56400000;
     }
 }
 

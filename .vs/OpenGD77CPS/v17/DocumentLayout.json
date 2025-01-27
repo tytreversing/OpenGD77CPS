@@ -7,12 +7,12 @@
       "RelativeMoniker": "D:0:0:{1565D13D-7D28-4024-BF98-A764C1B1D9C5}|OpenGD77CPS.csproj|solutionrelative:dmr\\calibrationformmduv380.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1565D13D-7D28-4024-BF98-A764C1B1D9C5}|OpenGD77CPS.csproj|c:\\users\\maste\\documents\\github\\opengd77cps\\dmr\\calibrationformmduv380.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1565D13D-7D28-4024-BF98-A764C1B1D9C5}|OpenGD77CPS.csproj|solutionrelative:dmr\\calibrationformmduv380.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{1565D13D-7D28-4024-BF98-A764C1B1D9C5}|OpenGD77CPS.csproj|c:\\users\\maste\\documents\\github\\opengd77cps\\dmr\\calibrationdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1565D13D-7D28-4024-BF98-A764C1B1D9C5}|OpenGD77CPS.csproj|solutionrelative:dmr\\calibrationdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1565D13D-7D28-4024-BF98-A764C1B1D9C5}|OpenGD77CPS.csproj|c:\\users\\maste\\documents\\github\\opengd77cps\\dmr\\calibrationformmduv380.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1565D13D-7D28-4024-BF98-A764C1B1D9C5}|OpenGD77CPS.csproj|solutionrelative:dmr\\calibrationformmduv380.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1565D13D-7D28-4024-BF98-A764C1B1D9C5}|OpenGD77CPS.csproj|c:\\users\\maste\\documents\\github\\opengd77cps\\dmr\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -133,34 +133,34 @@
               "Title": "CalibrationFormMDUV380.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "DocumentMoniker": "C:\\Users\\maste\\Documents\\Github\\OpenGD77CPS\\DMR\\CalibrationFormMDUV380.cs",
               "RelativeDocumentMoniker": "DMR\\CalibrationFormMDUV380.cs",
-              "ToolTip": "C:\\Users\\maste\\Documents\\Github\\OpenGD77CPS\\DMR\\CalibrationFormMDUV380.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "RelativeToolTip": "DMR\\CalibrationFormMDUV380.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "ToolTip": "C:\\Users\\maste\\Documents\\Github\\OpenGD77CPS\\DMR\\CalibrationFormMDUV380.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]*",
+              "RelativeToolTip": "DMR\\CalibrationFormMDUV380.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]*",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-24T10:14:00.847Z",
               "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "CalibrationData.cs",
               "DocumentMoniker": "C:\\Users\\maste\\Documents\\Github\\OpenGD77CPS\\DMR\\CalibrationData.cs",
               "RelativeDocumentMoniker": "DMR\\CalibrationData.cs",
               "ToolTip": "C:\\Users\\maste\\Documents\\Github\\OpenGD77CPS\\DMR\\CalibrationData.cs",
               "RelativeToolTip": "DMR\\CalibrationData.cs",
-              "ViewState": "AgIAAA4BAAAAAAAAAADwv9sAAABBAAAAAAAAAA==",
+              "ViewState": "AgIAAJMBAAAAAAAAAAAiwCsBAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-24T09:55:48.97Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "CalibrationFormMDUV380.cs",
               "DocumentMoniker": "C:\\Users\\maste\\Documents\\Github\\OpenGD77CPS\\DMR\\CalibrationFormMDUV380.cs",
               "RelativeDocumentMoniker": "DMR\\CalibrationFormMDUV380.cs",
-              "ToolTip": "C:\\Users\\maste\\Documents\\Github\\OpenGD77CPS\\DMR\\CalibrationFormMDUV380.cs",
-              "RelativeToolTip": "DMR\\CalibrationFormMDUV380.cs",
-              "ViewState": "AgIAAHEEAAAAAAAAAAAiwGsEAAA2AAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\maste\\Documents\\Github\\OpenGD77CPS\\DMR\\CalibrationFormMDUV380.cs*",
+              "RelativeToolTip": "DMR\\CalibrationFormMDUV380.cs*",
+              "ViewState": "AgIAAAYFAAAAAAAAAAAiwG0FAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-24T09:47:09.221Z",
               "EditorCaption": ""

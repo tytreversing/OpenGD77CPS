@@ -123,19 +123,13 @@ public class CalibrationDataSTM32
     [MarshalAs(UnmanagedType.ByValArray, SizeConst = 9)]                                  //0x40
     public BYTE[] UHFOpenSquelch9;   //UHF Squelch Level 9 Opening  9 frequencies
 
-    [MarshalAs(UnmanagedType.U4)]               //0x49
-    public UInt32 VHFLowFrequency;
-
-    [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)]                                
+    [MarshalAs(UnmanagedType.ByValArray, SizeConst = 7)]                                
     private byte[] UnknownBlock7;       //Unknown
     
     [MarshalAs(UnmanagedType.ByValArray, SizeConst = 9)]                                  //0x50
     public BYTE[] UHFCloseSquelch9;   //UHF Squelch Level 9 Closing 9 frequencies
 
-    [MarshalAs(UnmanagedType.U4)]               //0x59
-    public UInt32 UHFLowFrequency;
-
-    [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)]                                 
+    [MarshalAs(UnmanagedType.ByValArray, SizeConst = 7)]                                 
     private byte[] UnknownBlock8;       //Unknown
     
     [MarshalAs(UnmanagedType.ByValArray, SizeConst = 9)]                                  //0x60
@@ -302,10 +296,8 @@ public class CalibrationDataSTM32
         VHFRxTuning = new BYTE[5];     
         UnknownBlock6 = new byte[2];      
         UHFOpenSquelch9 = new BYTE[9];
-        VHFLowFrequency = 0;
         UnknownBlock7 = new byte[3]; 
         UHFCloseSquelch9 = new BYTE[9];
-        UHFLowFrequency = 0;
         UnknownBlock8 = new byte[3];      
         UHFOpenSquelch1 = new BYTE[9];  
         UnknownBlock9 = new byte[7];       

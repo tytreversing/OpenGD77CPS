@@ -39,9 +39,9 @@ public struct BYTE
         return (decimal)v.VALUE;
     }
 
-    public static implicit operator BYTE(int x)
+    public static implicit operator BYTE(byte x)
     {
-        return new BYTE { VALUE = (byte)x };
+        return new BYTE { VALUE = x };
     }
 
     public static implicit operator BYTE(decimal x)
@@ -214,10 +214,10 @@ public class CalibrationDataSTM32
     private byte[] UnknownBlock18;      //Unknown
     
     [MarshalAs(UnmanagedType.ByValArray, SizeConst = 9)]                                  //0x130
-    private BYTE[] UHFDMRIGain;         //UHF I Gain for DMR	9 Frequencies
+    public BYTE[] UHFDMRIGain;         //UHF I Gain for DMR	9 Frequencies
     
     [MarshalAs(UnmanagedType.ByValArray, SizeConst = 5)]                                  //0x139
-    private BYTE[] VHFDMRIGain;         //VHF I Gain for DMR	5 Frequencies
+    public BYTE[] VHFDMRIGain;         //VHF I Gain for DMR	5 Frequencies
 
     [MarshalAs(UnmanagedType.ByValArray, SizeConst = 2)]
     private byte[] UnknownBlock19;      //Unknown
@@ -274,7 +274,9 @@ public class CalibrationDataSTM32
     public BCDData[] UHFCalFreqs;        // UHF Calibration Frequencies 4 BCD bytes per freq, 9 pairs of freqs Rx and Tx
 
     [MarshalAs(UnmanagedType.ByValArray, SizeConst = 8)]
-    private byte[] UnknownBlock26;      
+    private byte[] UnknownBlock26;
+
+    public RadioBandlimits HardwareBandlimits;
 
     public CalibrationDataSTM32()
     {
@@ -365,6 +367,7 @@ public class CalibrationDataSTM32
             UHFCalFreqs[i].byte4 = 0;
         }
         UnknownBlock26 = new byte[8];
+        HardwareBandlimits = new();
     }
 }
 

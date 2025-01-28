@@ -123,7 +123,11 @@ public class CalibrationDataSTM32
     [MarshalAs(UnmanagedType.ByValArray, SizeConst = 9)]                                  //0x40
     public BYTE[] UHFOpenSquelch9;   //UHF Squelch Level 9 Opening  9 frequencies
 
-    [MarshalAs(UnmanagedType.ByValArray, SizeConst = 7)]                                
+    [XmlElement(DataType = "hexBinary")]
+    [MarshalAs(UnmanagedType.ByValArray, SizeConst = 4)]
+    public byte[] MARKER;       //Unknown
+
+    [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)]                                
     private byte[] UnknownBlock7;       //Unknown
     
     [MarshalAs(UnmanagedType.ByValArray, SizeConst = 9)]                                  //0x50
@@ -270,7 +274,7 @@ public class CalibrationDataSTM32
     [MarshalAs(UnmanagedType.ByValArray, SizeConst = 8)]
     private byte[] UnknownBlock26;
 
-    public RadioBandlimits HardwareBandlimits;
+    
 
     public CalibrationDataSTM32()
     {
@@ -296,9 +300,10 @@ public class CalibrationDataSTM32
         VHFRxTuning = new BYTE[5];     
         UnknownBlock6 = new byte[2];      
         UHFOpenSquelch9 = new BYTE[9];
+        MARKER = new byte[4]; 
         UnknownBlock7 = new byte[3]; 
         UHFCloseSquelch9 = new BYTE[9];
-        UnknownBlock8 = new byte[3];      
+        UnknownBlock8 = new byte[7];      
         UHFOpenSquelch1 = new BYTE[9];  
         UnknownBlock9 = new byte[7];       
         UHFCloseSquelch1 = new BYTE[9];   
@@ -359,7 +364,7 @@ public class CalibrationDataSTM32
             UHFCalFreqs[i].byte4 = 0;
         }
         UnknownBlock26 = new byte[8];
-        HardwareBandlimits = new();
+        
     }
 }
 

@@ -736,14 +736,16 @@ public class CalibrationFormMDUV380 : Form
 
     private void btnReadFromRadio_Click(object sender, EventArgs e)
     {
+        if (!readBandlimits())
+        {
+            MessageBox.Show("Ограничения частот не считаны из рации!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
         if (readDataFromRadio())
         {
             showButtons();
+            btnReadFactoryFromRadio.Visible = true;
         }
-        if (readBandlimits())
-        {
-            
-        }
+        
 
     }
 
@@ -1523,6 +1525,11 @@ public class CalibrationFormMDUV380 : Form
             this.label31 = new System.Windows.Forms.Label();
             this.label32 = new System.Windows.Forms.Label();
             this.label33 = new System.Windows.Forms.Label();
+            this.label45 = new System.Windows.Forms.Label();
+            this.label46 = new System.Windows.Forms.Label();
+            this.label47 = new System.Windows.Forms.Label();
+            this.label48 = new System.Windows.Forms.Label();
+            this.label49 = new System.Windows.Forms.Label();
             this.tabUHF = new System.Windows.Forms.TabPage();
             this.nmUHFOscRef = new System.Windows.Forms.NumericUpDown();
             this.label35 = new System.Windows.Forms.Label();
@@ -1545,6 +1552,11 @@ public class CalibrationFormMDUV380 : Form
             this.label37 = new System.Windows.Forms.Label();
             this.label38 = new System.Windows.Forms.Label();
             this.label39 = new System.Windows.Forms.Label();
+            this.label50 = new System.Windows.Forms.Label();
+            this.label51 = new System.Windows.Forms.Label();
+            this.label52 = new System.Windows.Forms.Label();
+            this.label53 = new System.Windows.Forms.Label();
+            this.label54 = new System.Windows.Forms.Label();
             this.gbCommons = new System.Windows.Forms.GroupBox();
             this.nmRSSI70 = new System.Windows.Forms.NumericUpDown();
             this.label6 = new System.Windows.Forms.Label();
@@ -1560,16 +1572,6 @@ public class CalibrationFormMDUV380 : Form
             this.label1 = new System.Windows.Forms.Label();
             this.btnReadFactoryFromRadio = new System.Windows.Forms.Button();
             this.lblRadioType = new System.Windows.Forms.Label();
-            this.label45 = new System.Windows.Forms.Label();
-            this.label46 = new System.Windows.Forms.Label();
-            this.label47 = new System.Windows.Forms.Label();
-            this.label48 = new System.Windows.Forms.Label();
-            this.label49 = new System.Windows.Forms.Label();
-            this.label50 = new System.Windows.Forms.Label();
-            this.label51 = new System.Windows.Forms.Label();
-            this.label52 = new System.Windows.Forms.Label();
-            this.label53 = new System.Windows.Forms.Label();
-            this.label54 = new System.Windows.Forms.Label();
             this.tabs.SuspendLayout();
             this.tabVHF.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmVHFOscRef)).BeginInit();
@@ -1699,7 +1701,7 @@ public class CalibrationFormMDUV380 : Form
             this.tlpVHF.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
             this.tlpVHF.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
             this.tlpVHF.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.tlpVHF.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.tlpVHF.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 81F));
             this.tlpVHF.Controls.Add(this.label8, 0, 0);
             this.tlpVHF.Controls.Add(this.label9, 0, 1);
             this.tlpVHF.Controls.Add(this.label10, 0, 2);
@@ -1935,6 +1937,61 @@ public class CalibrationFormMDUV380 : Form
             this.label33.Text = "Усиление Q (FM)";
             this.label33.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // label45
+            // 
+            this.label45.AutoSize = true;
+            this.label45.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label45.Location = new System.Drawing.Point(4, 106);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(144, 20);
+            this.label45.TabIndex = 19;
+            this.label45.Text = "Уровень мощности 5";
+            this.label45.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label46
+            // 
+            this.label46.AutoSize = true;
+            this.label46.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label46.Location = new System.Drawing.Point(4, 127);
+            this.label46.Name = "label46";
+            this.label46.Size = new System.Drawing.Size(144, 20);
+            this.label46.TabIndex = 20;
+            this.label46.Text = "Уровень мощности 4";
+            this.label46.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label47
+            // 
+            this.label47.AutoSize = true;
+            this.label47.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label47.Location = new System.Drawing.Point(4, 148);
+            this.label47.Name = "label47";
+            this.label47.Size = new System.Drawing.Size(144, 20);
+            this.label47.TabIndex = 21;
+            this.label47.Text = "Уровень мощности 3";
+            this.label47.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label48
+            // 
+            this.label48.AutoSize = true;
+            this.label48.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label48.Location = new System.Drawing.Point(4, 169);
+            this.label48.Name = "label48";
+            this.label48.Size = new System.Drawing.Size(144, 20);
+            this.label48.TabIndex = 22;
+            this.label48.Text = "Уровень мощности 2";
+            this.label48.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label49
+            // 
+            this.label49.AutoSize = true;
+            this.label49.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label49.Location = new System.Drawing.Point(4, 190);
+            this.label49.Name = "label49";
+            this.label49.Size = new System.Drawing.Size(144, 20);
+            this.label49.TabIndex = 23;
+            this.label49.Text = "Уровень мощности 1";
+            this.label49.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // tabUHF
             // 
             this.tabUHF.Controls.Add(this.nmUHFOscRef);
@@ -1983,7 +2040,7 @@ public class CalibrationFormMDUV380 : Form
             this.tlpUHF.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
             this.tlpUHF.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
             this.tlpUHF.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.tlpUHF.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 77F));
+            this.tlpUHF.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 78F));
             this.tlpUHF.Controls.Add(this.label21, 0, 18);
             this.tlpUHF.Controls.Add(this.label40, 0, 0);
             this.tlpUHF.Controls.Add(this.label41, 0, 1);
@@ -2222,6 +2279,61 @@ public class CalibrationFormMDUV380 : Form
             this.label39.Text = "Усиление Q (FM)";
             this.label39.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // label50
+            // 
+            this.label50.AutoSize = true;
+            this.label50.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label50.Location = new System.Drawing.Point(4, 106);
+            this.label50.Name = "label50";
+            this.label50.Size = new System.Drawing.Size(144, 20);
+            this.label50.TabIndex = 22;
+            this.label50.Text = "Уровень мощности 5";
+            this.label50.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label51
+            // 
+            this.label51.AutoSize = true;
+            this.label51.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label51.Location = new System.Drawing.Point(4, 127);
+            this.label51.Name = "label51";
+            this.label51.Size = new System.Drawing.Size(144, 20);
+            this.label51.TabIndex = 23;
+            this.label51.Text = "Уровень мощности 4";
+            this.label51.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label52
+            // 
+            this.label52.AutoSize = true;
+            this.label52.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label52.Location = new System.Drawing.Point(4, 148);
+            this.label52.Name = "label52";
+            this.label52.Size = new System.Drawing.Size(144, 20);
+            this.label52.TabIndex = 24;
+            this.label52.Text = "Уровень мощности 3";
+            this.label52.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label53
+            // 
+            this.label53.AutoSize = true;
+            this.label53.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label53.Location = new System.Drawing.Point(4, 169);
+            this.label53.Name = "label53";
+            this.label53.Size = new System.Drawing.Size(144, 20);
+            this.label53.TabIndex = 25;
+            this.label53.Text = "Уровень мощности 2";
+            this.label53.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label54
+            // 
+            this.label54.AutoSize = true;
+            this.label54.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label54.Location = new System.Drawing.Point(4, 190);
+            this.label54.Name = "label54";
+            this.label54.Size = new System.Drawing.Size(144, 20);
+            this.label54.TabIndex = 26;
+            this.label54.Text = "Уровень мощности 1";
+            this.label54.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // gbCommons
             // 
             this.gbCommons.Controls.Add(this.nmRSSI70);
@@ -2384,6 +2496,7 @@ public class CalibrationFormMDUV380 : Form
             this.btnReadFactoryFromRadio.TabIndex = 5;
             this.btnReadFactoryFromRadio.Text = "button1";
             this.btnReadFactoryFromRadio.UseVisualStyleBackColor = false;
+            this.btnReadFactoryFromRadio.Visible = false;
             this.btnReadFactoryFromRadio.Click += new System.EventHandler(this.btnReadFactoryFromRadio_Click);
             // 
             // lblRadioType
@@ -2393,116 +2506,6 @@ public class CalibrationFormMDUV380 : Form
             this.lblRadioType.Size = new System.Drawing.Size(308, 22);
             this.lblRadioType.TabIndex = 9;
             this.lblRadioType.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label45
-            // 
-            this.label45.AutoSize = true;
-            this.label45.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label45.Location = new System.Drawing.Point(4, 106);
-            this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(144, 20);
-            this.label45.TabIndex = 19;
-            this.label45.Text = "Уровень мощности 5";
-            this.label45.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label46
-            // 
-            this.label46.AutoSize = true;
-            this.label46.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label46.Location = new System.Drawing.Point(4, 127);
-            this.label46.Name = "label46";
-            this.label46.Size = new System.Drawing.Size(144, 20);
-            this.label46.TabIndex = 20;
-            this.label46.Text = "Уровень мощности 4";
-            this.label46.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label47
-            // 
-            this.label47.AutoSize = true;
-            this.label47.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label47.Location = new System.Drawing.Point(4, 148);
-            this.label47.Name = "label47";
-            this.label47.Size = new System.Drawing.Size(144, 20);
-            this.label47.TabIndex = 21;
-            this.label47.Text = "Уровень мощности 3";
-            this.label47.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label48
-            // 
-            this.label48.AutoSize = true;
-            this.label48.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label48.Location = new System.Drawing.Point(4, 169);
-            this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(144, 20);
-            this.label48.TabIndex = 22;
-            this.label48.Text = "Уровень мощности 2";
-            this.label48.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label49
-            // 
-            this.label49.AutoSize = true;
-            this.label49.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label49.Location = new System.Drawing.Point(4, 190);
-            this.label49.Name = "label49";
-            this.label49.Size = new System.Drawing.Size(144, 20);
-            this.label49.TabIndex = 23;
-            this.label49.Text = "Уровень мощности 1";
-            this.label49.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label50
-            // 
-            this.label50.AutoSize = true;
-            this.label50.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label50.Location = new System.Drawing.Point(4, 106);
-            this.label50.Name = "label50";
-            this.label50.Size = new System.Drawing.Size(144, 20);
-            this.label50.TabIndex = 22;
-            this.label50.Text = "Уровень мощности 5";
-            this.label50.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label51
-            // 
-            this.label51.AutoSize = true;
-            this.label51.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label51.Location = new System.Drawing.Point(4, 127);
-            this.label51.Name = "label51";
-            this.label51.Size = new System.Drawing.Size(144, 20);
-            this.label51.TabIndex = 23;
-            this.label51.Text = "Уровень мощности 4";
-            this.label51.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label52
-            // 
-            this.label52.AutoSize = true;
-            this.label52.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label52.Location = new System.Drawing.Point(4, 148);
-            this.label52.Name = "label52";
-            this.label52.Size = new System.Drawing.Size(144, 20);
-            this.label52.TabIndex = 24;
-            this.label52.Text = "Уровень мощности 3";
-            this.label52.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label53
-            // 
-            this.label53.AutoSize = true;
-            this.label53.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label53.Location = new System.Drawing.Point(4, 169);
-            this.label53.Name = "label53";
-            this.label53.Size = new System.Drawing.Size(144, 20);
-            this.label53.TabIndex = 25;
-            this.label53.Text = "Уровень мощности 2";
-            this.label53.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label54
-            // 
-            this.label54.AutoSize = true;
-            this.label54.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label54.Location = new System.Drawing.Point(4, 190);
-            this.label54.Name = "label54";
-            this.label54.Size = new System.Drawing.Size(144, 20);
-            this.label54.TabIndex = 26;
-            this.label54.Text = "Уровень мощности 1";
-            this.label54.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // CalibrationFormMDUV380
             // 

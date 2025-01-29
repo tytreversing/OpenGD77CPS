@@ -247,8 +247,15 @@ public class CalibrationFormMDUV380 : Form
         }
         else
         {
-            writeCommandCharacter = 'W';
-            ((MainForm)getMainForm())?.changeRadioType(MainForm.RadioTypeEnum.RadioTypeMK22);
+            return false;
+        }
+        if (UInt32.Parse(MainForm.RadioInfo.buildDateTime) < 20250129)
+        {
+            MessageBox.Show("Прошивка рации [" + MainForm.RadioInfo.buildDateTime + "] устарела. Работа редактора калибровок с ней невозможна.", "Внимание!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            sendCommand(commPort, 5);
+            commPort.Close();
+            commPort = null;
+            return false;
         }
         sendCommand(commPort, 5);
         commPort.Close();

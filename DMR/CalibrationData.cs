@@ -4,29 +4,7 @@ using System.Runtime.InteropServices;
 using System.Xml.Serialization;
 
 namespace DMR;
-[Serializable]
-[StructLayout(LayoutKind.Explicit, Pack = 1, Size = 4)]
 
-public struct BCDData
-{
-    [XmlAttribute(AttributeName = "b1")]
-    [FieldOffset(3)]
-    [MarshalAs(UnmanagedType.U1)]
-    public byte byte1;
-    [XmlAttribute(AttributeName = "b2")]
-    [FieldOffset(2)]
-    [MarshalAs(UnmanagedType.U1)]
-    public byte byte2;
-    [XmlAttribute(AttributeName = "b3")]
-    [FieldOffset(1)]
-    [MarshalAs(UnmanagedType.U1)]
-    public byte byte3;
-    [XmlAttribute(AttributeName = "b4")]
-    [FieldOffset(0)]
-    [MarshalAs(UnmanagedType.U1)]
-    public byte byte4;
-
-}
 
 [Serializable]
 public struct BYTE
@@ -145,10 +123,10 @@ public class CalibrationDataSTM32
     [MarshalAs(UnmanagedType.ByValArray, SizeConst = 9)]                                  //0x70
     public BYTE[] UHFCloseSquelch1;   //UHF Squelch Level 1 Closing 9 frequencies
 
-    [MarshalAs(UnmanagedType.ByValArray, SizeConst = 7)]                                 //0x79
-    private byte[] UnknownBlock10;      //Unknown
+    [MarshalAs(UnmanagedType.ByValArray, SizeConst = 9)]                                 //0x79
+    public ushort[] UHFCalPower4;      //Unknown
 
-    [MarshalAs(UnmanagedType.ByValArray, SizeConst = 16)]                                  //0x80
+    [MarshalAs(UnmanagedType.ByValArray, SizeConst = 5)]                                  //0x80
     private byte[] UnknownBlock11;     //Unknown
     
     [MarshalAs(UnmanagedType.ByValArray, SizeConst = 9)]                                  //0x90
@@ -202,13 +180,22 @@ public class CalibrationDataSTM32
     [MarshalAs(UnmanagedType.ByValArray, SizeConst = 5)]
     public BYTE[] VHFCloseSquelch1;     //VHF Squelch Level 1 Closing  5 frequencies
 
-    [MarshalAs(UnmanagedType.ByValArray, SizeConst = 12)]                                   //0xF4
-    private byte[] UnknownBlock17;     //Unknown
+    [MarshalAs(UnmanagedType.ByValArray, SizeConst = 5)]
+    public ushort[] VHFCalPower4;
 
-    [MarshalAs(UnmanagedType.ByValArray, SizeConst = 10)]                                  //0x100
-    public BCDData[] VHFCalFreqs;        // VHF Calibration Frequencies 4 BCD bytes per freq, 5 pairs of freqs Rx and Tx
+    [MarshalAs(UnmanagedType.ByValArray, SizeConst = 5)]
+    public ushort[] VHFCalPower3;
 
-    [MarshalAs(UnmanagedType.ByValArray, SizeConst = 8)]  //0x128
+    [MarshalAs(UnmanagedType.ByValArray, SizeConst = 5)]
+    public ushort[] VHFCalPower2;
+
+    [MarshalAs(UnmanagedType.ByValArray, SizeConst = 5)]
+    public ushort[] VHFCalPower1;
+
+    [MarshalAs(UnmanagedType.ByValArray, SizeConst = 5)]
+    public ushort[] VHFCalPower0;
+
+    [MarshalAs(UnmanagedType.ByValArray, SizeConst = 10)]  //0x128
     private byte[] UnknownBlock18;      //Unknown
     
     [MarshalAs(UnmanagedType.ByValArray, SizeConst = 9)]                                  //0x130
@@ -268,8 +255,17 @@ public class CalibrationDataSTM32
     [MarshalAs(UnmanagedType.ByValArray, SizeConst = 2)]                                      
     private byte[] UnknownBlock25;      //Unknown
 
-    [MarshalAs(UnmanagedType.ByValArray, SizeConst = 18)]                                  
-    public BCDData[] UHFCalFreqs;        // UHF Calibration Frequencies 4 BCD bytes per freq, 9 pairs of freqs Rx and Tx
+    [MarshalAs(UnmanagedType.ByValArray, SizeConst = 9)]
+    public ushort[] UHFCalPower3;
+
+    [MarshalAs(UnmanagedType.ByValArray, SizeConst = 9)]
+    public ushort[] UHFCalPower2;
+
+    [MarshalAs(UnmanagedType.ByValArray, SizeConst = 9)]
+    public ushort[] UHFCalPower1;
+
+    [MarshalAs(UnmanagedType.ByValArray, SizeConst = 9)]
+    public ushort[] UHFCalPower0;
 
     [MarshalAs(UnmanagedType.ByValArray, SizeConst = 8)]
     private byte[] UnknownBlock26;
@@ -306,9 +302,8 @@ public class CalibrationDataSTM32
         UnknownBlock8 = new byte[7];      
         UHFOpenSquelch1 = new BYTE[9];  
         UnknownBlock9 = new byte[7];       
-        UHFCloseSquelch1 = new BYTE[9];   
-        UnknownBlock10 = new byte[7];      
-        UnknownBlock11 = new byte[16];    
+        UHFCloseSquelch1 = new BYTE[9];         
+        UnknownBlock11 = new byte[5];    
         UHFCTC67 = new BYTE[9];            
         UnknownBlock12 = new byte[2];      
         VHFCTC67 = new BYTE[5];            
@@ -326,16 +321,7 @@ public class CalibrationDataSTM32
         VHFCloseSquelch9 = new BYTE[5];    
         VHFOpenSquelch1 = new BYTE[5];    
         VHFCloseSquelch1 = new BYTE[5];   
-        UnknownBlock17 = new byte[12];     
-        VHFCalFreqs = new BCDData[10];
-        for (int i = 0; i < 10; i++)
-        {
-            VHFCalFreqs[i].byte1 = 0;
-            VHFCalFreqs[i].byte2 = 0;
-            VHFCalFreqs[i].byte3 = 0;
-            VHFCalFreqs[i].byte4 = 0;
-        }
-        UnknownBlock18 = new byte[8];   
+        UnknownBlock18 = new byte[10];   
         UHFDMRIGain = new BYTE[9];        
         VHFDMRIGain = new BYTE[5];        
         UnknownBlock19 = new byte[2];      
@@ -355,20 +341,21 @@ public class CalibrationDataSTM32
         UHFMidLowPowerCal = new BYTE[9];       
         VHFMidLowPowerCal = new BYTE[5];       
         UnknownBlock25 = new byte[2];      
-        UHFCalFreqs = new BCDData[18];
-        for (int i = 0; i < 18; i++)
-        {
-            UHFCalFreqs[i].byte1 = 0;
-            UHFCalFreqs[i].byte2 = 0;
-            UHFCalFreqs[i].byte3 = 0;
-            UHFCalFreqs[i].byte4 = 0;
-        }
         UnknownBlock26 = new byte[8];
-        
+        VHFCalPower4 = new ushort[5];
+        VHFCalPower3 = new ushort[5];
+        VHFCalPower2 = new ushort[5];
+        VHFCalPower1 = new ushort[5];
+        VHFCalPower0 = new ushort[5];
+        UHFCalPower4 = new ushort[5];
+        UHFCalPower3 = new ushort[5];
+        UHFCalPower2 = new ushort[5];
+        UHFCalPower1 = new ushort[5];
+        UHFCalPower0 = new ushort[5];
     }
 }
 
-[StructLayout(LayoutKind.Explicit, Pack = 1, Size = 36)]
+[StructLayout(LayoutKind.Explicit, Pack = 1, Size = 24)]
 public class RadioBandlimits
 {
     [FieldOffset(0)]
@@ -385,25 +372,13 @@ public class RadioBandlimits
 
     [FieldOffset(12)]
     [MarshalAs(UnmanagedType.U4)]
-    public uint f220LowCal;
+    public uint UHFLowCal;
 
     [FieldOffset(16)]
     [MarshalAs(UnmanagedType.U4)]
-    public uint f220Low;
-
-    [FieldOffset(20)]
-    [MarshalAs(UnmanagedType.U4)]
-    public uint f220High;
-
-    [FieldOffset(24)]
-    [MarshalAs(UnmanagedType.U4)]
-    public uint UHFLowCal;
-
-    [FieldOffset(28)]
-    [MarshalAs(UnmanagedType.U4)]
     public uint UHFLow;
 
-    [FieldOffset(32)]
+    [FieldOffset(20)]
     [MarshalAs(UnmanagedType.U4)]
     public uint UHFHigh;
 
@@ -412,9 +387,6 @@ public class RadioBandlimits
         VHFLowCal = 13600000;
         VHFLow = 12700000;
         VHFHigh = 17400000;
-        f220LowCal = 20000000;
-        f220Low = 20000000;
-        f220High = 26000000;
         UHFLowCal = 40000000;
         UHFLow = 38000000;
         UHFHigh = 56400000;

@@ -273,6 +273,7 @@ namespace DMR
 
         private void CodeplugSettingsForm_Load(object sender, EventArgs e)
         {
+
             try
             {
                 Settings.smethod_59(base.Controls);

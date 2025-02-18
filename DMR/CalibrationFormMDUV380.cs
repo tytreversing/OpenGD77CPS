@@ -124,6 +124,7 @@ public class CalibrationFormMDUV380 : Form
     private Label label52;
     private Label label53;
     private Label label54;
+    private Button btnClearColors;
     CalibrationDataSTM32 CalData = new CalibrationDataSTM32();
 
     public CalibrationFormMDUV380()
@@ -900,6 +901,8 @@ public class CalibrationFormMDUV380 : Form
     private NumericUpDown[] iGainFMUHF = new NumericUpDown[9];
     private NumericUpDown[] qGainFMUHF = new NumericUpDown[9];
 
+    private Font commonFont = null;
+    private Font selectionFont = null;
     private void prepareTables()
     {
         Padding margin = new Padding(0);
@@ -1294,6 +1297,24 @@ public class CalibrationFormMDUV380 : Form
             tlpUHF.Controls.Add(iGainFMUHF[i], i + 1, 21);
             tlpUHF.Controls.Add(qGainFMUHF[i], i + 1, 22);
         }
+
+        foreach (var item in tlpVHF.Controls)
+        {
+            if (item is NumericUpDown)
+            {
+                ((NumericUpDown)item).Click += new EventHandler(nmClick);
+            }
+        }
+        foreach (var item in tlpUHF.Controls)
+        {
+            if (item is NumericUpDown)
+            {
+                ((NumericUpDown)item).Click += new EventHandler(nmClick);
+            }
+        }
+
+        commonFont = new Font(maxPowersUHF[0].Font.Name, maxPowersUHF[0].Font.Size, FontStyle.Regular);
+        selectionFont = new Font(maxPowersUHF[0].Font.Name, maxPowersUHF[0].Font.Size, FontStyle.Bold);
     }
 
     private bool isReading = false;
@@ -1302,6 +1323,47 @@ public class CalibrationFormMDUV380 : Form
     {
          buildCalDataFromVariables(CalData);
          buildOldPowers(CalData);
+    }
+
+
+    private NumericUpDown prevSelected = null;
+    private void nmClick(Object sender, EventArgs e)
+    {
+        if (prevSelected != null)
+        {
+            prevSelected.Font = commonFont;
+            prevSelected.BackColor = Color.LightSkyBlue;
+            prevSelected.ForeColor = Color.Black;
+        }
+        NumericUpDown temp = sender as NumericUpDown;
+        prevSelected = temp;
+        temp.Font = selectionFont;
+        temp.BackColor = Color.Red;
+        temp.ForeColor = Color.White;
+    }
+
+    private void btnClearColors_Click(object sender, EventArgs e)
+    {
+        foreach (var item in tlpVHF.Controls)
+        {
+            if (item is NumericUpDown)
+            {
+                ((NumericUpDown)item).Font = commonFont;
+                ((NumericUpDown)item).BackColor = Color.White;
+                ((NumericUpDown)item).ForeColor = Color.Black;
+            }
+        }
+        foreach (var item in tlpUHF.Controls)
+        {
+            if (item is NumericUpDown)
+            {
+                ((NumericUpDown)item).Font = commonFont;
+                ((NumericUpDown)item).BackColor = Color.White;
+                ((NumericUpDown)item).ForeColor = Color.Black;
+            }
+        }
+
+        prevSelected = null;
     }
 
     private void buildVariablesFromCalData(CalibrationDataSTM32 c)
@@ -1572,6 +1634,7 @@ public class CalibrationFormMDUV380 : Form
             this.label1 = new System.Windows.Forms.Label();
             this.btnReadFactoryFromRadio = new System.Windows.Forms.Button();
             this.lblRadioType = new System.Windows.Forms.Label();
+            this.btnClearColors = new System.Windows.Forms.Button();
             this.tabs.SuspendLayout();
             this.tabVHF.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmVHFOscRef)).BeginInit();
@@ -1701,7 +1764,7 @@ public class CalibrationFormMDUV380 : Form
             this.tlpVHF.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
             this.tlpVHF.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
             this.tlpVHF.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.tlpVHF.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 81F));
+            this.tlpVHF.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 82F));
             this.tlpVHF.Controls.Add(this.label8, 0, 0);
             this.tlpVHF.Controls.Add(this.label9, 0, 1);
             this.tlpVHF.Controls.Add(this.label10, 0, 2);
@@ -2040,7 +2103,7 @@ public class CalibrationFormMDUV380 : Form
             this.tlpUHF.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
             this.tlpUHF.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
             this.tlpUHF.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.tlpUHF.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 78F));
+            this.tlpUHF.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 79F));
             this.tlpUHF.Controls.Add(this.label21, 0, 18);
             this.tlpUHF.Controls.Add(this.label40, 0, 0);
             this.tlpUHF.Controls.Add(this.label41, 0, 1);
@@ -2507,12 +2570,24 @@ public class CalibrationFormMDUV380 : Form
             this.lblRadioType.TabIndex = 9;
             this.lblRadioType.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // btnClearColors
+            // 
+            this.btnClearColors.BackColor = System.Drawing.SystemColors.Control;
+            this.btnClearColors.Location = new System.Drawing.Point(878, 523);
+            this.btnClearColors.Name = "btnClearColors";
+            this.btnClearColors.Size = new System.Drawing.Size(266, 23);
+            this.btnClearColors.TabIndex = 10;
+            this.btnClearColors.Text = "button1";
+            this.btnClearColors.UseVisualStyleBackColor = false;
+            this.btnClearColors.Click += new System.EventHandler(this.btnClearColors_Click);
+            // 
             // CalibrationFormMDUV380
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1156, 673);
+            this.Controls.Add(this.btnClearColors);
             this.Controls.Add(this.lblRadioType);
             this.Controls.Add(this.btnReadFactoryFromRadio);
             this.Controls.Add(this.gbCommons);
@@ -2550,6 +2625,5 @@ public class CalibrationFormMDUV380 : Form
 
     }
 
-    
- 
+
 }

@@ -92,6 +92,9 @@
     <Compile Update="DMR\EncryptForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="DMR\Examination.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="DMR\FirmwareLoaderReleasesList_GitHub.cs">
       <SubType>Form</SubType>
     </Compile>

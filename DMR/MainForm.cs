@@ -1,3 +1,4 @@
+#define NOSETTINGS
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -6,12 +7,14 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.IO;
 using System.Linq;
+using System.Management;
 using System.Net;
 using System.Net.NetworkInformation;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Runtime.InteropServices.ComTypes;
+using System.Security.Cryptography;
 using System.Security.Principal;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -385,7 +388,7 @@ public class MainForm : Form
             this.tsmiVfos = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiVfoA = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiVfoB = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiCodeplugSettings = new System.Windows.Forms.ToolStripMenuItem();
+		    this.tsmiCodeplugSettings = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiBasic = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiContactsDownload = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsGroup = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -975,10 +978,10 @@ public class MainForm : Form
             this.tsmiVfoB.Size = new System.Drawing.Size(118, 24);
             this.tsmiVfoB.Text = "VFO B";
             this.tsmiVfoB.Click += new System.EventHandler(this.tsmiVfoB_Click);
-            // 
-            // tsmiCodeplugSettings
-            // 
-            this.tsmiCodeplugSettings.Name = "tsmiCodeplugSettings";
+		    // 
+		    // tsmiCodeplugSettings
+		    // 
+		    this.tsmiCodeplugSettings.Name = "tsmiCodeplugSettings";
             this.tsmiCodeplugSettings.Size = new System.Drawing.Size(191, 22);
             this.tsmiCodeplugSettings.Text = "Settings";
             this.tsmiCodeplugSettings.Click += new System.EventHandler(this.tsmiCodeplugSettings_Click);
@@ -1527,7 +1530,7 @@ public class MainForm : Form
                     break;
                 case 5:
                     radioInformation.Text += "TYT MD-9600/Retevis RT-90";
-                    firmwareName = "OpenMD9600RUS";
+                    firmwareName = "OpenMD9600_RUS";
                     break;
                 case 6:
                     radioInformation.Text += "TYT MD-UV380/TYT MD-UV390/Retevis RT-3S";
@@ -1627,7 +1630,7 @@ public class MainForm : Form
                     if (int.Parse(remoteVersion) > int.Parse(RadioInfo.buildDateTime))
                     {
                         DialogResult decision = MessageBox.Show("На сайте проекта доступна новая версия прошивки.\r\nТекущая версия: " + RadioInfo.buildDateTime + "\r\nВерсия на сервере: " + remoteVersion +
-                            "\r\nОткрыть страницу загрузок?", "Обновление прошивки", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                            "\r\nЗагрузить прошивку с сервера?", "Обновление прошивки", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                         if (decision == DialogResult.Yes)
                         {
                             string saveFileName = firmwareName + "_" + remoteVersion + ".zip";
@@ -1670,6 +1673,33 @@ public class MainForm : Form
 
     public static bool connectionAwailable = false;
 
+    public static string GetWindowsId()
+    {
+        var windowsInfo = "";
+        var managClass = new ManagementObjectSearcher("root\\CIMV2", "SELECT * FROM Win32_OperatingSystem");
+
+        var managCollec = managClass.Get();
+
+        var is64Bits = !string.IsNullOrEmpty(Environment.GetEnvironmentVariable("PROCESSOR_ARCHITEW6432"));
+
+        foreach (var o in managCollec)
+        {
+            var managObj = (ManagementObject)o;
+            windowsInfo = managObj.Properties["Caption"].Value + Environment.UserName + (string)managObj.Properties["Version"].Value;
+            break;
+        }
+        windowsInfo = windowsInfo.Replace(" ", "");
+        windowsInfo = windowsInfo.Replace("Windows", "");
+        windowsInfo = windowsInfo.Replace("windows", "");
+        windowsInfo += (is64Bits) ? " 64bit" : " 32bit";
+
+        //md5 hash of the windows version
+        var md5Hasher = MD5.Create();
+        var wi = md5Hasher.ComputeHash(Encoding.Default.GetBytes(windowsInfo));
+        var wiHex = BitConverter.ToString(wi).Replace("-", "");
+        return wiHex;
+    }
+
     private void MainForm_Load(object sender, EventArgs e)
 	{
         bool isElevated;
@@ -1683,7 +1713,6 @@ public class MainForm : Form
 			MessageBox.Show("Программа установлена в папку " + thisFilePath + ", но не запущена от имени администратора. Автообновление файла локализации и ручное его скачивание через Загрузчик прошивки будет недоступно из-за ограничений Windows. Удалите программу и переустановите ее в другую папку, либо установите для исполняемого файла программы галочку запуска от имени администратора.", "Внимание!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         };
 
-		
 
         string _profileStringWithDefault = IniFileUtils.getProfileStringWithDefault("Setup", "RadioType", "MD9600");
         if (!(_profileStringWithDefault == "MD9600"))
@@ -1706,7 +1735,7 @@ public class MainForm : Form
         }
         else
         {
-            this.tsmiSetting.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[11] { this.tsmiBootItem, this.tsmiGerneralSet, this.tsmiDeviceInfo, this.tsmiDtmf, this.tsmiAPRSConfigs, this.tsmiContact, this.tsmiGrpRxList, this.tsmiZone, this.tsmiChannels, this.tsmiVfos, this.tsmiCodeplugSettings });
+            this.tsmiSetting.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[11] { this.tsmiBootItem, this.tsmiGerneralSet, this.tsmiDeviceInfo, this.tsmiDtmf, this.tsmiAPRSConfigs, this.tsmiContact, this.tsmiGrpRxList, this.tsmiZone, this.tsmiChannels, this.tsmiVfos, this.tsmiCodeplugSettings});
         }
         Settings.dicCommon.Add("None", Settings.SZ_NONE);
 		Settings.dicCommon.Add("Selected", Settings.SZ_SELECTED);
@@ -3575,12 +3604,16 @@ public class MainForm : Form
 
     private void tsmiCodeplugSettings_Click(object sender, EventArgs e)
     {
+#if NOSETTINGS
+		MessageBox.Show("Временно недоступно для тестирования");
+#else
         TreeNode treeNode = method_9(typeof(CodeplugSettingsForm), tvwMain.Nodes);
         if (treeNode != null)
         {
             treeviewDoubleClickHandler(treeNode, bool_0: true);
         }
-    }
+#endif
+	}
 
     private void tsmiScanBasic_Click(object sender, EventArgs e)
 	{
@@ -3649,17 +3682,36 @@ public class MainForm : Form
         closeAllForms();
         if (MainForm.RadioType == MainForm.RadioTypeEnum.RadioTypeSTM32)
         {
-            CalibrationFormMDUV380 calibrationForm = new CalibrationFormMDUV380();
-            calibrationForm.StartPosition = FormStartPosition.CenterParent;
-            calibrationForm.ShowDialog();
+			int i = IniFileUtils.getProfileIntWithDefault("Setup", "InitializingBlocks", 0);
+            string examinationResult = IniFileUtils.getProfileStringWithDefault("Setup", "HardwareID", "");
+            string windowsID = GetWindowsId();
+            if (i > 5)
+			{
+                MessageBox.Show("Вы сделали слишком много неудачных попыток прохождения теста. Редактор калибровок заблокирован.", "Тест не пройден!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+			else
+			{
+				if (examinationResult != windowsID)
+				{
+					Examination examinationForm = new Examination();
+					examinationForm.StartPosition = FormStartPosition.CenterParent;
+					examinationForm.ShowDialog();
+				}
+				else
+				{
+					CalibrationFormMDUV380 calibrationForm = new CalibrationFormMDUV380();
+					calibrationForm.StartPosition = FormStartPosition.CenterParent;
+					calibrationForm.ShowDialog();
+				}
+			}
         }
-        else
+     /*   else
         {
             CalibrationForm calibrationForm = new CalibrationForm();
             calibrationForm.StartPosition = FormStartPosition.CenterParent;
             calibrationForm.ShowDialog();
         }
-
+	 */
 	}
 
 	private void tsbtnTheme_Click(object sender, EventArgs e)
@@ -4331,7 +4383,9 @@ public class MainForm : Form
 	{
 		lstTreeNodeItem.Clear();
 		lstTreeNodeItem.Add(new TreeNodeItem(null, null, null, 0, -1, 18, null));
-        lstTreeNodeItem.Add(new TreeNodeItem(null, typeof(CodeplugSettingsForm), null, 0, -1, 1, null));
+#if (!NOSETTINGS)
+		lstTreeNodeItem.Add(new TreeNodeItem(null, typeof(CodeplugSettingsForm), null, 0, -1, 1, null));
+#endif
         lstTreeNodeItem.Add(new TreeNodeItem(null, typeof(GeneralSetForm), null, 0, -1, 5, null));
 		lstTreeNodeItem.Add(new TreeNodeItem(null, typeof(BootItemForm), null, 0, -1, 30, null));
 		lstTreeNodeItem.Add(new TreeNodeItem(null, typeof(DeviceInfoForm), null, 0, -1, 20, null));
@@ -4348,7 +4402,6 @@ public class MainForm : Form
 		lstTreeNodeItem.Add(new TreeNodeItem(cmsGroup, typeof(ZoneBasicForm), typeof(ZoneForm), 68, -1, 16, ZoneForm.data));
 		lstTreeNodeItem.Add(new TreeNodeItem(cmsGroup, typeof(ChannelsForm), typeof(ChannelForm), ChannelForm.CurCntCh, -1, 17, ChannelForm.data));
 		lstTreeNodeItem.Add(new TreeNodeItem(null, null, null, 0, -1, 17, null));
-		int num = 0;
 		for (int i = 0; i < 2; i++)
 		{
 			int chMode = VfoForm.data.GetChMode(i);
@@ -4369,7 +4422,9 @@ public class MainForm : Form
 		dataTable.Columns.Add("Name");
 		dataTable.Columns.Add("ParentId");
 		dataTable.Rows.Add("00", "Model", "-1");
+#if (!NOSETTINGS)
         dataTable.Rows.Add("0017", "Settings", "00");
+#endif
         dataTable.Rows.Add("0001", "GeneralSetting", "00");
 		dataTable.Rows.Add("0002", "BootItem", "00");
 		dataTable.Rows.Add("0005", "BasicInfo", "00");

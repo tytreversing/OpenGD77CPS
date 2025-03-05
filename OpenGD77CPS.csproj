@@ -17,8 +17,8 @@
     <RootNamespace />
     <IncrementVersionOnBuild>1.yyyy.Mdd.Hmm</IncrementVersionOnBuild>
     <Version>2025.1.2.0</Version>
-    <AssemblyVersion>2025.2.18.13</AssemblyVersion>
-    <FileVersion>2025.2.18.13</FileVersion>
+    <AssemblyVersion>2025.3.5.18</AssemblyVersion>
+    <FileVersion>2025.3.5.18</FileVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <ShouldCreateLogs>True</ShouldCreateLogs>
@@ -59,6 +59,7 @@
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System.Management" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml" />
     <Reference Include="UIAutomationProvider" />

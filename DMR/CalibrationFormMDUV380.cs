@@ -125,6 +125,7 @@ public class CalibrationFormMDUV380 : Form
     private Label label53;
     private Label label54;
     private Button btnClearColors;
+    private Button btnChart;
     CalibrationDataSTM32 CalData = new CalibrationDataSTM32();
 
     public CalibrationFormMDUV380()
@@ -497,7 +498,7 @@ public class CalibrationFormMDUV380 : Form
         sendCommand(commPort, 0);
         sendCommand(commPort, 1);
         sendCommand(commPort, 2, 0, 0, 3, 1, 0, "CPS");
-        sendCommand(commPort, 2, 0, 16, 3, 1, 0, StringsDict["RADIO_DISPLAY_Restoring"]);
+        sendCommand(commPort, 2, 0, 16, 3, 1, 0, StringsDict["RADIO_DISPLAY_Writing"]);
         sendCommand(commPort, 2, 0, 32, 3, 1, 0, StringsDict["RADIO_DISPLAY_Calibrations"]);
         sendCommand(commPort, 3);
         sendCommand(commPort, 6, 4);
@@ -507,7 +508,7 @@ public class CalibrationFormMDUV380 : Form
         openGD77CommsTransferData.transferLength = CALIBRATION_DATA_SIZE_STM32;
         if (!WriteFlash(commPort, openGD77CommsTransferData))
         {
-            MessageBox.Show("Ошибка при восстановлении!");
+            MessageBox.Show("Ошибка при записи!");
             openGD77CommsTransferData.responseCode = 1;
         }
         sendCommand(commPort, 6, 2);
@@ -798,6 +799,7 @@ public class CalibrationFormMDUV380 : Form
     {
         btnWrite.Visible = true;
         btnSaveCalibration.Visible = true;
+        btnChart.Visible = true;
     }
 
     private void btnSaveCalibration_Click(object sender, EventArgs e)
@@ -1547,6 +1549,12 @@ public class CalibrationFormMDUV380 : Form
         }
     }
 
+    private void btnChart_Click(object sender, EventArgs e)
+    {
+        CalibrationCharts chartsForm = new CalibrationCharts(CalData);
+        chartsForm.ShowDialog();
+    }
+
     protected override void Dispose(bool disposing)
     {
         if (disposing && components != null)
@@ -1635,6 +1643,7 @@ public class CalibrationFormMDUV380 : Form
             this.btnReadFactoryFromRadio = new System.Windows.Forms.Button();
             this.lblRadioType = new System.Windows.Forms.Label();
             this.btnClearColors = new System.Windows.Forms.Button();
+            this.btnChart = new System.Windows.Forms.Button();
             this.tabs.SuspendLayout();
             this.tabVHF.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmVHFOscRef)).BeginInit();
@@ -1764,7 +1773,7 @@ public class CalibrationFormMDUV380 : Form
             this.tlpVHF.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
             this.tlpVHF.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
             this.tlpVHF.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.tlpVHF.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 82F));
+            this.tlpVHF.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 84F));
             this.tlpVHF.Controls.Add(this.label8, 0, 0);
             this.tlpVHF.Controls.Add(this.label9, 0, 1);
             this.tlpVHF.Controls.Add(this.label10, 0, 2);
@@ -2103,7 +2112,7 @@ public class CalibrationFormMDUV380 : Form
             this.tlpUHF.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
             this.tlpUHF.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
             this.tlpUHF.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.tlpUHF.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 79F));
+            this.tlpUHF.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 81F));
             this.tlpUHF.Controls.Add(this.label21, 0, 18);
             this.tlpUHF.Controls.Add(this.label40, 0, 0);
             this.tlpUHF.Controls.Add(this.label41, 0, 1);
@@ -2581,12 +2590,23 @@ public class CalibrationFormMDUV380 : Form
             this.btnClearColors.UseVisualStyleBackColor = false;
             this.btnClearColors.Click += new System.EventHandler(this.btnClearColors_Click);
             // 
+            // btnChart
+            // 
+            this.btnChart.BackColor = System.Drawing.SystemColors.Control;
+            this.btnChart.Location = new System.Drawing.Point(877, 228);
+            this.btnChart.Name = "btnChart";
+            this.btnChart.Size = new System.Drawing.Size(267, 23);
+            this.btnChart.TabIndex = 11;
+            this.btnChart.UseVisualStyleBackColor = false;
+            this.btnChart.Visible = false;
+            this.btnChart.Click += new System.EventHandler(this.btnChart_Click);
+            // 
             // CalibrationFormMDUV380
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1156, 673);
+            this.Controls.Add(this.btnChart);
             this.Controls.Add(this.btnClearColors);
             this.Controls.Add(this.lblRadioType);
             this.Controls.Add(this.btnReadFactoryFromRadio);
@@ -2596,6 +2616,7 @@ public class CalibrationFormMDUV380 : Form
             this.Controls.Add(this.btnSaveCalibration);
             this.Controls.Add(this.btnReadFile);
             this.Controls.Add(this.btnWrite);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;

@@ -20,7 +20,6 @@ D:\OpenGD77CPS\obj\Debug\net48\OpenGD77.A2AEC6AF.Up2Date
 D:\OpenGD77CPS\obj\Debug\net48\OpenGD77CPS.exe
 D:\OpenGD77CPS\obj\Debug\net48\OpenGD77CPS.pdb
 C:\Users\maste\Documents\GitHub\OpenGD77CPS\obj\Debug\net48\OpenGD77CPS.csproj.AssemblyReference.cache
-C:\Users\maste\Documents\GitHub\OpenGD77CPS\bin\Debug\net48\DefaultOpenGD77.ogd
 C:\Users\maste\Documents\GitHub\OpenGD77CPS\bin\Debug\net48\DefaultTheme.gtm
 C:\Users\maste\Documents\GitHub\OpenGD77CPS\bin\Debug\net48\Language\CPS\English.chm
 C:\Users\maste\Documents\GitHub\OpenGD77CPS\bin\Debug\net48\Language\CPS\English.xml
@@ -29,8 +28,6 @@ C:\Users\maste\Documents\GitHub\OpenGD77CPS\bin\Debug\net48\SourceFirmware\sourc
 C:\Users\maste\Documents\GitHub\OpenGD77CPS\bin\Debug\net48\STDFU.dll
 C:\Users\maste\Documents\GitHub\OpenGD77CPS\bin\Debug\net48\STM_License_SLA0044.txt
 C:\Users\maste\Documents\GitHub\OpenGD77CPS\bin\Debug\net48\STTubeDevice30.dll
-C:\Users\maste\Documents\GitHub\OpenGD77CPS\bin\Debug\net48\help.xml
-C:\Users\maste\Documents\GitHub\OpenGD77CPS\bin\Debug\net48\Language\Firmware\Russian.gla
 C:\Users\maste\Documents\GitHub\OpenGD77CPS\bin\Debug\net48\Newtonsoft.Json.dll
 C:\Users\maste\Documents\GitHub\OpenGD77CPS\bin\Debug\net48\WeifenLuo.WinFormsUI.Docking.dll
 C:\Users\maste\Documents\GitHub\OpenGD77CPS\obj\Debug\net48\DMR.aR3nbf8dQp2feLmk31.lSfgApatkdxsVcGcrktoFd.resources
@@ -74,3 +71,15 @@ C:\Users\maste\Documents\GitHub\OpenGD77CPS\obj\Debug\net48\DMR.RxGroupListForm.
 C:\Users\maste\Documents\GitHub\OpenGD77CPS\obj\Debug\net48\DMR.ZoneForm.resources
 C:\Users\maste\Documents\GitHub\OpenGD77CPS\obj\Debug\net48\DMR.MainForm.resources
 C:\Users\maste\Documents\GitHub\OpenGD77CPS\obj\Debug\net48\DMR.DMRIDForm.resources
+C:\Users\maste\Documents\GitHub\OpenGD77CPS\bin\Debug\net48\OpenGD77RUS.ogd
+C:\Users\maste\Documents\GitHub\OpenGD77CPS\bin\Debug\net48\SourceFirmware\source.sgl
+C:\Users\maste\Documents\GitHub\OpenGD77CPS\bin\Debug\net48\Satellites.txt
+C:\Users\maste\Documents\GitHub\OpenGD77CPS\obj\Debug\net48\DMR.AppSettings.resources
+C:\Users\maste\Documents\GitHub\OpenGD77CPS\obj\Debug\net48\DMR.CalibrationFormMDUV380.resources
+C:\Users\maste\Documents\GitHub\OpenGD77CPS\obj\Debug\net48\DMR.CodeplugSettingsForm.resources
+C:\Users\maste\Documents\GitHub\OpenGD77CPS\obj\Debug\net48\DMR.DtmfContactForm.resources
+C:\Users\maste\Documents\GitHub\OpenGD77CPS\obj\Debug\net48\DMR.Examination.resources
+C:\Users\maste\Documents\GitHub\OpenGD77CPS\obj\Debug\net48\DMR.FirmwareLoaderUI_MK22.resources
+C:\Users\maste\Documents\GitHub\OpenGD77CPS\obj\Debug\net48\OpenGD77CPS.AssemblyInfoInputs.cache
+C:\Users\maste\Documents\GitHub\OpenGD77CPS\obj\Debug\net48\OpenGD77CPS.AssemblyInfo.cs
+C:\Users\maste\Documents\GitHub\OpenGD77CPS\obj\Debug\net48\DMR.CalibrationCharts.resources

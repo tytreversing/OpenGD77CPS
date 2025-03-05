@@ -201,8 +201,6 @@ public class MainForm : Form
 
 	private ToolStripMenuItem tsmiTree;
 
-	private ToolStripMenuItem tsmiHelp;
-
 	private ToolStripMenuItem tsmiMenu;
 
 	private ToolStripMenuItem tsmiBootItem;
@@ -344,7 +342,6 @@ public class MainForm : Form
             this.tsmiWrite = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiView = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiTree = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiToolBar = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiStatusBar = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiRadioType = new System.Windows.Forms.ToolStripMenuItem();
@@ -388,7 +385,7 @@ public class MainForm : Form
             this.tsmiVfos = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiVfoA = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiVfoB = new System.Windows.Forms.ToolStripMenuItem();
-		    this.tsmiCodeplugSettings = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiCodeplugSettings = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiBasic = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiContactsDownload = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsGroup = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -619,7 +616,6 @@ public class MainForm : Form
             // 
             this.tsmiView.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiTree,
-            this.tsmiHelp,
             this.tsmiToolBar,
             this.tsmiStatusBar});
             this.tsmiView.Name = "tsmiView";
@@ -631,23 +627,16 @@ public class MainForm : Form
             this.tsmiTree.Checked = true;
             this.tsmiTree.CheckState = System.Windows.Forms.CheckState.Checked;
             this.tsmiTree.Name = "tsmiTree";
-            this.tsmiTree.Size = new System.Drawing.Size(140, 24);
+            this.tsmiTree.Size = new System.Drawing.Size(180, 24);
             this.tsmiTree.Text = "TreeView";
             this.tsmiTree.Click += new System.EventHandler(this.tsmiTree_Click);
-            // 
-            // tsmiHelp
-            // 
-            this.tsmiHelp.Name = "tsmiHelp";
-            this.tsmiHelp.Size = new System.Drawing.Size(140, 24);
-            this.tsmiHelp.Text = "HelpView";
-            this.tsmiHelp.Click += new System.EventHandler(this.tsmiHelp_Click);
             // 
             // tsmiToolBar
             // 
             this.tsmiToolBar.Checked = true;
             this.tsmiToolBar.CheckState = System.Windows.Forms.CheckState.Checked;
             this.tsmiToolBar.Name = "tsmiToolBar";
-            this.tsmiToolBar.Size = new System.Drawing.Size(140, 24);
+            this.tsmiToolBar.Size = new System.Drawing.Size(180, 24);
             this.tsmiToolBar.Text = "Toolbar";
             this.tsmiToolBar.Click += new System.EventHandler(this.tsmiToolBar_Click);
             // 
@@ -656,7 +645,7 @@ public class MainForm : Form
             this.tsmiStatusBar.Checked = true;
             this.tsmiStatusBar.CheckState = System.Windows.Forms.CheckState.Checked;
             this.tsmiStatusBar.Name = "tsmiStatusBar";
-            this.tsmiStatusBar.Size = new System.Drawing.Size(140, 24);
+            this.tsmiStatusBar.Size = new System.Drawing.Size(180, 24);
             this.tsmiStatusBar.Text = "Status Bar";
             this.tsmiStatusBar.Click += new System.EventHandler(this.tsmiStatusBar_Click);
             // 
@@ -978,10 +967,10 @@ public class MainForm : Form
             this.tsmiVfoB.Size = new System.Drawing.Size(118, 24);
             this.tsmiVfoB.Text = "VFO B";
             this.tsmiVfoB.Click += new System.EventHandler(this.tsmiVfoB_Click);
-		    // 
-		    // tsmiCodeplugSettings
-		    // 
-		    this.tsmiCodeplugSettings.Name = "tsmiCodeplugSettings";
+            // 
+            // tsmiCodeplugSettings
+            // 
+            this.tsmiCodeplugSettings.Name = "tsmiCodeplugSettings";
             this.tsmiCodeplugSettings.Size = new System.Drawing.Size(191, 22);
             this.tsmiCodeplugSettings.Text = "Settings";
             this.tsmiCodeplugSettings.Click += new System.EventHandler(this.tsmiCodeplugSettings_Click);
@@ -3701,7 +3690,7 @@ public class MainForm : Form
 				{
 					CalibrationFormMDUV380 calibrationForm = new CalibrationFormMDUV380();
 					calibrationForm.StartPosition = FormStartPosition.CenterParent;
-					calibrationForm.ShowDialog();
+					calibrationForm.Show();
 				}
 			}
         }
@@ -3814,17 +3803,7 @@ public class MainForm : Form
 		}
 	}
 
-	private void tsmiHelp_Click(object sender, EventArgs e)
-	{
-		if (tsmiHelp.Checked = !tsmiHelp.Checked)
-		{
-			frmHelp.Show(dockPanel);
-		}
-		else
-		{
-			frmHelp.Hide();
-		}
-	}
+
 
 	private void tsmiToolBar_Click(object sender, EventArgs e)
 	{
@@ -3874,10 +3853,6 @@ public class MainForm : Form
 		if (sender == frmTree)
 		{
 			tsmiTree.Checked = !frmTree.IsHidden;
-		}
-		else if (sender == frmHelp)
-		{
-			tsmiHelp.Checked = !frmHelp.IsHidden;
 		}
 	}
 

@@ -38,6 +38,9 @@
     <Compile Update="DMR\CalibrationBandControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="DMR\CalibrationCharts.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="DMR\CalibrationForm.cs">
       <SubType>Form</SubType>
     </Compile>

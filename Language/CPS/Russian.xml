@@ -917,6 +917,7 @@
 	</CalibrationForm>
   <CalibrationFormMDUV380 Text="Работа с калибровками">
     <Controls>
+      <Control Id="btnChart" Text="Графики" />
       <Control Id="btnWrite" Text="Записать в активные калибровки рации" />
       <Control Id="btnReadFile" Text="Открыть файл калибровок" />
       <Control Id="btnReadFromRadio" Text="Считать активные калибровки из рации" />

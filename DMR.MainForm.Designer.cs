@@ -103,6 +103,16 @@ internal class DMR_MainForm {
     /// <summary>
     ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
     /// </summary>
+    internal static System.Drawing.Bitmap line_graph {
+        get {
+            object obj = ResourceManager.GetObject("line-graph", resourceCulture);
+            return ((System.Drawing.Bitmap)(obj));
+        }
+    }
+    
+    /// <summary>
+    ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+    /// </summary>
     internal static System.Drawing.Bitmap open {
         get {
             object obj = ResourceManager.GetObject("open", resourceCulture);

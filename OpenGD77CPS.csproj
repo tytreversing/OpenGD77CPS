@@ -16,9 +16,9 @@
     <ApplicationIcon>Images\apple-touch-icon-167.ico</ApplicationIcon>
     <RootNamespace />
     <IncrementVersionOnBuild>1.yyyy.Mdd.Hmm</IncrementVersionOnBuild>
-    <Version>2025.1.2.0</Version>
-    <AssemblyVersion>2025.3.5.18</AssemblyVersion>
-    <FileVersion>2025.3.5.18</FileVersion>
+    <Version>2025.3.5</Version>
+    <AssemblyVersion>2025.3.5.24</AssemblyVersion>
+    <FileVersion>2025.3.5.24</FileVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <ShouldCreateLogs>True</ShouldCreateLogs>
